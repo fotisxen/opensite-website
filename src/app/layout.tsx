@@ -25,9 +25,6 @@ export const metadata: Metadata = {
   },
   description:
     "Modern digital solutions designed for real business growth. Websites, e-shops, mobile apps, and SEO strategy.",
-  verification: {
-    google: "LrTQY15SUqCEFxgBq9lcF0d0nCH3t4bzW3W0hCItKuI",
-  },
 };
 
 export default function RootLayout({
