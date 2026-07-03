@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
@@ -24,7 +26,7 @@ export function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4 pt-stack-md">
               <Link
-                href="/contact/"
+                href="/book-a-call"
                 className="rounded-xl bg-primary-container px-8 py-4 font-label-md text-white transition-transform hover:scale-105"
               >
                 Get Free Consultation

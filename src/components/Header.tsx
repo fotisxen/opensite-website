@@ -31,9 +31,7 @@ export function Header() {
   // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
   return (
@@ -44,17 +42,26 @@ export function Header() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 z-50 w-full nav-blur border-b border-surface-border shadow-sm"
       >
-        <div className="mx-auto flex h-20 w-full max-w-container-max items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo — shrink-0 so it never gets squeezed */}
-          <Link
-            href="/"
-            className="shrink-0 font-headline-sm text-headline-sm font-bold text-text-primary transition-opacity hover:opacity-80"
-          >
-            OpenSite
-          </Link>
+        {/*
+          3-column flex layout:
+          [left: logo]  [center: nav, absolutely centered]  [right: CTA or hamburger]
+          Each side is flex-1 so the nav stays truly centered
+          and the right-side element is always flush to the right edge of the padding.
+        */}
+        <div className="mx-auto flex h-20 w-full max-w-container-max items-center px-4 sm:px-6 xl:px-10">
 
-          {/* Desktop nav — only shown on large screens */}
-          <nav className="hidden items-center gap-6 lg:flex">
+          {/* LEFT — logo, flex-1 so it takes up the left third */}
+          <div className="flex flex-1 items-center">
+            <Link
+              href="/"
+              className="shrink-0 font-headline-sm text-headline-sm font-bold text-text-primary transition-opacity hover:opacity-80"
+            >
+              OpenSite
+            </Link>
+          </div>
+
+          {/* CENTER — desktop nav, only on xl+ */}
+          <nav className="hidden items-center gap-6 xl:flex">
             {navLinks.map((link) => {
               const active = isActive(pathname, link.href);
               return (
@@ -73,30 +80,30 @@ export function Header() {
             })}
           </nav>
 
-          {/* Desktop CTA — only shown on large screens */}
-          <Link
-            href="/contact/"
-            className="hidden shrink-0 rounded-lg bg-primary-container px-6 py-3 font-label-md text-white transition-all hover:scale-[1.02] hover:opacity-90 active:scale-95 lg:inline-flex"
-          >
-            Get Free Consultation
-          </Link>
+          {/* RIGHT — CTA on desktop, hamburger on mobile; flex-1 + justify-end keeps it flush right */}
+          <div className="flex flex-1 items-center justify-end">
+            {/* Desktop CTA — only on xl+ */}
+            <Link
+              href="/book-a-call"
+              className="hidden shrink-0 rounded-lg bg-primary-container px-5 py-2.5 font-label-md text-white transition-all hover:scale-[1.02] hover:opacity-90 active:scale-95 xl:inline-flex"
+            >
+              Book a Free Call
+            </Link>
 
-          {/* Mobile hamburger — hidden on large screens, shrink-0 so it never overflows */}
-          <button
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            className="relative flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-md transition-colors hover:bg-surface-border lg:hidden"
-          >
+            {/* Mobile hamburger — hidden on xl+, -mr-1 aligns it visually with the padding edge */}
+            <button
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className="relative -mr-1 flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-md transition-colors hover:bg-surface-border xl:hidden"
+            >
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
               className="block h-0.5 w-5 origin-center bg-text-primary"
             />
             <motion.span
-              animate={
-                menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }
-              }
+              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2 }}
               className="block h-0.5 w-5 bg-text-primary"
             />
@@ -105,7 +112,9 @@ export function Header() {
               transition={{ duration: 0.25 }}
               className="block h-0.5 w-5 origin-center bg-text-primary"
             />
-          </button>
+            </button>
+          </div>
+
         </div>
       </motion.header>
 
@@ -121,7 +130,7 @@ export function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm xl:hidden"
             />
 
             {/* Drawer */}
@@ -131,7 +140,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed left-0 right-0 top-20 z-40 border-b border-surface-border shadow-lg lg:hidden bg-[rgba(11,18,32,0.8)] backdrop-blur-md"
+              className="fixed left-0 right-0 top-20 z-40 border-b border-surface-border bg-[rgba(11,18,32,0.8)] backdrop-blur-md shadow-lg xl:hidden"
             >
               <nav className="flex flex-col px-4 py-6 sm:px-6">
                 {navLinks.map((link, i) => {
@@ -164,17 +173,14 @@ export function Header() {
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: navLinks.length * 0.05 + 0.05,
-                    duration: 0.2,
-                  }}
+                  transition={{ delay: navLinks.length * 0.05 + 0.05, duration: 0.2 }}
                   className="mt-6"
                 >
                   <Link
-                    href="/contact/"
+                    href="/book-a-call"
                     className="flex w-full items-center justify-center rounded-lg bg-primary-container px-6 py-3 font-label-md text-white transition-all hover:opacity-90 active:scale-95"
                   >
-                    Get Free Consultation
+                    Book a Free Call
                   </Link>
                 </motion.div>
               </nav>

@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { StickyBookCall } from "@/components/StickyBookCall";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
         <Header />
         <PageTransition>{children}</PageTransition>
         <Footer />
+        <StickyBookCall />
       </body>
     </html>
   );
