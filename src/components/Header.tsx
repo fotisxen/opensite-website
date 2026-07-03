@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/services/", label: "Services" },
   { href: "/case-studies/", label: "Case Studies" },
   { href: "/about/", label: "About" },
@@ -31,7 +32,9 @@ export function Header() {
   // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   return (
@@ -49,7 +52,6 @@ export function Header() {
           and the right-side element is always flush to the right edge of the padding.
         */}
         <div className="mx-auto flex h-20 w-full max-w-container-max items-center px-4 sm:px-6 xl:px-10">
-
           {/* LEFT — logo, flex-1 so it takes up the left third */}
           <div className="flex flex-1 items-center">
             <Link
@@ -97,24 +99,29 @@ export function Header() {
               aria-expanded={menuOpen}
               className="relative -mr-1 flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-md transition-colors hover:bg-surface-border xl:hidden"
             >
-            <motion.span
-              animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.25 }}
-              className="block h-0.5 w-5 origin-center bg-text-primary"
-            />
-            <motion.span
-              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.2 }}
-              className="block h-0.5 w-5 bg-text-primary"
-            />
-            <motion.span
-              animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.25 }}
-              className="block h-0.5 w-5 origin-center bg-text-primary"
-            />
+              <motion.span
+                animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="block h-0.5 w-5 origin-center bg-text-primary"
+              />
+              <motion.span
+                animate={
+                  menuOpen
+                    ? { opacity: 0, scaleX: 0 }
+                    : { opacity: 1, scaleX: 1 }
+                }
+                transition={{ duration: 0.2 }}
+                className="block h-0.5 w-5 bg-text-primary"
+              />
+              <motion.span
+                animate={
+                  menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
+                }
+                transition={{ duration: 0.25 }}
+                className="block h-0.5 w-5 origin-center bg-text-primary"
+              />
             </button>
           </div>
-
         </div>
       </motion.header>
 
@@ -173,7 +180,10 @@ export function Header() {
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navLinks.length * 0.05 + 0.05, duration: 0.2 }}
+                  transition={{
+                    delay: navLinks.length * 0.05 + 0.05,
+                    duration: 0.2,
+                  }}
                   className="mt-6"
                 >
                   <Link

@@ -40,7 +40,11 @@ export function HomePage() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.15} direction="left" className="relative hidden lg:block">
+          <FadeIn
+            delay={0.15}
+            direction="left"
+            className="relative hidden lg:block"
+          >
             <div className="glass-card rotate-2 transform rounded-[16px] p-4 shadow-2xl transition-transform duration-500 hover:rotate-0">
               <Image
                 src={heroImage}
@@ -57,10 +61,10 @@ export function HomePage() {
                 </span>
                 <div>
                   <div className="font-label-sm text-xs text-text-secondary">
-                    Conversion Rate
+                    Tailored Solutions
                   </div>
                   <div className="text-xl font-bold text-text-primary">
-                    +124% Average
+                    100%
                   </div>
                 </div>
               </div>
@@ -150,10 +154,30 @@ export function HomePage() {
           </FadeIn>
           <Stagger className="grid grid-cols-1 gap-gutter md:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: "language", iconClass: "bg-primary/10 text-primary", title: "Websites", text: "High-performance corporate sites that establish authority and capture leads." },
-              { icon: "store", iconClass: "bg-secondary/10 text-secondary", title: "E-commerce", text: "Full-scale online stores optimized for maximum average order value and retention." },
-              { icon: "devices", iconClass: "bg-tertiary/10 text-tertiary", title: "Mobile Apps", text: "Native and cross-platform apps designed to keep your customers engaged on the go." },
-              { icon: "rocket_launch", iconClass: "bg-primary-container/10 text-primary-container", title: "SEO Strategy", text: "Data-driven optimization to dominate search results and attract organic traffic." },
+              {
+                icon: "language",
+                iconClass: "bg-primary/10 text-primary",
+                title: "Websites",
+                text: "High-performance corporate sites that establish authority and capture leads.",
+              },
+              {
+                icon: "store",
+                iconClass: "bg-secondary/10 text-secondary",
+                title: "E-commerce",
+                text: "Full-scale online stores optimized for maximum average order value and retention.",
+              },
+              {
+                icon: "devices",
+                iconClass: "bg-tertiary/10 text-tertiary",
+                title: "Mobile Apps",
+                text: "Native and cross-platform apps designed to keep your customers engaged on the go.",
+              },
+              {
+                icon: "rocket_launch",
+                iconClass: "bg-primary-container/10 text-primary-container",
+                title: "SEO Strategy",
+                text: "Data-driven optimization to dominate search results and attract organic traffic.",
+              },
             ].map((s) => (
               <StaggerItem
                 key={s.title}
@@ -186,19 +210,21 @@ export function HomePage() {
             {[
               {
                 img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAspuDrX8TpEd4LkGo4hJSI792F28QavF40CJq0pauncMPtp-5aBIAu6OxMmXFiZ4gEVRNt8NVz77I5ztdeOcAzWG1JCR0GPPQcLkxS0ReTTTXAC6qnBuXSZrzdYI5nx64vMv1QpopscSRH1nXPB33mm9-rynFpaCsDxRdq5wtFx64Pl0ykLceJTreiGLs_yANEXQFkeQOU8-HXGSDphHlGb9OqXCB9xYjkvZtCjDJj18gZRS2CAI6VixPEEGvjo0_f7h7jGmoKj0g",
-                tag: "E-commerce",
+                tag: "Real Estate",
                 tagClass: "bg-primary/10 text-primary",
-                title: "Luxe Retail Global",
-                problem: "Problem: High cart abandonment rate due to slow mobile checkout.",
+                title: "Akinita Fotiadis",
+                problem:
+                  "Problem: High cart abandonment rate due to slow mobile checkout.",
                 metric: "+40% Leads",
-                sub: "In first 3 months",
+                sub: "Since day one",
               },
               {
                 img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvjDHOGe_YZOfU4_yCeuzIej0ZsiIf9uVLXUt1mhd1PXLa6reWBZHusQM8O0H6yBNKlV0NzyrN39P0skwb61V3gpLXOphfbtgvIjwHbzxSnrTuItq4ki5kyMWmyOxfbxm2kQM68uWS8n2v5JrHzaTGGT2Q8qUsK8JqJk-kEFnQKTuXZD1-k_8mU0Qkico1-BP4Ipeh40DahXNfdKPahq-511y0FbJU58uscfCz9zd4eCY7ddWn98Fidks3UX2oiIVFJjocR4lj2GM",
                 tag: "Fintech",
                 tagClass: "bg-tertiary/10 text-tertiary",
                 title: "Nexo Financial",
-                problem: "Solution: Re-engineered API architecture and intuitive user dashboard.",
+                problem:
+                  "Solution: Re-engineered API architecture and intuitive user dashboard.",
                 metric: "2.5x Revenue",
                 sub: "Projected annual growth",
               },
@@ -226,7 +252,9 @@ export function HomePage() {
                     <h3 className="mt-4 mb-2 font-headline-sm text-headline-sm text-text-primary">
                       {c.title}
                     </h3>
-                    <p className="mb-4 text-sm text-text-secondary">{c.problem}</p>
+                    <p className="mb-4 text-sm text-text-secondary">
+                      {c.problem}
+                    </p>
                     <div className="rounded-lg bg-surface-container-low p-4">
                       <div className="text-2xl font-bold text-secondary">
                         {c.metric}
@@ -235,7 +263,7 @@ export function HomePage() {
                     </div>
                   </div>
                   <Link
-                    href="/case-studies/nexus-pay/"
+                    href="/case-studies/akinita-fotiadis/"
                     className="mt-6 flex items-center gap-2 font-label-md text-primary transition-all hover:gap-3"
                   >
                     View Case Study
@@ -260,15 +288,32 @@ export function HomePage() {
               </h2>
               <div className="space-y-8">
                 {[
-                  { icon: "trending_up", iconClass: "bg-primary/10 text-primary", title: "Business-First Mentality", text: "We don't build features; we build business solutions. Every pixel and line of code is measured against your KPIs." },
-                  { icon: "speed", iconClass: "bg-secondary/10 text-secondary", title: "Fast Delivery", text: "Our agile process ensures you get to market faster without sacrificing the quality of the final product." },
-                  { icon: "psychology", iconClass: "bg-tertiary/10 text-tertiary", title: "Custom Solutions", text: "No templates. We build bespoke systems that reflect your unique brand identity and operational needs." },
+                  {
+                    icon: "trending_up",
+                    iconClass: "bg-primary/10 text-primary",
+                    title: "Business-First Mentality",
+                    text: "We don't build features; we build business solutions. Every pixel and line of code is measured against your KPIs.",
+                  },
+                  {
+                    icon: "speed",
+                    iconClass: "bg-secondary/10 text-secondary",
+                    title: "Fast Delivery",
+                    text: "Our agile process ensures you get to market faster without sacrificing the quality of the final product.",
+                  },
+                  {
+                    icon: "psychology",
+                    iconClass: "bg-tertiary/10 text-tertiary",
+                    title: "Custom Solutions",
+                    text: "No templates. We build bespoke systems that reflect your unique brand identity and operational needs.",
+                  },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-6">
                     <div
                       className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${item.iconClass}`}
                     >
-                      <span className="material-symbols-outlined">{item.icon}</span>
+                      <span className="material-symbols-outlined">
+                        {item.icon}
+                      </span>
                     </div>
                     <div>
                       <h4 className="mb-2 font-headline-sm text-headline-sm text-text-primary">
@@ -290,7 +335,7 @@ export function HomePage() {
                     </span>
                   </div>
                   <div className="mb-4 text-5xl font-bold text-text-primary">
-                    98%
+                    100%
                   </div>
                   <div className="mb-8 text-xl text-text-secondary">
                     Client retention rate based on successful business outcomes
@@ -298,18 +343,19 @@ export function HomePage() {
                   </div>
                   <div className="border-t border-surface-border pt-8">
                     <div className="font-label-md text-sm text-text-primary italic">
-                      &ldquo;OpenSite transformed our outdated portal into a
-                      lead-gen machine. The ROI was clear within the first 60
-                      days.&rdquo;
+                      &ldquo;"From design to launch, OpenSite created a website
+                      that captures the elegance of our sailing experiences
+                      while providing a seamless booking journey for our
+                      clients."&rdquo;
                     </div>
                     <div className="mt-4 flex items-center gap-3">
                       <div className="h-10 w-10 rounded-full bg-surface-container-high" />
                       <div>
                         <div className="text-sm font-bold text-text-primary">
-                          Sarah Jenkins
+                          T. Markas
                         </div>
                         <div className="text-xs text-text-secondary">
-                          CTO, Vertex Logistics
+                          Co-Owner – Yacht Charter & Sailing Experiences, Adonis Sail Yachts
                         </div>
                       </div>
                     </div>
@@ -341,8 +387,10 @@ export function HomePage() {
                     <span>info@opensite.gr</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="material-symbols-outlined">location_on</span>
-                    <span>Athens, Greece / Global Remote</span>
+                    <span className="material-symbols-outlined">
+                      location_on
+                    </span>
+                    <span>Thessaloniki, Greece / Global Remote</span>
                   </div>
                 </div>
               </div>

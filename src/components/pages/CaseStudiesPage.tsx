@@ -2,17 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 
-const filters = ["All Industries", "Healthcare", "Retail", "Tech & SaaS", "Fintech"];
+const filters = [
+  "All Industries",
+  "Real Estate",
+  "Hospitality Tech",
+  "Yacht & Marine Tourism",
+];
 
 const cases = [
   {
-    slug: "nexus-pay",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDHijfxkLC8C6tQYyGa0Jkx7bnUul0zaS6eQ-UDJjkUnrAkPB-GbvxBZPlgpFInn7V7NegS8g9sTYjjGwA6SkzsoftyiP8Wedi9W5zzMrwEhIzKhtq6DRWxxNynuK42DgZeP422eV2L4NkB7PHLVVd2L9SCBS_c0kf-Xazspmx34uMzkqAYXaWIVFl8YFyCIlXUB9MOCcLoO2Esrycr2adWk_rgCqfWq6sTNvFpC4ukl8YE-5QE3hYkR7ZBBdcidyQ3h6u3nuDmgnE",
-    tag: "Tech & SaaS",
+    slug: "akinita-fotiadis",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDHijfxkLC8C6tQYyGa0Jkx7bnUul0zaS6eQ-UDJjkUnrAkPB-GbvxBZPlgpFInn7V7NegS8g9sTYjjGwA6SkzsoftyiP8Wedi9W5zzMrwEhIzKhtq6DRWxxNynuK42DgZeP422eV2L4NkB7PHLVVd2L9SCBS_c0kf-Xazspmx34uMzkqAYXaWIVFl8YFyCIlXUB9MOCcLoO2Esrycr2adWk_rgCqfWq6sTNvFpC4ukl8YE-5QE3hYkR7ZBBdcidyQ3h6u3nuDmgnE",
+    tag: "Yacht & Marine Tourism",
     tagClass: "bg-primary-container text-white",
     title: "CloudScale Global Infrastructure",
-    problem: "Fractured user journey leading to 45% drop-off in the onboarding funnel.",
-    solution: "Full UI/UX overhaul focusing on guided task completion and performance optimization.",
+    problem:
+      "Fractured user journey leading to 45% drop-off in the onboarding funnel.",
+    solution:
+      "Full UI/UX overhaul focusing on guided task completion and performance optimization.",
     result: "+120% conversion",
     stat1: { value: "2x", label: "More Leads" },
     stat2: { value: "1.4s", label: "Load Speed" },
@@ -20,12 +28,15 @@ const cases = [
   },
   {
     slug: "medlink",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB-FohTLbJyswsCo-bv68GokJvQSWbhefF5Afka0g9rBd2fyZtwEwIux0Ey0BP0YggOSsKReELuI6GBwpjK2F6h_yR0j1u2sShzaj2SbngMozjnmNhOZ9iRsAFkOme2HDJhGYf7HxbBsA8cw2J7NO2KEsRf6ZyE3nOBw-oUgVLWHrRzPi_7BinsyfQaGOSvEYFb-_zvej7eoJONDgJn68jkl7NYMHj9_JI8H-cSzh11ORc25Z_P52VP65Ido5pnZAf4p-1c_ysU1OE",
-    tag: "Healthcare",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB-FohTLbJyswsCo-bv68GokJvQSWbhefF5Afka0g9rBd2fyZtwEwIux0Ey0BP0YggOSsKReELuI6GBwpjK2F6h_yR0j1u2sShzaj2SbngMozjnmNhOZ9iRsAFkOme2HDJhGYf7HxbBsA8cw2J7NO2KEsRf6ZyE3nOBw-oUgVLWHrRzPi_7BinsyfQaGOSvEYFb-_zvej7eoJONDgJn68jkl7NYMHj9_JI8H-cSzh11ORc25Z_P52VP65Ido5pnZAf4p-1c_ysU1OE",
+    tag: "Real Estate",
     tagClass: "bg-secondary-container text-on-secondary-container",
     title: "MedLink Telehealth Platform",
-    problem: "Complex HIPAA-compliant data management causing provider burnout.",
-    solution: "Developed a custom EHR integration with a simplified dashboard architecture.",
+    problem:
+      "Complex HIPAA-compliant data management causing provider burnout.",
+    solution:
+      "Developed a custom EHR integration with a simplified dashboard architecture.",
     result: "35% Time Saved",
     stat1: { value: "98%", label: "Uptime" },
     stat2: { value: "0", label: "Security Breaches" },
@@ -33,12 +44,15 @@ const cases = [
   },
   {
     slug: "vanguard",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBFlqzASpQ5lMpLvFI-AUyvK4k8JOkntXE7DqxgwTu-mvNoOJrxYHWgksylP2We1t1F8G7CswGbhgSzkkS3W3C4IRSTOgWnKZ_a50WC3dY2hjFP4hJwVQNuzWvbUEqJ1qDAUpXpxGa1UME-1OBujIgn0dRonslXOEc67lomPJCB06qCdg7tS3BweXkFzvY2TPmaU3xtWJkGjQizJ2VTirSgRHzsapNMx8E86w9JSVX5myQkWI3s2ovTWVdwNiDUinKMYXF3WihnfZs",
-    tag: "Retail",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBFlqzASpQ5lMpLvFI-AUyvK4k8JOkntXE7DqxgwTu-mvNoOJrxYHWgksylP2We1t1F8G7CswGbhgSzkkS3W3C4IRSTOgWnKZ_a50WC3dY2hjFP4hJwVQNuzWvbUEqJ1qDAUpXpxGa1UME-1OBujIgn0dRonslXOEc67lomPJCB06qCdg7tS3BweXkFzvY2TPmaU3xtWJkGjQizJ2VTirSgRHzsapNMx8E86w9JSVX5myQkWI3s2ovTWVdwNiDUinKMYXF3WihnfZs",
+    tag: "Hospitality Tech",
     tagClass: "bg-tertiary-container text-on-tertiary-container",
     title: "Vanguard Luxury Commerce",
-    problem: "High cart abandonment rates on mobile devices due to slow checkout.",
-    solution: "PWA implementation with headless commerce architecture and one-tap pay.",
+    problem:
+      "High cart abandonment rates on mobile devices due to slow checkout.",
+    solution:
+      "PWA implementation with headless commerce architecture and one-tap pay.",
     result: "+60% Sales",
     stat1: { value: "2.4x", label: "ROAS" },
     stat2: { value: "-50%", label: "Bounce Rate" },
@@ -46,12 +60,14 @@ const cases = [
   },
   {
     slug: "aura",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB61VyXeX0T4J19RSKFiOrIJEI9SKABS2EdsN7-xA10UxpgM-Fav0pv2J3WtQRB6R2oPGKBB4Oa3E4EusPqDLgO1etUnaiqz5ZYaxqq7wMXQfYng1gNye1YWw01Knf7Vwd7lJsxBOcb7w7_Jm_G2KSl0ApLnrC_wicN4F_ES-qjRiUR6FDuDCMFzCuI_KcvWhm0zJVTJI4Zn-3xFi7VhBVth6KwOjv8r7wj5ng3n1qsifiGGO1prdFjxhcCQ3LRY94oaakuicpJh34",
-    tag: "Fintech",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB61VyXeX0T4J19RSKFiOrIJEI9SKABS2EdsN7-xA10UxpgM-Fav0pv2J3WtQRB6R2oPGKBB4Oa3E4EusPqDLgO1etUnaiqz5ZYaxqq7wMXQfYng1gNye1YWw01Knf7Vwd7lJsxBOcb7w7_Jm_G2KSl0ApLnrC_wicN4F_ES-qjRiUR6FDuDCMFzCuI_KcvWhm0zJVTJI4Zn-3xFi7VhBVth6KwOjv8r7wj5ng3n1qsifiGGO1prdFjxhcCQ3LRY94oaakuicpJh34",
+    tag: "Yacht & Marine Tourism",
     tagClass: "bg-primary text-on-primary",
     title: "Aura Wealth Management",
     problem: "Opaque reporting causing low user retention and trust issues.",
-    solution: "Interactive data storytelling and real-time portfolio transparency tools.",
+    solution:
+      "Interactive data storytelling and real-time portfolio transparency tools.",
     result: "92% Retention",
     stat1: { value: "$4B+", label: "AUM Managed" },
     stat2: { value: "15min", label: "KYC Process" },
@@ -62,7 +78,7 @@ const cases = [
 export function CaseStudiesPage() {
   return (
     <>
-      <section className="mx-auto mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <section className="mx-auto mb-24 mt-12 max-w-container-max px-margin-mobile md:px-margin-desktop">
         <FadeIn>
           <div className="relative overflow-hidden rounded-3xl border border-surface-border bg-surface-container p-stack-lg md:p-20">
             <div className="relative z-10 max-w-3xl">
@@ -154,7 +170,9 @@ export function CaseStudiesPage() {
                 <div className="mt-auto flex items-center justify-between">
                   <div className="flex gap-4">
                     <div className="text-center">
-                      <div className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}>
+                      <div
+                        className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}
+                      >
                         {c.stat1.value}
                       </div>
                       <div className="font-label-sm text-label-sm text-text-secondary">
@@ -163,7 +181,9 @@ export function CaseStudiesPage() {
                     </div>
                     <div className="w-px bg-surface-border" />
                     <div className="text-center">
-                      <div className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}>
+                      <div
+                        className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}
+                      >
                         {c.stat2.value}
                       </div>
                       <div className="font-label-sm text-label-sm text-text-secondary">

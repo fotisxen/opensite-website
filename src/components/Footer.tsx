@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const footerLinks = {
   Services: [
-    { href: "/services/", label: "Web Development" },
-    { href: "/services/", label: "UI/UX Design" },
-    { href: "/services/", label: "SEO Strategy" },
+    { href: "/web-development/", label: "Web Development" },
+    { href: "/services/ui-ux-design/", label: "UI/UX Design" },
+    { href: "/services/seo-strategy/", label: "SEO Strategy" },
   ],
   Company: [
     { href: "/about/", label: "About Us" },
@@ -12,8 +12,8 @@ const footerLinks = {
     { href: "/contact/", label: "Contact Us" },
   ],
   Legal: [
-    { href: "#", label: "Privacy Policy" },
-    { href: "#", label: "Terms of Service" },
+    { href: "/privacy-policy/", label: "Privacy Policy" },
+    { href: "/terms-of-service/", label: "Terms of Service" },
   ],
 };
 

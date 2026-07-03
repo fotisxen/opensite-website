@@ -1,5 +1,5 @@
 "use client";
-
+import { CustomSelect } from "@/components/CustomSelect";
 import Link from "next/link";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
@@ -11,11 +11,15 @@ export function ContactPage() {
     businessType: "E-commerce Store",
     brief: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -34,20 +38,23 @@ export function ContactPage() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      const response = await fetch(
+        "https://formsubmit.co/ajax/info@opensite.gr",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            business_type: formData.businessType,
+            message: formData.brief,
+            _subject: `New project inquiry from ${formData.name}`,
+          }),
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          business_type: formData.businessType,
-          message: formData.brief,
-          _subject: `New project inquiry from ${formData.name}`,
-        }),
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
@@ -58,7 +65,9 @@ export function ContactPage() {
       console.error("[contact-form] submit error:", err);
       setStatus("error");
       setErrorMessage(
-        err instanceof Error ? err.message : "Something went wrong sending your message."
+        err instanceof Error
+          ? err.message
+          : "Something went wrong sending your message.",
       );
     }
   }
@@ -82,8 +91,8 @@ export function ContactPage() {
             </h1>
             <p className="max-w-xl font-body-lg text-body-lg text-text-secondary">
               Whether you&apos;re starting from scratch or scaling an existing
-              product, we bring the technical expertise and design precision your
-              project deserves.{" "}
+              product, we bring the technical expertise and design precision
+              your project deserves.{" "}
               <span className="font-semibold text-text-primary">
                 We respond within 24 hours.
               </span>
@@ -91,7 +100,9 @@ export function ContactPage() {
             <div className="space-y-6 pt-8">
               <div className="group flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-surface-card transition-colors group-hover:border-primary-container">
-                  <span className="material-symbols-outlined text-primary">mail</span>
+                  <span className="material-symbols-outlined text-primary">
+                    mail
+                  </span>
                 </div>
                 <div>
                   <p className="font-label-sm text-label-sm uppercase tracking-wider text-text-secondary">
@@ -107,7 +118,9 @@ export function ContactPage() {
               </div>
               <div className="group flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-surface-card transition-colors group-hover:border-primary-container">
-                  <span className="material-symbols-outlined text-primary">call</span>
+                  <span className="material-symbols-outlined text-primary">
+                    call
+                  </span>
                 </div>
                 <div>
                   <p className="font-label-sm text-label-sm uppercase tracking-wider text-text-secondary">
@@ -153,13 +166,20 @@ export function ContactPage() {
                     Thank you for your submission!
                   </h3>
                   <p className="mx-auto max-w-sm font-body-md text-body-md text-text-secondary">
-                    We&apos;ve received your project brief and will get back to you at{" "}
-                    <strong className="text-text-primary">{formData.email}</strong> within 24
-                    hours.
+                    We&apos;ve received your project brief and will get back to
+                    you at{" "}
+                    <strong className="text-text-primary">
+                      {formData.email}
+                    </strong>{" "}
+                    within 24 hours.
                   </p>
                 </div>
               ) : (
-                <form className="relative z-10 space-y-6" onSubmit={handleSubmit} noValidate>
+                <form
+                  className="relative z-10 space-y-6"
+                  onSubmit={handleSubmit}
+                  noValidate
+                >
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="space-y-2">
                       <label className="ml-1 font-label-md text-label-md text-text-secondary">
@@ -192,18 +212,14 @@ export function ContactPage() {
                     <label className="ml-1 font-label-md text-label-md text-text-secondary">
                       Business Type
                     </label>
-                    <select
-                      className="w-full appearance-none rounded-xl border border-surface-border bg-background/50 px-4 py-3 text-text-secondary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
+
+                    <CustomSelect
                       name="businessType"
                       value={formData.businessType}
-                      onChange={handleChange}
-                    >
-                      <option>E-commerce Store</option>
-                      <option>SaaS Platform</option>
-                      <option>Corporate Website</option>
-                      <option>Custom Development</option>
-                      <option>Other</option>
-                    </select>
+                      onChange={(val) =>
+                        setFormData((p) => ({ ...p, businessType: val }))
+                      }
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="ml-1 font-label-md text-label-md text-text-secondary">
@@ -224,7 +240,9 @@ export function ContactPage() {
                     className="flex w-full items-center justify-center gap-3 rounded-xl bg-primary-container py-4 font-headline-sm text-headline-sm text-on-primary-container transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === "sending" ? "Sending..." : "Start Your Project"}
-                    <span className="material-symbols-outlined">arrow_forward</span>
+                    <span className="material-symbols-outlined">
+                      arrow_forward
+                    </span>
                   </button>
                   <p
                     className={`text-center font-body-sm text-body-sm ${
@@ -252,9 +270,21 @@ export function ContactPage() {
         <section className="mt-32 border-t border-surface-border pt-32">
           <Stagger className="grid grid-cols-1 gap-gutter md:grid-cols-3">
             {[
-              { icon: "auto_awesome", title: "Technical Excellence", text: "We leverage the latest stack—Next.js, Tailwind, and Node—to deliver high-performance solutions." },
-              { icon: "architecture", title: "Bespoke Design", text: "No templates. Every interface is handcrafted to reflect your unique brand identity." },
-              { icon: "rocket_launch", title: "Growth Centered", text: "We build conversion engines that drive real business results in the Greek market." },
+              {
+                icon: "auto_awesome",
+                title: "Technical Excellence",
+                text: "We leverage the latest stack—Next.js, Tailwind, and Node—to deliver high-performance solutions.",
+              },
+              {
+                icon: "architecture",
+                title: "Bespoke Design",
+                text: "No templates. Every interface is handcrafted to reflect your unique brand identity.",
+              },
+              {
+                icon: "rocket_launch",
+                title: "Growth Centered",
+                text: "We build conversion engines that drive real business results in the Greek market.",
+              },
             ].map((item) => (
               <StaggerItem
                 key={item.title}
@@ -263,7 +293,9 @@ export function ContactPage() {
                 <span className="material-symbols-outlined mb-4 text-primary text-[40px]">
                   {item.icon}
                 </span>
-                <h3 className="mb-2 font-headline-sm text-headline-sm">{item.title}</h3>
+                <h3 className="mb-2 font-headline-sm text-headline-sm">
+                  {item.title}
+                </h3>
                 <p className="font-body-sm text-text-secondary">{item.text}</p>
               </StaggerItem>
             ))}
