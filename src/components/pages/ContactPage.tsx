@@ -135,20 +135,6 @@ export function ContactPage() {
                 </div>
               </div>
             </div>
-            <div className="pt-16">
-              <p className="mb-8 font-label-md text-label-md text-text-secondary">
-                TRUSTED BY BUSINESSES IN GREECE
-              </p>
-              <div className="flex flex-wrap gap-x-12 gap-y-8 opacity-50 grayscale transition-all duration-500 hover:grayscale-0">
-                {[24, 32, 20, 28].map((w) => (
-                  <div
-                    key={w}
-                    className="h-8 rounded bg-text-secondary/20"
-                    style={{ width: `${w * 4}px` }}
-                  />
-                ))}
-              </div>
-            </div>
           </FadeIn>
 
           <FadeIn delay={0.15} direction="left">
@@ -266,8 +252,7 @@ export function ContactPage() {
             </div>
           </FadeIn>
         </div>
-
-        <section className="mt-32 border-t border-surface-border pt-32">
+        {/* <section className="mt-32 border-t border-surface-border pt-32">
           <Stagger className="grid grid-cols-1 gap-gutter md:grid-cols-3">
             {[
               {
@@ -300,6 +285,257 @@ export function ContactPage() {
               </StaggerItem>
             ))}
           </Stagger>
+        </section> */}
+        {/* Replace your entire <section className="mt-24 w-full"> ... </section> block with this */}
+        <section className="mt-24 w-full">
+          <div className="relative overflow-hidden rounded-3xl border border-surface-border bg-gradient-to-br from-primary-container/10 via-background to-secondary/5 px-8 py-14 md:px-14">
+            {/* ambient glow */}
+            <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary-container/20 blur-[120px]" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-secondary/10 blur-[120px]" />
+
+            <div className="relative mx-auto max-w-5xl">
+              <p className="mb-4 text-sm tracking-widest text-text-secondary uppercase">
+                Our Approach
+              </p>
+              <h2 className="mb-10 max-w-2xl text-3xl font-bold leading-tight text-text-primary md:text-4xl">
+                You don&apos;t get a team.{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  You get the people actually building your product.
+                </span>
+              </h2>
+
+              {/* --- 3D glass stage --- */}
+              <div className="glass-stage">
+                <div className="glass-floor" />
+
+                <div className="glass-cube" aria-hidden="true">
+                  <div className="cube-face cube-front" />
+                  <div className="cube-face cube-back" />
+                  <div className="cube-face cube-right" />
+                  <div className="cube-face cube-left" />
+                  <div className="cube-face cube-top" />
+                  <div className="cube-face cube-bottom" />
+                </div>
+
+                <div className="glass-cards">
+                  {[
+                    {
+                      number: "01",
+                      icon: "forum",
+                      title: "Direct communication",
+                      text: "No managers. No layers. You talk directly with the people building your system.",
+                    },
+                    {
+                      number: "02",
+                      icon: "build",
+                      title: "Built for longevity",
+                      text: "Everything is engineered for performance, scalability, and future growth.",
+                    },
+                    {
+                      number: "03",
+                      icon: "trending_up",
+                      title: "Execution clarity",
+                      text: "You always know what's being built, why it matters, and what comes next.",
+                    },
+                  ].map((c) => (
+                    <div key={c.number} className="glass-shard">
+                      <div className="glass-shard-inner">
+                        <div className="flex items-center justify-between">
+                          <span className="shard-icon material-symbols-outlined">
+                            {c.icon}
+                          </span>
+                          <span className="shard-number">{c.number}</span>
+                        </div>
+                        <h3 className="shard-title">{c.title}</h3>
+                        <p className="shard-text">{c.text}</p>
+                        <span className="shard-arrow material-symbols-outlined">
+                          arrow_forward
+                        </span>
+                      </div>
+                      <div
+                        className="glass-shard-reflection"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <style jsx>{`
+              .glass-stage {
+                position: relative;
+                padding: 48px 0 24px;
+                perspective: 1400px;
+              }
+
+              .glass-floor {
+                position: absolute;
+                left: -20%;
+                right: -20%;
+                bottom: -20px;
+                height: 220px;
+                background-image:
+                  linear-gradient(
+                    rgba(180, 197, 255, 0.09) 1px,
+                    transparent 1px
+                  ),
+                  linear-gradient(
+                    90deg,
+                    rgba(180, 197, 255, 0.09) 1px,
+                    transparent 1px
+                  );
+                background-size: 44px 44px;
+                transform: perspective(600px) rotateX(62deg);
+                transform-origin: bottom;
+                -webkit-mask-image: linear-gradient(
+                  to top,
+                  black,
+                  transparent 75%
+                );
+                mask-image: linear-gradient(to top, black, transparent 75%);
+                pointer-events: none;
+              }
+
+              .glass-cube {
+                position: absolute;
+                top: -12px;
+                right: 8px;
+                width: 64px;
+                height: 64px;
+                transform-style: preserve-3d;
+                transform: rotateX(-20deg) rotateY(35deg) rotateZ(8deg);
+                animation: cubeFloat 6s ease-in-out infinite;
+                z-index: 3;
+              }
+              @keyframes cubeFloat {
+                0%,
+                100% {
+                  transform: rotateX(-20deg) rotateY(35deg) rotateZ(8deg)
+                    translateY(0px);
+                }
+                50% {
+                  transform: rotateX(-15deg) rotateY(48deg) rotateZ(11deg)
+                    translateY(-10px);
+                }
+              }
+              .cube-face {
+                position: absolute;
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(
+                  135deg,
+                  rgba(180, 197, 255, 0.35),
+                  rgba(74, 225, 118, 0.12)
+                );
+                border: 1px solid rgba(180, 197, 255, 0.55);
+                box-shadow: inset 0 0 18px rgba(180, 197, 255, 0.25);
+              }
+              .cube-front {
+                transform: translateZ(32px);
+              }
+              .cube-back {
+                transform: translateZ(-32px) rotateY(180deg);
+              }
+              .cube-right {
+                transform: rotateY(90deg) translateZ(32px);
+              }
+              .cube-left {
+                transform: rotateY(-90deg) translateZ(32px);
+              }
+              .cube-top {
+                transform: rotateX(90deg) translateZ(32px);
+              }
+              .cube-bottom {
+                transform: rotateX(-90deg) translateZ(32px);
+              }
+
+              .glass-cards {
+                position: relative;
+                z-index: 2;
+                display: grid;
+                gap: 28px;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              }
+
+              .glass-shard {
+                position: relative;
+              }
+
+              .glass-shard-inner {
+                position: relative;
+                padding: 28px;
+                border-radius: 18px;
+                background: linear-gradient(
+                  160deg,
+                  rgba(180, 197, 255, 0.14),
+                  rgba(22, 30, 45, 0.55)
+                );
+                border: 1px solid rgba(180, 197, 255, 0.25);
+                backdrop-filter: blur(16px);
+                transform: perspective(900px) rotateX(8deg);
+                transform-origin: bottom;
+                box-shadow:
+                  inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                  0 24px 40px rgba(0, 0, 0, 0.35);
+                transition: transform 0.4s ease;
+              }
+              .glass-shard:hover .glass-shard-inner {
+                transform: perspective(900px) rotateX(0deg) translateY(-4px);
+              }
+
+              .glass-shard-reflection {
+                position: absolute;
+                left: 4%;
+                right: 4%;
+                top: 100%;
+                height: 56px;
+                background: linear-gradient(
+                  160deg,
+                  rgba(180, 197, 255, 0.14),
+                  rgba(22, 30, 45, 0.55)
+                );
+                transform: perspective(900px) rotateX(8deg) scaleY(-1);
+                transform-origin: top;
+                opacity: 0.22;
+                border-radius: 18px;
+                -webkit-mask-image: linear-gradient(
+                  to bottom,
+                  black,
+                  transparent
+                );
+                mask-image: linear-gradient(to bottom, black, transparent);
+                pointer-events: none;
+              }
+
+              .shard-icon {
+                font-size: 26px;
+                color: #b4c5ff;
+              }
+              .shard-number {
+                font-size: 13px;
+                color: rgba(220, 226, 246, 0.4);
+              }
+              .shard-title {
+                margin-top: 14px;
+                font-size: 17px;
+                font-weight: 600;
+                color: #f8fafc;
+              }
+              .shard-text {
+                margin-top: 8px;
+                font-size: 13px;
+                line-height: 1.6;
+                color: #94a3b8;
+              }
+              .shard-arrow {
+                display: inline-block;
+                margin-top: 16px;
+                font-size: 18px;
+                color: #b4c5ff;
+              }
+            `}</style>
+          </div>
         </section>
       </div>
     </>

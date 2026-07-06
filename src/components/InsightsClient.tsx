@@ -233,7 +233,7 @@ export function InsightsClient({ articles }: Props) {
       </section>
 
       {/* Subscribe */}
-      <section className="mx-auto mt-32 mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <section  id="subscribe" className="mx-auto mt-32 mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop">
         <FadeIn>
           <div className="relative overflow-hidden rounded-3xl border border-surface-border/50 bg-surface-container p-stack-lg text-center md:p-20">
             <div className="pointer-events-none absolute inset-0 bg-primary/5" />
