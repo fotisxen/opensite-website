@@ -44,25 +44,27 @@ export function AboutPage() {
             </FadeIn>
             <FadeIn delay={0.15} direction="left" className="space-y-12">
               <div>
-                <h2 className="mb-6 font-headline-md text-headline-md">Our Mission</h2>
+                <h2 className="mb-6 font-headline-md text-headline-md">
+                  Our Mission
+                </h2>
                 <p className="font-body-md leading-relaxed text-text-secondary">
                   At OpenSite, our mission is to accelerate business growth
-                  through superior digital craftsmanship. We don&apos;t just build
-                  websites; we engineer revenue-generating ecosystems.
+                  through superior digital craftsmanship. We don&apos;t just
+                  build websites; we engineer revenue-generating ecosystems.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-gutter">
                 <div className="rounded-xl border border-surface-border bg-surface-card p-6">
-                  <div className="mb-2 font-display-lg text-headline-lg text-primary">
-                    120+
+                  <div className="mb-2 font-display-lg text-headline-lg text-secondary">
+                    &lt;2s
                   </div>
                   <div className="font-label-md text-text-secondary">
-                    Products Launched
+                    Avg. Page Load Time
                   </div>
                 </div>
                 <div className="rounded-xl border border-surface-border bg-surface-card p-6">
                   <div className="mb-2 font-display-lg text-headline-lg text-secondary">
-                    98%
+                    100%
                   </div>
                   <div className="font-label-md text-text-secondary">
                     Client Retention
@@ -77,18 +79,32 @@ export function AboutPage() {
       <section className="px-margin-mobile py-24 md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">
           <FadeIn className="mx-auto mb-20 max-w-2xl text-center">
-            <h2 className="mb-4 font-headline-md text-headline-md">Why We Exist</h2>
+            <h2 className="mb-4 font-headline-md text-headline-md">
+              Why We Exist
+            </h2>
             <p className="font-body-md text-text-secondary">
-              The market is flooded with agencies that prioritize aesthetics over
-              impact. We exist to bridge the gap between world-class design and
-              measurable business results.
+              The market is flooded with agencies that prioritize aesthetics
+              over impact. We exist to bridge the gap between world-class design
+              and measurable business results.
             </p>
           </FadeIn>
           <Stagger className="grid grid-cols-1 gap-gutter md:grid-cols-3">
             {[
-              { icon: "broken_image", title: "Fragmented Experiences", text: "Most digital products suffer from a lack of cohesion between design and engineering." },
-              { icon: "speed", title: "Stagnant Growth", text: "A beautiful site that doesn't convert is a failure. We focus on performance and conversion-centric design." },
-              { icon: "visibility_off", title: "Lack of Transparency", text: "Vague timelines and hidden costs are the industry norm. We operate with radical transparency." },
+              {
+                icon: "broken_image",
+                title: "Fragmented Experiences",
+                text: "Most digital products suffer from a lack of cohesion between design and engineering.",
+              },
+              {
+                icon: "speed",
+                title: "Stagnant Growth",
+                text: "A beautiful site that doesn't convert is a failure. We focus on performance and conversion-centric design.",
+              },
+              {
+                icon: "visibility_off",
+                title: "Lack of Transparency",
+                text: "Vague timelines and hidden costs are the industry norm. We operate with radical transparency.",
+              },
             ].map((item) => (
               <StaggerItem
                 key={item.title}
@@ -97,7 +113,9 @@ export function AboutPage() {
                 <span className="material-symbols-outlined mb-6 text-4xl text-primary">
                   {item.icon}
                 </span>
-                <h3 className="mb-4 font-headline-sm text-headline-sm">{item.title}</h3>
+                <h3 className="mb-4 font-headline-sm text-headline-sm">
+                  {item.title}
+                </h3>
                 <p className="font-body-sm text-body-sm text-text-secondary">
                   {item.text}
                 </p>
@@ -188,7 +206,7 @@ export function AboutPage() {
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact/"
+                href="/book-a-call/"
                 className="rounded-lg bg-primary-container px-10 py-5 font-label-md text-on-primary-container transition-all hover:shadow-lg hover:shadow-primary/20 active:scale-95"
               >
                 Start your project

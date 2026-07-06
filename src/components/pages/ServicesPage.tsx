@@ -3,10 +3,26 @@ import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 
 const processSteps = [
-  { num: "01", title: "Discovery", text: "Deep dive into business goals and user personas." },
-  { num: "02", title: "Strategy", text: "Architecture planning and conversion mapping." },
-  { num: "03", title: "Build", text: "Agile development with continuous integration." },
-  { num: "04", title: "Launch", text: "Rigorous QA and performance optimization." },
+  {
+    num: "01",
+    title: "Discovery",
+    text: "Deep dive into business goals and user personas.",
+  },
+  {
+    num: "02",
+    title: "Strategy",
+    text: "Architecture planning and conversion mapping.",
+  },
+  {
+    num: "03",
+    title: "Build",
+    text: "Agile development with continuous integration.",
+  },
+  {
+    num: "04",
+    title: "Launch",
+    text: "Rigorous QA and performance optimization.",
+  },
 ];
 
 export function ServicesPage() {
@@ -15,7 +31,9 @@ export function ServicesPage() {
       <section className="relative flex min-h-[819px] items-center justify-center overflow-hidden py-24">
         <FadeIn className="relative z-10 mx-auto max-w-container-max px-margin-mobile text-center md:px-margin-desktop">
           <div className="mb-stack-lg inline-flex animate-[float_6s_ease-in-out_infinite] items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-primary">
-            <span className="material-symbols-outlined text-[18px]">auto_awesome</span>
+            <span className="material-symbols-outlined text-[18px]">
+              auto_awesome
+            </span>
             <span className="font-label-sm text-label-sm uppercase tracking-wider">
               Expert Digital Solutions
             </span>
@@ -66,19 +84,36 @@ export function ServicesPage() {
                   </h3>
                   <p className="mb-stack-lg font-body-md text-text-secondary">
                     Enterprise-grade web applications built with performance and
-                    scalability at their core.
+                    scalability at their core. We choose the right tool for each
+                    project — not the trendy one.
                   </p>
                   <ul className="mb-stack-lg space-y-3">
-                    {["Next.js & React Architectures", "Serverless Infrastructure"].map(
-                      (item) => (
-                        <li key={item} className="flex items-center gap-3 text-on-surface">
-                          <span className="material-symbols-outlined text-secondary">
-                            check_circle
+                    {[
+                      {
+                        label: "Next.js & React",
+                        note: "Custom & complex platforms",
+                      },
+                      {
+                        label: "WordPress",
+                        note: "Content-driven & e-commerce",
+                      },
+                      { label: "Webflow", note: "Marketing & editorial sites" },
+                    ].map((item) => (
+                      <li
+                        key={item.label}
+                        className="flex items-center gap-3 text-on-surface"
+                      >
+                        <span className="material-symbols-outlined text-secondary">
+                          check_circle
+                        </span>
+                        <span className="font-label-md">
+                          {item.label}
+                          <span className="ml-2 font-body-sm text-text-secondary">
+                            — {item.note}
                           </span>
-                          <span className="font-label-md">{item}</span>
-                        </li>
-                      ),
-                    )}
+                        </span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="flex items-center md:w-1/2">
@@ -104,12 +139,14 @@ export function ServicesPage() {
                   SEO Strategy
                 </h3>
                 <p className="font-body-md text-text-secondary">
-                  Data-backed optimization that drives organic traffic and converts
-                  visitors into loyal customers.
+                  Data-backed optimization that drives organic traffic and
+                  converts visitors into loyal customers.
                 </p>
               </div>
               <div className="mt-stack-lg border-t border-surface-border pt-stack-lg">
-                <div className="font-headline-sm text-headline-sm text-secondary">240%</div>
+                <div className="font-headline-sm text-headline-sm text-secondary">
+                  240%
+                </div>
                 <div className="font-label-sm text-label-sm uppercase text-text-secondary">
                   Average Organic Growth
                 </div>
@@ -124,8 +161,8 @@ export function ServicesPage() {
                 E-commerce
               </h3>
               <p className="mb-stack-lg font-body-md text-text-secondary">
-                Custom shopping experiences designed to maximize AOV and conversion
-                rates.
+                Custom shopping experiences designed to maximize AOV and
+                conversion rates.
               </p>
               <div className="group h-40 w-full overflow-hidden rounded-xl bg-surface-container-high">
                 <Image
@@ -158,11 +195,11 @@ export function ServicesPage() {
                   Mobile Apps
                 </h3>
                 <p className="mb-stack-lg font-body-md text-text-secondary">
-                  Native and cross-platform mobile solutions with seamless user
+                  Cross-platform mobile solutions with seamless user
                   experiences.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                  {["iOS Native", "Android"].map((platform) => (
+                  {["iOS", "Android"].map((platform) => (
                     <div
                       key={platform}
                       className="rounded-lg border border-surface-border bg-surface-container p-3 text-center"
@@ -192,7 +229,9 @@ export function ServicesPage() {
             {processSteps.map((step) => (
               <StaggerItem key={step.num} className="p-6 text-center">
                 <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
-                  <span className="text-xl font-bold text-primary">{step.num}</span>
+                  <span className="text-xl font-bold text-primary">
+                    {step.num}
+                  </span>
                 </div>
                 <h4 className="mb-2 font-headline-sm text-headline-sm text-text-primary">
                   {step.title}

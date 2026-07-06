@@ -5,7 +5,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 export function CaseStudyDetailPage() {
   return (
     <>
-      <section className="mx-auto mb-20 max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <section className="mx-auto mt-12 mb-20 max-w-container-max px-margin-mobile md:px-margin-desktop">
         <FadeIn className="max-w-4xl">
           <div className="mb-6 flex items-center gap-2">
             <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 font-label-sm text-label-sm text-primary">
