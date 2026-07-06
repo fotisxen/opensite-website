@@ -6,7 +6,7 @@ import emailjs from "@emailjs/browser";
 
 const footerLinks = {
   Services: [
-    { href: "/services/web-development/", label: "Web Development" },
+    { href: "/web-development/", label: "Web Development" },
     { href: "/services/ui-ux-design/", label: "UI/UX Design" },
     { href: "/services/seo-strategy/", label: "SEO Strategy" },
   ],
