@@ -7,6 +7,9 @@ import { NextResponse } from "next/server";
 // Filter: Content type = blogPost (your content type ID)
 
 export async function POST(req: Request) {
+  if (req.method !== "POST") {
+    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
+  }
   // Optional: verify Contentful webhook secret
   const secret = req.headers.get("x-contentful-webhook-secret");
   if (secret !== process.env.CONTENTFUL_WEBHOOK_SECRET) {
@@ -153,4 +156,8 @@ export async function POST(req: Request) {
   );
 
   return NextResponse.json({ ok: true });
+}
+
+export async function GET() {
+  return NextResponse.json({ ok: true, method: "GET is alive" });
 }
