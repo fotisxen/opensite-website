@@ -180,7 +180,7 @@ export function CaseStudyDetailPage() {
             </p>
           </div>
           <Link
-            href="/case-studies/"
+            href="/case-studies"
             className="rounded-lg bg-primary-container px-6 py-3 font-label-md text-on-primary-container transition-all hover:opacity-90"
           >
             View All Case Studies

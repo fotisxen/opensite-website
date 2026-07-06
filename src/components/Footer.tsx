@@ -7,13 +7,13 @@ const footerLinks = {
     { href: "/services/seo-strategy/", label: "SEO Strategy" },
   ],
   Company: [
-    { href: "/about/", label: "About Us" },
-    { href: "/case-studies/", label: "Case Studies" },
-    { href: "/contact/", label: "Contact Us" },
+    { href: "/about", label: "About Us" },
+    { href: "/case-studies", label: "Case Studies" },
+    { href: "/contact", label: "Contact Us" },
   ],
   Legal: [
-    { href: "/privacy-policy/", label: "Privacy Policy" },
-    { href: "/terms-of-service/", label: "Terms of Service" },
+    { href: "/privacy-policy", label: "Privacy Policy" },
+    { href: "/terms-of-service", label: "Terms of Service" },
   ],
 };
 

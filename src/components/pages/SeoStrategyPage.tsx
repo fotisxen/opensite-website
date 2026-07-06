@@ -213,7 +213,7 @@ export function SeoStrategyPage() {
                 — no commitment required.
               </p>
               <Link
-                href="/contact/"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-xl bg-secondary-container px-8 py-4 font-label-md text-label-md text-on-secondary-container transition-all hover:opacity-90"
               >
                 Request Audit

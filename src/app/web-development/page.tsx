@@ -121,7 +121,7 @@ export default function WebDevelopmentPage() {
                 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
               </Link>
               <Link
-                href="/case-studies/"
+                href="/case-studies"
                 className="inline-flex items-center gap-2 rounded-xl border border-surface-border px-8 py-4 font-label-md text-text-primary transition-all hover:bg-surface-container-low"
               >
                 View Our Work

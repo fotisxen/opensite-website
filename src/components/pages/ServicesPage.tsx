@@ -48,13 +48,13 @@ export function ServicesPage() {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/contact/"
+              href="/contact"
               className="w-full rounded-xl bg-primary-container px-8 py-4 font-label-md text-on-primary-container shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] sm:w-auto"
             >
               View Our Process
             </Link>
             <Link
-              href="/case-studies/"
+              href="/case-studies"
               className="w-full rounded-xl border border-surface-border px-8 py-4 font-label-md text-text-primary transition-all hover:bg-surface-container sm:w-auto"
             >
               Our Success Stories
@@ -259,7 +259,7 @@ export function ServicesPage() {
               project and build something that truly moves the needle.
             </p>
             <Link
-              href="/contact/"
+              href="/contact"
               className="group inline-flex items-center rounded-xl bg-primary-container px-12 py-5 font-label-md text-on-primary-container shadow-xl transition-all hover:scale-105"
             >
               Get Free Consultation

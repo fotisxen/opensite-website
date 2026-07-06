@@ -32,7 +32,7 @@ export function HomePage() {
                 Get Free Consultation
               </Link>
               <Link
-                href="/case-studies/"
+                href="/case-studies"
                 className="rounded-xl border border-surface-border bg-surface-container-low px-8 py-4 font-label-md text-text-primary transition-colors hover:bg-surface-container-high"
               >
                 View Our Work

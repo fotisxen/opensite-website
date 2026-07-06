@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
           <p className="text-sm text-text-secondary">
             Questions about your data?{" "}
             <Link
-              href="/contact/"
+              href="/contact"
               className="font-medium text-text-primary underline underline-offset-2 hover:text-primary-container transition-colors"
             >
               Contact us

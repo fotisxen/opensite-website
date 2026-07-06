@@ -80,7 +80,7 @@ export default async function ArticlePage({
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <Link
-          href="/insights/"
+          href="/insights"
           className="mb-8 inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text-primary"
         >
           <span className="material-symbols-outlined text-base">

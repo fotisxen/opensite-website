@@ -180,7 +180,7 @@ export function UiUxDesignPage() {
               </p>
 
               <Link
-                href="/contact/"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-xl bg-primary-container px-8 py-4 font-label-md text-label-md text-on-primary-container transition-all hover:opacity-90"
               >
                 Start a Project
