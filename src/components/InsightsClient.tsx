@@ -46,20 +46,38 @@ export function InsightsClient({ articles }: Props) {
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
     setSubscribeState("loading");
+
     try {
-      const res = await fetch("/api/subscribe", {
+      // 1️⃣ Notify you (FormSubmit)
+      const res = await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          _subject: `New newsletter subscriber: ${email}`,
+          message: "New subscriber from footer",
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || data.success === false || data.success === "false") {
+        throw new Error(data.message || "FormSubmit rejected the request");
+      }
+      // 2️⃣ Add to Mailchimp (your backend)
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ email }),
       });
-      if (res.ok) {
-        setSubscribeState("success");
-        setEmail("");
-      } else {
-        setSubscribeState("error");
-      }
+
+      setSubscribeState("success");
+      setEmail("");
     } catch {
       setSubscribeState("error");
     }
@@ -233,7 +251,10 @@ export function InsightsClient({ articles }: Props) {
       </section>
 
       {/* Subscribe */}
-      <section  id="subscribe" className="mx-auto mt-32 mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <section
+        id="subscribe"
+        className="mx-auto mt-32 mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop"
+      >
         <FadeIn>
           <div className="relative overflow-hidden rounded-3xl border border-surface-border/50 bg-surface-container p-stack-lg text-center md:p-20">
             <div className="pointer-events-none absolute inset-0 bg-primary/5" />
