@@ -273,7 +273,7 @@ export default function BookACallPage() {
               </a>
 
               <Link
-                href="/home/"
+                href="/"
                 className="flex items-center justify-center gap-2 rounded-xl bg-primary-container px-5 py-3 text-sm font-medium text-white transition-all hover:opacity-90"
               >
                 Back to Home
