@@ -25,12 +25,14 @@ export async function POST(req: Request) {
   const FROM_NAME = process.env.MAILCHIMP_FROM_NAME ?? "OpenSite";
 
   // 1. Create a campaign
+  const auth = Buffer.from(`opensite:${API_KEY}`).toString("base64");
+
   const campaignRes = await fetch(
     `https://${DC}.api.mailchimp.com/3.0/campaigns`,
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${API_KEY}`,
+        Authorization: `Basic ${auth}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -45,11 +47,10 @@ export async function POST(req: Request) {
     },
   );
 
+  const campaignText = await campaignRes.text();
+
   if (!campaignRes.ok) {
-    return NextResponse.json(
-      { error: "Failed to create campaign" },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: campaignText }, { status: 500 });
   }
 
   const campaign = await campaignRes.json();
