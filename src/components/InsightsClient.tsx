@@ -46,36 +46,24 @@ export function InsightsClient({ articles }: Props) {
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email) return;
     setSubscribeState("loading");
 
     try {
-      // 1️⃣ Notify you (FormSubmit)
-      const res = await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          _subject: `New newsletter subscriber: ${email}`,
-          message: "New subscriber from footer",
-        }),
-      });
+      const formData = new FormData();
+      formData.append("EMAIL", email);
+      formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must be empty
 
-      const data = await res.json();
-      if (!res.ok || data.success === false || data.success === "false") {
-        throw new Error(data.message || "FormSubmit rejected the request");
-      }
-      // 2️⃣ Add to Mailchimp (your backend)
-      await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      await fetch(
+        "https://us10.list-manage.com/subscribe/post?u=28dc230ddc&id=97742a274e",
+        {
+          method: "POST",
+          mode: "no-cors", // Mailchimp doesn't allow CORS reads — this is expected
+          body: formData,
         },
-        body: JSON.stringify({ email }),
-      });
+      );
 
+      // mode: no-cors means we can't read the response but the request goes through
       setSubscribeState("success");
       setEmail("");
     } catch {
