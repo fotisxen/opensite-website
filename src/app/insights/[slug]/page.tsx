@@ -52,10 +52,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const article = await getArticleBySlug(params.slug);
+  const { slug } = await params;
+
+  const article = await getArticleBySlug(slug);
   if (!article) return {};
+
   return {
     title: article.title,
     description: article.excerpt,
@@ -65,9 +68,11 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const article = await getArticleBySlug(params.slug);
+  const { slug } = await params;
+
+  const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
   return (
