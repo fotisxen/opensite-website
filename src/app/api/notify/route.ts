@@ -2,15 +2,15 @@ import { NextResponse } from "next/server";
 
 // Contentful calls this URL when a blog post is published.
 // Set it up in: Contentful > Settings > Webhooks > Add webhook
-// URL: https://yourdomain.com/api/notify
-// Trigger: Entry > Publish
+// URL: https://opensite.gr/api/notify   (no trailing slash — must match trailingSlash config)
+// Trigger: Entry > Publish ONLY (not Auto save / Save / Unpublish)
 // Filter: Content type = blogPost (your content type ID)
+//
+// IMPORTANT: this route requires a live Node.js server. It will NOT work
+// if next.config.ts has `output: "export"` — remove that setting and
+// deploy this app as a Node.js Web App, not a static export.
 
 export async function POST(req: Request) {
-  if (req.method !== "POST") {
-    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
-  }
-  // Optional: verify Contentful webhook secret
   const secret = req.headers.get("x-contentful-webhook-secret");
   if (secret !== process.env.CONTENTFUL_WEBHOOK_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -27,15 +27,18 @@ export async function POST(req: Request) {
   const FROM_EMAIL = process.env.MAILCHIMP_FROM_EMAIL!; // e.g. info@opensite.gr
   const FROM_NAME = process.env.MAILCHIMP_FROM_NAME ?? "OpenSite";
 
-  // 1. Create a campaign
-  const auth = Buffer.from(`opensite:${API_KEY}`).toString("base64");
+  // Mailchimp only accepts Basic auth (any username, API key as password) —
+  // it does NOT accept the API key as a Bearer token. Use this for every call.
+  const auth = Buffer.from(`anystring:${API_KEY}`).toString("base64");
+  const authHeader = { Authorization: `Basic ${auth}` };
 
+  // 1. Create a campaign
   const campaignRes = await fetch(
     `https://${DC}.api.mailchimp.com/3.0/campaigns`,
     {
       method: "POST",
       headers: {
-        Authorization: `Basic ${auth}`,
+        ...authHeader,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -53,22 +56,27 @@ export async function POST(req: Request) {
   const campaignText = await campaignRes.text();
 
   if (!campaignRes.ok) {
+    console.error(
+      "[notify] campaign create failed:",
+      campaignRes.status,
+      campaignText,
+    );
     return NextResponse.json({ error: campaignText }, { status: 500 });
   }
 
-  const campaign = await campaignRes.json();
+  const campaign = JSON.parse(campaignText);
   const campaignId = campaign.id;
 
   // 2. Set the email content
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://opensite.gr";
   const articleUrl = `${siteUrl}/insights/${slug}/`;
 
-  await fetch(
+  const contentRes = await fetch(
     `https://${DC}.api.mailchimp.com/3.0/campaigns/${campaignId}/content`,
     {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${API_KEY}`,
+        ...authHeader,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -94,11 +102,11 @@ export async function POST(req: Request) {
           <td style="padding:40px 40px 32px;">
             <h1 style="margin:0 0 16px;font-size:26px;font-weight:700;line-height:1.25;color:#111827;">${title}</h1>
             <p style="margin:0 0 24px;font-size:16px;line-height:1.7;color:#4b5563;">
-              Most businesses are sitting on untapped growth — and this article breaks down exactly how to find it. 
+              Most businesses are sitting on untapped growth — and this article breaks down exactly how to find it.
               It's a quick read, but the kind that makes you rethink your current approach.
             </p>
             <p style="margin:0 0 32px;font-size:16px;line-height:1.7;color:#4b5563;">
-              If you've been wondering why your digital presence isn't converting the way it should, 
+              If you've been wondering why your digital presence isn't converting the way it should,
               this one's worth 10 minutes of your time.
             </p>
 
@@ -130,7 +138,7 @@ export async function POST(req: Request) {
               You're receiving this because you subscribed to OpenSite Insights.
             </p>
             <p style="margin:0;font-size:13px;color:#9ca3af;">
-              <a href="*|UNSUB|*" style="color:#9ca3af;">Unsubscribe</a> · 
+              <a href="*|UNSUB|*" style="color:#9ca3af;">Unsubscribe</a> ·
               <a href="https://opensite.gr" style="color:#9ca3af;">opensite.gr</a>
             </p>
           </td>
@@ -146,14 +154,30 @@ export async function POST(req: Request) {
     },
   );
 
+  if (!contentRes.ok) {
+    const contentText = await contentRes.text();
+    console.error(
+      "[notify] campaign content failed:",
+      contentRes.status,
+      contentText,
+    );
+    return NextResponse.json({ error: contentText }, { status: 500 });
+  }
+
   // 3. Send it
-  await fetch(
+  const sendRes = await fetch(
     `https://${DC}.api.mailchimp.com/3.0/campaigns/${campaignId}/actions/send`,
     {
       method: "POST",
-      headers: { Authorization: `Bearer ${API_KEY}` },
+      headers: authHeader,
     },
   );
+
+  if (!sendRes.ok) {
+    const sendText = await sendRes.text();
+    console.error("[notify] campaign send failed:", sendRes.status, sendText);
+    return NextResponse.json({ error: sendText }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }
