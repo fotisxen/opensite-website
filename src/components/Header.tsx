@@ -7,11 +7,11 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/about", label: "About" },
-  { href: "/insights", label: "Insights" },
-  { href: "/contact", label: "Contact" },
+  { href: "/services/", label: "Services" },
+  { href: "/case-studies/", label: "Case Studies" },
+  { href: "/about/", label: "About" },
+  { href: "/insights/", label: "Insights" },
+  { href: "/contact/", label: "Contact" },
 ];
 
 function isActive(pathname: string, href: string) {

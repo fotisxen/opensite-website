@@ -244,7 +244,7 @@ export function CaseStudiesPage() {
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="rounded-xl bg-white px-8 py-4 font-label-md text-primary-container transition-all hover:shadow-xl"
                 >
                   Start Your Project

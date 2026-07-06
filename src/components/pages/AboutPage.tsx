@@ -212,7 +212,7 @@ export function AboutPage() {
                 Start your project
               </Link>
               <Link
-                href="/case-studies"
+                href="/case-studies/"
                 className="rounded-lg border border-surface-border bg-transparent px-10 py-5 font-label-md text-text-primary transition-all hover:bg-surface-container-high active:scale-95"
               >
                 View our work

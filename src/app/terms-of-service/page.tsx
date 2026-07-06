@@ -152,7 +152,7 @@ export default function TermsOfServicePage() {
           <p className="text-sm text-text-secondary">
             Have questions about our terms?{" "}
             <Link
-              href="/contact"
+              href="/contact/"
               className="font-medium text-text-primary underline underline-offset-2 hover:text-primary-container transition-colors"
             >
               Get in touch
