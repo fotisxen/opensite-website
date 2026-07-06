@@ -134,7 +134,7 @@ export default function PrivacyPolicyPage() {
             >
               Contact us
             </Link>{" "}
-            and we'll respond within 2 business days.
+            and we&apos;ll respond within 2 business days.
           </p>
         </div>
       </div>

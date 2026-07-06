@@ -110,12 +110,12 @@ export function HomePage() {
               {
                 icon: "person_cancel",
                 title: "Poor Conversion",
-                text: "Visitors land on your page but leave without taking action. You're leaving money on the table every single day.",
+                text: "Visitors land on your page but leave without taking action. You&apos;re leaving money on the table every single day.",
               },
               {
                 icon: "search_off",
                 title: "No SEO Presence",
-                text: "Your business is invisible on Google. If customers can't find you, they'll find your competitors instead.",
+                text: "Your business is invisible on Google. If customers can&apos;t find you, they&apos;ll find your competitors instead.",
               },
               {
                 icon: "heart_broken",
@@ -292,7 +292,7 @@ export function HomePage() {
                     icon: "trending_up",
                     iconClass: "bg-primary/10 text-primary",
                     title: "Business-First Mentality",
-                    text: "We don't build features; we build business solutions. Every pixel and line of code is measured against your KPIs.",
+                    text: "We don&apos;t build features; we build business solutions. Every pixel and line of code is measured against your KPIs.",
                   },
                   {
                     icon: "speed",
@@ -343,10 +343,10 @@ export function HomePage() {
                   </div>
                   <div className="border-t border-surface-border pt-8">
                     <div className="font-label-md text-sm text-text-primary italic">
-                      &ldquo;"From design to launch, OpenSite created a website
+                      &ldquo;From design to launch, OpenSite created a website
                       that captures the elegance of our sailing experiences
                       while providing a seamless booking journey for our
-                      clients."&rdquo;
+                      clients.&rdquo;
                     </div>
                     <div className="mt-4 flex items-center gap-3">
                       <div className="h-10 w-10 rounded-full bg-surface-container-high" />
@@ -355,7 +355,8 @@ export function HomePage() {
                           T. Markas
                         </div>
                         <div className="text-xs text-text-secondary">
-                          Co-Owner – Yacht Charter & Sailing Experiences, Adonis Sail Yachts
+                          Co-Owner – Yacht Charter & Sailing Experiences, Adonis
+                          Sail Yachts
                         </div>
                       </div>
                     </div>

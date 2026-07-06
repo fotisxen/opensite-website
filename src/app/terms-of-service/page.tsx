@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms and conditions governing the use of OpenSite's services and website.",
+  description:
+    "Terms and conditions governing the use of OpenSite's services and website.",
 };
 
 const sections = [
@@ -122,9 +123,7 @@ export default function TermsOfServicePage() {
           <h1 className="mb-4 text-4xl font-bold text-text-primary">
             Terms of Service
           </h1>
-          <p className="text-text-secondary">
-            Last updated: July 2025
-          </p>
+          <p className="text-text-secondary">Last updated: July 2025</p>
           <p className="mt-4 text-text-secondary leading-relaxed">
             Please read these terms carefully before using our services. By
             engaging OpenSite, you agree to the following terms and conditions.
@@ -158,7 +157,7 @@ export default function TermsOfServicePage() {
             >
               Get in touch
             </Link>{" "}
-            and we'll be happy to clarify.
+            and we&apos;ll be happy to clarify.
           </p>
         </div>
       </div>

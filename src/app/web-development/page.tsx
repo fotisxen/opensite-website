@@ -36,7 +36,7 @@ const deliverables = [
   {
     icon: "support_agent",
     title: "Ongoing Partnership",
-    text: "We don't disappear after launch. Monthly retainers, priority support, and iterative improvements.",
+    text: "We don&apos;t disappear after launch. Monthly retainers, priority support, and iterative improvements.",
   },
 ];
 
@@ -173,7 +173,7 @@ export default function WebDevelopmentPage() {
               What you actually get
             </h2>
             <p className="mt-4 max-w-xl text-text-secondary">
-              No vague promises. Here's exactly what every web development engagement includes.
+              No vague promises. Here&apos;s exactly what every web development engagement includes.
             </p>
           </FadeIn>
           <Stagger className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -223,7 +223,7 @@ export default function WebDevelopmentPage() {
               <div className="relative z-10">
                 <h2 className="mb-4 text-4xl font-bold md:text-5xl">Ready to build something great?</h2>
                 <p className="mb-8 max-w-xl opacity-80">
-                  Tell us what you're building. We'll tell you how we'd approach it — free, in 15 minutes.
+                  Tell us what you&apos;re building. We&apos;ll tell you how we&apos;d approach it — free, in 15 minutes.
                 </p>
                 <Link
                   href="/book-a-call/"
