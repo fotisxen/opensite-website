@@ -50,23 +50,23 @@ export function InsightsClient({ articles }: Props) {
     setSubscribeState("loading");
 
     // Step 1 — Mailchimp first
-    try {
-      const formData = new FormData();
-      formData.append("EMAIL", email);
-      formData.append("b_28dc230ddc_97742a274e", "");
+    // try {
+    //   const formData = new FormData();
+    //   formData.append("EMAIL", email);
+    //   formData.append("b_28dc230ddc_97742a274e", "");
 
-      await fetch(
-        "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234",
-        {
-          method: "POST",
-          mode: "no-cors",
-          body: formData,
-        },
-      );
-    } catch {
-      setSubscribeState("error");
-      return;
-    }
+    //   await fetch(
+    //     "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234",
+    //     {
+    //       method: "POST",
+    //       mode: "no-cors",
+    //       body: formData,
+    //     },
+    //   );
+    // } catch {
+    //   setSubscribeState("error");
+    //   return;
+    // }
 
     try {
       await fetch("https://formsubmit.co/ajax/info@opensite.gr", {

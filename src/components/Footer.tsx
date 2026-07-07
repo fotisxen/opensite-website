@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 // Your Mailchimp audience details
-const MAILCHIMP_URL =
-  "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234";
+// const MAILCHIMP_URL =
+//   "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234";
 
 const footerLinks = {
   Services: [
@@ -58,20 +58,20 @@ export function Footer() {
     setSubscribeState("loading");
 
     // Step 1 — Add to Mailchimp directly (no-cors, static-safe)
-    let mailchimpOk = false;
-    try {
-      const formData = new FormData();
-      formData.append("EMAIL", email);
-      formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must stay empty
-      await fetch(MAILCHIMP_URL, {
-        method: "POST",
-        mode: "no-cors", // Mailchimp doesn't support CORS — request goes through silently
-        body: formData,
-      });
-      mailchimpOk = true; // no-cors means no error unless network fails
-    } catch {
-      mailchimpOk = false;
-    }
+    // let mailchimpOk = false;
+    // try {
+    //   const formData = new FormData();
+    //   formData.append("EMAIL", email);
+    //   formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must stay empty
+    //   await fetch(MAILCHIMP_URL, {
+    //     method: "POST",
+    //     mode: "no-cors", // Mailchimp doesn't support CORS — request goes through silently
+    //     body: formData,
+    //   });
+    //   mailchimpOk = true; // no-cors means no error unless network fails
+    // } catch {
+    //   mailchimpOk = false;
+    // }
 
     // Step 2 — Notify you via FormSubmit (fire and forget — don't fail user on this)
     try {
@@ -89,14 +89,14 @@ export function Footer() {
       });
     } catch {
       // Notification failed — don't show error to user, Mailchimp sub still worked
-    }
-
-    if (mailchimpOk) {
-      setSubscribeState("success");
-      setEmail("");
-    } else {
       setSubscribeState("error");
     }
+
+    // if (mailchimpOk) {
+    setSubscribeState("success");
+    setEmail("");
+    // } else {
+    // }
   };
 
   return (
