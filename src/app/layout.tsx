@@ -36,25 +36,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-          as="style"
-          // @ts-ignore
-          onLoad="this.onload=null;this.rel='stylesheet'"
+          rel="stylesheet"
         />
-        <noscript>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-            rel="stylesheet"
-          />
-        </noscript>
       </head>
       <body className={`${sora.variable} ${inter.variable} overflow-x-hidden`}>
         <SmoothScroll />
