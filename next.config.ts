@@ -2,12 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  experimental: {
-    optimizePackageImports: [
-      "framer-motion",
-      "@contentful/rich-text-html-renderer",
-    ],
-  },
   images: {
     unoptimized: true,
     remotePatterns: [
