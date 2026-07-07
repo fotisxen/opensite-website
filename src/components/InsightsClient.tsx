@@ -49,27 +49,30 @@ export function InsightsClient({ articles }: Props) {
     if (!email) return;
     setSubscribeState("loading");
 
-    // Step 1 — Mailchimp first
     try {
-      const formData = new FormData();
-      formData.append("EMAIL", email);
-      formData.append("b_28dc230ddc_97742a274e", "");
+      // JSONP trick — Mailchimp supports this for static sites
+      const url = `https://us10.list-manage.com/subscribe/post-json?u=44b95df314a42f2b9756e01e5&id=97742a274e&EMAIL=${encodeURIComponent(email)}&c=mailchimpCallback`;
+      await new Promise<void>((resolve, reject) => {
+        // Create callback
+        (window as any).mailchimpCallback = (data: any) => {
+          document.body.removeChild(script);
+          delete (window as any).mailchimpCallback;
+          if (data.result === "success") resolve();
+          else reject(new Error(data.msg));
+        };
 
-      await fetch(
-        "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234",
-        {
-          method: "POST",
-          mode: "no-cors",
-          body: formData,
-        },
-      );
-    } catch {
-      setSubscribeState("error");
-      return;
-    }
+        // Inject script tag
+        const script = document.createElement("script");
+        script.src = url;
+        script.onerror = () => reject(new Error("Network error"));
+        document.body.appendChild(script);
 
-    try {
-      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+        // Timeout after 8 seconds
+        setTimeout(() => reject(new Error("Timeout")), 8000);
+      });
+
+      // Notify you via FormSubmit (fire and forget)
+      fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,15 +81,21 @@ export function InsightsClient({ articles }: Props) {
         body: JSON.stringify({
           email,
           _subject: `New subscriber: ${email}`,
-          message: `New subscriber from insights page: ${email}`,
+          message: `New subscriber: ${email}`,
         }),
-      });
-    } catch {
-      // Don't fail the user if notification fails
-    }
+      }).catch(() => {});
 
-    setSubscribeState("success");
-    setEmail("");
+      setSubscribeState("success");
+      setEmail("");
+    } catch (err: any) {
+      // Mailchimp error messages are HTML — strip tags for display
+      const msg = err?.message?.replace(/<[^>]*>/g, "") ?? "";
+      if (msg.toLowerCase().includes("already subscribed")) {
+        setSubscribeState("success"); // treat as success
+      } else {
+        setSubscribeState("error");
+      }
+    }
   };
 
   const [featured, ...rest] = visible;

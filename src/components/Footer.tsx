@@ -5,7 +5,7 @@ import { useState } from "react";
 
 // Your Mailchimp audience details
 const MAILCHIMP_URL =
-  "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234";
+  "https://us10.list-manage.com/subscribe/post?u=44b95df314a42f2b9756e01e5&id=97742a274e";
 
 const footerLinks = {
   Services: [
@@ -57,25 +57,31 @@ export function Footer() {
     if (!email) return;
     setSubscribeState("loading");
 
-    // Step 1 — Add to Mailchimp directly (no-cors, static-safe)
-    let mailchimpOk = false;
     try {
-      const formData = new FormData();
-      formData.append("EMAIL", email);
-      formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must stay empty
-      await fetch(MAILCHIMP_URL, {
-        method: "POST",
-        mode: "no-cors", // Mailchimp doesn't support CORS — request goes through silently
-        body: formData,
-      });
-      mailchimpOk = true; // no-cors means no error unless network fails
-    } catch {
-      mailchimpOk = false;
-    }
+      // JSONP trick — Mailchimp supports this for static sites
+      const url = `https://us10.list-manage.com/subscribe/post-json?u=44b95df314a42f2b9756e01e5&id=97742a274e&EMAIL=${encodeURIComponent(email)}&c=mailchimpCallback`;
 
-    // Step 2 — Notify you via FormSubmit (fire and forget — don't fail user on this)
-    try {
-      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+      await new Promise<void>((resolve, reject) => {
+        // Create callback
+        (window as any).mailchimpCallback = (data: any) => {
+          document.body.removeChild(script);
+          delete (window as any).mailchimpCallback;
+          if (data.result === "success") resolve();
+          else reject(new Error(data.msg));
+        };
+
+        // Inject script tag
+        const script = document.createElement("script");
+        script.src = url;
+        script.onerror = () => reject(new Error("Network error"));
+        document.body.appendChild(script);
+
+        // Timeout after 8 seconds
+        setTimeout(() => reject(new Error("Timeout")), 8000);
+      });
+
+      // Notify you via FormSubmit (fire and forget)
+      fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,19 +89,21 @@ export function Footer() {
         },
         body: JSON.stringify({
           email,
-          _subject: `New newsletter subscriber: ${email}`,
-          message: `New subscriber from footer: ${email}`,
+          _subject: `New subscriber: ${email}`,
+          message: `New subscriber: ${email}`,
         }),
-      });
-    } catch {
-      // Notification failed — don't show error to user, Mailchimp sub still worked
-    }
+      }).catch(() => {});
 
-    if (mailchimpOk) {
       setSubscribeState("success");
       setEmail("");
-    } else {
-      setSubscribeState("error");
+    } catch (err: any) {
+      // Mailchimp error messages are HTML — strip tags for display
+      const msg = err?.message?.replace(/<[^>]*>/g, "") ?? "";
+      if (msg.toLowerCase().includes("already subscribed")) {
+        setSubscribeState("success"); // treat as success
+      } else {
+        setSubscribeState("error");
+      }
     }
   };
 
