@@ -49,26 +49,44 @@ export function InsightsClient({ articles }: Props) {
     if (!email) return;
     setSubscribeState("loading");
 
+    // Step 1 — Mailchimp first
     try {
       const formData = new FormData();
       formData.append("EMAIL", email);
-      formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must be empty
+      formData.append("b_28dc230ddc_97742a274e", "");
 
       await fetch(
         "https://us10.list-manage.com/subscribe/post?u=28dc230ddc&id=97742a274e",
         {
           method: "POST",
-          mode: "no-cors", // Mailchimp doesn't allow CORS reads — this is expected
+          mode: "no-cors",
           body: formData,
         },
       );
-
-      // mode: no-cors means we can't read the response but the request goes through
-      setSubscribeState("success");
-      setEmail("");
     } catch {
       setSubscribeState("error");
+      return;
     }
+
+    try {
+      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          _subject: `New subscriber: ${email}`,
+          message: `New subscriber from insights page: ${email}`,
+        }),
+      });
+    } catch {
+      // Don't fail the user if notification fails
+    }
+
+    setSubscribeState("success");
+    setEmail("");
   };
 
   const [featured, ...rest] = visible;

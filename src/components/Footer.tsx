@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
+
+// Your Mailchimp audience details
+const MAILCHIMP_URL =
+  "https://us10.list-manage.com/subscribe/post?u=28dc230ddc&id=97742a274e";
 
 const footerLinks = {
   Services: [
-    { href: "/web-development/", label: "Web Development" },
+    { href: "/services/web-development/", label: "Web Development" },
     { href: "/services/ui-ux-design/", label: "UI/UX Design" },
     { href: "/services/seo-strategy/", label: "SEO Strategy" },
   ],
@@ -25,7 +28,7 @@ const footerLinks = {
 const socials = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/opensite-web-development",
+    href: "https://linkedin.com/company/opensite",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -46,16 +49,33 @@ const socials = [
 export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribeState, setSubscribeState] = useState<
-    "idle" | "loading" | "success" | "error"
+    "idle" | "loading" | "success" | "error" | "mailchimp_error"
   >("idle");
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email) return;
     setSubscribeState("loading");
 
+    // Step 1 — Add to Mailchimp directly (no-cors, static-safe)
+    let mailchimpOk = false;
     try {
-      // 1️⃣ Notify you (FormSubmit)
-      const res = await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+      const formData = new FormData();
+      formData.append("EMAIL", email);
+      formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must stay empty
+      await fetch(MAILCHIMP_URL, {
+        method: "POST",
+        mode: "no-cors", // Mailchimp doesn't support CORS — request goes through silently
+        body: formData,
+      });
+      mailchimpOk = true; // no-cors means no error unless network fails
+    } catch {
+      mailchimpOk = false;
+    }
+
+    // Step 2 — Notify you via FormSubmit (fire and forget — don't fail user on this)
+    try {
+      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,148 +84,131 @@ export function Footer() {
         body: JSON.stringify({
           email,
           _subject: `New newsletter subscriber: ${email}`,
-          message: "New subscriber from insights page",
+          message: `New subscriber from footer: ${email}`,
         }),
       });
+    } catch {
+      // Notification failed — don't show error to user, Mailchimp sub still worked
+    }
 
-      const data = await res.json();
-      if (!res.ok || data.success === false || data.success === "false") {
-        throw new Error(data.message || "FormSubmit rejected the request");
-      }
-      // 2️⃣ Add to Mailchimp (your backend)
-      await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
+    if (mailchimpOk) {
       setSubscribeState("success");
       setEmail("");
-    } catch {
+    } else {
       setSubscribeState("error");
     }
   };
 
   return (
-    <footer className="w-full border-t border-surface-border bg-surface-container-lowest">
-      {/* ── Subscribe strip ── */}
-      <div className="border-b border-surface-border py-12">
-        <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            {/* Copy */}
-            <div className="max-w-sm">
-              <p className="mb-1 font-headline-sm text-headline-sm font-semibold text-text-primary">
-                Stay Ahead of the <span className="text-primary">Curve.</span>
-              </p>
-              <p className="font-body-sm text-body-sm text-text-secondary">
-                New articles, no fluff. Unsubscribe anytime.
-              </p>
-            </div>
+    <footer className="w-full border-t border-surface-border bg-surface-container-lowest py-stack-lg">
+      <div className="mx-auto grid max-w-container-max grid-cols-1 gap-gutter px-margin-mobile md:grid-cols-4 md:px-margin-desktop">
+        {/* Brand */}
+        <div>
+          <div className="mb-4 font-headline-sm text-headline-sm font-bold text-text-primary">
+            OpenSite
+          </div>
+          <p className="mb-6 font-body-sm text-body-sm text-text-secondary">
+            Building digital engines that drive real business growth across the
+            globe.
+          </p>
+          <div className="flex gap-4">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="text-text-secondary transition-colors hover:text-primary"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
 
-            {/* Form */}
-            <div className="w-full md:max-w-md">
-              {subscribeState === "success" ? (
-                <div className="flex items-center gap-3 rounded-xl bg-primary/10 px-6 py-4 text-primary">
-                  <span className="material-symbols-outlined text-[20px]">
-                    check_circle
-                  </span>
-                  <span className="font-label-md text-sm">
-                    You&apos;re in! We&apos;ll notify you when new articles
-                    drop.
-                  </span>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-2">
-                  <input
-                    className="flex-grow rounded-xl border border-surface-border bg-background px-5 py-3 text-sm text-text-primary outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary"
-                    placeholder="Your business email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <button
-                    type="submit"
-                    disabled={subscribeState === "loading"}
-                    className="whitespace-nowrap rounded-xl bg-primary-container px-5 py-3 text-sm font-semibold text-white transition-all hover:opacity-90 disabled:opacity-60"
+        {/* Links */}
+        {Object.entries(footerLinks).map(([title, links]) => (
+          <div key={title}>
+            <h4 className="mb-4 font-label-md text-text-primary">{title}</h4>
+            <ul className="space-y-2">
+              {links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-body-sm text-body-sm text-text-secondary transition-colors hover:text-text-primary"
                   >
-                    {subscribeState === "loading" ? "…" : "Subscribe"}
-                  </button>
-                </form>
-              )}
-              {subscribeState === "error" && (
-                <p className="mt-2 text-xs text-error">
-                  Something went wrong — please try again.
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Main links ── */}
-      <div className="py-stack-lg">
-        <div className="mx-auto grid max-w-container-max grid-cols-1 gap-gutter px-margin-mobile md:grid-cols-4 md:px-margin-desktop">
-          {/* Brand */}
-          <div>
-            <div className="mb-4 font-headline-sm text-headline-sm font-bold text-text-primary">
-              OpenSite
-            </div>
-            <p className="mb-6 font-body-sm text-body-sm text-text-secondary">
-              Building digital engines that drive real business growth across
-              the globe.
-            </p>
-            <div className="flex gap-4">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="text-text-secondary transition-colors hover:text-primary"
-                >
-                  {s.icon}
-                </a>
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-
-          {/* Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="mb-4 font-label-md text-text-primary">{title}</h4>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="font-body-sm text-body-sm text-text-secondary transition-colors hover:text-text-primary"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
 
-      {/* ── Bottom bar ── */}
-      <div className="mx-auto flex max-w-container-max flex-col items-center justify-between gap-4 border-t border-surface-border px-margin-mobile py-8 md:flex-row md:px-margin-desktop">
-        <p className="font-body-sm text-body-sm text-text-secondary">
-          © {new Date().getFullYear()} OpenSite Digital Agency. All rights
-          reserved.
-        </p>
-        <Link
-          href="/book-a-call/"
-          className="font-body-sm text-body-sm text-text-secondary transition-colors hover:text-primary"
-        >
-          Book a Free Call →
-        </Link>
+      {/* Bottom bar */}
+      <div className="mx-auto mt-12 flex max-w-container-max flex-col gap-6 border-t border-surface-border px-margin-mobile pt-8 md:px-margin-desktop">
+        {/* Subscribe strip */}
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div className="max-w-sm">
+            <p className="mb-1 font-headline-sm text-headline-sm font-semibold text-text-primary">
+              Stay Ahead of the <span className="text-primary">Curve.</span>
+            </p>
+            <p className="font-body-sm text-body-sm text-text-secondary">
+              New articles, no fluff. Unsubscribe anytime.
+            </p>
+          </div>
+          <div className="w-full md:max-w-md">
+            {subscribeState === "success" ? (
+              <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-5 py-3 text-sm text-primary">
+                <span className="material-symbols-outlined text-[18px]">
+                  check_circle
+                </span>
+                You&apos;re in! Check your inbox.
+              </div>
+            ) : subscribeState === "error" ? (
+              <div className="flex items-center gap-2 rounded-xl bg-error/10 px-5 py-3 text-sm text-error">
+                <span className="material-symbols-outlined text-[18px]">
+                  error
+                </span>
+                Something went wrong — please try again.
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex gap-2">
+                <input
+                  className="flex-grow rounded-xl border border-surface-border bg-background px-5 py-3 text-sm text-text-primary outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary"
+                  placeholder="Your business email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={subscribeState === "loading"}
+                  className="whitespace-nowrap rounded-xl bg-primary-container px-5 py-3 text-sm font-semibold text-white transition-all hover:opacity-90 disabled:opacity-60"
+                >
+                  {subscribeState === "loading" ? "…" : "Subscribe"}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+
+        {/* Copyright row */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-surface-border pt-6 md:flex-row">
+          <p className="font-body-sm text-body-sm text-text-secondary">
+            © {new Date().getFullYear()} OpenSite Digital Agency. All rights
+            reserved.
+          </p>
+          <Link
+            href="/book-a-call/"
+            className="font-body-sm text-body-sm text-text-secondary transition-colors hover:text-primary"
+          >
+            Book a Free Call →
+          </Link>
+        </div>
       </div>
     </footer>
   );
