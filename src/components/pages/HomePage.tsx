@@ -269,24 +269,24 @@ export function HomePage() {
           <Stagger className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
             {[
               {
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAspuDrX8TpEd4LkGo4hJSI792F28QavF40CJq0pauncMPtp-5aBIAu6OxMmXFiZ4gEVRNt8NVz77I5ztdeOcAzWG1JCR0GPPQcLkxS0ReTTTXAC6qnBuXSZrzdYI5nx64vMv1QpopscSRH1nXPB33mm9-rynFpaCsDxRdq5wtFx64Pl0ykLceJTreiGLs_yANEXQFkeQOU8-HXGSDphHlGb9OqXCB9xYjkvZtCjDJj18gZRS2CAI6VixPEEGvjo0_f7h7jGmoKj0g",
-                tag: "Real Estate",
+                img: "https://onemenoo.com/images/onemenoo-social.jpg",
+                tag: "Hospitality Tech",
                 tagClass: "bg-primary/10 text-primary",
-                title: "Akinita Fotiadis",
-                problem:
-                  "Problem: High cart abandonment rate due to slow mobile checkout.",
-                metric: "+40% Leads",
-                sub: "Since day one",
+                title: "OneMenoo",
+                desc: "WordPress was too slow for a modern AI product. We rebuilt it in Next.js with a custom architecture — faster, SEO-optimised, and built to scale.",
+                metric: "45,000+",
+                sub: "QR scans in the first 6 months",
+                href: "/case-studies/one-menoo/",
               },
               {
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBvjDHOGe_YZOfU4_yCeuzIej0ZsiIf9uVLXUt1mhd1PXLa6reWBZHusQM8O0H6yBNKlV0NzyrN39P0skwb61V3gpLXOphfbtgvIjwHbzxSnrTuItq4ki5kyMWmyOxfbxm2kQM68uWS8n2v5JrHzaTGGT2Q8qUsK8JqJk-kEFnQKTuXZD1-k_8mU0Qkico1-BP4Ipeh40DahXNfdKPahq-511y0FbJU58uscfCz9zd4eCY7ddWn98Fidks3UX2oiIVFJjocR4lj2GM",
-                tag: "Fintech",
+                img: "https://cdn.prod.website-files.com/66d58e4d00041d88f5505eaf/66e71eb023b4a639865ea9cb_graph-image-1.avif",
+                tag: "Yacht & Marine Tourism",
                 tagClass: "bg-tertiary/10 text-tertiary",
-                title: "Nexo Financial",
-                problem:
-                  "Solution: Re-engineered API architecture and intuitive user dashboard.",
-                metric: "2.5x Revenue",
-                sub: "Projected annual growth",
+                title: "Adonis Sail Yachts",
+                desc: "A slow, poorly structured WordPress site was losing potential charter clients. We redesigned it in Webflow — clean UX, fast load, seamless booking flow.",
+                metric: "100%",
+                sub: "Responsive across all devices",
+                href: "/case-studies/akinita-fotiadis/",
               },
             ].map((c) => (
               <StaggerItem
@@ -312,9 +312,7 @@ export function HomePage() {
                     <h3 className="mt-4 mb-2 font-headline-sm text-headline-sm text-text-primary">
                       {c.title}
                     </h3>
-                    <p className="mb-4 text-sm text-text-secondary">
-                      {c.problem}
-                    </p>
+                    <p className="mb-4 text-sm text-text-secondary">{c.desc}</p>
                     <div className="rounded-lg bg-surface-container-low p-4">
                       <div className="text-2xl font-bold text-secondary">
                         {c.metric}
@@ -323,7 +321,7 @@ export function HomePage() {
                     </div>
                   </div>
                   <Link
-                    href="/case-studies/akinita-fotiadis/"
+                    href={c.href}
                     className="mt-6 flex items-center gap-2 font-label-md text-primary transition-all hover:gap-3"
                   >
                     View Case Study

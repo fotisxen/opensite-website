@@ -14,71 +14,53 @@ const filters = [
 
 const cases = [
   {
-    slug: "akinita-fotiadis",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDHijfxkLC8C6tQYyGa0Jkx7bnUul0zaS6eQ-UDJjkUnrAkPB-GbvxBZPlgpFInn7V7NegS8g9sTYjjGwA6SkzsoftyiP8Wedi9W5zzMrwEhIzKhtq6DRWxxNynuK42DgZeP422eV2L4NkB7PHLVVd2L9SCBS_c0kf-Xazspmx34uMzkqAYXaWIVFl8YFyCIlXUB9MOCcLoO2Esrycr2adWk_rgCqfWq6sTNvFpC4ukl8YE-5QE3hYkR7ZBBdcidyQ3h6u3nuDmgnE",
-    industry: "Yacht & Marine Tourism",
-    tag: "Yacht & Marine Tourism",
+    slug: "one-menoo",
+    image: "https://onemenoo.com/images/onemenoo-social.jpg",
+    industry: "Hospitality Tech",
+    tag: "Hospitality Tech",
     tagClass: "bg-primary-container text-white",
-    title: "CloudScale Global Infrastructure",
+    title: "OneMenoo — AI QR Menu Platform",
     problem:
-      "Fractured user journey leading to 45% drop-off in the onboarding funnel.",
+      "Slow WordPress site with poor mobile performance couldn't support a modern AI-powered product or rank on Google.",
     solution:
-      "Full UI/UX overhaul focusing on guided task completion and performance optimization.",
-    result: "+120% conversion",
-    stat1: { value: "2x", label: "More Leads" },
-    stat2: { value: "1.4s", label: "Load Speed" },
+      "Full rebuild in Next.js with custom architecture, optimised for Core Web Vitals and built to scale with the product.",
+    result: "45,000+ QR scans",
+    stat1: { value: "45k+", label: "QR Scans" },
+    stat2: { value: "1,500+", label: "AI Messages" },
     statColor: "text-primary",
   },
   {
-    slug: "medlink",
+    slug: "akinita-fotiadis",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB-FohTLbJyswsCo-bv68GokJvQSWbhefF5Afka0g9rBd2fyZtwEwIux0Ey0BP0YggOSsKReELuI6GBwpjK2F6h_yR0j1u2sShzaj2SbngMozjnmNhOZ9iRsAFkOme2HDJhGYf7HxbBsA8cw2J7NO2KEsRf6ZyE3nOBw-oUgVLWHrRzPi_7BinsyfQaGOSvEYFb-_zvej7eoJONDgJn68jkl7NYMHj9_JI8H-cSzh11ORc25Z_P52VP65Ido5pnZAf4p-1c_ysU1OE",
+      "https://cdn.prod.website-files.com/66d58e4d00041d88f5505eaf/66e71eb023b4a639865ea9cb_graph-image-1.avif",
     industry: "Real Estate",
     tag: "Real Estate",
     tagClass: "bg-secondary-container text-on-secondary-container",
-    title: "MedLink Telehealth Platform",
+    title: "Akinita Fotiadis — Real Estate Agency",
     problem:
-      "Complex HIPAA-compliant data management causing provider burnout.",
+      "WordPress site was lagging, poorly designed, and didn't reflect the brand identity — losing potential clients before they made contact.",
     solution:
-      "Developed a custom EHR integration with a simplified dashboard architecture.",
-    result: "35% Time Saved",
-    stat1: { value: "98%", label: "Uptime" },
-    stat2: { value: "0", label: "Security Breaches" },
+      "Complete redesign in Webflow with a property listing system, responsive layout, and clear user-to-client conversion flow.",
+    result: "Fully responsive",
+    stat1: { value: "100%", label: "Mobile Ready" },
+    stat2: { value: "Webflow", label: "Platform" },
     statColor: "text-secondary",
   },
   {
-    slug: "vanguard",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBFlqzASpQ5lMpLvFI-AUyvK4k8JOkntXE7DqxgwTu-mvNoOJrxYHWgksylP2We1t1F8G7CswGbhgSzkkS3W3C4IRSTOgWnKZ_a50WC3dY2hjFP4hJwVQNuzWvbUEqJ1qDAUpXpxGa1UME-1OBujIgn0dRonslXOEc67lomPJCB06qCdg7tS3BweXkFzvY2TPmaU3xtWJkGjQizJ2VTirSgRHzsapNMx8E86w9JSVX5myQkWI3s2ovTWVdwNiDUinKMYXF3WihnfZs",
-    industry: "Hospitality Tech",
-    tag: "Hospitality Tech",
-    tagClass: "bg-tertiary-container text-on-tertiary-container",
-    title: "Vanguard Luxury Commerce",
-    problem:
-      "High cart abandonment rates on mobile devices due to slow checkout.",
-    solution:
-      "PWA implementation with headless commerce architecture and one-tap pay.",
-    result: "+60% Sales",
-    stat1: { value: "2.4x", label: "ROAS" },
-    stat2: { value: "-50%", label: "Bounce Rate" },
-    statColor: "text-tertiary",
-  },
-  {
-    slug: "aura",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB61VyXeX0T4J19RSKFiOrIJEI9SKABS2EdsN7-xA10UxpgM-Fav0pv2J3WtQRB6R2oPGKBB4Oa3E4EusPqDLgO1etUnaiqz5ZYaxqq7wMXQfYng1gNye1YWw01Knf7Vwd7lJsxBOcb7w7_Jm_G2KSl0ApLnrC_wicN4F_ES-qjRiUR6FDuDCMFzCuI_KcvWhm0zJVTJI4Zn-3xFi7VhBVth6KwOjv8r7wj5ng3n1qsifiGGO1prdFjxhcCQ3LRY94oaakuicpJh34",
+    slug: "adonis-sail-yachts",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
     industry: "Yacht & Marine Tourism",
     tag: "Yacht & Marine Tourism",
-    tagClass: "bg-primary text-on-primary",
-    title: "Aura Wealth Management",
-    problem: "Opaque reporting causing low user retention and trust issues.",
+    tagClass: "bg-tertiary-container text-on-tertiary-container",
+    title: "Adonis Sail Yachts — Charter Company",
+    problem:
+      "Old WordPress site had poor UX, no clear booking flow, and failed to communicate the quality of the sailing experience.",
     solution:
-      "Interactive data storytelling and real-time portfolio transparency tools.",
-    result: "92% Retention",
-    stat1: { value: "$4B+", label: "AUM Managed" },
-    stat2: { value: "15min", label: "KYC Process" },
-    statColor: "text-primary",
+      "Rebuilt in Webflow with immersive design, streamlined enquiry flow, and mobile-first layout that matches the premium brand.",
+    result: "Redesigned UX",
+    stat1: { value: "2000+", label: "Est. Founded" },
+    stat2: { value: "Webflow", label: "Platform" },
+    statColor: "text-tertiary",
   },
 ];
 
