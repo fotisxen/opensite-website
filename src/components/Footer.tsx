@@ -58,27 +58,26 @@ export function Footer() {
     setSubscribeState("loading");
 
     try {
-      // JSONP trick — Mailchimp supports this for static sites
-      const url = `https://us10.list-manage.com/subscribe/post-json?u=44b95df314a42f2b9756e01e5&id=97742a274e&EMAIL=${encodeURIComponent(email)}&c=mailchimpCallback`;
-
-      await new Promise<void>((resolve, reject) => {
-        // Create callback
-        (window as any).mailchimpCallback = (data: any) => {
-          document.body.removeChild(script);
-          delete (window as any).mailchimpCallback;
-          if (data.result === "success") resolve();
-          else reject(new Error(data.msg));
-        };
-
-        // Inject script tag
-        const script = document.createElement("script");
-        script.src = url;
-        script.onerror = () => reject(new Error("Network error"));
-        document.body.appendChild(script);
-
-        // Timeout after 8 seconds
-        setTimeout(() => reject(new Error("Timeout")), 8000);
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        const msg = (data.error ?? "").toLowerCase();
+        if (
+          msg.includes("already subscribed") ||
+          msg.includes("member exists")
+        ) {
+          setSubscribeState("success");
+          setEmail("");
+          return;
+        }
+        throw new Error(data.error || "Failed");
+      }
 
       // Notify you via FormSubmit (fire and forget)
       fetch("https://formsubmit.co/ajax/info@opensite.gr", {
@@ -97,13 +96,7 @@ export function Footer() {
       setSubscribeState("success");
       setEmail("");
     } catch (err: any) {
-      // Mailchimp error messages are HTML — strip tags for display
-      const msg = err?.message?.replace(/<[^>]*>/g, "") ?? "";
-      if (msg.toLowerCase().includes("already subscribed")) {
-        setSubscribeState("success"); // treat as success
-      } else {
-        setSubscribeState("error");
-      }
+      setSubscribeState("error");
     }
   };
 
