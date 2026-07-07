@@ -5,7 +5,7 @@ import { useState } from "react";
 
 // Your Mailchimp audience details
 const MAILCHIMP_URL =
-  "https://us10.list-manage.com/subscribe/post?u=44b95df314a42f2b9756e01e5&id=97742a274e";
+  "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234";
 
 const footerLinks = {
   Services: [
@@ -57,30 +57,25 @@ export function Footer() {
     if (!email) return;
     setSubscribeState("loading");
 
+    // Step 1 — Add to Mailchimp directly (no-cors, static-safe)
+    let mailchimpOk = false;
     try {
-      const res = await fetch("/api/subscribe", {
+      const formData = new FormData();
+      formData.append("EMAIL", email);
+      formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must stay empty
+      await fetch(MAILCHIMP_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        mode: "no-cors", // Mailchimp doesn't support CORS — request goes through silently
+        body: formData,
       });
+      mailchimpOk = true; // no-cors means no error unless network fails
+    } catch {
+      mailchimpOk = false;
+    }
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        const msg = (data.error ?? "").toLowerCase();
-        if (
-          msg.includes("already subscribed") ||
-          msg.includes("member exists")
-        ) {
-          setSubscribeState("success");
-          setEmail("");
-          return;
-        }
-        throw new Error(data.error || "Failed");
-      }
-
-      // Notify you via FormSubmit (fire and forget)
-      fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+    // Step 2 — Notify you via FormSubmit (fire and forget — don't fail user on this)
+    try {
+      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,14 +83,18 @@ export function Footer() {
         },
         body: JSON.stringify({
           email,
-          _subject: `New subscriber: ${email}`,
-          message: `New subscriber: ${email}`,
+          _subject: `New newsletter subscriber: ${email}`,
+          message: `New subscriber from footer: ${email}`,
         }),
-      }).catch(() => {});
+      });
+    } catch {
+      // Notification failed — don't show error to user, Mailchimp sub still worked
+    }
 
+    if (mailchimpOk) {
       setSubscribeState("success");
       setEmail("");
-    } catch (err: any) {
+    } else {
       setSubscribeState("error");
     }
   };

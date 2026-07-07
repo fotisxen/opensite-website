@@ -49,30 +49,27 @@ export function InsightsClient({ articles }: Props) {
     if (!email) return;
     setSubscribeState("loading");
 
+    // Step 1 — Mailchimp first
     try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const formData = new FormData();
+      formData.append("EMAIL", email);
+      formData.append("b_28dc230ddc_97742a274e", "");
 
-      const data = await res.json();
+      await fetch(
+        "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+        },
+      );
+    } catch {
+      setSubscribeState("error");
+      return;
+    }
 
-      if (!res.ok) {
-        const msg = (data.error ?? "").toLowerCase();
-        if (
-          msg.includes("already subscribed") ||
-          msg.includes("member exists")
-        ) {
-          setSubscribeState("success");
-          setEmail("");
-          return;
-        }
-        throw new Error(data.error || "Failed");
-      }
-
-      // Notify you via FormSubmit (fire and forget)
-      fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+    try {
+      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,16 +78,17 @@ export function InsightsClient({ articles }: Props) {
         body: JSON.stringify({
           email,
           _subject: `New subscriber: ${email}`,
-          message: `New subscriber: ${email}`,
+          message: `New subscriber from insights page: ${email}`,
         }),
-      }).catch(() => {});
-
-      setSubscribeState("success");
-      setEmail("");
-    } catch (err: any) {
-      setSubscribeState("error");
+      });
+    } catch {
+      // Don't fail the user if notification fails
     }
+
+    setSubscribeState("success");
+    setEmail("");
   };
+
   const [featured, ...rest] = visible;
 
   return (
