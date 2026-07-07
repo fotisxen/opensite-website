@@ -56,7 +56,7 @@ export function InsightsClient({ articles }: Props) {
       formData.append("b_28dc230ddc_97742a274e", "");
 
       await fetch(
-        "https://us10.list-manage.com/subscribe/post?u=28dc230ddc&id=97742a274e",
+        "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234",
         {
           method: "POST",
           mode: "no-cors",

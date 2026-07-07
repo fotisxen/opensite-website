@@ -5,7 +5,7 @@ import { useState } from "react";
 
 // Your Mailchimp audience details
 const MAILCHIMP_URL =
-  "https://us10.list-manage.com/subscribe/post?u=28dc230ddc&id=97742a274e";
+  "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234";
 
 const footerLinks = {
   Services: [

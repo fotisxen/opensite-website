@@ -2,12 +2,73 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 
 const heroImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCguJXOrGXIWYbUOU10hevnZIRSB6Ni0nqd94bHVpYibkVJvUYjjqVpomk4a5MdS3QA4gz5cj0CHQlh6nbJt9OuBqelcrjpO9-O_KVURKMDE_lqe_rF4mSwEgItE7OqlDLNSFHKAHrSSA0ecUJ-bT76RWNo1-iVZJvzucfOfBPaCJELjamWaM1H7Jx1eXjSbuex3jQ8W380xXoT3KC06iz3o0viO60Y9uJZTCZoj-ckbYTx_FiqxuQfDR7dFU-0pVuC6R_rgkBdl0U";
 
+type FormStatus = "idle" | "sending" | "success" | "error";
+
 export function HomePage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    businessType: "E-commerce",
+    message: "",
+  });
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim()) {
+      setStatus("error");
+      setErrorMessage("Please fill in your name and email before sending.");
+      return;
+    }
+    setStatus("sending");
+    setErrorMessage("");
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/info@opensite.gr",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            business_type: formData.businessType,
+            message: formData.message,
+            _subject: `New project inquiry from ${formData.name}`,
+          }),
+        },
+      );
+      if (!response.ok) throw new Error(`Status ${response.status}`);
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        businessType: "E-commerce",
+        message: "",
+      });
+    } catch {
+      setStatus("error");
+      setErrorMessage("Something went wrong — please try again.");
+    }
+  };
+
   return (
     <>
       <section className="relative flex min-h-[921px] items-center overflow-hidden">
@@ -26,7 +87,7 @@ export function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4 pt-stack-md">
               <Link
-                href="/book-a-call"
+                href="/book-a-call/"
                 className="rounded-xl bg-primary-container px-8 py-4 font-label-md text-white transition-transform hover:scale-105"
               >
                 Get Free Consultation
@@ -39,7 +100,6 @@ export function HomePage() {
               </Link>
             </div>
           </FadeIn>
-
           <FadeIn
             delay={0.15}
             direction="left"
@@ -110,12 +170,12 @@ export function HomePage() {
               {
                 icon: "person_cancel",
                 title: "Poor Conversion",
-                text: "Visitors land on your page but leave without taking action. You&apos;re leaving money on the table every single day.",
+                text: "Visitors land on your page but leave without taking action. You're leaving money on the table every single day.",
               },
               {
                 icon: "search_off",
                 title: "No SEO Presence",
-                text: "Your business is invisible on Google. If customers can&apos;t find you, they&apos;ll find your competitors instead.",
+                text: "Your business is invisible on Google. If customers can't find you, they'll find your competitors instead.",
               },
               {
                 icon: "heart_broken",
@@ -292,7 +352,7 @@ export function HomePage() {
                     icon: "trending_up",
                     iconClass: "bg-primary/10 text-primary",
                     title: "Business-First Mentality",
-                    text: "We don&apos;t build features; we build business solutions. Every pixel and line of code is measured against your KPIs.",
+                    text: "We don't build features; we build business solutions. Every pixel and line of code is measured against your KPIs.",
                   },
                   {
                     icon: "speed",
@@ -396,57 +456,100 @@ export function HomePage() {
                 </div>
               </div>
               <div className="p-12">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <div>
-                      <label className="mb-2 block font-label-md text-sm text-text-secondary">
-                        Full Name
-                      </label>
-                      <input
-                        className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
-                        placeholder="John Doe"
-                        type="text"
-                      />
+                {status === "success" ? (
+                  <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
+                    <span className="material-symbols-outlined text-5xl text-primary">
+                      check_circle
+                    </span>
+                    <h3 className="font-headline-sm text-xl font-bold text-text-primary">
+                      Message sent!
+                    </h3>
+                    <p className="text-text-secondary">
+                      We&apos;ll get back to you within 24 hours.
+                    </p>
+                    <button
+                      onClick={() => setStatus("idle")}
+                      className="mt-4 rounded-xl border border-surface-border px-6 py-2 text-sm text-text-secondary transition-colors hover:bg-surface-container"
+                    >
+                      Send another message
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div>
+                        <label className="mb-2 block font-label-md text-sm text-text-secondary">
+                          Full Name
+                        </label>
+                        <input
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
+                          placeholder="John Doe"
+                          type="text"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="mb-2 block font-label-md text-sm text-text-secondary">
+                          Email Address
+                        </label>
+                        <input
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
+                          placeholder="john@company.com"
+                          type="email"
+                          required
+                        />
+                      </div>
                     </div>
                     <div>
                       <label className="mb-2 block font-label-md text-sm text-text-secondary">
-                        Email Address
+                        Business Type
                       </label>
-                      <input
+                      <select
+                        name="businessType"
+                        value={formData.businessType}
+                        onChange={handleChange}
                         className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
-                        placeholder="john@company.com"
-                        type="email"
+                      >
+                        <option>E-commerce</option>
+                        <option>SaaS / Tech</option>
+                        <option>Service Business</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="mb-2 block font-label-md text-sm text-text-secondary">
+                        Your Message
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
+                        placeholder="Tell us about your goals..."
+                        rows={4}
                       />
                     </div>
-                  </div>
-                  <div>
-                    <label className="mb-2 block font-label-md text-sm text-text-secondary">
-                      Business Type
-                    </label>
-                    <select className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container">
-                      <option>E-commerce</option>
-                      <option>SaaS / Tech</option>
-                      <option>Service Business</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="mb-2 block font-label-md text-sm text-text-secondary">
-                      Your Message
-                    </label>
-                    <textarea
-                      className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
-                      placeholder="Tell us about your goals..."
-                      rows={4}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full rounded-xl bg-primary-container py-4 font-label-md text-white shadow-lg shadow-primary-container/20 transition-all hover:opacity-90"
-                  >
-                    Get Proposal
-                  </button>
-                </form>
+                    {status === "error" && (
+                      <p className="text-sm text-error">
+                        {errorMessage ||
+                          "Something went wrong — please try again."}
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="w-full rounded-xl bg-primary-container py-4 font-label-md text-white shadow-lg shadow-primary-container/20 transition-all hover:opacity-90 disabled:opacity-60"
+                    >
+                      {status === "sending" ? "Sending…" : "Get Proposal"}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </FadeIn>
