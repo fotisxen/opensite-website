@@ -174,30 +174,6 @@ export default function BookACallPage() {
     setError(null);
 
     try {
-      // ✅ Notify you via formsubmit
-      const ownerRes = await fetch(
-        "https://formsubmit.co/ajax/info@opensite.gr",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: `${firstName} ${lastName}`,
-            email: email,
-            service: service,
-            notes: notes || "—",
-            date: formattedDate,
-            time: selectedTime,
-            _subject: `New call booked — ${formattedDate} at ${selectedTime}`,
-            _replyto: email,
-          }),
-        },
-      );
-      if (!ownerRes.ok)
-        throw new Error(`Owner email failed: ${ownerRes.status}`);
-
       // ✅ Confirm to client via EmailJS
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -211,6 +187,25 @@ export default function BookACallPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
       );
 
+      // ✅ Notify you via formsubmit — fire and forget, never block on this
+      fetch("https://formsubmit.co/ajax/info@opensite.gr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          service,
+          notes: notes || "—",
+          date: formattedDate,
+          time: selectedTime,
+          _subject: `New call booked — ${formattedDate} at ${selectedTime}`,
+          _replyto: email,
+        }),
+      }).catch(() => {}); // silently ignore failures
+
       setSubmitted(true);
     } catch (err) {
       console.error("[book-call] submit error:", err);
@@ -223,7 +218,6 @@ export default function BookACallPage() {
       setSending(false);
     }
   };
-
   // ── Submitted state ────────────────────────────────────────────────────
   if (submitted && selectedDate && selectedTime) {
     const gcalUrl = buildGCalUrl(
