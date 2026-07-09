@@ -205,7 +205,9 @@ export default function BookACallPage() {
           _replyto: email,
         }),
       }).catch(() => {}); // silently ignore failures
-
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead");
+      }
       setSubmitted(true);
     } catch (err) {
       console.error("[book-call] submit error:", err);

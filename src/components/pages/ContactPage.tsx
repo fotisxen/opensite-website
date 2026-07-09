@@ -59,7 +59,9 @@ export function ContactPage() {
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
       }
-
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead");
+      }
       setStatus("success");
     } catch (err) {
       console.error("[contact-form] submit error:", err);

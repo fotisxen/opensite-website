@@ -57,6 +57,9 @@ export function HomePage() {
       );
       if (!response.ok) throw new Error(`Status ${response.status}`);
       setStatus("success");
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead");
+      }
       setFormData({
         name: "",
         email: "",
