@@ -2,9 +2,14 @@
 import { CustomSelect } from "@/components/CustomSelect";
 import Link from "next/link";
 import { useState } from "react";
-import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { FadeIn } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 export function ContactPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "Contact Page" });
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -112,6 +117,9 @@ export function ContactPage() {
                   </p>
                   <a
                     href="mailto:info@opensite.gr"
+                    onClick={() =>
+                      fbq("Contact", { content_name: "Email Click" })
+                    }
                     className="font-headline-sm text-headline-sm text-text-primary transition-colors hover:text-primary"
                   >
                     info@opensite.gr

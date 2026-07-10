@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 const processSteps = [
   {
@@ -26,6 +28,10 @@ const processSteps = [
 ];
 
 export function ServicesPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "Services Page" });
+  }, []);
+
   return (
     <>
       <section className="relative flex min-h-[819px] items-center justify-center overflow-hidden py-24">

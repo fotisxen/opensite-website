@@ -3,12 +3,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { getCaseStudy } from "@/lib/case-studies";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 interface Props {
   slug: string;
 }
 
 export function CaseStudyDetailPage({ slug }: Props) {
+    useEffect(() => {
+    fbq("ViewContent", { content_name: "Case Study Detail Page" });
+  }, []);
   const cs = getCaseStudy(slug);
   if (!cs) notFound();
 

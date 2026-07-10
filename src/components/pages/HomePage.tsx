@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 const heroImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCguJXOrGXIWYbUOU10hevnZIRSB6Ni0nqd94bHVpYibkVJvUYjjqVpomk4a5MdS3QA4gz5cj0CHQlh6nbJt9OuBqelcrjpO9-O_KVURKMDE_lqe_rF4mSwEgItE7OqlDLNSFHKAHrSSA0ecUJ-bT76RWNo1-iVZJvzucfOfBPaCJELjamWaM1H7Jx1eXjSbuex3jQ8W380xXoT3KC06iz3o0viO60Y9uJZTCZoj-ckbYTx_FiqxuQfDR7dFU-0pVuC6R_rgkBdl0U";
@@ -11,6 +13,9 @@ const heroImage =
 type FormStatus = "idle" | "sending" | "success" | "error";
 
 export function HomePage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "Home Page" });
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,6 +61,10 @@ export function HomePage() {
         },
       );
       if (!response.ok) throw new Error(`Status ${response.status}`);
+      fbq("Lead", {
+        content_name: "Home Page Form",
+        content_category: "Agency Lead",
+      });
       setStatus("success");
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");

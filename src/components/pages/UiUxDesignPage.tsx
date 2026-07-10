@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 const layers = [
   {
@@ -43,6 +45,9 @@ const layers = [
 ];
 
 export function UiUxDesignPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "UI/UX Design Page" });
+  }, []);
   const [active, setActive] = useState<number | null>(null);
 
   return (

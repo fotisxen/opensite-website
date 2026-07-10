@@ -5,6 +5,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 // ─── Config ────────────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
@@ -138,6 +140,9 @@ function buildGCalUrl(date: Date, time: string, name: string): string {
 
 // ─── Component ─────────────────────────────────────────────────────────────
 export default function BookACallPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "Book A Call Page" });
+  }, []);
   const days = get14Days();
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -208,6 +213,9 @@ export default function BookACallPage() {
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
       }
+      useEffect(() => {
+        fbq("Schedule");
+      }, []);
       setSubmitted(true);
     } catch (err) {
       console.error("[book-call] submit error:", err);

@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 export function AboutPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "About Page" });
+  }, []);
   return (
     <>
       <section className="relative overflow-hidden px-margin-mobile pb-24 pt-40 md:px-margin-desktop md:pb-32 md:pt-56">

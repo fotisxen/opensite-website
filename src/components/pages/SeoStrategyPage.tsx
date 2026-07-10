@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 const process = [
   {
@@ -62,6 +64,9 @@ function nodeById(id: string) {
 }
 
 export function SeoStrategyPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "SEO Strategy Page" });
+  }, []);
   return (
     <>
       <section className="relative mx-auto mb-16 max-w-container-max px-margin-mobile pt-12 md:px-margin-desktop">

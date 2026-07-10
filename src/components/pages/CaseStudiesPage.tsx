@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
+import { fbq } from "@/lib/pixel";
+import { useEffect } from "react";
 
 const filters = [
   "All Industries",
@@ -48,7 +50,8 @@ const cases = [
   },
   {
     slug: "adonis-sail-yachts",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
     industry: "Yacht & Marine Tourism",
     tag: "Yacht & Marine Tourism",
     tagClass: "bg-tertiary-container text-on-tertiary-container",
@@ -65,6 +68,9 @@ const cases = [
 ];
 
 export function CaseStudiesPage() {
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "Case Studies Page" });
+  }, []);
   const [activeFilter, setActiveFilter] = useState("All Industries");
 
   const filtered =
