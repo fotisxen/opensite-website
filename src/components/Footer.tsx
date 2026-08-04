@@ -12,6 +12,7 @@ const footerLinks = {
     { href: "/services/web-development/", label: "Web Development" },
     { href: "/services/ui-ux-design/", label: "UI/UX Design" },
     { href: "/services/seo-strategy/", label: "SEO Strategy" },
+    { href: "/services/crm/", label: "CRM Integration" },
   ],
   Company: [
     { href: "/about/", label: "About Us" },

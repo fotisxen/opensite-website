@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
@@ -213,6 +215,121 @@ export function ServicesPage() {
                       <div className="font-bold text-primary">{platform}</div>
                     </div>
                   ))}
+                </div>
+              </div>
+            </StaggerItem>
+            <StaggerItem className="group glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-12">
+              <div className="flex flex-col gap-stack-lg md:flex-row">
+                <div className="md:w-1/2">
+                  <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-secondary">
+                    hub
+                  </span>
+                  <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
+                    CRM Systems
+                  </h3>
+                  <p className="mb-stack-lg font-body-md text-text-secondary">
+                    We set up and customize CRMs that fit how your sales team
+                    actually works — no bloated software, no wasted seats.
+                  </p>
+                  <ul className="mb-stack-lg space-y-3">
+                    {[
+                      {
+                        label: "HubSpot & Pipedrive",
+                        note: "Fast setup for growing teams",
+                      },
+                      {
+                        label: "Custom CRM builds",
+                        note: "For unique sales workflows",
+                      },
+                      {
+                        label: "Integrations",
+                        note: "Connect your site & e-shop to your pipeline",
+                      },
+                    ].map((item) => (
+                      <li
+                        key={item.label}
+                        className="flex items-center gap-3 text-on-surface"
+                      >
+                        <span className="material-symbols-outlined text-secondary">
+                          check_circle
+                        </span>
+                        <span className="font-label-md">
+                          {item.label}
+                          <span className="ml-2 font-body-sm text-text-secondary">
+                            — {item.note}
+                          </span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex items-center md:w-1/2">
+                  <div className="h-64 w-full overflow-hidden rounded-xl border border-surface-border shadow-2xl">
+                    {/* fake browser chrome */}
+                    <div className="flex items-center gap-1.5 border-b border-surface-border bg-surface-container-high px-3 py-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-error/60" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-secondary/60" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-primary/60" />
+                      <span className="ml-2 rounded bg-surface-container px-2 py-0.5 text-[10px] text-text-secondary">
+                        app.yourcrm.com/pipeline
+                      </span>
+                    </div>
+
+                    <div className="grid h-[calc(100%-33px)] grid-cols-5 gap-3 bg-surface-container-lowest p-4">
+                      {/* mini stat + chart panel */}
+                      <div className="col-span-2 flex flex-col justify-between rounded-lg border border-surface-border bg-surface-card p-3">
+                        <div>
+                          <div className="text-[10px] uppercase tracking-wide text-text-secondary">
+                            Pipeline Value
+                          </div>
+                          <div className="text-lg font-bold text-secondary">
+                            €48,200
+                          </div>
+                        </div>
+                        <div className="flex h-16 items-end gap-1">
+                          {[40, 65, 50, 80, 60, 95, 75].map((h, i) => (
+                            <div
+                              key={i}
+                              className="flex-1 rounded-t bg-primary/40"
+                              style={{ height: `${h}%` }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* pipeline columns */}
+                      {[
+                        { label: "New", color: "bg-primary", count: 3 },
+                        { label: "Contacted", color: "bg-tertiary", count: 4 },
+                        { label: "Won", color: "bg-secondary", count: 2 },
+                      ].map((col) => (
+                        <div
+                          key={col.label}
+                          className="flex flex-col rounded-lg border border-surface-border bg-surface-card p-2"
+                        >
+                          <div className="mb-2 flex items-center justify-between">
+                            <span className="text-[9px] font-label-sm uppercase tracking-wide text-text-secondary">
+                              {col.label}
+                            </span>
+                            <span
+                              className={`h-1.5 w-1.5 rounded-full ${col.color}`}
+                            />
+                          </div>
+                          <div className="flex flex-1 flex-col gap-1.5">
+                            {Array.from({ length: col.count }).map((_, i) => (
+                              <div
+                                key={i}
+                                className="rounded bg-surface-container px-1.5 py-1"
+                                style={{ opacity: 1 - i * 0.12 }}
+                              >
+                                <div className="h-1.5 w-3/4 rounded-full bg-text-secondary/30" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </StaggerItem>

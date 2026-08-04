@@ -153,6 +153,7 @@ export function HomePage() {
               ["shopping_cart", "E-shops"],
               ["smartphone", "Mobile Apps"],
               ["search", "SEO Strategy"],
+              ["hub", "CRM Systems"],
             ].map(([icon, label]) => (
               <div
                 key={label}
@@ -224,50 +225,65 @@ export function HomePage() {
               engines tailored to your specific industry needs.
             </p>
           </FadeIn>
-          <Stagger className="grid grid-cols-1 gap-gutter md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                icon: "language",
-                iconClass: "bg-primary/10 text-primary",
-                title: "Websites",
-                text: "High-performance corporate sites that establish authority and capture leads.",
-              },
-              {
-                icon: "store",
-                iconClass: "bg-secondary/10 text-secondary",
-                title: "E-commerce",
-                text: "Full-scale online stores optimized for maximum average order value and retention.",
-              },
-              {
-                icon: "devices",
-                iconClass: "bg-tertiary/10 text-tertiary",
-                title: "Mobile Apps",
-                text: "Native and cross-platform apps designed to keep your customers engaged on the go.",
-              },
-              {
-                icon: "rocket_launch",
-                iconClass: "bg-primary-container/10 text-primary-container",
-                title: "SEO Strategy",
-                text: "Data-driven optimization to dominate search results and attract organic traffic.",
-              },
-            ].map((s) => (
-              <StaggerItem
-                key={s.title}
-                className="rounded-[16px] border border-surface-border bg-surface-card p-8 transition-all hover:bg-surface-container-high"
-              >
-                <div
-                  className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg ${s.iconClass}`}
-                >
-                  <span className="material-symbols-outlined">{s.icon}</span>
-                </div>
-                <h3 className="mb-2 font-headline-sm text-headline-sm text-text-primary">
-                  {s.title}
-                </h3>
-                <p className="font-body-sm text-text-secondary">{s.text}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
         </div>
+
+        <FadeIn className="group relative overflow-hidden">
+          {/* edge fade hints */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-surface-container-lowest to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-surface-container-lowest to-transparent" />
+
+          <div className="animate-marquee flex w-max gap-gutter group-hover:[animation-play-state:paused]">
+            {[...Array(2)].map((_, dup) =>
+              [
+                {
+                  icon: "language",
+                  iconClass: "bg-primary/10 text-primary",
+                  title: "Websites",
+                  text: "High-performance corporate sites that establish authority and capture leads.",
+                },
+                {
+                  icon: "store",
+                  iconClass: "bg-secondary/10 text-secondary",
+                  title: "E-commerce",
+                  text: "Full-scale online stores optimized for maximum average order value and retention.",
+                },
+                {
+                  icon: "devices",
+                  iconClass: "bg-tertiary/10 text-tertiary",
+                  title: "Mobile Apps",
+                  text: "Native and cross-platform apps designed to keep your customers engaged on the go.",
+                },
+                {
+                  icon: "rocket_launch",
+                  iconClass: "bg-primary-container/10 text-primary-container",
+                  title: "SEO Strategy",
+                  text: "Data-driven optimization to dominate search results and attract organic traffic.",
+                },
+                {
+                  icon: "hub",
+                  iconClass: "bg-secondary/10 text-secondary",
+                  title: "CRM Systems",
+                  text: "Custom CRM setup and integrations that turn scattered leads into an organized sales pipeline.",
+                },
+              ].map((s) => (
+                <div
+                  key={`${dup}-${s.title}`}
+                  className="w-[260px] shrink-0 rounded-[16px] border border-surface-border bg-surface-card p-8 transition-all hover:-translate-y-1 hover:bg-surface-container-high hover:shadow-lg sm:w-[280px]"
+                >
+                  <div
+                    className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg ${s.iconClass}`}
+                  >
+                    <span className="material-symbols-outlined">{s.icon}</span>
+                  </div>
+                  <h3 className="mb-2 font-headline-sm text-headline-sm text-text-primary">
+                    {s.title}
+                  </h3>
+                  <p className="font-body-sm text-text-secondary">{s.text}</p>
+                </div>
+              )),
+            )}
+          </div>
+        </FadeIn>
       </section>
 
       <section className="bg-background py-24">
