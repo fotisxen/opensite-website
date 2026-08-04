@@ -140,9 +140,6 @@ function buildGCalUrl(date: Date, time: string, name: string): string {
 
 // ─── Component ─────────────────────────────────────────────────────────────
 export default function BookACallPage() {
-  useEffect(() => {
-    fbq("ViewContent", { content_name: "Book A Call Page" });
-  }, []);
   const days = get14Days();
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -151,7 +148,15 @@ export default function BookACallPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    fbq("ViewContent", { content_name: "Book A Call Page" });
+  }, []);
 
+  useEffect(() => {
+    if (submitted) {
+      fbq("Schedule");
+    }
+  }, [submitted]);
   // Form fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -213,9 +218,6 @@ export default function BookACallPage() {
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
       }
-      useEffect(() => {
-        fbq("Schedule");
-      }, []);
       setSubmitted(true);
     } catch (err) {
       console.error("[book-call] submit error:", err);
