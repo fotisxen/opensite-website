@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";

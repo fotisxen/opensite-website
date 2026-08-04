@@ -1,3 +1,6 @@
+"use client";
+
+
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
