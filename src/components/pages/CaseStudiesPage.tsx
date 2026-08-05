@@ -12,6 +12,7 @@ const filters = [
   "Real Estate",
   "Hospitality Tech",
   "Yacht & Marine Tourism",
+  "CRM & Admin Panels",
 ];
 
 const cases = [
@@ -64,6 +65,40 @@ const cases = [
     stat1: { value: "2000+", label: "Est. Founded" },
     stat2: { value: "Webflow", label: "Platform" },
     statColor: "text-tertiary",
+  },
+  {
+    slug: "df-real-estate",
+    image:
+      "https://xdyiitwokwufavirmqdd.supabase.co/storage/v1/object/public/property-images/cf5b99e0-8746-45c2-9630-e15cbad2d25c/1785920961215-10.webp",
+    industry: "Real Estate",
+    tag: "Real Estate",
+    tagClass: "bg-secondary-container text-on-secondary-container",
+    title: "DF Real Estate — Property Listings Platform",
+    problem:
+      "The agency needed a fast, bilingual listings site built from the ground up — with SEO-ready property pages and a direct feed into the Spitogatos portal — without a page builder or a developer on call for every update.",
+    solution:
+      "Full custom build in Next.js on a Supabase backend, with per-listing SEO pages, auto-generated sitemaps, and a live Spitogatos XML feed integration.",
+    result: "Custom Next.js build",
+    stat1: { value: "Next.js", label: "Platform" },
+    stat2: { value: "Supabase", label: "Backend" },
+    statColor: "text-secondary",
+  },
+  {
+    slug: "df-real-estate-crm",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    industry: "CRM & Admin Panels",
+    tag: "CRM & Admin Panels",
+    tagClass: "bg-tertiary-container text-on-tertiary-container",
+    title: "DF Real Estate — Custom CRM & Admin Panel",
+    problem:
+      "Beyond the public site, staff had no way to manage listings or track client inquiries themselves — every change meant calling a developer, with no secure place for client data to live.",
+    solution:
+      "A protected admin panel built from scratch on Supabase Auth and Row Level Security — full listing and photo management plus a private client pipeline visible only to staff. The first CRM built end to end.",
+    result: "First custom CRM",
+    stat1: { value: "Custom", label: "Built From Scratch" },
+    stat2: { value: "Supabase", label: "Auth + RLS" },
+    statColor: "text-secondary",
   },
 ];
 

@@ -241,6 +241,150 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "df-real-estate",
+    industry: "Real Estate",
+    duration: "Custom Build",
+    title: "DF Real Estate",
+    subtitle:
+      "How we built a bilingual property listings platform from scratch — a fast, SEO-ready Next.js site on a Supabase backend, wired straight into the Spitogatos portal feed.",
+    liveUrl: "https://df-real-estate.com",
+    platform: "Next.js",
+    image:
+      "https://xdyiitwokwufavirmqdd.supabase.co/storage/v1/object/public/property-images/cf5b99e0-8746-45c2-9630-e15cbad2d25c/1785920961215-10.webp",
+    heroMetrics: [
+      { value: "Next.js", label: "Platform" },
+      { value: "Supabase", label: "Backend" },
+      { value: "Custom", label: "Full Build" },
+      { value: "Spitogatos", label: "Feed Integration" },
+    ],
+    problem: {
+      description:
+        "DF Real Estate needed a listings platform that could go live without page-builder overhead — fast, SEO-ready pages for every property, bilingual content, and a direct feed into the Spitogatos portal, all without a developer in the loop for routine updates.",
+      bullets: [
+        "No existing site — needed a complete build from the ground up",
+        "Every listing needed its own SEO-optimised page with structured data",
+        "Needed to syndicate listings to the Spitogatos portal automatically",
+      ],
+    },
+    solution: {
+      description:
+        "We built the entire platform in Next.js with Supabase as the backend — Postgres for property data, Storage for photos, and Auth to protect the admin side. Every listing gets a dedicated page with schema.org JSON-LD, and the sitemap regenerates automatically as listings change.",
+      highlights: [
+        {
+          title: "SEO by Default",
+          desc: "Per-listing metadata, structured data, and auto-generated sitemaps.",
+        },
+        {
+          title: "Spitogatos Feed",
+          desc: "A live XML feed keeps the Spitogatos portal in sync with the site.",
+        },
+        {
+          title: "Supabase Backend",
+          desc: "Postgres, Storage, and Auth handle data, photos, and access control.",
+        },
+        {
+          title: "Bilingual",
+          desc: "Content and UI built to serve Greek-speaking clients end to end.",
+        },
+      ],
+    },
+    impact: [
+      {
+        icon: "language",
+        iconWrap: "bg-primary/10",
+        iconColor: "text-primary",
+        value: "Next.js",
+        text: "A full custom build replacing the need for a page builder or template site.",
+      },
+      {
+        icon: "sync",
+        iconWrap: "bg-secondary/10",
+        iconColor: "text-secondary",
+        value: "Spitogatos",
+        text: "Listings sync automatically to the Spitogatos portal via a live XML feed.",
+      },
+      {
+        icon: "search",
+        iconWrap: "bg-tertiary/10",
+        iconColor: "text-tertiary",
+        value: "SEO-Ready",
+        text: "Every property page ships with structured data and metadata out of the box.",
+      },
+    ],
+  },
+  {
+    slug: "df-real-estate-crm",
+    industry: "Real Estate",
+    duration: "Custom Build",
+    title: "DF Real Estate CRM",
+    subtitle:
+      "The first CRM I built end to end — a private admin panel that lets the agency manage listings and clients themselves, secured with Supabase Auth and Row Level Security.",
+    liveUrl: "https://df-real-estate.com/admin/login",
+    platform: "Next.js + Supabase",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    heroMetrics: [
+      { value: "Custom", label: "Built From Scratch" },
+      { value: "Supabase", label: "Auth + RLS" },
+      { value: "Custom", label: "CRM Built" },
+      { value: "Private", label: "Client Pipeline" },
+    ],
+    problem: {
+      description:
+        "Beyond the public site, the agency needed a way to run the business day-to-day — adding and editing listings, uploading photos, and keeping track of client inquiries — without calling a developer for every change, and without exposing any of it publicly.",
+      bullets: [
+        "No self-serve way to add, edit, or take down property listings",
+        "Client and lead information had nowhere secure to live",
+        "Needed strict access control — staff-only, no public sign-up",
+      ],
+    },
+    solution: {
+      description:
+        "I designed and built a protected admin panel from the ground up — my first full CRM build. It covers property and photo management, plus a private client table locked down with Postgres Row Level Security, behind an authenticated login gate with no public sign-up path.",
+      highlights: [
+        {
+          title: "Property Management",
+          desc: "Full create/edit/delete flow for listings and their photos.",
+        },
+        {
+          title: "Private Client Pipeline",
+          desc: "A clients table only authenticated staff can ever see, enforced by RLS.",
+        },
+        {
+          title: "Locked-Down Access",
+          desc: "Auth-gated /admin route — no public sign-up, invite-only accounts.",
+        },
+        {
+          title: "Built From Scratch",
+          desc: "No CRM template or third-party platform — a fully custom system.",
+        },
+      ],
+    },
+    impact: [
+      {
+        icon: "admin_panel_settings",
+        iconWrap: "bg-primary/10",
+        iconColor: "text-primary",
+        value: "Custom",
+        text: "A fully custom admin panel, not a bought-in CRM platform.",
+      },
+      {
+        icon: "lock",
+        iconWrap: "bg-secondary/10",
+        iconColor: "text-secondary",
+        value: "RLS-Secured",
+        text: "Row Level Security keeps client data visible only to authenticated staff.",
+      },
+      {
+        icon: "person_add",
+        iconWrap: "bg-tertiary/10",
+        iconColor: "text-tertiary",
+        value: "First Build",
+        text: "The first end-to-end CRM I've designed and shipped.",
+      },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
