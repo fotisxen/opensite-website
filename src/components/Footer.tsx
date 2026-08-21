@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 // Your Mailchimp audience details
@@ -48,6 +49,7 @@ const socials = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [subscribeState, setSubscribeState] = useState<
     "idle" | "loading" | "success" | "error" | "mailchimp_error"
@@ -99,6 +101,8 @@ export function Footer() {
     // } else {
     // }
   };
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <footer className="w-full border-t border-surface-border bg-surface-container-lowest py-stack-lg">

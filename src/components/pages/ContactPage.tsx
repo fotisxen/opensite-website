@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
+import { supabase } from "@/lib/supabase";
 import { useEffect } from "react";
 
 export function ContactPage() {
@@ -67,6 +68,19 @@ export function ContactPage() {
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
       }
+
+      // Best-effort: also drop this into the CRM. A failure here shouldn't
+      // fail the submission — the email notification already went out.
+      supabase
+        .from("leads")
+        .insert({
+          full_name: formData.name,
+          email: formData.email,
+          source: "contact_form",
+          message: `Business type: ${formData.businessType}\n\n${formData.brief}`,
+        } as never)
+        .then(() => {});
+
       setStatus("success");
     } catch (err) {
       console.error("[contact-form] submit error:", err);

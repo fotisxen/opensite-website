@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export function StickyBookCall() {
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
   // Don't render until after first paint — prevents stealing LCP
@@ -12,7 +14,7 @@ export function StickyBookCall() {
     return () => clearTimeout(t);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || pathname?.startsWith("/admin")) return null;
 
   return (
     <div className="fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 xl:hidden">

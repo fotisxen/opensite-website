@@ -37,6 +37,8 @@ export function Header() {
     };
   }, [menuOpen]);
 
+  if (pathname?.startsWith("/admin")) return null;
+
   return (
     <>
       <motion.header

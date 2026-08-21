@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { fbq } from "@/lib/pixel";
+import { supabase } from "@/lib/supabase";
 import { useEffect } from "react";
 
 // ─── Config ────────────────────────────────────────────────────────────────
@@ -218,6 +219,18 @@ export default function BookACallPage() {
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
       }
+
+      // Best-effort: also drop this into the CRM.
+      supabase
+        .from("leads")
+        .insert({
+          full_name: `${firstName} ${lastName}`.trim(),
+          email,
+          source: "book_a_call",
+          message: `Service: ${service || "—"}\nRequested: ${formattedDate} at ${selectedTime}\n\n${notes}`,
+        } as never)
+        .then(() => {});
+
       setSubmitted(true);
     } catch (err) {
       console.error("[book-call] submit error:", err);
