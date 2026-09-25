@@ -14,7 +14,7 @@ const process = [
   {
     label: "02",
     title: "Keyword Architecture",
-    desc: "We map search intent to page structure — so every page targets a purpose, not just a phrase.",
+    desc: "We map search intent to page structure, so every page targets a purpose, not just a phrase.",
   },
   {
     label: "03",
@@ -24,7 +24,7 @@ const process = [
   {
     label: "04",
     title: "Authority Building",
-    desc: "Earned links and digital PR that build topical trust — the signal search engines weight most.",
+    desc: "Earned links and digital PR that build topical trust, the signal search engines weight most.",
   },
   {
     label: "05",
@@ -71,7 +71,7 @@ export function SeoStrategyPage() {
   }, []);
   return (
     <>
-      <section className="relative mx-auto mb-16 max-w-container-max px-margin-mobile pt-12 md:px-margin-desktop">
+      <section className="relative mx-auto mb-16 max-w-container-max px-margin-mobile pt-12 max-md:overflow-x-clip md:px-margin-desktop">
         <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-secondary/10 blur-[120px]" />
         <FadeIn className="max-w-3xl">
           <span className="mb-stack-md inline-block rounded-full bg-secondary/10 px-3 py-1 font-label-sm text-label-sm text-secondary">
@@ -84,7 +84,7 @@ export function SeoStrategyPage() {
           </h1>
           <p className="max-w-2xl font-body-lg text-body-lg text-text-secondary">
             Search engines crawl a graph, not a homepage. We architect how
-            authority flows through every page of your site — then earn the
+            authority flows through every page of your site, then earn the
             links that fill it.
           </p>
         </FadeIn>
@@ -216,8 +216,7 @@ export function SeoStrategyPage() {
                 Get a free <span className="text-secondary">crawl audit.</span>
               </h2>
               <p className="mb-stack-lg font-body-lg text-body-lg text-text-secondary">
-                We&apos;ll show you exactly where your site is leaking authority
-                — no commitment required.
+                We&apos;ll show you exactly where your site is leaking authority. No commitment required.
               </p>
               <Link
                 href="/contact/"

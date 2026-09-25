@@ -1,6 +1,9 @@
 // lib/contentful.ts
 // Shared fetch helpers for Contentful articles
 
+// Editors sometimes paste em dashes into Contentful; the site avoids them.
+export const noDash = (s: string) => s.replace(/s*—s*/g, ", ");
+
 export interface Article {
   slug: string;
   title: string;
@@ -69,8 +72,8 @@ export async function getAllArticles(): Promise<Article[]> {
 
     return {
       slug: fields.slug ?? "",
-      title: fields.title ?? "",
-      excerpt: fields.excerpt ?? "",
+      title: noDash(fields.title ?? ""),
+      excerpt: noDash(fields.excerpt ?? ""),
       category: fields.category ?? "",
       readTime: fields.readTime ?? "5 min read",
       date: fields.date ?? "",

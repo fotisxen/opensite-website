@@ -102,7 +102,7 @@ function slotToMinutes(slot: string): number {
 }
 
 /** Filter slots: if today is selected, only show slots ≥ now + 30 min */
-// Replace the function — now returns ALL slots with a past flag
+// Replace the function - now returns ALL slots with a past flag
 function getSlots(date: Date | null): { slot: string; disabled: boolean }[] {
   const now = new Date();
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
@@ -198,7 +198,7 @@ export default function BookACallPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
       );
 
-      // ✅ Notify you via formsubmit — fire and forget, never block on this
+      // ✅ Notify you via formsubmit - fire and forget, never block on this
       fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
         headers: {
@@ -209,10 +209,10 @@ export default function BookACallPage() {
           name: `${firstName} ${lastName}`,
           email,
           service,
-          notes: notes || "—",
+          notes: notes || "-",
           date: formattedDate,
           time: selectedTime,
-          _subject: `New call booked — ${formattedDate} at ${selectedTime}`,
+          _subject: `New call booked: ${formattedDate} at ${selectedTime}`,
           _replyto: email,
         }),
       }).catch(() => {}); // silently ignore failures
@@ -227,7 +227,7 @@ export default function BookACallPage() {
           full_name: `${firstName} ${lastName}`.trim(),
           email,
           source: "book_a_call",
-          message: `Service: ${service || "—"}\nRequested: ${formattedDate} at ${selectedTime}\n\n${notes}`,
+          message: `Service: ${service || "-"}\nRequested: ${formattedDate} at ${selectedTime}\n\n${notes}`,
         } as never)
         .then(() => {});
 
@@ -324,7 +324,7 @@ export default function BookACallPage() {
             </h1>
             <p className="max-w-lg text-lg text-white/80">
               Pick a time that works for you. We&apos;ll spend 15 minutes
-              understanding your goals — no pressure, no pitch.
+              understanding your goals, no pressure, no pitch.
             </p>
             <div className="mt-10 flex flex-wrap gap-6">
               {steps.map((step, i) => (
@@ -356,7 +356,7 @@ export default function BookACallPage() {
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="grid grid-cols-1 gap-8 lg:grid-cols-2"
           >
-            {/* Left — contact details */}
+            {/* Left - contact details */}
             <div className="rounded-[16px] border border-surface-border bg-surface-card p-8 shadow-sm">
               <h2 className="mb-6 text-xl font-bold text-text-primary">
                 Your details
@@ -444,7 +444,7 @@ export default function BookACallPage() {
               </form>
             </div>
 
-            {/* Right — date + time */}
+            {/* Right - date + time */}
             <div className="rounded-[16px] border border-surface-border bg-surface-card p-8 shadow-sm">
               <h2 className="mb-1 text-xl font-bold text-text-primary">
                 Pick a date & time
@@ -490,7 +490,7 @@ export default function BookACallPage() {
                   const isSelected =
                     selectedDate && isSameDay(day, selectedDate);
                   const isWeekend = day.getDay() === 0 || day.getDay() === 6;
-                  // Past dates — before today's midnight
+                  // Past dates - before today's midnight
                   const todayMidnight = new Date();
                   todayMidnight.setHours(0, 0, 0, 0);
                   const isPast = day < todayMidnight;
@@ -533,7 +533,7 @@ export default function BookACallPage() {
                     transition={{ duration: 0.25 }}
                   >
                     <p className="mb-3 text-xs font-medium uppercase tracking-widest text-text-secondary">
-                      Available times — {formattedDate}
+                      Available times: {formattedDate}
                     </p>
                     {(() => {
                       const slots = getSlots(selectedDate);
@@ -541,7 +541,7 @@ export default function BookACallPage() {
                       return allPast ? (
                         <div className="flex h-24 items-center justify-center rounded-xl border border-dashed border-surface-border">
                           <p className="text-sm text-text-secondary">
-                            No slots left today — pick another day
+                            No slots left today, pick another day
                           </p>
                         </div>
                       ) : (
@@ -607,7 +607,7 @@ export default function BookACallPage() {
                     <Loader2 size={16} className="animate-spin" /> Sending…
                   </span>
                 ) : selectedDate && selectedTime ? (
-                  `Confirm — ${formattedDate} at ${selectedTime} →`
+                  `Confirm: ${formattedDate} at ${selectedTime} →`
                 ) : (
                   "Select a date & time to continue"
                 )}

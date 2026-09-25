@@ -114,7 +114,7 @@ export default function DashboardPage() {
                 <Link href={`/admin/leads/${l.id}`} className="text-text-primary hover:text-primary">
                   {l.full_name}
                 </Link>
-                <span className="text-text-secondary">{l.source ?? "—"}</span>
+                <span className="text-text-secondary">{l.source ?? "-"}</span>
               </li>
             ))}
             {recentLeads.length === 0 && <li className="py-2 text-text-secondary">No leads yet.</li>}

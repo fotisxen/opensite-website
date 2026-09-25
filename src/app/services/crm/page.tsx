@@ -20,7 +20,7 @@ const deliverables = [
   {
     icon: "filter_alt",
     title: "Organized Pipeline",
-    text: "Every lead lands in the right stage automatically — no more sticky notes or forgotten follow-ups.",
+    text: "Every lead lands in the right stage automatically, no more sticky notes or forgotten follow-ups.",
   },
   {
     icon: "sync_alt",
@@ -35,7 +35,7 @@ const deliverables = [
   {
     icon: "tune",
     title: "Custom Fields & Stages",
-    text: "Built around how your team actually sells — not a generic template that fights your process.",
+    text: "Built around how your team actually sells, not a generic template that fights your process.",
   },
   {
     icon: "monitoring",
@@ -45,7 +45,7 @@ const deliverables = [
   {
     icon: "support_agent",
     title: "Team Onboarding",
-    text: "We train your team hands-on so adoption actually sticks — not just a handover doc nobody reads.",
+    text: "We train your team hands-on so adoption actually sticks, not just a handover doc nobody reads.",
   },
 ];
 
@@ -95,7 +95,7 @@ function TypingCrmStack() {
 export default function CrmSystemsPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-background pt-20">
-      {/* Hero — dark, terminal-coded */}
+      {/* Hero - dark, terminal-coded */}
       <section className="relative border-b border-surface-border bg-surface-container-lowest py-28">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -121,7 +121,7 @@ export default function CrmSystemsPage() {
 
             <p className="mb-10 max-w-2xl font-body-lg text-lg text-text-secondary">
               We set up and integrate CRMs built around how your team actually
-              sells — not a generic template. No more leads falling through the
+              sells, not a generic template. No more leads falling through the
               cracks.
             </p>
 
@@ -152,7 +152,7 @@ export default function CrmSystemsPage() {
                 <span className="h-3 w-3 rounded-full bg-secondary/70" />
                 <span className="h-3 w-3 rounded-full bg-primary/70" />
                 <span className="ml-4 font-mono text-xs text-text-secondary">
-                  opensite — pipeline sync
+                  opensite: pipeline sync
                 </span>
               </div>
               <div className="space-y-2 p-6 font-mono text-sm">
@@ -184,7 +184,7 @@ export default function CrmSystemsPage() {
                   },
                   {
                     label: "🚀",
-                    text: "Pipeline live — 0 leads unassigned",
+                    text: "Pipeline live: 0 leads unassigned",
                     color: "text-secondary",
                   },
                 ].map((line, i) => (
@@ -279,7 +279,7 @@ export default function CrmSystemsPage() {
                 </h2>
                 <p className="mb-8 max-w-xl opacity-80">
                   Tell us how your sales process works today. We&apos;ll tell
-                  you how we&apos;d set it up — free, in 15 minutes.
+                  you how we&apos;d set it up, free, in 15 minutes.
                 </p>
                 <Link
                   href="/book-a-call/"

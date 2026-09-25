@@ -93,7 +93,7 @@ export function ServicesPage() {
                   <p className="mb-stack-lg font-body-md text-text-secondary">
                     Enterprise-grade web applications built with performance and
                     scalability at their core. We choose the right tool for each
-                    project — not the trendy one.
+                    project, not the trendy one.
                   </p>
                   <ul className="mb-stack-lg space-y-3">
                     {[
@@ -117,7 +117,7 @@ export function ServicesPage() {
                         <span className="font-label-md">
                           {item.label}
                           <span className="ml-2 font-body-sm text-text-secondary">
-                            — {item.note}
+                           {item.note}
                           </span>
                         </span>
                       </li>
@@ -229,7 +229,7 @@ export function ServicesPage() {
                   </h3>
                   <p className="mb-stack-lg font-body-md text-text-secondary">
                     We set up and customize CRMs that fit how your sales team
-                    actually works — no bloated software, no wasted seats.
+                    actually works, no bloated software, no wasted seats.
                   </p>
                   <ul className="mb-stack-lg space-y-3">
                     {[
@@ -256,7 +256,7 @@ export function ServicesPage() {
                         <span className="font-label-md">
                           {item.label}
                           <span className="ml-2 font-body-sm text-text-secondary">
-                            — {item.note}
+                           {item.note}
                           </span>
                         </span>
                       </li>

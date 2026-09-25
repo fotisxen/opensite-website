@@ -54,7 +54,7 @@ export function Header() {
           and the right-side element is always flush to the right edge of the padding.
         */}
         <div className="mx-auto flex h-20 w-full max-w-container-max items-center px-4 sm:px-6 xl:px-10">
-          {/* LEFT — logo, flex-1 so it takes up the left third */}
+          {/* LEFT - logo, flex-1 so it takes up the left third */}
           <div className="flex flex-1 items-center">
             <Link
               href="/"
@@ -64,7 +64,7 @@ export function Header() {
             </Link>
           </div>
 
-          {/* CENTER — desktop nav, only on xl+ */}
+          {/* CENTER - desktop nav, only on xl+ */}
           <nav className="hidden items-center gap-6 xl:flex">
             {navLinks.map((link) => {
               const active = isActive(pathname, link.href);
@@ -84,9 +84,9 @@ export function Header() {
             })}
           </nav>
 
-          {/* RIGHT — CTA on desktop, hamburger on mobile; flex-1 + justify-end keeps it flush right */}
+          {/* RIGHT - CTA on desktop, hamburger on mobile; flex-1 + justify-end keeps it flush right */}
           <div className="flex flex-1 items-center justify-end">
-            {/* Desktop CTA — only on xl+ */}
+            {/* Desktop CTA - only on xl+ */}
             <Link
               href="/book-a-call"
               className="hidden shrink-0 rounded-lg bg-primary-container px-5 py-2.5 font-label-md text-white transition-all hover:scale-[1.02] hover:opacity-90 active:scale-95 xl:inline-flex"
@@ -94,7 +94,7 @@ export function Header() {
               Book a Free Call
             </Link>
 
-            {/* Mobile hamburger — hidden on xl+, -mr-1 aligns it visually with the padding edge */}
+            {/* Mobile hamburger - hidden on xl+, -mr-1 aligns it visually with the padding edge */}
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}

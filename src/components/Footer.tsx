@@ -60,15 +60,15 @@ export function Footer() {
     if (!email) return;
     setSubscribeState("loading");
 
-    // Step 1 — Add to Mailchimp directly (no-cors, static-safe)
+    // Step 1 - Add to Mailchimp directly (no-cors, static-safe)
     // let mailchimpOk = false;
     // try {
     //   const formData = new FormData();
     //   formData.append("EMAIL", email);
-    //   formData.append("b_28dc230ddc_97742a274e", ""); // honeypot — must stay empty
+    //   formData.append("b_28dc230ddc_97742a274e", ""); // honeypot - must stay empty
     //   await fetch(MAILCHIMP_URL, {
     //     method: "POST",
-    //     mode: "no-cors", // Mailchimp doesn't support CORS — request goes through silently
+    //     mode: "no-cors", // Mailchimp doesn't support CORS - request goes through silently
     //     body: formData,
     //   });
     //   mailchimpOk = true; // no-cors means no error unless network fails
@@ -76,7 +76,7 @@ export function Footer() {
     //   mailchimpOk = false;
     // }
 
-    // Step 2 — Notify you via FormSubmit (fire and forget — don't fail user on this)
+    // Step 2 - Notify you via FormSubmit (fire and forget - don't fail user on this)
     try {
       await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
         method: "POST",
@@ -91,7 +91,7 @@ export function Footer() {
         }),
       });
     } catch {
-      // Notification failed — don't show error to user, Mailchimp sub still worked
+      // Notification failed - don't show error to user, Mailchimp sub still worked
       setSubscribeState("error");
     }
 
@@ -177,7 +177,7 @@ export function Footer() {
                 <span className="material-symbols-outlined text-[18px]">
                   error
                 </span>
-                Something went wrong — please try again.
+                Something went wrong, please try again.
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex gap-2">

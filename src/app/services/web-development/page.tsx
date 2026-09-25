@@ -16,7 +16,7 @@ const deliverables = [
   {
     icon: "devices",
     title: "Pixel-Perfect Responsive",
-    text: "From 320px mobile to 4K displays — every breakpoint is deliberate, not an afterthought.",
+    text: "From 320px mobile to 4K displays, every breakpoint is deliberate, not an afterthought.",
   },
   {
     icon: "lock",
@@ -26,7 +26,7 @@ const deliverables = [
   {
     icon: "integration_instructions",
     title: "API & CMS Integration",
-    text: "Headless CMS, payment gateways, CRMs, analytics — we wire everything together cleanly.",
+    text: "Headless CMS, payment gateways, CRMs, analytics, we wire everything together cleanly.",
   },
   {
     icon: "trending_up",
@@ -84,7 +84,7 @@ export default function WebDevelopmentPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-background pt-20">
 
-      {/* Hero — dark, terminal-coded */}
+      {/* Hero - dark, terminal-coded */}
       <section className="relative border-b border-surface-border bg-surface-container-lowest py-28">
         {/* Grid texture */}
         <div
@@ -109,7 +109,7 @@ export default function WebDevelopmentPage() {
             </h1>
 
             <p className="mb-10 max-w-2xl font-body-lg text-lg text-text-secondary">
-              We engineer production-grade web applications — not templates, not page builders. Performant, scalable, and built to outlast your roadmap.
+              We engineer production-grade web applications, not templates, not page builders. Performant, scalable, and built to outlast your roadmap.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -137,7 +137,7 @@ export default function WebDevelopmentPage() {
                 <span className="h-3 w-3 rounded-full bg-error/70" />
                 <span className="h-3 w-3 rounded-full bg-secondary/70" />
                 <span className="h-3 w-3 rounded-full bg-primary/70" />
-                <span className="ml-4 font-mono text-xs text-text-secondary">opensite — build output</span>
+                <span className="ml-4 font-mono text-xs text-text-secondary">opensite: build output</span>
               </div>
               <div className="space-y-2 p-6 font-mono text-sm">
                 {[
@@ -223,7 +223,7 @@ export default function WebDevelopmentPage() {
               <div className="relative z-10">
                 <h2 className="mb-4 text-4xl font-bold md:text-5xl">Ready to build something great?</h2>
                 <p className="mb-8 max-w-xl opacity-80">
-                  Tell us what you&apos;re building. We&apos;ll tell you how we&apos;d approach it — free, in 15 minutes.
+                  Tell us what you&apos;re building. We&apos;ll tell you how we&apos;d approach it, free, in 15 minutes.
                 </p>
                 <Link
                   href="/book-a-call/"

@@ -79,8 +79,8 @@ export default function LeadsPage() {
                       {l.full_name}
                     </Link>
                   </td>
-                  <td className="py-3 pr-4 text-text-secondary">{l.phone ?? "—"}</td>
-                  <td className="py-3 pr-4 text-text-secondary">{l.source ?? "—"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{l.phone ?? "-"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{l.source ?? "-"}</td>
                   <td className="py-3 pr-4 text-text-secondary">{statusLabel[l.status]}</td>
                   <td className="py-3 pr-4">
                     <DeleteRowButton table="leads" id={l.id} label={l.full_name} onDeleted={load} />

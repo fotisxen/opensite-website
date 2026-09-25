@@ -74,7 +74,7 @@ export default function ProjectForm({ mode, project }: { mode: "create" | "edit"
           name="title"
           required
           defaultValue={project?.title}
-          placeholder="e.g. Website redesign — Acme Co"
+          placeholder="e.g. Website redesign, Acme Co"
           className={inputClass}
         />
       </Field>
@@ -82,7 +82,7 @@ export default function ProjectForm({ mode, project }: { mode: "create" | "edit"
       <div className="grid grid-cols-2 gap-4">
         <Field label="Client">
           <select name="client_id" defaultValue={project?.client_id ?? ""} className={inputClass}>
-            <option value="">—</option>
+            <option value="">-</option>
             {clients.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.full_name}
@@ -92,7 +92,7 @@ export default function ProjectForm({ mode, project }: { mode: "create" | "edit"
         </Field>
         <Field label="Service">
           <select name="service" defaultValue={project?.service ?? ""} className={inputClass}>
-            <option value="">—</option>
+            <option value="">-</option>
             {Object.entries(serviceLabel).map(([v, l]) => (
               <option key={v} value={v}>
                 {l}

@@ -75,9 +75,9 @@ export default function ProjectsPage() {
                       {p.title}
                     </Link>
                   </td>
-                  <td className="py-3 pr-4 text-text-secondary">{p.client_id ? clientById.get(p.client_id) ?? "—" : "—"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{p.client_id ? clientById.get(p.client_id) ?? "-" : "-"}</td>
                   <td className="py-3 pr-4 text-text-secondary">{stageLabel[p.stage]}</td>
-                  <td className="py-3 pr-4 text-text-secondary">{p.value != null ? `€${p.value.toLocaleString("en-US")}` : "—"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{p.value != null ? `€${p.value.toLocaleString("en-US")}` : "-"}</td>
                   <td className="py-3 pr-4">
                     <DeleteRowButton table="projects" id={p.id} label={p.title} onDeleted={load} />
                   </td>

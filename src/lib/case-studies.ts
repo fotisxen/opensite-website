@@ -32,7 +32,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Custom Build",
     title: "OneMenoo",
     subtitle:
-      "How we rebuilt a slow WordPress product into a high-performance Next.js platform — and helped it reach 45,000+ QR scans.",
+      "How we rebuilt a slow WordPress product into a high-performance Next.js platform, and helped it reach 45,000+ QR scans.",
     liveUrl: "https://onemenoo.com/en",
     platform: "Next.js",
     image: "https://onemenoo.com/images/onemenoo-social.jpg",
@@ -65,7 +65,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           title: "Scalable Architecture",
-          desc: "Built to grow with the product — new features ship without rebuilding.",
+          desc: "Built to grow with the product, new features ship without rebuilding.",
         },
         {
           title: "100% Custom",
@@ -93,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
         iconWrap: "bg-tertiary/10",
         iconColor: "text-tertiary",
         value: "90+",
-        text: "Lighthouse performance score — up from a WordPress baseline under 50.",
+        text: "Lighthouse performance score, up from a WordPress baseline under 50.",
       },
     ],
   },
@@ -116,7 +116,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     problem: {
       description:
-        "Akinita Fotiadis is an established real estate agency. Their WordPress site was lagging, visually outdated, and failed to reflect the quality and professionalism of their business — costing them potential clients before they even made contact.",
+        "Akinita Fotiadis is an established real estate agency. Their WordPress site was lagging, visually outdated, and failed to reflect the quality and professionalism of their business, costing them potential clients before they even made contact.",
       bullets: [
         "Slow, poorly optimised WordPress site with frequent performance issues",
         "Design didn't reflect the brand's identity or build client trust",
@@ -125,7 +125,7 @@ export const caseStudies: CaseStudy[] = [
     },
     solution: {
       description:
-        "We designed and built a new site in Webflow that puts the brand front and centre — clean, professional, and built to guide visitors toward making contact. Fully responsive and significantly faster than the previous WordPress setup.",
+        "We designed and built a new site in Webflow that puts the brand front and centre, clean, professional, and built to guide visitors toward making contact. Fully responsive and significantly faster than the previous WordPress setup.",
       highlights: [
         {
           title: "Brand-Led Design",
@@ -158,7 +158,7 @@ export const caseStudies: CaseStudy[] = [
         iconWrap: "bg-secondary/10",
         iconColor: "text-secondary",
         value: "100%",
-        text: "Fully responsive across all screen sizes — something the old site failed to deliver.",
+        text: "Fully responsive across all screen sizes, something the old site failed to deliver.",
       },
       {
         icon: "speed",
@@ -188,7 +188,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     problem: {
       description:
-        "Adonis Sail Yachts has been operating since 2000, offering yacht charters across Greece. Their WordPress site had a poor user experience, unclear booking flow, and slow performance — failing to convert the sailing interest of visitors into actual charter inquiries.",
+        "Adonis Sail Yachts has been operating since 2000, offering yacht charters across Greece. Their WordPress site had a poor user experience, unclear booking flow, and slow performance, failing to convert the sailing interest of visitors into actual charter inquiries.",
       bullets: [
         "Slow WordPress site losing visitors before they reached the booking section",
         "Poor UX with no clear path from interest to charter inquiry",
@@ -209,7 +209,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           title: "Mobile First",
-          desc: "Fully responsive — most charter research happens on mobile.",
+          desc: "Fully responsive, most charter research happens on mobile.",
         },
         {
           title: "Fast & Reliable",
@@ -230,7 +230,7 @@ export const caseStudies: CaseStudy[] = [
         iconWrap: "bg-secondary/10",
         iconColor: "text-secondary",
         value: "100%",
-        text: "Responsive across all devices — critical for a travel and tourism audience.",
+        text: "Responsive across all devices, critical for a travel and tourism audience.",
       },
       {
         icon: "speed",
@@ -247,7 +247,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Custom Build",
     title: "DF Real Estate",
     subtitle:
-      "How we built a bilingual property listings platform from scratch — a fast, SEO-ready Next.js site on a Supabase backend, wired straight into the Spitogatos portal feed.",
+      "How we built a bilingual property listings platform from scratch, a fast, SEO-ready Next.js site on a Supabase backend, wired straight into the Spitogatos portal feed.",
     liveUrl: "https://df-real-estate.com",
     platform: "Next.js",
     image:
@@ -260,16 +260,16 @@ export const caseStudies: CaseStudy[] = [
     ],
     problem: {
       description:
-        "DF Real Estate needed a listings platform that could go live without page-builder overhead — fast, SEO-ready pages for every property, bilingual content, and a direct feed into the Spitogatos portal, all without a developer in the loop for routine updates.",
+        "DF Real Estate needed a listings platform that could go live without page-builder overhead, fast, SEO-ready pages for every property, bilingual content, and a direct feed into the Spitogatos portal, all without a developer in the loop for routine updates.",
       bullets: [
-        "No existing site — needed a complete build from the ground up",
+        "No existing site, needed a complete build from the ground up",
         "Every listing needed its own SEO-optimised page with structured data",
         "Needed to syndicate listings to the Spitogatos portal automatically",
       ],
     },
     solution: {
       description:
-        "We built the entire platform in Next.js with Supabase as the backend — Postgres for property data, Storage for photos, and Auth to protect the admin side. Every listing gets a dedicated page with schema.org JSON-LD, and the sitemap regenerates automatically as listings change.",
+        "We built the entire platform in Next.js with Supabase as the backend, Postgres for property data, Storage for photos, and Auth to protect the admin side. Every listing gets a dedicated page with schema.org JSON-LD, and the sitemap regenerates automatically as listings change.",
       highlights: [
         {
           title: "SEO by Default",
@@ -319,7 +319,7 @@ export const caseStudies: CaseStudy[] = [
     duration: "Custom Build",
     title: "DF Real Estate CRM",
     subtitle:
-      "The first CRM I built end to end — a private admin panel that lets the agency manage listings and clients themselves, secured with Supabase Auth and Row Level Security.",
+      "The first CRM I built end to end, a private admin panel that lets the agency manage listings and clients themselves, secured with Supabase Auth and Row Level Security.",
     liveUrl: "https://df-real-estate.com/admin/login",
     platform: "Next.js + Supabase",
     image:
@@ -332,16 +332,16 @@ export const caseStudies: CaseStudy[] = [
     ],
     problem: {
       description:
-        "Beyond the public site, the agency needed a way to run the business day-to-day — adding and editing listings, uploading photos, and keeping track of client inquiries — without calling a developer for every change, and without exposing any of it publicly.",
+        "Beyond the public site, the agency needed a way to run the business day-to-day, adding and editing listings, uploading photos, and keeping track of client inquiries, without calling a developer for every change, and without exposing any of it publicly.",
       bullets: [
         "No self-serve way to add, edit, or take down property listings",
         "Client and lead information had nowhere secure to live",
-        "Needed strict access control — staff-only, no public sign-up",
+        "Needed strict access control, staff-only, no public sign-up",
       ],
     },
     solution: {
       description:
-        "I designed and built a protected admin panel from the ground up — my first full CRM build. It covers property and photo management, plus a private client table locked down with Postgres Row Level Security, behind an authenticated login gate with no public sign-up path.",
+        "I designed and built a protected admin panel from the ground up, my first full CRM build. It covers property and photo management, plus a private client table locked down with Postgres Row Level Security, behind an authenticated login gate with no public sign-up path.",
       highlights: [
         {
           title: "Property Management",
@@ -353,11 +353,11 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           title: "Locked-Down Access",
-          desc: "Auth-gated /admin route — no public sign-up, invite-only accounts.",
+          desc: "Auth-gated /admin route, no public sign-up, invite-only accounts.",
         },
         {
           title: "Built From Scratch",
-          desc: "No CRM template or third-party platform — a fully custom system.",
+          desc: "No CRM template or third-party platform, a fully custom system.",
         },
       ],
     },

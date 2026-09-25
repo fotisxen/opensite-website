@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type FadeInProps = {
   children: ReactNode;
@@ -30,7 +30,18 @@ export function FadeIn({
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, margin: "-80px" });
-  const offset = directionOffset[direction];
+  // Sideways offsets park the element off-screen before it animates in, which
+  // makes the whole page pannable left/right on phones. Use a vertical offset there.
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setNarrow(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const base = directionOffset[direction];
+  const offset = narrow && base.x !== 0 ? { x: 0, y: 24 } : base;
 
   return (
     <motion.div

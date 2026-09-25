@@ -8,7 +8,7 @@ export function StickyBookCall() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
-  // Don't render until after first paint — prevents stealing LCP
+  // Don't render until after first paint - prevents stealing LCP
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 1000);
     return () => clearTimeout(t);
@@ -26,7 +26,7 @@ export function StickyBookCall() {
         <span className="material-symbols-outlined text-[18px]">
           phone_in_talk
         </span>
-        Let&apos;s Talk — Book a Free Call
+        Let&apos;s Talk, Book a Free Call
       </Link>
     </div>
   );

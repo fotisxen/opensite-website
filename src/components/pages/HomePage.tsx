@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
 
-const heroImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCguJXOrGXIWYbUOU10hevnZIRSB6Ni0nqd94bHVpYibkVJvUYjjqVpomk4a5MdS3QA4gz5cj0CHQlh6nbJt9OuBqelcrjpO9-O_KVURKMDE_lqe_rF4mSwEgItE7OqlDLNSFHKAHrSSA0ecUJ-bT76RWNo1-iVZJvzucfOfBPaCJELjamWaM1H7Jx1eXjSbuex3jQ8W380xXoT3KC06iz3o0viO60Y9uJZTCZoj-ckbYTx_FiqxuQfDR7dFU-0pVuC6R_rgkBdl0U";
+// three.js is loaded after first paint so the 3D hero never blocks LCP.
+const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -77,13 +78,13 @@ export function HomePage() {
       });
     } catch {
       setStatus("error");
-      setErrorMessage("Something went wrong — please try again.");
+      setErrorMessage("Something went wrong, please try again.");
     }
   };
 
   return (
     <>
-      <section className="relative flex min-h-[921px] items-center overflow-hidden">
+      <section className="relative flex items-center overflow-hidden pb-10 pt-24 lg:min-h-[921px] lg:py-0">
         <div className="relative z-10 mx-auto grid max-w-container-max grid-cols-1 items-center gap-gutter px-margin-mobile py-stack-lg md:px-margin-desktop lg:grid-cols-2">
           <FadeIn className="space-y-stack-lg">
             <h1 className="font-display-lg text-display-lg-mobile leading-tight text-text-primary md:text-display-lg">
@@ -115,18 +116,11 @@ export function HomePage() {
           <FadeIn
             delay={0.15}
             direction="left"
-            className="relative hidden lg:block"
+            className="relative order-first h-[300px] sm:h-[420px] lg:order-none lg:h-[560px]"
           >
-            <div className="glass-card rotate-2 transform rounded-[16px] p-4 shadow-2xl transition-transform duration-500 hover:rotate-0">
-              <Image
-                src={heroImage}
-                alt="Premium software dashboard mockup"
-                width={640}
-                height={480}
-                className="h-auto w-full rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="glass-card absolute -bottom-6 -left-6 rounded-xl border border-primary-container/30 p-6 shadow-xl">
+            <div className="pointer-events-none absolute inset-8 rounded-full bg-primary-container/20 blur-[90px]" />
+            <HeroScene />
+            <div className="glass-card absolute bottom-2 left-2 rounded-xl border border-primary-container/30 p-5 shadow-xl sm:bottom-4 sm:left-4">
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-3xl text-secondary">
                   trending_up
@@ -171,7 +165,7 @@ export function HomePage() {
         <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
           <FadeIn className="mb-16 text-center">
             <h2 className="mb-4 font-headline-lg text-headline-lg text-text-primary">
-              Most websites don&apos;t bring customers —{" "}
+              Most websites don&apos;t bring customers.{" "}
               <span className="text-primary-container">we fix that</span>
             </h2>
             <p className="font-body-lg text-body-lg text-text-secondary">
@@ -301,7 +295,7 @@ export function HomePage() {
                 tag: "Hospitality Tech",
                 tagClass: "bg-primary/10 text-primary",
                 title: "OneMenoo",
-                desc: "WordPress was too slow for a modern AI product. We rebuilt it in Next.js with a custom architecture — faster, SEO-optimised, and built to scale.",
+                desc: "WordPress was too slow for a modern AI product. We rebuilt it in Next.js with a custom architecture, faster, SEO-optimised, and built to scale.",
                 metric: "45,000+",
                 sub: "QR scans in the first 6 months",
                 href: "/case-studies/one-menoo/",
@@ -311,7 +305,7 @@ export function HomePage() {
                 tag: "Yacht & Marine Tourism",
                 tagClass: "bg-tertiary/10 text-tertiary",
                 title: "Adonis Sail Yachts",
-                desc: "A slow, poorly structured WordPress site was losing potential charter clients. We redesigned it in Webflow — clean UX, fast load, seamless booking flow.",
+                desc: "A slow, poorly structured WordPress site was losing potential charter clients. We redesigned it in Webflow, clean UX, fast load, seamless booking flow.",
                 metric: "100%",
                 sub: "Responsive across all devices",
                 href: "/case-studies/akinita-fotiadis/",
@@ -364,7 +358,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-surface-container-lowest py-24">
+      <section className="overflow-hidden bg-surface-container-lowest py-24">
         <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <FadeIn>
@@ -564,7 +558,7 @@ export function HomePage() {
                     {status === "error" && (
                       <p className="text-sm text-error">
                         {errorMessage ||
-                          "Something went wrong — please try again."}
+                          "Something went wrong, please try again."}
                       </p>
                     )}
                     <button

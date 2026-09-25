@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { getAllArticles } from "@/lib/contentful";
+import { getAllArticles, noDash } from "@/lib/contentful";
 
 async function getArticleBySlug(slug: string) {
   const spaceId = process.env.CONTENTFUL_SPACE_ID!;
@@ -30,14 +30,14 @@ async function getArticleBySlug(slug: string) {
   );
 
   return {
-    title: fields.title as string,
+    title: noDash(fields.title as string),
     slug: fields.slug as string,
     category: fields.category as string,
     readTime: fields.readTime as string,
     date: fields.date as string,
-    excerpt: fields.excerpt as string,
+    excerpt: noDash((fields.excerpt as string) ?? ""),
     coverImage: imageAsset ? `https:${imageAsset.fields.file.url}` : null,
-    bodyHtml: fields.body ? documentToHtmlString(fields.body) : "",
+    bodyHtml: fields.body ? noDash(documentToHtmlString(fields.body)) : "",
   };
 }
 

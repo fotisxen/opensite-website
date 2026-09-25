@@ -85,7 +85,7 @@ export default function TransactionForm({ mode, transaction }: { mode: "create" 
 
       <Field label="Category">
         <select key={type} name="category" defaultValue={transaction?.category ?? ""} className={inputClass}>
-          <option value="">—</option>
+          <option value="">-</option>
           {(type === "income" ? incomeCategories : expenseCategories).map((c) => (
             <option key={c} value={c}>
               {c}
@@ -104,7 +104,7 @@ export default function TransactionForm({ mode, transaction }: { mode: "create" 
       <div className="grid grid-cols-2 gap-4">
         <Field label="Client">
           <select name="client_id" defaultValue={transaction?.client_id ?? ""} className={inputClass}>
-            <option value="">—</option>
+            <option value="">-</option>
             {clients.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.full_name}
@@ -114,7 +114,7 @@ export default function TransactionForm({ mode, transaction }: { mode: "create" 
         </Field>
         <Field label="Project">
           <select name="project_id" defaultValue={transaction?.project_id ?? ""} className={inputClass}>
-            <option value="">—</option>
+            <option value="">-</option>
             {projects.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.title}

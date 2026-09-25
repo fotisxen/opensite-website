@@ -27,7 +27,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     async function load() {
-      // Earliest transaction sets the chart's start month — no hardcoded
+      // Earliest transaction sets the chart's start month - no hardcoded
       // "data starts in year X" assumption for a different business.
       const [{ data: earliest }, { data: txRaw }, { data: leadsRaw }] = await Promise.all([
         supabase.from("transactions").select("occurred_on").order("occurred_on", { ascending: true }).limit(1),
@@ -99,10 +99,10 @@ export default function AnalyticsPage() {
         }
       }
       if (expCats.length > 0 && totalExpense > 0) {
-        list.push(`Biggest expense category is "${expCats[0].label}" — ${((expCats[0].value / totalExpense) * 100).toFixed(0)}% of total expenses.`);
+        list.push(`Biggest expense category is "${expCats[0].label}", ${((expCats[0].value / totalExpense) * 100).toFixed(0)}% of total expenses.`);
       }
       if (incCats.length > 0 && totalIncome > 0) {
-        list.push(`Biggest income source is "${incCats[0].label}" — ${((incCats[0].value / totalIncome) * 100).toFixed(0)}% of total income.`);
+        list.push(`Biggest income source is "${incCats[0].label}", ${((incCats[0].value / totalIncome) * 100).toFixed(0)}% of total income.`);
       }
       if (totalIncome > 0) {
         list.push(`Overall margin is ${(((totalIncome - totalExpense) / totalIncome) * 100).toFixed(0)}% (${fmtEuro(totalIncome - totalExpense)} net).`);

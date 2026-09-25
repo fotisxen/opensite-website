@@ -51,9 +51,9 @@ export default function ClientsPage() {
                       {c.full_name}
                     </Link>
                   </td>
-                  <td className="py-3 pr-4 text-text-secondary">{c.company ?? "—"}</td>
-                  <td className="py-3 pr-4 text-text-secondary">{c.email ?? "—"}</td>
-                  <td className="py-3 pr-4 text-text-secondary">{c.phone ?? "—"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{c.company ?? "-"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{c.email ?? "-"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{c.phone ?? "-"}</td>
                   <td className="py-3 pr-4">
                     <DeleteRowButton table="clients" id={c.id} label={c.full_name} onDeleted={load} />
                   </td>

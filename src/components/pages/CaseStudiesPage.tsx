@@ -22,7 +22,7 @@ const cases = [
     industry: "Hospitality Tech",
     tag: "Hospitality Tech",
     tagClass: "bg-primary-container text-white",
-    title: "OneMenoo — AI QR Menu Platform",
+    title: "OneMenoo: AI QR Menu Platform",
     problem:
       "Slow WordPress site with poor mobile performance couldn't support a modern AI-powered product or rank on Google.",
     solution:
@@ -39,9 +39,9 @@ const cases = [
     industry: "Real Estate",
     tag: "Real Estate",
     tagClass: "bg-secondary-container text-on-secondary-container",
-    title: "Akinita Fotiadis — Real Estate Agency",
+    title: "Akinita Fotiadis: Real Estate Agency",
     problem:
-      "WordPress site was lagging, poorly designed, and didn't reflect the brand identity — losing potential clients before they made contact.",
+      "WordPress site was lagging, poorly designed, and didn't reflect the brand identity, losing potential clients before they made contact.",
     solution:
       "Complete redesign in Webflow with a property listing system, responsive layout, and clear user-to-client conversion flow.",
     result: "Fully responsive",
@@ -56,7 +56,7 @@ const cases = [
     industry: "Yacht & Marine Tourism",
     tag: "Yacht & Marine Tourism",
     tagClass: "bg-tertiary-container text-on-tertiary-container",
-    title: "Adonis Sail Yachts — Charter Company",
+    title: "Adonis Sail Yachts: Charter Company",
     problem:
       "Old WordPress site had poor UX, no clear booking flow, and failed to communicate the quality of the sailing experience.",
     solution:
@@ -73,9 +73,9 @@ const cases = [
     industry: "Real Estate",
     tag: "Real Estate",
     tagClass: "bg-secondary-container text-on-secondary-container",
-    title: "DF Real Estate — Property Listings Platform",
+    title: "DF Real Estate: Property Listings Platform",
     problem:
-      "The agency needed a fast, bilingual listings site built from the ground up — with SEO-ready property pages and a direct feed into the Spitogatos portal — without a page builder or a developer on call for every update.",
+      "The agency needed a fast, bilingual listings site built from the ground up, with SEO-ready property pages and a direct feed into the Spitogatos portal, without a page builder or a developer on call for every update.",
     solution:
       "Full custom build in Next.js on a Supabase backend, with per-listing SEO pages, auto-generated sitemaps, and a live Spitogatos XML feed integration.",
     result: "Custom Next.js build",
@@ -90,11 +90,11 @@ const cases = [
     industry: "CRM & Admin Panels",
     tag: "CRM & Admin Panels",
     tagClass: "bg-tertiary-container text-on-tertiary-container",
-    title: "DF Real Estate — Custom CRM & Admin Panel",
+    title: "DF Real Estate: Custom CRM & Admin Panel",
     problem:
-      "Beyond the public site, staff had no way to manage listings or track client inquiries themselves — every change meant calling a developer, with no secure place for client data to live.",
+      "Beyond the public site, staff had no way to manage listings or track client inquiries themselves, every change meant calling a developer, with no secure place for client data to live.",
     solution:
-      "A protected admin panel built from scratch on Supabase Auth and Row Level Security — full listing and photo management plus a private client pipeline visible only to staff. The first CRM built end to end.",
+      "A protected admin panel built from scratch on Supabase Auth and Row Level Security, full listing and photo management plus a private client pipeline visible only to staff. The first CRM built end to end.",
     result: "First custom CRM",
     stat1: { value: "Custom", label: "Built From Scratch" },
     stat2: { value: "Supabase", label: "Auth + RLS" },

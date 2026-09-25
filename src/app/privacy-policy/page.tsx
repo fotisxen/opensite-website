@@ -33,9 +33,9 @@ We do not sell, rent, or share your personal data with third parties for marketi
     title: "3. Legal Basis for Processing (GDPR)",
     content: `If you are located in the European Economic Area (EEA), our legal basis for collecting and using your personal information is:
 
-• Contractual necessity — to fulfil a service you have requested
-• Legitimate interests — to improve our services and communicate with you
-• Consent — where you have explicitly agreed to receive communications`,
+• Contractual necessity: to fulfil a service you have requested
+• Legitimate interests: to improve our services and communicate with you
+• Consent: where you have explicitly agreed to receive communications`,
   },
   {
     title: "4. Data Retention",
@@ -45,8 +45,8 @@ We do not sell, rent, or share your personal data with third parties for marketi
     title: "5. Cookies",
     content: `Our website may use cookies to improve your browsing experience. These include:
 
-• Essential cookies — required for the site to function
-• Analytics cookies — to understand how visitors use the site (e.g. Google Analytics)
+• Essential cookies: required for the site to function
+• Analytics cookies: to understand how visitors use the site (e.g. Google Analytics)
 
 You can disable cookies at any time through your browser settings.`,
   },

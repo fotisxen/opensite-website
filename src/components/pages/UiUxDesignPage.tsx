@@ -17,21 +17,21 @@ const layers = [
   {
     label: "02",
     title: "Structure",
-    desc: "Information architecture and low-fidelity wireframes. The skeleton gets approved before it ever looks finished — cheaper to change now.",
+    desc: "Information architecture and low-fidelity wireframes. The skeleton gets approved before it ever looks finished, cheaper to change now.",
     restRotate: "-rotate-1",
     restTranslate: "-translate-y-3",
   },
   {
     label: "03",
     title: "Visual System",
-    desc: "Typography, color, spacing, and component states, built as a reusable system — not a one-off screen that breaks the moment content changes.",
+    desc: "Typography, color, spacing, and component states, built as a reusable system, not a one-off screen that breaks the moment content changes.",
     restRotate: "rotate-1",
     restTranslate: "translate-y-0",
   },
   {
     label: "04",
     title: "Prototype & Test",
-    desc: "Clickable prototypes in front of real users. We watch where they hesitate, then fix the interface — not the user.",
+    desc: "Clickable prototypes in front of real users. We watch where they hesitate, then fix the interface, not the user.",
     restRotate: "rotate-2",
     restTranslate: "translate-y-3",
   },
@@ -68,14 +68,14 @@ export function UiUxDesignPage() {
           </h1>
 
           <p className="max-w-2xl font-body-lg text-body-lg text-text-secondary">
-            We design the five layers underneath every screen you ship —
-            research, structure, system, behavior, and handoff — so what looks
+            We design the five layers underneath every screen you ship:
+            research, structure, system, behavior, and handoff. So what looks
             simple to a user was actually decided on purpose.
           </p>
         </FadeIn>
       </section>
 
-      {/* STACK — NO CURSOR JUMPING VERSION */}
+      {/* STACK - NO CURSOR JUMPING VERSION */}
       <section className="mx-auto mb-32 max-w-container-max px-margin-mobile md:px-margin-desktop">
         <FadeIn delay={0.1}>
           <div className="relative mx-auto flex min-h-[520px] max-w-2xl items-center justify-center py-12">

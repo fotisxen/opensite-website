@@ -9,7 +9,7 @@ export interface MonthlyPoint {
 }
 
 // Validated with the dataviz skill's palette checker against this site's
-// dark surface (#0c1321) — the theme's own secondary/error tokens are too
+// dark surface (#0c1321) - the theme's own secondary/error tokens are too
 // pale/low-chroma for chart marks, so analytics uses this pair instead.
 const COLORS = { income: "#0d9488", expense: "#e11d48" };
 

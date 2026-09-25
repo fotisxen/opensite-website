@@ -101,8 +101,8 @@ export default function TransactionsPage() {
                   <td className="py-3 pr-4">
                     <span className={t.type === "income" ? "text-secondary" : "text-error"}>{typeLabel[t.type]}</span>
                   </td>
-                  <td className="py-3 pr-4 text-text-secondary">{t.category ?? "—"}</td>
-                  <td className="py-3 pr-4 text-text-secondary">{t.client_id ? clientById.get(t.client_id) ?? "—" : "—"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{t.category ?? "-"}</td>
+                  <td className="py-3 pr-4 text-text-secondary">{t.client_id ? clientById.get(t.client_id) ?? "-" : "-"}</td>
                   <td className="py-3 pr-4 text-text-secondary">{fmtEuro(t.amount)}</td>
                   <td className="py-3 pr-4">
                     <DeleteRowButton table="transactions" id={t.id} label={t.category ?? t.type} onDeleted={load} />

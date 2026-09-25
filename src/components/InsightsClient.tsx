@@ -49,7 +49,7 @@ export function InsightsClient({ articles }: Props) {
     if (!email) return;
     setSubscribeState("loading");
 
-    // Step 1 — Mailchimp first
+    // Step 1 - Mailchimp first
     // try {
     //   const formData = new FormData();
     //   formData.append("EMAIL", email);
@@ -93,7 +93,7 @@ export function InsightsClient({ articles }: Props) {
 
   return (
     <>
-      <section className="relative mx-auto mt-12 mb-20 max-w-container-max px-margin-mobile md:px-margin-desktop">
+      <section className="relative mx-auto mt-12 mb-20 max-w-container-max px-margin-mobile max-md:overflow-x-clip md:px-margin-desktop">
         <div className="pointer-events-none absolute -top-20 -right-20 h-96 w-96 rounded-full bg-primary/10 blur-[120px]" />
         <FadeIn className="max-w-3xl">
           <span className="mb-stack-md inline-block rounded-full bg-primary/10 px-3 py-1 font-label-sm text-label-sm text-primary">
@@ -136,7 +136,7 @@ export function InsightsClient({ articles }: Props) {
         {articles.length === 0 ? (
           <FadeIn>
             <div className="py-24 text-center text-text-secondary">
-              No articles published yet — check back soon.
+              No articles published yet, check back soon.
             </div>
           </FadeIn>
         ) : visible.length === 0 ? (
@@ -269,7 +269,7 @@ export function InsightsClient({ articles }: Props) {
                 Stay Ahead of the <span className="text-primary">Curve.</span>
               </h2>
               <p className="mb-stack-lg font-body-lg text-body-lg text-text-secondary">
-                Get notified when we publish new articles — no fluff, just
+                Get notified when we publish new articles, no fluff, just
                 useful.
               </p>
 
@@ -310,7 +310,7 @@ export function InsightsClient({ articles }: Props) {
 
               {subscribeState === "error" && (
                 <p className="mt-3 text-sm text-error">
-                  Something went wrong — please try again.
+                  Something went wrong, please try again.
                 </p>
               )}
 

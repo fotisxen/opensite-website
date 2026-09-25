@@ -70,7 +70,7 @@ export function ContactPage() {
       }
 
       // Best-effort: also drop this into the CRM. A failure here shouldn't
-      // fail the submission — the email notification already went out.
+      // fail the submission - the email notification already went out.
       supabase
         .from("leads")
         .insert({
@@ -282,7 +282,7 @@ export function ContactPage() {
               {
                 icon: "auto_awesome",
                 title: "Technical Excellence",
-                text: "We leverage the latest stack—Next.js, Tailwind, and Node—to deliver high-performance solutions.",
+                text: "We leverage the latest stack (Next.js, Tailwind, and Node) to deliver high-performance solutions.",
               },
               {
                 icon: "architecture",

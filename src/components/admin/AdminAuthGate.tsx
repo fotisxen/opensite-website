@@ -8,7 +8,7 @@ import { supabase } from "@/lib/supabase";
 // gate /admin behind. This component is the client-side equivalent: it
 // checks the Supabase session in the browser and bounces to /admin/login
 // if there isn't one. Real security is enforced by RLS in
-// supabase/schema.sql, not by this redirect — treat this purely as UX.
+// supabase/schema.sql, not by this redirect - treat this purely as UX.
 export default function AdminAuthGate({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
