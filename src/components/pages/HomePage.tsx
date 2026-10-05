@@ -145,9 +145,10 @@ export function HomePage() {
             {[
               ["code", "Web Development"],
               ["shopping_cart", "E-shops"],
-              ["smartphone", "Mobile Apps"],
+              ["devices", "Desktop & Mobile Apps"],
               ["search", "SEO Strategy"],
               ["hub", "CRM Systems"],
+              ["lan", "Intranets & SPFx"],
             ].map(([icon, label]) => (
               <div
                 key={label}

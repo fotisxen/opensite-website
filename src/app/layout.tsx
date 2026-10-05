@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | OpenSite",
   },
   description:
-    "Modern digital solutions designed for real business growth. Websites, e-shops, mobile apps, and SEO strategy.",
+    "Modern digital solutions designed for real business growth. Websites, e-shops, desktop and mobile apps, intranets and SPFx, CRM systems, and SEO strategy.",
 };
 
 export default function RootLayout({

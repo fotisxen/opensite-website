@@ -4,9 +4,10 @@ export interface CaseStudy {
   duration: string;
   title: string;
   subtitle: string;
-  liveUrl: string;
+  liveUrl?: string; // omitted for private projects (e.g. an internal intranet)
   platform: string;
   image: string;
+  imageFit?: "contain"; // for wide brand artwork that should not be cropped
   heroMetrics: { value: string; label: string }[];
   problem: {
     description: string;
@@ -382,6 +383,148 @@ export const caseStudies: CaseStudy[] = [
         iconColor: "text-tertiary",
         value: "First Build",
         text: "The first end-to-end CRM I've designed and shipped.",
+      },
+    ],
+  },
+  {
+    slug: "starbulk-intranet",
+    industry: "Enterprise Intranet",
+    duration: "Enterprise Build",
+    title: "Starbulk Intranet",
+    subtitle:
+      "A modern company intranet for Star Bulk, a global dry bulk shipping company, bringing internal news, tools and resources together in one secure place for employees.",
+    platform: "SharePoint + SPFx",
+    image: "/case-studies/starbulk-intranet.svg",
+    heroMetrics: [
+      { value: "Intranet", label: "Enterprise Portal" },
+      { value: "SPFx", label: "Custom Web Parts" },
+      { value: "Private", label: "Staff Access Only" },
+      { value: "Global", label: "Shipping Company" },
+    ],
+    problem: {
+      description:
+        "A shipping company with people across offices and vessels needs one dependable place for internal information. Scattered tools, documents and announcements make everyday work slower than it should be.",
+      bullets: [
+        "Company information and tools spread across many places",
+        "Internal news and resources hard to find",
+        "Needed a secure, staff-only experience that fits the company's existing Microsoft environment",
+      ],
+    },
+    solution: {
+      description:
+        "We built the intranet on SharePoint, extended with custom SharePoint Framework (SPFx) web parts, so employees get a clean, branded home page and the tools they need, inside the Microsoft 365 setup the company already uses.",
+      highlights: [
+        {
+          title: "Custom SPFx Web Parts",
+          desc: "Purpose-built components instead of one-size-fits-all SharePoint defaults.",
+        },
+        {
+          title: "Branded Experience",
+          desc: "A modern, consistent look that feels like the company, not a template.",
+        },
+        {
+          title: "Secure by Design",
+          desc: "Staff-only access that inherits the company's existing Microsoft sign-in and permissions.",
+        },
+        {
+          title: "Easy to Maintain",
+          desc: "Content owners update pages themselves, without calling a developer.",
+        },
+      ],
+    },
+    impact: [
+      {
+        icon: "hub",
+        iconWrap: "bg-primary/10",
+        iconColor: "text-primary",
+        value: "One Hub",
+        text: "Company information and tools in a single, easy-to-find home.",
+      },
+      {
+        icon: "extension",
+        iconWrap: "bg-secondary/10",
+        iconColor: "text-secondary",
+        value: "SPFx",
+        text: "Custom web parts built for how the company actually works.",
+      },
+      {
+        icon: "lock",
+        iconWrap: "bg-tertiary/10",
+        iconColor: "text-tertiary",
+        value: "Enterprise-Grade",
+        text: "Built inside Microsoft 365, with the security the company already trusts.",
+      },
+    ],
+  },
+  {
+    slug: "hoopstruct",
+    industry: "SaaS Product",
+    duration: "Our Own Product",
+    title: "HoopStruct",
+    subtitle:
+      "Our first product: basketball analytics that turns a box score into real advanced stats and scouting reports, shipped as a website, two desktop apps and two mobile apps.",
+    liveUrl: "https://hoopstruct.com",
+    platform: "Next.js + Electron + React Native",
+    image: "/case-studies/hoopstruct.png",
+    imageFit: "contain",
+    heroMetrics: [
+      { value: "5", label: "Website + 4 Apps" },
+      { value: "Win + Mac", label: "Desktop Apps" },
+      { value: "iOS + Android", label: "Mobile Apps" },
+      { value: "In-house", label: "Our Own Product" },
+    ],
+    problem: {
+      description:
+        "Coaches and analysts rarely get real advanced statistics from a simple box score. Deep analytics usually means expensive software or a stats company, and the insight never reaches the players.",
+      bullets: [
+        "Box scores stop at basic numbers, with no real advanced metrics",
+        "Entering game data by hand is slow",
+        "Scouting insight rarely reaches the players themselves",
+      ],
+    },
+    solution: {
+      description:
+        "We designed and built HoopStruct end to end: a marketing website, a desktop app for Windows and macOS where coaches analyse games, and a companion mobile app for iOS and Android where players read the latest scouting report.",
+      highlights: [
+        {
+          title: "Three Ways In",
+          desc: "Snap a photo of a box score (AI reads it), import play-by-play data, or type it in.",
+        },
+        {
+          title: "Real Advanced Stats",
+          desc: "PIR, PER, PIE, Four Factors and a from-scratch Impact Rating, not a handful of token numbers.",
+        },
+        {
+          title: "Scouting Reports",
+          desc: "Strengths, weaknesses and how to beat a team, generated from the data.",
+        },
+        {
+          title: "Desktop and Mobile",
+          desc: "Windows and macOS apps for coaches, iOS and Android apps for players, one shared cloud backend.",
+        },
+      ],
+    },
+    impact: [
+      {
+        icon: "devices",
+        iconWrap: "bg-primary/10",
+        iconColor: "text-primary",
+        value: "4 Apps",
+        text: "Two desktop apps and two mobile apps, plus the website, all built in-house.",
+      },
+      {
+        icon: "rocket_launch",
+        iconWrap: "bg-secondary/10",
+        iconColor: "text-secondary",
+        value: "Our Product",
+        text: "Our first own product, built the same way we build for clients.",
+      },
+      {
+        icon: "monitoring",
+        iconWrap: "bg-tertiary/10",
+        iconColor: "text-tertiary",
+        value: "Pro-Level",
+        text: "Analytics depth that normally takes expensive software or a stats company.",
       },
     ],
   },

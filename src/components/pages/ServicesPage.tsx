@@ -200,14 +200,22 @@ export function ServicesPage() {
                   smartphone
                 </span>
                 <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
-                  Mobile Apps
+                  Desktop &amp; Mobile Apps
                 </h3>
                 <p className="mb-stack-lg font-body-md text-text-secondary">
-                  Cross-platform mobile solutions with seamless user
-                  experiences.
+                  Native-feeling apps for the desktop and the phone, built from
+                  one codebase and one backend. We ship our own product this
+                  way, see{" "}
+                  <Link
+                    href="/case-studies/hoopstruct/"
+                    className="text-primary hover:underline"
+                  >
+                    HoopStruct
+                  </Link>
+                  .
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                  {["iOS", "Android"].map((platform) => (
+                  {["Windows", "macOS", "iOS", "Android"].map((platform) => (
                     <div
                       key={platform}
                       className="rounded-lg border border-surface-border bg-surface-container p-3 text-center"
@@ -329,6 +337,71 @@ export function ServicesPage() {
                         </div>
                       ))}
                     </div>
+                  </div>
+                </div>
+              </div>
+            </StaggerItem>
+            <StaggerItem className="group glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-12">
+              <div className="flex flex-col gap-stack-lg md:flex-row">
+                <div className="md:w-1/2">
+                  <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-tertiary">
+                    lan
+                  </span>
+                  <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
+                    Intranets &amp; SharePoint (SPFx)
+                  </h3>
+                  <p className="mb-stack-lg font-body-md text-text-secondary">
+                    Internal portals your people actually use. We build modern
+                    company intranets on SharePoint and extend them with custom
+                    SPFx web parts, inside the Microsoft 365 setup you already
+                    have.
+                  </p>
+                  <ul className="mb-stack-lg space-y-3">
+                    {[
+                      {
+                        label: "SharePoint intranets",
+                        note: "Branded, easy to maintain",
+                      },
+                      {
+                        label: "Custom SPFx web parts",
+                        note: "Built for how your team works",
+                      },
+                      {
+                        label: "Microsoft 365 integration",
+                        note: "Teams, sign-in and permissions",
+                      },
+                    ].map((item) => (
+                      <li
+                        key={item.label}
+                        className="flex items-center gap-3 text-on-surface"
+                      >
+                        <span className="material-symbols-outlined text-secondary">
+                          check_circle
+                        </span>
+                        <span className="font-label-md">
+                          {item.label}
+                          <span className="ml-2 font-body-sm text-text-secondary">
+                            {item.note}
+                          </span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/case-studies/starbulk-intranet/"
+                    className="font-label-md text-primary hover:underline"
+                  >
+                    See the Starbulk intranet →
+                  </Link>
+                </div>
+                <div className="flex items-center md:w-1/2">
+                  <div className="relative h-64 w-full overflow-hidden rounded-xl border border-surface-border shadow-2xl">
+                    <Image
+                      src="/case-studies/starbulk-intranet.svg"
+                      alt="Intranet portal built with SharePoint and SPFx"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </div>

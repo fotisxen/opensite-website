@@ -13,6 +13,8 @@ const filters = [
   "Hospitality Tech",
   "Yacht & Marine Tourism",
   "CRM & Admin Panels",
+  "Enterprise Intranet",
+  "SaaS Product",
 ];
 
 const cases = [
@@ -100,6 +102,39 @@ const cases = [
     stat2: { value: "Supabase", label: "Auth + RLS" },
     statColor: "text-secondary",
   },
+  {
+    slug: "starbulk-intranet",
+    image: "/case-studies/starbulk-intranet.svg",
+    industry: "Enterprise Intranet",
+    tag: "Enterprise Intranet",
+    tagClass: "bg-primary-container text-white",
+    title: "Starbulk Intranet: SharePoint & SPFx Portal",
+    problem:
+      "A global shipping company needed one dependable, secure home for internal news, tools and resources, instead of information scattered across many places.",
+    solution:
+      "A modern company intranet on SharePoint, extended with custom SPFx web parts and built inside the Microsoft 365 setup the company already uses.",
+    result: "Enterprise intranet",
+    stat1: { value: "SPFx", label: "Custom Web Parts" },
+    stat2: { value: "M365", label: "Secure by Design" },
+    statColor: "text-primary",
+  },
+  {
+    slug: "hoopstruct",
+    image: "/case-studies/hoopstruct.png",
+    imageFit: "contain" as const,
+    industry: "SaaS Product",
+    tag: "Our Own Product",
+    tagClass: "bg-secondary-container text-on-secondary-container",
+    title: "HoopStruct: Basketball Analytics Product",
+    problem:
+      "Coaches and analysts rarely get real advanced statistics from a box score, and the insight never reaches the players.",
+    solution:
+      "Our own product, built end to end: a website, desktop apps for Windows and macOS, and mobile apps for iOS and Android, on one shared cloud backend.",
+    result: "Website + 4 apps",
+    stat1: { value: "4", label: "Desktop & Mobile Apps" },
+    stat2: { value: "In-house", label: "Our Own Product" },
+    statColor: "text-secondary",
+  },
 ];
 
 export function CaseStudiesPage() {
@@ -169,14 +204,20 @@ export function CaseStudiesPage() {
                 key={c.slug}
                 className="case-study-card group relative flex flex-col overflow-hidden rounded-[16px] border border-surface-border bg-surface-card"
               >
-                <div className="relative h-64 overflow-hidden md:h-80">
+                <div
+                  className={`relative h-64 overflow-hidden md:h-80 ${
+                    "imageFit" in c && c.imageFit === "contain" ? "bg-[#0b0c10]" : ""
+                  }`}
+                >
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-surface-card to-transparent" />
                   <Image
                     src={c.image}
                     alt={c.title}
                     width={700}
                     height={450}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className={`h-full w-full transition-transform duration-700 group-hover:scale-105 ${
+                      "imageFit" in c && c.imageFit === "contain" ? "object-contain" : "object-cover"
+                    }`}
                   />
                   <div className="absolute top-6 left-6 z-20">
                     <span

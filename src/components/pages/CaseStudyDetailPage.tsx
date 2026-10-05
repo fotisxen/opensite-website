@@ -31,17 +31,24 @@ export function CaseStudyDetailPage({ slug }: Props) {
             <span className="font-label-sm text-label-sm text-text-secondary">
               · {cs.duration}
             </span>
-            <a
-              href={cs.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-full border border-surface-border px-3 py-1 font-label-sm text-label-sm text-text-secondary transition-colors hover:text-text-primary"
-            >
-              <span className="material-symbols-outlined text-[14px]">
-                open_in_new
+            {cs.liveUrl ? (
+              <a
+                href={cs.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 rounded-full border border-surface-border px-3 py-1 font-label-sm text-label-sm text-text-secondary transition-colors hover:text-text-primary"
+              >
+                <span className="material-symbols-outlined text-[14px]">
+                  open_in_new
+                </span>
+                View Live Site
+              </a>
+            ) : (
+              <span className="flex items-center gap-1 rounded-full border border-surface-border px-3 py-1 font-label-sm text-label-sm text-text-secondary">
+                <span className="material-symbols-outlined text-[14px]">lock</span>
+                Private (internal system)
               </span>
-              View Live Site
-            </a>
+            )}
           </div>
 
           <h1 className="gradient-text mb-6 font-display-lg text-display-lg leading-tight">
@@ -98,12 +105,18 @@ export function CaseStudyDetailPage({ slug }: Props) {
           </StaggerItem>
 
           {/* Image */}
-          <StaggerItem className="relative h-[400px] overflow-hidden rounded-xl border border-surface-border md:col-span-5">
+          <StaggerItem
+            className={`relative h-[400px] overflow-hidden rounded-xl border border-surface-border md:col-span-5 ${
+              cs.imageFit === "contain" ? "bg-[#0b0c10]" : ""
+            }`}
+          >
             <Image
               src={cs.image}
               alt={cs.title}
               fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
+              className={`transition-transform duration-700 hover:scale-105 ${
+                cs.imageFit === "contain" ? "object-contain" : "object-cover"
+              }`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">

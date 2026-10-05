@@ -177,7 +177,7 @@ export default function HeroScene() {
     world.add(site);
 
     // Services orbiting the site, matching what the agency sells.
-    const services = ["Web", "E-shop", "App", "SEO", "CRM"];
+    const services = ["Web", "E-shop", "Apps", "SEO", "CRM", "SPFx"];
     const chips = services.map((name, i) => {
       const tex = labelTexture(name, {
         w: 256,
