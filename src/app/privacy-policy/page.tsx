@@ -42,20 +42,27 @@ We do not sell, rent, or share your personal data with third parties for marketi
     content: `We retain your personal data only for as long as necessary to fulfil the purposes outlined in this policy, or as required by law. Contact form submissions are retained for up to 2 years. You may request deletion of your data at any time.`,
   },
   {
-    title: "5. Cookies",
-    content: `Our website may use cookies to improve your browsing experience. These include:
+    title: "5. Cookies and Advertising Measurement",
+    content: `When you visit our website we load no advertising or measurement scripts until you press "Accept" on the cookie banner. The only thing stored before that is your choice, kept on your device for 180 days.
 
-• Essential cookies: required for the site to function
-• Analytics cookies: to understand how visitors use the site (e.g. Google Analytics)
+If you accept, we may load:
 
-You can disable cookies at any time through your browser settings.`,
+• Google Ads tag (measures which Google ads lead to enquiries)
+• Meta Pixel (measures which Meta ads lead to enquiries)
+
+These tools may set cookies and receive information such as your IP address, device details and the page you visited. If you decline, none of them load, and this also applies to the pages you open afterwards.
+
+You can change your choice at any time with the "Cookie settings" link in the footer.
+
+Without cookies, when you send us a form we include the page you landed on and, if you arrived from an ad, the campaign details that were in the link (the utm_ parameters), so we know which ad brought the enquiry. Advertising click identifiers (such as gclid) are included only if you accepted.`,
   },
   {
     title: "6. Third-Party Services",
     content: `We use trusted third-party tools to operate our website and deliver services, including:
 
-• Google Analytics (website analytics)
-• EmailJS / Formsubmit (form submissions)
+• Formsubmit (forms): the details you enter in a form, such as name, phone number, email and message, are sent through Formsubmit to our email inbox at info@opensite.gr
+• EmailJS (booking confirmations)
+• Google Ads and Meta Pixel (advertising measurement, only after you accept cookies)
 • Hostinger (website hosting)
 
 These services have their own privacy policies and we encourage you to review them.`,
@@ -99,7 +106,7 @@ export default function PrivacyPolicyPage() {
           <h1 className="mb-4 text-4xl font-bold text-text-primary">
             Privacy Policy
           </h1>
-          <p className="text-text-secondary">Last updated: July 2025</p>
+          <p className="text-text-secondary">Last updated: October 2026</p>
           <p className="mt-4 text-text-secondary leading-relaxed">
             At OpenSite, we are committed to protecting your privacy. This
             policy explains what data we collect, how we use it, and your rights
