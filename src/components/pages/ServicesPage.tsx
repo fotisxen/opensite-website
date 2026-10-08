@@ -127,8 +127,8 @@ export function ServicesPage() {
                 <div className="flex items-center md:w-1/2">
                   <div className="h-64 w-full overflow-hidden rounded-xl shadow-2xl grayscale transition-all duration-500 group-hover:grayscale-0">
                     <Image
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuApQjAx3bwJ1XnKaEqONjtoLVcImIbSsSKcn3zdWg6pevgyqZRBWH7HaNK74WMGYrNCp0QqllulOH1UdY51RTK_I1rCGpFjisXl4jPhku2BT4C3JyJpbzl4zKZaQKADz3khMRiGXUpVlp6MMlVmq8Nbkf6UFuZvETxixDLxRHBO1Pjiqbs4UcTpfUwAdtz_EC8YhSjWGe-VyQrqS1uARkgYlfcyXqJpOqUAsKoHg_SbMjDABySri8xeCA5tXQou9Yjyfb0_WP1_jk0"
-                      alt="Web development workspace"
+                      src="/work/df-real-estate.webp"
+                      alt="DF Real Estate, a Next.js site we built"
                       width={600}
                       height={400}
                       className="h-full w-full object-cover"
@@ -151,14 +151,6 @@ export function ServicesPage() {
                   converts visitors into loyal customers.
                 </p>
               </div>
-              <div className="mt-stack-lg border-t border-surface-border pt-stack-lg">
-                <div className="font-headline-sm text-headline-sm text-secondary">
-                  240%
-                </div>
-                <div className="font-label-sm text-label-sm uppercase text-text-secondary">
-                  Average Organic Growth
-                </div>
-              </div>
             </StaggerItem>
 
             <StaggerItem className="glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-4">
@@ -172,30 +164,10 @@ export function ServicesPage() {
                 Custom shopping experiences designed to maximize AOV and
                 conversion rates.
               </p>
-              <div className="group h-40 w-full overflow-hidden rounded-xl bg-surface-container-high">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCZbZQuIQYM_dn8ITluc-pXIxOcIzPD0UjiheAQzBRKp_l2JBbmh2iqSIEi1xXMrjWgHQIugaMjBYz8L73V6ltRPlcsY40KgOuL7b9ScbXgXzTUpV6ohDlRdddiOmkriVgEqiiBUkpR44vJLXkO43O2Yi3qTDIIALEXoBQK9063DM3gKr979HsKcVtwp72lFVuq8Xf-Y-aEx--9MvUtJz_xHtssRhxnFD21aHJNE7q4qoZL_ABQbdsPv_UJnfQR4oTAs__Oi9xGtw"
-                  alt="E-commerce product display"
-                  width={400}
-                  height={300}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
             </StaggerItem>
 
             <StaggerItem className="glass-card flex flex-col gap-stack-lg rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-8 md:flex-row">
-              <div className="order-2 flex items-center md:order-1 md:w-1/2">
-                <div className="relative h-64 w-full rounded-xl border border-surface-border bg-black/40 p-4">
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfDWQnAadfX9WpfJ5FRWhUO5De2Ghd7zYaAOwwsc0AE23O4Zpwi8V6VKS1r1yuTcpbK8o7Vvff5PXqNTZ90ryJkIhfIwYOAh_PofcfMRk13HcTfmX3xE4BEK1t6KzuEPE1IOtH1gsb6GBQPMVeLAtfLMgvVKsBQ5f3_1ECMdfyFbADeaUxq8GL_ASkuOBq2wIs8StU7Xgx--k_7rtzAnCMzoPMUfNNjBNWTC6j7gEbzBOK8HS7_QG_0gvXn0kTY5eJ-IixRVr2fzY"
-                    alt="Mobile app interface"
-                    width={500}
-                    height={400}
-                    className="h-full w-full rounded-lg object-cover"
-                  />
-                </div>
-              </div>
-              <div className="order-1 md:order-2 md:w-1/2">
+              <div className="w-full">
                 <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-primary">
                   smartphone
                 </span>
@@ -343,7 +315,7 @@ export function ServicesPage() {
             </StaggerItem>
             <StaggerItem className="group glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-12">
               <div className="flex flex-col gap-stack-lg md:flex-row">
-                <div className="md:w-1/2">
+                <div className="w-full">
                   <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-tertiary">
                     lan
                   </span>
@@ -393,16 +365,6 @@ export function ServicesPage() {
                   >
                     See the Starbulk intranet →
                   </Link>
-                </div>
-                <div className="flex items-center md:w-1/2">
-                  <div className="relative h-64 w-full overflow-hidden rounded-xl border border-surface-border shadow-2xl">
-                    <Image
-                      src="/case-studies/starbulk-intranet.svg"
-                      alt="Intranet portal built with SharePoint and SPFx"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                 </div>
               </div>
             </StaggerItem>

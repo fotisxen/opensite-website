@@ -180,7 +180,7 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: "https://adonis-sail-yachts.webflow.io",
     platform: "Webflow",
     image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "/work/adonis-sail-yachts.webp",
     heroMetrics: [
       { value: "Webflow", label: "Platform" },
       { value: "100%", label: "Responsive" },
@@ -324,7 +324,7 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: "https://df-real-estate.com/admin/login",
     platform: "Next.js + Supabase",
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+      "/work/df-real-estate-crm.webp",
     heroMetrics: [
       { value: "Custom", label: "Built From Scratch" },
       { value: "Supabase", label: "Auth + RLS" },

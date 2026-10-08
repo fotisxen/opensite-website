@@ -28,9 +28,8 @@ export function AboutPage() {
               <span className="text-gradient">businesses grow</span>.
             </h1>
             <p className="mb-10 max-w-2xl font-body-lg text-body-lg text-text-secondary">
-              We are a team of designers, engineers, and strategists obsessed
-              with creating high-performance digital experiences that solve real
-              market problems.
+              OpenSite is a web development studio in Thessaloniki. You work
+              directly with the developer who builds your site.
             </p>
           </div>
         </FadeIn>
@@ -38,18 +37,7 @@ export function AboutPage() {
 
       <section className="bg-surface-container-low px-margin-mobile py-24 md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">
-          <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
-            <FadeIn>
-              <div className="group relative aspect-square overflow-hidden rounded-xl border border-surface-border shadow-2xl md:aspect-video lg:aspect-square">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9va2IBUcRrB862XB7JQCNy19GghTspwrPQxjHOp4P9rpWW7gjPGyRms909mortbq3FwoGtlWIP4nAPrTSZpGgWjFao_3eiF3ooGae0xrhN1U9xhCCz6bcaSBFJp5fd94ufM8AfJhqnHfAEsaBmm0XVXSuq2_hdXDfBE-NJKT5eNkkYaFX7MC6hHOrLFVOaetYy3KMlR4Gm2nMQeaj7rHfDKytspAKBEUJwFMf3quBFXA-VJEWuoDwL_E1EuxfYGGn0VOyeFBRjZE"
-                  alt="OpenSite agency workspace"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              </div>
-            </FadeIn>
+          <div className="grid grid-cols-1 items-center gap-20">
             <FadeIn delay={0.15} direction="left" className="space-y-12">
               <div>
                 <h2 className="mb-6 font-headline-md text-headline-md">
@@ -60,24 +48,6 @@ export function AboutPage() {
                   through superior digital craftsmanship. We don&apos;t just
                   build websites; we engineer revenue-generating ecosystems.
                 </p>
-              </div>
-              <div className="grid grid-cols-2 gap-gutter">
-                <div className="rounded-xl border border-surface-border bg-surface-card p-6">
-                  <div className="mb-2 font-display-lg text-headline-lg text-secondary">
-                    &lt;2s
-                  </div>
-                  <div className="font-label-md text-text-secondary">
-                    Avg. Page Load Time
-                  </div>
-                </div>
-                <div className="rounded-xl border border-surface-border bg-surface-card p-6">
-                  <div className="mb-2 font-display-lg text-headline-lg text-secondary">
-                    100%
-                  </div>
-                  <div className="font-label-md text-text-secondary">
-                    Client Retention
-                  </div>
-                </div>
               </div>
             </FadeIn>
           </div>
@@ -186,14 +156,14 @@ export function AboutPage() {
             </StaggerItem>
             <StaggerItem className="group relative overflow-hidden rounded-xl border border-surface-border md:col-span-8">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCTisQfmo9PjzKKJK7blrHjvKpaPq9-3cCPjVH692UL6XjeaOMeF4CJuIqEjeKzWq3gGSZ0ujZb1VMTMqeGn5hRDgz5-mfETVd5LatDyC6ZsFrc6y_kKKNXQarDo-6RYvO0Kxl93Jdt44Z3EErjM10Tq8WUvEmS9Ru5JivqRcTCnSqBuphpNk399zD4Eq20kRO3qPWIoevkc7d7KA12MPnBzxyJE0DqM8LC8vVDWSDfBgqjEopy9nuYOu0YDH4V2FU1Q_6_pC5mns"
-                alt="Team collaboration"
+                src="/work/one-menoo.webp"
+                alt="OneMenoo website"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/40">
                 <h4 className="p-6 text-center font-headline-sm text-headline-sm text-white">
-                  Innovation Through Collaboration
+                  Recent work: OneMenoo
                 </h4>
               </div>
             </StaggerItem>

@@ -47,14 +47,14 @@ const cases = [
     solution:
       "Complete redesign in Webflow with a property listing system, responsive layout, and clear user-to-client conversion flow.",
     result: "Fully responsive",
-    stat1: { value: "100%", label: "Mobile Ready" },
+    stat1: null,
     stat2: { value: "Webflow", label: "Platform" },
     statColor: "text-secondary",
   },
   {
     slug: "adonis-sail-yachts",
     image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "/work/adonis-sail-yachts.webp",
     industry: "Yacht & Marine Tourism",
     tag: "Yacht & Marine Tourism",
     tagClass: "bg-tertiary-container text-on-tertiary-container",
@@ -64,7 +64,7 @@ const cases = [
     solution:
       "Rebuilt in Webflow with immersive design, streamlined enquiry flow, and mobile-first layout that matches the premium brand.",
     result: "Redesigned UX",
-    stat1: { value: "2000+", label: "Est. Founded" },
+    stat1: null,
     stat2: { value: "Webflow", label: "Platform" },
     statColor: "text-tertiary",
   },
@@ -88,7 +88,7 @@ const cases = [
   {
     slug: "df-real-estate-crm",
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+      "/work/df-real-estate-crm.webp",
     industry: "CRM & Admin Panels",
     tag: "CRM & Admin Panels",
     tagClass: "bg-tertiary-container text-on-tertiary-container",
@@ -163,8 +163,7 @@ export function CaseStudiesPage() {
               </h1>
               <p className="font-body-lg text-body-lg text-text-secondary">
                 We don&apos;t just build websites; we engineer growth engines.
-                Explore how we&apos;ve helped global leaders scale their digital
-                presence.
+                Selected projects, with what changed for each client.
               </p>
             </div>
           </div>
@@ -255,17 +254,21 @@ export function CaseStudiesPage() {
                   </div>
                   <div className="mt-auto flex items-center justify-between">
                     <div className="flex gap-4">
-                      <div className="text-center">
-                        <div
-                          className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}
-                        >
-                          {c.stat1.value}
-                        </div>
-                        <div className="font-label-sm text-label-sm text-text-secondary">
-                          {c.stat1.label}
-                        </div>
-                      </div>
-                      <div className="w-px bg-surface-border" />
+                      {c.stat1 && (
+                        <>
+                          <div className="text-center">
+                            <div
+                              className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}
+                            >
+                              {c.stat1.value}
+                            </div>
+                            <div className="font-label-sm text-label-sm text-text-secondary">
+                              {c.stat1.label}
+                            </div>
+                          </div>
+                          <div className="w-px bg-surface-border" />
+                        </>
+                      )}
                       <div className="text-center">
                         <div
                           className={`font-headline-sm text-headline-sm font-bold ${c.statColor}`}

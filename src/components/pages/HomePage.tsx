@@ -123,21 +123,6 @@ export function HomePage() {
           >
             <div className="pointer-events-none absolute inset-8 rounded-full bg-primary-container/20 blur-[90px]" />
             <HeroScene />
-            <div className="glass-card absolute bottom-2 left-2 rounded-xl border border-primary-container/30 p-5 shadow-xl sm:bottom-4 sm:left-4">
-              <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-3xl text-secondary">
-                  trending_up
-                </span>
-                <div>
-                  <div className="font-label-sm text-xs text-text-secondary">
-                    Tailored Solutions
-                  </div>
-                  <div className="text-xl font-bold text-text-primary">
-                    100%
-                  </div>
-                </div>
-              </div>
-            </div>
           </FadeIn>
         </div>
       </section>
@@ -310,8 +295,8 @@ export function HomePage() {
                 tagClass: "bg-tertiary/10 text-tertiary",
                 title: "Adonis Sail Yachts",
                 desc: "A slow, poorly structured WordPress site was losing potential charter clients. We redesigned it in Webflow, clean UX, fast load, seamless booking flow.",
-                metric: "100%",
-                sub: "Responsive across all devices",
+                metric: "",
+                sub: "",
                 href: "/case-studies/adonis-sail-yachts/",
               },
             ].map((c) => (
@@ -339,12 +324,14 @@ export function HomePage() {
                       {c.title}
                     </h3>
                     <p className="mb-4 text-sm text-text-secondary">{c.desc}</p>
-                    <div className="rounded-lg bg-surface-container-low p-4">
-                      <div className="text-2xl font-bold text-secondary">
-                        {c.metric}
+                    {c.metric && (
+                      <div className="rounded-lg bg-surface-container-low p-4">
+                        <div className="text-2xl font-bold text-secondary">
+                          {c.metric}
+                        </div>
+                        <div className="text-xs text-text-secondary">{c.sub}</div>
                       </div>
-                      <div className="text-xs text-text-secondary">{c.sub}</div>
-                    </div>
+                    )}
                   </div>
                   <Link
                     href={c.href}
@@ -418,14 +405,7 @@ export function HomePage() {
                       verified
                     </span>
                   </div>
-                  <div className="mb-4 text-5xl font-bold text-text-primary">
-                    100%
-                  </div>
-                  <div className="mb-8 text-xl text-text-secondary">
-                    Client retention rate based on successful business outcomes
-                    and continued support.
-                  </div>
-                  <div className="border-t border-surface-border pt-8">
+                  <div>
                     <div className="font-label-md text-sm text-text-primary italic">
                       &ldquo;From design to launch, OpenSite created a website
                       that captures the elegance of our sailing experiences
