@@ -3,6 +3,7 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/lib/case-studies";
 import { getAllArticles } from "@/lib/contentful";
+import { landingKeys, landings } from "@/lib/landing";
 
 const BASE_URL = "https://opensite.gr";
 
@@ -17,6 +18,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: route === "" ? 1 : 0.8,
     }),
   );
+
+  // Greek landing pages for the ads. The thank-you page is deliberately left out.
+  const landingRoutes = landingKeys.map((key) => ({
+    url: `${BASE_URL}/${landings[key].slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
 
   const caseStudyRoutes = caseStudies.map((cs) => ({
     url: `${BASE_URL}/case-studies/${cs.slug}/`,
@@ -33,5 +42,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...caseStudyRoutes, ...articleRoutes];
+  return [...staticRoutes, ...landingRoutes, ...caseStudyRoutes, ...articleRoutes];
 }
