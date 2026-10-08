@@ -132,8 +132,8 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
                   <Image
                     src={`/work/${card.slug}.webp`}
                     alt={`Screenshot του site ${card.name}`}
-                    width={720}
-                    height={450}
+                    width={800}
+                    height={500}
                     loading="lazy"
                     className="h-auto w-full"
                   />
