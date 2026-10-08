@@ -82,6 +82,14 @@ export function Header() {
                 </Link>
               );
             })}
+            <Link
+              href="/kataskevi-istoselidon-thessaloniki/"
+              hrefLang="el"
+              lang="el"
+              className="whitespace-nowrap font-body-md text-body-md text-on-surface-variant transition-colors hover:text-text-primary"
+            >
+              Ελληνικά
+            </Link>
           </nav>
 
           {/* RIGHT - CTA on desktop, hamburger on mobile; flex-1 + justify-end keeps it flush right */}
@@ -177,6 +185,15 @@ export function Header() {
                     </motion.div>
                   );
                 })}
+
+                <Link
+                  href="/kataskevi-istoselidon-thessaloniki/"
+                  hrefLang="el"
+                  lang="el"
+                  className="flex items-center border-b border-surface-border py-4 font-body-md text-body-md text-on-surface-variant transition-colors hover:text-text-primary"
+                >
+                  Ελληνικά
+                </Link>
 
                 {/* Mobile CTA */}
                 <motion.div

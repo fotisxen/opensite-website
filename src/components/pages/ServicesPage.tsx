@@ -55,12 +55,12 @@ export function ServicesPage() {
             digital products that dominate markets and accelerate revenue.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contact/"
-              className="w-full rounded-xl bg-primary-container px-8 py-4 font-label-md text-on-primary-container shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] sm:w-auto"
+            <a
+              href="#process"
+              className="w-full rounded-xl bg-primary-container px-8 py-4 text-center font-label-md text-on-primary-container shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] sm:w-auto"
             >
               View Our Process
-            </Link>
+            </a>
             <Link
               href="/case-studies/"
               className="w-full rounded-xl border border-surface-border px-8 py-4 font-label-md text-text-primary transition-all hover:bg-surface-container sm:w-auto"
@@ -410,7 +410,7 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-surface-container-lowest py-24">
+      <section id="process" className="scroll-mt-24 bg-surface-container-lowest py-24">
         <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
           <FadeIn className="mb-16 text-center">
             <h2 className="mb-4 font-headline-lg text-headline-lg text-text-primary">

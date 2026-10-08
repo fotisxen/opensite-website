@@ -3,18 +3,36 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { isAdminPath, isGreekFramePath } from "@/lib/routes";
+import { useBannerOpen } from "@/lib/tracking";
+
+const SHOW_AFTER_PX = 600;
+const EXCLUDED = ["/book-a-call", "/contact"];
 
 export function StickyBookCall() {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
+  const bannerOpen = useBannerOpen();
+  const [scrolled, setScrolled] = useState(false);
 
-  // Don't render until after first paint - prevents stealing LCP
+  // Only after the visitor has read a screen or so, so it never covers the
+  // first thing they see.
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 1000);
-    return () => clearTimeout(t);
+    const onScroll = () => setScrolled(window.scrollY > SHOW_AFTER_PX);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!mounted || pathname?.startsWith("/admin")) return null;
+  const path = (pathname ?? "").replace(/\/+$/, "");
+  if (
+    !scrolled ||
+    bannerOpen ||
+    EXCLUDED.includes(path) ||
+    isGreekFramePath(pathname) ||
+    isAdminPath(pathname)
+  ) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-6 left-1/2 z-[9999] -translate-x-1/2 xl:hidden">

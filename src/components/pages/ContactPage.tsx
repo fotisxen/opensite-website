@@ -14,6 +14,7 @@ export function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     businessType: "E-commerce Store",
     brief: "",
   });
@@ -55,6 +56,7 @@ export function ContactPage() {
           body: JSON.stringify({
             name: formData.name,
             email: formData.email,
+            phone: formData.phone || "-",
             business_type: formData.businessType,
             message: formData.brief,
             _subject: `New project inquiry from ${formData.name}`,
@@ -76,6 +78,7 @@ export function ContactPage() {
         .insert({
           full_name: formData.name,
           email: formData.email,
+          phone: formData.phone || null,
           source: "contact_form",
           message: `Business type: ${formData.businessType}\n\n${formData.brief}`,
         } as never)
@@ -220,6 +223,21 @@ export function ContactPage() {
                   </div>
                   <div className="space-y-2">
                     <label className="ml-1 font-label-md text-label-md text-text-secondary">
+                      Phone (optional)
+                    </label>
+                    <input
+                      className="w-full rounded-xl border border-surface-border bg-background/50 px-4 py-3 outline-none transition-all placeholder:text-text-secondary/30 focus:border-transparent focus:ring-2 focus:ring-primary-container"
+                      placeholder="+30 ..."
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="ml-1 font-label-md text-label-md text-text-secondary">
                       Business Type
                     </label>
 
@@ -264,7 +282,7 @@ export function ContactPage() {
                     ) : (
                       <>
                         By submitting, you agree to our{" "}
-                        <Link href="#" className="text-primary hover:underline">
+                        <Link href="/privacy-policy/" className="text-primary hover:underline">
                           Privacy Policy
                         </Link>
                         .

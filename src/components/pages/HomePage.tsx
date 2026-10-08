@@ -20,6 +20,7 @@ export function HomePage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     businessType: "E-commerce",
     message: "",
   });
@@ -55,6 +56,7 @@ export function HomePage() {
           body: JSON.stringify({
             name: formData.name,
             email: formData.email,
+            phone: formData.phone || "-",
             business_type: formData.businessType,
             message: formData.message,
             _subject: `New project inquiry from ${formData.name}`,
@@ -73,6 +75,7 @@ export function HomePage() {
       setFormData({
         name: "",
         email: "",
+        phone: "",
         businessType: "E-commerce",
         message: "",
       });
@@ -84,7 +87,7 @@ export function HomePage() {
 
   return (
     <>
-      <section className="relative flex items-center overflow-hidden pb-10 pt-24 lg:min-h-[921px] lg:py-0">
+      <section className="relative flex items-center overflow-hidden pb-10 pt-4 lg:min-h-[921px] lg:py-0">
         <div className="relative z-10 mx-auto grid max-w-container-max grid-cols-1 items-center gap-gutter px-margin-mobile py-stack-lg md:px-margin-desktop lg:grid-cols-2">
           <FadeIn className="space-y-stack-lg">
             <h1 className="font-display-lg text-display-lg-mobile leading-tight text-text-primary md:text-display-lg">
@@ -116,7 +119,7 @@ export function HomePage() {
           <FadeIn
             delay={0.15}
             direction="left"
-            className="relative order-first h-[300px] sm:h-[420px] lg:order-none lg:h-[560px]"
+            className="relative h-[300px] sm:h-[420px] lg:h-[560px]"
           >
             <div className="pointer-events-none absolute inset-8 rounded-full bg-primary-container/20 blur-[90px]" />
             <HeroScene />
@@ -302,14 +305,14 @@ export function HomePage() {
                 href: "/case-studies/one-menoo/",
               },
               {
-                img: "https://cdn.prod.website-files.com/66d58e4d00041d88f5505eaf/66e71eb023b4a639865ea9cb_graph-image-1.avif",
+                img: "/work/adonis-sail-yachts.webp",
                 tag: "Yacht & Marine Tourism",
                 tagClass: "bg-tertiary/10 text-tertiary",
                 title: "Adonis Sail Yachts",
                 desc: "A slow, poorly structured WordPress site was losing potential charter clients. We redesigned it in Webflow, clean UX, fast load, seamless booking flow.",
                 metric: "100%",
                 sub: "Responsive across all devices",
-                href: "/case-studies/akinita-fotiadis/",
+                href: "/case-studies/adonis-sail-yachts/",
               },
             ].map((c) => (
               <StaggerItem
@@ -526,6 +529,21 @@ export function HomePage() {
                           required
                         />
                       </div>
+                    </div>
+                    <div>
+                      <label className="mb-2 block font-label-md text-sm text-text-secondary">
+                        Phone (optional)
+                      </label>
+                      <input
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full rounded-lg border border-surface-border bg-background p-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
+                        placeholder="+30 ..."
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                      />
                     </div>
                     <div>
                       <label className="mb-2 block font-label-md text-sm text-text-secondary">

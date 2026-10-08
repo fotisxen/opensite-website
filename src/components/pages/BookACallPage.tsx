@@ -18,33 +18,33 @@ const OWNER_EMAIL = process.env.NEXT_PUBLIC_OWNER_EMAIL!;
 
 // ─── Constants ─────────────────────────────────────────────────────────────
 const ALL_TIME_SLOTS = [
-  "8:00 AM",
-  "8:30 AM",
-  "9:00 AM",
-  "9:30 AM",
-  "10:00 AM",
-  "10:30 AM",
-  "11:00 AM",
-  "11:30 AM",
-  "12:00 PM",
-  "12:30 PM",
-  "1:00 PM",
-  "1:30 PM",
-  "2:00 PM",
-  "2:30 PM",
-  "3:00 PM",
-  "3:30 PM",
-  "4:00 PM",
-  "4:30 PM",
-  "5:00 PM",
-  "5:30 PM",
-  "6:00 PM",
-  "6:30 PM",
-  "7:00 PM",
-  "7:30 PM",
-  "8:00 PM",
-  "8:30 PM",
-  "9:00 PM",
+  "08:00",
+  "08:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
+  "21:00",
 ];
 
 const steps = [
@@ -92,12 +92,9 @@ function isSameDay(a: Date, b: Date) {
   );
 }
 
-/** Convert "10:30 AM" → total minutes since midnight */
+/** Convert "10:30" (24-hour) to total minutes since midnight */
 function slotToMinutes(slot: string): number {
-  const [time, meridiem] = slot.split(" ");
-  let [h, m] = time.split(":").map(Number);
-  if (meridiem === "PM" && h !== 12) h += 12;
-  if (meridiem === "AM" && h === 12) h = 0;
+  const [h, m] = slot.split(":").map(Number);
   return h * 60 + m;
 }
 
@@ -116,11 +113,8 @@ function getSlots(date: Date | null): { slot: string; disabled: boolean }[] {
 
 /** Build a Google Calendar add-event URL */
 function buildGCalUrl(date: Date, time: string, name: string): string {
-  // Parse slot into hours/minutes
-  const [t, meridiem] = time.split(" ");
-  let [h, m] = t.split(":").map(Number);
-  if (meridiem === "PM" && h !== 12) h += 12;
-  if (meridiem === "AM" && h === 12) h = 0;
+  // Parse the 24-hour slot into hours/minutes
+  const [h, m] = time.split(":").map(Number);
 
   const start = new Date(date);
   start.setHours(h, m, 0, 0);
@@ -162,6 +156,7 @@ export default function BookACallPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [service, setService] = useState("");
   const [notes, setNotes] = useState("");
 
@@ -208,6 +203,7 @@ export default function BookACallPage() {
         body: JSON.stringify({
           name: `${firstName} ${lastName}`,
           email,
+          phone,
           service,
           notes: notes || "-",
           date: formattedDate,
@@ -226,6 +222,7 @@ export default function BookACallPage() {
         .insert({
           full_name: `${firstName} ${lastName}`.trim(),
           email,
+          phone,
           source: "book_a_call",
           message: `Service: ${service || "-"}\nRequested: ${formattedDate} at ${selectedTime}\n\n${notes}`,
         } as never)
@@ -269,7 +266,7 @@ export default function BookACallPage() {
               You&apos;re booked, {firstName}!
             </h2>
             <p className="text-text-secondary text-sm mb-1">
-              📅 {formattedDate} at {selectedTime} (EET)
+              📅 {formattedDate} at {selectedTime} (Athens time)
             </p>
             <p className="text-text-secondary text-sm mb-8">
               A confirmation email has been sent to{" "}
@@ -397,7 +394,7 @@ export default function BookACallPage() {
 
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-text-secondary">
-                    Work Email
+                    Email
                   </label>
                   <input
                     required
@@ -405,6 +402,22 @@ export default function BookACallPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     placeholder="alex@company.com"
+                    className="w-full rounded-lg border border-surface-border bg-background px-4 py-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-text-secondary">
+                    Phone
+                  </label>
+                  <input
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="+30 ..."
                     className="w-full rounded-lg border border-surface-border bg-background px-4 py-3 text-text-primary outline-none transition-all focus:border-transparent focus:ring-2 focus:ring-primary-container"
                   />
                 </div>
@@ -450,7 +463,7 @@ export default function BookACallPage() {
                 Pick a date & time
               </h2>
               <p className="mb-6 text-sm text-text-secondary">
-                All times in EET (Athens, Greece) · 15 min call
+                All times in Athens time (Greece) · 15 min call
               </p>
 
               {/* Week nav */}
