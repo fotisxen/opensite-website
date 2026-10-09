@@ -45,6 +45,8 @@ export function greekCounterpart(pathname: string | null | undefined) {
   if (p === "/case-studies") return "/el/ergasies/";
   if (p.startsWith("/case-studies/")) return `/el/ergasies/${p.slice("/case-studies/".length)}/`;
   if (p === "/services" || p.startsWith("/services/")) return "/el/ypiresies/";
+  if (p === "/privacy-policy") return "/el/politiki-aporritou/";
+  if (p === "/terms-of-service") return "/el/oroi-chrisis/";
   return "/el/";
 }
 
@@ -56,6 +58,8 @@ export function englishCounterpart(pathname: string | null | undefined) {
   if (p === "/el/ergasies") return "/case-studies/";
   if (p.startsWith("/el/ergasies/")) return `/case-studies/${p.slice("/el/ergasies/".length)}/`;
   if (p === "/el/ypiresies") return "/services/";
+  if (p === "/el/politiki-aporritou") return "/privacy-policy/";
+  if (p === "/el/oroi-chrisis") return "/terms-of-service/";
   return "/";
 }
 

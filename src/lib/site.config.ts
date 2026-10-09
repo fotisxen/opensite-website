@@ -35,6 +35,25 @@ export interface SiteConfig {
   testimonial: {
     el: string | null; // Greek rendering, approved by Fotis
   };
+  // Legal identity of the business. Shown in the Terms of Use and the Privacy
+  // Policy. A null line is simply left out of the page.
+  company: {
+    legalName: string | null; // trade name registered at the tax office
+    legalForm: string | null; // e.g. sole trader, IKE
+    address: string | null; // street, number, postcode, city
+    vatId: string | null; // AFM, digits only
+    taxOffice: string | null; // DOY
+    gemi: string | null; // GEMI number, if registered
+  };
+  // Facts the legal texts need. Same rule: null means the line is left out.
+  legal: {
+    updatedEl: string; // date the texts went up, Greek
+    updatedEn: string;
+    serverCountry: string | null; // where Hostinger hosts the site
+    emailProvider: string | null; // who hosts info@opensite.gr
+    supabaseRegion: string | null; // region of the project holding `leads`
+    retentionMonths: number | null; // how long an enquiry with no project is kept
+  };
 }
 
 export const siteConfig: SiteConfig = {
@@ -68,6 +87,22 @@ export const siteConfig: SiteConfig = {
   },
   testimonial: {
     el: null,
+  },
+  company: {
+    legalName: null,
+    legalForm: null,
+    address: null,
+    vatId: null,
+    taxOffice: null,
+    gemi: null,
+  },
+  legal: {
+    updatedEl: "9 Οκτωβρίου 2026",
+    updatedEn: "9 October 2026",
+    serverCountry: null,
+    emailProvider: null,
+    supabaseRegion: null,
+    retentionMonths: null,
   },
 };
 

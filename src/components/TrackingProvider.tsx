@@ -18,16 +18,18 @@ import {
 
 const COPY = {
   el: {
-    text: "Χρησιμοποιούμε cookies για να μετράμε πόσο αποδίδουν οι διαφημίσεις μας. Μπορείς να τα δεχτείς ή να τα απορρίψεις.",
+    text: "Με τη συγκατάθεσή σου, η Google και η Meta βάζουν cookies για τη μέτρηση και την προβολή των διαφημίσεών μας.",
     accept: "Αποδοχή",
     decline: "Απόρριψη",
-    policy: "Πολιτική απορρήτου",
+    policy: "Λεπτομέρειες",
+    href: "/el/politiki-aporritou/#cookies",
   },
   en: {
-    text: "We use cookies to measure how our ads perform. You can accept or decline.",
+    text: "With your consent, Google and Meta set cookies to measure and show our ads.",
     accept: "Accept",
     decline: "Decline",
-    policy: "Privacy policy",
+    policy: "Details",
+    href: "/privacy-policy/#cookies",
   },
 } as const;
 
@@ -79,7 +81,7 @@ export default function TrackingProvider() {
       <div className="mx-auto flex max-w-container-max flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-body-sm text-body-sm text-text-secondary">
           {copy.text}{" "}
-          <Link href="/privacy-policy/" className="whitespace-nowrap text-primary underline">
+          <Link href={copy.href} className="whitespace-nowrap text-primary underline">
             {copy.policy}
           </Link>
         </p>

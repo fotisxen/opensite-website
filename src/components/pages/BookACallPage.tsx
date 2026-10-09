@@ -632,6 +632,12 @@ export default function BookACallPage() {
                 </span>
                 No commitment. We&apos;ll confirm within 1 hour.
               </p>
+              <p className="mt-2 text-center text-xs text-text-secondary">
+                We use your details only to arrange and confirm this call.{" "}
+                <Link href="/privacy-policy/" className="text-primary hover:underline">
+                  Privacy policy
+                </Link>
+              </p>
             </div>
           </motion.div>
         </div>

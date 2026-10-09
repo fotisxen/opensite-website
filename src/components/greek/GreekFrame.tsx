@@ -2,6 +2,7 @@ import Link from "next/link";
 import CookieSettingsLink from "@/components/CookieSettingsLink";
 import ContactButtons from "@/components/landing/ContactButtons";
 import { GREEK_NAV } from "@/lib/greek";
+import { hasCompanyIdentity } from "@/lib/legal";
 import { siteConfig } from "@/lib/site.config";
 import GreekNav from "./GreekNav";
 
@@ -71,12 +72,17 @@ export default function GreekFrame({ children }: { children: React.ReactNode }) 
           <div className="mx-auto flex max-w-container-max flex-col gap-2 px-4 py-4 font-body-sm text-body-sm text-text-secondary md:flex-row md:items-center md:justify-between md:px-margin-desktop">
             <p>© 2026 OpenSite, Θεσσαλονίκη</p>
             <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
-              <Link href="/privacy-policy/" className="hover:text-text-primary">
+              <Link href="/el/politiki-aporritou/" className="hover:text-text-primary">
                 Πολιτική απορρήτου
               </Link>
-              <Link href="/terms-of-service/" className="hover:text-text-primary">
+              <Link href="/el/oroi-chrisis/" className="hover:text-text-primary">
                 Όροι χρήσης
               </Link>
+              {hasCompanyIdentity && (
+                <Link href="/el/oroi-chrisis/#stoicheia" className="hover:text-text-primary">
+                  Στοιχεία επιχείρησης
+                </Link>
+              )}
               <CookieSettingsLink label="Ρυθμίσεις cookies" className="hover:text-text-primary" />
             </p>
           </div>

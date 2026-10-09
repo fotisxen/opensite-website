@@ -174,11 +174,10 @@ export default function LeadForm({
         Απαντάμε μέσα σε 24 ώρες. Χωρίς δέσμευση.
       </p>
       <p className="mt-1.5 text-center text-xs text-text-secondary/80">
-        Με την αποστολή συμφωνείς με την{" "}
-        <a href="/privacy-policy/" className="underline">
+        Χρησιμοποιούμε τα στοιχεία σου μόνο για να σου απαντήσουμε.{" "}
+        <a href="/el/politiki-aporritou/" className="underline">
           Πολιτική απορρήτου
         </a>
-        .
       </p>
     </form>
   );

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CookieSettingsLink from "@/components/CookieSettingsLink";
+import { hasCompanyIdentity } from "@/lib/legal";
 import { phoneHref, siteConfig } from "@/lib/site.config";
 
 // Minimal frame for the landing and thank-you pages: logo without a link,
@@ -44,12 +45,17 @@ export default function LandingFrame({
             <a href={`mailto:${siteConfig.email}`} className="hover:text-text-primary">
               {siteConfig.email}
             </a>
-            <Link href="/privacy-policy/" className="hover:text-text-primary">
+            <Link href="/el/politiki-aporritou/" className="hover:text-text-primary">
               Πολιτική απορρήτου
             </Link>
-            <Link href="/terms-of-service/" className="hover:text-text-primary">
+            <Link href="/el/oroi-chrisis/" className="hover:text-text-primary">
               Όροι χρήσης
             </Link>
+            {hasCompanyIdentity && (
+              <Link href="/el/oroi-chrisis/#stoicheia" className="hover:text-text-primary">
+                Στοιχεία επιχείρησης
+              </Link>
+            )}
             <CookieSettingsLink label="Ρυθμίσεις cookies" className="hover:text-text-primary" />
           </p>
         </div>

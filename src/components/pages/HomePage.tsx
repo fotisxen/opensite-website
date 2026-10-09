@@ -567,6 +567,12 @@ export function HomePage() {
                     >
                       {status === "sending" ? "Sending…" : "Get Proposal"}
                     </button>
+                    <p className="mt-3 text-center font-body-sm text-body-sm text-text-secondary">
+                      We use your details only to reply to your enquiry.{" "}
+                      <Link href="/privacy-policy/" className="text-primary hover:underline">
+                        Privacy policy
+                      </Link>
+                    </p>
                   </form>
                 )}
               </div>

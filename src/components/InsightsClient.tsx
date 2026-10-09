@@ -315,7 +315,11 @@ export function InsightsClient({ articles }: Props) {
               )}
 
               <p className="mt-4 font-body-sm text-body-sm text-text-secondary">
-                We respect your privacy. No spam, ever.
+                We&apos;ll email you our new articles. Unsubscribe any time by replying
+                to any email.{" "}
+                <Link href="/privacy-policy/" className="text-primary hover:underline">
+                  Privacy policy
+                </Link>
               </p>
             </div>
           </div>

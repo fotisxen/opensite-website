@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { hasCompanyIdentity } from "@/lib/legal";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ContactButtons from "@/components/landing/ContactButtons";
@@ -26,7 +27,9 @@ const footerLinks = {
   ],
   Legal: [
     { href: "/privacy-policy/", label: "Privacy Policy" },
-    { href: "/terms-of-service/", label: "Terms of Service" },
+    { href: "/terms-of-service/", label: "Terms of Use" },
+    // Only once the legal name is known: otherwise the block has nothing to show.
+    ...(hasCompanyIdentity ? [{ href: "/terms-of-service/#company", label: "Company details" }] : []),
   ],
 };
 
@@ -177,7 +180,11 @@ export function Footer() {
               Stay Ahead of the <span className="text-primary">Curve.</span>
             </p>
             <p className="font-body-sm text-body-sm text-text-secondary">
-              New articles, no fluff. Unsubscribe anytime.
+              We&apos;ll email you our new articles. Unsubscribe any time by replying
+              to any email.{" "}
+              <Link href="/privacy-policy/" className="text-primary hover:underline">
+                Privacy policy
+              </Link>
             </p>
           </div>
           <div className="w-full md:max-w-md">

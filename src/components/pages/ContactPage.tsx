@@ -281,11 +281,10 @@ export function ContactPage() {
                       errorMessage
                     ) : (
                       <>
-                        By submitting, you agree to our{" "}
+                        We use your details only to reply to your enquiry.{" "}
                         <Link href="/privacy-policy/" className="text-primary hover:underline">
-                          Privacy Policy
+                          Privacy policy
                         </Link>
-                        .
                       </>
                     )}
                   </p>
