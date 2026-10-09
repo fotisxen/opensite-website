@@ -101,10 +101,11 @@ export function privacyDoc(lang: Lang): LegalDoc {
 
 function privacyEl(): LegalDoc {
   const providers: string[][] = [
+    ["Hostinger International Ltd. (Κύπρος)", "Φιλοξενεί το site", where(legal.serverCountry)],
     [
-      "Hostinger International Ltd. (Κύπρος)",
-      "Φιλοξενεί το site και στέλνει τα αιτήματα των φορμών στο email μας",
-      where(legal.serverCountry),
+      "FormSubmit (formsubmit.co)",
+      "Στέλνει τα αιτήματα των φορμών στο email μας",
+      "Ο πάροχος δεν δημοσιεύει πού επεξεργάζεται τα δεδομένα",
     ],
     ...(legal.emailProvider ? [[legal.emailProvider, "Φιλοξενεί το email info@opensite.gr", ""]] : []),
     [
@@ -335,10 +336,11 @@ function privacyEl(): LegalDoc {
 
 function privacyEn(): LegalDoc {
   const providers: string[][] = [
+    ["Hostinger International Ltd. (Cyprus)", "Hosts the site", where(legal.serverCountry)],
     [
-      "Hostinger International Ltd. (Cyprus)",
-      "Hosts the site and sends form enquiries to our email",
-      where(legal.serverCountry),
+      "FormSubmit (formsubmit.co)",
+      "Sends form enquiries to our email",
+      "The provider does not publish where it processes data",
     ],
     ...(legal.emailProvider ? [[legal.emailProvider, "Hosts the info@opensite.gr mailbox", ""]] : []),
     [
