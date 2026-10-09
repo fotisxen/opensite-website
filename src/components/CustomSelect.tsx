@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Icon from "@/components/Icon";
 
 const options = [
   "E-commerce Store",
@@ -45,11 +46,10 @@ export function CustomSelect({ name, value, onChange }: CustomSelectProps) {
         className="flex w-full items-center justify-between rounded-xl border border-surface-border bg-background/50 px-4 py-3 text-left text-text-secondary outline-none transition-all hover:border-primary-container/50 focus:border-transparent focus:ring-2 focus:ring-primary-container"
       >
         <span>{selected}</span>
-        <span
-          className={`material-symbols-outlined text-[18px] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-        >
-          expand_more
-        </span>
+        <Icon
+          name="expand_more"
+          className={`text-[18px] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
       </button>
 
       {/* Dropdown */}
@@ -71,9 +71,7 @@ export function CustomSelect({ name, value, onChange }: CustomSelectProps) {
               >
                 {opt}
                 {selected === opt && (
-                  <span className="material-symbols-outlined text-[16px] text-primary-container">
-                    check
-                  </span>
+                  <Icon name="check" className="text-[16px] text-primary-container" />
                 )}
               </button>
             </li>

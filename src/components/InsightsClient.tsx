@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import type { Article } from "@/lib/contentful";
+import Icon from "@/components/Icon";
 
 const categories = [
   "All Articles",
@@ -17,7 +18,7 @@ const categories = [
 const PAGE_SIZE = 3;
 
 const PLACEHOLDER =
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80";
+  "/insights-placeholder.svg";
 
 interface Props {
   articles: Article[];
@@ -26,10 +27,6 @@ interface Props {
 export function InsightsClient({ articles }: Props) {
   const [activeCategory, setActiveCategory] = useState("All Articles");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const [email, setEmail] = useState("");
-  const [subscribeState, setSubscribeState] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
 
   const filtered =
     activeCategory === "All Articles"
@@ -42,51 +39,6 @@ export function InsightsClient({ articles }: Props) {
   const handleFilter = (cat: string) => {
     setActiveCategory(cat);
     setVisibleCount(PAGE_SIZE);
-  };
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribeState("loading");
-
-    // Step 1 - Mailchimp first
-    // try {
-    //   const formData = new FormData();
-    //   formData.append("EMAIL", email);
-    //   formData.append("b_28dc230ddc_97742a274e", "");
-
-    //   await fetch(
-    //     "https://us10.list-manage.com/subscribe/post?u=1234567890abcdef&id=abcdef1234",
-    //     {
-    //       method: "POST",
-    //       mode: "no-cors",
-    //       body: formData,
-    //     },
-    //   );
-    // } catch {
-    //   setSubscribeState("error");
-    //   return;
-    // }
-
-    try {
-      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          _subject: `New subscriber: ${email}`,
-          message: `New subscriber from insights page: ${email}`,
-        }),
-      });
-    } catch {
-      // Don't fail the user if notification fails
-    }
-
-    setSubscribeState("success");
-    setEmail("");
   };
 
   const [featured, ...rest] = visible;
@@ -172,9 +124,7 @@ export function InsightsClient({ articles }: Props) {
                   <div className="flex flex-col justify-between p-stack-lg md:w-1/2">
                     <div>
                       <div className="mb-4 flex items-center gap-2 font-label-sm text-label-sm text-text-secondary">
-                        <span className="material-symbols-outlined text-[16px]">
-                          schedule
-                        </span>
+                        <Icon name="schedule" className="text-[16px]" />
                         <span>{featured.readTime}</span>
                         <span className="mx-2">•</span>
                         <span>{featured.date}</span>
@@ -188,9 +138,7 @@ export function InsightsClient({ articles }: Props) {
                     </div>
                     <span className="group/btn mt-8 flex items-center gap-2 font-label-md text-primary">
                       Read Article
-                      <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">
-                        arrow_forward
-                      </span>
+                      <Icon name="arrow_forward" className="transition-transform group-hover/btn:translate-x-1" />
                     </span>
                   </div>
                 </Link>
@@ -231,9 +179,7 @@ export function InsightsClient({ articles }: Props) {
                     </p>
                     <span className="group/btn flex items-center gap-2 font-label-md text-primary">
                       Read Full Story
-                      <span className="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">
-                        arrow_forward
-                      </span>
+                      <Icon name="arrow_forward" className="transition-transform group-hover/btn:translate-x-1" />
                     </span>
                   </div>
                 </Link>
@@ -250,81 +196,12 @@ export function InsightsClient({ articles }: Props) {
               className="flex items-center gap-2 rounded-xl border border-surface-border px-8 py-4 font-label-md text-text-primary transition-all hover:bg-surface-container"
             >
               Load More Articles
-              <span className="material-symbols-outlined">expand_more</span>
+              <Icon name="expand_more" />
             </button>
           </FadeIn>
         )}
       </section>
 
-      {/* Subscribe */}
-      <section
-        id="subscribe"
-        className="mx-auto mt-32 mb-24 max-w-container-max px-margin-mobile md:px-margin-desktop"
-      >
-        <FadeIn>
-          <div className="relative overflow-hidden rounded-3xl border border-surface-border/50 bg-surface-container p-stack-lg text-center md:p-20">
-            <div className="pointer-events-none absolute inset-0 bg-primary/5" />
-            <div className="relative z-10 mx-auto max-w-2xl">
-              <h2 className="mb-stack-md font-headline-lg text-headline-lg">
-                Stay Ahead of the <span className="text-primary">Curve.</span>
-              </h2>
-              <p className="mb-stack-lg font-body-lg text-body-lg text-text-secondary">
-                Get notified when we publish new articles, no fluff, just
-                useful.
-              </p>
-
-              {subscribeState === "success" ? (
-                <div className="flex items-center justify-center gap-3 rounded-xl bg-primary/10 px-8 py-5 text-primary">
-                  <span className="material-symbols-outlined">
-                    check_circle
-                  </span>
-                  <span className="font-label-md">
-                    You&apos;re in! We&apos;ll let you know when new articles
-                    drop.
-                  </span>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubscribe}
-                  className="mx-auto flex max-w-lg flex-col gap-4 sm:flex-row"
-                >
-                  <input
-                    className="flex-grow rounded-xl border border-surface-border bg-background px-6 py-4 text-text-primary outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary"
-                    placeholder="Enter your business email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <button
-                    type="submit"
-                    disabled={subscribeState === "loading"}
-                    className="whitespace-nowrap rounded-xl bg-primary-container px-8 py-4 font-label-md text-white transition-all hover:opacity-90 disabled:opacity-60"
-                  >
-                    {subscribeState === "loading"
-                      ? "Subscribing…"
-                      : "Subscribe Now"}
-                  </button>
-                </form>
-              )}
-
-              {subscribeState === "error" && (
-                <p className="mt-3 text-sm text-error">
-                  Something went wrong, please try again.
-                </p>
-              )}
-
-              <p className="mt-4 font-body-sm text-body-sm text-text-secondary">
-                We&apos;ll email you our new articles. Unsubscribe any time by replying
-                to any email.{" "}
-                <Link href="/privacy-policy/" className="text-primary hover:underline">
-                  Privacy policy
-                </Link>
-              </p>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
     </>
   );
 }

@@ -20,7 +20,11 @@ declare global {
 
 const CONSENT_KEY = "os_consent";
 const CONSENT_DATE_KEY = "os_consent_date";
+const CONSENT_VERSION_KEY = "os_consent_v";
 const CONSENT_MAX_AGE_DAYS = 180;
+// Bump this when the banner text or what "Accept" covers changes, so a choice
+// made under the old wording is asked again.
+const CONSENT_VERSION = 2;
 
 export type Consent = "granted" | "denied";
 
@@ -28,6 +32,7 @@ export function getConsent(): Consent | null {
   try {
     const raw = localStorage.getItem(CONSENT_KEY);
     if (raw !== "granted" && raw !== "denied") return null;
+    if (Number(localStorage.getItem(CONSENT_VERSION_KEY)) !== CONSENT_VERSION) return null;
     const at = Date.parse(localStorage.getItem(CONSENT_DATE_KEY) ?? "");
     if (Number.isNaN(at)) return null;
     const ageDays = (Date.now() - at) / 86_400_000;
@@ -41,11 +46,60 @@ export function setConsent(value: Consent) {
   try {
     localStorage.setItem(CONSENT_KEY, value);
     localStorage.setItem(CONSENT_DATE_KEY, new Date().toISOString());
+    localStorage.setItem(CONSENT_VERSION_KEY, String(CONSENT_VERSION));
   } catch {
     // storage unavailable: the choice just won't persist
   }
-  if (value === "granted") loadTags();
+  if (value === "granted") {
+    loadTags();
+    setBannerOpen(false);
+    return;
+  }
   setBannerOpen(false);
+  revokeTags();
+}
+
+// Cookies the two tools set: _fbp, _fbc and everything starting with _gcl.
+function isTrackingCookie(name: string) {
+  return name === "_fbp" || name === "_fbc" || name.startsWith("_gcl");
+}
+
+function clearTrackingCookies() {
+  const host = window.location.hostname;
+  const parts = host.split(".");
+  // host itself plus every parent domain, e.g. www.opensite.gr, opensite.gr
+  const domains = [host];
+  for (let i = 1; i < parts.length - 1; i++) domains.push(parts.slice(i).join("."));
+  for (const pair of document.cookie.split(";")) {
+    const name = pair.split("=")[0]?.trim();
+    if (!name || !isTrackingCookie(name)) continue;
+    const expire = "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    document.cookie = name + expire;
+    for (const d of domains) {
+      document.cookie = `${name}${expire}; domain=${d}`;
+      document.cookie = `${name}${expire}; domain=.${d}`;
+    }
+  }
+}
+
+// "Decline" after "Accept": switch the tools off, remove their cookies, and
+// reload so nothing that was already loaded keeps running.
+function revokeTags() {
+  if (typeof window === "undefined") return;
+  const wasLoaded = loaded;
+  if (wasLoaded) {
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+    }
+    if (typeof window.fbq === "function") window.fbq("consent", "revoke");
+  }
+  clearTrackingCookies();
+  if (wasLoaded) window.location.reload();
 }
 
 /* ------------------------- banner visibility ------------------------- */
@@ -97,11 +151,13 @@ export function loadTags() {
       ad_personalization: "denied",
       analytics_storage: "denied",
     });
+    // The Google tag is only used to count conversions: no personalised
+    // ads and no analytics, so those two stay denied.
     window.gtag("consent", "update", {
       ad_storage: "granted",
       ad_user_data: "granted",
-      ad_personalization: "granted",
-      analytics_storage: "granted",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
     });
     const script = document.createElement("script");
     script.async = true;

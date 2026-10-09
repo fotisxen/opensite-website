@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { sendLead } from "@/lib/sendLead";
 import { getAttribution, hasConsent } from "@/lib/tracking";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,6 +10,7 @@ import emailjs from "@emailjs/browser";
 import { fbq } from "@/lib/pixel";
 import { supabase } from "@/lib/supabase";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 // ─── Config ────────────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
@@ -188,32 +190,25 @@ export default function BookACallPage() {
         {
           to_name: firstName,
           to_email: email,
-          date: formattedDate,
+          date: formattedDate ?? undefined,
           time: selectedTime,
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
       );
 
-      // ✅ Notify you via formsubmit - fire and forget, never block on this
-      fetch("https://formsubmit.co/ajax/info@opensite.gr", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: `${firstName} ${lastName}`,
-          email,
-          phone,
-          service,
-          notes: notes || "-",
-          date: formattedDate,
-          time: selectedTime,
-          _subject: `New call booked: ${formattedDate} at ${selectedTime}`,
-          _replyto: email,
-          ...getAttribution(hasConsent()),
-        }),
-      }).catch(() => {}); // silently ignore failures
+      // ✅ Notify us by email - fire and forget, never block on this
+      sendLead({
+        subject: `New call booked: ${formattedDate} at ${selectedTime}`,
+        name: `${firstName} ${lastName}`,
+        email,
+        phone,
+        service: service ?? undefined,
+        message: notes || undefined,
+        date: formattedDate ?? undefined,
+        time: selectedTime ?? undefined,
+        page: "book-a-call",
+        ...getAttribution(hasConsent()),
+      }).catch(() => {}); // the booking is saved in the CRM either way
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
       }
@@ -259,9 +254,7 @@ export default function BookACallPage() {
             className="mx-auto w-full max-w-md rounded-[16px] border border-surface-border bg-surface-card p-12 text-center shadow-sm"
           >
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20">
-              <span className="material-symbols-outlined text-4xl text-green-400">
-                check_circle
-              </span>
+              <Icon name="check_circle" className="text-4xl text-green-400" />
             </div>
 
             <h2 className="mb-2 text-2xl font-bold text-text-primary">
@@ -284,9 +277,7 @@ export default function BookACallPage() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 rounded-xl border border-surface-border bg-surface-container-lowest px-5 py-3 text-sm font-medium text-text-primary transition-all hover:border-primary-container/40 hover:bg-surface-container-low"
               >
-                <span className="material-symbols-outlined text-[18px] text-primary-container">
-                  calendar_add_on
-                </span>
+                <Icon name="calendar_add_on" className="text-[18px] text-primary-container" />
                 Add to Google Calendar
               </a>
 
@@ -329,15 +320,11 @@ export default function BookACallPage() {
               {steps.map((step, i) => (
                 <div key={step.label} className="flex items-center gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
-                    <span className="material-symbols-outlined text-[18px]">
-                      {step.icon}
-                    </span>
+                    <Icon name={step.icon} className="text-[18px]" />
                   </div>
                   <span className="text-sm text-white/90">{step.label}</span>
                   {i < steps.length - 1 && (
-                    <span className="material-symbols-outlined hidden text-white/40 sm:block">
-                      arrow_forward
-                    </span>
+                    <Icon name="arrow_forward" className="hidden text-white/40 sm:block" />
                   )}
                 </div>
               ))}
@@ -629,9 +616,7 @@ export default function BookACallPage() {
               </button>
 
               <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-text-secondary">
-                <span className="material-symbols-outlined text-[14px]">
-                  lock
-                </span>
+                <Icon name="lock" className="text-[14px]" />
                 No commitment. We&apos;ll confirm within 1 hour.
               </p>
               <p className="mt-2 text-center text-xs text-text-secondary">

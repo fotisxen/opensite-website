@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { LEAD_FORM_ID, LEAD_NAME_ID } from "@/lib/leadForm";
+import { sendLead } from "@/lib/sendLead";
 import { phoneHref, siteConfig } from "@/lib/site.config";
 import { getAttribution, hasConsent, markLeadSubmitted } from "@/lib/tracking";
 
@@ -48,7 +49,7 @@ export default function LeadForm({
     const phone = String(form.get("phone") ?? "").trim();
     const need = String(form.get("need") ?? defaultNeed);
     const website = String(form.get("website") ?? "").trim();
-    const honey = String(form.get("company_url") ?? "");
+    const honey = String(form.get("hp_extra") ?? "").trim();
 
     const next: { name?: string; phone?: string } = {};
     if (name.length < 2) next.name = "Γράψε το όνομά σου.";
@@ -57,31 +58,22 @@ export default function LeadForm({
     setFailed(false);
     if (next.name || next.phone) return;
 
-    // Bots fill the hidden field. Pretend it worked, send nothing, and do
-    // not count a conversion.
-    if (honey) {
-      router.push("/efcharistoume/");
-      return;
-    }
-
     setSending(true);
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${siteConfig.email}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `Νέο lead: ${pageLabel}`,
-          _template: "table",
-          name,
-          phone,
-          need,
-          website,
-          page: pageKey,
-          ...getAttribution(hasConsent()),
-        }),
+      // A filled hidden field usually means a bot, but autofill can fill it
+      // for a real person. So the request is still sent, marked as possible
+      // spam, and it is not counted as a conversion.
+      await sendLead({
+        subject: `${honey ? "[πιθανό spam] " : ""}Νέο lead: ${pageLabel}`,
+        name,
+        phone,
+        need,
+        website: website || undefined,
+        page: pageKey,
+        honeypot: honey || undefined,
+        ...getAttribution(hasConsent()),
       });
-      if (!res.ok) throw new Error(`status ${res.status}`);
-      markLeadSubmitted();
+      if (!honey) markLeadSubmitted();
       router.push("/efcharistoume/");
     } catch {
       setFailed(true);
@@ -126,30 +118,35 @@ export default function LeadForm({
       </label>
       {errors.phone && <p className="mt-1 text-sm text-error">{errors.phone}</p>}
 
-      <label className="mt-3 block font-label-md text-label-md text-text-secondary">
-        Τι χρειάζεσαι
-        <select name="need" defaultValue={defaultNeed} className={inputClass}>
-          {NEEDS.map((n) => (
-            <option key={n} value={n}>
-              {n}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      {showWebsite && (
+      {showWebsite ? (
+        // Rebuild page: the need is known, so the form asks for the site instead.
         <label className="mt-3 block font-label-md text-label-md text-text-secondary">
-          Το site σου, αν έχεις
-          <input name="website" type="text" inputMode="url" autoComplete="url" className={inputClass} />
+          Το site σου
+          <input
+            name="website"
+            type="text"
+            inputMode="url"
+            autoComplete="url"
+            placeholder="π.χ. example.gr"
+            className={inputClass}
+          />
+        </label>
+      ) : (
+        <label className="mt-3 block font-label-md text-label-md text-text-secondary">
+          Τι χρειάζεσαι
+          <select name="need" defaultValue={defaultNeed} className={inputClass}>
+            {NEEDS.map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
+          </select>
         </label>
       )}
 
-      {/* Honeypot: people never see or tab to it. */}
+      {/* Honeypot: people never see or tab to it. The name means nothing to autofill. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-        <label>
-          Website
-          <input name="company_url" type="text" tabIndex={-1} autoComplete="off" />
-        </label>
+        <input name="hp_extra" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <button

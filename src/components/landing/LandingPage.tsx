@@ -5,6 +5,7 @@ import { getCaseStudy } from "@/lib/case-studies";
 import {
   BASE_URL,
   landings,
+  resolveFaqs,
   steps,
   subtitleWithFacts,
   testimonial,
@@ -47,8 +48,16 @@ function CheckIcon() {
 }
 
 // Only cards with a real screenshot of the delivered site are shown.
+const WEBSITE_PROJECTS = ["akinita-fotiadis", "df-real-estate", "adonis-sail-yachts", "one-menoo"];
+
 function getWorkCards() {
-  return workCards
+  const list =
+    siteConfig.landingProjects === 4
+      ? WEBSITE_PROJECTS.map((slug) => workCards.find((c) => c.slug === slug)).filter(
+          (c): c is NonNullable<typeof c> => !!c,
+        )
+      : workCards;
+  return list
     .map((card) => {
       const defaultShot = path.join(process.cwd(), "public", "work", `${card.slug}.webp`);
       const image =
@@ -68,7 +77,7 @@ function getWorkCards() {
 export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
   const c = landings[pageKey];
   const url = `${BASE_URL}/${c.slug}/`;
-  const faqs = c.faqs.filter((f) => f.a);
+  const faqs = resolveFaqs(c);
   const work = getWorkCards();
   const showWork = work.length >= 2;
 
@@ -177,6 +186,9 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               <span className="block font-body-sm text-body-sm text-text-secondary" lang="en">
                 {testimonial.role}
               </span>
+              {siteConfig.testimonial.el && (
+                <span className="mt-1 block text-xs text-text-secondary/80">Μετάφραση από τα αγγλικά</span>
+              )}
             </figcaption>
           </figure>
         </Reveal>

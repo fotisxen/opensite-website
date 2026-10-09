@@ -1,12 +1,14 @@
 "use client";
 import { CustomSelect } from "@/components/CustomSelect";
 import Link from "next/link";
+import { sendLead } from "@/lib/sendLead";
 import { getAttribution, hasConsent } from "@/lib/tracking";
 import { useState } from "react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { supabase } from "@/lib/supabase";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 export function ContactPage() {
   useEffect(() => {
@@ -46,29 +48,16 @@ export function ContactPage() {
     setErrorMessage("");
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/info@opensite.gr",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone || "-",
-            business_type: formData.businessType,
-            message: formData.brief,
-            _subject: `New project inquiry from ${formData.name}`,
-            ...getAttribution(hasConsent()),
-          }),
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
+      await sendLead({
+        subject: `New project inquiry from ${formData.name}`,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        business_type: formData.businessType,
+        message: formData.brief,
+        page: "contact",
+        ...getAttribution(hasConsent()),
+      });
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
       }
@@ -90,11 +79,7 @@ export function ContactPage() {
     } catch (err) {
       console.error("[contact-form] submit error:", err);
       setStatus("error");
-      setErrorMessage(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong sending your message.",
-      );
+      setErrorMessage("Something went wrong, please try again or email info@opensite.gr.");
     }
   }
 
@@ -126,9 +111,7 @@ export function ContactPage() {
             <div className="space-y-6 pt-8">
               <div className="group flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-surface-card transition-colors group-hover:border-primary-container">
-                  <span className="material-symbols-outlined text-primary">
-                    mail
-                  </span>
+                  <Icon name="mail" className="text-primary" />
                 </div>
                 <div>
                   <p className="font-label-sm text-label-sm uppercase tracking-wider text-text-secondary">
@@ -147,9 +130,7 @@ export function ContactPage() {
               </div>
               <div className="group flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-surface-card transition-colors group-hover:border-primary-container">
-                  <span className="material-symbols-outlined text-primary">
-                    call
-                  </span>
+                  <Icon name="call" className="text-primary" />
                 </div>
                 <div>
                   <p className="font-label-sm text-label-sm uppercase tracking-wider text-text-secondary">
@@ -173,9 +154,7 @@ export function ContactPage() {
               {status === "success" ? (
                 <div className="relative z-10 space-y-4 py-12 text-center">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-secondary-container/20">
-                    <span className="material-symbols-outlined text-secondary text-[32px]">
-                      check_circle
-                    </span>
+                    <Icon name="check_circle" className="text-secondary text-[32px]" />
                   </div>
                   <h3 className="font-headline-sm text-headline-sm text-text-primary">
                     Thank you for your submission!
@@ -270,9 +249,7 @@ export function ContactPage() {
                     className="flex w-full items-center justify-center gap-3 rounded-xl bg-primary-container py-4 font-headline-sm text-headline-sm text-on-primary-container transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === "sending" ? "Sending..." : "Start Your Project"}
-                    <span className="material-symbols-outlined">
-                      arrow_forward
-                    </span>
+                    <Icon name="arrow_forward" />
                   </button>
                   <p
                     className={`text-center font-body-sm text-body-sm ${
@@ -318,9 +295,7 @@ export function ContactPage() {
                 key={item.title}
                 className="glass-card group rounded-2xl p-8 transition-all hover:border-primary-container/50"
               >
-                <span className="material-symbols-outlined mb-4 text-primary text-[40px]">
-                  {item.icon}
-                </span>
+                <Icon name={item.icon} className="mb-4 text-primary text-[40px]" />
                 <h3 className="mb-2 font-headline-sm text-headline-sm">
                   {item.title}
                 </h3>
@@ -384,16 +359,12 @@ export function ContactPage() {
                     <div key={c.number} className="glass-shard">
                       <div className="glass-shard-inner">
                         <div className="flex items-center justify-between">
-                          <span className="shard-icon material-symbols-outlined">
-                            {c.icon}
-                          </span>
+                          <Icon name={c.icon} className="shard-icon" />
                           <span className="shard-number">{c.number}</span>
                         </div>
                         <h3 className="shard-title">{c.title}</h3>
                         <p className="shard-text">{c.text}</p>
-                        <span className="shard-arrow material-symbols-outlined">
-                          arrow_forward
-                        </span>
+                        <Icon name="arrow_forward" className="shard-arrow" />
                       </div>
                       <div
                         className="glass-shard-reflection"

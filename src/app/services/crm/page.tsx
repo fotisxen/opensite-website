@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { useEffect, useState } from "react";
+import Icon from "@/components/Icon";
 
 const crmStack = [
   "HubSpot",
@@ -131,9 +132,7 @@ export default function CrmSystemsPage() {
                 className="inline-flex items-center gap-2 rounded-xl bg-primary-container px-8 py-4 font-label-md text-white shadow-lg shadow-primary-container/20 transition-all hover:scale-105 hover:opacity-90"
               >
                 Start a Project
-                <span className="material-symbols-outlined text-[18px]">
-                  arrow_forward
-                </span>
+                <Icon name="arrow_forward" className="text-[18px]" />
               </Link>
               <Link
                 href="/case-studies/"
@@ -225,9 +224,7 @@ export default function CrmSystemsPage() {
                 key={d.title}
                 className="group rounded-2xl border border-surface-border bg-surface-card p-8 transition-all hover:border-primary/30 hover:bg-surface-container-low"
               >
-                <span className="material-symbols-outlined mb-5 text-4xl text-primary">
-                  {d.icon}
-                </span>
+                <Icon name={d.icon} className="mb-5 text-4xl text-primary" />
                 <h3 className="mb-2 font-bold text-text-primary">{d.title}</h3>
                 <p className="text-sm text-text-secondary">{d.text}</p>
               </StaggerItem>
@@ -286,9 +283,7 @@ export default function CrmSystemsPage() {
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 font-label-md text-primary-container transition-all hover:scale-105"
                 >
                   Book a Free Call
-                  <span className="material-symbols-outlined text-[18px]">
-                    phone_in_talk
-                  </span>
+                  <Icon name="phone_in_talk" className="text-[18px]" />
                 </Link>
               </div>
             </div>

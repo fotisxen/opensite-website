@@ -7,6 +7,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { getCaseStudy } from "@/lib/case-studies";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 interface Props {
   slug: string;
@@ -38,14 +39,12 @@ export function CaseStudyDetailPage({ slug }: Props) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 rounded-full border border-surface-border px-3 py-1 font-label-sm text-label-sm text-text-secondary transition-colors hover:text-text-primary"
               >
-                <span className="material-symbols-outlined text-[14px]">
-                  open_in_new
-                </span>
+                <Icon name="open_in_new" className="text-[14px]" />
                 View Live Site
               </a>
             ) : (
               <span className="flex items-center gap-1 rounded-full border border-surface-border px-3 py-1 font-label-sm text-label-sm text-text-secondary">
-                <span className="material-symbols-outlined text-[14px]">lock</span>
+                <Icon name="lock" className="text-[14px]" />
                 Private (internal system)
               </span>
             )}
@@ -84,9 +83,7 @@ export function CaseStudyDetailPage({ slug }: Props) {
           {/* Problem */}
           <StaggerItem className="rounded-xl border border-surface-border bg-surface-card p-stack-lg md:col-span-7">
             <div className="mb-6 flex items-center gap-3">
-              <span className="material-symbols-filled material-symbols-outlined text-error">
-                warning
-              </span>
+              <Icon name="warning" filled className="text-error" />
               <h2 className="font-headline-sm text-headline-sm">The Problem</h2>
             </div>
             <div className="space-y-4 font-body-md text-text-secondary">
@@ -94,9 +91,7 @@ export function CaseStudyDetailPage({ slug }: Props) {
               <ul className="list-none space-y-3 pt-4">
                 {cs.problem.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined mt-1 text-sm text-error">
-                      close
-                    </span>
+                    <Icon name="close" className="mt-1 text-sm text-error" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -129,9 +124,7 @@ export function CaseStudyDetailPage({ slug }: Props) {
           {/* Solution highlights */}
           <StaggerItem className="rounded-xl border border-surface-border bg-surface-card p-stack-lg md:col-span-12">
             <div className="mb-6 flex items-center gap-3">
-              <span className="material-symbols-filled material-symbols-outlined text-primary">
-                lightbulb
-              </span>
+              <Icon name="lightbulb" filled className="text-primary" />
               <h2 className="font-headline-sm text-headline-sm">
                 The Solution
               </h2>
@@ -175,11 +168,7 @@ export function CaseStudyDetailPage({ slug }: Props) {
               <div
                 className={`mb-6 flex h-16 w-16 items-center justify-center rounded-full ${item.iconWrap}`}
               >
-                <span
-                  className={`material-symbols-outlined text-3xl ${item.iconColor}`}
-                >
-                  {item.icon}
-                </span>
+                <Icon name={item.icon} className={`text-3xl ${item.iconColor}`} />
               </div>
               <h4 className="mb-2 font-headline-sm text-headline-sm">
                 {item.value}

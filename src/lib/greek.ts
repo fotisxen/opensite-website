@@ -148,7 +148,6 @@ export const greekCases: GreekCase[] = [
       { title: "Κινητό, tablet, desktop", text: "Φτιαγμένο να δουλεύει σωστά σε όλες τις οθόνες." },
       { title: "Καταχώριση ακινήτων", text: "Σελίδες ακινήτων και φόρμες επικοινωνίας." },
     ],
-    link: "https://akinita-fotiadis-98.webflow.io",
     image: { src: "/work/akinita-fotiadis.webp", width: 800, height: 500 },
   },
   {
@@ -188,7 +187,7 @@ export const greekCases: GreekCase[] = [
       { title: "Πρώτα για κινητό", text: "Πολλοί ψάχνουν ναύλωση από το κινητό." },
       { title: "Hosting στο Webflow", text: "Σταθερή απόδοση χωρίς τον φόρτο του WordPress." },
     ],
-    link: "https://adonis-sail-yachts.webflow.io",
+    link: "https://www.adonis-sailyachts.com/",
     image: { src: "/work/adonis-sail-yachts.webp", width: 800, height: 500 },
   },
   {

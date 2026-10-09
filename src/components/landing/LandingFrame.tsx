@@ -17,7 +17,10 @@ export default function LandingFrame({
       lang="el"
       // Sora has no Greek glyphs, so Greek headings use the body font (Inter).
       style={{ ["--font-display" as string]: "var(--font-body)" }}
-      className="min-h-screen bg-background text-on-surface"
+      // The mobile bar is fixed to the bottom, so the footer ends above it.
+      className={`min-h-screen bg-background text-on-surface ${
+        withStickyPadding ? "pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0" : ""
+      }`}
     >
       <header className="border-b border-surface-border bg-surface-container-lowest">
         <div className="mx-auto flex h-14 max-w-container-max items-center justify-between px-4 md:px-margin-desktop">
@@ -34,7 +37,7 @@ export default function LandingFrame({
         </div>
       </header>
 
-      <main lang="el" className={withStickyPadding ? "pb-20 md:pb-0" : ""}>
+      <main lang="el">
         {children}
       </main>
 

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { hasCompanyIdentity } from "@/lib/legal";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import ContactButtons from "@/components/landing/ContactButtons";
 import CookieSettingsLink from "@/components/CookieSettingsLink";
 import { siteConfig } from "@/lib/site.config";
@@ -68,58 +67,6 @@ const socials = socialsAll.filter((s): s is typeof s & { href: string } => s.hre
 
 export function Footer() {
   const pathname = usePathname();
-  const [email, setEmail] = useState("");
-  const [subscribeState, setSubscribeState] = useState<
-    "idle" | "loading" | "success" | "error" | "mailchimp_error"
-  >("idle");
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribeState("loading");
-
-    // Step 1 - Add to Mailchimp directly (no-cors, static-safe)
-    // let mailchimpOk = false;
-    // try {
-    //   const formData = new FormData();
-    //   formData.append("EMAIL", email);
-    //   formData.append("b_28dc230ddc_97742a274e", ""); // honeypot - must stay empty
-    //   await fetch(MAILCHIMP_URL, {
-    //     method: "POST",
-    //     mode: "no-cors", // Mailchimp doesn't support CORS - request goes through silently
-    //     body: formData,
-    //   });
-    //   mailchimpOk = true; // no-cors means no error unless network fails
-    // } catch {
-    //   mailchimpOk = false;
-    // }
-
-    // Step 2 - Notify you via FormSubmit (fire and forget - don't fail user on this)
-    try {
-      await fetch("https://formsubmit.co/ajax/info@opensite.gr", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          _subject: `New newsletter subscriber: ${email}`,
-          message: `New subscriber from footer: ${email}`,
-        }),
-      });
-    } catch {
-      // Notification failed - don't show error to user, Mailchimp sub still worked
-      setSubscribeState("error");
-    }
-
-    // if (mailchimpOk) {
-    setSubscribeState("success");
-    setEmail("");
-    // } else {
-    // }
-  };
-
   if (pathname?.startsWith("/admin")) return null;
 
   return (
@@ -173,57 +120,6 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="mx-auto mt-12 flex max-w-container-max flex-col gap-6 border-t border-surface-border px-margin-mobile pt-8 md:px-margin-desktop">
-        {/* Subscribe strip */}
-        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-          <div className="max-w-sm">
-            <p className="mb-1 font-headline-sm text-headline-sm font-semibold text-text-primary">
-              Stay Ahead of the <span className="text-primary">Curve.</span>
-            </p>
-            <p className="font-body-sm text-body-sm text-text-secondary">
-              We&apos;ll email you our new articles. Unsubscribe any time by replying
-              to any email.{" "}
-              <Link href="/privacy-policy/" className="text-primary hover:underline">
-                Privacy policy
-              </Link>
-            </p>
-          </div>
-          <div className="w-full md:max-w-md">
-            {subscribeState === "success" ? (
-              <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-5 py-3 text-sm text-primary">
-                <span className="material-symbols-outlined text-[18px]">
-                  check_circle
-                </span>
-                You&apos;re in! Check your inbox.
-              </div>
-            ) : subscribeState === "error" ? (
-              <div className="flex items-center gap-2 rounded-xl bg-error/10 px-5 py-3 text-sm text-error">
-                <span className="material-symbols-outlined text-[18px]">
-                  error
-                </span>
-                Something went wrong, please try again.
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  className="flex-grow rounded-xl border border-surface-border bg-background px-5 py-3 text-sm text-text-primary outline-none transition-all focus:border-primary focus:ring-1 focus:ring-primary"
-                  placeholder="Your business email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <button
-                  type="submit"
-                  disabled={subscribeState === "loading"}
-                  className="whitespace-nowrap rounded-xl bg-primary-container px-5 py-3 text-sm font-semibold text-white transition-all hover:opacity-90 disabled:opacity-60"
-                >
-                  {subscribeState === "loading" ? "…" : "Subscribe"}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-
         {/* Copyright row */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-surface-border pt-6 md:flex-row">
           <p className="font-body-sm text-body-sm text-text-secondary">

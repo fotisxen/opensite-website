@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 const processSteps = [
   {
@@ -39,9 +40,7 @@ export function ServicesPage() {
       <section className="relative flex min-h-[819px] items-center justify-center overflow-hidden py-24">
         <FadeIn className="relative z-10 mx-auto max-w-container-max px-margin-mobile text-center md:px-margin-desktop">
           <div className="mb-stack-lg inline-flex animate-[float_6s_ease-in-out_infinite] items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-primary">
-            <span className="material-symbols-outlined text-[18px]">
-              auto_awesome
-            </span>
+            <Icon name="auto_awesome" className="text-[18px]" />
             <span className="font-label-sm text-label-sm uppercase tracking-wider">
               Expert Digital Solutions
             </span>
@@ -84,9 +83,7 @@ export function ServicesPage() {
             <StaggerItem className="group glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-8">
               <div className="flex flex-col gap-stack-lg md:flex-row">
                 <div className="md:w-1/2">
-                  <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-primary">
-                    code
-                  </span>
+                  <Icon name="code" filled className="mb-stack-md text-5xl text-primary" />
                   <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
                     Web Development
                   </h3>
@@ -111,9 +108,7 @@ export function ServicesPage() {
                         key={item.label}
                         className="flex items-center gap-3 text-on-surface"
                       >
-                        <span className="material-symbols-outlined text-secondary">
-                          check_circle
-                        </span>
+                        <Icon name="check_circle" className="text-secondary" />
                         <span className="font-label-md">
                           {item.label}
                           <span className="ml-2 font-body-sm text-text-secondary">
@@ -140,9 +135,7 @@ export function ServicesPage() {
 
             <StaggerItem className="glass-card flex flex-col justify-between rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-4">
               <div>
-                <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-tertiary">
-                  trending_up
-                </span>
+                <Icon name="trending_up" filled className="mb-stack-md text-5xl text-tertiary" />
                 <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
                   SEO Strategy
                 </h3>
@@ -154,9 +147,7 @@ export function ServicesPage() {
             </StaggerItem>
 
             <StaggerItem className="glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-4">
-              <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-secondary">
-                shopping_bag
-              </span>
+              <Icon name="shopping_bag" filled className="mb-stack-md text-5xl text-secondary" />
               <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
                 E-commerce
               </h3>
@@ -168,9 +159,7 @@ export function ServicesPage() {
 
             <StaggerItem className="glass-card flex flex-col gap-stack-lg rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-8 md:flex-row">
               <div className="w-full">
-                <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-primary">
-                  smartphone
-                </span>
+                <Icon name="smartphone" filled className="mb-stack-md text-5xl text-primary" />
                 <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
                   Desktop &amp; Mobile Apps
                 </h3>
@@ -201,9 +190,7 @@ export function ServicesPage() {
             <StaggerItem className="group glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-12">
               <div className="flex flex-col gap-stack-lg md:flex-row">
                 <div className="md:w-1/2">
-                  <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-secondary">
-                    hub
-                  </span>
+                  <Icon name="hub" filled className="mb-stack-md text-5xl text-secondary" />
                   <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
                     CRM Systems
                   </h3>
@@ -230,9 +217,7 @@ export function ServicesPage() {
                         key={item.label}
                         className="flex items-center gap-3 text-on-surface"
                       >
-                        <span className="material-symbols-outlined text-secondary">
-                          check_circle
-                        </span>
+                        <Icon name="check_circle" className="text-secondary" />
                         <span className="font-label-md">
                           {item.label}
                           <span className="ml-2 font-body-sm text-text-secondary">
@@ -316,9 +301,7 @@ export function ServicesPage() {
             <StaggerItem className="group glass-card rounded-2xl p-stack-lg transition-all hover:border-primary md:col-span-12">
               <div className="flex flex-col gap-stack-lg md:flex-row">
                 <div className="w-full">
-                  <span className="material-symbols-filled material-symbols-outlined mb-stack-md text-5xl text-tertiary">
-                    lan
-                  </span>
+                  <Icon name="lan" filled className="mb-stack-md text-5xl text-tertiary" />
                   <h3 className="mb-stack-md font-headline-md text-headline-md text-text-primary">
                     Intranets &amp; SharePoint (SPFx)
                   </h3>
@@ -347,9 +330,7 @@ export function ServicesPage() {
                         key={item.label}
                         className="flex items-center gap-3 text-on-surface"
                       >
-                        <span className="material-symbols-outlined text-secondary">
-                          check_circle
-                        </span>
+                        <Icon name="check_circle" className="text-secondary" />
                         <span className="font-label-md">
                           {item.label}
                           <span className="ml-2 font-body-sm text-text-secondary">
@@ -421,9 +402,7 @@ export function ServicesPage() {
               className="group inline-flex items-center rounded-xl bg-primary-container px-12 py-5 font-label-md text-on-primary-container shadow-xl transition-all hover:scale-105"
             >
               Get Free Consultation
-              <span className="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1">
-                arrow_forward
-              </span>
+              <Icon name="arrow_forward" className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </FadeIn>

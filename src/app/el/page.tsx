@@ -133,6 +133,9 @@ export default function GreekHome() {
             </blockquote>
             <figcaption className="mt-4 font-body-sm text-body-sm text-text-secondary">
               {testimonial.author}, {testimonial.role}
+              {siteConfig.testimonial.el && (
+                <span className="mt-1 block text-xs text-text-secondary/80">Μετάφραση από τα αγγλικά</span>
+              )}
             </figcaption>
           </figure>
         </Reveal>

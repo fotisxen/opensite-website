@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 const filters = [
   "All Industries",
@@ -20,7 +21,7 @@ const filters = [
 const cases = [
   {
     slug: "one-menoo",
-    image: "https://onemenoo.com/images/onemenoo-social.jpg",
+    image: "/work/one-menoo.webp",
     industry: "Hospitality Tech",
     tag: "Hospitality Tech",
     tagClass: "bg-primary-container text-white",
@@ -37,7 +38,7 @@ const cases = [
   {
     slug: "akinita-fotiadis",
     image:
-      "https://cdn.prod.website-files.com/66d58e4d00041d88f5505eaf/66e71eb023b4a639865ea9cb_graph-image-1.avif",
+      "/work/akinita-fotiadis.webp",
     industry: "Real Estate",
     tag: "Real Estate",
     tagClass: "bg-secondary-container text-on-secondary-container",
@@ -71,7 +72,7 @@ const cases = [
   {
     slug: "df-real-estate",
     image:
-      "https://xdyiitwokwufavirmqdd.supabase.co/storage/v1/object/public/property-images/cf5b99e0-8746-45c2-9630-e15cbad2d25c/1785920961215-10.webp",
+      "/work/df-real-estate.webp",
     industry: "Real Estate",
     tag: "Real Estate",
     tagClass: "bg-secondary-container text-on-secondary-container",
@@ -285,9 +286,7 @@ export function CaseStudiesPage() {
                       className="flex items-center gap-2 font-label-md text-primary transition-transform hover:translate-x-2"
                     >
                       View Full Case
-                      <span className="material-symbols-outlined text-[18px]">
-                        arrow_forward
-                      </span>
+                      <Icon name="arrow_forward" className="text-[18px]" />
                     </Link>
                   </div>
                 </div>

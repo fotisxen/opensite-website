@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { isAdminPath, isGreekFramePath } from "@/lib/routes";
 import {
   captureAttribution,
@@ -46,6 +46,26 @@ export default function TrackingProvider() {
   const open = useBannerOpen();
   const admin = isAdminPath(pathname);
   const copy = isGreekFramePath(pathname) ? COPY.el : COPY.en;
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  // The page gets bottom padding equal to the banner height (see globals.css),
+  // so the banner never covers the last links of any page.
+  useEffect(() => {
+    const root = document.documentElement;
+    const el = bannerRef.current;
+    if (!open || admin || !el) {
+      root.style.removeProperty("--banner-h");
+      return;
+    }
+    const set = () => root.style.setProperty("--banner-h", `${el.offsetHeight}px`);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      root.style.removeProperty("--banner-h");
+    };
+  }, [open, admin, pathname]);
 
   useEffect(() => {
     captureAttribution();
@@ -74,6 +94,7 @@ export default function TrackingProvider() {
 
   return (
     <div
+      ref={bannerRef}
       role="dialog"
       aria-label="Cookies"
       className="fixed inset-x-0 bottom-0 z-[10000] border-t border-surface-border bg-surface-container-lowest/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md"

@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
       "How we rebuilt a slow WordPress product into a high-performance Next.js platform, and helped it reach 45,000+ QR scans.",
     liveUrl: "https://onemenoo.com/en",
     platform: "Next.js",
-    image: "https://onemenoo.com/images/onemenoo-social.jpg",
+    image: "/work/one-menoo.webp",
     heroMetrics: [
       { value: "45,000+", label: "QR Scans" },
       { value: "1,500+", label: "AI Messages Sent" },
@@ -105,10 +105,9 @@ export const caseStudies: CaseStudy[] = [
     title: "Akinita Fotiadis",
     subtitle:
       "How we transformed a lagging, poorly designed WordPress site into a fast, conversion-focused Webflow presence that truly reflects the brand.",
-    liveUrl: "https://akinita-fotiadis-98.webflow.io",
     platform: "Webflow",
     image:
-      "https://cdn.prod.website-files.com/66d58e4d00041d88f5505eaf/66e71eb023b4a639865ea9cb_graph-image-1.avif",
+      "/work/akinita-fotiadis.webp",
     heroMetrics: [
       { value: "Webflow", label: "Platform" },
       { value: "100%", label: "Responsive" },
@@ -177,7 +176,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Adonis Sail Yachts",
     subtitle:
       "How we redesigned a poor-performing WordPress site into an immersive Webflow experience that converts sailing enthusiasts into charter clients.",
-    liveUrl: "https://adonis-sail-yachts.webflow.io",
+    liveUrl: "https://www.adonis-sailyachts.com/",
     platform: "Webflow",
     image:
       "/work/adonis-sail-yachts.webp",
@@ -252,7 +251,7 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: "https://df-real-estate.com",
     platform: "Next.js",
     image:
-      "https://xdyiitwokwufavirmqdd.supabase.co/storage/v1/object/public/property-images/cf5b99e0-8746-45c2-9630-e15cbad2d25c/1785920961215-10.webp",
+      "/work/df-real-estate.webp",
     heroMetrics: [
       { value: "Next.js", label: "Platform" },
       { value: "Supabase", label: "Backend" },

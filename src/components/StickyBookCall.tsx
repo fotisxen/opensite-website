@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { isAdminPath, isGreekFramePath } from "@/lib/routes";
 import { useBannerOpen } from "@/lib/tracking";
+import Icon from "@/components/Icon";
 
 const SHOW_AFTER_PX = 600;
 const EXCLUDED = ["/book-a-call", "/contact"];
@@ -41,9 +42,7 @@ export function StickyBookCall() {
         href="/book-a-call/"
         className="relative flex items-center gap-2 rounded-full bg-primary-container px-6 py-3 font-label-md text-white shadow-lg shadow-primary-container/30 transition-all hover:scale-105 hover:opacity-95 active:scale-95"
       >
-        <span className="material-symbols-outlined text-[18px]">
-          phone_in_talk
-        </span>
+        <Icon name="phone_in_talk" className="text-[18px]" />
         Let&apos;s Talk, Book a Free Call
       </Link>
     </div>

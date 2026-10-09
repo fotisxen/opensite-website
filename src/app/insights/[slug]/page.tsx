@@ -5,6 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { getAllArticles, noDash } from "@/lib/contentful";
+import Icon from "@/components/Icon";
 
 async function getArticleBySlug(slug: string) {
   const spaceId = process.env.CONTENTFUL_SPACE_ID!;
@@ -83,9 +84,7 @@ export default async function ArticlePage({
           href="/insights/"
           className="mb-8 inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text-primary"
         >
-          <span className="material-symbols-outlined text-base">
-            arrow_back
-          </span>
+          <Icon name="arrow_back" className="text-base" />
           Back to Insights
         </Link>
 
@@ -151,9 +150,7 @@ export default async function ArticlePage({
             className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-primary-container transition-all hover:scale-105"
           >
             Book a Free Call
-            <span className="material-symbols-outlined text-[18px]">
-              phone_in_talk
-            </span>
+            <Icon name="phone_in_talk" className="text-[18px]" />
           </Link>
         </div>
       </section>

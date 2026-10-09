@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 export function AboutPage() {
   useEffect(() => {
@@ -88,9 +89,7 @@ export function AboutPage() {
                 key={item.title}
                 className="rounded-xl border border-surface-border bg-surface-card p-8 transition-all duration-300 hover:border-primary/50"
               >
-                <span className="material-symbols-outlined mb-6 text-4xl text-primary">
-                  {item.icon}
-                </span>
+                <Icon name={item.icon} className="mb-6 text-4xl text-primary" />
                 <h3 className="mb-4 font-headline-sm text-headline-sm">
                   {item.title}
                 </h3>
@@ -113,9 +112,7 @@ export function AboutPage() {
           <Stagger className="grid auto-rows-[280px] grid-cols-1 gap-6 md:grid-cols-12">
             <StaggerItem className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-surface-border bg-surface-card p-10 md:col-span-8">
               <div className="absolute top-0 right-0 p-10 opacity-10 transition-opacity group-hover:opacity-20">
-                <span className="material-symbols-outlined text-[160px] text-primary">
-                  trending_up
-                </span>
+                <Icon name="trending_up" className="text-[160px] text-primary" />
               </div>
               <div className="relative z-10">
                 <h3 className="mb-4 font-headline-md text-headline-md">
@@ -128,9 +125,7 @@ export function AboutPage() {
               </div>
             </StaggerItem>
             <StaggerItem className="flex flex-col justify-between rounded-xl bg-primary-container p-10 text-on-primary-container md:col-span-4">
-              <span className="material-symbols-filled material-symbols-outlined text-5xl">
-                visibility
-              </span>
+              <Icon name="visibility" filled className="text-5xl" />
               <div>
                 <h3 className="mb-2 font-headline-sm text-headline-sm">
                   Transparency
@@ -142,9 +137,7 @@ export function AboutPage() {
               </div>
             </StaggerItem>
             <StaggerItem className="flex flex-col justify-between rounded-xl border border-surface-border bg-surface-container-high p-10 md:col-span-4">
-              <span className="material-symbols-outlined text-5xl text-secondary">
-                handshake
-              </span>
+              <Icon name="handshake" className="text-5xl text-secondary" />
               <div>
                 <h3 className="mb-2 font-headline-sm text-headline-sm">
                   Long-term Focus

@@ -101,11 +101,10 @@ export function privacyDoc(lang: Lang): LegalDoc {
 
 function privacyEl(): LegalDoc {
   const providers: string[][] = [
-    ["Hostinger International Ltd. (Κύπρος)", "Φιλοξενεί το site", where(legal.serverCountry)],
     [
-      "FormSubmit (formsubmit.co)",
-      "Στέλνει τα αιτήματα των φορμών στο email μας",
-      "Ο πάροχος δεν δημοσιεύει πού επεξεργάζεται τα δεδομένα",
+      "Hostinger International Ltd. (Κύπρος)",
+      "Φιλοξενεί το site και στέλνει τα αιτήματα των φορμών στο email μας",
+      where(legal.serverCountry),
     ],
     ...(legal.emailProvider ? [[legal.emailProvider, "Φιλοξενεί το email info@opensite.gr", ""]] : []),
     [
@@ -122,21 +121,6 @@ function privacyEl(): LegalDoc {
       "Contentful GmbH (Γερμανία)",
       "Σερβίρει τις εικόνες των άρθρων στη σελίδα Insights. Λαμβάνει τη διεύθυνση IP σου όταν ανοίγεις τη σελίδα",
       "ΕΕ και διεθνές δίκτυο διανομής",
-    ],
-    [
-      "Google Ireland Limited (γραμματοσειρά εικονιδίων)",
-      "Σερβίρει τη γραμματοσειρά εικονιδίων στις αγγλικές σελίδες. Λαμβάνει τη διεύθυνση IP σου",
-      "Ιρλανδία, με πιθανή διαβίβαση στις ΗΠΑ",
-    ],
-    [
-      "Webflow, Inc. και Unsplash",
-      "Σερβίρουν εικόνες στις αγγλικές σελίδες των έργων και των άρθρων. Λαμβάνουν τη διεύθυνση IP σου",
-      "ΗΠΑ και διεθνές δίκτυο διανομής",
-    ],
-    [
-      "Τα sites των έργων μας (OneMenoo, DF Real Estate)",
-      "Σερβίρουν εικόνες των έργων στις αγγλικές σελίδες περιπτώσεων. Λαμβάνουν τη διεύθυνση IP σου",
-      "",
     ],
     [
       "Google Ireland Limited και Meta Platforms Ireland Limited",
@@ -206,13 +190,6 @@ function privacyEl(): LegalDoc {
                 "Για τη λειτουργία και την ασφάλεια του site",
                 "Έννομο συμφέρον μας (άρθρο 6 παρ. 1 στ)",
                 "Για περιορισμένο χρόνο, όπως ορίζει ο πάροχος φιλοξενίας",
-              ],
-              [
-                "Γράφεσαι στο newsletter",
-                "Email",
-                "Για να σου στέλνουμε τα νέα μας άρθρα",
-                "Η συγκατάθεσή σου",
-                "Μέχρι να διαγραφείς",
               ],
               [
                 "Πατάς «Αποδοχή» στα cookies",
@@ -358,11 +335,10 @@ function privacyEl(): LegalDoc {
 
 function privacyEn(): LegalDoc {
   const providers: string[][] = [
-    ["Hostinger International Ltd. (Cyprus)", "Hosts the site", where(legal.serverCountry)],
     [
-      "FormSubmit (formsubmit.co)",
-      "Sends form enquiries to our email",
-      "The provider does not publish where it processes data",
+      "Hostinger International Ltd. (Cyprus)",
+      "Hosts the site and sends form enquiries to our email",
+      where(legal.serverCountry),
     ],
     ...(legal.emailProvider ? [[legal.emailProvider, "Hosts the info@opensite.gr mailbox", ""]] : []),
     [
@@ -379,21 +355,6 @@ function privacyEn(): LegalDoc {
       "Contentful GmbH (Germany)",
       "Serves the article images on the Insights page. Receives your IP address when you open that page",
       "EU and a global delivery network",
-    ],
-    [
-      "Google Ireland Limited (icon font)",
-      "Serves the icon font on the English pages. Receives your IP address",
-      "Ireland, with possible transfer to the USA",
-    ],
-    [
-      "Webflow, Inc. and Unsplash",
-      "Serve images on the English project and article pages. Receive your IP address",
-      "USA and a global delivery network",
-    ],
-    [
-      "The sites of our projects (OneMenoo, DF Real Estate)",
-      "Serve project images on the English case study pages. Receive your IP address",
-      "",
     ],
     [
       "Google Ireland Limited and Meta Platforms Ireland Limited",
@@ -462,13 +423,6 @@ function privacyEn(): LegalDoc {
                 "To run and secure the site",
                 "Our legitimate interest (Article 6(1)(f))",
                 "For a limited period set by the hosting provider",
-              ],
-              [
-                "You subscribe to the newsletter",
-                "Email",
-                "To send you our new articles",
-                "Your consent",
-                "Until you unsubscribe",
               ],
               [
                 "You press \"Accept\" on the cookie banner",

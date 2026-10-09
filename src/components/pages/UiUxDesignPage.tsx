@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 const layers = [
   {
@@ -189,7 +190,7 @@ export function UiUxDesignPage() {
                 className="inline-flex items-center gap-2 rounded-xl bg-primary-container px-8 py-4 font-label-md text-label-md text-on-primary-container transition-all hover:opacity-90"
               >
                 Start a Project
-                <span className="material-symbols-outlined">arrow_forward</span>
+                <Icon name="arrow_forward" />
               </Link>
             </div>
           </div>

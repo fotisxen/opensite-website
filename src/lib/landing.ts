@@ -45,13 +45,28 @@ export const landings: Record<LandingKey, LandingContent> = {
     ctaButton: "Ζήτα δωρεάν προσφορά",
     stickyRequestLabel: "Ζήτα προσφορά",
     faqs: [
-      { q: "Πόσο κοστίζει μια ιστοσελίδα;", a: null },
-      { q: "Σε πόσο καιρό είναι έτοιμη;", a: null },
-      { q: "Τι χρειάζεστε από μένα για να ξεκινήσουμε;", a: null },
-      { q: "Έχω ήδη site. Μπορείτε να το ξαναφτιάξετε;", a: null },
-      { q: "Τι γίνεται με το domain και το hosting;", a: null },
-      { q: "Τι υποστήριξη έχω μετά την παράδοση;", a: null },
-      { q: "Κόβετε τιμολόγιο;", a: null },
+      {
+        q: "Πόσο κοστίζει μια ιστοσελίδα;",
+        a: "{τιμή} Η τελική τιμή εξαρτάται από το πόσες σελίδες και ποιες λειτουργίες χρειάζεσαι, και τη μαθαίνεις γραπτά πριν ξεκινήσουμε.",
+      },
+      { q: "Σε πόσο καιρό είναι έτοιμη;", a: "Η ημερομηνία παράδοσης γράφεται στην προσφορά, πριν ξεκινήσουμε." },
+      {
+        q: "Τι χρειάζεστε από μένα για να ξεκινήσουμε;",
+        a: "Τα κείμενα, τις φωτογραφίες και το logo που έχεις. Αν κάτι λείπει, το λέμε στην προσφορά.",
+      },
+      {
+        q: "Έχω ήδη site. Μπορείτε να το ξαναφτιάξετε;",
+        a: "Ναι. Κρατάς το domain και το περιεχόμενό σου, και αλλάζει η ταχύτητα, ο σχεδιασμός και η εικόνα στο κινητό.",
+      },
+      {
+        q: "Τι γίνεται με το domain και το hosting;",
+        a: "Μένουν στο όνομά σου. Το κόστος τους είναι ξεχωριστό από την κατασκευή και γράφεται στην προσφορά.",
+      },
+      {
+        q: "Τι υποστήριξη έχω μετά την παράδοση;",
+        a: "Σου δείχνουμε πώς αλλάζεις το περιεχόμενο μόνος σου. Τι άλλο καλύπτει η υποστήριξη, και για πόσο, γράφεται στην προσφορά.",
+      },
+      { q: "Κόβετε τιμολόγιο;", a: "Ναι, για κάθε έργο." },
     ],
     price: { from: siteConfig.pricing.websiteFrom, weeks: siteConfig.pricing.websiteWeeks },
   },
@@ -76,12 +91,27 @@ export const landings: Record<LandingKey, LandingContent> = {
     ctaButton: "Ζήτα δωρεάν προσφορά",
     stickyRequestLabel: "Ζήτα προσφορά",
     faqs: [
-      { q: "Πόσο κοστίζει ένα eshop;", a: null },
-      { q: "Σε πόσο καιρό είναι έτοιμο;", a: null },
-      { q: "Με ποιους τρόπους πληρώνουν οι πελάτες μου;", a: null },
-      { q: "Ποιος περνάει τα προϊόντα;", a: null },
-      { q: "Τι γίνεται με το domain και το hosting;", a: null },
-      { q: "Τι υποστήριξη έχω μετά την παράδοση;", a: null },
+      {
+        q: "Πόσο κοστίζει ένα eshop;",
+        a: "{τιμή} Η τελική τιμή εξαρτάται από τον αριθμό των προϊόντων και από τους τρόπους πληρωμής και αποστολής που θέλεις.",
+      },
+      { q: "Σε πόσο καιρό είναι έτοιμο;", a: "Η ημερομηνία παράδοσης γράφεται στην προσφορά, πριν ξεκινήσουμε." },
+      {
+        q: "Με ποιους τρόπους πληρώνουν οι πελάτες μου;",
+        a: "Όπως συμφωνήσουμε: κάρτα, αντικαταβολή, τραπεζική κατάθεση. Για πληρωμές με κάρτα χρειάζεσαι συνεργασία με τράπεζα ή πάροχο πληρωμών, και τη σύνδεση την κάνουμε εμείς.",
+      },
+      {
+        q: "Ποιος περνάει τα προϊόντα;",
+        a: "Εσύ, από το διαχειριστικό, και σου δείχνουμε πώς. Αν θέλεις να τα περάσουμε εμείς, μπαίνει στην προσφορά.",
+      },
+      {
+        q: "Τι γίνεται με το domain και το hosting;",
+        a: "Μένουν στο όνομά σου. Το κόστος τους είναι ξεχωριστό από την κατασκευή και γράφεται στην προσφορά.",
+      },
+      {
+        q: "Τι υποστήριξη έχω μετά την παράδοση;",
+        a: "Σου δείχνουμε πώς αλλάζεις το περιεχόμενο μόνος σου. Τι άλλο καλύπτει η υποστήριξη, και για πόσο, γράφεται στην προσφορά.",
+      },
     ],
     price: { from: siteConfig.pricing.eshopFrom, weeks: siteConfig.pricing.eshopWeeks },
   },
@@ -107,10 +137,22 @@ export const landings: Record<LandingKey, LandingContent> = {
     ctaButton: "Ζήτα δωρεάν έλεγχο",
     stickyRequestLabel: "Ζήτα έλεγχο",
     faqs: [
-      { q: "Θα χάσω τη θέση μου στο Google;", a: null },
-      { q: "Κρατάω το domain και τα email μου;", a: null },
-      { q: "Πόσο καιρό θα είναι κάτω το site;", a: null },
-      { q: "Πόσο κοστίζει;", a: null },
+      {
+        q: "Θα χάσω τη θέση μου στο Google;",
+        a: "Κρατάμε τις ίδιες διευθύνσεις σελίδων όπου γίνεται και ανακατευθύνουμε τις υπόλοιπες, ώστε το Google να βρίσκει το νέο site στη θέση του παλιού. Θέσεις στο Google δεν μπορεί να εγγυηθεί κανείς.",
+      },
+      {
+        q: "Κρατάω το domain και τα email μου;",
+        a: "Ναι. Το domain μένει δικό σου, και πριν από τη μεταφορά ελέγχουμε πού φιλοξενούνται τα email σου για να μη διακοπούν.",
+      },
+      {
+        q: "Πόσο καιρό θα είναι κάτω το site;",
+        a: "Το παλιό site μένει στον αέρα μέχρι να εγκρίνεις το νέο. Η αλλαγή γίνεται χωρίς να κλείσει.",
+      },
+      {
+        q: "Πόσο κοστίζει;",
+        a: "Εξαρτάται από το μέγεθος του site. Στείλε το link και σου λέμε τιμή μαζί με τον δωρεάν έλεγχο.",
+      },
     ],
     price: { from: siteConfig.pricing.redesignFrom, weeks: siteConfig.pricing.redesignWeeks },
   },
@@ -123,9 +165,41 @@ export const landingKeys = Object.keys(landings) as LandingKey[];
 export function subtitleWithFacts(content: LandingContent) {
   let text = content.subtitle;
   const { from, weeks } = content.price;
-  if (from != null) text += ` Από €${from}${siteConfig.pricing.priceSuffix ?? ""}.`;
+  text += pricePhrase(from, siteConfig.pricing.vatMode);
   if (weeks != null) text += ` Έτοιμο σε ${weeks} εβδομάδες.`;
   return text;
+}
+
+export type VatMode = "plus" | "included" | "none" | null;
+
+const VAT_RATE = 0.24;
+const euro = (n: number) => `€${n.toLocaleString("el-GR", { maximumFractionDigits: 0 })}`;
+
+// Price phrase for the subtitle. Empty while the price or the VAT mode is
+// missing, so a price never appears without saying how VAT applies.
+export function pricePhrase(from: number | null, vatMode: VatMode): string {
+  if (from === null || vatMode === null) return "";
+  if (vatMode === "plus") {
+    return ` Από ${euro(from)} + ΦΠΑ (${euro(Math.round(from * (1 + VAT_RATE)))} με ΦΠΑ).`;
+  }
+  if (vatMode === "included") return ` Από ${euro(from)} με ΦΠΑ.`;
+  return ` Από ${euro(from)}, τελική τιμή.`;
+}
+
+// FAQ answers with the {τιμή} placeholder get the price phrase; when there is
+// none, the question is dropped. A question with no answer is never shown.
+export function resolveFaqs(content: LandingContent) {
+  const price = pricePhrase(content.price.from, siteConfig.pricing.vatMode).trim();
+  return content.faqs
+    .map((f) => {
+      if (!f.a) return null;
+      if (f.a.includes("{τιμή}")) {
+        if (!price) return null;
+        return { q: f.q, a: f.a.replace("{τιμή}", price) };
+      }
+      return { q: f.q, a: f.a };
+    })
+    .filter((f): f is { q: string; a: string } => f !== null);
 }
 
 export const steps = [

@@ -23,7 +23,8 @@ export interface SiteConfig {
     eshopWeeks: number | null;
     redesignFrom: number | null;
     redesignWeeks: number | null;
-    priceSuffix: string | null; // e.g. " + ΦΠΑ"
+    // How the "from" prices relate to VAT. While null, no price is shown at all.
+    vatMode: "plus" | "included" | "none" | null;
   };
   tracking: {
     googleAdsId: string | null; // "AW-XXXXXXXXXX"
@@ -35,6 +36,9 @@ export interface SiteConfig {
   testimonial: {
     el: string | null; // Greek rendering, approved by Fotis
   };
+  // How many projects the three Greek landing pages show: 4 (websites only),
+  // or null for all of them.
+  landingProjects: 4 | null;
   // Legal identity of the business. Shown in the Terms of Use and the Privacy
   // Policy. A null line is simply left out of the page.
   company: {
@@ -60,8 +64,8 @@ export const siteConfig: SiteConfig = {
   phone: {
     display: "698 449 6660",
     e164: "+306984496660",
-    viber: null,
-    whatsapp: null,
+    viber: true,
+    whatsapp: true,
   },
   email: "info@opensite.gr",
   social: {
@@ -70,13 +74,13 @@ export const siteConfig: SiteConfig = {
     linkedin: null, // the previous link was never confirmed
   },
   pricing: {
-    websiteFrom: null,
+    websiteFrom: 1000,
     websiteWeeks: null,
-    eshopFrom: null,
+    eshopFrom: 1200,
     eshopWeeks: null,
     redesignFrom: null,
     redesignWeeks: null,
-    priceSuffix: null,
+    vatMode: null, // Fotis: "plus", "included" or "none"
   },
   tracking: {
     googleAdsId: null,
@@ -86,8 +90,9 @@ export const siteConfig: SiteConfig = {
     metaPixelId: "2111724882722505",
   },
   testimonial: {
-    el: null,
+    el: "Από τον σχεδιασμό μέχρι το launch, το OpenSite δημιούργησε ένα website που αποτυπώνει την κομψότητα των ιστιοπλοϊκών μας εμπειριών και δίνει στους πελάτες μας μια διαδικασία κράτησης χωρίς εμπόδια.",
   },
+  landingProjects: null,
   company: {
     legalName: "ΞΕΝΙΤΙΔΗΣ ΦΩΤΗΣ",
     legalForm: { el: "Ατομική επιχείρηση", en: "Sole proprietorship" },

@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { sendLead } from "@/lib/sendLead";
 import { getAttribution, hasConsent } from "@/lib/tracking";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 // three.js is loaded after first paint so the 3D hero never blocks LCP.
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
@@ -46,26 +48,16 @@ export function HomePage() {
     setStatus("sending");
     setErrorMessage("");
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/info@opensite.gr",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone || "-",
-            business_type: formData.businessType,
-            message: formData.message,
-            _subject: `New project inquiry from ${formData.name}`,
-            ...getAttribution(hasConsent()),
-          }),
-        },
-      );
-      if (!response.ok) throw new Error(`Status ${response.status}`);
+      await sendLead({
+        subject: `New project inquiry from ${formData.name}`,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        business_type: formData.businessType,
+        message: formData.message,
+        page: "home",
+        ...getAttribution(hasConsent()),
+      });
       fbq("Lead", {
         content_name: "Home Page Form",
         content_category: "Agency Lead",
@@ -144,7 +136,7 @@ export function HomePage() {
                 key={label}
                 className="flex items-center gap-2 font-headline-sm text-text-primary"
               >
-                <span className="material-symbols-outlined">{icon}</span>
+                <Icon name={icon} />
                 {label}
               </div>
             ))}
@@ -185,9 +177,7 @@ export function HomePage() {
                 key={item.title}
                 className="group rounded-[16px] border border-surface-border bg-surface-card p-8 transition-colors hover:border-error/50"
               >
-                <span className="material-symbols-outlined mb-4 text-4xl text-error">
-                  {item.icon}
-                </span>
+                <Icon name={item.icon} className="mb-4 text-4xl text-error" />
                 <h3 className="mb-3 font-headline-sm text-headline-sm text-text-primary">
                   {item.title}
                 </h3>
@@ -258,7 +248,7 @@ export function HomePage() {
                   <div
                     className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg ${s.iconClass}`}
                   >
-                    <span className="material-symbols-outlined">{s.icon}</span>
+                    <Icon name={s.icon} />
                   </div>
                   <h3 className="mb-2 font-headline-sm text-headline-sm text-text-primary">
                     {s.title}
@@ -282,7 +272,7 @@ export function HomePage() {
           <Stagger className="grid grid-cols-1 gap-gutter lg:grid-cols-2">
             {[
               {
-                img: "https://onemenoo.com/images/onemenoo-social.jpg",
+                img: "/work/one-menoo.webp",
                 tag: "Hospitality Tech",
                 tagClass: "bg-primary/10 text-primary",
                 title: "OneMenoo",
@@ -340,9 +330,7 @@ export function HomePage() {
                     className="mt-6 flex items-center gap-2 font-label-md text-primary transition-all hover:gap-3"
                   >
                     View Case Study
-                    <span className="material-symbols-outlined text-sm">
-                      arrow_forward
-                    </span>
+                    <Icon name="arrow_forward" className="text-sm" />
                   </Link>
                 </div>
               </StaggerItem>
@@ -384,9 +372,7 @@ export function HomePage() {
                     <div
                       className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${item.iconClass}`}
                     >
-                      <span className="material-symbols-outlined">
-                        {item.icon}
-                      </span>
+                      <Icon name={item.icon} />
                     </div>
                     <div>
                       <h4 className="mb-2 font-headline-sm text-headline-sm text-text-primary">
@@ -403,9 +389,7 @@ export function HomePage() {
                 <div className="absolute -inset-4 aspect-square rounded-full bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl" />
                 <div className="relative overflow-hidden rounded-[16px] border border-surface-border bg-surface-card p-12">
                   <div className="absolute top-0 right-0 p-4 opacity-10">
-                    <span className="material-symbols-outlined text-[120px]">
-                      verified
-                    </span>
+                    <Icon name="verified" className="text-[120px]" />
                   </div>
                   <div>
                     <div className="font-label-md text-sm text-text-primary italic">
@@ -450,13 +434,11 @@ export function HomePage() {
                 </div>
                 <div className="mt-12 space-y-6">
                   <div className="flex items-center gap-4">
-                    <span className="material-symbols-outlined">mail</span>
+                    <Icon name="mail" />
                     <span>info@opensite.gr</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="material-symbols-outlined">
-                      location_on
-                    </span>
+                    <Icon name="location_on" />
                     <span>Thessaloniki, Greece / Global Remote</span>
                   </div>
                 </div>
@@ -464,9 +446,7 @@ export function HomePage() {
               <div className="p-12">
                 {status === "success" ? (
                   <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
-                    <span className="material-symbols-outlined text-5xl text-primary">
-                      check_circle
-                    </span>
+                    <Icon name="check_circle" className="text-5xl text-primary" />
                     <h3 className="font-headline-sm text-xl font-bold text-text-primary">
                       Message sent!
                     </h3>
