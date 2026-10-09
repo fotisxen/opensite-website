@@ -21,11 +21,14 @@ export default function Reveal({
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (el.getBoundingClientRect().top < window.innerHeight) return;
 
-    el.classList.add("reveal-hidden");
+    // With a [data-stagger] list inside, the cards come in one by one and the
+    // wrapper itself stays put; otherwise the whole block slides in.
+    const hidden = el.querySelector("[data-stagger]") ? "reveal-stagger-hidden" : "reveal-hidden";
+    el.classList.add(hidden);
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.remove("reveal-hidden");
+          el.classList.remove(hidden);
           io.disconnect();
         }
       },

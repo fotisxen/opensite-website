@@ -1,6 +1,7 @@
 import GreekFrame from "@/components/greek/GreekFrame";
 import { greekMetadata, SECTION } from "@/components/greek/pieces";
 import ContactButtons from "@/components/landing/ContactButtons";
+import HeroGlow from "@/components/greek/HeroGlow";
 import LeadForm from "@/components/landing/LeadForm";
 import { siteConfig } from "@/lib/site.config";
 
@@ -14,7 +15,8 @@ export const metadata = greekMetadata({
 export default function GreekContact() {
   return (
     <GreekFrame>
-      <section className={`${SECTION} grid gap-10 pb-14 pt-10 lg:grid-cols-2 lg:gap-16 lg:pt-16`}>
+      <section className={`relative isolate ${SECTION} grid gap-10 pb-14 pt-10 lg:grid-cols-2 lg:gap-16 lg:pt-16`}>
+        <HeroGlow />
         <div>
           <h1 className="font-display-lg text-[30px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
             Πες μας τι χρειάζεσαι

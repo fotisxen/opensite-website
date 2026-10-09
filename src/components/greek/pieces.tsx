@@ -3,6 +3,7 @@ import Link from "next/link";
 import ContactButtons from "@/components/landing/ContactButtons";
 import Reveal from "@/components/landing/Reveal";
 import WorkShot from "@/components/landing/WorkShot";
+import HeroGlow from "./HeroGlow";
 import { BASE_URL } from "@/lib/landing";
 import type { GreekCase } from "@/lib/greek";
 
@@ -35,11 +36,12 @@ export const SECTION = "mx-auto max-w-container-max px-4 md:px-margin-desktop";
 
 export function PageHero({ title, text }: { title: string; text: string }) {
   return (
-    <section className={`${SECTION} pb-10 pt-10 lg:pt-16`}>
-      <h1 className="max-w-3xl font-display-lg text-[30px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
+    <section className={`relative isolate ${SECTION} pb-10 pt-10 lg:pt-16`}>
+      <HeroGlow />
+      <h1 className="rise-in max-w-3xl font-display-lg text-[30px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
         {title}
       </h1>
-      <p className="mt-4 max-w-2xl font-body-lg text-base text-text-secondary lg:text-lg">{text}</p>
+      <p className="rise-in mt-4 max-w-2xl font-body-lg text-base text-text-secondary lg:text-lg">{text}</p>
     </section>
   );
 }
@@ -48,7 +50,8 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
   return (
     <section className="border-t border-surface-border bg-surface-container-lowest py-14">
       <Reveal className={SECTION}>
-        <div className="rounded-2xl border border-surface-border bg-surface-card p-6 md:p-10">
+        <div className="relative isolate overflow-hidden rounded-2xl border border-surface-border bg-surface-card p-6 md:p-10">
+          <HeroGlow />
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">{title}</h2>
           <p className="mt-2 max-w-2xl font-body-md text-body-md text-text-secondary">{text}</p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -69,9 +72,9 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
 
 export function CaseCard({ c }: { c: GreekCase }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
+    <article className="lift overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
       {c.image && (
-        <Link href={`/el/ergasies/${c.slug}/`} tabIndex={-1} aria-hidden="true">
+        <Link href={`/el/ergasies/${c.slug}/`} tabIndex={-1} aria-hidden="true" className="lift-zoom block overflow-hidden">
           <WorkShot src={c.image.src} alt={c.image.alt ?? `Screenshot: ${c.name}`} width={c.image.width} height={c.image.height} />
         </Link>
       )}

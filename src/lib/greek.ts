@@ -18,11 +18,16 @@ export interface GreekService {
   points: string[];
   // Dedicated landing page (the ones the ads point to), if there is one.
   landing?: string;
+  icon: string; // name in lib/icons.ts
+  // A real project that shows this service, if there is one.
+  image?: { src: string; width: number; height: number; alt: string };
 }
 
 export const greekServices: GreekService[] = [
   {
     id: "istoselides",
+    icon: "code",
+    image: { src: "/work/akinita-fotiadis.webp", width: 800, height: 500, alt: "Το site των Ακινήτων Φωτιάδη" },
     title: "Ιστοσελίδες",
     summary: "Site για επιχειρήσεις που θέλουν να τις βρίσκουν και να τις καλούν.",
     points: [
@@ -35,6 +40,7 @@ export const greekServices: GreekService[] = [
   },
   {
     id: "eshop",
+    icon: "shopping_cart",
     title: "E-shop",
     summary: "Ηλεκτρονικό κατάστημα με απλή διαδρομή από το προϊόν στο checkout.",
     points: [
@@ -46,6 +52,8 @@ export const greekServices: GreekService[] = [
   },
   {
     id: "anakataskevi",
+    icon: "build",
+    image: { src: "/work/adonis-sail-yachts.webp", width: 800, height: 500, alt: "Το νέο site των Adonis Sail Yachts" },
     title: "Ανακατασκευή site",
     summary: "Το υπάρχον site είναι αργό ή παλιό; Το ξαναφτιάχνουμε και κρατάς το domain και το περιεχόμενό σου.",
     points: [
@@ -57,6 +65,8 @@ export const greekServices: GreekService[] = [
   },
   {
     id: "crm",
+    icon: "hub",
+    image: { src: "/work/df-real-estate-crm.webp", width: 800, height: 500, alt: "Η είσοδος στο CRM του DF Real Estate" },
     title: "CRM και διαχειριστικά",
     summary: "Ιδιωτικό πάνελ για να διαχειρίζεσαι μόνος σου αγγελίες, πελάτες και επαφές.",
     points: [
@@ -67,6 +77,8 @@ export const greekServices: GreekService[] = [
   },
   {
     id: "intranet",
+    icon: "lan",
+    image: { src: "/case-studies/starbulk-intranet.svg", width: 800, height: 500, alt: "Απεικόνιση του intranet (όχι πραγματικό screenshot)" },
     title: "Intranet και SharePoint",
     summary: "Εσωτερικό portal για εταιρείες που δουλεύουν ήδη με Microsoft 365.",
     points: [
@@ -77,6 +89,8 @@ export const greekServices: GreekService[] = [
   },
   {
     id: "efarmoges",
+    icon: "devices",
+    image: { src: "/case-studies/hoopstruct.png", width: 1200, height: 630, alt: "HoopStruct, το δικό μας προϊόν" },
     title: "Εφαρμογές desktop και mobile",
     summary: "Εφαρμογές για Windows, Mac, iOS και Android, με κοινό backend.",
     points: [
@@ -87,6 +101,8 @@ export const greekServices: GreekService[] = [
   },
   {
     id: "seo",
+    icon: "search",
+    image: { src: "/work/df-real-estate.webp", width: 800, height: 500, alt: "Το site του DF Real Estate" },
     title: "SEO",
     summary: "Τεχνική βελτιστοποίηση, ώστε το Google να καταλαβαίνει και να δείχνει σωστά το site.",
     points: [

@@ -256,3 +256,77 @@
   opacity: 0;
   transform: translateY(24px);
 }
+
+/* ---------- Greek site motion (CSS only, no animation library) ---------- */
+
+/* Children of a [data-stagger] container inside a Reveal come in one by one. */
+[data-stagger] > * {
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+[data-stagger] > *:nth-child(2) { transition-delay: 80ms, 80ms, 0s, 0s; }
+[data-stagger] > *:nth-child(3) { transition-delay: 160ms, 160ms, 0s, 0s; }
+[data-stagger] > *:nth-child(4) { transition-delay: 240ms, 240ms, 0s, 0s; }
+[data-stagger] > *:nth-child(5) { transition-delay: 320ms, 320ms, 0s, 0s; }
+[data-stagger] > *:nth-child(6) { transition-delay: 400ms, 400ms, 0s, 0s; }
+[data-stagger] > *:nth-child(n + 7) { transition-delay: 480ms, 480ms, 0s, 0s; }
+.reveal-stagger-hidden [data-stagger] > * {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* Cards lift a little under the pointer. */
+.lift {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+@media (hover: hover) {
+  .lift:hover {
+    transform: translateY(-4px);
+    border-color: rgb(180 197 255 / 0.35);
+    box-shadow: 0 18px 40px -20px rgb(37 99 235 / 0.45);
+  }
+  .lift:hover .lift-zoom img {
+    transform: scale(1.04);
+  }
+}
+.lift-zoom img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Slow floating glows behind page heroes. */
+@keyframes glow-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.15); }
+}
+@keyframes glow-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-50px, -20px) scale(0.95); }
+}
+.glow-a { animation: glow-drift-a 14s ease-in-out infinite; }
+.glow-b { animation: glow-drift-b 18s ease-in-out infinite; }
+
+/* Endless strip of technology names. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 30s linear infinite; }
+
+/* First-screen entrance: transform only, the text is visible from the start. */
+@keyframes rise-in {
+  from { transform: translateY(16px); }
+  to { transform: none; }
+}
+.rise-in { animation: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-a, .glow-b, .marquee-track, .rise-in { animation: none; }
+  [data-stagger] > *, .lift, .lift-zoom img { transition: none; }
+  .reveal-stagger-hidden [data-stagger] > * { opacity: 1; transform: none; }
+}

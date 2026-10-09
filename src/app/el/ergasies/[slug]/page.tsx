@@ -4,6 +4,8 @@ import CheckList from "@/components/greek/CheckList";
 import GreekFrame from "@/components/greek/GreekFrame";
 import { CtaBand, greekMetadata, SECTION } from "@/components/greek/pieces";
 import WorkShot from "@/components/landing/WorkShot";
+import HeroGlow from "@/components/greek/HeroGlow";
+import Reveal from "@/components/landing/Reveal";
 import Link from "next/link";
 import { getGreekCase, greekCases } from "@/lib/greek";
 
@@ -30,7 +32,8 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
 
   return (
     <GreekFrame>
-      <section className={`${SECTION} pb-8 pt-10 lg:pt-16`}>
+      <section className={`relative isolate ${SECTION} pb-8 pt-10 lg:pt-16`}>
+        <HeroGlow />
         <Link href="/el/ergasies/" className="font-label-md text-label-md text-primary underline underline-offset-4">
           Όλες οι δουλειές
         </Link>
@@ -55,7 +58,7 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
 
       {c.image && (
         <section className={`${SECTION} pb-10`}>
-          <div className="overflow-hidden rounded-2xl border border-surface-border">
+          <div className="rise-in overflow-hidden rounded-2xl border border-surface-border shadow-2xl shadow-primary-container/10">
             <WorkShot src={c.image.src} alt={c.image.alt ?? `Screenshot: ${c.name}`} width={c.image.width} height={c.image.height} />
           </div>
         </section>
@@ -71,9 +74,9 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
           </div>
           <div>
             <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Τι φτιάξαμε</h2>
-            <ul className="mt-4 space-y-4">
+            <ul data-stagger className="mt-4 grid gap-3 sm:grid-cols-2">
               {c.built.map((b) => (
-                <li key={b.title}>
+                <li key={b.title} className="lift rounded-xl border border-surface-border bg-surface-card p-4">
                   <h3 className="font-label-md text-label-md font-semibold text-text-primary">{b.title}</h3>
                   <p className="mt-0.5 font-body-md text-body-md text-text-secondary">{b.text}</p>
                 </li>

@@ -137,7 +137,7 @@ function buildSite() {
   stats.add(new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color: SECONDARY })));
   const endDot = new THREE.Mesh(new THREE.CircleGeometry(0.05, 20), new THREE.MeshBasicMaterial({ color: SECONDARY }));
   stats.add(place(endDot, pts[pts.length - 1].x, pts[pts.length - 1].y, 0.014));
-  const growth = labelTexture("+248%", { w: 256, h: 96, font: "700 64px Sora, Inter, sans-serif", color: "#4ae176" });
+  const growth = labelTexture("Leads", { w: 256, h: 96, font: "700 64px Sora, Inter, sans-serif", color: "#4ae176" });
   const growthPlane = new THREE.Mesh(
     new THREE.PlaneGeometry(0.62, 0.23),
     new THREE.MeshBasicMaterial({ map: growth, transparent: true })

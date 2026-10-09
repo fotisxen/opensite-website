@@ -1,5 +1,6 @@
 import GreekFrame from "@/components/greek/GreekFrame";
 import { CaseCard, CtaBand, greekMetadata, PageHero, SECTION } from "@/components/greek/pieces";
+import Reveal from "@/components/landing/Reveal";
 import { greekCases } from "@/lib/greek";
 
 export const metadata = greekMetadata({
@@ -18,11 +19,13 @@ export default function GreekWork() {
         text="Επιλεγμένα έργα, με το τι χρειαζόταν και τι φτιάξαμε για το καθένα."
       />
       <section className="pb-14">
-        <div className={`${SECTION} grid gap-5 sm:grid-cols-2 lg:grid-cols-3`}>
-          {greekCases.map((c) => (
-            <CaseCard key={c.slug} c={c} />
-          ))}
-        </div>
+        <Reveal className={SECTION}>
+          <div data-stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {greekCases.map((c) => (
+              <CaseCard key={c.slug} c={c} />
+            ))}
+          </div>
+        </Reveal>
       </section>
       <CtaBand title="Θέλεις κάτι αντίστοιχο;" text="Πες μας τι χρειάζεσαι και σου στέλνουμε προσφορά με τιμή και ημερομηνία παράδοσης." />
     </GreekFrame>

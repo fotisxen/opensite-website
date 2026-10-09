@@ -18,6 +18,7 @@ import ContactButtons, { AltContactLine } from "./ContactButtons";
 import FocusFormButton from "./FocusFormButton";
 import LandingStickyBar from "./LandingStickyBar";
 import LeadForm from "./LeadForm";
+import HeroGlow from "@/components/greek/HeroGlow";
 import Reveal from "./Reveal";
 import WorkShot from "./WorkShot";
 
@@ -97,7 +98,8 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* First screen: no entry animation, nothing starts hidden. */}
-      <section className="mx-auto max-w-container-max px-4 pb-10 pt-6 md:px-margin-desktop lg:pt-14">
+      <section className="relative isolate mx-auto max-w-container-max px-4 pb-10 pt-6 md:px-margin-desktop lg:pt-14">
+        <HeroGlow />
         <div className="grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-x-16 lg:gap-y-6">
           <div className="lg:col-start-1 lg:row-start-1">
             <h1 className="font-display-lg text-[28px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
@@ -126,9 +128,9 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
       <section className="border-y border-surface-border bg-surface-container-lowest py-14">
         <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Τι παίρνεις</h2>
-          <ul className="mt-6 grid gap-5 md:grid-cols-3">
+          <ul data-stagger className="mt-6 grid gap-5 md:grid-cols-3">
             {c.gets.map((text) => (
-              <li key={text} className="flex gap-3 rounded-2xl border border-surface-border bg-surface-card p-5 text-text-primary">
+              <li key={text} className="lift flex gap-3 rounded-2xl border border-surface-border bg-surface-card p-5 text-text-primary">
                 <CheckIcon />
                 <span className="font-body-md text-body-md">{text}</span>
               </li>
@@ -143,9 +145,9 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
             <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">
               Δουλειές που έχουμε παραδώσει
             </h2>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <div data-stagger className="mt-6 grid gap-5 sm:grid-cols-2">
               {work.map((card) => (
-                <article key={card.slug} className="overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
+                <article key={card.slug} className="lift overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
                   {card.image && (
                     <WorkShot
                       src={card.image.src}
@@ -197,9 +199,9 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
       <section className="py-14">
         <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Πώς δουλεύουμε</h2>
-          <ol className="mt-6 grid gap-5 md:grid-cols-3">
+          <ol data-stagger className="mt-6 grid gap-5 md:grid-cols-3">
             {steps.map((step, i) => (
-              <li key={step} className="flex gap-4 rounded-2xl border border-surface-border bg-surface-card p-5">
+              <li key={step} className="lift flex gap-4 rounded-2xl border border-surface-border bg-surface-card p-5">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-container font-label-md text-label-md text-white">
                   {i + 1}
                 </span>

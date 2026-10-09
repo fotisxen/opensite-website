@@ -1,6 +1,14 @@
 import GreekFrame from "@/components/greek/GreekFrame";
 import { CtaBand, greekMetadata, PageHero, SECTION } from "@/components/greek/pieces";
+import Reveal from "@/components/landing/Reveal";
+import WorkShot from "@/components/landing/WorkShot";
 import { greekSteps, greekWhy } from "@/lib/greek";
+
+const SHOTS = [
+  { src: "/work/akinita-fotiadis.webp", alt: "Το site των Ακινήτων Φωτιάδη" },
+  { src: "/work/df-real-estate.webp", alt: "Το site του DF Real Estate" },
+  { src: "/work/one-menoo.webp", alt: "Το site του OneMenoo" },
+];
 
 export const metadata = greekMetadata({
   title: "Σχετικά | OpenSite, Θεσσαλονίκη",
@@ -18,23 +26,37 @@ export default function GreekAbout() {
         text="Στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάς απευθείας με τον developer που φτιάχνει το site σου."
       />
 
+      <section className="pb-12">
+        <Reveal className={SECTION}>
+          <div data-stagger className="grid gap-4 sm:grid-cols-3">
+            {SHOTS.map((shot) => (
+              <div key={shot.src} className="lift lift-zoom overflow-hidden rounded-2xl border border-surface-border">
+                <WorkShot src={shot.src} alt={shot.alt} width={800} height={500} />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
       <section className="border-y border-surface-border bg-surface-container-lowest py-12">
-        <div className={`${SECTION} grid gap-5 md:grid-cols-3`}>
+        <Reveal className={SECTION}>
+        <div data-stagger className="grid gap-5 md:grid-cols-3">
           {greekWhy.map((w) => (
-            <div key={w.title} className="rounded-2xl border border-surface-border bg-surface-card p-5">
+            <div key={w.title} className="lift rounded-2xl border border-surface-border bg-surface-card p-5">
               <h2 className="font-label-md text-label-md font-semibold text-text-primary">{w.title}</h2>
               <p className="mt-2 font-body-md text-body-md text-text-secondary">{w.text}</p>
             </div>
           ))}
         </div>
+        </Reveal>
       </section>
 
       <section className="py-12">
-        <div className={SECTION}>
+        <Reveal className={SECTION}>
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Πώς δουλεύουμε</h2>
-          <ol className="mt-6 grid gap-5 md:grid-cols-3">
+          <ol data-stagger className="mt-6 grid gap-5 md:grid-cols-3">
             {greekSteps.map((s, i) => (
-              <li key={s.title} className="flex gap-4 rounded-2xl border border-surface-border bg-surface-card p-5">
+              <li key={s.title} className="lift flex gap-4 rounded-2xl border border-surface-border bg-surface-card p-5">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-container font-label-md text-label-md text-white">
                   {i + 1}
                 </span>
@@ -45,7 +67,7 @@ export default function GreekAbout() {
               </li>
             ))}
           </ol>
-        </div>
+        </Reveal>
       </section>
 
       <CtaBand title="Ας μιλήσουμε" text="Πες μας τι χρειάζεσαι. Απαντάμε μέσα σε 24 ώρες." />
