@@ -32,12 +32,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className={`${sora.variable} ${inter.variable} overflow-x-hidden`}>
         <SiteChrome>{children}</SiteChrome>
         <TrackingProvider />

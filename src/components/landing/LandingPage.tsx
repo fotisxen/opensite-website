@@ -1,8 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
-import Image from "next/image";
-import { FadeIn } from "@/components/motion/FadeIn";
 import { getCaseStudy } from "@/lib/case-studies";
 import {
   BASE_URL,
@@ -19,6 +17,8 @@ import FocusFormButton from "./FocusFormButton";
 import LandingFrame from "./LandingFrame";
 import LandingStickyBar from "./LandingStickyBar";
 import LeadForm from "./LeadForm";
+import Reveal from "./Reveal";
+import WorkShot from "./WorkShot";
 
 export function landingMetadata(key: LandingKey): Metadata {
   const c = landings[key];
@@ -107,7 +107,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
       </section>
 
       <section className="border-y border-surface-border bg-surface-container-lowest py-14">
-        <FadeIn className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
+        <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Τι παίρνεις</h2>
           <ul className="mt-6 grid gap-5 md:grid-cols-3">
             {c.gets.map((text) => (
@@ -117,25 +117,23 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               </li>
             ))}
           </ul>
-        </FadeIn>
+        </Reveal>
       </section>
 
       {showWork && (
         <section className="py-14">
-          <FadeIn className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
+          <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
             <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">
               Δουλειές που έχουμε παραδώσει
             </h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
               {work.map((card) => (
                 <article key={card.slug} className="overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
-                  <Image
+                  <WorkShot
                     src={`/work/${card.slug}.webp`}
                     alt={`Screenshot του site ${card.name}`}
                     width={800}
                     height={500}
-                    loading="lazy"
-                    className="h-auto w-full"
                   />
                   <div className="p-5">
                     <h3 className="font-headline-sm text-headline-sm font-semibold text-text-primary">{card.name}</h3>
@@ -154,12 +152,12 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
                 </article>
               ))}
             </div>
-          </FadeIn>
+          </Reveal>
         </section>
       )}
 
       <section className={`${showWork ? "border-t border-surface-border" : ""} bg-surface-container-lowest py-14`}>
-        <FadeIn className="mx-auto max-w-3xl px-4 md:px-margin-desktop">
+        <Reveal className="mx-auto max-w-3xl px-4 md:px-margin-desktop">
           <figure className="rounded-2xl border border-surface-border bg-surface-card p-6 md:p-8">
             <blockquote className="font-body-lg text-body-lg italic text-text-primary" lang={siteConfig.testimonial.el ? "el" : "en"}>
               &ldquo;{siteConfig.testimonial.el ?? testimonial.en}&rdquo;
@@ -171,11 +169,11 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               </span>
             </figcaption>
           </figure>
-        </FadeIn>
+        </Reveal>
       </section>
 
       <section className="py-14">
-        <FadeIn className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
+        <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Πώς δουλεύουμε</h2>
           <ol className="mt-6 grid gap-5 md:grid-cols-3">
             {steps.map((step, i) => (
@@ -187,12 +185,12 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               </li>
             ))}
           </ol>
-        </FadeIn>
+        </Reveal>
       </section>
 
       {faqs.length > 0 && (
         <section className="border-t border-surface-border bg-surface-container-lowest py-14">
-          <FadeIn className="mx-auto max-w-3xl px-4 md:px-margin-desktop">
+          <Reveal className="mx-auto max-w-3xl px-4 md:px-margin-desktop">
             <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Συχνές ερωτήσεις</h2>
             <div className="mt-6 divide-y divide-surface-border rounded-2xl border border-surface-border bg-surface-card">
               {faqs.map((f) => (
@@ -207,12 +205,12 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
                 </details>
               ))}
             </div>
-          </FadeIn>
+          </Reveal>
         </section>
       )}
 
       <section className="border-t border-surface-border py-16">
-        <FadeIn className="mx-auto max-w-2xl px-4 text-center md:px-margin-desktop">
+        <Reveal className="mx-auto max-w-2xl px-4 text-center md:px-margin-desktop">
           <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Πες μας τι χρειάζεσαι</h2>
           <p className="mt-3 font-body-lg text-body-lg text-text-secondary">
             Στείλε τη φόρμα και σου απαντάμε μέσα σε 24 ώρες.
@@ -221,7 +219,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
             <FocusFormButton>{c.ctaButton}</FocusFormButton>
             <ContactButtons phoneLabel={`Κάλεσε ${siteConfig.phone.display}`} className="justify-center" />
           </div>
-        </FadeIn>
+        </Reveal>
       </section>
 
       <LandingStickyBar requestLabel={c.stickyRequestLabel} />
