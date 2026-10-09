@@ -6,20 +6,33 @@ import { hasCompanyIdentity } from "@/lib/legal";
 import { siteConfig } from "@/lib/site.config";
 import GreekNav from "./GreekNav";
 
-// Frame of the Greek site (/el/...): Greek menu with the language switch,
-// a short footer. Pages put themselves inside it, like the landing pages do
-// with LandingFrame, so the English chrome never loads here.
-export default function GreekFrame({ children }: { children: React.ReactNode }) {
+// Frame of every Greek page (/el/..., the landing pages, the thank-you page):
+// Greek menu with the language switch, and the footer. Pages put themselves
+// inside it, so the English chrome never loads there.
+export default function GreekFrame({
+  children,
+  withStickyPadding = false,
+}: {
+  children: React.ReactNode;
+  // The landing pages have a mobile bar fixed to the bottom; the footer must
+  // end above it.
+  withStickyPadding?: boolean;
+}) {
   const { social } = siteConfig;
   return (
     <div
       lang="el"
       // Sora has no Greek glyphs, so Greek headings use the body font (Inter).
       style={{ ["--font-display" as string]: "var(--font-body)" }}
-      className="min-h-screen bg-background text-on-surface"
+      // Column layout: on short pages the footer still sits at the bottom.
+      className={`flex min-h-screen flex-col bg-background text-on-surface ${
+        withStickyPadding ? "pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0" : ""
+      }`}
     >
       <GreekNav />
-      <main lang="el">{children}</main>
+      <main lang="el" className="flex-1">
+        {children}
+      </main>
 
       <footer className="border-t border-surface-border bg-surface-container-lowest">
         <div className="mx-auto grid max-w-container-max gap-8 px-4 py-10 md:grid-cols-3 md:px-margin-desktop">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LandingFrame from "@/components/landing/LandingFrame";
+import GreekFrame from "@/components/greek/GreekFrame";
 import ThanksContent from "@/components/landing/ThanksContent";
 
 export const metadata: Metadata = {
@@ -7,10 +7,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// After the form the visitor is no longer in the ad funnel, so the page uses
+// the full Greek frame: menu, language switch and footer, to keep browsing.
 export default function ThanksPage() {
   return (
-    <LandingFrame>
+    <GreekFrame>
       <ThanksContent />
-    </LandingFrame>
+    </GreekFrame>
   );
 }

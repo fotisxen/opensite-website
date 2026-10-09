@@ -12,10 +12,10 @@ import {
   workCards,
   type LandingKey,
 } from "@/lib/landing";
+import GreekFrame from "@/components/greek/GreekFrame";
 import { siteConfig } from "@/lib/site.config";
 import ContactButtons, { AltContactLine } from "./ContactButtons";
 import FocusFormButton from "./FocusFormButton";
-import LandingFrame from "./LandingFrame";
 import LandingStickyBar from "./LandingStickyBar";
 import LeadForm from "./LeadForm";
 import Reveal from "./Reveal";
@@ -93,7 +93,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
   };
 
   return (
-    <LandingFrame withStickyPadding>
+    <GreekFrame withStickyPadding>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* First screen: no entry animation, nothing starts hidden. */}
@@ -245,6 +245,6 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
       </section>
 
       <LandingStickyBar requestLabel={c.stickyRequestLabel} />
-    </LandingFrame>
+    </GreekFrame>
   );
 }

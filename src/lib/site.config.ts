@@ -80,7 +80,7 @@ export const siteConfig: SiteConfig = {
     eshopWeeks: null,
     redesignFrom: null,
     redesignWeeks: null,
-    vatMode: null, // Fotis: "plus", "included" or "none"
+    vatMode: "plus", // prices are without VAT
   },
   tracking: {
     googleAdsId: null,

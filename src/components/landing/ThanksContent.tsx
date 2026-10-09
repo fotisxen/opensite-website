@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 import { phoneHref, siteConfig } from "@/lib/site.config";
 import { consumeLeadSubmitted, trackLead } from "@/lib/tracking";
@@ -23,6 +24,14 @@ export default function ThanksContent() {
         . Αν βιάζεσαι, κάλεσέ μας τώρα.
       </p>
       <ContactButtons phoneLabel={`Κάλεσε ${siteConfig.phone.display}`} className="mt-8 justify-center" />
+      <p className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2 font-label-md text-label-md">
+        <Link href="/el/ergasies/" className="text-primary underline underline-offset-4">
+          Δες τις δουλειές μας
+        </Link>
+        <Link href="/el/" className="text-primary underline underline-offset-4">
+          Αρχική σελίδα
+        </Link>
+      </p>
     </section>
   );
 }
