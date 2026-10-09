@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import LanguageSwitch from "@/components/LanguageSwitch";
 import { GREEK_NAV } from "@/lib/greek";
+import { isLandingPath } from "@/lib/routes";
 import { phoneHref, siteConfig } from "@/lib/site.config";
 
 function isActive(pathname: string | null, href: string) {
@@ -17,6 +18,9 @@ function isActive(pathname: string | null, href: string) {
 // font: the Greek pages stay light.
 export default function GreekNav() {
   const pathname = usePathname();
+  // Ad landing pages: the phone stays visible on phones too, and there is no
+  // language switch, which would send an ad visitor to the English site.
+  const landing = isLandingPath(pathname);
   const [open, setOpen] = useState(false);
 
   useEffect(() => setOpen(false), [pathname]);
@@ -49,10 +53,12 @@ export default function GreekNav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <LanguageSwitch to="en" />
+          {!landing && <LanguageSwitch to="en" />}
           <a
             href={phoneHref}
-            className="hidden min-h-[44px] items-center rounded-xl bg-primary-container px-4 font-label-md text-label-md text-white transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] sm:inline-flex"
+            className={`min-h-[44px] items-center rounded-xl bg-primary-container font-label-md text-label-md text-white transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] ${
+              landing ? "inline-flex whitespace-nowrap px-3" : "hidden px-4 sm:inline-flex"
+            }`}
           >
             {siteConfig.phone.display}
           </a>

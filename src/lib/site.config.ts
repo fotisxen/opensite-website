@@ -96,9 +96,9 @@ export const siteConfig: SiteConfig = {
   company: {
     legalName: "ΞΕΝΙΤΙΔΗΣ ΦΩΤΗΣ",
     legalForm: { el: "Ατομική επιχείρηση", en: "Sole proprietorship" },
-    address: "Υδραγωγείου 4, Θεσσαλονίκη", // postcode not given yet
-    vatId: null,
-    taxOffice: null,
+    address: "Υδραγωγείου 4, 55236 Θεσσαλονίκη",
+    vatId: "167669461",
+    taxOffice: "Ζ΄ Θεσσαλονίκης",
     gemi: null,
   },
   legal: {
