@@ -28,7 +28,7 @@ export default function LeadForm({
   defaultNeed,
   showWebsite = false,
 }: {
-  pageKey: LandingKey;
+  pageKey: LandingKey | "site";
   pageLabel: string;
   title: string;
   submitLabel: string;

@@ -87,7 +87,7 @@ export function Header() {
 
           {/* RIGHT - CTA on desktop, hamburger on mobile; flex-1 + justify-end keeps it flush right */}
           <div className="flex flex-1 items-center justify-end gap-3">
-            <LanguageSwitch />
+            <LanguageSwitch to="el" />
             {/* Desktop CTA - only on xl+ */}
             <Link
               href="/book-a-call"

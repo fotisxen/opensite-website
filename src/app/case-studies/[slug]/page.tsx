@@ -23,6 +23,13 @@ export async function generateMetadata({
   return {
     title: `${cs.title} Case Study | OpenSite`,
     description: cs.subtitle,
+    alternates: {
+      canonical: `https://opensite.gr/case-studies/${slug}/`,
+      languages: {
+        en: `https://opensite.gr/case-studies/${slug}/`,
+        el: `https://opensite.gr/el/ergasies/${slug}/`,
+      },
+    },
     openGraph: {
       title: `${cs.title} Case Study | OpenSite`,
       description: cs.subtitle,

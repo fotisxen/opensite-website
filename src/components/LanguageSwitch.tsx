@@ -1,9 +1,12 @@
-import Link from "next/link";
-import { LANDING_PATHS } from "@/lib/routes";
+"use client";
 
-// Language toggle: the site is in English, the Greek version is the Greek
-// web design page. Shown as a flag plus the language code, like a translation
-// switch, instead of a menu item.
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { englishCounterpart, greekCounterpart } from "@/lib/routes";
+
+// Language toggle shown as a flag plus the language code, like a translation
+// switch. It links to the same page in the other language when there is one,
+// otherwise to the home page of that language.
 function GreekFlag() {
   return (
     <svg width="20" height="14" viewBox="0 0 27 18" aria-hidden="true" className="shrink-0 rounded-[2px]">
@@ -21,18 +24,40 @@ function GreekFlag() {
   );
 }
 
-export default function LanguageSwitch({ className = "" }: { className?: string }) {
+function UkFlag() {
+  return (
+    <svg width="20" height="14" viewBox="0 0 60 40" aria-hidden="true" className="shrink-0 rounded-[2px]">
+      <rect width="60" height="40" fill="#012169" />
+      <path d="M0 0l60 40M60 0L0 40" stroke="#fff" strokeWidth="8" />
+      <path d="M0 0l60 40M60 0L0 40" stroke="#c8102e" strokeWidth="3" />
+      <path d="M30 0v40M0 20h60" stroke="#fff" strokeWidth="13" />
+      <path d="M30 0v40M0 20h60" stroke="#c8102e" strokeWidth="8" />
+    </svg>
+  );
+}
+
+export default function LanguageSwitch({
+  to,
+  className = "",
+}: {
+  to: "el" | "en";
+  className?: string;
+}) {
+  const pathname = usePathname();
+  const greek = to === "el";
+  const href = greek ? greekCounterpart(pathname) : englishCounterpart(pathname);
+
   return (
     <Link
-      href={`${LANDING_PATHS[0]}/`}
-      hrefLang="el"
-      lang="el"
-      aria-label="Ελληνικά"
-      title="Ελληνικά"
+      href={href}
+      hrefLang={to}
+      lang={to}
+      aria-label={greek ? "Ελληνικά" : "English"}
+      title={greek ? "Ελληνικά" : "English"}
       className={`inline-flex min-h-[44px] items-center gap-2 font-label-md text-label-md text-on-surface-variant transition-colors hover:text-text-primary ${className}`}
     >
-      <GreekFlag />
-      EL
+      {greek ? <GreekFlag /> : <UkFlag />}
+      {greek ? "EL" : "EN"}
     </Link>
   );
 }
