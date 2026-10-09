@@ -56,7 +56,7 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
       {c.image && (
         <section className={`${SECTION} pb-10`}>
           <div className="overflow-hidden rounded-2xl border border-surface-border">
-            <WorkShot src={c.image.src} alt={`Screenshot: ${c.name}`} width={c.image.width} height={c.image.height} />
+            <WorkShot src={c.image.src} alt={c.image.alt ?? `Screenshot: ${c.name}`} width={c.image.width} height={c.image.height} />
           </div>
         </section>
       )}

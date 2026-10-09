@@ -72,7 +72,7 @@ export function CaseCard({ c }: { c: GreekCase }) {
     <article className="overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
       {c.image && (
         <Link href={`/el/ergasies/${c.slug}/`} tabIndex={-1} aria-hidden="true">
-          <WorkShot src={c.image.src} alt={`Screenshot: ${c.name}`} width={c.image.width} height={c.image.height} />
+          <WorkShot src={c.image.src} alt={c.image.alt ?? `Screenshot: ${c.name}`} width={c.image.width} height={c.image.height} />
         </Link>
       )}
       <div className="p-5">

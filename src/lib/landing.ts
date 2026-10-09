@@ -169,8 +169,9 @@ export const workCards: readonly WorkCard[] = [
     slug: "starbulk-intranet",
     name: "Star Bulk Intranet",
     blurb: "Intranet για ναυτιλιακή εταιρεία. SharePoint με custom web parts (SPFx), μέσα στο Microsoft 365 της εταιρείας.",
-    textOnly: true,
     hideLink: true,
+    // Illustration, not a screenshot: the real intranet is private.
+    image: { src: "/case-studies/starbulk-intranet.svg", width: 800, height: 500, alt: "Απεικόνιση του intranet (όχι πραγματικό screenshot)" },
   },
   {
     slug: "hoopstruct",
@@ -184,7 +185,7 @@ type WorkCard = {
   slug: string;
   name: string;
   blurb: string;
-  image?: { src: string; width: number; height: number };
+  image?: { src: string; width: number; height: number; alt?: string };
   textOnly?: boolean;
   hideLink?: boolean;
 };

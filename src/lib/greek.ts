@@ -127,7 +127,7 @@ export interface GreekCase {
   problem: string[];
   built: { title: string; text: string }[];
   link?: string;
-  image?: { src: string; width: number; height: number };
+  image?: { src: string; width: number; height: number; alt?: string };
 }
 
 export const greekCases: GreekCase[] = [
@@ -247,6 +247,8 @@ export const greekCases: GreekCase[] = [
       { title: "Ασφάλεια", text: "Η πρόσβαση έρχεται από τη σύνδεση και τα δικαιώματα του Microsoft 365." },
       { title: "Εύκολη συντήρηση", text: "Όποιος διαχειρίζεται το περιεχόμενο ενημερώνει τις σελίδες μόνος του." },
     ],
+    // Illustration, not a screenshot: the real intranet is private.
+    image: { src: "/case-studies/starbulk-intranet.svg", width: 800, height: 500, alt: "Απεικόνιση του intranet (όχι πραγματικό screenshot)" },
   },
   {
     slug: "hoopstruct",

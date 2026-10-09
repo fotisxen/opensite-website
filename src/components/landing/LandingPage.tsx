@@ -140,7 +140,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
                   {card.image && (
                     <WorkShot
                       src={card.image.src}
-                      alt={`Screenshot: ${card.name}`}
+                      alt={card.image.alt ?? `Screenshot: ${card.name}`}
                       width={card.image.width}
                       height={card.image.height}
                     />
