@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getAttribution, hasConsent } from "@/lib/tracking";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
@@ -210,6 +211,7 @@ export default function BookACallPage() {
           time: selectedTime,
           _subject: `New call booked: ${formattedDate} at ${selectedTime}`,
           _replyto: email,
+          ...getAttribution(hasConsent()),
         }),
       }).catch(() => {}); // silently ignore failures
       if (typeof window !== "undefined" && (window as any).fbq) {

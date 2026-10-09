@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { getAttribution, hasConsent } from "@/lib/tracking";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/motion/FadeIn";
@@ -60,6 +61,7 @@ export function HomePage() {
             business_type: formData.businessType,
             message: formData.message,
             _subject: `New project inquiry from ${formData.name}`,
+            ...getAttribution(hasConsent()),
           }),
         },
       );

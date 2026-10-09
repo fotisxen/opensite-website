@@ -39,7 +39,7 @@ export interface SiteConfig {
   // Policy. A null line is simply left out of the page.
   company: {
     legalName: string | null; // trade name registered at the tax office
-    legalForm: string | null; // e.g. sole trader, IKE
+    legalForm: { el: string; en: string } | null; // e.g. sole trader, IKE
     address: string | null; // street, number, postcode, city
     vatId: string | null; // AFM, digits only
     taxOffice: string | null; // DOY
@@ -89,9 +89,9 @@ export const siteConfig: SiteConfig = {
     el: null,
   },
   company: {
-    legalName: null,
-    legalForm: null,
-    address: null,
+    legalName: "ΞΕΝΙΤΙΔΗΣ ΦΩΤΗΣ",
+    legalForm: { el: "Ατομική επιχείρηση", en: "Sole proprietorship" },
+    address: "Υδραγωγείου 4, Θεσσαλονίκη", // postcode not given yet
     vatId: null,
     taxOffice: null,
     gemi: null,
@@ -100,9 +100,9 @@ export const siteConfig: SiteConfig = {
     updatedEl: "9 Οκτωβρίου 2026",
     updatedEn: "9 October 2026",
     serverCountry: null,
-    emailProvider: null,
+    emailProvider: "Zoho Mail (Zoho Corporation)",
     supabaseRegion: null,
-    retentionMonths: null,
+    retentionMonths: 24,
   },
 };
 

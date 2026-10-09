@@ -1,6 +1,7 @@
 "use client";
 import { CustomSelect } from "@/components/CustomSelect";
 import Link from "next/link";
+import { getAttribution, hasConsent } from "@/lib/tracking";
 import { useState } from "react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { fbq } from "@/lib/pixel";
@@ -60,6 +61,7 @@ export function ContactPage() {
             business_type: formData.businessType,
             message: formData.brief,
             _subject: `New project inquiry from ${formData.name}`,
+            ...getAttribution(hasConsent()),
           }),
         },
       );

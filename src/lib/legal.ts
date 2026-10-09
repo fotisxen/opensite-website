@@ -39,7 +39,7 @@ export const hasCompanyIdentity = company.legalName !== null;
 export function companyLines(lang: Lang): string[] {
   const el = lang === "el";
   const name = company.legalName
-    ? [company.legalName, company.legalForm].filter(Boolean).join(", ")
+    ? [company.legalName, company.legalForm?.[lang]].filter(Boolean).join(", ")
     : null;
   const tax = nonEmpty([
     company.vatId && (el ? `ΑΦΜ ${company.vatId}` : `VAT No. EL${company.vatId}`),
@@ -61,7 +61,7 @@ function controllerLines(lang: Lang): string[] {
   const name = company.legalName
     ? [
         company.legalName,
-        company.legalForm,
+        company.legalForm?.[lang],
       ]
         .filter(Boolean)
         .join(", ") + (el ? ', με διακριτικό τίτλο «OpenSite»' : ", trading as OpenSite")
