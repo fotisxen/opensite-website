@@ -134,9 +134,11 @@ export const steps = [
   "Βλέπεις το site πριν βγει στον αέρα και το εγκρίνεις.",
 ] as const;
 
-// Work cards. A card is only shown if a real screenshot of the delivered
-// site exists at public/work/<slug>.webp.
-export const workCards = [
+// Work cards. By default a card needs a real screenshot of the delivered
+// site at public/work/<slug>.webp and is hidden without it. `image` points to
+// another file, `textOnly` shows the card without an image (private systems
+// with no public screenshot), `hideLink` drops the link (private admin).
+export const workCards: readonly WorkCard[] = [
   {
     slug: "akinita-fotiadis",
     name: "Ακίνητα Φωτιάδης",
@@ -157,7 +159,35 @@ export const workCards = [
     name: "OneMenoo",
     blurb: "Πλατφόρμα QR menu. Ξαναχτίσαμε σε Next.js το site που ήταν αργό σε WordPress.",
   },
-] as const;
+  {
+    slug: "df-real-estate-crm",
+    name: "DF Real Estate CRM",
+    blurb: "Ιδιωτικό διαχειριστικό για το μεσιτικό: αγγελίες, φωτογραφίες και πελάτες, με είσοδο μόνο για το προσωπικό.",
+    hideLink: true,
+  },
+  {
+    slug: "starbulk-intranet",
+    name: "Star Bulk Intranet",
+    blurb: "Intranet για ναυτιλιακή εταιρεία. SharePoint με custom web parts (SPFx), μέσα στο Microsoft 365 της εταιρείας.",
+    textOnly: true,
+    hideLink: true,
+  },
+  {
+    slug: "hoopstruct",
+    name: "HoopStruct",
+    blurb: "Το δικό μας προϊόν: προχωρημένα στατιστικά μπάσκετ και scouting reports, με website, εφαρμογές για Windows και Mac και εφαρμογές για iOS και Android.",
+    image: { src: "/case-studies/hoopstruct.png", width: 1200, height: 630 },
+  },
+];
+
+type WorkCard = {
+  slug: string;
+  name: string;
+  blurb: string;
+  image?: { src: string; width: number; height: number };
+  textOnly?: boolean;
+  hideLink?: boolean;
+};
 
 // The testimonial already used on the home page. It stays in English until
 // siteConfig.testimonial.el is filled in.

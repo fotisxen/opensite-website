@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import LanguageSwitch from "@/components/LanguageSwitch";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -82,18 +83,11 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/kataskevi-istoselidon-thessaloniki/"
-              hrefLang="el"
-              lang="el"
-              className="whitespace-nowrap font-body-md text-body-md text-on-surface-variant transition-colors hover:text-text-primary"
-            >
-              Ελληνικά
-            </Link>
           </nav>
 
           {/* RIGHT - CTA on desktop, hamburger on mobile; flex-1 + justify-end keeps it flush right */}
-          <div className="flex flex-1 items-center justify-end">
+          <div className="flex flex-1 items-center justify-end gap-3">
+            <LanguageSwitch />
             {/* Desktop CTA - only on xl+ */}
             <Link
               href="/book-a-call"
@@ -185,15 +179,6 @@ export function Header() {
                     </motion.div>
                   );
                 })}
-
-                <Link
-                  href="/kataskevi-istoselidon-thessaloniki/"
-                  hrefLang="el"
-                  lang="el"
-                  className="flex items-center border-b border-surface-border py-4 font-body-md text-body-md text-on-surface-variant transition-colors hover:text-text-primary"
-                >
-                  Ελληνικά
-                </Link>
 
                 {/* Mobile CTA */}
                 <motion.div

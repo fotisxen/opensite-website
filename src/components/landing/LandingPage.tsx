@@ -49,12 +49,20 @@ function CheckIcon() {
 // Only cards with a real screenshot of the delivered site are shown.
 function getWorkCards() {
   return workCards
-    .map((card) => ({
-      ...card,
-      url: getCaseStudy(card.slug)?.liveUrl ?? null,
-      hasShot: fs.existsSync(path.join(process.cwd(), "public", "work", `${card.slug}.webp`)),
-    }))
-    .filter((c) => c.hasShot);
+    .map((card) => {
+      const defaultShot = path.join(process.cwd(), "public", "work", `${card.slug}.webp`);
+      const image =
+        card.image ??
+        (fs.existsSync(defaultShot)
+          ? { src: `/work/${card.slug}.webp`, width: 800, height: 500 }
+          : null);
+      return {
+        ...card,
+        image,
+        url: card.hideLink ? null : (getCaseStudy(card.slug)?.liveUrl ?? null),
+      };
+    })
+    .filter((c) => c.image || c.textOnly);
 }
 
 export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
@@ -129,12 +137,14 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
               {work.map((card) => (
                 <article key={card.slug} className="overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
-                  <WorkShot
-                    src={`/work/${card.slug}.webp`}
-                    alt={`Screenshot του site ${card.name}`}
-                    width={800}
-                    height={500}
-                  />
+                  {card.image && (
+                    <WorkShot
+                      src={card.image.src}
+                      alt={`Screenshot: ${card.name}`}
+                      width={card.image.width}
+                      height={card.image.height}
+                    />
+                  )}
                   <div className="p-5">
                     <h3 className="font-headline-sm text-headline-sm font-semibold text-text-primary">{card.name}</h3>
                     <p className="mt-1 font-body-md text-body-md text-text-secondary">{card.blurb}</p>
