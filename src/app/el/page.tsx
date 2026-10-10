@@ -41,7 +41,7 @@ export default function GreekHome() {
 
       {/* First screen: the text is visible from the start (it only slides a
           little); the 3D scene loads after first paint. */}
-      <section className={`relative isolate ${SECTION} grid items-center gap-8 pb-12 pt-10 lg:grid-cols-2 lg:pb-16 lg:pt-16`}>
+      <section className={`relative isolate ${SECTION} grid items-center gap-8 pb-20 pt-10 lg:grid-cols-2 lg:pb-28 lg:pt-16`}>
         <HeroGlow />
         <div className="rise-in">
         <h1 className="max-w-3xl font-display-lg text-[32px] font-bold leading-[1.12] tracking-tight text-text-primary sm:text-5xl lg:text-6xl">

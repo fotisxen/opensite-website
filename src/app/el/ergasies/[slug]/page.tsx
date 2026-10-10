@@ -32,7 +32,7 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
 
   return (
     <GreekFrame>
-      <section className={`relative isolate ${SECTION} pb-8 pt-10 lg:pt-16`}>
+      <section className={`relative isolate ${SECTION} pb-12 pt-10 lg:pb-16 lg:pt-16`}>
         <HeroGlow />
         <Link href="/el/ergasies/" className="font-label-md text-label-md text-primary underline underline-offset-4">
           Όλες οι δουλειές

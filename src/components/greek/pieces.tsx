@@ -36,7 +36,7 @@ export const SECTION = "mx-auto max-w-container-max px-4 md:px-margin-desktop";
 
 export function PageHero({ title, text }: { title: string; text: string }) {
   return (
-    <section className={`relative isolate ${SECTION} pb-10 pt-10 lg:pt-16`}>
+    <section className={`relative isolate ${SECTION} pb-16 pt-10 lg:pb-24 lg:pt-16`}>
       <HeroGlow />
       <h1 className="rise-in max-w-3xl font-display-lg text-[30px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
         {title}

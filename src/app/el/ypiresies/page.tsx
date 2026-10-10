@@ -24,7 +24,7 @@ export default function GreekServices() {
       />
 
       {/* Quick jump to each service */}
-      <nav aria-label="Υπηρεσίες" className={`${SECTION} pb-10`}>
+      <nav aria-label="Υπηρεσίες" className={`${SECTION} -mt-6 pb-16 lg:-mt-10 lg:pb-20`}>
         <ul data-stagger className="flex flex-wrap gap-2">
           {greekServices.map((s) => (
             <li key={s.id}>
