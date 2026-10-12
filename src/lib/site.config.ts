@@ -83,7 +83,7 @@ export const siteConfig: SiteConfig = {
     vatMode: "plus", // prices are without VAT
   },
   tracking: {
-    googleAdsId: null,
+    googleAdsId: "AW-18442051743",
     leadLabel: null,
     callLabel: null,
     chatLabel: null,
