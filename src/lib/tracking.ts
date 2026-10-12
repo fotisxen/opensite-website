@@ -64,6 +64,19 @@ function isTrackingCookie(name: string) {
   return name === "_fbp" || name === "_fbc" || name.startsWith("_gcl");
 }
 
+/** Σβήνει όσα αφήνουν η Google και η Meta στο localStorage. */
+function clearTrackerStorage(): void {
+  try {
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith("_gcl") || key === "lastExternalReferrer" || key === "lastExternalReferrerTime") {
+        localStorage.removeItem(key);
+      }
+    }
+  } catch {
+    // ο browser δεν επιτρέπει πρόσβαση στο localStorage
+  }
+}
+
 function clearTrackingCookies() {
   const host = window.location.hostname;
   const parts = host.split(".");
@@ -99,6 +112,7 @@ function revokeTags() {
     if (typeof window.fbq === "function") window.fbq("consent", "revoke");
   }
   clearTrackingCookies();
+  clearTrackerStorage();
   if (wasLoaded) window.location.reload();
 }
 
@@ -194,6 +208,7 @@ export function loadTags() {
       const first = document.getElementsByTagName("script")[0];
       first?.parentNode?.insertBefore(t, first) ?? document.head.appendChild(t);
     }
+    window.fbq("set", "autoConfig", false, metaPixelId);
     window.fbq("init", metaPixelId);
     window.fbq("track", "PageView");
   }
