@@ -84,9 +84,9 @@ export const siteConfig: SiteConfig = {
   },
   tracking: {
     googleAdsId: "AW-18442051743",
-    leadLabel: null,
-    callLabel: null,
-    chatLabel: null,
+    leadLabel: "X5lVCPqph5odEJ_B7dlE",
+    callLabel: "TZsuCNnjgJodEJ_B7dlE",
+    chatLabel: "0-lrCNzjgJodEJ_B7dlE",
     metaPixelId: "2111724882722505",
   },
   testimonial: {
