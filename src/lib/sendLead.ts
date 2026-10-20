@@ -10,37 +10,51 @@ const LEAD_ENDPOINT: string = `https://formsubmit.co/ajax/${siteConfig.email}`;
 
 const OWN_ENDPOINT = LEAD_ENDPOINT.startsWith("/");
 
+// On 20 October 2026 FormSubmit took 75 seconds to answer, although the email
+// went out at once. Visitors left on "Αποστολή…" and never reached the
+// thank-you page, so no conversion was counted. We now wait this long for an
+// answer and then let the visitor through; the keepalive request keeps going.
+const ANSWER_WAIT_MS = 4000;
+
 /**
- * Sends one form submission. Throws unless the provider confirms it: a 2xx
- * with a JSON body that says success. Every form goes through here.
+ * Sends one form submission. Throws only when the provider answers in time
+ * and says it failed, or the request cannot be sent at all. A slow answer
+ * counts as sent: the keepalive request carries on after the page changes.
  */
 export async function sendLead(payload: LeadPayload): Promise<void> {
   const { subject, ...rest } = payload;
-  const body = OWN_ENDPOINT
-    ? payload
-    : { _subject: subject, _template: "table", ...rest };
+  const fields: Record<string, string> = {};
+  const all = OWN_ENDPOINT ? payload : { _subject: subject, _template: "table", ...rest };
+  for (const [key, value] of Object.entries(all)) {
+    if (value !== undefined) fields[key] = value;
+  }
 
-  const res = await fetch(LEAD_ENDPOINT, {
+  // A form-encoded body with only safelisted headers needs no CORS preflight,
+  // which keepalive requests to another site do not reliably support.
+  const request = fetch(LEAD_ENDPOINT, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(body),
+    headers: { Accept: "application/json" },
+    body: new URLSearchParams(fields),
+    keepalive: true,
+  }).then(async (res) => {
+    let data: unknown = null;
+    try {
+      data = await res.json();
+    } catch {
+      data = null;
+    }
+    // FormSubmit answers {"success":"true"} (a string); our own endpoint answers true.
+    const success =
+      typeof data === "object" && data !== null
+        ? (data as { success?: unknown }).success
+        : undefined;
+    if (!(res.ok && (success === true || success === "true"))) {
+      throw new Error(`lead endpoint: ${res.status}`);
+    }
   });
 
-  let data: unknown = null;
-  try {
-    data = await res.json();
-  } catch {
-    data = null;
-  }
-
-  // FormSubmit answers {"success":"true"} (a string); our own endpoint answers true.
-  const success =
-    typeof data === "object" && data !== null
-      ? (data as { success?: unknown }).success
-      : undefined;
-  const confirmed = res.ok && (success === true || success === "true");
-
-  if (!confirmed) {
-    throw new Error(`lead endpoint: ${res.status}`);
-  }
+  const slow = new Promise<"slow">((resolve) => setTimeout(() => resolve("slow"), ANSWER_WAIT_MS));
+  await Promise.race([request, slow]);
+  // Past the wait, a late failure must not surface as an unhandled rejection.
+  request.catch(() => {});
 }
