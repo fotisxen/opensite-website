@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cotridis B2B – δοκιμαστικό</title>
+<style>
+  :root { --ink:#0f1b2d; --muted:#5b6b80; --denim:#1f3b63; --denim-2:#2f5a94; --bg:#f4f6f9; --card:#fff; --line:#dde3ea; --ok:#15803d; --warn:#b45309; --soft:#e8eef7; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; color: var(--ink); background: var(--bg); font-size: 17px; line-height: 1.45; }
+  button, input, textarea { font: inherit; }
+  .ribbon { background: #0c1321; color: #c7d5ff; font-size: 13px; text-align: center; padding: 6px 12px; }
+  header { position: sticky; top: 0; z-index: 20; background: var(--denim); color: #fff; }
+  .bar { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 10px; padding: 10px 16px; }
+  .brand { font-weight: 800; letter-spacing: .5px; font-size: 20px; cursor: pointer; white-space: nowrap; }
+  .brand small { font-weight: 500; opacity: .75; font-size: 13px; margin-left: 6px; }
+  .spacer { flex: 1; }
+  .hbtn { background: rgba(255,255,255,.12); color: #fff; border: 0; border-radius: 12px; padding: 10px 14px; cursor: pointer; white-space: nowrap; min-height: 44px; }
+  .hbtn b { background: #fff; color: var(--denim); border-radius: 999px; padding: 0 8px; margin-left: 6px; font-size: 14px; }
+  .who { font-size: 14px; opacity: .85; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 26px; margin: 6px 0 14px; }
+  h2 { font-size: 21px; margin: 18px 0 10px; }
+  .muted { color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 14px; padding: 14px 20px; min-height: 52px; font-weight: 700; cursor: pointer; font-size: 18px; }
+  .btn.primary { background: var(--denim); color: #fff; }
+  .btn.primary:disabled { background: #9aa8bb; cursor: not-allowed; }
+  .btn.ghost { background: #fff; color: var(--ink); border: 2px solid var(--line); }
+  .btn.ok { background: var(--ok); color: #fff; }
+  .btn.small { min-height: 42px; padding: 8px 14px; font-size: 15px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
+  .seasons { display: flex; gap: 8px; margin: 4px 0 14px; }
+  .chip { border: 2px solid var(--line); background: #fff; border-radius: 999px; padding: 10px 18px; cursor: pointer; font-weight: 700; min-height: 46px; }
+  .chip.on { background: var(--denim); border-color: var(--denim); color: #fff; }
+  .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .cat { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px; cursor: pointer; text-align: center; font-weight: 700; font-size: 18px; }
+  .cat svg { width: 92px; height: 92px; display: block; margin: 0 auto 6px; }
+  .cat:hover, .prod:hover { border-color: var(--denim-2); }
+  .prods { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .prod { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; cursor: pointer; }
+  .prod .img { background: var(--soft); display: flex; align-items: center; justify-content: center; height: 190px; }
+  .prod .img svg { width: 140px; height: 140px; }
+  .prod .info { padding: 12px 14px; }
+  .prod .name { font-weight: 700; }
+  .prod .code { font-size: 14px; color: var(--muted); }
+  .prod .price { font-weight: 800; font-size: 19px; margin-top: 4px; }
+  .dots { display: flex; gap: 5px; margin-top: 6px; }
+  .dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); }
+  .back { background: none; border: 0; color: var(--denim-2); font-weight: 700; cursor: pointer; padding: 8px 0; font-size: 17px; }
+  .pgrid { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+  .bigimg { background: var(--soft); border-radius: 18px; display: flex; align-items: center; justify-content: center; height: 320px; }
+  .bigimg svg { width: 230px; height: 230px; }
+  .swatches { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .sw { display: flex; align-items: center; gap: 6px; font-size: 15px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px 4px 4px; }
+  .sw i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); display: inline-block; }
+  .gridwrap { overflow-x: auto; }
+  table.og { border-collapse: separate; border-spacing: 6px; }
+  table.og th { font-size: 15px; color: var(--muted); font-weight: 700; text-align: center; padding: 2px 4px; }
+  table.og th.col { text-align: left; color: var(--ink); white-space: nowrap; font-size: 16px; }
+  .cell { display: flex; align-items: center; border: 2px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; }
+  .cell button { width: 36px; height: 46px; border: 0; background: var(--soft); font-size: 22px; font-weight: 700; color: var(--denim); cursor: pointer; }
+  .cell input { width: 42px; height: 46px; border: 0; text-align: center; font-weight: 800; font-size: 18px; -moz-appearance: textfield; }
+  .cell input::-webkit-outer-spin-button, .cell input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .cell.has { border-color: var(--denim-2); background: #f2f7ff; }
+  .cell.has input { background: #f2f7ff; }
+  .cell.out { opacity: .4; }
+  .cell.out button { cursor: not-allowed; }
+  .stock { font-size: 12px; text-align: center; color: var(--muted); }
+  .stock.low { color: var(--warn); font-weight: 700; }
+  .totals { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 14px; padding: 14px 16px; border-radius: 16px; background: var(--soft); }
+  .totals b { font-size: 22px; }
+  .hint { font-size: 14px; color: var(--muted); margin-top: 6px; }
+  .line { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .line:last-child { border-bottom: 0; }
+  .sizes { font-size: 15px; color: var(--muted); }
+  textarea { width: 100%; border: 2px solid var(--line); border-radius: 12px; padding: 10px; min-height: 70px; }
+  .done { text-align: center; padding: 30px 16px; }
+  .done .big { font-size: 64px; }
+  .email { text-align: left; max-width: 620px; margin: 18px auto 0; background: #fff; border: 1px dashed var(--muted); border-radius: 14px; padding: 14px 16px; font-size: 15px; }
+  .email h4 { margin: 0 0 6px; }
+  .status { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 13px; font-weight: 700; }
+  .s-new { background: #fff4e5; color: var(--warn); }
+  .s-ok { background: #e7f6ec; color: var(--ok); }
+  .s-sent { background: var(--soft); color: var(--denim); }
+  table.adm { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; font-size: 15px; }
+  table.adm th, table.adm td { border-bottom: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
+  table.adm th { background: #f8fafc; }
+  .login { max-width: 420px; margin: 40px auto; }
+  .login label { display: block; font-weight: 700; margin: 12px 0 4px; }
+  .login input { width: 100%; border: 2px solid var(--line); border-radius: 12px; padding: 12px; font-size: 18px; }
+  .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 18px; font-weight: 700; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 50; }
+  .toast.show { opacity: 1; }
+  .pgrid > div { min-width: 0; }
+  .ccard { border: 1px solid var(--line); border-radius: 14px; padding: 10px; margin-top: 10px; }
+  .ccard .cname { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 8px; }
+  .ccard .cname i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); display: inline-block; }
+  .sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 8px; }
+  .sz { text-align: center; }
+  .sz .lbl { font-weight: 800; font-size: 15px; margin-bottom: 2px; }
+  .sz .cell { justify-content: space-between; }
+  .sz .cell input { flex: 1; width: 100%; }
+  .short { display: none; }
+  .rulenote { margin-top: 8px; background: #fff8ec; border: 1px solid #f1dfbf; color: #6b4a14; border-radius: 12px; padding: 8px 12px; font-size: 14px; }
+
+  /* ---- visual polish: denim + warm thread palette, soft depth ---- */
+  :root { --ink:#13203a; --muted:#66718a; --denim:#1d3357; --denim-2:#2e5b96; --bg:#f6f4ef; --line:#e6e1d8; --soft:#eef2f8; --thread:#c9a36a; }
+  body { background: var(--bg); }
+  h1, h2 { letter-spacing: -.3px; }
+  header { background: linear-gradient(180deg, #213a63 0%, #1a2e50 100%); box-shadow: 0 2px 14px rgba(19,32,58,.18); }
+  header::after { content: ""; display: block; height: 0; border-bottom: 2px dashed rgba(201,163,106,.55); margin: 0 12px; }
+  .brand { letter-spacing: 2px; }
+  .brand .acc { color: var(--thread); }
+  .hbtn { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14); transition: background .15s; }
+  .hbtn:hover { background: rgba(255,255,255,.2); }
+  .hbtn b { background: var(--thread); color: #13203a; }
+  .card, .cat, .prod, .ccard, table.adm { border-color: var(--line); box-shadow: 0 1px 2px rgba(19,32,58,.04), 0 6px 20px rgba(19,32,58,.06); }
+  .cat, .prod { transition: transform .15s ease, box-shadow .15s ease; }
+  .cat:hover, .prod:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(19,32,58,.06), 0 14px 30px rgba(19,32,58,.12); border-color: var(--line); }
+  .cat { background: linear-gradient(180deg, color-mix(in srgb, var(--tint) 14%, #fff) 0%, #fff 70%); padding: 18px 12px 14px; }
+  .prod .img, .bigimg { background: radial-gradient(circle at 50% 40%, #ffffff 0%, var(--soft) 70%); position: relative; }
+  .prod .price { color: var(--denim); }
+  .badge-new { position: absolute; top: 12px; left: 12px; background: var(--thread); color: #13203a; font-size: 12px; font-weight: 800; letter-spacing: .5px; padding: 3px 10px; border-radius: 999px; }
+  .btn.primary { background: linear-gradient(180deg, #27477a 0%, #1d3357 100%); box-shadow: 0 4px 12px rgba(29,51,87,.25); }
+  .btn.ok { background: linear-gradient(180deg, #1a9a4a 0%, #15803d 100%); box-shadow: 0 4px 12px rgba(21,128,61,.25); }
+  .btn.ghost { border-color: var(--line); }
+  .chip { border-color: var(--line); }
+  .chip.on { background: var(--denim); border-color: var(--denim); box-shadow: 0 3px 10px rgba(29,51,87,.2); }
+  .cell { border-radius: 14px; border-color: var(--line); }
+  .cell button { background: #f3f5f9; transition: background .12s; }
+  .cell button:hover:not(:disabled) { background: #e3e9f3; }
+  .cell.has { border-color: var(--denim-2); box-shadow: 0 0 0 3px rgba(46,91,150,.12); }
+  .totals { background: #fff; border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(19,32,58,.08); }
+  .hero { position: relative; overflow: hidden; border-radius: 22px; padding: 26px 24px; margin: 4px 0 18px; color: #fff; background: linear-gradient(120deg, #1d3357 0%, #2e5b96 60%, #3f74b8 100%); box-shadow: 0 10px 30px rgba(29,51,87,.25); }
+  .hero::before { content: ""; position: absolute; inset: 10px; border: 2px dashed rgba(201,163,106,.6); border-radius: 16px; pointer-events: none; }
+  .hero .kicker { color: var(--thread); font-weight: 800; letter-spacing: 1.5px; font-size: 13px; text-transform: uppercase; }
+  .hero h1 { margin: 6px 0 6px; font-size: 28px; }
+  .hero p { margin: 0; opacity: .9; max-width: 520px; }
+  .hero svg { position: absolute; right: 18px; bottom: -14px; width: 150px; height: 150px; opacity: .9; }
+  .site-foot { max-width: 1100px; margin: 26px auto 0; padding: 18px 16px 28px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .site-foot b { color: var(--ink); }
+  .done .big { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center; font-size: 40px; background: #e7f6ec; color: var(--ok); }
+  /* ---- public landing + wholesale application ---- */
+  .lhero { position: relative; overflow: hidden; border-radius: 26px; padding: 56px 40px; margin: 8px 0 28px; color: #fff; background: linear-gradient(120deg, #1d3357 0%, #2e5b96 60%, #3f74b8 100%); box-shadow: 0 14px 40px rgba(29,51,87,.28); }
+  .lhero::before { content: ""; position: absolute; inset: 12px; border: 2px dashed rgba(201,163,106,.6); border-radius: 18px; pointer-events: none; }
+  .lhero .kicker { color: var(--thread); font-weight: 800; letter-spacing: 1.5px; font-size: 13px; text-transform: uppercase; }
+  .lhero h1 { font-size: 42px; line-height: 1.1; margin: 10px 0 14px; max-width: 600px; }
+  .lhero p { font-size: 19px; opacity: .92; max-width: 540px; margin: 0 0 24px; }
+  .lhero .ctas { display: flex; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .lhero .btn.thread { background: var(--thread); color: #13203a; }
+  .lhero .btn.line { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.5); }
+  .lhero .art { position: absolute; right: 30px; bottom: -20px; display: flex; gap: 0; }
+  .lhero .art svg { width: 170px; height: 170px; margin-left: -50px; filter: drop-shadow(0 10px 20px rgba(0,0,0,.25)); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .step-c { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-shadow: 0 6px 20px rgba(19,32,58,.06); }
+  .step-c .n { width: 38px; height: 38px; border-radius: 50%; background: var(--soft); color: var(--denim); font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .step-c h3 { margin: 0 0 6px; font-size: 19px; }
+  .step-c p { margin: 0; color: var(--muted); font-size: 16px; }
+  .perks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .perk { padding: 16px 0; border-top: 2px solid var(--denim); }
+  .perk b { display: block; font-size: 18px; margin-bottom: 4px; }
+  .perk span { color: var(--muted); font-size: 15px; }
+  .cat .lock { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 4px; }
+  .lcta { margin-top: 30px; border-radius: 22px; padding: 30px; background: #fff; border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; box-shadow: 0 6px 20px rgba(19,32,58,.06); }
+  .lcta h2 { margin: 0 0 4px; }
+  .apply { max-width: 720px; margin: 10px auto; }
+  .apply .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .apply label { display: block; font-weight: 700; margin: 14px 0 4px; font-size: 16px; }
+  .apply input, .apply select { width: 100%; border: 2px solid var(--line); border-radius: 12px; padding: 12px; font-size: 17px; background: #fff; }
+  .apply .check { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; font-size: 15px; color: var(--muted); }
+  .apply .check input { width: 20px; height: 20px; margin-top: 2px; flex: none; }
+  .hbtn.thread { background: var(--thread); color: #13203a; border-color: var(--thread); font-weight: 700; }
+  @media (max-width: 760px) {
+    .lhero { padding: 34px 22px; }
+    .lhero h1 { font-size: 30px; }
+    .lhero p { font-size: 17px; }
+    .lhero .art { display: none; }
+    .steps { grid-template-columns: 1fr; }
+    .perks { grid-template-columns: 1fr 1fr; }
+    .apply .grid2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .hero { padding: 22px 18px 24px; }
+    .hero h1 { font-size: 23px; }
+    .hero svg { display: none; }
+    .totals.stick { position: sticky; bottom: 10px; z-index: 15; padding: 10px 12px; gap: 8px; }
+    .totals.stick .btn { width: 100%; }
+  }
+  @media (max-width: 760px) {
+    body { font-size: 16px; }
+    .bar { gap: 6px; padding: 8px 12px; }
+    .brand { font-size: 18px; }
+    .hbtn { padding: 8px 10px; font-size: 15px; }
+    .long { display: none; }
+    .short { display: inline; }
+    .pgrid { grid-template-columns: 1fr; }
+    .bigimg { height: 220px; }
+    .bigimg svg { width: 170px; height: 170px; }
+    .who { display: none; }
+    .brand small { display: none; }
+    .cell button { width: 32px; }
+    .cell input { width: 34px; }
+    table.og { border-spacing: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="ribbon">Δοκιμαστικό της OpenSite · τα προϊόντα και οι τιμές είναι ενδεικτικά</div>
+<header><div class="bar">
+  <div class="brand" onclick="go(S.logged ? 'home' : 'landing')">COTRIDIS<span class="acc">.</span> <small>B2B · Χονδρική</small></div>
+  <div class="spacer"></div>
+  <button class="hbtn" id="hApply" onclick="go('apply')"><span class="long">Αίτηση χονδρικής</span><span class="short">Αίτηση</span></button>
+  <button class="hbtn thread" id="hLogin" onclick="go('login')">Σύνδεση</button>
+  <span class="who" id="who"></span>
+  <button class="hbtn" id="hOrders" onclick="go('orders')"><span class="long">Οι παραγγελίες μου</span><span class="short">Παραγγελίες</span></button>
+  <button class="hbtn" id="hCart" onclick="go('cart')"><span class="long">Καλάθι</span><span class="short">🛒</span> <b id="cartCount">0</b></button>
+  <button class="hbtn" id="hAdmin" onclick="go('admin')" title="Τι βλέπει η Cotridis"><span class="long">Διαχείριση</span><span class="short">⚙</span></button>
+  <button class="hbtn" id="hOut" onclick="S.logged=false;go('landing')" title="Αποσύνδεση"><span class="long">Έξοδος</span><span class="short">⎋</span></button>
+</div></header>
+<main id="app"></main>
+<footer class="site-foot" id="foot"><div><b>Cotridis Jeans</b> · Χονδρική ενδυμάτων</div><div>Μοναστηρίου 124α, Θεσσαλονίκη · 2310 513065</div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------- demo data ----------
+const COLORS = { navy:["Μπλε σκούρο","#1f2f4a"], black:["Μαύρο","#1a1a1a"], white:["Λευκό","#f4f4f0"], beige:["Μπεζ","#d8c7a4"], olive:["Λαδί","#6b7046"], sky:["Γαλάζιο","#9cc3e6"], grey:["Γκρι","#8a8f98"], terra:["Κεραμιδί","#b5603f"], denim:["Denim","#3d5f8c"], lightdenim:["Ανοιχτό denim","#7f9fc6"] };
+const CATS = [
+  { id:"linen", name:"Πουκάμισα Linen", icon:"shirt", color:"#d8c7a4" },
+  { id:"shirts", name:"Πουκάμισα", icon:"shirt", color:"#9cc3e6" },
+  { id:"tees", name:"T-shirts", icon:"tee", color:"#1f2f4a" },
+  { id:"shorts", name:"Βερμούδες", icon:"shorts", color:"#6b7046" },
+  { id:"swim", name:"Μαγιό", icon:"swim", color:"#2f5a94" },
+  { id:"jeans", name:"Τζιν", icon:"jeans", color:"#3d5f8c" },
+  { id:"women", name:"Γυναικεία", icon:"dress", color:"#b5603f" },
+];
+const P = [
+  { id:"CJ-L101", isNew:true, cat:"linen", season:"summer", name:"Πουκάμισο Linen Blend", price:14.9, colors:["beige","white","sky","olive"], sizes:["S","M","L","XL","XXL"] },
+  { id:"CJ-L104", cat:"linen", season:"summer", name:"Πουκάμισο Linen κοντομάνικο", price:13.5, colors:["white","beige","terra"], sizes:["S","M","L","XL","XXL"] },
+  { id:"CJ-S210", cat:"shirts", season:"winter", name:"Πουκάμισο Oxford", price:15.9, colors:["sky","white","navy"], sizes:["S","M","L","XL","XXL"] },
+  { id:"CJ-S215", cat:"shirts", season:"winter", name:"Πουκάμισο καρό φανέλα", price:16.5, colors:["terra","navy","olive"], sizes:["M","L","XL","XXL"] },
+  { id:"CJ-T301", rule:{ type:"min", n:2 }, cat:"tees", season:"summer", name:"T-shirt βαμβακερό basic", price:6.9, colors:["white","black","navy","grey","olive"], sizes:["S","M","L","XL","XXL"] },
+  { id:"CJ-T305", rule:{ type:"min", n:2 }, cat:"tees", season:"summer", name:"Polo πικέ", price:10.9, colors:["navy","white","sky"], sizes:["S","M","L","XL","XXL"] },
+  { id:"CJ-B401", cat:"shorts", season:"summer", name:"Βερμούδα chino", price:12.9, colors:["beige","navy","olive"], sizes:["30","32","34","36","38"] },
+  { id:"CJ-B405", rule:{ type:"noLeft", n:2 }, cat:"shorts", season:"summer", name:"Βερμούδα τζιν", price:13.9, colors:["denim","lightdenim"], sizes:["30","32","34","36","38"] },
+  { id:"CJ-W501", isNew:true, cat:"swim", season:"summer", name:"Μαγιό βερμούδα", price:9.9, colors:["navy","terra","sky","olive"], sizes:["S","M","L","XL","XXL"] },
+  { id:"CJ-J601", isNew:true, rule:{ type:"noLeft", n:2 }, cat:"jeans", season:"winter", name:"Τζιν slim fit", price:18.9, colors:["denim","lightdenim","black"], sizes:["29","30","31","32","33","34","36"] },
+  { id:"CJ-J605", rule:{ type:"noLeft", n:2 }, cat:"jeans", season:"winter", name:"Τζιν regular fit", price:18.5, colors:["denim","black"], sizes:["30","32","34","36","38","40"] },
+  { id:"CJ-G701", cat:"women", season:"summer", name:"Φόρεμα linen", price:15.9, colors:["white","beige","terra"], sizes:["S","M","L","XL"] },
+];
+// deterministic pseudo-stock so some cells are low / sold out
+function stockOf(pid, c, s) { let h = 0; for (const ch of pid + c + s) h = (h * 31 + ch.charCodeAt(0)) % 997; return h % 11 === 0 ? 0 : (h % 7 === 0 ? 3 : 20 + (h % 40)); }
+// quantity rules: free, minimum per size/colour, or "no leftovers below n"
+function okQty(pid, st, q) {
+  if (q === 0) return true; if (q < 0 || q > st) return false;
+  const r = prod(pid).rule; if (!r) return true;
+  if (r.type === "min") return q >= r.n;
+  if (r.type === "noLeft") return st - q === 0 || st - q >= r.n;
+  return true;
+}
+const allowedList = (pid, st) => { const a = []; for (let q = 1; q <= st; q++) if (okQty(pid, st, q)) a.push(q); return a; };
+function ruleText(p) {
+  if (!p.rule) return "";
+  if (p.rule.type === "min") return "Ελάχιστη ποσότητα: " + p.rule.n + " τεμάχια ανά μέγεθος και χρώμα.";
+  if (p.rule.type === "noLeft") return "Για να μη μένουν υπόλοιπα: όταν απομένουν λίγα κομμάτια, παίρνετε είτε λιγότερα είτε όλα.";
+  return "";
+}
+const CUSTOMER = { name:"Κατάστημα Παπαδόπουλος", city:"Κατερίνη", email:"papadopoulos.store@example.com" };
+
+// ---------- state ----------
+const store = { get(k, d) { try { const v = localStorage.getItem("cjdemo_" + k); return v ? JSON.parse(v) : d; } catch { return d; } }, set(k, v) { try { localStorage.setItem("cjdemo_" + k, JSON.stringify(v)); } catch {} } };
+// the demo always opens on the public page, logged out
+let S = { logged: false, season: "summer", cart: store.get("cart", {}), orders: store.get("orders", null), apps: store.get("apps", null), view: "landing", arg: null };
+if (!S.apps) S.apps = [
+  { id: 1, date: "18/10/2026", shop: "Fashion Corner Ε.Ε.", afm: "801234567", person: "Μαρία Ιωάννου", city: "Σέρρες", phone: "6971234567", email: "info@fashioncorner.gr", type: "Ανδρικά & γυναικεία", status: "pending" },
+];
+if (!S.orders) S.orders = [
+  { no: 1042, date: "02/10/2026", customer: CUSTOMER.name, city: CUSTOMER.city, status: "sent", note: "", items: { "CJ-T301|white|M":6, "CJ-T301|white|L":6, "CJ-T301|navy|M":4, "CJ-T301|navy|L":4, "CJ-B401|beige|32":3, "CJ-B401|beige|34":3 } },
+  { no: 1043, date: "09/10/2026", customer: "Boutique Αλεξίου", city: "Λάρισα", status: "ok", note: "Αποστολή με ACS", items: { "CJ-L101|beige|M":4, "CJ-L101|beige|L":4, "CJ-L101|white|L":3 } },
+];
+const save = () => { store.set("cart", S.cart); store.set("orders", S.orders); store.set("apps", S.apps); };
+const prod = id => P.find(p => p.id === id);
+const eur = n => n.toLocaleString("el-GR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+const qtySum = items => Object.values(items).reduce((a, b) => a + b, 0);
+const valSum = items => Object.entries(items).reduce((a, [k, q]) => a + q * prod(k.split("|")[0]).price, 0);
+function toast(t) { const el = document.getElementById("toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("show"), 1800); }
+
+// ---------- garment drawings ----------
+function art(kind, color) {
+  const s = `fill="${color}" stroke="rgba(0,0,0,.25)" stroke-width="2" stroke-linejoin="round"`;
+  const shapes = {
+    shirt: `<path ${s} d="M38 22 L56 14 Q64 22 72 14 L90 22 L106 46 L92 54 L88 44 L88 112 L40 112 L40 44 L36 54 L22 46 Z"/><path d="M64 22 L64 112" stroke="rgba(0,0,0,.25)" stroke-width="2"/><circle cx="64" cy="40" r="2" fill="rgba(0,0,0,.35)"/><circle cx="64" cy="58" r="2" fill="rgba(0,0,0,.35)"/><circle cx="64" cy="76" r="2" fill="rgba(0,0,0,.35)"/><path d="M56 14 L64 28 L72 14" fill="none" stroke="rgba(0,0,0,.3)" stroke-width="2"/>`,
+    tee: `<path ${s} d="M40 20 L54 14 Q64 24 74 14 L88 20 L108 40 L94 52 L88 46 L88 112 L40 112 L40 46 L34 52 L20 40 Z"/>`,
+    shorts: `<path ${s} d="M30 24 L98 24 L104 96 L72 100 L64 56 L56 100 L24 96 Z"/><path d="M30 34 L98 34" stroke="rgba(0,0,0,.25)" stroke-width="2"/>`,
+    swim: `<path ${s} d="M28 30 L100 30 L104 84 L74 88 L64 58 L54 88 L24 84 Z"/><path d="M28 40 L100 40" stroke="rgba(255,255,255,.6)" stroke-width="3"/><path d="M58 40 L56 52 M70 40 L72 52" stroke="rgba(255,255,255,.8)" stroke-width="2"/>`,
+    jeans: `<path ${s} d="M38 14 L90 14 L96 116 L72 116 L64 50 L56 116 L32 116 Z"/><path d="M38 24 L90 24" stroke="rgba(0,0,0,.25)" stroke-width="2"/><path d="M44 30 Q50 40 58 32 M84 30 Q78 40 70 32" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"/>`,
+    dress: `<path ${s} d="M50 12 L78 12 L80 34 L72 44 L100 114 L28 114 L56 44 L48 34 Z"/><path d="M56 44 L72 44" stroke="rgba(0,0,0,.25)" stroke-width="2"/>`,
+  };
+  return `<svg viewBox="0 0 128 128" aria-hidden="true">${shapes[kind]}</svg>`;
+}
+const kindOf = p => CATS.find(c => c.id === p.cat).icon;
+
+// ---------- views ----------
+function go(view, arg) { S.view = view; S.arg = arg ?? null; render(); window.scrollTo(0, 0); }
+function render() {
+  document.getElementById("cartCount").textContent = qtySum(S.cart);
+  document.getElementById("who").textContent = S.logged ? CUSTOMER.name : "";
+  ["hOrders", "hCart", "hAdmin", "hOut"].forEach(id => document.getElementById(id).style.display = S.logged ? "" : "none");
+  ["hApply", "hLogin"].forEach(id => document.getElementById(id).style.display = S.logged ? "none" : "");
+  const app = document.getElementById("app");
+  if (!S.logged) return app.innerHTML = ({ landing: vLanding, login: vLogin, apply: vApply, applied: vApplied }[S.view] || vLanding)(S.arg);
+  const v = { home: vHome, cat: vCat, product: vProduct, cart: vCart, done: vDone, orders: vOrders, admin: vAdmin, edit: vEdit }[S.view] || vHome;
+  app.innerHTML = v(S.arg);
+  if (S.view === "product") updTotals(S.arg);
+}
+
+// ---------- public pages (before login) ----------
+function vLanding() {
+  const cats = CATS.map(c => `<div class="cat" style="--tint:${c.color}" onclick="go('login')">${art(c.icon, c.color)}${c.name}<span class="lock">🔒 τιμές μετά τη σύνδεση</span></div>`).join("");
+  return `<section class="lhero"><div class="kicker">Cotridis Jeans · Χονδρική ενδυμάτων · Θεσσαλονίκη</div>
+      <h1>Παραγγελίες χονδρικής, online, 24 ώρες το 24ωρο.</h1>
+      <p>Για καταστήματα ένδυσης σε όλη την Ελλάδα. Δείτε τη συλλογή, το απόθεμα και τις τιμές σας, και στείλτε παραγγελία σε λίγα λεπτά — χωρίς τηλέφωνα και λίστες.</p>
+      <div class="ctas"><button class="btn thread" onclick="go('apply')">Αίτηση συνεργασίας</button><button class="btn line" onclick="go('login')">Είμαι ήδη πελάτης</button></div>
+      <div class="art">${art("shirt", "#d8c7a4")}${art("jeans", "#3d5f8c")}${art("tee", "#f4f4f0")}</div></section>
+    <h2>Πώς λειτουργεί</h2>
+    <div class="steps">
+      <div class="step-c"><div class="n">1</div><h3>Κάνετε αίτηση</h3><p>Συμπληρώνετε τα στοιχεία του καταστήματός σας. Παίρνει 2 λεπτά.</p></div>
+      <div class="step-c"><div class="n">2</div><h3>Η Cotridis εγκρίνει</h3><p>Ελέγχουμε την αίτηση και σας στέλνουμε κωδικούς πρόσβασης με email.</p></div>
+      <div class="step-c"><div class="n">3</div><h3>Παραγγέλνετε</h3><p>Διαλέγετε χρώματα και μεγέθη σε έναν πίνακα, με απόθεμα σε πραγματικό χρόνο.</p></div>
+    </div>
+    <h2>Η συλλογή</h2>
+    <div class="cats">${cats}</div>
+    <h2>Γιατί online</h2>
+    <div class="perks">
+      <div class="perk"><b>Απόθεμα live</b><span>Βλέπετε τι υπάρχει πριν παραγγείλετε.</span></div>
+      <div class="perk"><b>Όλα τα μεγέθη μαζί</b><span>Ένας πίνακας ανά χρώμα, χωρίς λάθη.</span></div>
+      <div class="perk"><b>Ξαναπαραγγελία</b><span>Με ένα κλικ, η ίδια παραγγελία ξανά.</span></div>
+      <div class="perk"><b>Ιστορικό</b><span>Όλες οι παραγγελίες σας σε ένα σημείο.</span></div>
+    </div>
+    <div class="lcta"><div><h2>Έχετε κατάστημα ένδυσης;</h2><div class="muted">Γίνετε συνεργάτης της Cotridis και παραγγείλετε την επόμενη σεζόν online.</div></div>
+      <button class="btn primary" onclick="go('apply')">Κάντε αίτηση</button></div>`;
+}
+function vLogin() {
+  return `<button class="back" onclick="go('landing')">← Αρχική</button><div class="login card" style="margin-top:10px"><h1>Σύνδεση πελάτη</h1><p class="muted">Μόνο για εγκεκριμένους εμπόρους.</p>
+    <label>Email</label><input value="${CUSTOMER.email}">
+    <label>Κωδικός</label><input type="password" value="demo1234">
+    <div style="margin-top:18px"><button class="btn primary" style="width:100%" onclick="S.logged=true;go('home')">Είσοδος</button></div>
+    <p class="hint" style="text-align:center;margin-top:14px">Νέος έμπορος; <a href="#" onclick="go('apply');return false" style="color:var(--denim-2);font-weight:700">Αίτηση χονδρικής</a>: την εγκρίνει η Cotridis.</p></div>`;
+}
+function vApply() {
+  const f = (id, l, v, t = "text") => `<div><label for="a_${id}">${l}</label><input id="a_${id}" type="${t}" value="${v}"></div>`;
+  return `<button class="back" onclick="go('landing')">← Αρχική</button><div class="apply card" style="margin-top:10px">
+    <h1>Αίτηση χονδρικής</h1><p class="muted">Συμπληρώστε τα στοιχεία του καταστήματός σας. Η Cotridis θα εγκρίνει την αίτηση και θα σας στείλει κωδικούς.</p>
+    <div class="grid2">
+      ${f("shop", "Επωνυμία καταστήματος", "Κατάστημα Νικολάου")}${f("afm", "ΑΦΜ", "802345678")}
+      ${f("person", "Υπεύθυνος", "Γιώργος Νικολάου")}${f("city", "Πόλη", "Βέροια")}
+      ${f("phone", "Τηλέφωνο", "6987654321", "tel")}${f("email", "Email", "nikolaou.store@example.com", "email")}
+    </div>
+    <label for="a_type">Τι πουλάτε</label><select id="a_type"><option>Ανδρικά</option><option>Γυναικεία</option><option selected>Ανδρικά & γυναικεία</option></select>
+    <label class="check"><input type="checkbox" checked> Συμφωνώ να επικοινωνήσει μαζί μου η Cotridis για την αίτηση.</label>
+    <div style="margin-top:20px"><button class="btn primary" style="width:100%" onclick="sendApply()">Αποστολή αίτησης</button></div></div>`;
+}
+function sendApply() {
+  const v = id => document.getElementById("a_" + id).value.trim();
+  if (!v("shop") || !v("email")) return toast("Συμπληρώστε τουλάχιστον επωνυμία και email");
+  const a = { id: Date.now(), date: new Date().toLocaleDateString("el-GR"), shop: v("shop"), afm: v("afm"), person: v("person"), city: v("city"), phone: v("phone"), email: v("email"), type: v("type"), status: "pending" };
+  S.apps.push(a); save(); go("applied", a.id);
+}
+function vApplied(id) {
+  const a = S.apps.find(x => x.id === id) || S.apps[S.apps.length - 1];
+  return `<div class="done card" style="max-width:720px;margin:20px auto"><div class="big">✓</div><h1>Η αίτησή σας στάλθηκε</h1>
+    <p class="muted">Η Cotridis θα την εξετάσει και θα λάβετε email με τους κωδικούς σας στο <b>${a.email}</b>.</p>
+    <div class="email"><h4>📧 Email που λαμβάνει η Cotridis</h4><b>Νέα αίτηση χονδρικής: ${a.shop}</b><br>${a.person} · ${a.city} · ${a.phone}<br>ΑΦΜ ${a.afm} · ${a.type}<br><span class="muted">Έγκριση με ένα κλικ από τη Διαχείριση.</span></div>
+    <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn primary" onclick="go('login')">Δείτε πώς είναι μετά την έγκριση →</button><button class="btn ghost" onclick="go('landing')">Αρχική</button></div></div>`;
+}
+function seasonChips() {
+  return `<div class="seasons">${[["summer","Καλοκαίρι 2027"],["winter","Χειμώνας 2026"]].map(([k,l]) => `<button class="chip ${S.season===k?"on":""}" onclick="S.season='${k}';render()">${l}</button>`).join("")}</div>`;
+}
+function vHome() {
+  const cats = CATS.filter(c => P.some(p => p.cat === c.id && p.season === S.season));
+  const hero = S.season === "summer" ? ["Καλοκαίρι 2027", "Η νέα συλλογή είναι εδώ", "Linen πουκάμισα, μαγιό και βερμούδες. Παραγγείλετε νωρίς για καλύτερη διαθεσιμότητα.", "#c9a36a", "shirt"] : ["Χειμώνας 2026", "Τζιν και πουκάμισα της σεζόν", "Όλα τα μεγέθη σε έναν πίνακα, με διαθεσιμότητα σε πραγματικό χρόνο.", "#9cc3e6", "jeans"];
+  return `<div class="hero"><div class="kicker">${hero[0]}</div><h1>${hero[1]}</h1><p>${hero[2]}</p>${art(hero[4], hero[3])}</div><h2 style="margin-top:0">Καλώς ήρθατε, ${CUSTOMER.name}</h2>${seasonChips()}
+    <div class="cats">${cats.map(c => `<div class="cat" style="--tint:${c.color}" onclick="go('cat','${c.id}')">${art(c.icon, c.color)}${c.name}</div>`).join("")}</div>
+    ${S.orders.some(o => o.customer === CUSTOMER.name) ? `<h2>Γρήγορα</h2><div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b>Η τελευταία σας παραγγελία</b><div class="muted">${lastOrder().date} · ${qtySum(lastOrder().items)} τεμ.</div></div><button class="btn ghost" onclick="reorder(${lastOrder().no})">Ξαναπαράγγειλε τα ίδια</button></div>` : ""}`;
+}
+const lastOrder = () => S.orders.filter(o => o.customer === CUSTOMER.name).slice(-1)[0];
+function vCat(id) {
+  const c = CATS.find(x => x.id === id); const list = P.filter(p => p.cat === id && p.season === S.season);
+  return `<button class="back" onclick="go('home')">← Κατηγορίες</button><h1>${c.name}</h1>${seasonChips()}
+    ${list.length ? `<div class="prods">${list.map(card).join("")}</div>` : `<p class="muted">Δεν υπάρχουν προϊόντα σε αυτή τη σεζόν.</p>`}`;
+}
+function card(p) {
+  return `<div class="prod" onclick="go('product','${p.id}')"><div class="img">${p.isNew ? '<span class="badge-new">ΝΕΟ</span>' : ""}${art(kindOf(p), COLORS[p.colors[0]][1])}</div>
+    <div class="info"><div class="name">${p.name}</div><div class="code">Κωδ. ${p.id} · ${p.sizes[0]}–${p.sizes[p.sizes.length-1]}</div>
+    <div class="price">${eur(p.price)} <span class="muted" style="font-size:14px;font-weight:500">/ τεμ.</span></div>
+    <div class="dots">${p.colors.map(k => `<span class="dot" style="background:${COLORS[k][1]}" title="${COLORS[k][0]}"></span>`).join("")}</div></div></div>`;
+}
+
+// product page with the size × colour grid
+let draft = {};
+function vProduct(id) {
+  const p = prod(id); draft = {};
+  for (const [k, q] of Object.entries(S.cart)) if (k.startsWith(id + "|")) draft[k] = q;
+  // one stepper cell; shared by the desktop table and the phone cards
+  const cellHtml = (c, s) => { const key = `${id}|${c}|${s}`, st = stockOf(id, c, s), q = draft[key] || 0;
+    return `<div class="cell ${st===0?"out":""} ${q?"has":""}" id="c_${cssid(key)}"><button onclick="step('${key}',-1)" ${st===0?"disabled":""} aria-label="λιγότερα">−</button><input inputmode="numeric" value="${q||""}" ${st===0?"disabled":""} oninput="setq('${key}',this.value)"><button onclick="step('${key}',1)" ${st===0?"disabled":""} aria-label="περισσότερα">+</button></div><div class="stock ${st>0&&st<5?"low":""}">${st===0?"εξαντλήθηκε":st<5?"μόνο "+st+(p.rule&&p.rule.type==="noLeft"?" · "+allowedList(id,st).join(" ή "):""):"διαθέσιμο"}</div>`; };
+  const phone = window.innerWidth < 760;
+  const gridHtml = phone
+    ? p.colors.map(c => `<div class="ccard"><div class="cname"><i style="background:${COLORS[c][1]}"></i>${COLORS[c][0]}</div><div class="sgrid">${p.sizes.map(s => `<div class="sz"><div class="lbl">${s}</div>${cellHtml(c, s)}</div>`).join("")}</div></div>`).join("")
+    : `<div class="gridwrap"><table class="og"><tr><th></th>${p.sizes.map(s => `<th>${s}</th>`).join("")}</tr>${p.colors.map(c => `<tr><th class="col"><span class="sw" style="border:0;padding:0;background:none"><i style="background:${COLORS[c][1]}"></i>${COLORS[c][0]}</span></th>${p.sizes.map(s => `<td>${cellHtml(c, s)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+  return `<button class="back" onclick="go('cat','${p.cat}')">← ${CATS.find(c=>c.id===p.cat).name}</button>
+  <div class="pgrid"><div><div class="bigimg">${p.isNew ? '<span class="badge-new">ΝΕΟ</span>' : ""}${art(kindOf(p), COLORS[p.colors[0]][1])}</div>
+      <div class="swatches">${p.colors.map(k => `<span class="sw"><i style="background:${COLORS[k][1]}"></i>${COLORS[k][0]}</span>`).join("")}</div></div>
+    <div><h1 style="margin-top:0">${p.name}</h1><div class="muted">Κωδικός ${p.id}</div>
+      <div style="font-size:24px;font-weight:800;margin:6px 0 12px">${eur(p.price)} <span class="muted" style="font-size:15px;font-weight:500">/ τεμάχιο, χονδρική</span></div>
+      <div class="card"><b>Γράψτε πόσα κομμάτια θέλετε σε κάθε μέγεθος και χρώμα</b><div class="hint">Πατήστε + και −, ή γράψτε τον αριθμό.</div>${ruleText(p) ? `<div class="rulenote">ℹ️ ${ruleText(p)}</div>` : ""}
+        ${gridHtml}
+        <div class="totals stick"><div>Σύνολο: <b id="dq">0</b> τεμ. · <b id="dv">0,00 €</b></div><button class="btn primary" id="addBtn" onclick="addDraft('${id}')">Προσθήκη στο καλάθι</button></div>
+      </div></div></div>`;
+}
+const cssid = k => k.replace(/[^a-zA-Z0-9]/g, "_");
+function step(key, d) {
+  const [pid, c, s] = key.split("|"); const st = stockOf(pid, c, s); let q = (draft[key] || 0) + d;
+  while (q > 0 && q <= st && !okQty(pid, st, q)) q += d;
+  if (q < 0 || q > st) return; setq(key, q, true);
+}
+function setq(key, v, fromBtn) {
+  const [pid, c, s] = key.split("|"); const st = stockOf(pid, c, s);
+  let q = Math.max(0, Math.min(st, parseInt(v, 10) || 0));
+  if (!okQty(pid, st, q)) {
+    const opts = allowedList(pid, st); const up = opts.find(x => x >= q); q = up ?? opts[opts.length - 1] ?? 0;
+    fromBtn = true; toast(prod(pid).rule.type === "min" ? "Ελάχιστη ποσότητα " + prod(pid).rule.n + " τεμάχια" : "Μένουν " + st + ": διαλέξτε " + opts.join(" ή "));
+  }
+  if (q) draft[key] = q; else delete draft[key];
+  const cell = document.getElementById("c_" + cssid(key)); cell.classList.toggle("has", !!q);
+  if (fromBtn) cell.querySelector("input").value = q || "";
+  updTotals(pid);
+}
+function updTotals(pid) {
+  const q = qtySum(draft); document.getElementById("dq").textContent = q;
+  document.getElementById("dv").textContent = eur(q * prod(pid).price);
+}
+function addDraft(pid) {
+  for (const k of Object.keys(S.cart)) if (k.startsWith(pid + "|")) delete S.cart[k];
+  Object.assign(S.cart, draft); save(); render();
+  toast(qtySum(draft) ? `Προστέθηκαν ${qtySum(draft)} τεμάχια στο καλάθι` : "Το προϊόν αφαιρέθηκε από το καλάθι");
+  go("product", pid);
+}
+
+function groupItems(items) {
+  const g = {}; for (const [k, q] of Object.entries(items)) { const [pid, c, s] = k.split("|"); ((g[pid] ??= {})[c] ??= []).push(`${s}: ${q}`); } return g;
+}
+function itemsHtml(items, editable) {
+  return Object.entries(groupItems(items)).map(([pid, cols]) => { const p = prod(pid); const q = Object.entries(items).filter(([k]) => k.startsWith(pid + "|")).reduce((a, [, n]) => a + n, 0);
+    return `<div class="line"><div><b>${p.name}</b> <span class="muted">· ${pid}</span>${Object.entries(cols).map(([c, arr]) => `<div class="sizes"><span class="sw" style="border:0;padding:0;background:none;display:inline-flex"><i style="background:${COLORS[c][1]};width:14px;height:14px"></i>${COLORS[c][0]}</span>: ${arr.join(" · ")}</div>`).join("")}</div>
+      <div style="text-align:right"><b>${q} τεμ.</b><div class="muted">${eur(q * p.price)}</div>${editable ? `<button class="back" style="font-size:15px" onclick="go('product','${pid}')">Αλλαγή</button>` : ""}</div></div>`; }).join("");
+}
+function vCart() {
+  const n = qtySum(S.cart);
+  if (!n) return `<h1>Καλάθι</h1><div class="card"><p>Το καλάθι σας είναι άδειο.</p><button class="btn primary" onclick="go('home')">Δείτε τον κατάλογο</button></div>`;
+  return `<h1>Καλάθι</h1><div class="card">${itemsHtml(S.cart, true)}</div>
+    <div class="card" style="margin-top:12px"><b>Σημείωση για την παραγγελία</b> <span class="muted">(προαιρετικά)</span><textarea id="note" placeholder="π.χ. αποστολή με ACS, παράδοση μετά τις 20/11"></textarea></div>
+    <div class="totals"><div>Σύνολο: <b>${n}</b> τεμ. · <b>${eur(valSum(S.cart))}</b> <span class="muted">+ΦΠΑ</span></div><button class="btn ok" onclick="send()">Αποστολή παραγγελίας</button></div>`;
+}
+function send() {
+  const no = Math.max(...S.orders.map(o => o.no)) + 1;
+  const o = { no, date: new Date().toLocaleDateString("el-GR"), customer: CUSTOMER.name, city: CUSTOMER.city, status: "new", note: (document.getElementById("note")?.value || "").trim(), items: { ...S.cart } };
+  S.orders.push(o); S.cart = {}; save(); go("done", no);
+}
+function vDone(no) {
+  const o = S.orders.find(x => x.no === no);
+  return `<div class="done"><div class="big">✓</div><h1>Η παραγγελία #${no} στάλθηκε</h1><p class="muted">Η Cotridis θα την επιβεβαιώσει σύντομα. Θα λάβετε email με όλα τα στοιχεία.</p>
+    <div class="email"><h4>📧 Αυτό λαμβάνει η Cotridis</h4><div class="muted" style="margin-bottom:8px">Νέα παραγγελία #${no} · ${o.customer}, ${o.city}</div>${itemsHtml(o.items, false)}
+      <div style="margin-top:8px"><b>Σύνολο: ${qtySum(o.items)} τεμ. · ${eur(valSum(o.items))} +ΦΠΑ</b></div>${o.note ? `<div class="muted">Σημείωση: ${o.note}</div>` : ""}
+      <div style="margin-top:10px"><span class="btn ok small">Επιβεβαίωση με ένα κλικ</span></div></div>
+    <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn ghost" onclick="go('orders')">Οι παραγγελίες μου</button><button class="btn primary" onclick="go('home')">Συνέχεια</button></div></div>`;
+}
+const stLabel = (s, o) => ({ new: `<span class="status s-new">Νέα</span>`, ok: `<span class="status s-ok">Επιβεβαιώθηκε${o && o.edited ? " με αλλαγές" : ""}</span>`, sent: `<span class="status s-sent">Το εμπόρευμα στάλθηκε</span>` })[s];
+function vOrders() {
+  const mine = S.orders.filter(o => o.customer === CUSTOMER.name).slice().reverse();
+  return `<h1>Οι παραγγελίες μου</h1>${mine.map(o => `<div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><div><b>#${o.no}</b> · ${o.date} ${stLabel(o.status, o)}</div><button class="btn ghost small" onclick="reorder(${o.no})">Ξαναπαράγγειλε τα ίδια</button></div>${itemsHtml(o.items, false)}<div style="text-align:right;margin-top:6px"><b>${qtySum(o.items)} τεμ. · ${eur(valSum(o.items))}</b></div></div>`).join("")}`;
+}
+function reorder(no) {
+  const o = S.orders.find(x => x.no === no); let skipped = 0;
+  for (const [k, q] of Object.entries(o.items)) {
+    const [pid, c, s] = k.split("|"); const room = stockOf(pid, c, s) - (S.cart[k] || 0);
+    let add = Math.min(q, Math.max(0, room)); while (add > 0 && !okQty(pid, stockOf(pid, c, s), (S.cart[k] || 0) + add)) add--; if (add < q) skipped++;
+    if (add) S.cart[k] = (S.cart[k] || 0) + add;
+  }
+  save(); toast(skipped ? "Μπήκαν στο καλάθι. Κάποια μεγέθη δεν είναι πια διαθέσιμα" : "Τα προϊόντα μπήκαν στο καλάθι"); go("cart");
+}
+
+// admin: what Cotridis sees
+function vAdmin() {
+  const rows = S.orders.slice().reverse().map(o => `<tr><td><b>#${o.no}</b><div class="muted">${o.date}</div></td><td>${o.customer}<div class="muted">${o.city}</div></td><td>${qtySum(o.items)} τεμ.<div class="muted">${eur(valSum(o.items))}</div></td><td>${stLabel(o.status, o)}</td>
+    <td>${o.status === "new" ? `<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn ghost small" onclick="go('edit',${o.no})">Αλλαγή</button><button class="btn ok small" onclick="setSt(${o.no},'ok')">Επιβεβαίωση</button></div>` : o.status === "ok" ? `<button class="btn ghost small" onclick="setSt(${o.no},'sent')">Το εμπόρευμα στάλθηκε</button>` : "✔"}</td></tr>`).join("");
+  const pend = S.apps.filter(a => a.status === "pending");
+  const apps = S.apps.slice().reverse().map(a => `<tr><td><b>${a.shop}</b><div class="muted">${a.date} · ΑΦΜ ${a.afm}</div></td><td>${a.person}<div class="muted">${a.city} · ${a.phone}</div></td><td>${a.type}</td>
+    <td>${a.status === "pending" ? `<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn ok small" onclick="setApp(${a.id},'approved')">Έγκριση</button><button class="btn ghost small" onclick="setApp(${a.id},'rejected')">Απόρριψη</button></div>` : a.status === "approved" ? `<span class="status s-ok">Εγκρίθηκε</span>` : `<span class="status s-sent">Απορρίφθηκε</span>`}</td></tr>`).join("");
+  return `<h1>Διαχείριση</h1><p class="muted">Αυτό βλέπει η Cotridis: νέοι έμποροι που ζητούν πρόσβαση και παραγγελίες έτοιμες, με μεγέθη και ποσότητες.</p>
+    <h2>Αιτήσεις εμπόρων ${pend.length ? `<span class="status s-new">${pend.length} νέα</span>` : ""}</h2>
+    <div style="overflow-x:auto"><table class="adm"><tr><th>Κατάστημα</th><th>Υπεύθυνος</th><th>Είδος</th><th></th></tr>${apps}</table></div>
+    <h2>Παραγγελίες</h2>
+    <div style="overflow-x:auto"><table class="adm"><tr><th>Παραγγελία</th><th>Πελάτης</th><th>Ποσότητα</th><th>Κατάσταση</th><th></th></tr>${rows}</table></div>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn ghost small" onclick="exportCsv()">Εξαγωγή σε Excel</button><button class="btn ghost small" onclick="resetDemo()">Επαναφορά δοκιμαστικού</button></div>
+    <h2>Λεπτομέρειες τελευταίας παραγγελίας</h2><div class="card">${itemsHtml(S.orders[S.orders.length - 1].items, false)}</div>`;
+}
+function setApp(id, st) { const a = S.apps.find(x => x.id === id); a.status = st; save(); render(); toast(st === "approved" ? "Εγκρίθηκε. Ο έμπορος πήρε email με τους κωδικούς του" : "Η αίτηση απορρίφθηκε"); }
+function setSt(no, st) { const o = S.orders.find(x => x.no === no); o.status = st; save(); render(); toast(st === "ok" ? (o.edited ? "Επιβεβαιώθηκε με τις αλλαγές. Ο πελάτης πήρε email με την τελική παραγγελία" : "Η παραγγελία επιβεβαιώθηκε και ο πελάτης ειδοποιήθηκε") : "Ο πελάτης ειδοποιήθηκε ότι το εμπόρευμα στάλθηκε"); }
+// admin edit screen: Cotridis adjusts quantities before confirming
+function vEdit(no) {
+  const o = S.orders.find(x => x.no === no);
+  const rows = Object.entries(o.items).map(([k, q]) => { const [pid, c, s] = k.split("|"); const p = prod(pid);
+    return `<tr><td><b>${p.name}</b><div class="muted">${pid}</div></td><td><span class="sw" style="border:0;padding:0;background:none;display:inline-flex"><i style="background:${COLORS[c][1]};width:14px;height:14px"></i>${COLORS[c][0]}</span></td><td><b>${s}</b></td><td><div class="cell" style="width:130px"><button onclick="edStep('${k}',-1)">−</button><input inputmode="numeric" id="e_${cssid(k)}" value="${q}"><button onclick="edStep('${k}',1)">+</button></div><div class="stock">απόθεμα ${stockOf(pid, c, s)}</div></td></tr>`; }).join("");
+  return `<button class="back" onclick="go('admin')">← Παραγγελίες</button><h1>Αλλαγή παραγγελίας #${o.no}</h1><p class="muted">${o.customer}, ${o.city}. Αλλάξτε ποσότητες πριν την επιβεβαίωση. Ο πελάτης θα πάρει email με την τελική παραγγελία.</p>
+    <div style="overflow-x:auto"><table class="adm"><tr><th>Προϊόν</th><th>Χρώμα</th><th>Μέγεθος</th><th>Τεμάχια</th></tr>${rows}</table></div>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" onclick="saveEdit(${o.no})">Αποθήκευση αλλαγών</button><button class="btn ghost" onclick="go('admin')">Ακύρωση</button></div>`;
+}
+function edStep(k, d) { const el = document.getElementById("e_" + cssid(k)); el.value = Math.max(0, (parseInt(el.value, 10) || 0) + d); }
+function saveEdit(no) {
+  const o = S.orders.find(x => x.no === no); const items = {};
+  for (const k of Object.keys(o.items)) { const v = parseInt(document.getElementById("e_" + cssid(k)).value, 10) || 0; if (v > 0) items[k] = v; }
+  const changed = JSON.stringify(items) !== JSON.stringify(o.items); o.items = items; if (changed) o.edited = true;
+  save(); go("admin"); toast(changed ? "Οι αλλαγές αποθηκεύτηκαν. Πατήστε Επιβεβαίωση για να ειδοποιηθεί ο πελάτης" : "Καμία αλλαγή");
+}
+
+function exportCsv() {
+  const lines = [["Παραγγελία","Ημερομηνία","Πελάτης","Κωδικός","Προϊόν","Χρώμα","Μέγεθος","Τεμάχια","Τιμή"]];
+  for (const o of S.orders) for (const [k, q] of Object.entries(o.items)) { const [pid, c, s] = k.split("|"); const p = prod(pid); lines.push([o.no, o.date, o.customer, pid, p.name, COLORS[c][0], s, q, p.price.toFixed(2).replace(".", ",")]); }
+  const csv = "﻿" + lines.map(r => r.map(x => `"${String(x).replace(/"/g, '""')}"`).join(";")).join("\r\n");
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" })); a.download = "paraggelies-cotridis.csv"; a.click();
+}
+function resetDemo() { try { Object.keys(localStorage).filter(k => k.startsWith("cjdemo_")).forEach(k => localStorage.removeItem(k)); } catch {} location.reload(); }
+
+render();
+</script>
+</body>
+</html>
