@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#121212">
+<title>Morrison — The Premium Rooftop · Πυλαία, Θεσσαλονίκη</title>
+<meta name="description" content="Morrison, the premium rooftop: all day bar-restaurant στην Πυλαία, με θέα σε όλη τη Θεσσαλονίκη. Ανοιχτά 10:00–02:00, δωρεάν parking.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;500;700&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Morrison (Pylaia, Thessaloniki).
+  Signature: the lift. Scrolling takes you from the street (G) up to the roof, and the city opens up.
+  Menu items from a March 2026 press article (biscotto.gr). Photos are Unsplash placeholders.
+  Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --night:#121212;
+  --char:#1c1c1c;
+  --concrete:#e9e6e1;
+  --wood:#a77b54;
+  --copper:#c97b4a;
+  --ink:#141414;
+  --muted:#8e8a84;
+  --line:#2c2c2c;
+  --display:"Jura",system-ui,sans-serif;
+  --body:"Manrope",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--night)}
+body{background:var(--night);color:var(--concrete);font-family:var(--body);font-weight:300;font-size:clamp(16px,.45vw + 14px,19px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.j{font-family:var(--display);font-weight:300;line-height:1;letter-spacing:.02em}
+.j b{font-weight:700;color:var(--copper)}
+.k{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--copper)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;background:var(--copper);color:#140c06;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transition:transform .3s var(--ease),box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(201,123,74,.6)}
+.btn.line{background:transparent;color:var(--concrete);box-shadow:inset 0 0 0 1px #444}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:rgba(18,18,18,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.42em}
+.brand small{display:block;font-weight:500;font-size:9px;letter-spacing:.38em;color:var(--muted)}
+.nav .links{display:flex;gap:26px;align-items:center;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.nav .links a.l{color:var(--muted)}
+.nav .links a.l:hover{color:var(--concrete)}
+.nav .btn{padding:11px 18px;font-size:11px}
+
+/* the lift */
+.lift{height:330vh;position:relative}
+.lift .stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.lift .layer{position:absolute;inset:0;transition:opacity .2s linear}
+.lift .layer img{transform:scale(calc(1.15 - var(--p,0) * .15))}
+.lift .street{opacity:calc(1 - var(--p,0) * 1.6)}
+.lift .street img{filter:brightness(.35) saturate(.6)}
+.lift .roof{opacity:calc((var(--p,0) - .35) * 2)}
+.lift .roof img{filter:brightness(.7)}
+.lift .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,18,18,.4),rgba(18,18,18,.1) 40%,rgba(18,18,18,.85))}
+.panel{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);z-index:3;width:140px;padding:18px;background:rgba(10,10,10,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px #3a3a3a;border-radius:12px;text-align:center}
+.panel .disp{font-family:var(--display);font-weight:700;font-size:60px;line-height:1;color:var(--copper);text-shadow:0 0 18px rgba(201,123,74,.6);min-height:60px}
+.panel .arrow{font-size:18px;color:var(--copper);margin:6px 0 10px;animation:up 1.2s ease-in-out infinite}
+@keyframes up{50%{transform:translateY(-4px);opacity:.5}}
+.panel .shaft{display:flex;flex-direction:column-reverse;gap:8px;margin-top:6px}
+.panel .shaft span{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;color:#555;padding:6px 0;border-radius:6px;box-shadow:inset 0 0 0 1px #333;transition:all .3s}
+.panel .shaft span.on{color:#140c06;background:var(--copper);box-shadow:none}
+.lift .copy{position:absolute;left:var(--pad);bottom:clamp(40px,10vh,100px);z-index:3;max-width:min(760px,70vw)}
+.lift .say{position:absolute;left:0;bottom:0;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s var(--ease)}
+.lift .say.on{opacity:1;transform:none;position:relative}
+.lift .say h1,.lift .say h2{font-size:clamp(46px,8vw,128px)}
+.lift .say p{color:#cfcac2;max-width:30em;margin-top:18px}
+.lift .say .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+section{position:relative}
+.wrap{padding:clamp(90px,12vw,160px) var(--pad)}
+
+/* all day */
+.day{background:var(--concrete);color:var(--ink)}
+.day .k{color:#a65a2c}
+.day h2{font-size:clamp(46px,7vw,110px)}
+.day h2 b{color:#a65a2c}
+.clock{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#cfc9c0;margin-top:clamp(36px,5vw,60px);border:1px solid #cfc9c0}
+.clock div{background:var(--concrete);padding:22px 18px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:background .3s}
+.clock div:hover{background:#fff}
+.clock .t{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.14em;color:#a65a2c}
+.clock h3{font-family:var(--display);font-weight:300;font-size:clamp(28px,2.6vw,40px);line-height:1}
+.clock p{font-size:.9em;color:#6b665f;margin-top:8px}
+.clock .now{background:var(--ink);color:var(--concrete)}
+.clock .now p{color:#a8a39b}
+.clock .now .t::after{content:" · τώρα";color:var(--copper)}
+
+/* menu */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.menu h2{font-size:clamp(46px,6.4vw,100px)}
+.menu .pic{aspect-ratio:4/5;overflow:hidden;margin-top:30px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 30px;align-content:start}
+.cols h3{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--copper);margin-bottom:10px}
+.cols ul{list-style:none}
+.cols li{padding:9px 0;border-bottom:1px solid var(--line);font-size:.96em}
+.menunote{grid-column:1/-1;font-size:13px;color:var(--muted)}
+
+/* terraces */
+.terr{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 var(--pad)}
+.terr figure{position:relative;aspect-ratio:4/3;overflow:hidden}
+.terr figure img{transition:transform 1.4s var(--ease)}
+.terr figure:hover img{transform:scale(1.05)}
+.terr figcaption{position:absolute;left:18px;bottom:16px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.24em;text-transform:uppercase;background:rgba(18,18,18,.7);padding:8px 12px}
+.terr .txt{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;padding:clamp(40px,6vw,70px) 0 0}
+.terr .txt h2{font-size:clamp(42px,6vw,96px)}
+.terr .txt p{max-width:28em;color:var(--muted)}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.visit h2{font-size:clamp(50px,8vw,124px)}
+.facts{display:grid;gap:24px}
+.facts h4{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.facts .big{font-family:var(--display);font-weight:300;font-size:clamp(26px,2.6vw,38px);line-height:1.1}
+.facts .acts{display:flex;gap:10px;flex-wrap:wrap}
+.park{display:inline-flex;align-items:center;gap:10px;margin-top:8px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--copper)}
+.park i{width:26px;height:26px;border-radius:6px;background:var(--copper);color:#140c06;display:grid;place-items:center;font-style:normal}
+
+footer{padding:26px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+footer a{color:var(--concrete);border-bottom:1px solid var(--line)}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--copper);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--body);letter-spacing:0;text-transform:none;color:#140c06;background:var(--copper);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--display);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;background:var(--night);box-shadow:inset 0 0 0 1px #444;color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--copper);color:var(--copper)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .panel{top:auto;bottom:auto;top:84px;transform:none;width:96px;padding:12px}
+  .panel .disp{font-size:38px;min-height:38px}
+  .panel .shaft{display:none}
+  .lift .copy{max-width:calc(100vw - 2 * var(--pad))}
+  .clock{grid-template-columns:1fr 1fr}
+  .clock div{min-height:150px}
+  .menu,.visit,.terr{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("mo-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Morrison">MORRISON<small>The Premium Rooftop</small></a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#day">All day</a>
+    <a class="l" href="#menu">Μενού</a>
+    <a class="l" href="#visit">Επίσκεψη</a>
+    <a class="btn" href="tel:+302316020535">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- THE LIFT -->
+  <section class="lift" id="lift">
+    <div class="stage">
+      <div class="layer street"><img src="https://images.unsplash.com/photo-1623630524058-622b7fa9ecd7?auto=format&fit=crop&w=1800&q=65" alt="" fetchpriority="high"></div>
+      <div class="layer roof"><img src="https://images.unsplash.com/photo-1621275471769-e6aa344546d5?auto=format&fit=crop&w=1800&q=65" alt="Ταράτσα με θέα την πόλη τη νύχτα"></div>
+      <div class="shade"></div>
+      <div class="panel" aria-hidden="true">
+        <div class="disp" id="floor">G</div>
+        <div class="arrow">▲</div>
+        <div class="shaft" id="shaft"><span>G</span><span>·</span><span>·</span><span>·</span><span>ROOF</span></div>
+      </div>
+      <div class="copy">
+        <div class="say on" data-at="0">
+          <div class="k">Πυλαία · Θεσσαλονίκη</div>
+          <h1 class="j" style="margin-top:14px">Πάτα<br><b>το κουμπί.</b></h1>
+          <p>Κάνε scroll και ανέβα. Στην κορυφή σε περιμένει όλη η Θεσσαλονίκη.</p>
+        </div>
+        <div class="say" data-at=".4">
+          <div class="k">Ανεβαίνουμε…</div>
+          <h2 class="j" style="margin-top:14px">Από τον καφέ<br><b>ως το τελευταίο ποτό</b></h2>
+        </div>
+        <div class="say" data-at=".78">
+          <div class="k">ROOF</div>
+          <h2 class="j" style="margin-top:14px">The view<br><b>from the top.</b></h2>
+          <p>All day bar-restaurant στην ταράτσα του κτιρίου Morris, με θέα σε όλη την πόλη. Κάθε μέρα 10:00 – 02:00.</p>
+          <div class="acts"><a class="btn" href="tel:+302316020535">Κλείσε τραπέζι</a><a class="btn line" href="#menu">Το μενού</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL DAY -->
+  <section class="wrap day" id="day">
+    <div class="k rv">All day</div>
+    <h2 class="j rv d1" style="margin-top:14px">Μία ταράτσα,<br><b>όλη η μέρα</b></h2>
+    <div class="clock" id="clock">
+      <div class="rv" data-f="600" data-t="720"><span class="t">10:00</span><div><h3>Καφές</h3><p>με θέα την πόλη που ξυπνάει</p></div></div>
+      <div class="rv d1" data-f="720" data-t="900"><span class="t">10:00 +</span><div><h3>Brunch</h3><p>eggs benedict, pancakes</p></div></div>
+      <div class="rv d2" data-f="900" data-t="1140"><span class="t">Μεσημέρι</span><div><h3>Lunch</h3><p>σαλάτες, pinsa, burgers</p></div></div>
+      <div class="rv" data-f="1140" data-t="1380"><span class="t">Βράδυ</span><div><h3>Dinner</h3><p>premium κομμάτια, risotto</p></div></div>
+      <div class="rv d1" data-f="1380" data-t="1560"><span class="t">ως 02:00</span><div><h3>Cocktails</h3><p>signature λίστα</p></div></div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="wrap menu" id="menu">
+    <div>
+      <div class="k rv">Το μενού</div>
+      <h2 class="j rv d1" style="margin-top:14px">Γεύσεις<br><b>από ψηλά</b></h2>
+      <div class="pic rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1558030089-02acba3c214e?auto=format&fit=crop&w=900&h=1125&q=70" alt="Μπριζόλα σε ξύλο κοπής"></div>
+    </div>
+    <div class="cols">
+      <div class="rv"><h3>Brunch</h3><ul><li>Eggs Benedict</li><li>Pancakes με σοκολάτα, κρέμα ή μαρμελάδα μήλου</li></ul></div>
+      <div class="rv d1"><h3>Για αρχή</h3><ul><li>Carpaccio & tartare μοσχαριού</li><li>Ρολά καπνιστού σολομού</li><li>Pinsa Romana</li><li>Πιατέλα τυριών</li></ul></div>
+      <div class="rv"><h3>Σαλάτες & κυρίως</h3><ul><li>Caprese με burrata</li><li>Waldorf</li><li>Black Angus burger</li><li>Ζυμαρικά & risotto</li></ul></div>
+      <div class="rv d1"><h3>Premium cuts</h3><ul><li>Ribeye</li><li>Bavette</li><li>T-bone</li></ul></div>
+      <div class="rv"><h3>Γλυκά</h3><ul><li>Προφιτερόλ</li><li>Αρμενονβίλ</li><li>Panna cotta</li><li>Millefeuille καραμέλας</li></ul></div>
+      <div class="rv d1"><h3>Bar</h3><ul><li>Signature cocktails</li><li>Ελληνικά κρασιά & επιλεγμένες ξένες ετικέτες</li></ul></div>
+      <p class="menunote ph" data-note="Από άρθρο Μαρτίου 2026: να επιβεβαιωθεί το τρέχον μενού (με τιμές)">Δείγμα από το μενού μας. Το πλήρες μενού, με τιμές, στο τελικό site.</p>
+    </div>
+  </section>
+
+  <!-- TERRACES -->
+  <div class="terr">
+    <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1705095605806-4b2936e90471?auto=format&fit=crop&w=1100&h=825&q=70" alt="Ταράτσα με καναπέδες"><figcaption>Ταράτσα · bar</figcaption></figure>
+    <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1776363116182-51694a04a1d5?auto=format&fit=crop&w=1100&h=825&q=70" alt="Θέα από ταράτσα"><figcaption>Ταράτσα · bar</figcaption></figure>
+    <div class="txt"><h2 class="j rv">Δύο ταράτσες,<br><b>δύο μπαρ</b></h2><p class="rv d1">Ένας άνετος εσωτερικός χώρος με ξύλο και κρυφό φωτισμό, και δύο ταράτσες με δικό τους μπαρ η καθεμία. Από εδώ βλέπεις όλη τη Θεσσαλονίκη.</p></div>
+  </div>
+
+  <!-- VISIT -->
+  <section class="wrap visit" id="visit">
+    <div><div class="k rv">Επίσκεψη</div><h2 class="j rv d1" style="margin-top:14px">Τα λέμε<br><b>στην κορυφή</b></h2></div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">17ης Νοεμβρίου 87Α<br>Πυλαία 555 35</div><div class="park"><i>P</i>Δωρεάν parking στο κτίριο</div></div>
+      <div class="rv"><h4>Ωράριο</h4><div class="big">Κάθε μέρα 10:00 – 02:00</div></div>
+      <div class="rv"><h4>Κρατήσεις</h4><a class="big" href="tel:+302316020535">2316 020 535</a></div>
+      <div class="rv acts">
+        <a class="btn" href="tel:+302316020535">Κλήση</a>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Morrison+Rooftop+Pylaia" target="_blank" rel="noopener">Χάρτης</a>
+        <a class="btn line" href="https://www.instagram.com/morrison.skg/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Morrison · The Premium Rooftop</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="#menu" style="background:var(--night)">Μενού</a><a class="btn" href="tel:+302316020535">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+
+  // The lift: scroll progress through the first section rides from G to the roof.
+  const lift = document.getElementById("lift"), stage = lift.querySelector(".stage"), floor = document.getElementById("floor");
+  const stops = [...document.querySelectorAll("#shaft span")], says = [...lift.querySelectorAll(".say")];
+  const ride = () => {
+    const r = lift.getBoundingClientRect(), p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+    stage.style.setProperty("--p", p.toFixed(3));
+    const i = Math.min(4, Math.floor(p * 4.999));
+    floor.textContent = i === 4 ? "R" : i === 0 ? "G" : "▲";
+    stops.forEach((s, k) => s.classList.toggle("on", k === i));
+    let cur = 0; says.forEach((s, k) => { if (p >= +s.dataset.at) cur = k; });
+    says.forEach((s, k) => s.classList.toggle("on", k === cur));
+  };
+  addEventListener("scroll", () => requestAnimationFrame(ride), { passive: true }); ride();
+
+  // All day: highlight the part of the day we are in (Athens time).
+  const pt = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Athens", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  let m = +pt.find(x => x.type === "hour").value * 60 + +pt.find(x => x.type === "minute").value; if (m < 180) m += 1440;
+  document.querySelectorAll("#clock > div").forEach(d => { if (m >= +d.dataset.f && m < +d.dataset.t) d.classList.add("now"); });
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > lift.offsetHeight - innerHeight); mbar.classList.toggle("on", scrollY > lift.offsetHeight - innerHeight && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("mo-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

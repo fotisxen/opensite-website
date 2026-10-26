@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1a120d">
+<title>Tzaki 'Ho — Country Eating · Χορτιάτης</title>
+<meta name="description" content="Tzaki 'Ho, country eating στον Χορτιάτη. Κρέας στη φωτιά, κρασιά και θέα. Ανοιχτά από το μεσημέρι, εκτός Δευτέρας.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,300;0,8..30,700;1,8..30,300&family=Sofia+Sans+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Tzaki 'Ho (Chortiatis, Thessaloniki).
+  Signature: a living fireplace. "Throw a log" and the fire grows.
+  Dishes, chef, years and wine count come from a directory listing and are marked to confirm (.ph).
+  Photos are Unsplash placeholders. Toggle notes with "Σημειώσεις", hide with ?clean.
+*/
+:root{
+  --soot:#1a120d;
+  --wood:#2e1e14;
+  --bark:#4a3020;
+  --ember:#e0682a;
+  --glow:#ffb066;
+  --wool:#efe2cc;
+  --muted:#b29d86;
+  --line:#3d2a1d;
+  --serif:"Piazzolla",Georgia,serif;
+  --cond:"Sofia Sans Condensed",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--soot)}
+body{background:var(--soot);color:var(--wool);font-family:var(--serif);font-weight:300;font-size:clamp(17px,.45vw + 15px,20px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.s{font-family:var(--serif);font-weight:700;line-height:.98;letter-spacing:-.015em}
+.s em{font-weight:300;font-style:italic;color:var(--glow)}
+.k{font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--ember)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:4px;background:var(--ember);color:var(--soot);font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;transition:transform .3s var(--ease),box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(224,104,42,.7)}
+.btn.line{background:transparent;color:var(--wool);box-shadow:inset 0 0 0 1px var(--bark)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:rgba(26,18,13,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{font-family:var(--serif);font-weight:700;font-size:24px}
+.brand em{font-weight:300;font-style:italic;color:var(--glow)}
+.nav .links{display:flex;gap:26px;align-items:center;font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
+.nav .links a.l{color:var(--muted)}
+.nav .btn{padding:10px 18px;font-size:13px}
+
+/* hearth */
+.hearth{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(20px,4vw,60px);padding:110px var(--pad) 60px;overflow:hidden}
+.hearth::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 72% 70%,rgba(224,104,42,calc(.12 + var(--heat,.3) * .35)) 0,transparent 60%);transition:background .6s;pointer-events:none}
+.hearth h1{font-size:clamp(60px,10vw,170px)}
+.hearth p{color:var(--muted);max-width:26em;margin:22px 0 30px}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.fireplace{position:relative;justify-self:center;width:min(86vw,520px);aspect-ratio:1/1.05}
+.fireplace .arch{position:absolute;inset:0;border-radius:50% 50% 6px 6px / 38% 38% 6px 6px;background:#0d0806;box-shadow:inset 0 0 0 14px #3a271a,inset 0 0 0 16px #5a3c27,inset 0 -40px 80px rgba(0,0,0,.7),0 30px 80px -30px rgba(0,0,0,.8);overflow:hidden}
+.fireplace canvas{position:absolute;left:8%;right:8%;bottom:8%;width:84%;height:80%}
+.fireplace .logs{position:absolute;left:18%;right:18%;bottom:9%;height:12%}
+.fireplace .logs i{position:absolute;height:38%;border-radius:20px;background:linear-gradient(180deg,#6b4429,#3a2416);box-shadow:inset 0 0 0 2px #2a190f}
+.fireplace .logs i:nth-child(1){left:0;right:20%;bottom:0;transform:rotate(-4deg)}
+.fireplace .logs i:nth-child(2){left:22%;right:0;bottom:25%;transform:rotate(5deg)}
+.fireplace .logs i.add{animation:drop .6s var(--ease)}
+@keyframes drop{from{transform:translateY(-200%) rotate(20deg);opacity:0}}
+.mantel{position:absolute;left:-4%;right:-4%;top:-3%;height:5%;background:linear-gradient(#5a3c27,#3a271a);border-radius:3px}
+.logbtn{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);white-space:nowrap}
+.logcount{position:absolute;right:4%;top:6%;font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.logcount b{color:var(--glow);font-size:22px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+section{position:relative}
+.wrap{padding:clamp(90px,12vw,160px) var(--pad)}
+
+/* years */
+.years{display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,6vw,100px);align-items:center;background:var(--wood)}
+.years .num{font-family:var(--serif);font-weight:700;font-size:clamp(130px,20vw,300px);line-height:.8;color:var(--glow)}
+.years .num small{display:block;font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.3em;color:var(--muted);margin-top:14px;text-transform:uppercase}
+.years h2{font-size:clamp(40px,5vw,76px);margin-bottom:22px}
+.years p{color:var(--muted);max-width:32em}
+
+/* butcher board */
+.board .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:clamp(30px,5vw,56px)}
+.board h2{font-size:clamp(46px,7vw,110px)}
+.board .head p{color:var(--muted);max-width:24em}
+.cuts{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(20px,3vw,40px);align-items:stretch}
+.cuts .pic{overflow:hidden;min-height:440px;border-radius:6px}
+.cuts .pic img{transition:opacity .5s}
+.list{list-style:none;background:#e8d9bf;color:var(--soot);border-radius:6px;padding:clamp(20px,3vw,36px);box-shadow:inset 0 0 0 1px #c9b79a}
+.list li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px dashed #b9a585;cursor:pointer;transition:padding .3s var(--ease)}
+.list li:hover,.list li.on{padding-left:10px}
+.list li b{font-family:var(--serif);font-weight:700;font-size:clamp(20px,1.8vw,26px)}
+.list li span{font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7a5638}
+.list li.on b{color:#b4471a}
+
+/* cellar */
+.cellar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center;background:var(--wood)}
+.cellar .count{font-family:var(--serif);font-weight:700;font-size:clamp(110px,16vw,240px);line-height:.85;color:var(--glow)}
+.cellar h2{font-size:clamp(40px,5vw,76px);margin:12px 0 20px}
+.cellar p{color:var(--muted);max-width:30em}
+.cellar .pic{aspect-ratio:4/5;overflow:hidden;border-radius:6px}
+
+/* view */
+.view{position:relative;min-height:80svh;display:flex;align-items:flex-end;padding:clamp(40px,8vw,90px) var(--pad);overflow:hidden}
+.view .bg{position:absolute;inset:0}
+.view .bg img{filter:brightness(.55)}
+.view>*:not(.bg){position:relative}
+.view h2{font-size:clamp(46px,7vw,110px)}
+.view p{max-width:30em;color:#e4d6c0;margin-top:16px}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.visit h2{font-size:clamp(50px,8vw,124px)}
+.facts{display:grid;gap:24px}
+.facts h4{font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.facts .big{font-family:var(--serif);font-weight:700;font-size:clamp(26px,2.6vw,38px);line-height:1.1}
+
+footer{padding:26px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--cond);font-size:14px;color:var(--muted)}
+footer a{color:var(--wool);border-bottom:1px solid var(--line)}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--ember);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:700 12px/1.35 var(--cond);letter-spacing:.02em;text-transform:none;font-style:normal;color:var(--soot);background:var(--glow);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.1em;padding:8px 12px;border-radius:4px;background:var(--soot);box-shadow:inset 0 0 0 1px var(--bark);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--ember);color:var(--glow)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .hearth{grid-template-columns:1fr;padding-top:96px}
+  .fireplace{order:-1;width:min(80vw,340px);margin-bottom:30px}
+  .years,.cuts,.cellar,.visit{grid-template-columns:1fr}
+  .cuts .pic{min-height:260px}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("tz-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand">Tzaki <em>'Ho</em></a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#kreas">Κρέας</a>
+    <a class="l" href="#kava">Κάβα</a>
+    <a class="l" href="#visit">Θα μας βρεις</a>
+    <a class="btn" href="tel:+302310349266">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hearth" id="hearth">
+    <div>
+      <div class="k rv in">Country eating · Χορτιάτης</div>
+      <h1 class="s rv in" style="margin-top:16px">Κάτσε<br><em>δίπλα στο τζάκι.</em></h1>
+      <p class="rv d1 in">Κρέας στη φωτιά, καλό κρασί και μια παρέα γύρω από το τραπέζι, στο βουνό πάνω από τη Θεσσαλονίκη.</p>
+      <div class="acts rv d2 in"><a class="btn" href="tel:+302310349266">Κλείσε τραπέζι</a><a class="btn line" href="#kreas">Το κρέας μας</a></div>
+    </div>
+    <div class="fireplace rv in" aria-label="Τζάκι. Πάτησε «Ρίξε ένα ξύλο» για να δυναμώσει η φωτιά">
+      <div class="mantel"></div>
+      <div class="arch"><canvas id="fire"></canvas><div class="logs" id="logs"><i></i><i></i></div></div>
+      <div class="logcount"><b id="logN">2</b> ξύλα</div>
+      <button class="btn logbtn" id="addLog" type="button">Ρίξε ένα ξύλο 🪵</button>
+    </div>
+  </section>
+
+  <!-- YEARS -->
+  <section class="wrap years">
+    <div class="num rv ph" data-note="«40 χρόνια» από κατάλογο εστιατορίων: να επιβεβαιωθεί">40<small>χρόνια στον Χορτιάτη</small></div>
+    <div>
+      <div class="k rv">Η ιστορία</div>
+      <h2 class="s rv d1" style="margin-top:14px">Ένα τζάκι που<br><em>δεν έσβησε ποτέ</em></h2>
+      <p class="rv d1">Στον Χορτιάτη, εκεί που η πόλη αφήνει χώρο στο βουνό, το Tzaki 'Ho υποδέχεται παρέες και οικογένειες σε έναν ζεστό χώρο, με ελληνική κουζίνα που ξέρει να σέβεται το κρέας και τη φωτιά.</p>
+    </div>
+  </section>
+
+  <!-- BUTCHER BOARD -->
+  <section class="wrap board" id="kreas">
+    <div class="head">
+      <div><div class="k rv">Για τους meat lovers</div><h2 class="s rv d1" style="margin-top:14px">Ο πίνακας<br><em>του χασάπη</em></h2></div>
+      <p class="rv d1">Διάλεξε κομμάτι και δες το. Το μενού όλο, στο τελικό site.</p>
+    </div>
+    <div class="cuts">
+      <div class="pic rv"><img id="cutImg" loading="lazy" src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=1100&h=900&q=70" alt="Κρέας στο ξύλο"></div>
+      <ul class="list rv d1 ph" id="cuts" data-note="Πιάτα από κατάλογο εστιατορίων: να επιβεβαιωθεί το τρέχον μενού">
+        <li class="on" data-img="1615937657715-bc7b4b7962c1"><b>Tomahawk</b><span>για παρέα</span></li>
+        <li data-img="1558030089-02acba3c214e"><b>Rib eye Black Angus</b><span>στη σχάρα</span></li>
+        <li data-img="1615937662601-4724eceda00f"><b>Φιλέτο βουβάλι Κερκίνης</b><span>από τη Μακεδονία</span></li>
+        <li data-img="1690983325551-b922137727be"><b>Carpaccio μοσχαριού</b><span>για αρχή</span></li>
+        <li data-img="1690618513975-324617013892"><b>Καρδιές κόκορα</b><span>για τους τολμηρούς</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CELLAR -->
+  <section class="wrap cellar" id="kava">
+    <div>
+      <div class="count rv ph" data-note="«400+ ετικέτες» από κατάλογο: να επιβεβαιωθεί"><span id="wineN">0</span>+</div>
+      <div class="k rv">Η κάβα</div>
+      <h2 class="s rv d1">Ετικέτες<br><em>για κάθε κομμάτι</em></h2>
+      <p class="rv d1">Μια μεγάλη λίστα κρασιών, για να βρει κάθε κομμάτι κρέατος το ποτήρι του. Ρώτα μας τι ταιριάζει απόψε.</p>
+      <p class="rv d2 ph" data-note="Σεφ από κατάλογο: να επιβεβαιωθεί" style="margin-top:16px">Στην κουζίνα: ο σεφ Πασχάλης Ανέστης.</p>
+    </div>
+    <div class="pic rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1578911373434-0cb395d2cbfb?auto=format&fit=crop&w=900&h=1125&q=70" alt="Ράφια με κρασιά"></div>
+  </section>
+
+  <!-- VIEW -->
+  <section class="view">
+    <div class="bg"><img loading="lazy" src="https://images.unsplash.com/photo-1651136830763-670ce9a84d6b?auto=format&fit=crop&w=1800&q=65" alt="Θέα στην πόλη από το βουνό"></div>
+    <div>
+      <div class="k rv">Χορτιάτης</div>
+      <h2 class="s rv d1" style="margin-top:12px">Τραπέζι<br><em>με θέα</em></h2>
+      <p class="rv d1">Λίγα λεπτά από την πόλη, αρκετά ψηλά για να τη δεις ολόκληρη. Τραπέζια και έξω, όταν το επιτρέπει ο καιρός.</p>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="wrap visit" id="visit">
+    <div><div class="k rv">Θα μας βρεις</div><h2 class="s rv d1" style="margin-top:14px">Η φωτιά<br><em>είναι αναμμένη</em></h2></div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">Απ. Δράγου 2<br>Χορτιάτης</div></div>
+      <div class="rv"><h4>Ωράριο</h4><div class="big">Από το μεσημέρι</div><div style="color:var(--muted)">Τρίτη – Κυριακή · Δευτέρα κλειστά</div></div>
+      <div class="rv"><h4>Κρατήσεις</h4><a class="big" href="tel:+302310349266">2310 349 266</a></div>
+      <div class="rv acts">
+        <a class="btn" href="tel:+302310349266">Κλήση</a>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Tzaki+Ho+Chortiatis" target="_blank" rel="noopener">Χάρτης</a>
+        <a class="btn line" href="https://www.instagram.com/tzakiho/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Tzaki 'Ho · Country Eating</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="#kreas" style="background:var(--soot)">Κρέας</a><a class="btn" href="tel:+302310349266">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // The fireplace: flame particles; every log adds heat (and slowly burns down).
+  const cv = document.getElementById("fire"), ctx = cv.getContext("2d"), hearth = document.getElementById("hearth");
+  let W, H, heat = .3, parts = [], logs = 2;
+  const size = () => { const d = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener("resize", size);
+  const spawn = () => ({ x: W * (.3 + Math.random() * .4), y: H * .9, vx: (Math.random() - .5) * .6, vy: -(1 + Math.random() * 2) * (.6 + heat), life: 1, r: 10 + Math.random() * 18 * (.6 + heat) });
+  const frame = () => {
+    ctx.globalCompositeOperation = "source-over"; ctx.fillStyle = "rgba(13,8,6,.35)"; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    const n = Math.round(4 + heat * 10);
+    for (let i = 0; i < n; i++) parts.push(spawn());
+    parts = parts.filter(p => p.life > 0);
+    for (const p of parts) {
+      p.x += p.vx + Math.sin(p.y / 18) * .4; p.y += p.vy; p.life -= .018 + (1 - heat) * .01; p.r *= .985;
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      const a = Math.max(0, p.life);
+      g.addColorStop(0, `rgba(255,${180 + 60 * a | 0},${90 * a | 0},${.55 * a})`); g.addColorStop(.5, `rgba(240,100,30,${.25 * a})`); g.addColorStop(1, "rgba(120,30,0,0)");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+      if (Math.random() < .003 * (1 + heat * 3)) { ctx.fillStyle = "rgba(255,200,120,.9)"; ctx.fillRect(p.x, p.y - p.r, 2, 2); }
+    }
+    heat = Math.max(.25, heat - .0006);
+    hearth.style.setProperty("--heat", heat.toFixed(3));
+    requestAnimationFrame(frame);
+  };
+  if (!reduce) requestAnimationFrame(frame);
+  document.getElementById("addLog").addEventListener("click", () => {
+    heat = Math.min(1, heat + .22); logs++; document.getElementById("logN").textContent = logs;
+    const l = document.createElement("i"); l.className = "add"; l.style.cssText = `left:${10 + Math.random() * 30}%;right:${10 + Math.random() * 30}%;bottom:${40 + Math.random() * 20}%;transform:rotate(${(Math.random() * 16 - 8).toFixed(1)}deg)`;
+    const box = document.getElementById("logs"); box.appendChild(l); if (box.children.length > 6) box.children[2].remove();
+  });
+
+  // Butcher board: pick a cut, see it.
+  const img = document.getElementById("cutImg");
+  document.querySelectorAll("#cuts li").forEach(li => {
+    const pick = () => { document.querySelectorAll("#cuts li").forEach(x => x.classList.toggle("on", x === li)); img.src = `https://images.unsplash.com/photo-${li.dataset.img}?auto=format&fit=crop&w=1100&h=900&q=70`; img.alt = li.querySelector("b").textContent; };
+    li.addEventListener("mouseenter", pick); li.addEventListener("click", pick);
+  });
+
+  // Wine counter.
+  const wn = document.getElementById("wineN");
+  new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; o.disconnect(); const t0 = performance.now(); const step = t => { const k = Math.min(1, (t - t0) / 1600); wn.textContent = Math.round(400 * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }, { threshold: .5 }).observe(wn);
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > 30); mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("tz-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

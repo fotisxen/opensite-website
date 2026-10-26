@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1c2e21">
+<title>Αέλιος Πέτρα — Forest Restaurant & Bar · Χορτιάτης</title>
+<meta name="description" content="Αέλιος Πέτρα: forest restaurant & bar στην πλαγιά Παλίτζια του Χορτιάτη, με θέα σε Θεσσαλονίκη και Θερμαϊκό. Ένα με τη φύση.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1699626088948-e89deb35d225?auto=format&fit=crop&w=1800&q=65">
+<link href="https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@0,200;0,400;0,600;1,200&family=Gentium+Book+Plus:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Αέλιος Πέτρα (Chortiatis, Thessaloniki).
+  Signature: the forest parts as you scroll and reveals the view over the city and the gulf.
+  Plus a clear route card: come through Chortiatis village, not the shortcut Google Maps suggests.
+  Facts from aeliospetra.gr (Oct 2026). Photos are Unsplash placeholders.
+  Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --forest:#1c2e21;
+  --pine:#24402b;
+  --moss:#4d6b3c;
+  --stone:#ece9df;
+  --stone-2:#e0dccf;
+  --sun:#f2c14e;
+  --ink:#1b241d;
+  --muted:#6c7468;
+  --line:#cfcabb;
+  --display:"Ysabeau",system-ui,sans-serif;
+  --body:"Gentium Book Plus",Georgia,serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--forest)}
+body{background:var(--stone);color:var(--ink);font-family:var(--body);font-size:clamp(17px,.45vw + 15px,20px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.d{font-family:var(--display);font-weight:200;line-height:1;letter-spacing:-.01em}
+.d b{font-weight:600;color:var(--moss)}
+.k{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--moss)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;background:var(--pine);color:var(--stone);font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;transition:background .3s,transform .3s var(--ease)}
+.btn:hover{background:var(--moss);transform:translateY(-2px)}
+.btn.sun{background:var(--sun);color:var(--forest)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);color:var(--stone);transition:background .4s,color .4s}
+.nav.solid{background:rgba(236,233,223,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.3em;text-transform:uppercase}
+.brand small{display:block;font-weight:400;font-size:9px;letter-spacing:.32em;opacity:.7}
+.nav .links{display:flex;gap:26px;align-items:center;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.nav .links a.l{opacity:.75}
+.nav .btn{padding:10px 18px;font-size:12px}
+
+/* forest opening */
+.forest{height:260vh;position:relative;background:var(--forest)}
+.forest .stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.forest .view{position:absolute;inset:0;transform:scale(calc(1.18 - var(--p,0) * .18))}
+.forest .view img{filter:saturate(1.05)}
+.trees{position:absolute;inset:0;pointer-events:none}
+.trees svg{position:absolute;bottom:0;height:115%;width:62%}
+.trees .l{left:0;transform:translateX(calc(var(--p,0) * -70%))}
+.trees .r{right:0;transform:translateX(calc(var(--p,0) * 70%)) scaleX(-1)}
+.trees .l2{left:-6%;transform:translateX(calc(var(--p,0) * -110%));opacity:.85}
+.trees .r2{right:-6%;transform:translateX(calc(var(--p,0) * 110%)) scaleX(-1);opacity:.85}
+.trees path{fill:var(--c)}
+.forest .title{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--stone);z-index:3;padding:0 var(--pad)}
+.forest .title h1{font-size:clamp(60px,11vw,180px);text-shadow:0 2px 40px rgba(0,0,0,.35)}
+.forest .title .sub{font-family:var(--body);font-style:italic;font-size:clamp(20px,2.2vw,30px);margin-top:10px;opacity:calc(1 - var(--p,0) * 1.5)}
+.forest .title .hint{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin-top:30px;opacity:calc(1 - var(--p,0) * 3)}
+.forest .reveal{position:absolute;left:var(--pad);bottom:clamp(30px,8vh,80px);z-index:3;color:var(--stone);max-width:32em;opacity:calc((var(--p,0) - .55) * 3)}
+.forest .reveal p{font-size:clamp(18px,1.6vw,22px);text-shadow:0 1px 20px rgba(0,0,0,.6)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+section{position:relative}
+.wrap{padding:clamp(90px,12vw,160px) var(--pad)}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,6vw,100px);align-items:center}
+.story h2{font-size:clamp(44px,6vw,96px)}
+.story p{color:var(--muted);max-width:32em}
+.story p+p{margin-top:1em}
+.story .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.story .pics figure{aspect-ratio:3/4;overflow:hidden;border-radius:200px 200px 16px 16px}
+.story .pics figure:nth-child(2){margin-top:60px;border-radius:16px 16px 200px 200px}
+
+/* kitchen */
+.kitchen{background:var(--forest);color:var(--stone);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.kitchen .k{color:var(--sun)}
+.kitchen h2{font-size:clamp(44px,6vw,96px)}
+.kitchen h2 b{color:var(--sun)}
+.kitchen p{color:#c8cfc2;max-width:30em;margin-top:20px}
+.kitchen .chef{margin-top:30px;padding-top:20px;border-top:1px solid #3a5541;display:flex;gap:16px;align-items:center}
+.kitchen .chef i{width:52px;height:52px;border-radius:50%;background:var(--pine);display:grid;place-items:center;font-style:normal;font-size:22px}
+.kitchen .chef b{display:block;font-family:var(--display);font-weight:600;font-size:22px}
+.kitchen .chef span{font-family:var(--display);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9fb09a}
+.kitchen .pic{aspect-ratio:4/5;overflow:hidden;border-radius:16px}
+
+/* route */
+.route{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.route h2{font-size:clamp(42px,6vw,92px)}
+.route p{color:var(--muted);max-width:30em;margin-top:18px}
+.warn{margin-top:24px;padding:18px 20px;border-radius:16px;background:#fff6dc;box-shadow:inset 0 0 0 1px #ecd48b;display:flex;gap:14px;align-items:flex-start}
+.warn i{font-style:normal;font-size:24px;line-height:1}
+.warn b{font-family:var(--display);font-weight:600}
+.routemap{background:var(--stone-2);border-radius:20px;padding:20px;box-shadow:inset 0 0 0 1px var(--line)}
+.routemap svg{width:100%;height:auto;display:block}
+.routemap .road{fill:none;stroke:var(--moss);stroke-width:5;stroke-linecap:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 2.4s var(--ease)}
+.routemap.in .road{stroke-dashoffset:0}
+.routemap .bad{fill:none;stroke:#c25b4a;stroke-width:3;stroke-dasharray:6 8;opacity:.7}
+.routemap .dot{fill:var(--forest)}
+.routemap .goal{fill:var(--sun);stroke:var(--forest);stroke-width:3}
+.routemap text{font-family:var(--display);font-weight:600;font-size:15px;fill:var(--ink)}
+.routemap text.x{fill:#c25b4a;font-size:13px}
+
+/* events */
+.events{background:var(--stone-2)}
+.events .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:34px}
+.events h2{font-size:clamp(44px,6vw,96px)}
+.ev{display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
+.ev .date{font-family:var(--display);font-weight:200;font-size:46px;line-height:1;color:var(--moss)}
+.ev .date small{display:block;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.ev h3{font-family:var(--display);font-weight:600;font-size:clamp(22px,2vw,28px)}
+.ev p{color:var(--muted);font-size:.95em}
+
+/* hours */
+.hours{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px)}
+.hours h2{font-size:clamp(46px,7vw,110px)}
+.table{border-radius:20px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
+.row{display:grid;grid-template-columns:120px 1fr auto;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);align-items:baseline}
+.row:last-child{border-bottom:0}
+.row b{font-family:var(--display);font-weight:600}
+.row span{color:var(--muted);font-size:.9em}
+.row.closed{color:#9a978c}
+.row.today{background:var(--pine);color:var(--stone)}
+.row.today span{color:#c8cfc2}
+.contact{margin-top:30px;display:grid;gap:18px}
+.contact h4{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contact .big{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.2vw,30px);line-height:1.25}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{background:var(--forest);color:#9fb09a;padding:26px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--display);font-size:13px}
+footer a{color:var(--stone);border-bottom:1px solid #3a5541}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--moss);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 12px/1.35 var(--display);letter-spacing:0;text-transform:none;color:#fff;background:var(--moss);padding:3px 7px;border-radius:4px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--display);font-weight:600;font-size:12px;padding:8px 12px;border-radius:999px;background:var(--stone);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--moss);color:var(--moss)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .trees svg{width:80%}
+  .story,.kitchen,.route,.hours{grid-template-columns:1fr}
+  .ev{grid-template-columns:80px 1fr}
+  .ev .btn{grid-column:2;justify-self:start}
+  .row{grid-template-columns:100px 1fr}
+  .row span{grid-column:2}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("ap-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Αέλιος Πέτρα">Aelios Petra<small>Forest Restaurant · Bar</small></a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#story">Ο τόπος</a>
+    <a class="l" href="#kitchen">Κουζίνα</a>
+    <a class="l" href="#route">Διαδρομή</a>
+    <a class="btn sun" href="#hours">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- FOREST OPENING -->
+  <section class="forest" id="forest">
+    <div class="stage">
+      <div class="view"><img src="https://images.unsplash.com/photo-1699626088948-e89deb35d225?auto=format&fit=crop&w=1800&q=65" alt="Θέα από το βουνό προς την πόλη και τη θάλασσα στο ηλιοβασίλεμα" fetchpriority="high"></div>
+      <div class="trees" aria-hidden="true">
+        <svg class="l2" viewBox="0 0 600 800" preserveAspectRatio="xMinYMax slice" style="--c:#2c4a33"><path d="M0 800V300l60-120 40 90 50-170 50 160 40-80 50 140 30-60 60 200 40-40 60 180 50 40 70 210z"/></svg>
+        <svg class="r2" viewBox="0 0 600 800" preserveAspectRatio="xMinYMax slice" style="--c:#2c4a33"><path d="M0 800V260l70-140 40 110 60-180 40 170 50-90 40 150 40-70 50 210 50-60 50 190 40 30 70 220z"/></svg>
+        <svg class="l" viewBox="0 0 600 800" preserveAspectRatio="xMinYMax slice" style="--c:#14231a"><path d="M0 800V200l40-90 30 70 50-150 40 140 40-60 40 130 40-50 50 170 40-40 60 160 70 60 60 190 40 60z"/></svg>
+        <svg class="r" viewBox="0 0 600 800" preserveAspectRatio="xMinYMax slice" style="--c:#14231a"><path d="M0 800V240l50-110 40 90 50-160 40 150 50-80 40 140 40-50 50 180 50-50 50 170 60 50 80 220z"/></svg>
+      </div>
+      <div class="title">
+        <div>
+          <div class="k" style="color:var(--sun)">Χορτιάτης · Θεσσαλονίκη</div>
+          <h1 class="d" style="margin-top:14px">Αέλιος Πέτρα</h1>
+          <div class="sub">Ένα με τη φύση.</div>
+          <div class="hint">κάνε scroll, άνοιξε το δάσος ↓</div>
+        </div>
+      </div>
+      <div class="reveal"><p>Σκαρφαλωμένο σε μια πλαγιά του Χορτιάτη. Από τη μία το δάσος, από την άλλη η Θεσσαλονίκη με τον Θερμαϊκό στα πόδια σου.</p></div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="wrap story" id="story">
+    <div>
+      <div class="k rv">Ο τόπος</div>
+      <h2 class="d rv d1" style="margin-top:14px">Γεύση, φύση<br><b>και ιστορία</b></h2>
+      <p class="rv d1">Σε μια πλαγιά του Χορτιάτη που λέγεται Παλίτζια, με θέα που κόβει την ανάσα. Ένας χώρος μέσα στα δέντρα, για ένα γεύμα που κρατάει όσο ο ήλιος δύει πάνω από την πόλη.</p>
+      <p class="rv d2">Forest restaurant το μεσημέρι και το βράδυ, καφές τα πρωινά της Κυριακής, και μουσικές βραδιές με θέα.</p>
+    </div>
+    <div class="pics">
+      <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1775806577799-43d0d7efa67e?auto=format&fit=crop&w=600&h=800&q=70" alt="Τραπέζια μέσα στο δάσος"></figure>
+      <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1651136830763-670ce9a84d6b?auto=format&fit=crop&w=600&h=800&q=70" alt="Η πόλη από ψηλά"></figure>
+    </div>
+  </section>
+
+  <!-- KITCHEN -->
+  <section class="wrap kitchen" id="kitchen">
+    <div>
+      <div class="k rv">Η κουζίνα</div>
+      <h2 class="d rv d1" style="margin-top:14px">Ένα γαστρονομικό<br><b>ταξίδι</b></h2>
+      <p class="rv d1">Εξαιρετική πρώτη ύλη, με έμφαση στις χειροποίητες παρασκευές. Μια πλούσια λίστα κρασιών από επιλεγμένα, κυρίως ελληνικά, οινοποιεία.</p>
+      <div class="chef rv d2"><i>👨‍🍳</i><div><b>Αλέξανδρος Κουτσοβασίλης</b><span>Σεφ</span></div></div>
+      <div class="rv d2" style="margin-top:26px"><a class="btn sun ph" data-note="Μενού: να μπει ολόκληρο, ως κείμενο" href="#hours">Δες το μενού</a></div>
+    </div>
+    <div class="pic rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1639772377952-e9f7183fa83c?auto=format&fit=crop&w=900&h=1125&q=70" alt="Πιάτο σε τραπέζι στη φύση"></div>
+  </section>
+
+  <!-- ROUTE -->
+  <section class="wrap route" id="route">
+    <div>
+      <div class="k rv">Πώς θα έρθεις</div>
+      <h2 class="d rv d1" style="margin-top:14px">Η σωστή<br><b>διαδρομή</b></h2>
+      <p class="rv d1">Ανέβα προς τον Χορτιάτη και πέρνα μέσα από το χωριό. Από εκεί, Β' Πάροδος Ανεμόμυλων, και είσαι στο δάσος.</p>
+      <div class="warn rv d2"><i>⚠️</i><div><b>Προσοχή στους χάρτες της Google.</b><br>Μπορεί να σου προτείνουν άλλο δρόμο. Η ασφαλέστερη διαδρομή για το εστιατόριο είναι μέσα από τον Χορτιάτη.</div></div>
+      <div class="acts rv d2" style="margin-top:22px"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Aelios+Petra+Chortiatis" target="_blank" rel="noopener">Άνοιξε τον χάρτη</a></div>
+    </div>
+    <div class="routemap rv d1 ph" data-note="Σχηματική διαδρομή: να επιβεβαιωθεί από το μαγαζί" id="routemap" aria-label="Σχηματικός χάρτης διαδρομής: Θεσσαλονίκη, Πανόραμα, Χορτιάτης, Αέλιος Πέτρα">
+      <svg viewBox="0 0 520 380" aria-hidden="true">
+        <path class="bad" d="M70 320 C200 300 300 260 420 110"/>
+        <text class="x" x="250" y="250">✕ άλλη διαδρομή</text>
+        <path class="road" id="road" d="M70 320 C120 260 160 250 210 220 S290 170 320 150 S370 120 400 100 S430 90 440 80"/>
+        <circle class="dot" cx="70" cy="320" r="8"/><text x="40" y="350">Θεσσαλονίκη</text>
+        <circle class="dot" cx="210" cy="220" r="7"/><text x="160" y="250">Πανόραμα</text>
+        <circle class="dot" cx="320" cy="150" r="7"/><text x="250" y="140">Χορτιάτης</text>
+        <circle class="goal" cx="440" cy="80" r="12"/><text x="380" y="50">Αέλιος Πέτρα</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="wrap events">
+    <div class="head"><div><div class="k rv">Εκδηλώσεις</div><h2 class="d rv d1" style="margin-top:14px">Μουσική<br><b>με θέα</b></h2></div></div>
+    <div class="ev rv ph" data-note="Παράδειγμα από το site τους (17/10). Στο τελικό site, εδώ μπαίνουν οι επόμενες εκδηλώσεις">
+      <div class="date">17<small>Οκτ</small></div>
+      <div><h3>Live music night με τους SOLOS</h3><p>Κιθάρα και βιολί, καλή μουσική και η θέα της πόλης στο φόντο. Σάββατο, 20:00.</p></div>
+      <a class="btn line" href="#hours">Κράτηση</a>
+    </div>
+  </section>
+
+  <!-- HOURS & CONTACT -->
+  <section class="wrap hours" id="hours">
+    <div>
+      <div class="k rv">Ωράριο & κρατήσεις</div>
+      <h2 class="d rv d1" style="margin-top:14px">Σε<br><b>περιμένουμε</b></h2>
+      <div class="contact">
+        <div class="rv"><h4>Διεύθυνση</h4><div class="big">Β' Πάροδος Ανεμόμυλων<br>Χορτιάτης</div></div>
+        <div class="rv"><h4>Κρατήσεις</h4><div class="big"><a href="tel:+302310358880">2310 358 880</a> · <a href="tel:+306979986660">697 998 6660</a></div></div>
+        <div class="rv"><h4>Email</h4><a class="big" href="mailto:info@aeliospetra.gr">info@aeliospetra.gr</a></div>
+        <div class="rv acts"><a class="btn" href="tel:+302310358880">Κλήση</a><a class="btn line" href="https://www.instagram.com/aeliospetra_chortiatis/" target="_blank" rel="noopener">Instagram</a><a class="btn line" href="https://www.facebook.com/aeliospetra/" target="_blank" rel="noopener">Facebook</a></div>
+      </div>
+    </div>
+    <div class="table rv d1" id="table">
+      <div class="row closed" data-d="1"><b>Δευτέρα</b><span>κλειστά</span></div>
+      <div class="row closed" data-d="2"><b>Τρίτη</b><span>κλειστά</span></div>
+      <div class="row" data-d="3"><b>Τετάρτη</b>14:30 – 01:00<span>κουζίνα ως 23:30</span></div>
+      <div class="row" data-d="4"><b>Πέμπτη</b>14:30 – 01:00<span>κουζίνα ως 23:30</span></div>
+      <div class="row" data-d="5"><b>Παρασκευή</b>14:30 – 01:00<span>κουζίνα ως 23:30</span></div>
+      <div class="row" data-d="6"><b>Σάββατο</b>12:00 – 01:00<span>κουζίνα 14:30 – 23:30</span></div>
+      <div class="row" data-d="0"><b>Κυριακή</b>10:30 – 00:00<span>κουζίνα 14:00 – 21:30 · 12:00–17:00 χωρίς καφέ</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Αέλιος Πέτρα · Ένα με τη φύση</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="#route" style="background:var(--stone)">Διαδρομή</a><a class="btn" href="tel:+302310358880">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+
+  // The forest parts with scroll.
+  const forest = document.getElementById("forest"), stage = forest.querySelector(".stage");
+  const open = () => { const r = forest.getBoundingClientRect(), p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight))); stage.style.setProperty("--p", p.toFixed(3)); };
+  addEventListener("scroll", () => requestAnimationFrame(open), { passive: true }); open();
+
+  // Route line draws itself.
+  const road = document.getElementById("road"); road.style.setProperty("--len", road.getTotalLength().toFixed(0));
+
+  // Today in the hours table (Athens time).
+  const wd = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Athens", weekday: "short" }).format(new Date());
+  const idx = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(wd);
+  document.querySelectorAll("#table .row").forEach(r => r.classList.toggle("today", +r.dataset.d === idx));
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { const past = scrollY > forest.offsetHeight - innerHeight; nav.classList.toggle("solid", past); mbar.classList.toggle("on", past && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("ap-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

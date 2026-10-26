@@ -10,6 +10,11 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "morrison", name: "Morrison", kind: "Rooftop bar-restaurant", created: "2026-10-26", instagram: "https://www.instagram.com/morrison.skg/" },
+  { slug: "tzaki", name: "Tzaki 'Ho", kind: "Country eating", created: "2026-10-26", instagram: "https://www.instagram.com/tzakiho/" },
+  { slug: "aelios-petra", name: "Αέλιος Πέτρα", kind: "Forest restaurant", created: "2026-10-26", instagram: "https://www.instagram.com/aeliospetra_chortiatis/" },
+  { slug: "kritikos", name: "Kritikos Port", kind: "Seafood restaurant", created: "2026-10-26", instagram: "https://www.instagram.com/kritikos.port/" },
+  { slug: "lykos", name: "Lykos", kind: "Χασαποταβέρνα", created: "2026-10-26", instagram: "https://www.instagram.com/lykos_thermi/" },
   { slug: "soma", name: "SOMA", kind: "Fitness studio", created: "2026-10-26", instagram: "https://www.instagram.com/somaskg/" },
   { slug: "maitr-margarita", name: "Μαιτρ και Μαργαρίτα", kind: "Wine bistro", created: "2026-10-26", instagram: "https://www.instagram.com/maitr.margarita/" },
   { slug: "paramythia", name: "Παραμυθία", kind: "Greek restaurant", created: "2026-10-26", instagram: "https://www.instagram.com/paramythia_/" },
