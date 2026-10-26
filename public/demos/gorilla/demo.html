@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en" data-lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0a">
+<title>Gorilla — Fine Drinking & Fun · Thessaloniki</title>
+<meta name="description" content="Gorilla, cocktail bar in Ano Ladadika, Thessaloniki. No. 33 in Europe's 50 Best Bars 2026. Fine Drinking & Fun since 2016.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" fetchpriority="high"
+  href="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=1600&q=70"
+  imagesrcset="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=800&h=1400&q=70 800w, https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=2400&q=70 2400w"
+  imagesizes="100vw">
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500&family=Fira+Sans+Extra+Condensed:ital,wght@0,800;0,900;1,900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Gorilla (Thessaloniki).
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy to confirm with the bar
+  (toggle the markers with the "Notes" button, or open with ?clean for the meeting). ?el opens in Greek.
+*/
+:root{
+  --ink:#0b0b0a;
+  --ink-2:#151513;
+  --line:#2b2b27;
+  --bone:#f1ede4;
+  --dim:#a9a49a;
+  --lime:#d4ff3a;
+  --lime-ink:#141a00;
+  --poster:"Fira Sans Extra Condensed",Impact,"Arial Narrow",sans-serif;
+  --fun:"Syne",system-ui,sans-serif;
+  --body:"Commissioner",system-ui,sans-serif;
+  --pad:clamp(16px,4vw,56px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --zebra:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230b0b0a'%3E%3Cpath d='M-10 18 C30 4 60 30 100 14 S150 0 170 10 L170 24 C140 18 120 36 90 30 S20 30 -10 34Z'/%3E%3Cpath d='M-10 62 C20 50 50 74 84 58 S140 44 170 56 L170 66 C130 62 110 82 76 74 S20 72 -10 78Z'/%3E%3Cpath d='M-10 104 C26 92 58 118 96 100 S146 88 170 98 L170 112 C136 106 118 126 86 118 S24 116 -10 122Z'/%3E%3Cpath d='M-10 142 C30 132 64 152 100 140 S150 130 170 138 L170 150 C140 146 116 162 86 156 S20 154 -10 158Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;background:var(--ink);overflow-x:clip}
+body{background:var(--ink);color:var(--bone);font-family:var(--body);font-size:clamp(16px,.5vw + 14px,19px);line-height:1.6;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--lime);color:var(--lime-ink)}
+
+/* language switch: both texts live in the markup, CSS shows one */
+html[data-lang="en"] [lang="el"],html[data-lang="el"] [lang="en"]{display:none!important}
+
+.poster{font-family:var(--poster);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.poster i{font-style:italic;color:var(--lime)}
+.tag{font-family:var(--fun);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.lime{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:var(--lime-ink);font-family:var(--fun);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:15px 22px;border-radius:999px;transition:transform .3s var(--ease),box-shadow .3s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg);box-shadow:0 10px 30px -10px rgba(212,255,58,.6)}
+.btn.ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 1.5px var(--bone)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--lime);color:var(--lime)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--pad);transition:background .4s,backdrop-filter .4s}
+.nav.solid{background:rgba(11,11,10,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .badge{width:42px;height:42px;border-radius:50%;background:var(--bone) var(--zebra) center/80px;display:grid;place-items:center;transform:rotate(-8deg)}
+.logo .badge b{background:var(--bone);color:var(--ink);font-family:var(--poster);font-weight:900;font-size:13px;line-height:.9;padding:3px 4px;text-align:center}
+.logo .word{font-family:var(--poster);font-weight:900;font-size:26px;letter-spacing:.06em}
+.nav .links{display:flex;align-items:center;gap:26px;font-family:var(--fun);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.nav .links a.l{color:var(--dim);transition:color .2s}
+.nav .links a.l:hover{color:var(--lime)}
+.lang{display:flex;border:1.5px solid var(--line);border-radius:999px;padding:3px}
+.lang button{font-family:var(--fun);font-weight:800;font-size:11px;letter-spacing:.08em;padding:6px 10px;border-radius:999px;color:var(--dim)}
+html[data-lang="en"] .lang [data-set="en"],html[data-lang="el"] .lang [data-set="el"]{background:var(--bone);color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:12px}
+
+/* ---------- hero (paint the night) ---------- */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--pad) clamp(24px,5vh,56px);cursor:crosshair;touch-action:pan-y}
+.hero .mono{position:absolute;inset:0;filter:grayscale(1) contrast(1.15) brightness(.55)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(transparent,rgba(11,11,10,.92));pointer-events:none}
+.hero .copy{position:relative;z-index:2;pointer-events:none}
+.hero h1{font-size:clamp(72px,min(17vw,23svh),280px)}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span>em{display:block;font-style:normal;transform:translateY(100%);animation:up 1s var(--ease) forwards}
+.hero h1 span:nth-child(2)>em{animation-delay:.12s;color:var(--lime)}
+@keyframes up{to{transform:none}}
+.hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:22px;pointer-events:auto}
+.hero p{max-width:28em;color:var(--dim)}
+.hero .hint{position:absolute;z-index:3;top:calc(clamp(90px,16vh,150px) + clamp(118px,13vw,170px) + 18px);right:var(--pad);font-family:var(--fun);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:10px;pointer-events:none;transition:opacity .6s}
+.hero .hint i{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--lime);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(.7);opacity:.5}}
+.hero.painted .hint{opacity:0}
+
+.seal{position:absolute;z-index:3;top:clamp(90px,16vh,150px);right:var(--pad);width:clamp(118px,13vw,170px);aspect-ratio:1;display:grid;place-items:center;pointer-events:none}
+.seal svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.seal text{font-family:var(--fun);font-weight:800;font-size:13px;fill:var(--bone);text-transform:uppercase}
+.seal .n{width:58%;aspect-ratio:1;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;text-align:center;font-family:var(--poster);font-weight:900;line-height:.82;transform:rotate(-10deg)}
+.seal .n b{display:block;font-size:clamp(34px,4vw,50px)}
+.seal .n small{font-family:var(--fun);font-size:8.5px;letter-spacing:.1em}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--lime);color:var(--lime-ink);overflow:hidden;transform:rotate(-1.5deg) scale(1.03);margin:-14px 0 0;position:relative;z-index:4}
+.ticker .track{display:flex;gap:34px;white-space:nowrap;padding:14px 0;width:max-content;animation:tick 32s linear infinite}
+.ticker span{font-family:var(--poster);font-weight:900;font-size:clamp(22px,3vw,36px);text-transform:uppercase;display:flex;align-items:center;gap:34px}
+.ticker span::after{content:"✶";font-size:.7em}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- reveals ---------- */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+section{position:relative}
+.kick{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.kick::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--lime)}
+
+/* ---------- ten years ---------- */
+.ten{padding:clamp(90px,13vw,170px) var(--pad);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.ten h2{font-size:clamp(64px,11vw,190px)}
+.ten .years{font-family:var(--poster);font-weight:900;font-size:clamp(28px,3.4vw,48px);color:var(--dim);margin-top:10px}
+.ten .years b{color:var(--lime)}
+.ten p{color:var(--dim);max-width:30em}
+.ten p+p{margin-top:1em}
+.ten p strong{color:var(--bone);font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+.stats div{background:var(--ink);padding:18px 16px}
+.stats b{display:block;font-family:var(--poster);font-weight:900;font-size:clamp(36px,4vw,56px);line-height:1;color:var(--bone)}
+.stats span{font-size:13px;color:var(--dim);line-height:1.35;display:block;margin-top:6px}
+
+/* ---------- lab ---------- */
+.lab{background:var(--bone);color:var(--ink);padding:clamp(90px,12vw,160px) var(--pad);overflow:hidden}
+.lab .kick::before{background:var(--ink)}
+.lab h2{font-size:clamp(60px,10vw,170px)}
+.lab h2 i{color:var(--ink);-webkit-text-stroke:2px var(--ink);color:transparent}
+.lab .intro{max-width:34em;margin:22px 0 clamp(40px,6vw,70px);color:#3c3a35}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px)}
+.step{position:relative}
+.step .pic{aspect-ratio:4/5;overflow:hidden;border-radius:18px;background:var(--ink)}
+.step .pic img{transition:transform 1.2s var(--ease)}
+.step:hover .pic img{transform:scale(1.06) rotate(-1deg)}
+.step .no{position:absolute;top:14px;left:14px;width:52px;height:52px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-family:var(--poster);font-weight:900;font-size:24px;color:var(--lime-ink)}
+.step h3{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(32px,3vw,44px);line-height:.95;margin:18px 0 8px}
+.step p{color:#3c3a35;font-size:.95em}
+.zebra-rule{height:46px;background:var(--bone) var(--zebra) 0 0/120px;margin-top:clamp(60px,8vw,100px);border-radius:999px}
+
+/* ---------- menus timeline ---------- */
+.menus{padding:clamp(90px,12vw,160px) 0}
+.menus .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding:0 var(--pad);margin-bottom:clamp(30px,5vw,56px)}
+.menus h2{font-size:clamp(56px,9vw,150px)}
+.menus .head p{max-width:24em;color:var(--dim)}
+.arrows{display:flex;gap:10px}
+.arrows button{width:52px;height:52px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line);font-size:20px;transition:box-shadow .2s,color .2s}
+.arrows button:hover{box-shadow:inset 0 0 0 1.5px var(--lime);color:var(--lime)}
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--pad) 26px;scrollbar-width:none;cursor:grab}
+.rail::-webkit-scrollbar{display:none}
+.rail.drag{cursor:grabbing;scroll-snap-type:none}
+.card{flex:0 0 clamp(270px,30vw,400px);scroll-snap-align:start;border-radius:22px;padding:24px;min-height:440px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line)}
+.card .yr{font-family:var(--poster);font-weight:900;font-size:22px;color:var(--dim)}
+.card h3{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(46px,4.6vw,72px);line-height:.88}
+.card p{color:var(--dim);font-size:.95em;margin-top:12px}
+.card .tag{color:var(--lime)}
+.card.archive{background:var(--ink) var(--zebra) center/140px;background-color:var(--bone)}
+.card.archive>div{background:var(--ink);border-radius:14px;padding:18px}
+.card.archive .yr{align-self:flex-start;background:var(--ink);color:var(--bone);border-radius:999px;padding:4px 12px}
+.card.zoo{background:#1d2a14}
+.card.zoo .bg{position:absolute;inset:0;opacity:.35}
+.card.zoo>*:not(.bg){position:relative}
+.card.now{background:var(--lime);color:var(--lime-ink);box-shadow:none}
+.card.now .yr,.card.now p{color:#3f4d00}
+.card.now .tag{color:var(--lime-ink)}
+.card.next{background:var(--ink);box-shadow:inset 0 0 0 1.5px dashed var(--line)}
+.card.next{border:1.5px dashed #3a3a34;box-shadow:none}
+.loading{margin-top:18px}
+.loading .bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden}
+.loading .bar i{display:block;height:100%;width:30%;background:var(--lime);border-radius:999px;animation:load 3.6s var(--ease) infinite}
+.loading .pct{font-family:var(--poster);font-weight:900;font-size:56px;line-height:1;margin-top:10px;color:var(--lime)}
+@keyframes load{0%{width:4%}70%{width:96%}100%{width:96%}}
+
+/* drink cards */
+.zoo-sec{padding:0 var(--pad) clamp(90px,12vw,160px)}
+.zoo-sec .sub{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.zoo-sec h3.poster{font-size:clamp(44px,6vw,96px)}
+.zoo-sec .sub p{color:var(--dim);max-width:26em}
+.drinks{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px);perspective:1400px}
+.drink{position:relative;aspect-ratio:3/4;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.drink .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s var(--ease)}
+.drink.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:22px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.front img{transition:transform 1s var(--ease)}
+.drink:hover .front img{transform:scale(1.05)}
+.front::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(11,11,10,.9))}
+.front .cap{position:absolute;z-index:2;left:20px;right:20px;bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.front h4{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(38px,3.6vw,58px);line-height:.88}
+.front .turn{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:20px;font-weight:700}
+.back{transform:rotateY(180deg);background:var(--lime);color:var(--lime-ink);padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.back h4{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(36px,3.2vw,52px);line-height:.88}
+.back ul{list-style:none;border-top:2px solid var(--lime-ink)}
+.back li{font-family:var(--fun);font-weight:700;font-size:clamp(17px,1.5vw,22px);padding:11px 0;border-bottom:2px solid var(--lime-ink);display:flex;justify-content:space-between;gap:10px}
+.back li span{font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.6;align-self:center}
+
+/* ---------- people ---------- */
+.people{padding:clamp(90px,12vw,160px) var(--pad);background:var(--ink-2)}
+.people .grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:auto auto;gap:clamp(14px,2vw,26px)}
+.people h2{font-size:clamp(56px,9vw,150px);grid-column:1/-1;margin-bottom:10px}
+.person{position:relative;border-radius:22px;overflow:hidden;min-height:380px}
+.person.big{grid-row:span 2;min-height:560px}
+.person img{filter:grayscale(1) contrast(1.1);transition:filter .6s}
+.person:hover img{filter:none}
+.person::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(11,11,10,.92))}
+.person .who{position:absolute;z-index:2;left:20px;right:20px;bottom:18px}
+.person .who b{display:block;font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(30px,2.8vw,44px);line-height:.92}
+.person .who span{font-family:var(--fun);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+.people .note{grid-column:2/-1;color:var(--dim);align-self:end;padding:10px 4px}
+
+/* ---------- awards ---------- */
+.awards{padding:clamp(90px,12vw,160px) var(--pad)}
+.awards h2{font-size:clamp(56px,9vw,150px);margin-bottom:clamp(30px,5vw,50px)}
+.aw{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(14px,3vw,40px);padding:clamp(18px,2.4vw,30px) 0;border-top:1.5px solid var(--line);transition:background .3s,padding .3s var(--ease)}
+.aw:last-child{border-bottom:1.5px solid var(--line)}
+.aw .big{font-family:var(--poster);font-weight:900;font-size:clamp(56px,8vw,130px);line-height:.85;color:var(--lime);min-width:2.2ch}
+.aw h3{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3.2vw,52px);line-height:.95}
+.aw p{color:var(--dim);font-size:.9em;margin-top:6px}
+.aw .yr{font-family:var(--fun);font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--dim);text-align:right}
+.aw:hover{background:var(--ink-2);padding-left:16px;padding-right:16px}
+
+/* ---------- nights ---------- */
+.nights{position:relative;padding:clamp(90px,12vw,160px) var(--pad);overflow:hidden}
+.nights .bg{position:absolute;inset:0}
+.nights .bg img{filter:saturate(1.2) brightness(.42)}
+.nights>*:not(.bg){position:relative}
+.nights h2{font-size:clamp(60px,11vw,190px)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(30px,5vw,50px);max-width:1100px}
+.chip{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3.4vw,50px);line-height:1;padding:14px 26px;border-radius:999px;background:rgba(11,11,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1.5px rgba(241,237,228,.35);transition:background .3s,color .3s,transform .4s var(--ease)}
+.chip:hover{background:var(--lime);color:var(--lime-ink);transform:rotate(-2deg) scale(1.03)}
+.chip:nth-child(even){transform:rotate(1.5deg)}
+.nights p{max-width:32em;margin-top:30px;color:var(--bone)}
+
+/* ---------- visit & book ---------- */
+.visit{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,6vw,90px);padding:clamp(90px,12vw,160px) var(--pad)}
+.visit h2{font-size:clamp(60px,10vw,170px)}
+.facts{margin-top:30px;display:grid;gap:24px}
+.facts h4{font-family:var(--fun);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:6px}
+.facts .addr{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(28px,3vw,42px);line-height:.95}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 22px;color:var(--dim)}
+.hours dt{color:var(--bone);font-weight:500}
+.hours dd.closed{color:#6e6a62}
+.facts .tel{font-family:var(--poster);font-weight:900;font-size:clamp(28px,3vw,40px)}
+.book{background:var(--bone);color:var(--ink);border-radius:26px;padding:clamp(22px,3.4vw,40px);align-self:start}
+.book h3{font-family:var(--poster);font-weight:900;text-transform:uppercase;font-size:clamp(40px,4vw,60px);line-height:.9;margin-bottom:22px}
+.book .lbl{font-family:var(--fun);font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5c5850;margin:18px 0 10px}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick button{border-radius:999px;padding:10px 15px;box-shadow:inset 0 0 0 1.5px #cfc9bc;font-family:var(--fun);font-weight:700;font-size:14px;color:var(--ink);transition:background .2s,box-shadow .2s}
+.pick button:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.pick button[aria-pressed="true"]{background:var(--ink);color:var(--lime);box-shadow:none}
+.pick button small{display:block;font-family:var(--body);font-weight:500;font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.65;line-height:1.2}
+.book .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.book input{width:100%;border:0;border-bottom:1.5px solid #cfc9bc;background:transparent;font:inherit;font-size:17px;padding:10px 0;color:var(--ink);outline:none;border-radius:0}
+.book input:focus{border-color:var(--ink)}
+.book input::placeholder{color:#8d877b}
+.book .go{width:100%;justify-content:center;margin-top:24px;background:var(--ink);color:var(--lime);padding:18px}
+.book .go:hover{box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.book .alt{margin-top:14px;text-align:center;font-size:.9em;color:#5c5850}
+.book .alt a{font-weight:500;color:var(--ink);border-bottom:1.5px solid var(--lime)}
+.book .done{display:none;text-align:center;padding:30px 0}
+.book .done .poster{font-size:64px;margin:6px 0 12px}
+.book.sent form{display:none}.book.sent .done{display:block}
+
+/* ---------- footer ---------- */
+footer{padding:clamp(60px,8vw,100px) var(--pad) 30px;border-top:1.5px solid var(--line);overflow:hidden}
+footer .huge{font-family:var(--poster);font-weight:900;font-size:clamp(90px,25vw,420px);line-height:.78;letter-spacing:-.02em;text-transform:uppercase;
+  background:var(--bone) var(--zebra) 0 0/260px;-webkit-background-clip:text;background-clip:text;color:transparent;animation:pan 30s linear infinite}
+@keyframes pan{to{background-position:520px 0}}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;font-size:14px;color:var(--dim)}
+footer h5{font-family:var(--fun);font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:8px}
+footer a:hover{color:var(--lime)}
+footer .base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:#77736a}
+footer .base a{color:var(--dim)}
+
+/* placeholder markers for the demo review */
+.notes .ph{outline:1.5px dashed rgba(212,255,58,.7);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:0;text-transform:none;line-height:1.35;color:var(--lime-ink);background:var(--lime);padding:3px 7px;border-radius:4px;max-width:280px;white-space:normal;text-align:left}
+.notes .who.ph{position:absolute}
+.notes .aw .ph::after{left:auto;right:0}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--fun);font-weight:800;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 12px;border-radius:999px;background:rgba(11,11,10,.88);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--dim)}
+.notes .notes-toggle{color:var(--lime);box-shadow:inset 0 0 0 1.5px var(--lime)}
+.clean .notes-toggle{display:none}
+
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .nav .links{gap:8px}
+  .logo .word{display:none}
+  .nav .btn{padding:10px 14px;font-size:11px}
+  .seal{top:auto;bottom:calc(100% - 190px);top:86px;right:12px;width:108px}
+  .hero .hint{top:206px;right:14px}
+  .ten{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .step .pic{aspect-ratio:16/11}
+  .drinks{grid-template-columns:1fr}
+  .drink{aspect-ratio:4/4.4}
+  .card{min-height:400px}
+  .people .grid{grid-template-columns:1fr 1fr}
+  .person.big{grid-column:1/-1;grid-row:auto;min-height:440px}
+  .person{min-height:260px}
+  .people .note{grid-column:1/-1}
+  .aw{grid-template-columns:auto 1fr}
+  .aw .yr{grid-column:2;text-align:left}
+  .visit{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:74px;left:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+</style>
+<script>
+  // Language from ?el / ?en or the last choice; placeholder markers off with ?clean.
+  try{
+    var q=new URLSearchParams(location.search), h=document.documentElement;
+    var l=q.has("el")?"el":q.has("en")?"en":(localStorage.getItem("gr-lang")||"en");
+    h.dataset.lang=l; h.lang=l;
+    if(q.has("clean")||localStorage.getItem("gr-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean");
+  }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="Gorilla">
+    <span class="badge"><b>GO<br>RI<br>LLA</b></span>
+    <span class="word">Gorilla</span>
+  </a>
+  <nav class="links" aria-label="Main">
+    <a class="l" href="#ten"><span lang="en">The bar</span><span lang="el">Το μπαρ</span></a>
+    <a class="l" href="#menus"><span lang="en">Drinks</span><span lang="el">Ποτά</span></a>
+    <a class="l" href="#people"><span lang="en">People</span><span lang="el">Ομάδα</span></a>
+    <a class="l" href="#visit"><span lang="en">Visit</span><span lang="el">Επίσκεψη</span></a>
+    <div class="lang" role="group" aria-label="Language"><button data-set="en" type="button">EN</button><button data-set="el" type="button">ΕΛ</button></div>
+    <a class="btn" href="#visit"><span lang="en">Book</span><span lang="el">Κράτηση</span></a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO: paint the night -->
+  <section class="hero" id="hero">
+    <img class="mono" src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=1600&q=70"
+      srcset="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=800&h=1400&q=70 800w, https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=2400&q=70 2400w"
+      sizes="100vw" alt="Bartender preparing a cocktail under neon light" fetchpriority="high" id="heroImg">
+    <canvas id="paint" aria-hidden="true"></canvas>
+    <div class="hint" aria-hidden="true"><i></i><span lang="en">Paint the night</span><span lang="el">Ζωγράφισε τη νύχτα</span></div>
+
+    <div class="seal" aria-label="No. 33 in Europe's 50 Best Bars 2026">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+        <text><textPath href="#circ" textLength="486" lengthAdjust="spacing">Europe's 50 Best Bars · 2026 · Thessaloniki ·</textPath></text></svg>
+      <div class="n"><span><small>No.</small><b>33</b></span></div>
+    </div>
+
+    <div class="copy">
+      <h1 class="poster"><span><em>Fine drinking</em></span><span><em>&amp; fun</em></span></h1>
+      <div class="row">
+        <p>
+          <span lang="en">A cocktail bar in Ano Ladadika, Thessaloniki. Inventive, handcrafted drinks, genuine hospitality and nights you'll want to repeat. Since 2016.</span>
+          <span lang="el">Cocktail bar στα Άνω Λαδάδικα της Θεσσαλονίκης. Δημιουργικά, χειροποίητα ποτά, αληθινή φιλοξενία και βράδια που θες να ξαναζήσεις. Από το 2016.</span>
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="#visit"><span lang="en">Book a table</span><span lang="el">Κλείσε τραπέζι</span> →</a>
+          <a class="btn ghost" href="#menus"><span lang="en">The drinks</span><span lang="el">Τα ποτά</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="track">
+    <span>Fine drinking &amp; fun</span><span>No.33 Europe's 50 Best Bars</span><span>Ano Ladadika</span><span>Since 2016</span><span>Veroias 3</span><span>Gorilla Lab</span>
+    <span>Fine drinking &amp; fun</span><span>No.33 Europe's 50 Best Bars</span><span>Ano Ladadika</span><span>Since 2016</span><span>Veroias 3</span><span>Gorilla Lab</span>
+  </div></div>
+
+  <!-- TEN YEARS -->
+  <section class="ten" id="ten">
+    <div>
+      <div class="kick tag rv"><span lang="en">The bar</span><span lang="el">Το μπαρ</span></div>
+      <h2 class="poster rv d1"><span lang="en">Ten years<br>of <i>fun</i></span><span lang="el">Δέκα χρόνια<br><i>fun</i></span></h2>
+      <div class="years rv d2"><b>2016</b> → 2026</div>
+    </div>
+    <div>
+      <p class="rv">
+        <span lang="en">Gorilla opened in Ano Ladadika in 2016 with one simple idea: <strong>fine drinking and fun</strong> belong together. Serious technique, never a serious face.</span>
+        <span lang="el">Το Gorilla άνοιξε στα Άνω Λαδάδικα το 2016 με μια απλή ιδέα: το <strong>fine drinking</strong> και η <strong>διασκέδαση</strong> πάνε μαζί. Σοβαρή τεχνική, ποτέ σοβαρό ύφος.</span>
+      </p>
+      <p class="rv d1">
+        <span lang="en">Ten years later, the same small bar on Veroias Street is ranked <strong>No. 33 in Europe</strong>, and it still feels like a night out with friends.</span>
+        <span lang="el">Δέκα χρόνια μετά, το ίδιο μικρό μπαρ στην οδό Βεροίας είναι <strong>No. 33 στην Ευρώπη</strong>, και εξακολουθεί να μοιάζει με βραδιά με φίλους.</span>
+      </p>
+      <div class="stats rv d2">
+        <div><b>10</b><span lang="en">years in Ano Ladadika</span><span lang="el">χρόνια στα Άνω Λαδάδικα</span></div>
+        <div><b>No.33</b><span lang="en">Europe's 50 Best Bars 2026</span><span lang="el">Europe's 50 Best Bars 2026</span></div>
+        <div><b>4×</b><span lang="en">Top 500 Bars</span><span lang="el">Top 500 Bars</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAB -->
+  <section class="lab" id="lab">
+    <div class="kick tag rv">Gorilla Lab</div>
+    <h2 class="poster rv d1"><span lang="en">Every drink<br>starts as an <i>idea</i></span><span lang="el">Κάθε ποτό<br>ξεκινά ως <i>ιδέα</i></span></h2>
+    <p class="intro rv d2">
+      <span lang="en">Behind the bar there is a lab. House-made syrups, infusions and preparations, tested again and again until each drink earns its place on the menu.</span>
+      <span lang="el">Πίσω από το μπαρ υπάρχει ένα εργαστήριο. Σιρόπια, εγχύσεις και παρασκευές που φτιάχνουμε μόνοι μας και δοκιμάζουμε ξανά και ξανά, μέχρι κάθε ποτό να κερδίσει τη θέση του στο μενού.</span>
+    </p>
+    <div class="steps">
+      <article class="step rv">
+        <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1771398388231-0852d599b648?auto=format&fit=crop&w=900&h=1100&q=70" alt="Bartender adding a lime garnish"></div>
+        <span class="no">1</span>
+        <h3><span lang="en">The idea</span><span lang="el">Η ιδέα</span></h3>
+        <p><span lang="en">An ingredient, a memory, a joke. Every menu starts with a story we want to tell through a glass.</span><span lang="el">Ένα υλικό, μια ανάμνηση, ένα αστείο. Κάθε μενού ξεκινά από μια ιστορία που θέλουμε να πούμε μέσα από ένα ποτήρι.</span></p>
+      </article>
+      <article class="step rv d1">
+        <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1611266353853-d370b67187ed?auto=format&fit=crop&w=900&h=1100&q=70" alt="Cocktail shaker in action"></div>
+        <span class="no">2</span>
+        <h3><span lang="en">The lab</span><span lang="el">Το εργαστήριο</span></h3>
+        <p><span lang="en">Syrups, infusions, contemporary techniques. Tested and refined until the balance is exactly right.</span><span lang="el">Σιρόπια, εγχύσεις, σύγχρονες τεχνικές. Δοκιμές και διορθώσεις μέχρι η ισορροπία να βγει ακριβώς σωστή.</span></p>
+      </article>
+      <article class="step rv d2">
+        <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1595751866979-de6e9d606220?auto=format&fit=crop&w=900&h=1100&q=70" alt="Cocktail being poured into a glass"></div>
+        <span class="no">3</span>
+        <h3><span lang="en">The glass</span><span lang="el">Το ποτήρι</span></h3>
+        <p><span lang="en">Only then does it reach the bar. Familiar enough to love, original enough to surprise.</span><span lang="el">Μόνο τότε φτάνει στο μπαρ. Αρκετά οικείο για να το αγαπήσεις, αρκετά πρωτότυπο για να σε εκπλήξει.</span></p>
+      </article>
+    </div>
+    <div class="zebra-rule" aria-hidden="true"></div>
+  </section>
+
+  <!-- MENUS TIMELINE -->
+  <section class="menus" id="menus">
+    <div class="head">
+      <div>
+        <div class="kick tag rv"><span lang="en">The drinks</span><span lang="el">Τα ποτά</span></div>
+        <h2 class="poster rv d1"><span lang="en">A new menu<br><i>every year</i></span><span lang="el">Νέο μενού<br><i>κάθε χρόνο</i></span></h2>
+      </div>
+      <div>
+        <p class="rv d2"><span lang="en">Since day one, we have written a new signature menu year after year. Swipe through the story.</span><span lang="el">Από την πρώτη μέρα, γράφουμε κάθε χρόνο ένα καινούργιο signature μενού. Σύρε για να δεις την ιστορία.</span></p>
+        <div class="arrows rv d3" style="margin-top:18px"><button type="button" data-dir="-1" aria-label="Previous">←</button><button type="button" data-dir="1" aria-label="Next">→</button></div>
+      </div>
+    </div>
+    <div class="rail" id="rail">
+      <article class="card archive ph" data-note="Ονόματα και χρονιές των παλιών μενού: να τα δώσει το bar">
+        <span class="yr">2016 – 2024</span>
+        <div>
+          <span class="tag lime">Archive</span>
+          <h3 style="font-size:clamp(40px,4vw,60px);margin-top:6px"><span lang="en">The early menus</span><span lang="el">Τα πρώτα μενού</span></h3>
+          <p><span lang="en">Each with its own name, theme and story. One card per menu in the final site.</span><span lang="el">Το καθένα με δικό του όνομα, θέμα και ιστορία. Στο τελικό site, μία κάρτα για κάθε μενού.</span></p>
+        </div>
+      </article>
+      <article class="card zoo">
+        <div class="bg"><img loading="lazy" src="https://images.unsplash.com/photo-1694021256251-ca1607500703?auto=format&fit=crop&w=800&h=900&q=60" alt=""></div>
+        <span class="yr">2025 – 2026</span>
+        <div>
+          <span class="tag">Signature menu</span>
+          <h3>Welcome<br>to the zoo</h3>
+          <p><span lang="en">The cocktail list as a loose safari. The Keeper, Po the Panda, Simba and the rest of the pack.</span><span lang="el">Η λίστα των κοκτέιλ σαν ένα χαλαρό σαφάρι. Ο Keeper, ο Po the Panda, ο Simba και η υπόλοιπη αγέλη.</span></p>
+        </div>
+      </article>
+      <article class="card now">
+        <span class="yr"><span lang="en">Right now</span><span lang="el">Τώρα</span></span>
+        <div>
+          <span class="tag">10 years</span>
+          <h3>Gorilla<br>classics</h3>
+          <p><span lang="en">A decade's favourites, back for a little while. Guest favourites, team favourites, and a few we were never ready to say goodbye to.</span><span lang="el">Τα αγαπημένα μιας δεκαετίας, πίσω για λίγο. Αγαπημένα των καλεσμένων, της ομάδας, και μερικά που δεν ήμασταν ποτέ έτοιμοι να αποχαιρετήσουμε.</span></p>
+        </div>
+      </article>
+      <article class="card next">
+        <span class="yr">2026 – 2027</span>
+        <div>
+          <span class="tag">Coming soon</span>
+          <h3>New menu<br>is loading…</h3>
+          <div class="loading" aria-hidden="true"><div class="bar"><i></i></div><div class="pct" id="pct">0%</div></div>
+          <p><span lang="en">Ingredients developed, preparations tested, ideas turned into drinks. Something new, very soon.</span><span lang="el">Υλικά που αναπτύσσονται, παρασκευές που δοκιμάζονται, ιδέες που γίνονται ποτά. Κάτι νέο, πολύ σύντομα.</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DRINK CARDS -->
+  <section class="zoo-sec">
+    <div class="sub">
+      <h3 class="poster rv"><span lang="en">From the <i>zoo</i></span><span lang="el">Από τον <i>zoo</i></span></h3>
+      <p class="rv d1"><span lang="en">Three from the 2025–26 menu. Tap a card to see what's inside.</span><span lang="el">Τρία από το μενού 2025–26. Πάτα μια κάρτα για να δεις τι έχει μέσα.</span></p>
+    </div>
+    <div class="drinks">
+      <div class="drink rv" tabindex="0" role="button" aria-label="The Keeper: show ingredients">
+        <div class="in">
+          <div class="face front"><img loading="lazy" src="https://images.unsplash.com/photo-1694021256251-ca1607500703?auto=format&fit=crop&w=800&h=1000&q=70" alt="Amber cocktail on the rocks"><div class="cap"><h4>The<br>Keeper</h4><span class="turn">↻</span></div></div>
+          <div class="face back"><h4>The Keeper</h4><ul><li>Bourbon <span>base</span></li><li>White miso</li><li><span lang="en">Honeyed wine</span><span lang="el">Κρασί με μέλι</span></li><li><span lang="en">Pineapple</span><span lang="el">Ανανάς</span></li></ul></div>
+        </div>
+      </div>
+      <div class="drink rv d1" tabindex="0" role="button" aria-label="Po the Panda: show ingredients">
+        <div class="in">
+          <div class="face front"><img loading="lazy" src="https://images.unsplash.com/photo-1651993690908-c74df3c39d5b?auto=format&fit=crop&w=800&h=1000&q=70" alt="Red highball cocktail with ice"><div class="cap"><h4>Po the<br>Panda</h4><span class="turn">↻</span></div></div>
+          <div class="face back"><h4>Po the Panda</h4><ul><li>Umeshu <span>base</span></li><li><span lang="en">Toasted rice</span><span lang="el">Καβουρδισμένο ρύζι</span></li><li>Fig soda</li></ul></div>
+        </div>
+      </div>
+      <div class="drink rv d2" tabindex="0" role="button" aria-label="Simba: show ingredients">
+        <div class="in">
+          <div class="face front"><img loading="lazy" src="https://images.unsplash.com/photo-1780019676040-9816a7bd031d?auto=format&fit=crop&w=800&h=1000&q=70" alt="Milky cocktail in a small cup"><div class="cap"><h4>Simba</h4><span class="turn">↻</span></div></div>
+          <div class="face back"><h4>Simba</h4><ul><li>Milk punch <span>style</span></li><li>Reposado tequila</li><li><span lang="en">Burnt butter</span><span lang="el">Καμένο βούτυρο</span></li><li>Passion fruit</li><li><span lang="en">Oreo ice cream</span><span lang="el">Παγωτό Oreo</span></li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE -->
+  <section class="people" id="people">
+    <div class="grid">
+      <h2 class="poster rv"><span lang="en">The <i>people</i></span><span lang="el">Οι <i>άνθρωποι</i></span></h2>
+      <figure class="person big rv">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1623408859815-22534357b3db?auto=format&fit=crop&w=900&h=1200&q=70" alt="Bartender at work behind a dark bar">
+        <figcaption class="who ph" data-note="Placeholder φωτογραφία: πορτρέτο του Αχιλλέα">
+          <b>Achilleas<br>Plakidas</b>
+          <span lang="en">Founder</span><span lang="el">Ιδρυτής</span>
+        </figcaption>
+      </figure>
+      <figure class="person rv d1">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1647776112336-72f4c30fafc1?auto=format&fit=crop&w=800&h=700&q=70" alt="Bartender stirring a drink">
+        <figcaption class="who ph" data-note="Ονόματα & ρόλοι της ομάδας: να τα δώσει το bar"><b><span lang="en">The team</span><span lang="el">Η ομάδα</span></b><span>Bar · Lab · Floor</span></figcaption>
+      </figure>
+      <figure class="person rv d2">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1578553981438-cebe08c94b4e?auto=format&fit=crop&w=800&h=700&q=70" alt="Bartender pouring at the bar">
+        <figcaption class="who"><b>Guest<br>shifts</b><span lang="en">Friends from great bars</span><span lang="el">Φίλοι από σπουδαία μπαρ</span></figcaption>
+      </figure>
+      <p class="note rv">
+        <span lang="en">Behind every great cocktail is an even greater team: a family of bartenders, hosts and creatives who love great bar culture and unforgettable nights.</span>
+        <span lang="el">Πίσω από κάθε σπουδαίο κοκτέιλ υπάρχει μια ακόμα πιο σπουδαία ομάδα: μια οικογένεια από bartenders, hosts και δημιουργικούς ανθρώπους που αγαπούν την κουλτούρα του μπαρ και τα αξέχαστα βράδια.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="awards" id="awards">
+    <div class="kick tag rv"><span lang="en">Recognition</span><span lang="el">Διακρίσεις</span></div>
+    <h2 class="poster rv d1"><span lang="en">Not bad for<br>a <i>gorilla</i></span><span lang="el">Όχι άσχημα<br>για <i>γορίλα</i></span></h2>
+    <div class="aw rv"><span class="big">33</span><div><h3>Europe's 50 Best Bars</h3><p><span lang="en">The first edition of the list, voted by over 300 drinks experts across Europe.</span><span lang="el">Η πρώτη έκδοση της λίστας, με ψήφους από πάνω από 300 ειδικούς του ποτού σε όλη την Ευρώπη.</span></p></div><span class="yr">2026</span></div>
+    <div class="aw rv"><span class="big">4×</span><div><h3>Top 500 Bars</h3><p><span lang="en">Listed among the world's best bars.</span><span lang="el">Ανάμεσα στα καλύτερα μπαρ του κόσμου.</span></p></div><span class="yr">2022 · 23 · 25 · 26</span></div>
+    <div class="aw rv"><span class="big">★</span><div><h3>Athinorama</h3><p>Most Innovative Bar</p></div><span class="yr ph" data-note="Χρονιά: να επιβεβαιωθεί">—</span></div>
+    <div class="aw rv"><span class="big">✓</span><div><h3>FNL Guide</h3><p><span lang="en">Awarded</span><span lang="el">Βραβευμένο</span></p></div><span class="yr ph" data-note="Χρονιά: να επιβεβαιωθεί">—</span></div>
+  </section>
+
+  <!-- NIGHTS -->
+  <section class="nights" id="nights">
+    <div class="bg"><img loading="lazy" src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1800&q=65" alt="A busy bar at night"></div>
+    <div class="kick tag rv">Gorilla nights</div>
+    <h2 class="poster rv d1"><span lang="en">Never just<br>a <i>drink</i></span><span lang="el">Ποτέ μόνο<br>ένα <i>ποτό</i></span></h2>
+    <div class="chips">
+      <span class="chip rv">Take over week</span>
+      <span class="chip rv d1">Guest shifts</span>
+      <span class="chip rv d2">Cocktail week</span>
+      <span class="chip rv">Speed + taste</span>
+      <span class="chip rv d1">Gorilla lab</span>
+      <span class="chip rv d2">Photobooth</span>
+    </div>
+    <p class="rv ph" data-note="Placeholder: εδώ μπαίνει το πρόγραμμα των events, ενημερώνεται από το ίδιο το bar">
+      <span lang="en">Guest bartenders from around the world, take-overs, cocktail weeks and nights that end with a photo strip. The next event goes here.</span>
+      <span lang="el">Guest bartenders από όλο τον κόσμο, take-overs, cocktail weeks και βράδια που τελειώνουν με ένα photo strip. Εδώ μπαίνει το επόμενο event.</span>
+    </p>
+  </section>
+
+  <!-- VISIT & BOOK -->
+  <section class="visit" id="visit">
+    <div>
+      <div class="kick tag rv"><span lang="en">Visit us</span><span lang="el">Έλα να μας βρεις</span></div>
+      <h2 class="poster rv d1"><span lang="en">See you<br>at the <i>bar</i></span><span lang="el">Τα λέμε<br>στο <i>μπαρ</i></span></h2>
+      <div class="facts">
+        <div class="rv"><h4><span lang="en">Address</span><span lang="el">Διεύθυνση</span></h4>
+          <a class="addr" href="https://www.google.com/maps/search/?api=1&query=Gorilla+Bar+Veroias+3+Thessaloniki" target="_blank" rel="noopener"><span lang="en">Veroias 3<br>Ano Ladadika</span><span lang="el">Βεροίας 3<br>Άνω Λαδάδικα</span></a>
+          <div style="margin-top:6px;color:var(--dim)"><span lang="en">Thessaloniki, Greece</span><span lang="el">Θεσσαλονίκη</span></div>
+        </div>
+        <div class="rv"><h4><span lang="en">Hours</span><span lang="el">Ωράριο</span></h4>
+          <dl class="hours">
+            <dt><span lang="en">Wed · Thu · Sun</span><span lang="el">Τετ · Πέμ · Κυρ</span></dt><dd>19:00 – 01:30</dd>
+            <dt><span lang="en">Fri · Sat</span><span lang="el">Παρ · Σάβ</span></dt><dd>20:00 – 03:30</dd>
+            <dt><span lang="en">Mon · Tue</span><span lang="el">Δευ · Τρί</span></dt><dd class="closed"><span lang="en">Closed</span><span lang="el">Κλειστά</span></dd>
+          </dl>
+        </div>
+        <div class="rv"><h4><span lang="en">Call or write</span><span lang="el">Τηλέφωνο & email</span></h4>
+          <a class="tel ph" data-note="Στο site τους: 693 713 6937 · στο 50 Best: 2313 086 274. Ποιο ισχύει;" href="tel:+306937136937">+30 693 713 6937</a>
+          <div style="margin-top:4px"><a href="mailto:info@gorillabar.gr" style="color:var(--dim)">info@gorillabar.gr</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book rv d1" id="book">
+      <form id="bookForm" novalidate>
+        <h3><span lang="en">Book a table</span><span lang="el">Κλείσε τραπέζι</span></h3>
+        <div class="lbl"><span lang="en">Night</span><span lang="el">Βράδυ</span></div>
+        <div class="pick" id="days"></div>
+        <div class="lbl"><span lang="en">Guests</span><span lang="el">Άτομα</span></div>
+        <div class="pick" id="party"></div>
+        <div class="lbl"><span lang="en">Time</span><span lang="el">Ώρα</span></div>
+        <div class="pick" id="times"></div>
+        <div class="row">
+          <input type="text" autocomplete="name" aria-label="Name" data-ph-en="Name" data-ph-el="Όνομα">
+          <input type="tel" autocomplete="tel" inputmode="tel" aria-label="Phone" data-ph-en="Phone" data-ph-el="Τηλέφωνο">
+        </div>
+        <button class="btn go" type="submit"><span lang="en">Request booking</span><span lang="el">Αίτημα κράτησης</span> →</button>
+        <p class="alt"><span lang="en">Bigger group? Call us on</span><span lang="el">Μεγαλύτερη παρέα; Πάρε μας στο</span> <a href="tel:+306937136937">693 713 6937</a></p>
+      </form>
+      <div class="done" role="status">
+        <span class="tag">Demo</span>
+        <div class="poster"><span lang="en">See you there!</span><span lang="el">Τα λέμε εκεί!</span></div>
+        <p id="doneText"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="huge" aria-hidden="true">Gorilla</div>
+  <div class="cols">
+    <div><h5><span lang="en">Find us</span><span lang="el">Θα μας βρεις</span></h5><span lang="en">Veroias 3, Ano Ladadika<br>Thessaloniki</span><span lang="el">Βεροίας 3, Άνω Λαδάδικα<br>Θεσσαλονίκη</span></div>
+    <div><h5><span lang="en">Book</span><span lang="el">Κρατήσεις</span></h5><a href="tel:+306937136937">693 713 6937</a><br><a href="mailto:info@gorillabar.gr">info@gorillabar.gr</a></div>
+    <div><h5>Follow</h5><a href="https://www.instagram.com/gorillabarskg/" target="_blank" rel="noopener">Instagram</a></div>
+    <div><h5>Fine drinking & fun</h5>No.33 Europe's 50 Best Bars 2026</div>
+  </div>
+  <div class="base">
+    <span>© 2026 Gorilla Bar</span>
+    <span><span lang="en">Design & build:</span><span lang="el">Σχεδιασμός & κατασκευή:</span> <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn ghost" href="tel:+306937136937" style="background:rgba(11,11,10,.9)"><span lang="en">Call</span><span lang="el">Κλήση</span></a>
+  <a class="btn" href="#visit"><span lang="en">Book</span><span lang="el">Κράτηση</span></a>
+</div>
+<button class="notes-toggle" id="notesToggle" type="button">Notes</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const lang = () => html.dataset.lang;
+
+  // Language switch (and placeholders that need translating).
+  const applyLang = (l) => {
+    html.dataset.lang = l; html.lang = l;
+    document.querySelectorAll("[data-ph-en]").forEach(i => i.placeholder = i.dataset["ph" + (l === "el" ? "El" : "En")]);
+    try { localStorage.setItem("gr-lang", l); } catch (e) {}
+    renderBooking();
+  };
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.set)));
+
+  // Nav + mobile bar.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => {
+    nav.classList.toggle("solid", scrollY > 40);
+    mbar.classList.toggle("on", scrollY > innerHeight * .8 && scrollY < document.body.scrollHeight - innerHeight * 1.9);
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // Reveals.
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+  // HERO: paint the night. The photo is black & white; your brush strokes bring the colour back,
+  // in zebra-like bristles, and slowly fade.
+  const hero = document.getElementById("hero"), cv = document.getElementById("paint"), ctx = cv.getContext("2d");
+  const mask = document.createElement("canvas"), mctx = mask.getContext("2d");
+  const color = new Image(); color.decoding = "async";
+  color.src = document.getElementById("heroImg").currentSrc || document.getElementById("heroImg").src;
+  let W = 0, H = 0, dpr = 1, last = null, painting = false, heroOn = true, dirty = true;
+  const size = () => {
+    dpr = Math.min(devicePixelRatio || 1, 1.5);
+    W = hero.clientWidth; H = hero.clientHeight;
+    for (const c of [cv, mask]) { c.width = W * dpr; c.height = H * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); mctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dirty = true;
+  };
+  size(); addEventListener("resize", size);
+  // Same object-fit: cover crop as the <img> underneath.
+  const cover = () => {
+    const ir = color.naturalWidth / color.naturalHeight, cr = W / H;
+    let w = W, h = H, x = 0, y = 0;
+    if (ir > cr) { w = H * ir; x = (W - w) / 2; } else { h = W / ir; y = (H - h) / 2; }
+    return [x, y, w, h];
+  };
+  const stroke = (a, b) => {
+    const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len;
+    const r = Math.max(46, Math.min(W, H) * .09);
+    mctx.lineCap = "round"; mctx.strokeStyle = "#fff";
+    for (let i = 0; i < 7; i++) { // bristles
+      const off = (i - 3) * r * .26 + (Math.random() - .5) * 8;
+      mctx.globalAlpha = .55 + Math.random() * .45;
+      mctx.lineWidth = r * (.12 + Math.random() * .16);
+      mctx.beginPath(); mctx.moveTo(a.x + nx * off, a.y + ny * off); mctx.lineTo(b.x + nx * off, b.y + ny * off); mctx.stroke();
+    }
+    mctx.globalAlpha = 1; dirty = true;
+  };
+  const pt = (e) => { const r = hero.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  hero.addEventListener("pointermove", e => {
+    if (e.pointerType === "touch" && !painting) return;
+    const p = pt(e); if (last) stroke(last, p); last = p; hero.classList.add("painted");
+  });
+  hero.addEventListener("pointerdown", e => { painting = true; last = pt(e); });
+  addEventListener("pointerup", () => { painting = false; last = null; });
+  hero.addEventListener("pointerleave", () => { last = null; });
+  new IntersectionObserver(([e]) => heroOn = e.isIntersecting).observe(hero);
+  // On touch screens a vertical swipe scrolls, so scrolling through the hero paints too.
+  if (!matchMedia("(pointer: fine)").matches) {
+    let prev = null;
+    addEventListener("scroll", () => {
+      if (!heroOn) return;
+      const y = scrollY, p = { x: W * (.5 + Math.sin(y / 60) * .38), y: H * .25 + (y * .9) % (H * .6) };
+      if (prev && Math.abs(p.y - prev.y) < H * .3) stroke(prev, p);
+      prev = p; hero.classList.add("painted");
+    }, { passive: true });
+  }
+
+  const draw = () => {
+    if (heroOn && color.complete && color.naturalWidth) {
+      // fade the mask a little every frame
+      mctx.globalCompositeOperation = "destination-out"; mctx.fillStyle = "rgba(0,0,0,.009)"; mctx.fillRect(0, 0, W, H);
+      mctx.globalCompositeOperation = "source-over";
+      ctx.clearRect(0, 0, W, H);
+      ctx.drawImage(mask, 0, 0, W, H);
+      ctx.globalCompositeOperation = "source-in";
+      const [x, y, w, h] = cover(); ctx.drawImage(color, x, y, w, h);
+      ctx.globalCompositeOperation = "source-over";
+    }
+    requestAnimationFrame(draw);
+  };
+  // An opening brush stroke so people see what the hero does.
+  const intro = () => {
+    if (reduce) { mctx.fillStyle = "#fff"; mctx.fillRect(0, 0, W, H); return; }
+    let t = 0; const pts = [];
+    for (let i = 0; i <= 40; i++) { const k = i / 40; pts.push({ x: W * (.12 + k * .8), y: H * (.42 + Math.sin(k * Math.PI * 1.6) * .12) }); }
+    const step = () => { if (t < pts.length - 1) { stroke(pts[t], pts[t + 1]); t++; requestAnimationFrame(step); } };
+    setTimeout(step, 500);
+  };
+  color.onload = () => { intro(); };
+  if (color.complete) intro();
+  requestAnimationFrame(draw);
+
+  // Menus rail: arrows + drag to scroll on desktop.
+  const rail = document.getElementById("rail");
+  document.querySelectorAll(".arrows button").forEach(b => b.addEventListener("click", () => rail.scrollBy({ left: +b.dataset.dir * rail.clientWidth * .7, behavior: "smooth" })));
+  let down = false, sx = 0, sl = 0, moved = false;
+  rail.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse") return; down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; });
+  addEventListener("pointermove", e => { if (!down) return; const d = e.clientX - sx; if (Math.abs(d) > 4) { moved = true; rail.classList.add("drag"); } rail.scrollLeft = sl - d; });
+  addEventListener("pointerup", () => { down = false; rail.classList.remove("drag"); });
+
+  // "New menu is loading" counter.
+  const pct = document.getElementById("pct");
+  if (!reduce) { const t0 = performance.now(); setInterval(() => { const k = ((performance.now() - t0) % 3600) / 3600; pct.textContent = Math.min(96, Math.round(4 + 92 * Math.min(1, k / .7) ** .8)) + "%"; }, 80); }
+  else pct.textContent = "96%";
+
+  // Drink cards flip.
+  document.querySelectorAll(".drink").forEach(d => {
+    const flip = () => d.classList.toggle("flip");
+    d.addEventListener("click", flip);
+    d.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } });
+  });
+
+  // Booking (demo: nothing is sent). Open nights only: Wed, Thu, Fri, Sat, Sun.
+  const days = document.getElementById("days"), party = document.getElementById("party"), times = document.getElementById("times");
+  const state = { day: null, party: 2, time: null };
+  const pick = (box, items, key) => {
+    box.innerHTML = "";
+    items.forEach(it => {
+      const b = document.createElement("button"); b.type = "button"; b.innerHTML = it.html;
+      b.setAttribute("aria-pressed", String(state[key] !== null && String(state[key]) === String(it.value)));
+      b.addEventListener("click", () => { state[key] = it.value; if (key === "day") state.time = null; renderBooking(); });
+      box.appendChild(b);
+    });
+  };
+  function renderBooking() {
+    const l = lang(), loc = l === "el" ? "el-GR" : "en-GB", list = [];
+    const d = new Date(); d.setHours(12, 0, 0, 0);
+    while (list.length < 6) { if (![1, 2].includes(d.getDay())) list.push(new Date(d)); d.setDate(d.getDate() + 1); }
+    if (state.day === null) state.day = list[0].toDateString();
+    pick(days, list.map((x, i) => ({ value: x.toDateString(), html: `${i === 0 && x.toDateString() === new Date().toDateString() ? (l === "el" ? "Απόψε" : "Tonight") : x.toLocaleDateString(loc, { weekday: "short" })}<small>${x.toLocaleDateString(loc, { day: "numeric", month: "short" })}</small>` })), "day");
+    pick(party, [1, 2, 3, 4, 5, 6].map(n => ({ value: n, html: n === 6 ? "6+" : String(n) })), "party");
+    const dow = new Date(state.day).getDay(), late = dow === 5 || dow === 6;
+    const slots = late ? ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30"] : ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30"];
+    pick(times, slots.map(s => ({ value: s, html: s })), "time");
+  }
+  applyLang(lang());
+
+  document.getElementById("bookForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const l = lang(), d = new Date(state.day).toLocaleDateString(l === "el" ? "el-GR" : "en-GB", { weekday: "long", day: "numeric", month: "long" });
+    document.getElementById("doneText").textContent = l === "el"
+      ? `Τραπέζι για ${state.party === 6 ? "6+" : state.party}, ${d}${state.time ? " στις " + state.time : ""}. Στο τελικό site το αίτημα φτάνει κατευθείαν στο bar και ο πελάτης παίρνει επιβεβαίωση.`
+      : `Table for ${state.party === 6 ? "6+" : state.party}, ${d}${state.time ? " at " + state.time : ""}. On the live site this request goes straight to the bar and the guest gets a confirmation.`;
+    document.getElementById("book").classList.add("sent");
+  });
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("gr-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
