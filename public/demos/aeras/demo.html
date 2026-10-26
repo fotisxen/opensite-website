@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#eef2f1">
+<title>AÈRAS — Echoes of the Wind · Θεσσαλονίκη</title>
+<meta name="description" content="AÈRAS: coffee, food, drinks & party στη Ναυάρχου Κουντουριώτου 6, Θεσσαλονίκη. Where days turn into nights.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;400;600&family=Commissioner:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for AÈRAS (Thessaloniki).
+  Signature: the cursor (or finger) is the wind. Streams of air flow across the page and the
+  letters of the name sway in your gusts.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --air:#eef2f1;
+  --sky:#d3e2e4;
+  --leaf:#2f5a3a;
+  --ink:#18211c;
+  --muted:#5f6d66;
+  --line:#cfdcd9;
+  --night:#0f1512;
+  --bulb:#ffc46b;
+  --display:"Advent Pro",system-ui,sans-serif;
+  --body:"Commissioner",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--air)}
+body{background:var(--air);color:var(--ink);font-family:var(--body);font-weight:300;font-size:clamp(16px,.45vw + 14px,19px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.d{font-family:var(--display);font-weight:200;line-height:.95;letter-spacing:.01em}
+.d b{font-weight:600}
+.k{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--leaf)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:var(--leaf);color:var(--air);font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;transition:transform .3s var(--ease),background .3s}
+.btn:hover{transform:translateY(-2px);background:#23472d}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
+
+#wind{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,footer,.nav{position:relative;z-index:2}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:rgba(238,242,241,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav.dark{background:rgba(15,21,18,.86);color:var(--air)}
+.brand{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.3em}
+.nav .links{display:flex;gap:26px;align-items:center;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
+.nav .links a.l{opacity:.7}
+.nav .btn{padding:10px 18px;font-size:13px}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px var(--pad) 60px;position:relative}
+.name{font-family:var(--display);font-weight:200;font-size:clamp(90px,21vw,360px);line-height:.8;letter-spacing:.06em;display:flex;user-select:none}
+.name span{display:inline-block;transform-origin:50% 100%;will-change:transform}
+.name span.acc{color:var(--leaf);font-weight:400}
+.tag{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-top:30px}
+.tag .echo{font-family:var(--display);font-size:clamp(26px,3vw,44px);font-weight:200}
+.tag .echo b{font-weight:600}
+.tag p{max-width:26em;color:var(--muted)}
+.hint{position:absolute;right:var(--pad);top:120px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center}
+.hint i{width:36px;height:1px;background:currentColor;position:relative;overflow:hidden}
+.hint i::after{content:"";position:absolute;inset:0;background:var(--leaf);transform:translateX(-100%);animation:gust 2s ease-in-out infinite}
+@keyframes gust{to{transform:translateX(100%)}}
+
+/* the day */
+.day{padding:clamp(80px,11vw,150px) var(--pad)}
+.day h2{font-size:clamp(50px,8vw,130px)}
+.strip{margin-top:40px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.slot{border-radius:22px;padding:20px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;box-shadow:inset 0 0 0 1px var(--line);position:relative;overflow:hidden;transition:transform .4s var(--ease)}
+.slot:hover{transform:translateY(-6px)}
+.slot .hr{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.14em;color:var(--muted)}
+.slot h3{font-family:var(--display);font-weight:400;font-size:clamp(30px,2.8vw,42px);line-height:1}
+.slot p{font-size:.88em;color:var(--muted);margin-top:6px}
+.slot.now{background:var(--leaf);color:var(--air);box-shadow:none}
+.slot.now .hr,.slot.now p{color:#cfe2d4}
+.slot.now::after{content:"τώρα";position:absolute;top:18px;right:18px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:var(--air);color:var(--leaf);padding:3px 10px;border-radius:99px}
+.slot.n{background:var(--night);color:var(--air);box-shadow:none}
+.slot.n .hr,.slot.n p{color:#9fb0a6}
+.slot.n.now{background:#2b3a2f}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:auto auto;gap:12px;padding:0 var(--pad)}
+.gal figure{border-radius:26px;overflow:hidden}
+.gal figure:first-child{grid-row:span 2;min-height:520px}
+.gal figure img{transition:transform 1.4s var(--ease)}
+.gal figure:hover img{transform:scale(1.05)}
+.gal .txt{border-radius:26px;background:var(--sky);padding:26px;display:flex;flex-direction:column;justify-content:flex-end}
+.gal .txt h3{font-family:var(--display);font-weight:200;font-size:clamp(34px,3vw,48px);line-height:1}
+.gal .txt p{color:var(--muted);margin-top:10px}
+
+/* night */
+.night{background:var(--night);color:var(--air);padding:clamp(100px,13vw,180px) var(--pad);margin-top:clamp(80px,11vw,150px);position:relative;overflow:hidden}
+.bulbs{position:absolute;left:0;right:0;top:0;height:160px;pointer-events:none}
+.bulbs svg{width:100%;height:100%}
+.bulbs path{fill:none;stroke:#3a463e;stroke-width:1.5}
+.bulbs circle{fill:var(--bulb);filter:drop-shadow(0 0 8px rgba(255,196,107,.9));transform-box:fill-box;transform-origin:50% -300%;animation:sway 3.6s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.night h2{font-size:clamp(56px,10vw,170px);position:relative}
+.night h2 b{color:var(--bulb)}
+.night p{max-width:30em;color:#b9c6be;margin-top:22px;position:relative}
+.djs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px;position:relative}
+.dj{border-radius:22px;padding:22px;box-shadow:inset 0 0 0 1px #2a3530}
+.dj .dt{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--bulb)}
+.dj b{display:block;font-family:var(--display);font-weight:400;font-size:28px;margin-top:6px;line-height:1.1}
+.night .pic{margin-top:40px;border-radius:26px;overflow:hidden;aspect-ratio:21/9;position:relative}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);padding:clamp(80px,11vw,150px) var(--pad)}
+.visit h2{font-size:clamp(50px,8vw,124px)}
+.facts{display:grid;gap:24px}
+.facts h4{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--leaf);margin-bottom:4px}
+.facts .big{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.1}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 22px;color:var(--muted)}
+.hours dt{color:var(--ink);font-weight:400}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{padding:26px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted)}
+footer a{color:var(--ink);border-bottom:1px solid var(--line)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--leaf);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:500 11px/1.35 var(--body);letter-spacing:0;text-transform:none;color:#fff;background:var(--leaf);padding:3px 7px;border-radius:4px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-size:11px;font-weight:500;padding:8px 12px;border-radius:999px;background:var(--air);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--leaf);color:var(--leaf)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .hint{display:none}
+  .strip{grid-template-columns:1fr 1fr}
+  .slot{min-height:180px}
+  .gal{grid-template-columns:1fr 1fr}
+  .gal figure:first-child{grid-column:1/-1;grid-row:auto;min-height:300px}
+  .djs,.visit{grid-template-columns:1fr}
+  .night .pic{aspect-ratio:16/10}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:74px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("ae-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<canvas id="wind" aria-hidden="true"></canvas>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="AÈRAS">AÈRAS</a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#day">Η μέρα</a>
+    <a class="l" href="#night">Η νύχτα</a>
+    <a class="l" href="#visit">Θα μας βρεις</a>
+    <a class="btn" href="tel:+306932790790">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="hint" aria-hidden="true"><i></i>κούνησε τον αέρα</div>
+    <div class="k rv in" style="margin-bottom:clamp(24px,4vw,56px)">Coffee · Food · Drinks · Party</div>
+    <h1 class="name" id="name" aria-label="AÈRAS"><span>A</span><span class="acc">È</span><span>R</span><span>A</span><span>S</span></h1>
+    <div class="tag">
+      <div class="echo rv d1 in">Echoes of <b>the Wind.</b></div>
+      <p class="rv d2 in">Where days turn into nights. Από τον πρωινό καφέ ως το τελευταίο τραγούδι, στη Ναυάρχου Κουντουριώτου 6, δίπλα στο λιμάνι.</p>
+    </div>
+  </section>
+
+  <!-- THE DAY -->
+  <section class="day" id="day">
+    <div class="k rv">From days</div>
+    <h2 class="d rv d1" style="margin-top:12px">Μια μέρα,<br><b>πέντε διαθέσεις</b></h2>
+    <div class="strip" id="strip">
+      <div class="slot rv" data-from="540" data-to="720"><span class="hr">09:00</span><div><h3>Καφές</h3><p>η πόλη ξυπνάει</p></div></div>
+      <div class="slot rv d1" data-from="720" data-to="1020"><span class="hr">12:00</span><div><h3>Brunch</h3><p>μέχρι τις 17:00</p></div></div>
+      <div class="slot rv d2" data-from="1020" data-to="1260"><span class="hr">17:00</span><div><h3>Φαγητό</h3><p>όλη μέρα, και τώρα</p></div></div>
+      <div class="slot n rv" data-from="1260" data-to="1440"><span class="hr">21:00</span><div><h3>Drinks</h3><p>cocktails & παρέα</p></div></div>
+      <div class="slot n rv d1" data-from="0" data-to="240"><span class="hr">00:00</span><div><h3>Party</h3><p>DJs ως τις 02:00 ή 04:00</p></div></div>
+    </div>
+  </section>
+
+  <div class="gal">
+    <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1619108977254-314da85774bd?auto=format&fit=crop&w=900&h=1100&q=70" alt="Brunch σε τραπέζι με φυτά"></figure>
+    <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1592663527359-cf6642f54cff?auto=format&fit=crop&w=700&h=520&q=70" alt="Παγωμένος καφές"></figure>
+    <div class="txt rv d2"><h3>Πράσινο<br>παντού</h3><p>Φυτά, φως και αέρας. Ένας χώρος που αναπνέει όλη μέρα.</p></div>
+    <div class="txt rv" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line)"><h3>Brunch<br>ως τις 17:00</h3><p>Για τα πρωινά που ξεκινούν αργά.</p></div>
+    <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1770820768394-afa48e43de1f?auto=format&fit=crop&w=700&h=520&q=70" alt="Φυτά και φως σε καφέ"></figure>
+  </div>
+
+  <!-- NIGHT -->
+  <section class="night" id="night">
+    <div class="bulbs" aria-hidden="true"><svg viewBox="0 0 1200 160" preserveAspectRatio="none" id="bulbs"></svg></div>
+    <div class="k rv" style="color:var(--bulb)">…into nights</div>
+    <h2 class="d rv d1" style="margin-top:12px">Όταν ανάβουν<br><b>τα φώτα</b></h2>
+    <p class="rv d2">Κρεμαστά φωτάκια, cocktails και DJ sets. Δευτέρα με Πέμπτη ως τις 02:00, Παρασκευή με Κυριακή ως τις 04:00.</p>
+    <div class="djs">
+      <div class="dj rv"><span class="dt">Παρ 11/9</span><b>Άρης Χαλκιάς<br>& Άκης Ακίτο</b></div>
+      <div class="dj rv d1"><span class="dt">Σαβ 12/9</span><b>Άρης Χαλκιάς<br>& Πάνος Πάπας</b></div>
+      <div class="dj rv d2"><span class="dt">Κυρ 13/9</span><b>Άρης Χαλκιάς<br>& Bobito</b></div>
+    </div>
+    <p class="rv ph" data-note="Αυτό ήταν το line-up των 1ων γενεθλίων (Σεπτ. 2026). Στο τελικό site εδώ μπαίνει το πρόγραμμα της εβδομάδας" style="font-size:14px">Τα πρώτα μας γενέθλια, Σεπτέμβριος 2026: τρεις μέρες, τέσσερις DJs.</p>
+    <div class="pic rv"><img loading="lazy" src="https://images.unsplash.com/photo-1608991969807-3833f043d0ca?auto=format&fit=crop&w=1600&h=700&q=65" alt="Κρεμαστά φωτάκια τη νύχτα"></div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div><div class="k rv">Θα μας βρεις</div><h2 class="d rv d1" style="margin-top:12px">Ακολούθησε<br><b>τον αέρα</b></h2></div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">Ναυάρχου Κουντουριώτου 6</div><div style="color:var(--muted)">Κέντρο, δίπλα στο λιμάνι</div></div>
+      <div class="rv ph" data-note="Ωράριο από άρθρο Σεπτ. 2026: να επιβεβαιωθεί"><h4>Ωράριο</h4><dl class="hours"><dt>Κάθε μέρα</dt><dd>από τις 09:00</dd><dt>Δευ – Πεμ</dt><dd>ως τις 02:00</dd><dt>Παρ – Κυρ</dt><dd>ως τις 04:00</dd></dl></div>
+      <div class="rv"><h4>Κρατήσεις</h4><a class="big" href="tel:+306932790790">693 279 0790</a></div>
+      <div class="rv acts">
+        <a class="btn" href="tel:+306932790790">Κλήση</a>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Navarchou+Kountouriotou+6+Thessaloniki" target="_blank" rel="noopener">Χάρτης</a>
+        <a class="btn line" href="https://www.instagram.com/aeras.skg/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 AÈRAS · Echoes of the Wind</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="https://www.instagram.com/aeras.skg/" target="_blank" rel="noopener" style="background:var(--air)">Instagram</a><a class="btn" href="tel:+306932790790">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Wind: thin streams of air drift across the screen; the pointer adds gusts.
+  const cv = document.getElementById("wind"), ctx = cv.getContext("2d");
+  let W, H, d, parts = [], gust = { x: -999, y: -999, vx: 0, vy: 0 };
+  const size = () => { d = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    parts = Array.from({ length: Math.round(W * H / 9000) }, () => ({ x: Math.random() * W, y: Math.random() * H, v: .6 + Math.random() * 1.4, l: 20 + Math.random() * 60, p: Math.random() * 6.28 })); };
+  size(); addEventListener("resize", size);
+  let lx = null, ly = null;
+  const feel = (x, y) => { if (lx !== null) { gust.vx = gust.vx * .7 + (x - lx) * .5; gust.vy = gust.vy * .7 + (y - ly) * .5; } gust.x = x; gust.y = y; lx = x; ly = y; };
+  addEventListener("pointermove", e => feel(e.clientX, e.clientY), { passive: true });
+  addEventListener("touchmove", e => feel(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+
+  // The letters of the name sway in the wind.
+  const letters = [...document.querySelectorAll("#name span")];
+  const sway = letters.map(() => ({ a: 0, v: 0 }));
+
+  let dark = false;
+  const frame = (t) => {
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = dark ? "rgba(255,196,107,.16)" : "rgba(47,90,58,.16)"; ctx.lineWidth = 1;
+    gust.vx *= .96; gust.vy *= .96;
+    for (const p of parts) {
+      const dx = p.x - gust.x, dy = p.y - gust.y, near = Math.max(0, 1 - Math.hypot(dx, dy) / 220);
+      const vx = p.v * 1.4 + gust.vx * near * .9, vy = Math.sin(t / 1400 + p.p + p.x / 220) * .5 + gust.vy * near * .9;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - vx * p.l / 6, p.y - vy * p.l / 6); ctx.stroke();
+      p.x += vx; p.y += vy;
+      if (p.x > W + 60) { p.x = -60; p.y = Math.random() * H; } if (p.x < -80) p.x = W + 40; if (p.y < -40) p.y = H + 20; if (p.y > H + 40) p.y = -20;
+    }
+    letters.forEach((el, i) => {
+      const r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const near = Math.max(0, 1 - Math.hypot(cx - gust.x, cy - gust.y) / 420);
+      const target = Math.sin(t / 1200 + i * .8) * 2 + gust.vx * near * .9;
+      const s = sway[i]; s.v += (target - s.a) * .06; s.v *= .86; s.a += s.v;
+      el.style.transform = `rotate(${s.a.toFixed(2)}deg) translateX(${(s.a * 1.2).toFixed(1)}px)`;
+    });
+    requestAnimationFrame(frame);
+  };
+  if (!reduce) requestAnimationFrame(frame);
+
+  // The day strip: highlight the current moment (Athens time).
+  const p = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Athens", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  const m = +p.find(x => x.type === "hour").value * 60 + +p.find(x => x.type === "minute").value;
+  document.querySelectorAll("#strip .slot").forEach(s => { if (m >= +s.dataset.from && m < +s.dataset.to) s.classList.add("now"); });
+
+  // String lights for the night.
+  const b = document.getElementById("bulbs"); let svg = "";
+  for (let k = 0; k < 3; k++) { const y0 = 20 + k * 22, sag = 50 + k * 14; svg += `<path d="M0 ${y0} Q300 ${y0 + sag} 600 ${y0} T1200 ${y0}"/>`;
+    for (let x = 30; x < 1200; x += 60) { const tt = (x % 600) / 600, y = y0 + 4 * sag * tt * (1 - tt) * .5; svg += `<circle cx="${x + k * 20}" cy="${(y + 10).toFixed(1)}" r="4" style="animation-delay:${(-Math.random() * 3).toFixed(2)}s"/>`; } }
+  b.innerHTML = svg;
+
+  // Nav colour, mobile bar, reveals, wind colour at night.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar"), night = document.getElementById("night");
+  const onScroll = () => {
+    const r = night.getBoundingClientRect(); dark = r.top < innerHeight * .5 && r.bottom > innerHeight * .5;
+    nav.classList.toggle("solid", scrollY > 30 && !dark); nav.classList.toggle("dark", dark);
+    mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7);
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("ae-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

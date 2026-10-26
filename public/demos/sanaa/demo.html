@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f4ee">
+<title>Sanaa — Artistic Coast Bar & Restaurant · Καλαμαριά</title>
+<meta name="description" content="Sanaa: artistic coast bar & restaurant στην Καλαμαριά, πάνω στη θάλασσα. Ανοιχτά καθημερινά από τις 10:00.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1647854879367-39bae4b777da?auto=format&fit=crop&w=1600&q=70">
+<link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,500;1,400&family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Sanaa Coast (Kalamaria, Thessaloniki).
+  "Sanaa" means "work of art" in Swahili, so the site is an exhibition:
+  four rooms (Venue, Cuisine, Drinks, People, like their Instagram highlights) with museum placards.
+  Signature: a live countdown to today's sunset over the Thermaic Gulf.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --wall:#f7f4ee;
+  --sand:#e6dccb;
+  --ink:#1d1b18;
+  --muted:#7b746a;
+  --sea:#1f5f66;
+  --coral:#e0735a;
+  --line:#ddd4c4;
+  --serif:"Brygada 1918",Georgia,serif;
+  --sans:"Didact Gothic",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--wall)}
+body{background:var(--wall);color:var(--ink);font-family:var(--sans);font-size:clamp(16px,.45vw + 14px,19px);line-height:1.65;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.caps{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.s{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+.s em{font-style:italic;color:var(--sea)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;background:var(--ink);color:var(--wall);font-size:13px;letter-spacing:.2em;text-transform:uppercase;transition:background .3s}
+.btn:hover{background:var(--sea)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:rgba(247,244,238,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.logo{text-align:center;line-height:1}
+.logo b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.28em}
+.logo small{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.nav .links{display:flex;gap:26px;align-items:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.nav .links a.l{color:var(--muted)}
+.nav .links a.l:hover{color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:11px}
+
+/* hero: the first artwork */
+.hero{min-height:100svh;padding:100px var(--pad) 40px;display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(24px,4vw,60px);align-items:center}
+.hero h1{font-size:clamp(70px,11vw,180px);letter-spacing:.14em;font-weight:400}
+.hero .def{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2vw,28px);color:var(--muted);margin-top:8px}
+.hero .def b{font-style:normal;font-weight:500;color:var(--ink)}
+.hero p{max-width:26em;margin:24px 0 30px;color:var(--muted)}
+.frame{background:#fff;padding:clamp(14px,2.2vw,30px);box-shadow:0 1px 0 var(--line),0 30px 60px -30px rgba(29,27,24,.35);position:relative}
+.frame .art{aspect-ratio:4/5;overflow:hidden}
+.frame .art img{transition:transform 2s var(--ease)}
+.frame:hover .art img{transform:scale(1.04)}
+.placard{position:absolute;left:-56px;bottom:30px;width:220px;background:var(--wall);padding:14px 16px;box-shadow:0 10px 30px -14px rgba(0,0,0,.35);font-size:12px;line-height:1.5}
+.placard b{display:block;font-family:var(--serif);font-weight:500;font-size:16px}
+.placard i{color:var(--muted)}
+
+/* sunset */
+.sunset{position:relative;padding:clamp(70px,9vw,120px) var(--pad);overflow:hidden;color:#fff;text-align:center;background:linear-gradient(180deg,#f2c58e 0%,#e8956f 40%,#b65a5e 70%,#3a3e63 100%)}
+.sunset .sun{position:absolute;left:50%;width:min(36vw,340px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,0);top:calc(var(--sy,40%));background:radial-gradient(circle,#fff3d6 0,#ffd08a 38%,rgba(255,208,138,0) 70%);transition:top 1s var(--ease)}
+.sunset .sea{position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,rgba(31,95,102,.0),rgba(31,95,102,.65) 30%,#173f4a);}
+.sunset .sea::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.12) 0 1px,transparent 1px 9px);mask-image:linear-gradient(transparent,#000 40%)}
+.sunset .in{position:relative;z-index:2}
+.sunset .caps{color:rgba(255,255,255,.8)}
+.sunset .time{font-family:var(--serif);font-size:clamp(70px,12vw,190px);line-height:1;margin:14px 0 6px;text-shadow:0 2px 30px rgba(120,40,40,.35)}
+.sunset .left{font-size:clamp(17px,1.6vw,22px)}
+.sunset .left b{font-weight:400;font-family:var(--serif);font-style:italic}
+.sunset p{max-width:30em;margin:22px auto 0;color:rgba(255,255,255,.9)}
+
+/* exhibition: horizontal rooms */
+.expo{position:relative;height:420vh}
+.expo .stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.expo .head{padding:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:26px}
+.expo .head h2{font-size:clamp(38px,5vw,76px)}
+.rooms{display:flex;gap:clamp(30px,5vw,80px);padding:0 var(--pad);will-change:transform}
+.room{flex:0 0 min(78vw,1000px);display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
+.room .frame .art{aspect-ratio:4/3}
+.room .letter{font-family:var(--serif);font-size:clamp(60px,7vw,110px);line-height:1;color:var(--sand)}
+.room h3{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.4vw,52px);line-height:1;margin:-6px 0 14px}
+.room p{color:var(--muted)}
+.room dl{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px}
+.room dt{letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-size:11px;padding-top:2px}
+.progress{margin:30px var(--pad) 0;height:1px;background:var(--line);position:relative}
+.progress i{position:absolute;left:0;top:-1px;height:3px;width:calc(var(--p,0) * 100%);background:var(--sea)}
+.roomnav{display:flex;gap:16px;margin-top:14px;padding:0 var(--pad);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.roomnav span.on{color:var(--ink)}
+
+/* menu teaser */
+.taste{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px)}
+.taste .frame .art{aspect-ratio:1}
+.taste h3{font-family:var(--serif);font-weight:400;font-size:24px;margin-top:16px}
+.taste p{color:var(--muted);font-size:.92em}
+.wrap{padding:clamp(80px,11vw,150px) var(--pad)}
+.wrap .ttl{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:clamp(30px,5vw,50px)}
+.wrap .ttl h2{font-size:clamp(42px,6vw,96px)}
+.wrap .ttl p{max-width:24em;color:var(--muted)}
+
+/* visit */
+.visit{background:var(--sand);display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.visit h2{font-size:clamp(46px,7vw,110px)}
+.facts{display:grid;gap:24px}
+.facts h4{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:400}
+.facts .big{font-family:var(--serif);font-size:clamp(24px,2.4vw,34px);line-height:1.15}
+.facts .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{padding:26px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted);background:var(--sand);border-top:1px solid var(--line)}
+footer a{color:var(--ink);border-bottom:1px solid var(--line)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--coral);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:12px/1.35 var(--sans);letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--coral);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-size:11px;letter-spacing:.1em;padding:8px 12px;background:var(--wall);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--coral);color:var(--coral)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .hero{grid-template-columns:1fr;padding-top:90px}
+  .hero .frame{order:-1}
+  .placard{position:static;width:auto;margin-top:12px;box-shadow:none;background:transparent;padding:0}
+  .expo{height:auto}
+  .expo .stage{position:static;height:auto;padding:80px 0}
+  .rooms{flex-direction:column;transform:none!important}
+  .room{flex:none;grid-template-columns:1fr}
+  .progress,.roomnav{display:none}
+  .taste,.visit{grid-template-columns:1fr}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:74px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("sn-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="Sanaa"><b>SANAA</b><small>Artistic Coast Bar</small></a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#sunset">Ηλιοβασίλεμα</a>
+    <a class="l" href="#expo">Η έκθεση</a>
+    <a class="l" href="#visit">Επίσκεψη</a>
+    <a class="btn" href="https://www.i-host.gr/reservations/new?restaurant=2510&lang=el" target="_blank" rel="noopener">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <div class="caps rv in">Artistic Coast Bar · Restaurant</div>
+      <h1 class="s rv in" style="margin-top:16px">Sanaa</h1>
+      <div class="def rv d1 in"><b>sanaa</b> (σουαχίλι): έργο τέχνης.</div>
+      <p class="rv d1 in">Πάνω στη θάλασσα της Καλαμαριάς, ανάμεσα σε φοίνικες, με θέα τη μαρίνα και τον Θερμαϊκό. Καφές το πρωί, φαγητό όλη μέρα, ποτό και μουσική ως αργά.</p>
+      <div class="rv d2 in" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://www.i-host.gr/reservations/new?restaurant=2510&lang=el" target="_blank" rel="noopener">Κλείσε τραπέζι</a><a class="btn line" href="#expo">Η έκθεση</a></div>
+    </div>
+    <figure class="frame rv in">
+      <div class="art"><img src="https://images.unsplash.com/photo-1647854879367-39bae4b777da?auto=format&fit=crop&w=1600&q=70" alt="Φοίνικες κάτω από καθαρό ουρανό" fetchpriority="high"></div>
+      <figcaption class="placard"><b>Φοίνικες, θάλασσα, ουρανός</b><i>Sanaa Coast, Καλαμαριά</i><br>Είσοδος με 25 φοίνικες, ακόμα 60 δέντρα στον χώρο.</figcaption>
+    </figure>
+  </section>
+
+  <!-- SUNSET -->
+  <section class="sunset" id="sunset">
+    <div class="sun" id="sun" aria-hidden="true"></div>
+    <div class="sea" aria-hidden="true"></div>
+    <div class="in">
+      <div class="caps rv">Το σημερινό ηλιοβασίλεμα στον Θερμαϊκό</div>
+      <div class="time rv d1" id="sunTime">--:--</div>
+      <div class="left rv d1" id="sunLeft">&nbsp;</div>
+      <p class="rv d2">Το καλύτερο τραπέζι της μέρας είναι αυτό που βλέπει τον ήλιο να βουτάει στη θάλασσα. Κλείσε το εγκαίρως.</p>
+      <div class="rv d2" style="margin-top:26px"><a class="btn" style="background:#fff;color:var(--ink)" href="https://www.i-host.gr/reservations/new?restaurant=2510&lang=el" target="_blank" rel="noopener">Τραπέζι για το ηλιοβασίλεμα</a></div>
+    </div>
+  </section>
+
+  <!-- EXHIBITION -->
+  <section class="expo" id="expo">
+    <div class="stage">
+      <div class="head"><div><div class="caps">Μόνιμη έκθεση</div><h2 class="s" style="margin-top:10px">Τέσσερις <em>αίθουσες</em></h2></div></div>
+      <div class="rooms" id="rooms">
+        <article class="room">
+          <figure class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1708549704364-170c6e2b7fb1?auto=format&fit=crop&w=1200&h=900&q=70" alt="Βεράντα με φανάρι πάνω από τη θάλασσα"></div></figure>
+          <div><div class="letter">V</div><h3>Venue</h3><p>Ένας κήπος πάνω στο νερό, στο κτίριο του Ναυτικού Ομίλου Καλαμαριάς. Εσωτερικό lounge και βεράντα με θέα τη μαρίνα.</p>
+            <dl><dt>Υλικά</dt><dd>φοίνικες, θάλασσα, ήλιος</dd><dt>Θέα</dt><dd>μαρίνα & Θερμαϊκός</dd></dl></div>
+        </article>
+        <article class="room">
+          <figure class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1672636402078-4b957a572e4e?auto=format&fit=crop&w=1200&h=900&q=70" alt="Ζυμαρικά με θαλασσινά"></div></figure>
+          <div><div class="letter">C</div><h3>Cuisine</h3><p>Ελληνική μεσογειακή κουζίνα με διεθνείς πινελιές: θαλασσινά και ψάρι, ζυμαρικά, κρέατα και γλυκά.</p>
+            <dl class="ph" data-note="Signature πιάτα & σεφ: να τα δώσει το Sanaa"><dt>Σεφ</dt><dd>—</dd><dt>Signature</dt><dd>—</dd></dl></div>
+        </article>
+        <article class="room">
+          <figure class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1643633052713-3978931c81a6?auto=format&fit=crop&w=1200&h=900&q=70" alt="Κόκκινο ποτό με φόντο το ηλιοβασίλεμα"></div></figure>
+          <div><div class="letter">D</div><h3>Drinks</h3><p>Καφές από το πρωί, κρασιά και cocktails ως αργά. Το ποτήρι που ταιριάζει σε κάθε ώρα της θάλασσας.</p>
+            <dl><dt>Ώρα</dt><dd>από τις 10:00</dd><dt>Συνοδεία</dt><dd>ηλιοβασίλεμα</dd></dl></div>
+        </article>
+        <article class="room">
+          <figure class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1782177260893-72cf978ffbd7?auto=format&fit=crop&w=1200&h=900&q=70" alt="Άνθρωποι στη βεράντα στο ηλιοβασίλεμα"></div></figure>
+          <div><div class="letter">P</div><h3>People</h3><p>Διαφορετικός DJ κάθε μέρα, ελληνική και ξένη μουσική. Και οι άνθρωποι που κάνουν κάθε βράδυ ένα μικρό έργο τέχνης.</p>
+            <dl class="ph" data-note="Πρόγραμμα DJs: να το δώσει το Sanaa"><dt>Απόψε</dt><dd>—</dd></dl></div>
+        </article>
+      </div>
+      <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+      <div class="roomnav" aria-hidden="true"><span>Venue</span><span>Cuisine</span><span>Drinks</span><span>People</span></div>
+    </div>
+  </section>
+
+  <!-- TASTE -->
+  <section class="wrap">
+    <div class="ttl"><h2 class="s rv">Η <em>συλλογή</em></h2><p class="rv d1">Λίγα από όσα θα βρεις στο τραπέζι. Ολόκληρο το μενού, στο τελικό site.</p></div>
+    <div class="taste">
+      <figure class="rv"><div class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1539586345401-51d5bfba7ac0?auto=format&fit=crop&w=700&h=700&q=70" alt="Πιάτο με θαλασσινά"></div></div><h3>Από τη θάλασσα</h3><p>θαλασσινά & ψάρι ημέρας</p></figure>
+      <figure class="rv d1"><div class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1652480191212-13ecee3ec66b?auto=format&fit=crop&w=700&h=700&q=70" alt="Ζυμαρικά με μύδια"></div></div><h3>Ζυμαρικά</h3><p>με τις γεύσεις της Μεσογείου</p></figure>
+      <figure class="rv d2"><div class="frame"><div class="art"><img loading="lazy" src="https://images.unsplash.com/photo-1762883469110-cc07660a8036?auto=format&fit=crop&w=700&h=700&q=70" alt="Cocktail με φρούτα"></div></div><h3>Cocktails</h3><p>για το ηλιοβασίλεμα και μετά</p></figure>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="wrap visit" id="visit">
+    <div><div class="caps rv">Επίσκεψη</div><h2 class="s rv d1" style="margin-top:12px">Ανοιχτά<br><em>κάθε μέρα</em></h2></div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">Θεμιστοκλή Σοφούλη 112<br>Καλαμαριά</div><div style="color:var(--muted)">Ναυτικός Όμιλος Καλαμαριάς</div></div>
+      <div class="rv"><h4>Ωράριο</h4><div class="big">Καθημερινά από τις 10:00</div></div>
+      <div class="rv"><h4>Κρατήσεις</h4><a class="big" href="tel:+306934654244">693 465 4244</a></div>
+      <div class="rv acts">
+        <a class="btn" href="https://www.i-host.gr/reservations/new?restaurant=2510&lang=el" target="_blank" rel="noopener">Online κράτηση</a>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Sanaa+Coast+Kalamaria" target="_blank" rel="noopener">Χάρτης</a>
+        <a class="btn line" href="https://www.instagram.com/sanaa.coast/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Sanaa Coast · Artistic Coast Bar | Restaurant</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="tel:+306934654244" style="background:var(--wall)">Κλήση</a><a class="btn" href="https://www.i-host.gr/reservations/new?restaurant=2510&lang=el" target="_blank" rel="noopener">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+
+  // Today's sunset over Thessaloniki (NOAA approximation), shown in Athens time.
+  const LAT = 40.58, LON = 22.95, rad = Math.PI / 180;
+  const sunsetUTC = (d) => {
+    const start = Date.UTC(d.getUTCFullYear(), 0, 0), n = Math.floor((d - start) / 864e5);
+    const g = 2 * Math.PI / 365 * (n - 1);
+    const eq = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+    const dec = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
+    const ha = Math.acos(Math.cos(90.833 * rad) / (Math.cos(LAT * rad) * Math.cos(dec)) - Math.tan(LAT * rad) * Math.tan(dec)) / rad;
+    const mins = 720 - 4 * (LON - ha) - eq;
+    return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) + mins * 60000);
+  };
+  const fmt = t => new Intl.DateTimeFormat("el-GR", { timeZone: "Europe/Athens", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(t);
+  const sunEl = document.getElementById("sun");
+  const tick = () => {
+    const now = new Date(); let s = sunsetUTC(now), today = true;
+    if (s < now) { s = sunsetUTC(new Date(now.getTime() + 864e5)); today = false; }
+    document.getElementById("sunTime").textContent = fmt(s);
+    const m = Math.round((s - now) / 60000), h = Math.floor(m / 60), mm = m % 60;
+    document.getElementById("sunLeft").innerHTML = today
+      ? `σε <b>${h ? h + (h === 1 ? " ώρα" : " ώρες") + " και " : ""}${mm} λεπτά</b>`
+      : `<b>αύριο</b> · ο σημερινός ήλιος έχει ήδη βουτήξει`;
+    // the sun sinks as the moment gets closer (lower = closer)
+    const k = today ? Math.max(0, Math.min(1, 1 - m / 360)) : 1;
+    sunEl.style.setProperty("--sy", (8 + k * 44).toFixed(1) + "%");
+  };
+  tick(); setInterval(tick, 30000);
+
+  // Exhibition: vertical scroll moves through the rooms horizontally.
+  const expo = document.getElementById("expo"), rooms = document.getElementById("rooms"), prog = document.getElementById("prog"), labels = document.querySelectorAll(".roomnav span");
+  const move = () => {
+    if (innerWidth <= 900) return;
+    const r = expo.getBoundingClientRect(), span = r.height - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / span)), max = rooms.scrollWidth - innerWidth;
+    rooms.style.transform = `translate3d(${-p * max}px,0,0)`;
+    prog.parentElement.style.setProperty("--p", p.toFixed(3));
+    labels.forEach((l, i) => l.classList.toggle("on", Math.round(p * 3) === i));
+  };
+  addEventListener("scroll", () => requestAnimationFrame(move), { passive: true }); addEventListener("resize", move); move();
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > 30); mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("sn-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

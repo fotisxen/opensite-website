@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#262a1a">
+<title>Μαιτρ και Μαργαρίτα — wine bistro · Θεσσαλονίκη</title>
+<meta name="description" content="Τολμηρή μαγειρική με αφοσίωση στην πρώτη ύλη. Wine bistro στη Θεσσαλονίκη από το 2015, με υλικά από όλη την Ελλάδα και κρασιά από μικρά οινοποιεία.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,500;1,7..72,300;1,7..72,500&family=Murecho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Μαιτρ και Μαργαρίτα (Thessaloniki).
+  Signature: a map of Greece. Pick a dish and the places its ingredients come from light up.
+  Dishes and prices from the restaurant's own menu PDF (May 2026); story text paraphrased from maitrandmargarita.com.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --olive:#262a1a;
+  --olive-2:#323722;
+  --paper:#f1ecdf;
+  --paper-2:#e7e0cd;
+  --tomato:#c4472c;
+  --ink:#22241a;
+  --muted:#6e6f5b;
+  --line:#d6cfba;
+  --serif:"Literata",Georgia,serif;
+  --sans:"Murecho",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-weight:300;font-size:clamp(17px,.45vw + 15px,20px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--tomato)}
+.h{font-family:var(--serif);font-weight:300;line-height:1.02;letter-spacing:-.02em}
+.h em{font-style:italic;color:var(--tomato)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:var(--tomato);color:var(--paper);font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;transition:background .3s}
+.btn:hover{background:#a8391f}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);color:var(--paper);transition:background .4s,color .4s}
+.nav.solid{background:rgba(241,236,223,.92);color:var(--ink);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{font-family:var(--serif);font-style:italic;font-size:22px;letter-spacing:-.01em}
+.brand b{font-style:normal;font-weight:500}
+.nav .links{display:flex;gap:28px;align-items:center;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.nav .links a.l{opacity:.75}
+.nav .links a.l:hover{opacity:1}
+.nav .btn{padding:11px 16px;font-size:11px}
+
+/* hero */
+.hero{min-height:100svh;background:var(--olive);color:var(--paper);display:grid;grid-template-columns:1.1fr 1fr;align-items:end;gap:clamp(24px,4vw,60px);padding:120px var(--pad) clamp(40px,7vh,80px);position:relative;overflow:hidden}
+.hero h1{font-size:clamp(46px,min(8.2vw,10.5svh),132px)}
+.hero h1 em{color:#e8a58f}
+.hero .lede{max-width:28em;color:#cfcbb6;margin:24px 0 30px}
+.hero .meta{display:flex;gap:30px;flex-wrap:wrap;font-family:var(--sans);font-size:13px;color:#a9a78f;margin-top:30px}
+.hero .meta b{display:block;color:var(--paper);font-weight:600;font-size:15px}
+.hero .pic{aspect-ratio:4/5;overflow:hidden;align-self:center;position:relative}
+.hero .pic::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(241,236,223,.18)}
+.novel{position:absolute;right:var(--pad);top:96px;font-family:var(--serif);font-style:italic;font-size:13px;color:#8e8c74;max-width:15em;text-align:right;line-height:1.4}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+section{position:relative}
+.wrap{padding:clamp(80px,11vw,150px) var(--pad)}
+
+/* philosophy */
+.phil{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(30px,6vw,100px)}
+.phil h2{font-size:clamp(40px,5.4vw,84px)}
+.phil p{color:var(--muted);max-width:34em}
+.phil p+p{margin-top:1em}
+.phil .first::first-letter{float:left;font-size:4.6em;line-height:.8;padding:.06em .12em 0 0;color:var(--tomato);font-weight:500}
+
+/* map */
+.mapsec{background:var(--paper-2);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:start}
+.mapsec .stick{position:sticky;top:90px}
+.mapsec h2{font-size:clamp(34px,min(4.2vw,7svh),66px);margin-bottom:12px}
+.mapsec .intro{color:var(--muted);max-width:28em;margin-bottom:10px}
+.map{width:auto;max-width:100%;height:calc(100svh - 300px);min-height:300px;max-height:640px;aspect-ratio:640/720;display:block}
+.map .land{fill:#d9d1b8;stroke:#bdb497;stroke-width:1}
+.map .isl{fill:#d9d1b8;stroke:#bdb497;stroke-width:.8}
+.map .place circle.dot{fill:var(--olive);transition:r .4s var(--ease),fill .4s}
+.map .place circle.halo{fill:var(--tomato);opacity:0;transition:opacity .4s}
+.map .place text{font-family:var(--sans);font-size:15px;font-weight:600;fill:var(--ink);opacity:.0;transition:opacity .4s;paint-order:stroke;stroke:#e7e0cd;stroke-width:4px}
+.map .place.on circle.dot{fill:var(--tomato)}
+.map .place.on circle.halo{opacity:.25;animation:halo 1.6s ease-out infinite}
+.map .place.on text{opacity:1}
+@keyframes halo{0%{r:6}100%{r:22;opacity:0}}
+.map .home circle{fill:var(--tomato)}
+.map .home text{font-family:var(--sans);font-size:13px;font-weight:600;fill:var(--tomato)}
+.map .arc{fill:none;stroke:var(--tomato);stroke-width:1.4;stroke-dasharray:4 5;opacity:.85}
+.mapnote{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:8px;min-height:1.6em}
+.mapnote b{color:var(--tomato)}
+
+.dishes{list-style:none}
+.dishes .grp{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:26px 0 8px}
+.dishes .grp:first-child{padding-top:0}
+.dish{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:14px 12px;margin:0 -12px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .3s}
+.dish:hover,.dish.on{background:rgba(196,71,44,.07)}
+.dish h3{font-weight:500;font-size:clamp(18px,1.5vw,21px);line-height:1.3}
+.dish p{grid-column:1;font-size:.88em;color:var(--muted);line-height:1.45}
+.dish .pr{grid-row:1;grid-column:2;font-family:var(--sans);font-weight:600;font-size:15px}
+.dish .tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.dish .tags span{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--tomato);background:rgba(196,71,44,.09);padding:3px 8px;border-radius:99px}
+.menunote{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:16px}
+
+/* table ritual */
+.ritual{background:var(--olive);color:var(--paper);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.ritual h2{font-size:clamp(42px,6vw,96px)}
+.ritual h2 em{color:#e8a58f}
+.ritual p{color:#cfcbb6;max-width:30em;margin-top:22px}
+.ritual .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ritual .pics figure{aspect-ratio:3/4;overflow:hidden}
+.ritual .pics figure:nth-child(2){margin-top:40px}
+
+/* wine */
+.wine{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.wine h2{font-size:clamp(42px,6vw,96px)}
+.wine p{color:var(--muted);max-width:30em;margin-top:20px}
+.glasses{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+.glass{text-align:center;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+.glass i{display:block;width:44px;height:58px;margin:0 auto 10px;border-radius:0 0 22px 22px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.glass i::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:var(--c);transition:height .8s var(--ease)}
+.glass:hover i::after{height:80%}
+.wine .pic{aspect-ratio:4/5;overflow:hidden}
+
+/* people */
+.people{background:var(--paper-2)}
+.people h2{font-size:clamp(42px,6vw,96px);margin-bottom:clamp(30px,5vw,60px)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px)}
+.person .pic{aspect-ratio:1;overflow:hidden;filter:grayscale(.25)}
+.person h3{font-weight:500;font-size:clamp(28px,2.6vw,38px);margin-top:18px}
+.person .role{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tomato)}
+.person p{color:var(--muted);margin-top:10px;max-width:30em}
+
+/* family */
+.family{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
+.family a{flex:1;min-width:240px;padding:22px;box-shadow:inset 0 0 0 1px var(--line);transition:background .3s}
+.family a:hover{background:var(--paper)}
+.family b{display:block;font-weight:500;font-size:22px}
+.family span{font-family:var(--sans);font-size:13px;color:var(--muted)}
+
+/* visit */
+.visit{background:var(--olive);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.visit h2{font-size:clamp(46px,7vw,110px)}
+.visit h2 em{color:#e8a58f}
+.facts{display:grid;gap:24px}
+.facts h4{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#a9a78f;margin-bottom:6px}
+.facts .big{font-size:clamp(24px,2.4vw,34px);line-height:1.15}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 22px;color:#cfcbb6}
+.hours dt{color:var(--paper)}
+.facts .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{background:var(--olive);color:#a9a78f;padding:30px var(--pad);border-top:1px solid #3e4430;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--sans);font-size:12px}
+footer a{color:var(--paper);border-bottom:1px solid #4e553c}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--tomato);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--sans);letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--tomato);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--sans);font-size:11px;font-weight:600;padding:8px 12px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--tomato);color:var(--tomato)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .hero,.phil,.mapsec,.ritual,.wine,.duo,.visit{grid-template-columns:1fr}
+  .hero{align-items:start;padding-top:96px}
+  .hero .pic{order:-1;aspect-ratio:16/11}
+  .novel{display:none}
+  .mapsec .stick{position:sticky;top:60px;z-index:3;background:var(--paper-2);padding-bottom:8px}
+  .mapsec .stick h2,.mapsec .stick .intro{display:none}
+  .map{height:auto;width:100%;max-width:300px;min-height:0;margin:0 auto}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:76px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("mm-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Μαιτρ και Μαργαρίτα"><b>Μαιτρ</b> & Μαργαρίτα</a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#xartis">Ο χάρτης</a>
+    <a class="l" href="#krasi">Κρασί</a>
+    <a class="l" href="#anthropoi">Οι άνθρωποι</a>
+    <a class="btn" href="#visit">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <div class="label rv in" style="color:#e8a58f">Wine bistro · Θεσσαλονίκη · από το 2015</div>
+      <h1 class="h rv in" style="margin-top:18px">Τολμηρή μαγειρική,<br><em>με αφοσίωση</em><br>στην πρώτη ύλη.</h1>
+      <p class="lede rv d1 in">Ένα αντισυμβατικό wine bistro: η δική μας εκδοχή της ελληνικής μπιστρονομίας, με τοπικά προϊόντα μαγειρεμένα με άποψη και σερβιρισμένα χωρίς τυπικότητες.</p>
+      <div class="rv d2 in" style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#visit">Κλείσε τραπέζι</a><a class="btn line" href="#xartis">Από πού έρχονται</a></div>
+      <div class="meta rv d2 in"><div><b>Φράγκων 3 & Σφέτσου</b>Θεσσαλονίκη</div><div><b>Από τις 14:00</b>Δευτέρα – Σάββατο</div></div>
+    </div>
+    <div class="pic rv in"><img src="https://images.unsplash.com/photo-1790612701505-bf9718f5b064?auto=format&fit=crop&w=900&h=1125&q=70" alt="Ράφια με κρασιά σε μικρό bistro" fetchpriority="high"></div>
+  </section>
+
+  <section class="wrap phil">
+    <div><div class="label rv">Η φιλοσοφία μας</div><h2 class="h rv d1" style="margin-top:14px">Η πρώτη ύλη<br><em>πρωταγωνιστεί</em></h2></div>
+    <div>
+      <p class="first rv">Διαλέγουμε τις πρώτες ύλες σαν να τις καλλιεργούσαμε εμείς. Ψάχνουμε τα νέα της ελληνικής γης και του ελληνικού αμπελώνα απ' άκρη σε άκρη και τα φέρνουμε στο τραπέζι με τολμηρούς συνδυασμούς.</p>
+      <p class="rv d1">Εποχικά προϊόντα, μικροί παραγωγοί, κάθε υλικό αξιοποιημένο με σεβασμό. Το μενού αλλάζει ανάλογα με το τι μας δίνει η αγορά, και οι παραγωγοί μας είναι κομμάτι κάθε πιάτου.</p>
+    </div>
+  </section>
+
+  <!-- THE MAP -->
+  <section class="wrap mapsec" id="xartis">
+    <div class="stick">
+      <div class="label rv">Ο χάρτης της πρώτης ύλης</div>
+      <h2 class="h rv d1" style="margin-top:14px">Από την Κάσο<br><em>ως τη Σαμοθράκη</em></h2>
+      <p class="intro rv d1">Διάλεξε ένα πιάτο και δες από πού έρχονται τα υλικά του.</p>
+      <svg class="map rv" id="map" viewBox="0 0 640 720" role="img" aria-label="Χάρτης της Ελλάδας με τους τόπους των υλικών"></svg>
+      <div class="mapnote" id="mapnote">Γαλακτοκομικά από την Ιθάκη ως τα Γρεβενά, ζυμαρικά από Χίο και Σέρρες, κρέας από Κομοτηνή και Χαλκιδική, ψάρι από την Ιχθυόσκαλα.</div>
+    </div>
+    <div>
+      <ul class="dishes" id="dishes">
+        <li class="grp">Για αρχή</li>
+        <li class="dish" data-p="naxos,crete"><h3>Τηγανιτή πατάτα Νάξου</h3><span class="pr">6,80</span><p>ξηρός ανθότυρος</p></li>
+        <li class="dish" data-p="tinos,florina"><h3>Λαχματζούν με «κιμά» μανιταριών</h3><span class="pr">9,80</span><p>καρίκι Τήνου, κρέμα Φλωρίνης</p></li>
+        <li class="dish" data-p="kasos,thrace"><h3>Αλμυρό θρακιώτικο «σαραγλί»</h3><span class="pr">9,80</span><p>μοσχαρίσιος κιμάς, γραβιέρα Κάσου, καυτερό μέλι σε ζύμωση</p></li>
+        <li class="dish" data-p="lemnos"><h3>Μελίχλωρο Λήμνου</h3><span class="pr">9,00</span><p>παναρισμένο σε στραγάλια, chutney κάπαρης-λιαστής ντομάτας</p></li>
+        <li class="dish" data-p="aegina"><h3>Πολίτικο κιουνεφέ</h3><span class="pr">9,80</span><p>σολογούνι, φιστίκια Αιγίνης, σιρόπι από θρούμπι και τζίντζερ</p></li>
+        <li class="grp">Σαλάτες & τυριά</li>
+        <li class="dish" data-p="knossos"><h3>Σαλάτα ντοματίνια</h3><span class="pr">11,50</span><p>ντομάτα, αγγουράκι Κνωσού, χαρούπι, πίκλα κρεμμύδι, ελιά, φέτα</p></li>
+        <li class="dish" data-p="samothrace,chalkidiki,crete,naxos,syros"><h3>Ποικιλία τυριών</h3><span class="pr">13,00</span><p>ξηροτύρι Σαμοθράκης, γραβιέρα Χαλκιδικής, ανθότυρος Κρήτης, αρσενικό Νάξου, κατσικίσια γραβιέρα Σύρου</p></li>
+        <li class="grp">Από τη θάλασσα</li>
+        <li class="dish" data-p="fishmarket"><h3>Ceviche από ψάρι ημέρας</h3><span class="pr">18,50</span><p>ταραμάς, λάδι εσπεριδοειδών</p></li>
+        <li class="dish" data-p="fishmarket"><h3>Χταποδοκεφτέδες στο τηγάνι</h3><span class="pr">16,80</span><p>τζατζίκι κολοκύθι, τηγανητοί γίγαντες</p></li>
+        <li class="grp">Κυρίως</li>
+        <li class="dish" data-p="florina"><h3>Χειροποίητα μαντί</h3><span class="pr">16,30</span><p>μοσχαρίσιος & πρόβειος κιμάς, σάλτσα πιπεριάς Φλωρίνης, ξηρή μυζήθρα</p></li>
+        <li class="dish" data-p="komotini,chalkidiki"><h3>Σιγομαγειρεμένη πανσέτα</h3><span class="pr">19,50</span><p>κρέμα μελιτζάνας, πίκλα σινάπι</p></li>
+        <li class="dish" data-p="komotini,chalkidiki"><h3>Μοσχαρίσιο χτένι σχάρας</h3><span class="pr">28,50</span><p>χειροποίητη πάπρικα, τηγανιτή γλυκοπατάτα</p></li>
+      </ul>
+      <p class="menunote ph" data-note="Μενού Μαΐου 2026 από το PDF τους. Οι τόποι κρέατος είναι από τη σελίδα «Our materials» (Κομοτηνή & Χαλκιδική), όχι ανά πιάτο: να επιβεβαιωθεί">Από το μενού. Το μενού αλλάζει με την εποχή. Τιμές σε ευρώ.</p>
+    </div>
+  </section>
+
+  <!-- SHARED TABLE -->
+  <section class="wrap ritual">
+    <div>
+      <div class="label rv" style="color:#e8a58f">Στη μέση του τραπεζιού</div>
+      <h2 class="h rv d1" style="margin-top:14px">Το φαγητό<br><em>μοιράζεται</em></h2>
+      <p class="rv d1">Προτείνουμε να σερβίρουμε τα πιάτα στη μέση του τραπεζιού. Να ξαναθυμηθούμε την τελετουργία του κοινού τραπεζώματος και τη φροντίδα που κρύβεται στο μοίρασμα.</p>
+    </div>
+    <div class="pics">
+      <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1653611540493-b3a896319fbf?auto=format&fit=crop&w=600&h=800&q=70" alt="Πολλά μικρά πιάτα στη μέση του τραπεζιού"></figure>
+      <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1553653760-d787a53b4bbe?auto=format&fit=crop&w=600&h=800&q=70" alt="Τυριά και κρασί"></figure>
+    </div>
+  </section>
+
+  <!-- WINE -->
+  <section class="wrap wine" id="krasi">
+    <div>
+      <div class="label rv">Περιπλάνηση στον ελληνικό αμπελώνα</div>
+      <h2 class="h rv d1" style="margin-top:14px">Κρασιά που<br><em>δύσκολα συναντάς</em></h2>
+      <p class="rv d1">Μεγάλη λίστα που επιμελούμαστε κάθε μέρα, με μικρά οινοποιεία από όλη την Ελλάδα. Ετικέτες γνωστές και άγνωστες, φυσικά, orange και βιοδυναμικά κρασιά, για πειραματισμούς και για κλασικές απολαύσεις.</p>
+      <div class="glasses rv d2">
+        <div class="glass" style="--c:#ead79a"><i></i>Λευκά</div>
+        <div class="glass" style="--c:#e3a35a"><i></i>Orange</div>
+        <div class="glass" style="--c:#e8a0a0"><i></i>Ροζέ</div>
+        <div class="glass" style="--c:#7b1f2a"><i></i>Ερυθρά</div>
+      </div>
+    </div>
+    <div class="pic rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1770390809732-87e04237d81c?auto=format&fit=crop&w=900&h=1125&q=70" alt="Κρασί που σερβίρεται σε ποτήρι"></div>
+  </section>
+
+  <!-- PEOPLE -->
+  <section class="wrap people" id="anthropoi">
+    <div class="label rv">Οι άνθρωποι</div>
+    <h2 class="h rv d1" style="margin-top:14px">Η κουζίνα<br><em>και το κελάρι</em></h2>
+    <div class="duo">
+      <article class="person rv">
+        <div class="pic ph" data-note="Πορτρέτο του σεφ"><img loading="lazy" src="https://images.unsplash.com/photo-1638612833646-34eecc16f3f1?auto=format&fit=crop&w=800&h=800&q=70" alt="Πιάτο από την κουζίνα"></div>
+        <div class="role" style="margin-top:18px">Σεφ</div><h3>Σωκράτης Μπεληγιάννης</h3>
+        <p>Με οδηγό το βίωμα και τη γευστική μνήμη, φέρνει στο πιάτο τη δική του ματιά στην ελληνική κουζίνα.</p>
+      </article>
+      <article class="person rv d1">
+        <div class="pic ph" data-note="Πορτρέτο της οινοχόου"><img loading="lazy" src="https://images.unsplash.com/photo-1723713297155-12f305c78462?auto=format&fit=crop&w=800&h=800&q=70" alt="Ποτήρια κρασιού στο μπαρ"></div>
+        <div class="role" style="margin-top:18px">Οινοχόος</div><h3>Ρόη Αποίκου</h3>
+        <p>Επιλέγει τα κρασιά και προτείνει συνδυασμούς, από ασυνήθιστους πειραματισμούς μέχρι κλασικές απολαύσεις.</p>
+      </article>
+    </div>
+    <div class="family rv">
+      <a href="https://www.instagram.com/maitrmargarita.santorini/" target="_blank" rel="noopener"><b>Μαιτρ & Μαργαρίτα Santorini</b><span>Η αδερφή κουζίνα μας στη Σαντορίνη ↗</span></a>
+      <a href="https://www.instagram.com/poster_thessaloniki/" target="_blank" rel="noopener"><b>Poster</b><span>Η οικογένεια στη Θεσσαλονίκη ↗</span></a>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="wrap visit" id="visit">
+    <div>
+      <div class="label rv" style="color:#e8a58f">Κράτηση</div>
+      <h2 class="h rv d1" style="margin-top:14px">Ένα τραπέζι<br><em>για να μοιραστούμε</em></h2>
+    </div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">Φράγκων 3 & Σφέτσου<br>546 26 Θεσσαλονίκη</div></div>
+      <div class="rv"><h4>Ωράριο</h4><dl class="hours"><dt>Δευτέρα – Πέμπτη</dt><dd>14:00 – 00:00</dd><dt>Παρασκευή – Σάββατο</dt><dd>14:00 – 01:00</dd><dt>Κυριακή</dt><dd class="ph" data-note="Κυριακή: δεν αναφέρεται στο site τους">—</dd></dl></div>
+      <div class="rv"><h4>Τηλέφωνο</h4><a class="big" href="tel:+302314007586">231 400 7586</a></div>
+      <div class="rv acts">
+        <a class="btn" href="tel:+302314007586">Κλήση για κράτηση</a>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Maitr+Margarita+Thessaloniki" target="_blank" rel="noopener">Χάρτης</a>
+        <a class="btn line" href="https://www.instagram.com/maitr.margarita/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Μαιτρ και Μαργαρίτα</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="#xartis" style="background:var(--paper);color:var(--ink)">Μενού</a><a class="btn" href="tel:+302314007586">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+
+  // A simplified map of Greece in lon/lat, projected onto a 640x720 box.
+  const P = ([lon, lat]) => [((lon - 19.5) * 78).toFixed(1), ((41.9 - lat) * 100).toFixed(1)];
+  const poly = pts => "M" + pts.map(p => P(p).join(" ")).join("L") + "Z";
+  const mainland = [[20.0,39.7],[20.2,39.4],[20.7,39.0],[21.1,38.8],[21.0,38.4],[21.4,38.35],[21.9,38.35],[22.5,38.15],[23.1,38.0],[23.6,38.0],[24.0,37.65],[24.05,38.15],[23.6,38.4],[22.9,38.75],[22.6,38.95],[23.2,39.1],[23.3,39.4],[22.7,39.6],[22.6,40.0],[22.55,40.5],[22.95,40.6],[23.0,40.3],[23.3,39.95],[23.5,40.2],[23.7,40.0],[23.8,40.2],[24.4,40.15],[24.0,40.5],[23.9,40.75],[24.4,40.9],[25.0,40.95],[25.9,40.85],[26.3,40.95],[26.6,41.6],[26.2,41.7],[25.3,41.55],[24.5,41.55],[23.6,41.4],[22.9,41.35],[22.3,41.15],[21.0,40.85],[20.7,40.4],[20.2,40.0]];
+  const pelop = [[21.75,38.2],[22.5,38.1],[23.1,37.95],[23.15,37.6],[22.8,37.5],[23.0,36.95],[22.9,36.45],[22.45,36.45],[22.4,36.75],[22.1,36.9],[21.9,36.75],[21.7,36.85],[21.65,37.3],[21.3,37.6],[21.1,37.85],[21.35,38.15]];
+  const crete = [[23.5,35.3],[24.0,35.55],[25.0,35.35],[26.3,35.3],[26.2,35.0],[25.0,35.0],[24.0,35.2],[23.55,35.25]];
+  const evia = [[22.85,38.85],[23.4,38.6],[24.1,38.2],[24.55,37.98],[24.2,38.4],[23.6,38.95],[23.0,39.0]];
+  const islands = [[20.7,38.37,7],[20.6,38.2,9],[25.45,37.08,9],[25.2,39.9,8],[25.55,40.47,6],[24.92,37.45,5],[26.92,35.4,5],[25.16,37.58,6],[23.45,37.73,5],[26.0,38.4,10],[26.3,39.2,12],[24.6,40.7,7],[27.2,36.85,6],[28.0,36.2,9],[24.4,36.75,5],[25.4,36.4,7]];
+  const places = {
+    ithaca: { n: "Ιθάκη", c: [20.7,38.37], what: "γαλακτοκομικά" },
+    grevena: { n: "Γρεβενά", c: [21.43,40.08], what: "γαλακτοκομικά" },
+    chios: { n: "Χίος", c: [26.0,38.37], what: "ζυμαρικά" },
+    serres: { n: "Σέρρες", c: [23.55,41.09], what: "ζυμαρικά" },
+    komotini: { n: "Κομοτηνή", c: [25.4,41.12], what: "κρέας" },
+    thrace: { n: "Θράκη", c: [25.9,41.2], what: "σαραγλί" },
+    chalkidiki: { n: "Χαλκιδική", c: [23.45,40.2], what: "κρέας, γραβιέρα" },
+    naxos: { n: "Νάξος", c: [25.45,37.08], what: "πατάτα, αρσενικό" },
+    lemnos: { n: "Λήμνος", c: [25.2,39.9], what: "μελίχλωρο" },
+    samothrace: { n: "Σαμοθράκη", c: [25.55,40.47], what: "ξηροτύρι" },
+    syros: { n: "Σύρος", c: [24.92,37.45], what: "κατσικίσια γραβιέρα" },
+    kasos: { n: "Κάσος", c: [26.92,35.4], what: "γραβιέρα" },
+    tinos: { n: "Τήνος", c: [25.16,37.58], what: "καρίκι" },
+    aegina: { n: "Αίγινα", c: [23.45,37.73], what: "φιστίκι" },
+    florina: { n: "Φλώρινα", c: [21.4,40.78], what: "πιπεριές" },
+    knossos: { n: "Κνωσός", c: [25.16,35.3], what: "αγγουράκι" },
+    crete: { n: "Κρήτη", c: [24.3,35.3], what: "ανθότυρος" },
+    fishmarket: { n: "Ιχθυόσκαλα", c: [22.9,40.66], what: "ψάρι ημέρας" },
+  };
+  const home = P([22.94, 40.64]);
+  const map = document.getElementById("map");
+  let svg = `<path class="land" d="${poly(mainland)}"/><path class="land" d="${poly(pelop)}"/><path class="land" d="${poly(crete)}"/><path class="land" d="${poly(evia)}"/>`;
+  islands.forEach(([lo, la, r]) => { const [x, y] = P([lo, la]); svg += `<ellipse class="isl" cx="${x}" cy="${y}" rx="${r}" ry="${r * .7}"/>`; });
+  svg += `<g id="arcs"></g>`;
+  for (const [k, p] of Object.entries(places)) {
+    const [x, y] = P(p.c), left = x > 470;
+    svg += `<g class="place" data-k="${k}"><circle class="halo" cx="${x}" cy="${y}" r="6"/><circle class="dot" cx="${x}" cy="${y}" r="4"/><text x="${left ? x - 10 : +x + 10}" y="${+y + 5}" text-anchor="${left ? "end" : "start"}">${p.n}</text></g>`;
+  }
+  svg += `<g class="home"><circle cx="${home[0]}" cy="${home[1]}" r="6"/><text x="${+home[0] - 10}" y="${+home[1] - 12}" text-anchor="end">Μαιτρ & Μαργαρίτα</text></g>`;
+  map.innerHTML = svg;
+  const arcs = document.getElementById("arcs"), note = document.getElementById("mapnote"), defaultNote = note.innerHTML;
+  const light = (keys) => {
+    map.querySelectorAll(".place").forEach(g => g.classList.toggle("on", keys.includes(g.dataset.k)));
+    arcs.innerHTML = keys.map(k => { const [x, y] = P(places[k].c), mx = (+x + +home[0]) / 2, my = Math.min(+y, +home[1]) - 60; return `<path class="arc" d="M${home[0]} ${home[1]} Q${mx} ${my} ${x} ${y}"/>`; }).join("");
+    note.innerHTML = keys.length ? keys.map(k => `<b>${places[k].n}</b> · ${places[k].what}`).join(" &nbsp; ") : defaultNote;
+  };
+  document.querySelectorAll(".dish").forEach(d => {
+    const keys = d.dataset.p.split(",");
+    d.addEventListener("mouseenter", () => { document.querySelectorAll(".dish.on").forEach(x => x.classList.remove("on")); d.classList.add("on"); light(keys); });
+    d.addEventListener("click", () => { document.querySelectorAll(".dish.on").forEach(x => x.classList.remove("on")); d.classList.add("on"); light(keys); });
+    d.insertAdjacentHTML("beforeend", `<div class="tags">${keys.map(k => `<span>${places[k].n}</span>`).join("")}</div>`);
+  });
+  document.getElementById("dishes").addEventListener("mouseleave", () => { document.querySelectorAll(".dish.on").forEach(x => x.classList.remove("on")); light([]); });
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > innerHeight * .8); mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("mm-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
