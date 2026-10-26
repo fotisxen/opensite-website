@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f4eee6">
+<title>GB Pilates Club — George Bramos · Θεσσαλονίκη</title>
+<meta name="description" content="Strong body. Stronger mindset. 1:1 Pilates σε Reformer, Cadillac και άλλα όργανα, στη Θεσσαλονίκη.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1747238415033-b74eec07eb59?auto=format&fit=crop&w=1000&h=1300&q=70">
+<link href="https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@0,200;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for GB Pilates Club (George Bramos), Thessaloniki.
+  The breathing circle sets the rhythm: 4s inhale, 4s exhale.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy to confirm
+  (toggle with "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --paper:#f4eee6;
+  --cream:#ebe2d6;
+  --sand:#d8c7b3;
+  --wine:#6d1a22;
+  --wine-2:#8c2a31;
+  --ink:#2a1b1b;
+  --soft:#7a6660;
+  --line:#ddd0c1;
+  --font:"Ysabeau",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,80px);
+  --ease:cubic-bezier(.4,.1,.2,1);
+  --breath:8s;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-weight:300;font-size:clamp(17px,.45vw + 15px,20px);line-height:1.6;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.display{font-weight:200;line-height:1;letter-spacing:-.02em}
+.display b{font-weight:600;color:var(--wine)}
+.display em{font-style:italic;font-weight:300}
+.label{font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--wine)}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;background:var(--wine);color:var(--paper);font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transition:background .4s}
+.btn:hover{background:var(--wine-2)}
+.btn.line{background:transparent;color:var(--wine);box-shadow:inset 0 0 0 1px var(--wine)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:rgba(244,238,230,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.mark{display:flex;align-items:center;gap:12px}
+.mark svg{width:40px;height:40px}
+.mark span{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;line-height:1.3;color:var(--wine)}
+.nav .links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.nav .links a.l{color:var(--soft)}
+.nav .links a.l:hover{color:var(--wine)}
+.nav .btn{padding:12px 18px;font-size:11px}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center;padding:110px var(--pad) 60px}
+.hero h1{font-size:clamp(56px,8.4vw,136px)}
+.hero p{font-size:clamp(18px,1.5vw,22px);color:var(--soft);max-width:26em;margin:26px 0 34px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden;max-width:520px;width:100%;justify-self:center}
+.arch img{transform:scale(1.04);animation:breathe-img var(--breath) var(--ease) infinite}
+@keyframes breathe-img{0%,100%{transform:scale(1.04)}50%{transform:scale(1.09)}}
+
+/* breathing circle */
+.breath{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);width:132px;height:132px;display:grid;place-items:center;pointer-events:none}
+.breath .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(244,238,230,.9);animation:breathe var(--breath) var(--ease) infinite}
+.breath .ring:nth-child(2){inset:18%;border-color:rgba(244,238,230,.5);animation-delay:.2s}
+.breath .core{width:42%;height:42%;border-radius:50%;background:rgba(109,26,34,.88);animation:breathe var(--breath) var(--ease) infinite}
+.breath .word{position:absolute;top:calc(100% + 8px);font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--paper);text-shadow:0 1px 10px rgba(0,0,0,.4)}
+@keyframes breathe{0%,100%{transform:scale(.62);opacity:.7}50%{transform:scale(1);opacity:1}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1.2s ease,transform 1.2s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.15s}.rv.d2{transition-delay:.3s}
+
+section{position:relative}
+.wrap{padding:clamp(90px,12vw,170px) var(--pad)}
+
+/* manifesto */
+.manifesto{background:var(--wine);color:var(--paper);text-align:center}
+.manifesto .label{color:var(--sand)}
+.manifesto p.big{font-weight:200;font-size:clamp(30px,4.4vw,64px);line-height:1.18;max-width:20em;margin:26px auto 0}
+.manifesto p.big b{font-weight:600}
+.manifesto .w{opacity:.18;transition:opacity .5s}
+.manifesto .w.on{opacity:1}
+
+/* 1:1 */
+.one{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px);align-items:center}
+.one .num{font-weight:200;font-size:clamp(130px,22vw,320px);line-height:.8;color:var(--wine);letter-spacing:-.06em}
+.one h2{font-size:clamp(40px,5vw,72px);margin:18px 0 24px}
+.one p{color:var(--soft);max-width:30em}
+.one ul{list-style:none;margin-top:28px}
+.one li{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.one li span{font-weight:600;color:var(--wine);min-width:28px}
+
+/* apparatus */
+.app{background:var(--cream)}
+.app .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,5vw,56px)}
+.app h2{font-size:clamp(46px,7vw,110px)}
+.app .head p{color:var(--soft);max-width:24em}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px}
+.tabs button{padding:12px 20px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);box-shadow:inset 0 0 0 1px var(--sand);transition:all .4s}
+.tabs button[aria-selected="true"]{background:var(--wine);color:var(--paper);box-shadow:none}
+.panel{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.panel .pic{aspect-ratio:5/4;overflow:hidden;position:relative;background:var(--sand)}
+.panel .pic img{position:absolute;inset:0;opacity:0;transition:opacity .9s ease,transform 1.6s var(--ease);transform:scale(1.04)}
+.panel .pic img.on{opacity:1;transform:none}
+.panel .copy h3{font-weight:200;font-size:clamp(46px,5.4vw,84px);line-height:1;color:var(--wine)}
+.panel .copy p{color:var(--soft);margin:18px 0 22px;max-width:28em;min-height:5.6em}
+.panel .copy dl{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:.95em}
+.panel .copy dt{font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--wine);padding-top:3px}
+.panel .copy dd{color:var(--ink)}
+.line-art{height:70px;margin-top:26px}
+.line-art path,.line-art rect,.line-art line,.line-art circle{fill:none;stroke:var(--wine);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* steps */
+.steps .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(36px,5vw,60px)}
+.steps h2{font-size:clamp(46px,7vw,110px)}
+.step{border-top:1px solid var(--wine);padding-top:22px}
+.step b{font-weight:200;font-size:56px;line-height:1;color:var(--wine)}
+.step h3{font-weight:600;font-size:22px;margin:12px 0 8px}
+.step p{color:var(--soft)}
+
+/* founder */
+.founder{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,100px);align-items:center;background:var(--ink);color:var(--paper)}
+.founder .pic{aspect-ratio:4/5;overflow:hidden;border-radius:0 0 999px 999px}
+.founder .pic img{filter:grayscale(.3) contrast(1.05)}
+.founder .label{color:var(--sand)}
+.founder h2{font-size:clamp(46px,6.4vw,100px);margin:18px 0 24px}
+.founder p{color:#cdbfb5;max-width:30em}
+.founder blockquote{margin-top:30px;padding-left:24px;border-left:1px solid var(--sand);font-style:italic;font-size:clamp(22px,2vw,30px);line-height:1.35;color:var(--paper)}
+
+/* policy faq */
+.faq{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(30px,5vw,80px)}
+.faq h2{font-size:clamp(40px,5.4vw,84px)}
+.faq details{border-top:1px solid var(--line);padding:22px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:400;font-size:clamp(19px,1.6vw,23px)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{font-style:normal;color:var(--wine);transition:transform .4s var(--ease)}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq details p{color:var(--soft);margin-top:12px;max-width:34em}
+
+/* book */
+.book{background:var(--cream);display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px)}
+.book h2{font-size:clamp(50px,7.4vw,118px)}
+.book .info{margin-top:30px;display:grid;gap:22px}
+.book h4{font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--wine);margin-bottom:6px}
+.book .big{font-weight:300;font-size:clamp(24px,2.4vw,34px);line-height:1.2}
+.form{background:var(--paper);padding:clamp(24px,3.4vw,44px)}
+.form .lbl{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin:22px 0 12px}
+.form .lbl:first-child{margin-top:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{padding:11px 16px;font-size:15px;box-shadow:inset 0 0 0 1px var(--sand);transition:all .3s}
+.opts button small{display:block;font-size:11px;letter-spacing:.06em;color:var(--soft)}
+.opts button[aria-pressed="true"]{background:var(--wine);color:var(--paper);box-shadow:none}
+.opts button[aria-pressed="true"] small{color:var(--sand)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.form input{width:100%;border:0;border-bottom:1px solid var(--sand);background:transparent;font:inherit;font-size:17px;padding:10px 0;color:var(--ink);outline:none;border-radius:0}
+.form input:focus{border-color:var(--wine)}
+.form .btn{width:100%;justify-content:center;margin-top:26px}
+.form .done{display:none;text-align:center;padding:30px 0}
+.form .done .display{font-size:56px;color:var(--wine);margin:10px 0}
+.form.sent form{display:none}.form.sent .done{display:block}
+
+footer{padding:40px var(--pad) 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--soft);border-top:1px solid var(--line)}
+footer .tag{font-weight:200;font-size:clamp(24px,3vw,38px);color:var(--wine)}
+footer a{border-bottom:1px solid var(--line)}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--wine-2);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--font);letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--wine-2);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-size:11px;font-weight:600;letter-spacing:.1em;padding:8px 12px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--sand);color:var(--soft)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--wine);color:var(--wine)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l{display:none}
+  .mark span{display:none}
+  .hero,.one,.panel,.founder,.faq,.book{grid-template-columns:1fr}
+  .hero{padding-top:96px}
+  .hero .arch{order:-1;max-width:380px}
+  .steps .grid{grid-template-columns:1fr}
+  .founder .pic{max-width:380px}
+  .panel .copy p{min-height:0}
+  .form .row{grid-template-columns:1fr}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:76px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("gb-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="mark" aria-label="GB Pilates Club">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M18 8H6v24h12V20h-6" fill="none" stroke="#6d1a22" stroke-width="2.4"/><path d="M22 8h12v8h-6m6 0v16H22V8" fill="none" stroke="#6d1a22" stroke-width="2.4"/></svg>
+    <span>George Bramos<br>Pilates Club</span>
+  </a>
+  <nav class="links" aria-label="Μενού">
+    <a class="l" href="#one">1:1</a>
+    <a class="l" href="#app">Όργανα</a>
+    <a class="l" href="#founder">George</a>
+    <a class="l" href="#faq">Πολιτική</a>
+    <a class="btn" href="#book">Κλείσε συνεδρία</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="label rv in">1:1 Pilates · Θεσσαλονίκη</div>
+      <h1 class="display rv in" style="margin-top:18px">Strong body.<br><b>Stronger</b> <em>mindset.</em></h1>
+      <p class="rv d1 in">Ιδιωτικές συνεδρίες Pilates σε Reformer, Cadillac και όχι μόνο. Ένας εκπαιδευτής, ένας άνθρωπος, ένα πρόγραμμα φτιαγμένο γύρω από σένα.</p>
+      <div class="actions rv d2 in">
+        <a class="btn" href="#book">Κλείσε την πρώτη σου συνεδρία</a>
+        <a class="btn line" href="#app">Τα όργανα</a>
+      </div>
+    </div>
+    <div class="arch rv in">
+      <img src="https://images.unsplash.com/photo-1747238415033-b74eec07eb59?auto=format&fit=crop&w=1000&h=1300&q=70" alt="Άσκηση Pilates σε φωτεινό studio με καμάρες" fetchpriority="high">
+      <div class="breath" aria-hidden="true"><span class="ring"></span><span class="ring"></span><span class="core"></span><span class="word" id="bw">εισπνοή</span></div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO: the words light up one by one as you scroll -->
+  <section class="manifesto wrap">
+    <div class="label rv">Η φιλοσοφία μας</div>
+    <p class="big" id="manifesto">Το Pilates δεν είναι μόνο κίνηση. Είναι <b>έλεγχος</b>, <b>αναπνοή</b> και <b>συγκέντρωση</b>. Δυναμώνουμε το σώμα από το κέντρο του, για να μπορεί να σε κρατήσει, σε όλα όσα κάνεις.</p>
+  </section>
+
+  <!-- 1:1 -->
+  <section class="wrap one" id="one">
+    <div class="num rv">1:1</div>
+    <div>
+      <div class="label rv">Ιδιωτικές συνεδρίες</div>
+      <h2 class="display rv d1">Όλη η προσοχή,<br><em>σε σένα.</em></h2>
+      <p class="rv d1">Στο GB Pilates Club κάθε συνεδρία είναι προσωπική. Ξεκινάμε από εκεί που βρίσκεσαι, προσέχουμε κάθε επανάληψη και προχωράμε με τον δικό σου ρυθμό.</p>
+      <ul class="rv d2">
+        <li><span>01</span>Πρόγραμμα φτιαγμένο για το σώμα και τον στόχο σου</li>
+        <li><span>02</span>Διόρθωση σε κάθε κίνηση, σε πραγματικό χρόνο</li>
+        <li><span>03</span>Πρόοδος που την παρακολουθούμε μαζί, συνεδρία με συνεδρία</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- APPARATUS -->
+  <section class="wrap app" id="app">
+    <div class="head">
+      <div><div class="label rv">Τα όργανα</div><h2 class="display rv d1" style="margin-top:14px">Reformer, Cadillac<br><em>& more</em></h2></div>
+      <p class="rv d1">Κάθε όργανο δουλεύει το σώμα με διαφορετικό τρόπο. Διάλεξε για να δεις τι κάνει.</p>
+    </div>
+    <div class="tabs rv" role="tablist" id="tabs">
+      <button role="tab" aria-selected="true" data-k="reformer">Reformer</button>
+      <button role="tab" aria-selected="false" data-k="cadillac">Cadillac</button>
+      <button role="tab" aria-selected="false" data-k="chair">Chair</button>
+      <button role="tab" aria-selected="false" data-k="mat">Mat</button>
+    </div>
+    <div class="panel rv d1">
+      <div class="pic" id="apPics">
+        <img class="on" data-k="reformer" loading="lazy" src="https://images.unsplash.com/photo-1747240549807-fc3962949818?auto=format&fit=crop&w=1100&h=880&q=70" alt="Άσκηση σε Reformer">
+        <img data-k="cadillac" loading="lazy" src="https://images.unsplash.com/photo-1747239202356-764770773c9a?auto=format&fit=crop&w=1100&h=880&q=70" alt="Διάταση σε studio Pilates">
+        <img data-k="chair" loading="lazy" src="https://images.unsplash.com/photo-1783841193384-4269c68aa050?auto=format&fit=crop&w=1100&h=880&q=70" alt="Άσκηση ισορροπίας Pilates">
+        <img data-k="mat" loading="lazy" src="https://images.unsplash.com/photo-1591258370814-01609b341790?auto=format&fit=crop&w=1100&h=880&q=70" alt="Άσκηση Pilates στο στρώμα">
+      </div>
+      <div class="copy" aria-live="polite">
+        <h3 id="apName">Reformer</h3>
+        <p id="apText"></p>
+        <dl id="apFacts"></dl>
+        <svg class="line-art" id="apArt" viewBox="0 0 260 70" aria-hidden="true"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO START -->
+  <section class="wrap steps">
+    <div class="label rv">Πώς ξεκινάς</div>
+    <h2 class="display rv d1" style="margin-top:14px">Τρία βήματα,<br><em>ένας ρυθμός.</em></h2>
+    <div class="grid">
+      <div class="step rv"><b>01</b><h3>Γνωριμία</h3><p>Μιλάμε για το ιστορικό, τους στόχους και το πώς νιώθει το σώμα σου σήμερα.</p></div>
+      <div class="step rv d1"><b>02</b><h3>Το πρόγραμμά σου</h3><p>Διαλέγουμε όργανα και ασκήσεις που σου ταιριάζουν, με την κατάλληλη ένταση.</p></div>
+      <div class="step rv d2"><b>03</b><h3>Συνέπεια</h3><p>Τακτικές συνεδρίες και σταθερή πρόοδος. Δυνατό σώμα, πιο δυνατό μυαλό.</p></div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="wrap founder" id="founder">
+    <div class="pic rv ph" data-note="Placeholder: πορτρέτο του George στο studio"><img loading="lazy" src="https://images.unsplash.com/photo-1771270786606-f5a0e57db762?auto=format&fit=crop&w=900&h=1125&q=70" alt="Εξοπλισμός Pilates στον τοίχο του studio"></div>
+    <div>
+      <div class="label rv">Ο ιδρυτής</div>
+      <h2 class="display rv d1">George<br><em>Bramos</em></h2>
+      <p class="rv d1 ph" data-note="Βιογραφικό & πιστοποιήσεις: να τα δώσει ο George">Εδώ μπαίνει η ιστορία του George: πώς ξεκίνησε, οι πιστοποιήσεις του, και γιατί άνοιξε ένα studio αφιερωμένο στο 1:1 Pilates.</p>
+      <blockquote class="rv d2 ph" data-note="Placeholder: μια φράση του ίδιου">«Μια φράση του George για το τι σημαίνει "stronger mindset".»</blockquote>
+    </div>
+  </section>
+
+  <!-- POLICY / FAQ -->
+  <section class="wrap faq" id="faq">
+    <div>
+      <div class="label rv">Terms of operation</div>
+      <h2 class="display rv d1" style="margin-top:14px">Καλό είναι<br><em>να ξέρεις</em></h2>
+    </div>
+    <div class="rv d1 ph" data-note="Απαντήσεις από το Terms of Operation & Training Policy του studio: να τις δώσει το GB">
+      <details open><summary>Είναι η πρώτη μου φορά. Μπορώ να ξεκινήσω;<i>+</i></summary><p>Φυσικά. Οι 1:1 συνεδρίες είναι ο καλύτερος τρόπος να ξεκινήσεις, γιατί όλα προσαρμόζονται σε σένα από την πρώτη μέρα.</p></details>
+      <details><summary>Τι να φέρω;<i>+</i></summary><p>Άνετα ρούχα που σου επιτρέπουν να κινείσαι, κάλτσες με αντιολισθητική σόλα και νερό.</p></details>
+      <details><summary>Πώς ακυρώνω ή αλλάζω ραντεβού;<i>+</i></summary><p>Εδώ μπαίνει η πολιτική ακυρώσεων του studio (π.χ. πόσες ώρες πριν).</p></details>
+      <details><summary>Υπάρχουν πακέτα συνεδριών;<i>+</i></summary><p>Εδώ μπαίνουν τα πακέτα και οι τιμές, αν θέλετε να φαίνονται στο site.</p></details>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="wrap book" id="book">
+    <div>
+      <div class="label rv">Κράτηση</div>
+      <h2 class="display rv d1" style="margin-top:14px">Η πρώτη σου<br><em>συνεδρία.</em></h2>
+      <div class="info">
+        <div class="rv ph" data-note="Διεύθυνση studio: να τη δώσει το GB"><h4>Studio</h4><div class="big">Διεύθυνση studio<br>Θεσσαλονίκη</div></div>
+        <div class="rv ph" data-note="Τηλέφωνο & email: να τα δώσει το GB"><h4>Επικοινωνία</h4><div class="big">Τηλέφωνο · email</div></div>
+        <div class="rv"><h4>Instagram</h4><a class="big" href="https://www.instagram.com/gbpilatesclub/" target="_blank" rel="noopener">@gbpilatesclub</a></div>
+      </div>
+    </div>
+    <div class="form rv d1" id="form">
+      <form id="bookForm" novalidate>
+        <div class="lbl">Τύπος συνεδρίας</div>
+        <div class="opts" id="types"></div>
+        <div class="lbl">Ημέρα</div>
+        <div class="opts" id="days"></div>
+        <div class="lbl ph" data-note="Ημέρες & ώρες: ενδεικτικές, να τις δώσει το studio">Ώρα</div>
+        <div class="opts" id="hours"></div>
+        <div class="row">
+          <input type="text" placeholder="Ονοματεπώνυμο" autocomplete="name" aria-label="Ονοματεπώνυμο">
+          <input type="tel" placeholder="Τηλέφωνο" autocomplete="tel" inputmode="tel" aria-label="Τηλέφωνο">
+        </div>
+        <button class="btn" type="submit">Αίτημα κράτησης</button>
+      </form>
+      <div class="done" role="status"><div class="label">Demo</div><div class="display">Τα λέμε σύντομα</div><p id="doneText" style="color:var(--soft)"></p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="tag">Strong body. <b style="font-weight:600">Stronger mindset.</b></span>
+  <span>© 2026 GB Pilates Club · Θεσσαλονίκη</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn" href="#book">Κλείσε συνεδρία</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Breathing word follows the 8s circle.
+  const bw = document.getElementById("bw"); let inhale = true;
+  if (!reduce) setInterval(() => { inhale = !inhale; bw.textContent = inhale ? "εισπνοή" : "εκπνοή"; }, 4000);
+
+  // Manifesto: words light up as the paragraph scrolls through the screen.
+  const m = document.getElementById("manifesto");
+  const words = [];
+  m.childNodes.forEach(node => {
+    if (node.nodeType === 3) node.textContent.split(/(\s+)/).forEach(t => { if (!t.trim()) { words.push(document.createTextNode(t)); return; } const s = document.createElement("span"); s.className = "w"; s.textContent = t; words.push(s); });
+    else { node.classList.add("w"); words.push(node); }
+  });
+  m.textContent = ""; words.forEach(w => m.appendChild(w));
+  const ws = m.querySelectorAll(".w");
+  const light = () => {
+    const r = m.getBoundingClientRect(), k = Math.min(1, Math.max(0, (innerHeight * .85 - r.top) / (r.height + innerHeight * .35)));
+    const upto = Math.round(k * ws.length);
+    ws.forEach((w, i) => w.classList.toggle("on", reduce || i < upto));
+  };
+
+  // Apparatus explorer.
+  const data = {
+    reformer: { text: "Το πιο γνωστό όργανο του Pilates: ένα κινούμενο φορείο με ελατήρια που δίνουν αντίσταση ή βοήθεια. Δυναμώνει, επιμηκύνει και ευθυγραμμίζει όλο το σώμα.",
+      facts: [["Για", "δύναμη, σταθερότητα κορμού, στάση σώματος"], ["Επίπεδο", "από αρχάριους μέχρι προχωρημένους"]],
+      art: '<rect x="10" y="40" width="240" height="10" rx="3"/><rect x="70" y="30" width="60" height="10" rx="2"/><line x1="130" y1="35" x2="210" y2="35" stroke-dasharray="4 4"/><line x1="230" y1="20" x2="230" y2="40"/><line x1="20" y1="50" x2="20" y2="62"/><line x1="240" y1="50" x2="240" y2="62"/>' },
+    cadillac: { text: "Ένα ψηλό πλαίσιο με μπάρες, ελατήρια και ιμάντες. Επιτρέπει ασκήσεις σε όλα τα επίπεδα, από ήπια αποκατάσταση μέχρι απαιτητικές ασκήσεις σε ανάρτηση.",
+      facts: [["Για", "ευλυγισία, έλεγχο, ασκήσεις σε ανάρτηση"], ["Επίπεδο", "προσαρμόζεται σε κάθε σώμα"]],
+      art: '<rect x="40" y="8" width="180" height="44"/><line x1="40" y1="52" x2="40" y2="64"/><line x1="220" y1="52" x2="220" y2="64"/><rect x="40" y="44" width="180" height="8"/><line x1="90" y1="8" x2="90" y2="30"/><line x1="170" y1="8" x2="170" y2="30"/><line x1="80" y1="30" x2="100" y2="30"/><line x1="160" y1="30" x2="180" y2="30"/>' },
+    chair: { text: "Μικρό σε μέγεθος, μεγάλο σε απαιτήσεις. Ένα κάθισμα με πεντάλ σε ελατήρια που προκαλεί ισορροπία, δύναμη στα πόδια και σταθερότητα κορμού.",
+      facts: [["Για", "ισορροπία, δύναμη ποδιών & ώμων"], ["Επίπεδο", "μέσο έως προχωρημένο"]],
+      art: '<rect x="100" y="14" width="60" height="40" rx="4"/><line x1="100" y1="54" x2="96" y2="64"/><line x1="160" y1="54" x2="164" y2="64"/><line x1="96" y1="46" x2="70" y2="40"/><line x1="70" y1="36" x2="70" y2="44"/>' },
+    mat: { text: "Η βάση όλων. Ασκήσεις στο στρώμα με το βάρος του σώματος, που χτίζουν έλεγχο, αναπνοή και δύναμη από το κέντρο.",
+      facts: [["Για", "βάση, αναπνοή, κινητικότητα"], ["Επίπεδο", "όλα τα επίπεδα"]],
+      art: '<rect x="20" y="44" width="220" height="10" rx="5"/><circle cx="130" cy="30" r="8"/><path d="M60 44 C90 30 170 30 200 44"/>' },
+  };
+  const tabs = document.querySelectorAll("#tabs button"), pics = document.querySelectorAll("#apPics img");
+  const show = k => {
+    tabs.forEach(t => t.setAttribute("aria-selected", String(t.dataset.k === k)));
+    pics.forEach(p => p.classList.toggle("on", p.dataset.k === k));
+    document.getElementById("apName").textContent = k[0].toUpperCase() + k.slice(1);
+    document.getElementById("apText").textContent = data[k].text;
+    document.getElementById("apFacts").innerHTML = data[k].facts.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join("");
+    const art = document.getElementById("apArt"); art.innerHTML = data[k].art;
+    if (!reduce) art.querySelectorAll("*").forEach((el, i) => { const L = el.getTotalLength ? el.getTotalLength() : 300; el.style.strokeDasharray = L; el.style.strokeDashoffset = L; el.style.transition = `stroke-dashoffset 1.2s ${i * .08}s cubic-bezier(.4,.1,.2,1)`; requestAnimationFrame(() => requestAnimationFrame(() => el.style.strokeDashoffset = 0)); });
+  };
+  tabs.forEach(t => t.addEventListener("click", () => show(t.dataset.k)));
+  show("reformer");
+
+  // Booking (demo).
+  const state = { type: "1:1 Reformer", day: null, hour: null };
+  const opts = (id, items, key) => {
+    const box = document.getElementById(id); box.innerHTML = "";
+    items.forEach(it => { const b = document.createElement("button"); b.type = "button"; b.innerHTML = it.html; b.setAttribute("aria-pressed", String(state[key] === it.v)); b.addEventListener("click", () => { state[key] = it.v; render(); }); box.appendChild(b); });
+  };
+  const render = () => {
+    opts("types", ["1:1 Reformer", "1:1 Cadillac", "Πρώτη γνωριμία"].map(v => ({ v, html: v })), "type");
+    const list = [], d = new Date(); d.setHours(12, 0, 0, 0);
+    while (list.length < 6) { d.setDate(d.getDate() + 1); if (d.getDay() !== 0) list.push(new Date(d)); }
+    if (!state.day) state.day = list[0].toDateString();
+    opts("days", list.map(x => ({ v: x.toDateString(), html: `${x.toLocaleDateString("el-GR", { weekday: "short" })}<small>${x.toLocaleDateString("el-GR", { day: "numeric", month: "short" })}</small>` })), "day");
+    opts("hours", ["08:00", "09:00", "10:00", "17:00", "18:00", "19:00", "20:00"].map(v => ({ v, html: v })), "hour");
+  };
+  render();
+  document.getElementById("bookForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const when = new Date(state.day).toLocaleDateString("el-GR", { weekday: "long", day: "numeric", month: "long" });
+    document.getElementById("doneText").textContent = `${state.type}, ${when}${state.hour ? " στις " + state.hour : ""}. Στο τελικό site το αίτημα φτάνει απευθείας στο studio και παίρνεις επιβεβαίωση.`;
+    document.getElementById("form").classList.add("sent");
+  });
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > 30); mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7); light(); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("gb-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

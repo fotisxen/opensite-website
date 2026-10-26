@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f2eee6">
+<title>Pantheon — all day café bar · Θεσσαλονίκη</title>
+<meta name="description" content="Pantheon, all day café bar στο κέντρο της Θεσσαλονίκης. Καφές και brunch το πρωί, cocktails το βράδυ. Strong feelings από το 2002.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Sofia+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Pantheon (Thessaloniki).
+  Scrolling moves the page from day to night: --n goes 0 -> 1 through the dusk section.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy to confirm
+  (much of it comes from 2020/2023 articles). Toggle with "Σημειώσεις", hide with ?clean.
+*/
+:root{
+  --n:0;
+  --day:#f2eee6;--night:#0a0e22;
+  --ink-day:#1b1a17;--ink-night:#ece8f4;
+  --heart:#c8102e;
+  --moon:#f3e7c4;
+  --serif:"Bona Nova",Georgia,serif;
+  --sans:"Sofia Sans",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.25,.7,.2,1);
+  --bg:color-mix(in oklab,var(--night) calc(var(--n) * 100%),var(--day));
+  --ink:color-mix(in oklab,var(--ink-night) calc(var(--n) * 100%),var(--ink-day));
+  --soft:color-mix(in oklab,var(--ink) 62%,var(--bg));
+  --line:color-mix(in oklab,var(--ink) 16%,var(--bg));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:clamp(16px,.45vw + 14px,19px);line-height:1.6;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.serif{font-family:var(--serif);font-weight:400;line-height:.98;letter-spacing:-.015em}
+.serif em{font-style:italic}
+.label{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--soft)}
+.heart{color:var(--heart)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:transform .3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+/* sky: stars + sun/moon follow the scroll */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:calc((var(--n) - .35) * 1.6)}
+.orb{position:fixed;z-index:1;pointer-events:none;width:clamp(70px,9vw,130px);aspect-ratio:1;border-radius:50%;
+  right:calc(var(--pad) + var(--ox,0px));top:calc(var(--oy,90px));
+  background:color-mix(in oklab,var(--moon) calc(var(--n) * 100%),#f2b45a);
+  box-shadow:0 0 calc(40px + var(--n) * 50px) color-mix(in oklab,rgba(243,231,196,.55) calc(var(--n) * 100%),rgba(242,180,90,.55));transition:box-shadow .3s}
+.orb::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--bg);transform:translate(calc(var(--n) * 34%),calc(var(--n) * -14%));opacity:var(--n)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:color-mix(in oklab,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{font-family:var(--serif);font-size:24px;letter-spacing:.18em;text-transform:uppercase;-webkit-text-stroke:1px var(--ink);color:transparent}
+.nav .links{display:flex;align-items:center;gap:28px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.nav .links a.l{color:var(--soft)}
+.nav .links a.l:hover{color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:12px}
+.daynight{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:8px;color:var(--soft)}
+.daynight i{width:9px;height:9px;border-radius:50%;background:color-mix(in oklab,var(--moon) calc(var(--n) * 100%),#f2b45a)}
+
+main,footer{position:relative;z-index:2}
+section{position:relative}
+.wrap{padding:clamp(80px,11vw,150px) var(--pad)}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px var(--pad) 60px}
+.hero h1{font-size:clamp(64px,12vw,200px);max-width:11ch}
+.hero h1 .heart{font-style:italic}
+.hero .sub{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:36px}
+.hero p{max-width:28em;color:var(--soft);font-size:clamp(17px,1.4vw,21px)}
+.since{font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-style:italic}
+.strip{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(10px,1.4vw,18px);padding:0 var(--pad)}
+.strip figure{aspect-ratio:4/5;overflow:hidden;border-radius:4px}
+.strip figure:first-child{aspect-ratio:auto}
+.strip img{transition:transform 1.6s var(--ease)}
+.strip figure:hover img{transform:scale(1.05)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1.1s ease,transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,6vw,100px);align-items:start}
+.story .big{font-family:var(--serif);font-size:clamp(120px,22vw,340px);line-height:.8;letter-spacing:-.04em}
+.story .big small{display:block;font-family:var(--sans);font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin-top:18px}
+.story h2{font-size:clamp(40px,5vw,76px);margin-bottom:24px}
+.story p{color:var(--soft);max-width:32em}
+.story p+p{margin-top:1em}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:40px;border:1px solid var(--line)}
+.timeline div{background:var(--bg);padding:18px}
+.timeline b{display:block;font-family:var(--serif);font-size:34px;font-weight:400}
+.timeline span{font-size:14px;color:var(--soft);line-height:1.4;display:block}
+
+/* brunch */
+.brunch .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.brunch h2{font-size:clamp(50px,8vw,124px)}
+.brunch .head p{max-width:24em;color:var(--soft)}
+.plates{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,24px)}
+.plate h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.2vw,32px);margin:14px 0 8px}
+.plate ul{list-style:none;color:var(--soft);font-size:.95em}
+.plate li{padding:6px 0;border-bottom:1px solid var(--line)}
+.plate .pic{aspect-ratio:1;border-radius:50%;overflow:hidden}
+.hh{margin-top:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:22px 26px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.hh b{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.4vw,34px)}
+
+/* lounge */
+.lounge{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.lounge .pic{aspect-ratio:4/5;overflow:hidden;border-radius:200px 200px 4px 4px}
+.lounge h2{font-size:clamp(44px,6vw,96px);margin-bottom:22px}
+.lounge p{color:var(--soft);max-width:28em}
+.lounge ul{list-style:none;margin-top:26px}
+.lounge li{padding:12px 0;border-top:1px solid var(--line);display:flex;gap:14px}
+.lounge li b{font-family:var(--serif);font-weight:400;font-size:22px;min-width:2ch}
+
+/* dusk */
+.dusk{min-height:150vh;display:grid;place-items:center;text-align:center}
+.dusk h2{position:sticky;top:38vh;font-size:clamp(50px,9vw,150px)}
+.dusk h2 em{display:block}
+
+/* myths / constellations */
+.myths .head{max-width:900px;margin-bottom:clamp(40px,6vw,70px)}
+.myths h2{font-size:clamp(50px,8vw,124px)}
+.myths .head p{color:var(--soft);max-width:30em;margin-top:18px}
+.sky{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,24px)}
+.myth{position:relative;border-radius:18px;padding:22px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;cursor:default;transition:box-shadow .5s,background .5s}
+.myth svg{position:absolute;inset:0;width:100%;height:68%}
+.myth svg circle{fill:var(--moon);transition:r .5s var(--ease),opacity .5s}
+.myth svg circle.dim{opacity:.35}
+.myth svg path{fill:none;stroke:var(--moon);stroke-width:1;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);opacity:.7;transition:stroke-dashoffset 1.6s var(--ease)}
+.myth:hover,.myth.on{box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--moon) 60%,transparent);background:rgba(243,231,196,.04)}
+.myth:hover svg path,.myth.on svg path{stroke-dashoffset:0}
+.myth:hover svg circle,.myth.on svg circle{opacity:1}
+.myth .from{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--moon);opacity:.8}
+.myth h3{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3vw,46px);line-height:1;margin:8px 0 10px}
+.myth p{font-size:.92em;color:var(--soft);line-height:1.5}
+.myth .rec{margin-top:12px;font-size:12px;letter-spacing:.08em;color:var(--moon);opacity:.8}
+.myth.big{grid-column:span 1}
+
+/* bar */
+.bar{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.bar h2{font-size:clamp(46px,6.4vw,104px);margin-bottom:24px}
+.bar ul{list-style:none}
+.bar li{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.bar li b{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2vw,28px)}
+.bar li span{color:var(--soft)}
+.bar .pic{aspect-ratio:4/5;overflow:hidden;border-radius:4px}
+
+/* nights */
+.nights{text-align:center}
+.nights h2{font-size:clamp(54px,9vw,150px)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;max-width:980px;margin:44px auto 0}
+.week div{border-radius:14px;padding:16px 6px;box-shadow:inset 0 0 0 1px var(--line);font-size:13px;color:var(--soft)}
+.week div b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink);margin-bottom:4px}
+.week .hot{background:var(--heart);color:#fff;box-shadow:none}
+.week .hot b{color:#fff}
+.week .sun{box-shadow:inset 0 0 0 1px var(--moon)}
+.nights .pics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:50px}
+.nights .pics figure{aspect-ratio:16/10;overflow:hidden;border-radius:4px}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.visit h2{font-size:clamp(54px,9vw,140px)}
+.visit h2 .heart{font-style:italic}
+.facts{display:grid;gap:26px}
+.facts h4{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.facts .big{font-family:var(--serif);font-size:clamp(26px,2.6vw,38px);line-height:1.1}
+.facts .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+footer{padding:40px var(--pad) 30px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--soft)}
+footer .brand{font-size:30px}
+footer a{border-bottom:1px solid var(--line)}
+
+/* placeholders */
+.notes .ph{outline:1.5px dashed var(--heart);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--sans);letter-spacing:0;text-transform:none;color:#fff;background:var(--heart);padding:3px 7px;border-radius:5px;max-width:280px;white-space:normal;text-align:left}
+.notes .myth.ph{outline-offset:-6px}
+.notes .myth.ph::after{top:12px;left:12px}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-size:11px;font-weight:600;padding:8px 12px;border-radius:999px;background:var(--bg);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--soft)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1.5px var(--heart);color:var(--heart)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l,.daynight{display:none}
+  .strip{grid-template-columns:1fr 1fr}
+  .strip figure:first-child{grid-column:1/-1;aspect-ratio:16/10}
+  .story,.lounge,.bar,.visit{grid-template-columns:1fr}
+  .plates{grid-template-columns:1fr 1fr}
+  .sky{grid-template-columns:1fr}
+  .myth{min-height:300px}
+  .week{grid-template-columns:repeat(4,1fr)}
+  .nights .pics{grid-template-columns:1fr}
+  .hh{border-radius:22px}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:76px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("pn-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<canvas class="stars" id="stars" aria-hidden="true"></canvas>
+<div class="orb" id="orb" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Pantheon">Pantheon</a>
+  <nav class="links" aria-label="Μενού">
+    <span class="daynight"><i></i><span id="dn">μέρα</span></span>
+    <a class="l" href="#brunch">Brunch</a>
+    <a class="l" href="#myths">Cocktails</a>
+    <a class="l" href="#nights">Βράδια</a>
+    <a class="btn" href="#visit">Έλα</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO (day) -->
+  <section class="hero">
+    <div class="label rv in">All day café bar · Θεσσαλονίκη</div>
+    <h1 class="serif rv in" style="margin-top:18px">Strong <em class="heart">feelings</em> since 2002</h1>
+    <div class="sub rv d1 in">
+      <p>Καφές και brunch όταν ξυπνάει η πόλη. Cocktails και μουσική όταν πέφτει ο ήλιος. Στη γωνία Κορομηλά και Καρόλου Ντηλ, εδώ και 24 χρόνια.</p>
+      <span class="since">κάνε scroll, να νυχτώσει ↓</span>
+    </div>
+  </section>
+  <div class="strip">
+    <figure class="rv"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&h=900&q=70" alt="Καφές με latte art πάνω σε τραπέζι" fetchpriority="high"></figure>
+    <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1521962347155-662d077f81e9?auto=format&fit=crop&w=700&h=875&q=70" alt="Pancakes με φρούτα του δάσους"></figure>
+    <figure class="rv d2"><img loading="lazy" src="https://images.unsplash.com/photo-1598452498516-76a50b446f23?auto=format&fit=crop&w=700&h=875&q=70" alt="Lounge με φυτά και φυσικό φως"></figure>
+  </div>
+
+  <!-- STORY -->
+  <section class="wrap story">
+    <div class="big rv">24<small>χρόνια strong feelings</small></div>
+    <div>
+      <div class="label rv">Η ιστορία</div>
+      <h2 class="serif rv d1" style="margin-top:14px">Ένα στέκι που<br><em>έγινε παρέα</em></h2>
+      <p class="rv d1">Το Pantheon άνοιξε το 2002 στο κέντρο της Θεσσαλονίκης. Από τότε, γενιές θαμώνων έχουν περάσει από εδώ για τον πρωινό καφέ, το brunch της Κυριακής και τα βράδια που κράτησαν μέχρι αργά.</p>
+      <p class="rv d2">Το μυστικό μας είναι απλό: προσωπική εξυπηρέτηση, ποιοτικά ποτά και φαγητό, και μια παρέα από ανθρώπους που ξέρουν ο ένας τον άλλον με το όνομα.</p>
+      <div class="timeline rv d2">
+        <div><b>2002</b><span>ανοίγουμε στο κέντρο</span></div>
+        <div><b>2014</b><span>μεγαλώνουμε στη γωνία με την Καρόλου Ντηλ</span></div>
+        <div><b>2026</b><span>24 χρόνια, ίδια συναισθήματα</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRUNCH (day) -->
+  <section class="wrap brunch" id="brunch">
+    <div class="head">
+      <div><div class="label rv">Το πρωί</div><h2 class="serif rv d1" style="margin-top:14px">Brunch <em>όλη μέρα</em></h2></div>
+      <p class="rv d1 ph" data-note="Από άρθρο 2023: να επιβεβαιωθεί το τρέχον μενού & ωράριο brunch">Από τις 9 το πρωί, όσο κρατάει η μέρα. Γλυκό ή αλμυρό, ελαφρύ ή γενναιόδωρο.</p>
+    </div>
+    <div class="plates">
+      <div class="plate rv"><div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1710533820700-dd6f6623cc97?auto=format&fit=crop&w=500&h=500&q=70" alt="Pancakes με σιρόπι"></div><h3>Pancakes</h3><ul><li>γλυκά ή αλμυρά</li><li>με φρούτα εποχής</li></ul></div>
+      <div class="plate rv d1"><div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1567635323960-a7888f74797c?auto=format&fit=crop&w=500&h=500&q=70" alt="Πιάτο με brunch"></div><h3>Αυγά</h3><ul><li>ομελέτες</li><li>scrambled eggs</li><li>τοστ</li></ul></div>
+      <div class="plate rv d2"><div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1781479329927-84a90210f7c9?auto=format&fit=crop&w=500&h=500&q=70" alt="Μπολ με φρούτα και γιαούρτι"></div><h3>Ελαφριά</h3><ul><li>energy bowls</li><li>σαλάτες</li></ul></div>
+      <div class="plate rv"><div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1622744527676-1bcf440a715c?auto=format&fit=crop&w=500&h=500&q=70" alt="Γλυκό με κρέμα"></div><h3>Comfort</h3><ul><li>bao buns, sandwiches, pizza</li><li>banoffee & προφιτερόλ</li></ul></div>
+    </div>
+    <div class="hh rv ph" data-note="Happy hour από άρθρα 2020/2023: να επιβεβαιωθούν ώρες & τιμή">
+      <b>Happy hour κάθε πρωί</b><span>Καφές και ποτά σε χαμηλότερη τιμή, μέχρι τις 11:00.</span>
+    </div>
+  </section>
+
+  <!-- LOUNGE -->
+  <section class="wrap lounge">
+    <div class="pic rv"><img loading="lazy" src="https://images.unsplash.com/photo-1549650558-105451f863ca?auto=format&fit=crop&w=900&h=1125&q=70" alt="Lounge με φυτά, καναπέδες και φως"></div>
+    <div>
+      <div class="label rv">Ο πάνω όροφος</div>
+      <h2 class="serif rv d1" style="margin-top:14px">Μια αυλή<br><em>μέσα στην πόλη</em></h2>
+      <p class="rv d1">Ανέβα τη σκάλα και η πόλη χαμηλώνει. Φυτά, φως, πιο ήσυχη μουσική και ένα μεγάλο τραπέζι για όσους δουλεύουν, διαβάζουν ή απλώς χαζεύουν.</p>
+      <ul class="rv d2 ph" data-note="Από άρθρο 2020: να επιβεβαιωθεί ότι ισχύουν">
+        <li><b>↟</b><span>Πράσινο παντού, σαν εσωτερική αυλή</span></li>
+        <li><b>⌁</b><span>Πρίζες για laptop, για δουλειά ή διάβασμα</span></li>
+        <li><b>☕</b><span>Ο καφές μας, με φροντίδα σε κόκκο, νερό και μηχανή</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DUSK -->
+  <section class="dusk" id="dusk">
+    <h2 class="serif">Και μετά,<em class="heart">πέφτει ο ήλιος.</em></h2>
+  </section>
+
+  <!-- MYTHS (night) -->
+  <section class="wrap myths" id="myths">
+    <div class="head">
+      <div class="label rv">Signature cocktails</div>
+      <h2 class="serif rv d1" style="margin-top:14px">Κάθε ποτό,<br><em>ένας μύθος</em></h2>
+      <p class="rv d2">Η λίστα μας εμπνέεται από μύθους απ' όλο τον κόσμο. Πέρνα από πάνω τους και δες τα αστέρια να ενώνονται.</p>
+    </div>
+    <div class="sky" id="sky">
+      <article class="myth rv ph" data-note="Ονόματα από άρθρο 2023: να επιβεβαιωθεί το τρέχον μενού & οι συνταγές" data-stars="20,70 34,40 52,52 66,26 80,44 72,74">
+        <span class="from">Μεσοαμερική</span><h3>Nagual</h3>
+        <p>Το πνεύμα-ζώο που συνοδεύει κάθε άνθρωπο, ή ο μάγος που μπορεί να πάρει τη μορφή του.</p>
+        <div class="rec">συνταγή · σύντομα</div>
+      </article>
+      <article class="myth rv d1" data-stars="12,60 28,48 44,58 58,36 74,42 88,22">
+        <span class="from">Ελλάδα</span><h3>Odyssey</h3>
+        <p>Δέκα χρόνια ταξίδι για να γυρίσεις σπίτι. Μερικά ποτά αξίζουν τη διαδρομή.</p>
+        <div class="rec">συνταγή · σύντομα</div>
+      </article>
+      <article class="myth rv d2" data-stars="30,30 46,22 60,34 54,56 38,68 26,50">
+        <span class="from">Κρήτη</span><h3>Amalthea</h3>
+        <p>Η κατσίκα που μεγάλωσε τον μικρό Δία. Από το κέρας της γεννήθηκε το κέρας της αφθονίας.</p>
+        <div class="rec">συνταγή · σύντομα</div>
+      </article>
+      <article class="myth rv" data-stars="50,16 50,40 30,56 50,72 70,56 50,40">
+        <span class="from">Ελλάδα</span><h3>Nemesis</h3>
+        <p>Η θεά που φέρνει τα πράγματα ξανά σε ισορροπία. Κανείς δεν της ξεφεύγει.</p>
+        <div class="rec">συνταγή · σύντομα</div>
+      </article>
+      <article class="myth rv d1" data-stars="14,74 30,62 46,58 60,44 72,28 86,18">
+        <span class="from">Σκανδιναβία</span><h3>Road to Valhalla</h3>
+        <p>Ο δρόμος προς την αίθουσα του Όντιν, εκεί που οι Βαλκυρίες οδηγούν τους γενναίους.</p>
+        <div class="rec">συνταγή · σύντομα</div>
+      </article>
+      <article class="myth rv d2" data-stars="24,40 40,26 58,30 70,48 56,66 36,62">
+        <span class="from">Pantheon</span><h3>+15 ακόμα</h3>
+        <p>Περίπου είκοσι signature cocktails συνολικά. Ρώτα τον bartender για τον δικό σου μύθο.</p>
+        <div class="rec ph" data-note="Αριθμός από άρθρο 2020 (20 signatures): να επιβεβαιωθεί">ολόκληρη η λίστα στο μαγαζί</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BAR -->
+  <section class="wrap bar">
+    <div>
+      <div class="label rv">Το μπαρ</div>
+      <h2 class="serif rv d1" style="margin-top:14px">Πίσω από<br><em>τον πάγκο</em></h2>
+      <ul class="rv d2 ph" data-note="Από άρθρα 2020/2023: να επιβεβαιωθούν">
+        <li><b>Κρασί</b><span>Μόνο ελληνικά κτήματα, με αρκετές ετικέτες σε ποτήρι.</span></li>
+        <li><b>Κάβα</b><span>Premium αποστάγματα για όσους ξέρουν τι θέλουν.</span></li>
+        <li><b>Smoked</b><span>Ουίσκι που καπνίζεται τη στιγμή που το παραγγέλνεις.</span></li>
+        <li><b>Events</b><span>St Patrick's, malt tastings και θεματικές βραδιές.</span></li>
+      </ul>
+    </div>
+    <div class="pic rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1703996123817-f9ba5a51437c?auto=format&fit=crop&w=900&h=1125&q=70" alt="Cocktail σε σκοτεινό μπαρ"></div>
+  </section>
+
+  <!-- NIGHTS -->
+  <section class="wrap nights" id="nights">
+    <div class="label rv">Τα βράδια</div>
+    <h2 class="serif rv d1" style="margin-top:14px">Η εβδομάδα <em class="heart">μας</em></h2>
+    <div class="week rv d2 ph" data-note="Πρόγραμμα από άρθρο 2020: να το δώσει το Pantheon">
+      <div><b>Δευ</b>cocktails</div>
+      <div><b>Τρι</b>cocktails</div>
+      <div><b>Τετ</b>cocktails</div>
+      <div><b>Πεμ</b>cocktails</div>
+      <div class="hot"><b>Παρ</b>party</div>
+      <div class="hot"><b>Σαβ</b>party</div>
+      <div class="sun"><b>Κυρ</b>'80s–'00s</div>
+    </div>
+    <p class="rv d2" style="max-width:34em;margin:30px auto 0;color:var(--soft)">Resident DJs κάθε εβδομάδα. Πάρτι Παρασκευή και Σάββατο, και τις Κυριακές από τις 5 το απόγευμα, ρομαντικά τραγούδια από τα '80s ως τα '00s.</p>
+    <div class="pics">
+      <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&h=625&q=70" alt="DJ σε μωβ φωτισμό"></figure>
+      <figure class="rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1651065699236-6a6885503943?auto=format&fit=crop&w=1000&h=625&q=70" alt="Κονσόλα DJ σε κόκκινο φως"></figure>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="wrap visit" id="visit">
+    <div>
+      <div class="label rv">Έλα να μας βρεις</div>
+      <h2 class="serif rv d1" style="margin-top:14px">Τα λέμε<br><em class="heart">στη γωνία</em></h2>
+    </div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">Προξένου Κορομηλά 8<br>& Καρόλου Ντηλ</div><div style="color:var(--soft)">Κέντρο, Θεσσαλονίκη</div></div>
+      <div class="rv ph" data-note="Ωράριο: να το δώσει το Pantheon"><h4>Ωράριο</h4><div class="big">Κάθε μέρα, πρωί ως αργά</div></div>
+      <div class="rv ph" data-note="Τηλέφωνο από άρθρο 2020: να επιβεβαιωθεί"><h4>Τηλέφωνο</h4><a class="big" href="tel:+302310287767">2310 287 767</a></div>
+      <div class="rv"><h4>Delivery & social</h4>
+        <div class="links">
+          <a class="btn" href="https://wolt.com/en/grc/thessaloniki/restaurant/pantheon-bar" target="_blank" rel="noopener">Wolt</a>
+          <a class="btn line" href="https://www.instagram.com/pantheon.bar/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn line" href="https://www.facebook.com/Pantheon.bar/" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Pantheon+Bar+Proxenou+Koromila+8+Thessaloniki" target="_blank" rel="noopener">Χάρτης</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="brand">Pantheon</span>
+  <span>#strongfeelings since 2002</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn line" href="tel:+302310287767" style="background:var(--bg)">Κλήση</a>
+  <a class="btn" href="https://wolt.com/en/grc/thessaloniki/restaurant/pantheon-bar" target="_blank" rel="noopener">Wolt</a>
+</div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement, root = html.style;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Day -> night: --n follows the scroll through the dusk section.
+  const dusk = document.getElementById("dusk"), orb = document.getElementById("orb"), dn = document.getElementById("dn");
+  const meta = document.querySelector('meta[name="theme-color"]');
+  let n = -1;
+  const update = () => {
+    const r = dusk.getBoundingClientRect(), vh = innerHeight;
+    const k = Math.min(1, Math.max(0, (vh * .9 - r.top) / (r.height)));
+    if (Math.abs(k - n) > .002) {
+      n = k; root.setProperty("--n", k.toFixed(3));
+      dn.textContent = k < .5 ? "μέρα" : "νύχτα";
+      meta.content = k < .5 ? "#f2eee6" : "#0a0e22";
+    }
+    // the orb travels along an arc over the whole page
+    const p = Math.min(1, scrollY / Math.max(1, document.body.scrollHeight - vh));
+    const w = Math.min(innerWidth * .5, 520);
+    orb.style.setProperty("--ox", (Math.sin(p * Math.PI) * w * .6).toFixed(0) + "px");
+    orb.style.setProperty("--oy", (90 + Math.abs(Math.cos(p * Math.PI)) * vh * .08 + (1 - Math.sin(p * Math.PI)) * 30).toFixed(0) + "px");
+  };
+  addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+  addEventListener("resize", update); update();
+
+  // Starfield (drawn once per resize, twinkles gently).
+  const cv = document.getElementById("stars"), ctx = cv.getContext("2d");
+  let stars = [];
+  const size = () => {
+    const d = Math.min(devicePixelRatio || 1, 2);
+    cv.width = innerWidth * d; cv.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    stars = Array.from({ length: Math.round(innerWidth * innerHeight / 5200) }, () => ({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, r: Math.random() * 1.2 + .2, t: Math.random() * 6 }));
+  };
+  size(); addEventListener("resize", size);
+  const draw = (now) => {
+    if (n > .3) {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      for (const s of stars) { ctx.globalAlpha = .45 + Math.sin(now / 900 + s.t) * .35; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fillStyle = "#f3e7c4"; ctx.fill(); }
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  };
+  requestAnimationFrame(draw);
+
+  // Constellations: each cocktail gets its own stars, joined into a line on hover/tap.
+  document.querySelectorAll(".myth").forEach(m => {
+    const pts = m.dataset.stars.split(" ").map(p => p.split(",").map(Number));
+    const ns = "http://www.w3.org/2000/svg", svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 100 100"); svg.setAttribute("preserveAspectRatio", "none"); svg.setAttribute("aria-hidden", "true");
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute("d", "M" + pts.map(p => p.join(" ")).join(" L")); path.setAttribute("vector-effect", "non-scaling-stroke");
+    svg.appendChild(path);
+    pts.forEach((p, i) => { const c = document.createElementNS(ns, "circle"); c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", i % 3 === 0 ? 1.4 : .9); c.setAttribute("class", "dim"); c.setAttribute("vector-effect", "non-scaling-stroke"); svg.appendChild(c); });
+    m.prepend(svg);
+    requestAnimationFrame(() => { const len = path.getTotalLength(); path.style.setProperty("--len", len * 4); });
+    m.addEventListener("click", () => m.classList.toggle("on"));
+  });
+  // On touch screens, light each constellation as it scrolls into view.
+  if (!matchMedia("(hover: hover)").matches) {
+    const so = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("on", e.isIntersecting)), { threshold: .6 });
+    document.querySelectorAll(".myth").forEach(m => so.observe(m));
+  }
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > 30); mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("pn-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import { DEMOS } from "@/lib/demos";
 
-// Client demos are standalone HTML files in public/demos/<slug>/demo.html.
+// Client demos are standalone HTML files in public/demos/<slug>/demo.html (listed in lib/demos).
 // This route gives them a clean URL (/demos/<slug>/) that forwards to the file.
 // Plain HTML redirect (meta refresh + location.replace) because next/navigation's
 // redirect() does not fire in the static export.
-const DEMOS = ["platterie-box", "cotridis-b2b", "maganie", "gorilla"];
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return DEMOS.map((slug) => ({ slug }));
+  return DEMOS.map(({ slug }) => ({ slug }));
 }
 
 export const metadata: Metadata = {

@@ -11,6 +11,7 @@ const links = [
   { href: "/admin/projects", label: "Projects" },
   { href: "/admin/transactions", label: "Income/Expenses" },
   { href: "/admin/analytics", label: "Analytics" },
+  { href: "/admin/demos", label: "Demos" },
 ];
 
 export default function AdminNav() {

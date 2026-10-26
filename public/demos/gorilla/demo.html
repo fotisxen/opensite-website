@@ -719,7 +719,7 @@ footer .base a{color:var(--dim)}
   }
 
   const draw = () => {
-    if (heroOn && color.complete && color.naturalWidth) {
+    if (heroOn && W && H && color.complete && color.naturalWidth) {
       // fade the mask a little every frame
       mctx.globalCompositeOperation = "destination-out"; mctx.fillStyle = "rgba(0,0,0,.009)"; mctx.fillRect(0, 0, W, H);
       mctx.globalCompositeOperation = "source-over";
