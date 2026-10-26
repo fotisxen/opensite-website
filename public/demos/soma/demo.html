@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#050607">
+<title>SOMA — Exclusive Fitness Studio · Θεσσαλονίκη</title>
+<meta name="description" content="SOMA, exclusive fitness studio στη Θεσσαλονίκη. Προπόνηση μόνο με ραντεβού.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;800&family=Commissioner:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for SOMA (Thessaloniki).
+  Signature: a live pulse. The cyan heart line beats faster the faster you scroll, then settles back to rest.
+  The four letters assemble into the cross of the SOMA logo.
+  Very little is public about the studio, so most copy is placeholder (.ph; toggle "Σημειώσεις", hide with ?clean).
+  Photos are Unsplash placeholders.
+*/
+:root{
+  --black:#050607;
+  --coal:#0d1012;
+  --line:#1f2528;
+  --white:#eef3f4;
+  --grey:#8b979b;
+  --cyan:#7fdcef;
+  --display:"Tektur",system-ui,sans-serif;
+  --body:"Commissioner",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--black)}
+body{background:var(--black);color:var(--white);font-family:var(--body);font-weight:300;font-size:clamp(16px,.45vw + 14px,19px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.x{font-family:var(--display);font-weight:800;line-height:.92;letter-spacing:.02em;text-transform:uppercase}
+.x em{font-style:normal;color:var(--cyan)}
+.k{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan)}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;background:var(--cyan);color:var(--black);font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;transition:box-shadow .3s,transform .3s var(--ease)}
+.btn:hover{box-shadow:0 0 30px rgba(127,220,239,.45);transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.line:hover{box-shadow:inset 0 0 0 1px var(--cyan)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);transition:background .4s}
+.nav.solid{background:rgba(5,6,7,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.mark{width:46px;height:46px;border-radius:50%;background:#000;box-shadow:inset 0 0 0 1px var(--line);display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);place-items:center;font-family:var(--display);font-weight:800;font-size:12px;color:var(--cyan);padding:6px}
+.mark span:nth-child(1){grid-area:1/2}.mark span:nth-child(2){grid-area:2/1}.mark span:nth-child(3){grid-area:2/3}.mark span:nth-child(4){grid-area:3/2}
+.nav .links{display:flex;align-items:center;gap:28px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.nav .links a.l{color:var(--grey)}
+.nav .links a.l:hover{color:var(--white)}
+.bpm{display:flex;align-items:baseline;gap:6px;color:var(--grey)}
+.bpm b{font-family:var(--display);font-weight:800;font-size:20px;color:var(--cyan);min-width:3ch;text-align:right}
+.nav .btn{padding:11px 18px;font-size:11px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(20px,4vw,60px);padding:110px var(--pad) 60px;overflow:hidden}
+.hero .bg{position:absolute;inset:0;opacity:.35}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,transparent 0,var(--black) 75%);pointer-events:none}
+.hero>*:not(.bg){position:relative;z-index:2}
+.cross{position:relative;width:min(80vw,460px);aspect-ratio:1;justify-self:center}
+.cross span{position:absolute;width:33.33%;height:33.33%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:clamp(70px,10vw,150px);color:var(--cyan);text-shadow:0 0 40px rgba(127,220,239,.35);transition:transform 1.4s var(--ease),opacity 1.2s ease}
+.cross .o{left:33.33%;top:0}.cross .s{left:0;top:33.33%}.cross .a{left:66.66%;top:33.33%}.cross .m{left:33.33%;top:66.66%}
+.cross:not(.in) .o{transform:translate(-120%,140%) rotate(-30deg);opacity:0}
+.cross:not(.in) .s{transform:translate(160%,-120%) rotate(40deg);opacity:0}
+.cross:not(.in) .a{transform:translate(-160%,110%) rotate(-50deg);opacity:0}
+.cross:not(.in) .m{transform:translate(120%,-150%) rotate(20deg);opacity:0}
+.cross::before{content:"";position:absolute;inset:6%;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line)}
+.hero h1{font-size:clamp(46px,6.4vw,104px)}
+.hero p{max-width:26em;color:var(--grey);margin:24px 0 32px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+
+/* pulse line */
+.pulse{position:relative;height:140px;margin-top:-40px;z-index:3}
+.pulse canvas{width:100%;height:100%;display:block}
+.pulse .lbl{position:absolute;right:var(--pad);top:6px;font-family:var(--display);font-size:11px;letter-spacing:.24em;color:var(--grey);text-transform:uppercase}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+section{position:relative}
+.wrap{padding:clamp(90px,12vw,170px) var(--pad)}
+
+/* word */
+.word{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,6vw,100px);align-items:center}
+.word .gr{font-family:var(--display);font-weight:800;font-size:clamp(90px,15vw,240px);line-height:.85;color:var(--cyan)}
+.word .gr small{display:block;font-family:var(--body);font-weight:300;font-size:16px;letter-spacing:.1em;color:var(--grey);margin-top:16px}
+.word h2{font-size:clamp(36px,4.6vw,72px);margin-bottom:24px}
+.word p{color:var(--grey);max-width:32em}
+.word p+p{margin-top:1em}
+
+/* exclusive */
+.excl{background:var(--coal);display:grid;grid-template-columns:repeat(3,1fr);gap:1px;padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.excl div{background:var(--black);padding:clamp(30px,4vw,56px) var(--pad)}
+.excl b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(46px,5vw,80px);line-height:1;color:var(--white)}
+.excl b em{font-style:normal;color:var(--cyan)}
+.excl span{color:var(--grey);display:block;margin-top:10px;max-width:22em}
+
+/* pillars */
+.pillars .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:clamp(30px,5vw,56px)}
+.pillars h2{font-size:clamp(46px,7vw,110px)}
+.pillars .head p{color:var(--grey);max-width:24em}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--coal)}
+.card img{transition:transform 1.4s var(--ease),filter .6s}
+.card:hover img{transform:scale(1.06);filter:grayscale(1) contrast(1.25) brightness(1.1)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(5,6,7,.92))}
+.card .t{position:absolute;z-index:2;left:18px;right:18px;bottom:18px}
+.card .n{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.24em;color:var(--cyan)}
+.card h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.2vw,32px);text-transform:uppercase;line-height:1;margin-top:6px}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease);z-index:3}
+.card:hover::before{transform:scaleX(1)}
+
+/* space */
+.space{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;padding:0 var(--pad)}
+.space figure{overflow:hidden;min-height:420px}
+.space .txt{background:var(--coal);padding:clamp(26px,4vw,50px);display:flex;flex-direction:column;justify-content:flex-end}
+.space .txt h3{font-family:var(--display);font-weight:800;font-size:clamp(34px,3.6vw,56px);line-height:1;text-transform:uppercase}
+.space .txt p{color:var(--grey);margin-top:14px}
+
+/* apply */
+.apply{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px)}
+.apply h2{font-size:clamp(46px,7vw,110px)}
+.apply .lede{color:var(--grey);max-width:26em;margin-top:22px}
+.contact{margin-top:36px;display:grid;gap:20px}
+.contact h4{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+.contact .big{font-family:var(--display);font-weight:600;font-size:clamp(20px,2vw,26px)}
+.form{background:var(--coal);padding:clamp(24px,3.4vw,44px);box-shadow:inset 0 0 0 1px var(--line)}
+.form .lbl{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--grey);margin:22px 0 12px}
+.form .lbl:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:10px 16px;font-family:var(--display);font-size:13px;letter-spacing:.06em;box-shadow:inset 0 0 0 1px var(--line);color:var(--grey);transition:all .3s}
+.chips button[aria-pressed="true"]{background:var(--cyan);color:var(--black);box-shadow:none}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.form input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--white);font:inherit;font-size:17px;padding:10px 0;outline:none;border-radius:0}
+.form input:focus{border-color:var(--cyan)}
+.form .btn{width:100%;justify-content:center;margin-top:26px}
+.form .done{display:none;text-align:center;padding:30px 0}
+.form .done .x{font-size:44px;margin:10px 0}
+.form.sent form{display:none}.form.sent .done{display:block}
+
+footer{padding:26px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--grey)}
+footer a{color:var(--white);border-bottom:1px solid var(--line)}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--cyan);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:500 11px/1.35 var(--body);letter-spacing:0;text-transform:none;color:var(--black);background:var(--cyan);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes .card.ph::after{background:linear-gradient(transparent 40%,rgba(5,6,7,.92));content:""}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--display);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;background:var(--black);box-shadow:inset 0 0 0 1px var(--line);color:var(--grey)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--cyan);color:var(--cyan)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.l,.nav .bpm{display:none}
+  .hero{grid-template-columns:1fr;padding-top:90px}
+  .cross{order:-1;width:min(70vw,300px)}
+  .word,.apply,.space{grid-template-columns:1fr}
+  .excl{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .space figure{min-height:280px}
+  .form .row{grid-template-columns:1fr}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:auto;top:74px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("sm-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="mark" aria-label="SOMA"><span>O</span><span>S</span><span>A</span><span>M</span></a>
+  <nav class="links" aria-label="Μενού">
+    <span class="bpm" aria-hidden="true"><b id="bpmNav">62</b>bpm</span>
+    <a class="l" href="#soma">Σώμα</a>
+    <a class="l" href="#training">Προπόνηση</a>
+    <a class="l" href="#apply">Ραντεβού</a>
+    <a class="btn" href="#apply">Κλείσε γνωριμία</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="bg"><img src="https://images.unsplash.com/photo-1710736460914-4a7f22d736c4?auto=format&fit=crop&w=1800&q=65" alt="" fetchpriority="high"></div>
+    <div>
+      <div class="k rv in">Exclusive Fitness Studio · Θεσσαλονίκη</div>
+      <h1 class="x rv in" style="margin-top:18px">Το σώμα σου.<br><em>Ο ρυθμός σου.</em></h1>
+      <p class="rv d1 in">Ένα ιδιωτικό studio, μόνο με ραντεβού. Λίγοι άνθρωποι, πλήρης προσοχή, προπόνηση στημένη γύρω από εσένα.</p>
+      <div class="acts rv d2 in"><a class="btn" href="#apply">Κλείσε γνωριμία</a><a class="btn line" href="#training">Η προπόνηση</a></div>
+    </div>
+    <div class="cross" id="cross" aria-hidden="true"><span class="o">O</span><span class="s">S</span><span class="a">A</span><span class="m">M</span></div>
+  </section>
+  <div class="pulse" aria-hidden="true"><canvas id="ecg"></canvas><span class="lbl">κάνε scroll · <b id="bpmLbl" style="color:var(--cyan)">62</b> bpm</span></div>
+
+  <!-- THE WORD -->
+  <section class="wrap word" id="soma">
+    <div class="gr rv">σῶμα<small>(αρχαία ελληνικά) · το σώμα</small></div>
+    <div>
+      <div class="k rv">Η φιλοσοφία</div>
+      <h2 class="x rv d1" style="margin-top:14px">Ξεκινάμε<br>από το <em>σώμα</em></h2>
+      <p class="rv d1 ph" data-note="Placeholder: η φιλοσοφία του studio με τα λόγια των ιδρυτών">Κάθε σώμα έχει τη δική του ιστορία, τα δικά του όρια και τον δικό του ρυθμό. Εδώ δεν ακολουθείς ένα πρόγραμμα, το πρόγραμμα ακολουθεί εσένα.</p>
+      <p class="rv d2">Σε έναν χώρο σχεδιασμένο για συγκέντρωση, χωρίς θόρυβο και χωρίς βιασύνη.</p>
+    </div>
+  </section>
+
+  <!-- EXCLUSIVE -->
+  <section class="excl ph" data-note="Placeholder: τα πραγματικά χαρακτηριστικά του studio (π.χ. μέλη, ώρες, προπονητές)">
+    <div class="rv"><b>1<em>:</em>1</b><span>Προσωπική καθοδήγηση σε κάθε συνεδρία.</span></div>
+    <div class="rv d1"><b>by<em>·</em>appt</b><span>Μόνο με ραντεβού, χωρίς συνωστισμό.</span></div>
+    <div class="rv d2"><b>∞<em>.</em></b><span>Πρόοδος που μετριέται, συνεδρία με συνεδρία.</span></div>
+  </section>
+
+  <!-- TRAINING -->
+  <section class="wrap pillars" id="training">
+    <div class="head">
+      <div><div class="k rv">Η προπόνηση</div><h2 class="x rv d1" style="margin-top:14px">Τέσσερις<br><em>άξονες</em></h2></div>
+      <p class="rv d1 ph" data-note="Placeholder: οι πραγματικές υπηρεσίες του SOMA">Όπως τα τέσσερα γράμματα του ονόματός μας, κάθε πρόγραμμα στηρίζεται σε τέσσερις άξονες.</p>
+    </div>
+    <div class="cards">
+      <article class="card rv"><img loading="lazy" src="https://images.unsplash.com/photo-1672344048213-76b6e77304bd?auto=format&fit=crop&w=600&h=800&q=65" alt="Μπάρα με βάρη σε σκοτεινό φόντο"><div class="t"><span class="n">S</span><h3>Strength</h3></div></article>
+      <article class="card rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1504364269860-8be73aabdff2?auto=format&fit=crop&w=600&h=800&q=65" alt="Αθλητής που παίρνει ανάσα"><div class="t"><span class="n">O</span><h3>Oxygen</h3></div></article>
+      <article class="card rv d2"><img loading="lazy" src="https://images.unsplash.com/photo-1726195221602-d244378cfaab?auto=format&fit=crop&w=600&h=800&q=65" alt="Πόδια αθλητή σε κίνηση"><div class="t"><span class="n">M</span><h3>Mobility</h3></div></article>
+      <article class="card rv"><img loading="lazy" src="https://images.unsplash.com/photo-1582550559636-e0d22d20de1b?auto=format&fit=crop&w=600&h=800&q=65" alt="Σκιά μπάρας σε πάτωμα"><div class="t"><span class="n">A</span><h3>Activation</h3></div></article>
+    </div>
+  </section>
+
+  <!-- SPACE -->
+  <div class="space">
+    <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1648235692910-947cb90ddd97?auto=format&fit=crop&w=1200&h=800&q=65" alt="Σκοτεινό studio προπόνησης με φώτα"></figure>
+    <div class="txt rv d1 ph" data-note="Placeholder: φωτογραφίες και περιγραφή του δικού τους χώρου"><div class="k">Ο χώρος</div><h3 style="margin-top:12px">Σχεδιασμένος<br>για συγκέντρωση</h3><p>Εξοπλισμός υψηλών προδιαγραφών, ήσυχος χώρος, καμία αναμονή.</p></div>
+  </div>
+
+  <!-- APPLY -->
+  <section class="wrap apply" id="apply">
+    <div>
+      <div class="k rv">Ραντεβού γνωριμίας</div>
+      <h2 class="x rv d1" style="margin-top:14px">Η πρώτη<br><em>συνάντηση</em></h2>
+      <p class="lede rv d1">Πες μας λίγα λόγια για σένα και τον στόχο σου, και θα επικοινωνήσουμε για να κλείσουμε μια πρώτη γνωριμία.</p>
+      <div class="contact">
+        <div class="rv ph" data-note="Διεύθυνση studio: να τη δώσει το SOMA"><h4>Studio</h4><div class="big">Διεύθυνση · Θεσσαλονίκη</div></div>
+        <div class="rv ph" data-note="Τηλέφωνο & email: να τα δώσει το SOMA"><h4>Επικοινωνία</h4><div class="big">Τηλέφωνο · email</div></div>
+        <div class="rv"><h4>Instagram</h4><a class="big" href="https://www.instagram.com/somaskg/" target="_blank" rel="noopener">@somaskg</a></div>
+      </div>
+    </div>
+    <div class="form rv d1" id="form">
+      <form id="applyForm" novalidate>
+        <div class="lbl">Ο στόχος μου</div>
+        <div class="chips" id="goals"></div>
+        <div class="lbl">Πότε σε βολεύει</div>
+        <div class="chips" id="when"></div>
+        <div class="row">
+          <input type="text" placeholder="Ονοματεπώνυμο" autocomplete="name" aria-label="Ονοματεπώνυμο">
+          <input type="tel" placeholder="Τηλέφωνο" autocomplete="tel" inputmode="tel" aria-label="Τηλέφωνο">
+        </div>
+        <button class="btn" type="submit">Αίτημα γνωριμίας</button>
+      </form>
+      <div class="done" role="status"><div class="k">Demo</div><div class="x">Λάβαμε<br>το αίτημα</div><p id="doneText" style="color:var(--grey)"></p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 SOMA · Exclusive Fitness Studio</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn" href="#apply">Κλείσε γνωριμία</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // The letters assemble into the logo's cross.
+  setTimeout(() => document.getElementById("cross").classList.add("in"), 200);
+
+  // Live pulse: scrolling raises the heart rate, rest brings it back to 62.
+  const cv = document.getElementById("ecg"), ctx = cv.getContext("2d");
+  const bpmNav = document.getElementById("bpmNav"), bpmLbl = document.getElementById("bpmLbl");
+  let W = 0, H = 0, bpm = 62, effort = 0, lastY = scrollY, phase = 0, x = 0, pts = [];
+  const size = () => { const d = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); pts = new Array(Math.ceil(W)).fill(H / 2); x = 0; };
+  size(); addEventListener("resize", size);
+  addEventListener("scroll", () => { effort = Math.min(1, effort + Math.abs(scrollY - lastY) / 1800); lastY = scrollY; }, { passive: true });
+  // One heartbeat (P, QRS, T) as a function of phase 0..1.
+  const beat = p => {
+    const g = (c, w, a) => a * Math.exp(-((p - c) ** 2) / (2 * w * w));
+    return g(.18, .025, .12) + g(.38, .008, -.18) + g(.41, .01, 1) + g(.44, .009, -.32) + g(.66, .045, .26);
+  };
+  let last = performance.now(), shown = 62;
+  const frame = (t) => {
+    const dt = Math.min(.05, (t - last) / 1000); last = t;
+    effort = Math.max(0, effort - dt * .12);
+    bpm += ((62 + effort * 118) - bpm) * dt * 1.5;
+    phase += dt * bpm / 60;
+    const speed = Math.max(1, W / 3.2) * dt; // pixels per frame
+    for (let k = 0; k < speed; k++) { x = (x + 1) % W; pts[x] = H * .55 - beat(phase % 1) * H * .38; }
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineWidth = 2; ctx.lineJoin = "round";
+    // draw the trace with a fading tail ahead of the cursor
+    for (let s = 0; s < 2; s++) {
+      ctx.beginPath(); let first = true;
+      for (let i = 1; i < W; i++) {
+        const idx = (x + i) % W; if (s === 0 && idx > x) continue; if (s === 1 && idx <= x) continue;
+        const px = idx, py = pts[idx]; if (first) { ctx.moveTo(px, py); first = false; } else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = "rgba(127,220,239,.85)"; ctx.shadowColor = "rgba(127,220,239,.8)"; ctx.shadowBlur = 8; ctx.stroke();
+    }
+    ctx.shadowBlur = 0; ctx.fillStyle = "#050607"; ctx.fillRect(x + 1, 0, 26, H);
+    ctx.beginPath(); ctx.arc(x, pts[x], 3.5, 0, 6.283); ctx.fillStyle = "#eef3f4"; ctx.fill();
+    const r = Math.round(bpm); if (r !== shown) { shown = r; bpmNav.textContent = r; bpmLbl.textContent = r; }
+    requestAnimationFrame(frame);
+  };
+  if (!reduce) requestAnimationFrame(frame);
+
+  // Intro request form (demo).
+  const state = { goal: "Δύναμη", when: "Πρωί" };
+  const chips = (id, items, key) => { const box = document.getElementById(id); box.innerHTML = ""; items.forEach(v => { const b = document.createElement("button"); b.type = "button"; b.textContent = v; b.setAttribute("aria-pressed", String(state[key] === v)); b.addEventListener("click", () => { state[key] = v; render(); }); box.appendChild(b); }); };
+  const render = () => { chips("goals", ["Δύναμη", "Φυσική κατάσταση", "Απώλεια βάρους", "Κινητικότητα", "Αποκατάσταση"], "goal"); chips("when", ["Πρωί", "Μεσημέρι", "Απόγευμα", "Βράδυ"], "when"); };
+  render();
+  document.getElementById("applyForm").addEventListener("submit", e => { e.preventDefault(); document.getElementById("doneText").textContent = `Στόχος: ${state.goal.toLowerCase()} · ${state.when.toLowerCase()}. Στο τελικό site το αίτημα φτάνει κατευθείαν στο studio.`; document.getElementById("form").classList.add("sent"); });
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { nav.classList.toggle("solid", scrollY > 30); mbar.classList.toggle("on", scrollY > innerHeight * .7 && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("sm-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
