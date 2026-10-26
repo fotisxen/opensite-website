@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 // This route gives them a clean URL (/demos/<slug>/) that forwards to the file.
 // Plain HTML redirect (meta refresh + location.replace) because next/navigation's
 // redirect() does not fire in the static export.
-const DEMOS = ["platterie-box", "cotridis-b2b"];
+const DEMOS = ["platterie-box", "cotridis-b2b", "maganie"];
 
 export const dynamicParams = false;
 
