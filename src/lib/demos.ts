@@ -10,6 +10,10 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "typetwo", name: "TYPETWO", kind: "Gym", created: "2026-10-27", instagram: "https://www.instagram.com/typetwo.skg/" },
+  { slug: "garden-of-sin", name: "The Garden of Sin", kind: "Brunch · lunch · dinner", created: "2026-10-27", instagram: "https://www.instagram.com/the_garden_of_sin/" },
+  { slug: "tsiz", name: "TSIZ.PLZ", kind: "Pizza", created: "2026-10-27", instagram: "https://www.instagram.com/tsiz.plz/" },
+  { slug: "vibe", name: "Vibe", kind: "Coffee · brunch · drinks", created: "2026-10-27", instagram: "https://www.instagram.com/vibe.skg/" },
   { slug: "bsmt", name: "BEISMENTraining (Χανιά)", kind: "Gym · HYROX", created: "2026-10-27", instagram: "https://www.instagram.com/bsmt_gymchania/" },
   { slug: "prigkipesa", name: "Πριγκηπέσα", kind: "Streetfood & wine", created: "2026-10-27", instagram: "https://www.instagram.com/prigkhpesa/" },
   { slug: "sintrofi", name: "+Τροφή (Sintrofi)", kind: "Restaurant · Bib Gourmand", created: "2026-10-27", instagram: "https://www.instagram.com/sin_trofi/" },

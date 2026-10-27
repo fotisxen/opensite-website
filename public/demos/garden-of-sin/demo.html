@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Garden of Sin · Brunch, Lunch, Dinner</title>
+<meta name="description" content="The Garden of Sin: brunch, lunch & dinner. Experience the allure of a paradise designed for sinners.">
+<meta name="theme-color" content="#2a1d16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap&subset=greek" rel="stylesheet">
+<!--
+  Demo by OpenSite for The Garden of Sin (@the_garden_of_sin).
+  Facts: Instagram bio (BRUNCH • LUNCH • DINNER, Reservations 6984576523,
+  "Experience the allure of a paradise designed for sinners"), posts "Come as you are", "Just one more",
+  highlights DRINKS / FOOD / PEOPLE / GARDEN.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#1f1611; --bg2:#2a1d16; --cream:#efe4d2; --muted:#b7a58e; --gold:#c9a46a; --red:#b3262d; --leaf:#5f7a4a; --line:rgba(239,228,210,.14);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font:400 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+.cap{font:500 11px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+h2{font:400 clamp(44px,7vw,92px)/.98 var(--serif);letter-spacing:-.01em}
+h2 em{color:var(--gold)}
+.lead{color:var(--muted);font-size:17px;max-width:520px}
+
+/* bar */
+.bar{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:16px;transition:background .4s}
+.bar.solid{background:rgba(31,22,17,.86);backdrop-filter:blur(10px)}
+.mark{font:500 21px/1 var(--serif);letter-spacing:.06em}
+.mark em{color:var(--gold)}
+.res{font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;padding:13px 16px;border:1px solid var(--gold);color:var(--gold);transition:background .3s,color .3s}
+.res:hover{background:var(--gold);color:var(--bg)}
+
+/* vines (fixed layer drawn by scroll) */
+#vines{position:fixed;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;opacity:.85}
+#vines path{fill:none;stroke:var(--leaf);stroke-linecap:round}
+#vines .leaf{fill:var(--leaf);transform-box:fill-box;transform-origin:0 50%;transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
+main,footer{position:relative;z-index:2}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:grid;place-items:center;text-align:center;padding:100px 16px 60px;position:relative;background:radial-gradient(ellipse at 50% 42%,rgba(179,38,45,.18),transparent 55%)}
+.hero .cap{margin-bottom:18px}
+.hero h1{font:400 clamp(58px,11vw,150px)/.9 var(--serif);letter-spacing:-.02em}
+.hero h1 em{display:block;font-style:italic;color:var(--gold)}
+.apple{width:min(230px,52vw);margin:10px auto 0;cursor:pointer;position:relative;transition:transform .4s}
+.apple:hover{transform:rotate(-4deg) scale(1.03)}
+.apple svg{width:100%;overflow:visible;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.bitehint{font:italic 500 20px/1 var(--serif);color:var(--muted);margin-top:8px;min-height:1.2em;transition:opacity .4s}
+.tagline{font:italic 400 clamp(18px,2.2vw,24px)/1.4 var(--serif);color:var(--muted);margin-top:14px}
+
+/* come as you are */
+.come{padding:120px 0;text-align:center}
+.come h2{font-size:clamp(52px,10vw,140px)}
+.come p{margin:26px auto 0}
+.three{display:flex;justify-content:center;gap:clamp(18px,5vw,60px);margin-top:46px;flex-wrap:wrap}
+.three span{font:italic 400 clamp(26px,3.4vw,40px)/1 var(--serif);color:var(--cream)}
+.three span:nth-child(even){color:var(--gold);font-style:normal}
+
+/* temptations */
+.temps{padding:110px 0;background:var(--bg2);border-block:1px solid var(--line)}
+.thead{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:50px}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.t{position:relative;overflow:hidden;aspect-ratio:3/4.2;background:#000;cursor:pointer;isolation:isolate}
+.t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.04);filter:sepia(.25) brightness(.62) saturate(.9);transition:transform 1.2s,filter .8s}
+.t::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 30%,rgba(20,13,9,.95))}
+.t:hover img,.t.open img{transform:scale(1.1);filter:sepia(.1) brightness(.75) saturate(1.05)}
+.t .in{position:absolute;inset:auto 0 0;padding:26px}
+.t .num{font:italic 400 18px/1 var(--serif);color:var(--gold)}
+.t h3{font:400 52px/1 var(--serif);margin:8px 0 6px}
+.t .when{font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.t .more{max-height:0;overflow:hidden;transition:max-height .7s ease}
+.t:hover .more,.t.open .more{max-height:220px}
+.t .more p{color:#dccdb7;font-size:15px;margin-top:14px}
+.t .more ul{list-style:none;margin-top:10px;font:italic 400 19px/1.45 var(--serif);color:var(--cream)}
+
+/* just one more */
+.one{padding:130px 0;text-align:center;position:relative}
+.one h2 em{font-style:italic}
+.oneCard{margin:46px auto 0;max-width:520px;border:1px solid var(--line);padding:40px 30px;background:rgba(42,29,22,.6);backdrop-filter:blur(4px);position:relative}
+.oneCard::before,.oneCard::after{content:"";position:absolute;width:26px;height:26px;border:1px solid var(--gold)}
+.oneCard::before{left:-1px;top:-1px;border-right:0;border-bottom:0}.oneCard::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.oneCard .k{font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.oneCard h3{font:italic 400 clamp(34px,5vw,48px)/1.05 var(--serif);margin:16px 0 10px;min-height:1.05em}
+.oneCard p{color:var(--muted);min-height:3.4em}
+.oneCard.swap h3,.oneCard.swap p{animation:fadeup .6s both}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px);filter:blur(4px)}}
+.btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font:500 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;padding:16px 22px;background:var(--gold);color:var(--bg);transition:filter .3s}
+.btn:hover{filter:brightness(1.1)}
+.btn.line{background:transparent;color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.count{display:block;margin-top:14px;font:italic 400 16px/1 var(--serif);color:var(--muted)}
+
+/* garden gallery */
+.gal{padding:110px 0}
+.ggrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px;margin-top:46px}
+.ggrid figure{position:relative;overflow:hidden}
+.ggrid figure:first-child{grid-row:span 2}
+.ggrid img{width:100%;height:100%;object-fit:cover;filter:sepia(.2) brightness(.8);transition:transform 1.2s}
+.ggrid figure:hover img{transform:scale(1.06)}
+.ggrid figcaption{position:absolute;left:14px;bottom:12px;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--cream)}
+
+/* reserve */
+.reserve{padding:120px 0 90px;background:radial-gradient(ellipse at 50% 0,rgba(201,164,106,.14),transparent 60%),var(--bg2);border-top:1px solid var(--line)}
+.rgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start;margin-top:44px}
+.rgrid .phone{font:400 clamp(40px,5vw,62px)/1 var(--serif);display:block;margin:12px 0 8px}
+.rgrid .phone:hover{color:var(--gold)}
+.info{display:grid;gap:26px}
+.info h4{font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.info p{color:var(--cream);font-size:16px}
+footer{border-top:1px solid var(--line);padding:26px 0 90px;color:var(--muted);font-size:13px;background:var(--bg)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s,transform 1s}
+.rv.in{opacity:1;transform:none}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--gold);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--sans);letter-spacing:0;text-transform:none;font-style:normal;color:#1f1611;background:var(--gold);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font:600 11px/1 var(--sans);padding:9px 12px;border-radius:999px;background:#2a1d16;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:900px){
+  .tgrid{grid-template-columns:1fr}
+  .t{aspect-ratio:4/3.6}
+  .t .more{max-height:220px}
+  .rgrid{grid-template-columns:1fr;gap:40px}
+  .ggrid{grid-template-columns:1fr 1fr;grid-template-rows:200px 160px 160px}
+  .ggrid figure:first-child{grid-column:span 2;grid-row:auto}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+<script>
+  (function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+    if(q.has("clean")||localStorage.getItem("gos-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+<svg id="vines" aria-hidden="true"></svg>
+
+<header class="bar" id="bar">
+  <a class="mark" href="#top">The Garden <em>of</em> Sin</a>
+  <a class="res" href="#reserve">Κράτηση</a>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <div class="cap">Brunch · Lunch · Dinner</div>
+      <h1>The Garden<em>of Sin</em></h1>
+      <div class="apple" id="apple" role="button" tabindex="0" aria-label="Δάγκωσε το μήλο">
+        <svg viewBox="0 0 200 220">
+          <defs>
+            <radialGradient id="ag" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#e2474d"/><stop offset=".55" stop-color="#a51f27"/><stop offset="1" stop-color="#4d0b10"/></radialGradient>
+            <radialGradient id="flesh" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#fbf1d6"/><stop offset="1" stop-color="#e8d3a0"/></radialGradient>
+            <mask id="bites"><rect width="200" height="220" fill="#fff"/><g id="biteMask" fill="#000"></g></mask>
+          </defs>
+          <path d="M100 52c-8-26-26-36-40-30 18 2 30 14 36 32z" fill="#5f7a4a"/>
+          <path d="M98 58c0-18 4-34 12-46" stroke="#4a2f1d" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <g id="fleshG"></g>
+          <path mask="url(#bites)" d="M100 62c-22-16-70-14-80 34-9 46 22 104 52 112 12 3 20-4 28-4s16 7 28 4c30-8 61-66 52-112-10-48-58-50-80-34z" fill="url(#ag)"/>
+          <ellipse cx="64" cy="98" rx="14" ry="24" fill="#fff" opacity=".18" transform="rotate(20 64 98)"/>
+        </svg>
+      </div>
+      <div class="bitehint" id="biteHint">Δάγκωσέ το.</div>
+      <p class="tagline">Experience the allure of a paradise designed for sinners.</p>
+    </div>
+  </section>
+
+  <section class="come">
+    <div class="wrap rv">
+      <div class="cap">Η πόρτα είναι ανοιχτή</div>
+      <h2 style="margin-top:18px">Come as<br><em>you are.</em></h2>
+      <p class="lead">Καφές, φαγητό, ποτά, και λίγο κάτι ακόμα όταν πέφτει το σκοτάδι. Δεν χρειάζεται dress code, ούτε δικαιολογία.</p>
+      <div class="three"><span>Coffee</span><span>Food</span><span>Drinks</span><span>…after dark</span></div>
+    </div>
+  </section>
+
+  <section class="temps" id="menu">
+    <div class="wrap">
+      <div class="thead rv">
+        <div><div class="cap">Τρεις πειρασμοί</div><h2 style="margin-top:16px">Διάλεξε<br><em>την αμαρτία σου.</em></h2></div>
+        <p class="lead">Από το πρώτο φως ως αργά το βράδυ, ο κήπος αλλάζει πρόσωπο. Εσύ απλά ενδίδεις.</p>
+      </div>
+      <div class="tgrid ph" data-note="Ενδεικτικά πιάτα: να μπει το πραγματικό μενού (brunch, lunch, dinner)">
+        <article class="t rv" tabindex="0"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=70">
+          <div class="in"><span class="num">I.</span><h3>Brunch</h3><span class="when">Το πρωί</span>
+            <div class="more"><p>Για όσους ξύπνησαν αργά και δεν το μετανιώνουν.</p><ul><li>Αυγά benedict</li><li>Pancakes & φρούτα</li><li>Specialty καφές</li></ul></div></div></article>
+        <article class="t rv" tabindex="0"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=70">
+          <div class="in"><span class="num">II.</span><h3>Lunch</h3><span class="when">Το μεσημέρι</span>
+            <div class="more"><p>Ένα μεσημεριανό που κρατάει λίγο παραπάνω απ' όσο έπρεπε.</p><ul><li>Φρέσκα ζυμαρικά</li><li>Σαλάτες του κήπου</li><li>Ένα ποτήρι κρασί</li></ul></div></div></article>
+        <article class="t rv" tabindex="0"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=70">
+          <div class="in"><span class="num">III.</span><h3>Dinner</h3><span class="when">After dark</span>
+            <div class="more"><p>Κεριά, πιάτα για να μοιραστείς και ποτά που ζητάνε κι άλλο.</p><ul><li>Πιάτα για το τραπέζι</li><li>Signature cocktails</li><li>Champagne</li></ul></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="one">
+    <div class="wrap rv">
+      <div class="cap">Ξέρουμε πώς τελειώνει</div>
+      <h2 style="margin-top:18px">Just <em>one more.</em></h2>
+      <div class="oneCard" id="oneCard">
+        <span class="k" id="oneK">Ο πειρασμός σου</span>
+        <h3 id="oneT">Ένας espresso ακόμα</h3>
+        <p id="oneP">Γιατί η κουβέντα μόλις άρχισε να γίνεται ενδιαφέρουσα.</p>
+        <button class="btn" id="oneBtn" type="button">Just one more →</button>
+        <span class="count" id="oneCount"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="gal">
+    <div class="wrap">
+      <div class="rv"><div class="cap">Drinks · Food · People · Garden</div><h2 style="margin-top:16px">Ο κήπος<br><em>από μέσα.</em></h2></div>
+      <div class="ggrid ph rv" data-note="Οι δικές σας φωτογραφίες από τα highlights (Drinks, Food, People, Garden)">
+        <figure><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=70"><figcaption>Garden</figcaption></figure>
+        <figure><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=70"><figcaption>Coffee</figcaption></figure>
+        <figure><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=70"><figcaption>Drinks</figcaption></figure>
+        <figure><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=600&q=70"><figcaption>People</figcaption></figure>
+        <figure><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=70"><figcaption>Food</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="reserve" id="reserve">
+    <div class="wrap">
+      <div class="rv"><div class="cap">Κρατήσεις</div><h2 style="margin-top:16px">Κράτα μια θέση<br><em>στον παράδεισο.</em></h2></div>
+      <div class="rgrid">
+        <div class="rv">
+          <p class="lead">Για brunch, lunch ή dinner, ένα τηλεφώνημα αρκεί. Για μεγαλύτερες παρέες και εκδηλώσεις, μιλήστε μας από πριν.</p>
+          <a class="phone" href="tel:+306984576523">698 457 6523</a>
+          <a class="btn" href="tel:+306984576523">Κάλεσε για κράτηση</a>
+          <a class="btn line ph" data-note="Αν θέλετε online κρατήσεις: φόρμα ή σύνδεση με πλατφόρμα" href="#reserve" style="margin-left:8px">Online κράτηση</a>
+        </div>
+        <div class="info rv">
+          <div><h4>Διεύθυνση</h4><p class="ph" data-note="Διεύθυνση: να τη δώσει το Garden of Sin">Θεσσαλονίκη</p></div>
+          <div><h4>Ώρες</h4><p class="ph" data-note="Ωράριο: να το δώσει το Garden of Sin">Brunch, lunch & dinner<br>Κάθε μέρα</p></div>
+          <div><h4>Instagram</h4><p><a href="https://www.instagram.com/the_garden_of_sin/" target="_blank" rel="noopener">@the_garden_of_sin</a></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© The Garden of Sin · Designed for sinners</span><span>Demo από <a href="https://opensite.gr" style="color:var(--gold)">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("gos-notes", on ? "on" : "off"); } catch (e) {}
+  });
+  const bar = document.getElementById("bar");
+
+  /* ---------- the apple ---------- */
+  const apple = document.getElementById("apple"), maskG = document.getElementById("biteMask"), fleshG = document.getElementById("fleshG"), hint = document.getElementById("biteHint");
+  const BITES = [[176, 108], [24, 140], [150, 190], [56, 74]];
+  const LINES = ["Δάγκωσέ το.", "Ένα ακόμα;", "Δεν σταματάς εύκολα.", "Καλώς ήρθες στον κήπο."];
+  let bites = 0;
+  function bite() {
+    if (bites >= BITES.length) return;
+    const [x, y] = BITES[bites++], NS = "http://www.w3.org/2000/svg";
+    // a bite = a cluster of circles (tooth marks on the edge)
+    [[0, 0, 26], [-16, 14, 14], [14, 16, 14], [-18, -12, 12], [16, -14, 12]].forEach(([ox, oy, r]) => {
+      const c = document.createElementNS(NS, "circle"); c.setAttribute("cx", x + ox); c.setAttribute("cy", y + oy); c.setAttribute("r", r); maskG.appendChild(c);
+      const f = document.createElementNS(NS, "circle"); f.setAttribute("cx", x + ox); f.setAttribute("cy", y + oy); f.setAttribute("r", r + 3); f.setAttribute("fill", "url(#flesh)"); fleshG.appendChild(f);
+    });
+    // flesh shows only inside the apple's outline
+    fleshG.setAttribute("clip-path", "url(#appleClip)");
+    hint.textContent = LINES[Math.min(bites, LINES.length - 1)];
+    apple.animate([{ transform: "scale(1)" }, { transform: "scale(.94) rotate(-3deg)" }, { transform: "scale(1)" }], { duration: 300 });
+  }
+  // clip for the flesh
+  (() => {
+    const NS = "http://www.w3.org/2000/svg", cp = document.createElementNS(NS, "clipPath"), p = document.createElementNS(NS, "path");
+    cp.id = "appleClip"; p.setAttribute("d", "M100 62c-22-16-70-14-80 34-9 46 22 104 52 112 12 3 20-4 28-4s16 7 28 4c30-8 61-66 52-112-10-48-58-50-80-34z");
+    cp.appendChild(p); apple.querySelector("defs").appendChild(cp);
+  })();
+  apple.addEventListener("click", bite);
+  apple.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); bite(); } });
+
+  /* ---------- vines grow with scroll ---------- */
+  const svg = document.getElementById("vines"), NS = "http://www.w3.org/2000/svg";
+  let vines = [];
+  function buildVines() {
+    svg.innerHTML = ""; vines = [];
+    const W = innerWidth, H = innerHeight, narrow = W < 700;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const specs = [
+      { x: narrow ? 6 : 26, dir: 1, seed: 1 }, { x: W - (narrow ? 6 : 26), dir: -1, seed: 2 }
+    ];
+    specs.forEach(s => {
+      // a wandering vertical vine from the top to the bottom of the viewport
+      let d = `M${s.x} -20`, x = s.x, y = -20, rnd = s.seed * 9301;
+      const leaves = [];
+      while (y < H + 40) {
+        rnd = (rnd * 9301 + 49297) % 233280; const r = rnd / 233280;
+        const ny = y + 70 + r * 50, sway = (narrow ? 10 : 34) * (r - .3) * s.dir, nx = s.x + sway;
+        d += ` Q${x + sway * 1.6} ${(y + ny) / 2} ${nx} ${ny}`;
+        leaves.push([nx, ny, (r > .5 ? 1 : -1)]);
+        x = nx; y = ny;
+      }
+      const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("stroke-width", narrow ? 1.4 : 2.2); svg.appendChild(p);
+      const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+      const ls = leaves.map(([lx, ly, side], i) => {
+        const l = document.createElementNS(NS, "path"), sz = (narrow ? 7 : 12) * (1 + (i % 3) * .25), a = side * (s.dir > 0 ? 1 : -1);
+        l.setAttribute("class", "leaf");
+        l.setAttribute("d", `M${lx} ${ly} q${sz * a} ${-sz * .9} ${sz * 2 * a} 0 q${-sz * a} ${sz * .9} ${-sz * 2 * a} 0z`);
+        l.style.transform = "scale(0)"; svg.appendChild(l);
+        // a few red blossoms / apples along the way
+        if (i % 4 === 2) { const c = document.createElementNS(NS, "circle"); c.setAttribute("cx", lx); c.setAttribute("cy", ly + 6); c.setAttribute("r", narrow ? 3 : 5); c.setAttribute("fill", "#b3262d"); c.setAttribute("class", "leaf"); c.style.transform = "scale(0)"; c.style.transformOrigin = "center"; svg.appendChild(c); return [l, ly, c]; }
+        return [l, ly];
+      });
+      vines.push({ p, len, ls, H });
+    });
+    grow();
+  }
+  function grow() {
+    const max = document.documentElement.scrollHeight - innerHeight, p = max > 0 ? Math.min(1, scrollY / max) : 0;
+    const k = .08 + p * .92;
+    vines.forEach(v => {
+      v.p.style.strokeDashoffset = v.len * (1 - k);
+      v.ls.forEach(([l, ly, c]) => { const on = ly / v.H < k - .02; l.style.transform = on ? "scale(1)" : "scale(0)"; if (c) c.style.transform = on ? "scale(1)" : "scale(0)"; });
+    });
+    bar.classList.toggle("solid", scrollY > 60);
+  }
+  addEventListener("scroll", grow, { passive: true });
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(buildVines, 150); });
+  buildVines();
+
+  /* ---------- temptation cards (tap on touch) ---------- */
+  document.querySelectorAll(".t").forEach(t => {
+    t.addEventListener("click", () => t.classList.toggle("open"));
+    t.addEventListener("keydown", e => { if (e.key === "Enter") t.classList.toggle("open"); });
+  });
+
+  /* ---------- just one more ---------- */
+  const ONE = [
+    ["Ένας espresso ακόμα", "Γιατί η κουβέντα μόλις άρχισε να γίνεται ενδιαφέρουσα."],
+    ["Ένα κομμάτι γλυκό", "Το μοιράζεστε. Υποτίθεται."],
+    ["Ένα ποτήρι κρασί", "Το μεσημέρι γίνεται απόγευμα χωρίς να το καταλάβεις."],
+    ["Ένα signature cocktail", "Ο ήλιος έδυσε. Ο κήπος μόλις ξύπνησε."],
+    ["Ένα ποτήρι champagne", "Δεν χρειάζεται αφορμή. Αυτή είναι η αφορμή."],
+    ["Ένα τελευταίο", "Το είπες και πριν από δύο ποτά. Κανείς δεν μετράει."]
+  ];
+  const card = document.getElementById("oneCard"), oneT = document.getElementById("oneT"), oneP = document.getElementById("oneP"), oneC = document.getElementById("oneCount");
+  let oi = 0, n = 0;
+  document.getElementById("oneBtn").addEventListener("click", () => {
+    oi = (oi + 1) % ONE.length; n++;
+    card.classList.remove("swap"); void card.offsetWidth; card.classList.add("swap");
+    oneT.textContent = ONE[oi][0]; oneP.textContent = ONE[oi][1];
+    oneC.textContent = n === 1 ? "«Μόνο ένα», είπες." : `«Μόνο ένα», είπες. Πριν από ${n}.`;
+  });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

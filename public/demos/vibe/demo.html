@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vibe · Coffee, Brunch, Drinks · Ροτόντα</title>
+<meta name="description" content="Vibe: coffee, brunch και drinks στη Δημ. Γούναρη 49, δίπλα στη Ροτόντα, Θεσσαλονίκη.">
+<meta name="theme-color" content="#ffb27a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700;900&family=Comfortaa:wght@700&display=swap&subset=greek" rel="stylesheet">
+<!--
+  Demo by OpenSite for Vibe (@vibe.skg).
+  Facts: Instagram bio (Coffee | Brunch | Drinks, Wolt, 2312001285, Δημ. Γούναρη 49, Ροτόντα),
+  post "Healthy brunch 10€–15€/άτομο δίπλα στην Καμάρα".
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --sky1:#ffd7a8; --sky2:#ffb27a; --ink:#1d1a24; --paper:#fff8f0; --accent:#ff6a3d; --soft:#6b6475; --line:rgba(29,26,36,.12);
+  --sans:Commissioner,system-ui,sans-serif; --round:Comfortaa,Commissioner,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.eyebrow{font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h2{font:900 clamp(40px,7vw,86px)/.95 var(--sans);letter-spacing:-.03em}
+h2 i{font-style:normal;color:var(--accent)}
+
+/* top */
+.top{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
+.logo{font:700 26px/1 var(--round);letter-spacing:.02em;background:var(--paper);padding:10px 16px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.top nav{display:flex;gap:8px}
+.pill{font:700 13px/1 var(--sans);padding:12px 16px;border-radius:999px;background:var(--ink);color:#fff;transition:background .5s}
+.pill.l{background:var(--paper);color:var(--ink);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+
+/* hero / dial */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px;padding:100px max(16px,calc((100% - 1160px)/2)) 0;overflow:hidden;background:linear-gradient(180deg,var(--sky1),var(--sky2));transition:background .2s}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:18px;background:var(--paper);border-radius:18px 18px 0 0}
+.copy{position:relative;z-index:3;padding-bottom:180px}
+.time{font:700 15px/1 var(--sans);letter-spacing:.06em;display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.55);padding:9px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+.time b{font-variant-numeric:tabular-nums}
+.copy h1{font:900 clamp(56px,10vw,138px)/.88 var(--sans);letter-spacing:-.045em;margin:22px 0 18px;min-height:2em;color:var(--hink,#1d1a24);transition:color .4s}
+.copy p{font-size:clamp(17px,2vw,21px);max-width:440px;color:var(--hsub,#3d3646);transition:color .4s}
+.dial-wrap{position:relative;z-index:3;display:grid;place-items:center;padding-bottom:150px}
+.dial{position:relative;width:min(400px,78vw);aspect-ratio:1;touch-action:none;cursor:grab;user-select:none}
+.dial:active{cursor:grabbing}
+.dial svg{width:100%;height:100%;overflow:visible}
+.dial .hint{position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);white-space:nowrap;font:700 13px/1 var(--sans);background:var(--ink);color:#fff;padding:9px 14px;border-radius:999px;animation:wiggle 2.4s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:translateX(-50%) rotate(0)}50%{transform:translateX(-50%) rotate(-3deg)}}
+.dial .face-t{font:900 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.dial .center-t{font:900 54px/1 var(--sans);letter-spacing:-.04em}
+.city{position:absolute;inset:auto 0 0;height:min(36vh,300px);z-index:2;pointer-events:none}
+.city svg{width:100%;height:100%}
+.sun{position:absolute;width:90px;height:90px;border-radius:50%;z-index:1;transition:background .3s,box-shadow .3s}
+
+/* now serving */
+.serving{padding:80px 0 90px}
+.serve-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.serve-card{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3.4;background:#eee;box-shadow:0 30px 60px rgba(29,26,36,.16)}
+.serve-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s}
+.serve-card .lbl{position:absolute;left:18px;top:18px;font:700 13px/1 var(--sans);background:var(--paper);padding:10px 14px;border-radius:999px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 22px}
+.tab{font:700 15px/1 var(--sans);padding:13px 18px;border-radius:999px;box-shadow:inset 0 0 0 2px var(--ink);transition:background .3s,color .3s}
+.tab[aria-selected=true]{background:var(--ink);color:#fff}
+.items{list-style:none}
+.items li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line);animation:pop .5s both}
+.items li:nth-child(2){animation-delay:.05s}.items li:nth-child(3){animation-delay:.1s}.items li:nth-child(4){animation-delay:.15s}.items li:nth-child(5){animation-delay:.2s}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}}
+.items b{font:700 19px/1.25 var(--sans);display:block}
+.items small{color:var(--soft);font-size:14px}
+.items .pr{font:700 16px/1.25 var(--sans);color:var(--accent);white-space:nowrap}
+.deal{margin-top:24px;display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;padding:14px 18px;border-radius:16px;font-weight:700}
+.deal span{font:900 22px/1 var(--sans);color:#ffd166}
+
+/* reels strip */
+.reels{padding:90px 0;background:var(--ink);color:#fff;overflow:hidden}
+.reels h2 i{color:#ffd166}
+.strip{display:flex;gap:16px;margin-top:40px;padding:0 max(16px,calc((100% - 1160px)/2));overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.reel{flex:0 0 min(250px,68vw);aspect-ratio:9/16;border-radius:22px;position:relative;overflow:hidden;scroll-snap-align:start;background:#333;transition:transform .35s}
+.reel:hover{transform:rotate(-2deg) scale(1.02)}
+.reel:nth-child(even):hover{transform:rotate(2deg) scale(1.02)}
+.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.75))}
+.reel p{position:absolute;left:16px;right:16px;bottom:18px;z-index:1;font:900 21px/1.1 var(--sans)}
+.reel .play{position:absolute;right:14px;top:14px;z-index:1;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--ink);display:grid;place-items:center;font-size:12px}
+
+/* find us */
+.find{padding:100px 0 80px}
+.find-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.box{border-radius:24px;padding:28px;background:#fff;box-shadow:0 10px 30px rgba(29,26,36,.07)}
+.box h3{font:900 24px/1.1 var(--sans);margin-bottom:10px}
+.box p{color:var(--soft)}
+.box a.big{display:block;font:900 26px/1.15 var(--sans);color:var(--ink);margin:6px 0}
+.box .btn{display:inline-block;margin-top:16px;font:700 14px/1 var(--sans);padding:13px 18px;border-radius:999px;background:var(--accent);color:#fff}
+.box.wolt{background:#00c2e8;color:#fff}.box.wolt p{color:rgba(255,255,255,.85)}.box.wolt .btn{background:#fff;color:#0089a3}
+footer{padding:26px 0 90px;border-top:1px solid var(--line);color:var(--soft);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--accent);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--sans);letter-spacing:0;text-transform:none;color:#fff;background:#d6461c;padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font:600 11px/1 var(--sans);padding:9px 12px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--soft)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--accent);color:var(--accent)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:96px;gap:0;text-align:center}
+  .copy{padding-bottom:10px}.copy p{margin-inline:auto}
+  .copy h1{min-height:0;margin:16px 0 12px}
+  .dial-wrap{padding-bottom:min(30vh,240px)}
+  .dial{width:min(300px,72vw)}
+  .serve-grid,.find-grid{grid-template-columns:1fr}
+  .top nav .l{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+<script>
+  (function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+    if(q.has("clean")||localStorage.getItem("vibe-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#top">vibe</a>
+  <nav><a class="pill l" href="#menu">Μενού</a><a class="pill" href="#find">Πάμε;</a></nav>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="sun" id="sun" aria-hidden="true"></div>
+    <div class="copy">
+      <span class="time">🕒 <b id="clock">09:00</b> · Ροτόντα, Θεσσαλονίκη</span>
+      <h1 id="headline">Πρώτα<br>καφές.</h1>
+      <p id="sub">Τα υπόλοιπα τα βλέπουμε μετά. Γύρνα τον δίσκο και διάλεξε τι vibe έχεις.</p>
+    </div>
+    <div class="dial-wrap">
+      <div class="dial" id="dial" role="slider" tabindex="0" aria-label="Τι vibe έχεις; Ώρα της ημέρας" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <svg viewBox="-200 -200 400 400" aria-hidden="true">
+          <defs>
+            <path id="arcText" d="M-150 0a150 150 0 1 1 300 0a150 150 0 1 1-300 0"/>
+          </defs>
+          <circle r="190" fill="#fff8f0" stroke="#1d1a24" stroke-width="4"/>
+          <circle r="190" fill="none" stroke="#1d1a24" stroke-width="4" stroke-dasharray="2 14" transform="scale(.9)"/>
+          <g id="labels" class="face-t" fill="#1d1a24"></g>
+          <path id="track" fill="none" stroke-width="20" stroke-linecap="round"/>
+          <g id="knob"><circle r="128" fill="#1d1a24"/><circle cx="0" cy="-104" r="12" fill="#ffd166"/></g>
+          <text id="emoji" class="center-t" text-anchor="middle" dy="18" font-size="64">☕</text>
+        </svg>
+        <span class="hint">↻ Γύρνα με</span>
+      </div>
+    </div>
+    <div class="city" aria-hidden="true">
+      <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
+        <g id="cityFill" fill="#3b2a3f">
+          <!-- left buildings -->
+          <rect x="0" y="170" width="120" height="130"/><rect x="110" y="140" width="90" height="160"/><rect x="190" y="185" width="110" height="115"/>
+          <!-- Rotonda: drum, dome, lantern -->
+          <rect x="420" y="150" width="300" height="150"/>
+          <path d="M440 152 Q570 30 700 152Z"/>
+          <rect x="555" y="58" width="30" height="34" rx="4"/>
+          <!-- minaret -->
+          <rect x="770" y="40" width="26" height="260"/><path d="M766 44 L783 4 L800 44Z"/><rect x="760" y="110" width="46" height="10" rx="3"/>
+          <!-- right buildings -->
+          <rect x="860" y="175" width="120" height="125"/><rect x="970" y="135" width="100" height="165"/><rect x="1060" y="190" width="140" height="110"/>
+        </g>
+        <g id="windows" fill="#ffd166" opacity="0">
+          <rect x="455" y="205" width="16" height="34" rx="8"/><rect x="505" y="205" width="16" height="34" rx="8"/><rect x="555" y="205" width="16" height="34" rx="8"/><rect x="605" y="205" width="16" height="34" rx="8"/><rect x="655" y="205" width="16" height="34" rx="8"/>
+          <rect x="135" y="170" width="12" height="16"/><rect x="160" y="200" width="12" height="16"/><rect x="995" y="160" width="12" height="16"/><rect x="1025" y="195" width="12" height="16"/><rect x="30" y="200" width="12" height="16"/><rect x="900" y="210" width="12" height="16"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="serving" id="menu">
+    <div class="wrap serve-grid">
+      <div class="serve-card rv"><img id="serveImg" alt="" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=70"><span class="lbl" id="serveLbl">☕ Τώρα σερβίρουμε: Coffee</span></div>
+      <div class="rv">
+        <div class="eyebrow">Το μενού ακολουθεί το vibe σου</div>
+        <h2 style="margin-top:14px">Coffee. Brunch.<br><i>Drinks.</i></h2>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" data-k="0" aria-selected="true">☕ Coffee</button>
+          <button class="tab" role="tab" data-k="1" aria-selected="false">🍳 Brunch</button>
+          <button class="tab" role="tab" data-k="2" aria-selected="false">🍹 Drinks</button>
+        </div>
+        <ul class="items ph" id="items" data-note="Ενδεικτικά πιάτα/ποτά: να μπει το πραγματικό μενού με τιμές"></ul>
+        <div class="deal">Healthy brunch <span>10–15€</span> / άτομο, δίπλα στην Καμάρα</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reels">
+    <div class="wrap rv"><div class="eyebrow" style="color:#ffd166">Vibing</div><h2 style="margin-top:14px">Δεν παίρνουμε τον εαυτό μας<br><i>πολύ στα σοβαρά.</i></h2></div>
+    <div class="strip ph" data-note="Εδώ μπαίνουν τα δικά σας reels από το Instagram (αυτόματα)">
+      <a class="reel" href="https://www.instagram.com/vibe.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=60"><span class="play">▶</span><p>POV: ήρθες για έναν καφέ.</p></a>
+      <a class="reel" href="https://www.instagram.com/vibe.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=60"><span class="play">▶</span><p>…και έφυγες μετά το brunch.</p></a>
+      <a class="reel" href="https://www.instagram.com/vibe.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=60"><span class="play">▶</span><p>…ή μήπως μετά το ποτό;</p></a>
+      <a class="reel" href="https://www.instagram.com/vibe.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=60"><span class="play">▶</span><p>Same table. Different vibe.</p></a>
+    </div>
+  </section>
+
+  <section class="find" id="find">
+    <div class="wrap">
+      <div class="rv"><div class="eyebrow">Πάμε;</div><h2 style="margin-top:14px">Δίπλα στη Ροτόντα,<br><i>μακριά από το άγχος.</i></h2></div>
+      <div class="find-grid">
+        <div class="box rv"><h3>📍 Πού</h3><a class="big" href="https://maps.app.goo.gl/gpZB9KEqHZ1Fmw5U7" target="_blank" rel="noopener">Δημ. Γούναρη 49</a><p>Ροτόντα, Θεσσαλονίκη. Δύο βήματα από την Καμάρα.</p><a class="btn" href="https://maps.app.goo.gl/gpZB9KEqHZ1Fmw5U7" target="_blank" rel="noopener">Οδηγίες →</a></div>
+        <div class="box rv"><h3>🕒 Πότε</h3><p class="ph" data-note="Ωράριο: να το δώσει το Vibe">Από τον πρωινό καφέ μέχρι το τελευταίο ποτό.</p><a class="big" href="tel:+302312001285">231 200 1285</a><p>Για κράτηση ή απλά για να πεις γεια.</p></div>
+        <div class="box wolt rv"><h3>🛵 Στο σπίτι;</h3><p>Ό,τι σε φτιάχνει, σου το φέρνει η Wolt.</p><a class="btn ph" data-note="Να μπει το ακριβές link του καταστήματος στη Wolt" href="https://wolt.com/el/grc/thessaloniki" target="_blank" rel="noopener">Παράγγειλε στη Wolt →</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© Vibe · Coffee | Brunch | Drinks · <a href="https://www.instagram.com/vibe.skg/">@vibe.skg</a></span><span>Demo από <a href="https://opensite.gr" style="color:var(--accent)">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("vibe-notes", on ? "on" : "off"); } catch (e) {}
+  });
+
+  // keyframes across the day: t = 0 (09:00) → 1 (23:00)
+  const K = [
+    { t: 0,   sky: ["#ffe2b8", "#ffb27a"], acc: "#ff6a3d", sun: "#fff3c4", city: "#7a4b5c", ink: "#1d1a24", sub: "#3d3646" },
+    { t: .45, sky: ["#bfe8ff", "#7cc8f2"], acc: "#ff5c8a", sun: "#fff7b0", city: "#2f4a6b", ink: "#14202c", sub: "#24384c" },
+    { t: .72, sky: ["#ff9a6b", "#c4467a"], acc: "#ffcf3d", sun: "#ffd27a", city: "#3b1f3d", ink: "#2a0f22", sub: "#3f1830" },
+    { t: 1,   sky: ["#2b1d5c", "#0e0b25"], acc: "#ff4fd8", sun: "#e9e6ff", city: "#07061a", ink: "#2a0f22", sub: "#3f1830" }
+  ];
+  const MODES = [
+    { at: 0,   h: "Πρώτα<br>καφές.", s: "Τα υπόλοιπα τα βλέπουμε μετά. Γύρνα τον δίσκο και διάλεξε τι vibe έχεις.", e: "☕" },
+    { at: .2,  h: "Μισό<br>κρουασάν;", s: "Ή ολόκληρο. Δεν κρίνουμε κανέναν.", e: "🥐" },
+    { at: .38, h: "Brunch<br>o’clock.", s: "Healthy brunch από 10 έως 15 ευρώ το άτομο. Ναι, δίπλα στην Καμάρα.", e: "🍳" },
+    { at: .6,  h: "Ένα<br>freddo ακόμα;", s: "Το απόγευμα είναι για όσους δεν βιάζονται.", e: "🧊" },
+    { at: .78, h: "Πάμε<br>για ποτό;", s: "Ο ήλιος δύει πίσω από τη Ροτόντα. Εσύ κάθεσαι.", e: "🍹" },
+    { at: .93, h: "Ένα<br>τελευταίο.", s: "Το ξέρουμε ότι δεν θα είναι το τελευταίο.", e: "🌙" }
+  ];
+  const MENU = [
+    { lbl: "☕ Τώρα σερβίρουμε: Coffee", img: "photo-1509042239860-f550ce710b93", items: [["Freddo espresso", "Ο κλασικός της πόλης", "2,50€"], ["Flat white", "Διπλό ristretto, βελούδινο γάλα", "3,50€"], ["Iced matcha latte", "Με γάλα βρώμης", "4,00€"], ["Κρουασάν βουτύρου", "Φρέσκο κάθε πρωί", "2,50€"]] },
+    { lbl: "🍳 Τώρα σερβίρουμε: Brunch", img: "photo-1525351484163-7529414344d8", items: [["Avocado toast", "Αυγό ποσέ, chili flakes, προζυμένιο", "9,50€"], ["Pancakes", "Φρούτα εποχής, σιρόπι σφενδάμου", "8,50€"], ["Bowl γιαουρτιού", "Granola, μέλι, φρούτα", "7,00€"], ["Panini", "Ζεστό, τραγανό, όπως στα reels μας", "8,00€"]] },
+    { lbl: "🍹 Τώρα σερβίρουμε: Drinks", img: "photo-1514362545857-3bc16c4c7d1b", items: [["Aperol spritz", "Το ηλιοβασίλεμα σε ποτήρι", "8,00€"], ["Signature cocktail", "Ρωτήστε τον bartender", "9,00€"], ["Κρασί σε ποτήρι", "Λευκό, ροζέ, κόκκινο", "6,00€"], ["Μπίρα draft", "Παγωμένη, όπως πρέπει", "5,00€"]] }
+  ];
+
+  const hx = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+  const mix = (a, b, k) => { const A = hx(a), B = hx(b); return "#" + A.map((v, i) => Math.round(v + (B[i] - v) * k).toString(16).padStart(2, "0")).join(""); };
+  const at = (t, key, i) => {
+    let j = 0; while (j < K.length - 2 && t > K[j + 1].t) j++;
+    const a = K[j], b = K[j + 1], k = Math.min(1, Math.max(0, (t - a.t) / (b.t - a.t)));
+    return i === undefined ? mix(a[key], b[key], k) : mix(a[key][i], b[key][i], k);
+  };
+
+  const hero = document.getElementById("hero"), sun = document.getElementById("sun"), dial = document.getElementById("dial");
+  const knob = document.getElementById("knob"), track = document.getElementById("track"), emoji = document.getElementById("emoji");
+  const head = document.getElementById("headline"), sub = document.getElementById("sub"), clock = document.getElementById("clock");
+  const cityFill = document.getElementById("cityFill"), windows = document.getElementById("windows");
+  const START = -135, SWEEP = 270;  // dial range in degrees (0 = up)
+
+  // face labels
+  const lab = document.getElementById("labels");
+  [["09:00", 0], ["☕", .14], ["🍳", .45], ["13:00", .3], ["🍹", .84], ["23:00", 1], ["18:00", .64]].forEach(([s, t]) => {
+    const a = (START + SWEEP * t) * Math.PI / 180, num = /\d/.test(s), r = num ? 176 : 174;
+    const el = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    el.setAttribute("x", Math.sin(a) * r); el.setAttribute("y", -Math.cos(a) * r + (num ? 4 : 7)); el.setAttribute("text-anchor", "middle");
+    el.setAttribute("font-size", num ? 11 : 20); el.setAttribute("opacity", num ? .55 : 1); el.textContent = s; lab.appendChild(el);
+  });
+
+  let cur = 0, mode = -1, menuK = -1;
+  function arc(t) {
+    const r = 150, a0 = START * Math.PI / 180, a1 = (START + SWEEP * Math.max(t, .001)) * Math.PI / 180;
+    const p = a => `${(Math.sin(a) * r).toFixed(1)} ${(-Math.cos(a) * r).toFixed(1)}`;
+    return `M${p(a0)}A${r} ${r} 0 ${SWEEP * t > 180 ? 1 : 0} 1 ${p(a1)}`;
+  }
+  function set(t) {
+    cur = Math.min(1, Math.max(0, t));
+    const deg = START + SWEEP * cur;
+    knob.setAttribute("transform", `rotate(${deg})`);
+    track.setAttribute("d", arc(cur));
+    const acc = at(cur, "acc");
+    track.setAttribute("stroke", acc);
+    html.style.setProperty("--accent", acc);
+    hero.style.setProperty("--sky1", at(cur, "sky", 0)); hero.style.setProperty("--sky2", at(cur, "sky", 1));
+    const night = cur > .74;   // switch text colour instead of fading through grey
+    hero.style.setProperty("--hink", night ? "#fff8f0" : at(cur, "ink")); hero.style.setProperty("--hsub", night ? "#e6defa" : at(cur, "sub"));
+    cityFill.setAttribute("fill", at(cur, "city"));
+    windows.setAttribute("opacity", Math.max(0, (cur - .62) / .3).toFixed(2));
+    // sun / moon arc across the sky
+    const sx = 8 + cur * 84, sy = 62 - Math.sin(Math.min(cur / .8, 1) * Math.PI) * 48 + (cur > .8 ? (cur - .8) * 40 : 0);
+    sun.style.left = sx + "%"; sun.style.top = sy + "%";
+    const sc = at(cur, "sun"); sun.style.background = sc; sun.style.boxShadow = `0 0 80px 20px ${sc}88`;
+    const mins = 9 * 60 + Math.round(cur * 14 * 60 / 15) * 15;
+    clock.textContent = String(Math.floor(mins / 60)).padStart(2, "0") + ":" + String(mins % 60).padStart(2, "0");
+    dial.setAttribute("aria-valuenow", Math.round(cur * 100));
+    let m = 0; MODES.forEach((x, i) => { if (cur >= x.at) m = i; });
+    if (m !== mode) { mode = m; head.innerHTML = MODES[m].h; sub.textContent = MODES[m].s; emoji.textContent = MODES[m].e; }
+    showMenu(cur < .3 ? 0 : cur < .7 ? 1 : 2, false);
+  }
+
+  // drag the dial
+  let dragging = false;
+  function fromPointer(e) {
+    const r = dial.getBoundingClientRect(), x = e.clientX - (r.left + r.width / 2), y = e.clientY - (r.top + r.height / 2);
+    let deg = Math.atan2(x, -y) * 180 / Math.PI;           // 0 = up, clockwise
+    if (deg < START - 20) deg += 360;
+    set((deg - START) / SWEEP);
+  }
+  dial.addEventListener("pointerdown", e => { dragging = true; stopIntro(); dial.setPointerCapture(e.pointerId); fromPointer(e); });
+  dial.addEventListener("pointermove", e => { if (dragging) fromPointer(e); });
+  dial.addEventListener("pointerup", () => dragging = false);
+  dial.addEventListener("keydown", e => {
+    if (["ArrowRight", "ArrowUp"].includes(e.key)) { stopIntro(); set(cur + .05); e.preventDefault(); }
+    if (["ArrowLeft", "ArrowDown"].includes(e.key)) { stopIntro(); set(cur - .05); e.preventDefault(); }
+  });
+
+  // menu tabs
+  const tabs = [...document.querySelectorAll(".tab")], items = document.getElementById("items");
+  const img = document.getElementById("serveImg"), lbl = document.getElementById("serveLbl");
+  function showMenu(k, fromTab) {
+    if (k === menuK) return; menuK = k;
+    tabs.forEach((b, i) => b.setAttribute("aria-selected", i === k));
+    const M = MENU[k];
+    items.innerHTML = M.items.map(([n, d, p]) => `<li><div><b>${n}</b><small>${d}</small></div><span class="pr">${p}</span></li>`).join("");
+    img.style.opacity = 0;
+    setTimeout(() => { img.src = `https://images.unsplash.com/${M.img}?auto=format&fit=crop&w=1000&q=70`; img.onload = () => img.style.opacity = 1; }, 250);
+    lbl.textContent = M.lbl;
+    if (fromTab) { stopIntro(); set([.1, .45, .85][k]); }
+  }
+  tabs.forEach((b, i) => b.addEventListener("click", () => { menuK = -1; showMenu(i, true); }));
+
+  // gentle intro: the day plays once until touched
+  let intro = true, t0 = performance.now();
+  function stopIntro() { intro = false; }
+  function play(now) {
+    if (!intro) return;
+    const k = (now - t0) / 5200;
+    if (k >= 1) { set(.1); intro = false; return; }
+    set(k < .5 ? k * 2 * .9 : (1 - k) * 2 * .9 + .1 * (k - .5) * 2);
+    requestAnimationFrame(play);
+  }
+  set(0);
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(() => requestAnimationFrame(n => { t0 = n; play(n); }), 700);
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

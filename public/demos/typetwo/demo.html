@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TYPETWO · Θεσσαλονίκη</title>
+<meta name="description" content="TYPETWO: γυμναστήριο στη Θεσσαλονίκη. Ζόρι την ώρα που γίνεται, τέλειο μετά.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,400..800;1,75..100,700..800&display=swap&subset=greek" rel="stylesheet">
+<!--
+  Demo by OpenSite for TYPETWO (@typetwo.skg).
+  Facts: Instagram (TYPETWO, ~65K followers, 📞 2310526996), reel captions.
+  The "Type 2 fun" reading of the name is our creative idea, not confirmed by the gym.
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#0a0a0a; --ink:#f4f4f0; --muted:#8d8d88; --lime:#d6ff3a; --line:rgba(255,255,255,.12);
+  --f:"Open Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:clip;transition:background .8s,color .8s}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.C{font-family:var(--f);font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:-.01em;line-height:.88}
+.k{font:700 12px/1 var(--f);letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
+h2{font-size:clamp(48px,8.5vw,118px)}
+h2 em{font-style:italic;color:var(--lime)}
+
+/* bar */
+.bar{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
+.logo{font:800 22px/1 var(--f);font-stretch:75%;letter-spacing:.04em;background:#0a0a0a;color:var(--ink);padding:10px 14px;border-radius:999px}
+.logo b{color:var(--lime)}
+.call{font:800 13px/1 var(--f);font-stretch:85%;letter-spacing:.08em;text-transform:uppercase;background:var(--lime);color:#0a0a0a;padding:12px 16px;border-radius:999px}
+
+/* hero / hold */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;text-align:center;padding:90px 16px 60px;overflow:hidden;transition:background .9s}
+.hero.done{background:var(--lime);color:#0a0a0a}
+.hero .bg{position:absolute;inset:0;background:center/cover no-repeat url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1600&q=60");opacity:.22;filter:grayscale(1) contrast(1.2);transition:opacity .9s}
+.hero.done .bg{opacity:0}
+.hero .in{position:relative;z-index:2;width:100%}
+.reps{font:800 14px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.hero.done .reps{color:#0a0a0a}
+.thought{font-size:clamp(46px,10vw,150px);min-height:1.8em;display:grid;place-items:center;margin:18px 0 26px}
+.thought span{display:block;animation:in .35s both}
+@keyframes in{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.hold{position:relative;width:min(190px,46vw);aspect-ratio:1;margin:0 auto;border-radius:50%;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.hold svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.hold circle{fill:none;stroke-width:8}
+.hold .trk{stroke:var(--line)}
+.hold .prg{stroke:var(--lime);stroke-linecap:round;transition:stroke-dashoffset .12s linear}
+.hold .face{position:absolute;inset:14px;border-radius:50%;background:var(--lime);color:#0a0a0a;display:grid;place-items:center;font:800 17px/1.05 var(--f);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;transition:transform .15s;box-shadow:0 0 0 0 rgba(214,255,58,.5);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 22px rgba(214,255,58,0)}100%{box-shadow:0 0 0 0 rgba(214,255,58,0)}}
+.hold.on .face{transform:scale(.92);animation:none}
+.hero.done .hold{display:none}
+.shake{animation:shake .12s linear infinite}
+@keyframes shake{25%{transform:translate(1px,-1px)}50%{transform:translate(-1px,1px)}75%{transform:translate(1px,1px)}}
+.sub{margin-top:26px;color:var(--muted);font-size:17px;max-width:520px;margin-inline:auto}
+.hero.done .sub{color:#1c1c1c}
+.after{display:none;margin-top:26px;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero.done .after{display:flex}
+.btn{display:inline-flex;align-items:center;gap:10px;font:800 14px/1 var(--f);font-stretch:85%;letter-spacing:.1em;text-transform:uppercase;padding:16px 22px;border-radius:999px;background:#0a0a0a;color:var(--lime)}
+.btn.o{background:transparent;color:#0a0a0a;box-shadow:inset 0 0 0 2px #0a0a0a}
+.btn.l{background:var(--lime);color:#0a0a0a}
+
+/* the curve */
+.curve{padding:120px 0;border-top:1px solid var(--line)}
+.cgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.cgrid p{color:var(--muted);font-size:17px;max-width:470px;margin-top:22px}
+.chart{position:relative;border:1px solid var(--line);border-radius:18px;padding:24px 20px 18px;background:#111}
+.chart svg{width:100%;height:auto;overflow:visible}
+.chart .ax{stroke:var(--line);stroke-width:1.5}
+.chart .ln{fill:none;stroke:var(--lime);stroke-width:5;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 2.2s ease}
+.chart.in .ln{stroke-dashoffset:0}
+.chart text{font:700 13px var(--f);fill:var(--muted)}
+.chart .lab{font:800 15px var(--f);font-stretch:80%;fill:var(--ink);text-transform:uppercase;letter-spacing:.04em;opacity:0;transition:opacity .6s}
+.chart.in .lab{opacity:1}
+.chart.in .lab.b{transition-delay:1s}.chart.in .lab.c{transition-delay:2s}
+
+/* reels */
+.reels{padding:110px 0;background:#111;border-block:1px solid var(--line)}
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.big65{font-size:clamp(90px,16vw,220px);color:var(--lime)}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.reel{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#222;isolation:isolate}
+.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:grayscale(.4) contrast(1.1) brightness(.7);transition:transform .8s,filter .5s}
+.reel:hover img{transform:scale(1.06);filter:none}
+.reel::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 40%,rgba(0,0,0,.8))}
+.reel .cap{position:absolute;left:12px;right:12px;bottom:16px;font:700 15px/1.3 var(--f);text-align:center}
+.reel .cap mark{background:#fff;color:#0a0a0a;padding:1px 5px;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.reel .play{position:absolute;right:10px;top:10px;font:800 11px/1 var(--f);letter-spacing:.08em;background:rgba(0,0,0,.6);padding:7px 9px;border-radius:999px}
+
+/* training */
+.train{padding:120px 0}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:46px}
+.tc{border:1px solid var(--line);border-radius:18px;padding:28px;background:#0f0f0f;transition:border-color .3s,transform .3s}
+.tc:hover{border-color:var(--lime);transform:translateY(-4px)}
+.tc .n{font:800 13px/1 var(--f);color:var(--lime);letter-spacing:.12em}
+.tc h3{font-size:44px;margin:14px 0 10px}
+.tc p{color:var(--muted)}
+.tc .pain{margin-top:18px;font:700 12px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tc .pain i{display:inline-block;width:14px;height:6px;border-radius:3px;background:var(--line);margin-left:3px;vertical-align:middle}
+.tc .pain i.on{background:var(--lime)}
+
+/* 6:30 */
+.early{padding:110px 0;text-align:center;border-top:1px solid var(--line)}
+.clock{font-size:clamp(120px,26vw,330px);font-variant-numeric:tabular-nums;color:var(--ink)}
+.clock b{color:var(--lime);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.early p{color:var(--muted);font-size:18px;max-width:560px;margin:10px auto 0}
+
+/* join */
+.join{padding:120px 0 90px;background:var(--lime);color:#0a0a0a}
+.join h2 em{color:#0a0a0a;text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.1em}
+.jgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:end;margin-top:30px}
+.jgrid .phone{font-size:clamp(44px,7vw,90px);display:block}
+.jgrid p{font-size:18px;max-width:480px;margin:14px 0 24px}
+.info{display:grid;gap:22px}
+.info h4{font:800 12px/1 var(--f);letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;opacity:.6}
+.info p{font:700 18px/1.4 var(--f);margin:0}
+footer{background:#0a0a0a;color:var(--muted);padding:24px 0 90px;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--lime);outline-offset:5px;position:relative}
+.join .ph{outline-color:#0a0a0a}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;font-stretch:100%;color:#0a0a0a;background:var(--lime);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.join .ph::after{background:#0a0a0a;color:var(--lime)}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font:700 11px/1 var(--f);padding:9px 12px;border-radius:999px;background:#161616;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--lime);color:var(--lime)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:900px){
+  .cgrid,.jgrid{grid-template-columns:1fr;gap:36px}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+<script>
+  (function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+    if(q.has("clean")||localStorage.getItem("t2-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+<header class="bar">
+  <a class="logo" href="#top">TYPE<b>TWO</b></a>
+  <a class="call" href="tel:+302310526996">Κλείσε προπόνηση</a>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="in">
+      <div class="reps" id="reps">Set 1 · 0 / 10 reps</div>
+      <div class="thought C" id="thought" aria-live="polite"><span>Ακόμα μία.</span></div>
+      <div class="hold" id="hold" role="button" tabindex="0" aria-label="Κράτα πατημένο για να κάνεις επαναλήψεις">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="45"/><circle class="prg" id="prg" cx="50" cy="50" r="45"/></svg>
+        <div class="face">Κράτα<br>πατημένο</div>
+      </div>
+      <p class="sub" id="sub">Κάνε ένα set μαζί μας. Κράτα το κουμπί πατημένο μέχρι τις 10 επαναλήψεις.</p>
+      <div class="after"><a class="btn" href="#join">Κλείσε την πρώτη σου →</a><a class="btn o" href="#fun">Τι έγινε μόλις;</a></div>
+    </div>
+  </section>
+
+  <section class="curve" id="fun">
+    <div class="wrap cgrid">
+      <div class="rv">
+        <div class="k">Type 2 fun</div>
+        <h2 class="C" style="margin-top:16px">Ζόρι τώρα.<br><em>Τέλειο μετά.</em></h2>
+        <p class="ph" data-note="Ερμηνεία του ονόματος από εμάς: να επιβεβαιωθεί ή να γραφτεί η δική σας ιστορία">Υπάρχει η διασκέδαση που σου αρέσει την ώρα που γίνεται. Και υπάρχει η άλλη: αυτή που σε ζορίζει όσο κρατάει και σε κάνει περήφανο μόλις τελειώσει. Εμείς είμαστε το δεύτερο είδος.</p>
+      </div>
+      <div class="chart rv" id="chart">
+        <svg viewBox="0 0 520 300" aria-label="Γράφημα: η διάθεση πέφτει στη διάρκεια της προπόνησης και εκτοξεύεται μετά">
+          <line class="ax" x1="40" y1="260" x2="510" y2="260"/><line class="ax" x1="40" y1="20" x2="40" y2="260"/>
+          <text x="40" y="285">Πριν</text><text x="230" y="285">Στη διάρκεια</text><text x="440" y="285">Μετά</text>
+          <text x="14" y="140" text-anchor="middle" transform="rotate(-90 14 140)">ΔΙΑΘΕΣΗ</text>
+          <path class="ln" d="M50 130 C120 130 150 150 190 210 S260 250 300 220 S380 60 500 34"/>
+          <text class="lab" x="58" y="116">«Πάμε!»</text>
+          <text class="lab b" x="190" y="246">«Γιατί;»</text>
+          <text class="lab c" x="372" y="40">«Πότε ξαναπάμε;»</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="reels">
+    <div class="wrap">
+      <div class="rhead rv">
+        <div><div class="k">Μας ξέρεις ήδη</div><div class="big65 C">65K</div></div>
+        <p style="max-width:420px;color:var(--muted);font-size:17px">Τόσοι μας βλέπουν στο Instagram. Τα reels μας είναι αστεία. Η προπόνηση, λιγότερο. Έλα να το δεις από κοντά.</p>
+      </div>
+      <div class="rgrid ph" data-note="Εδώ μπαίνουν τα δικά σας reels (αυτόματα από το Instagram)">
+        <a class="reel rv" href="https://www.instagram.com/typetwo.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=500&q=60"><span class="play">▶ REEL</span><p class="cap"><mark>— Σηκώθηκα 6:30.</mark><br><mark>— Ώρα 6:30;</mark></p></a>
+        <a class="reel rv" href="https://www.instagram.com/typetwo.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=500&q=60"><span class="play">▶ REEL</span><p class="cap"><mark>Δες πόσο αδύνατη είναι</mark> <mark>και πόσο δυνατή ταυτόχρονα.</mark></p></a>
+        <a class="reel rv" href="https://www.instagram.com/typetwo.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&w=500&q=60"><span class="play">▶ REEL</span><p class="cap"><mark>Ακόμα μία.</mark> <mark>(Δεν ήταν μία.)</mark></p></a>
+        <a class="reel rv" href="https://www.instagram.com/typetwo.skg/" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=500&q=60"><span class="play">▶ REEL</span><p class="cap"><mark>Leg day.</mark> <mark>Τα λέμε αύριο. Αν περπατάμε.</mark></p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="train">
+    <div class="wrap">
+      <div class="rv"><div class="k">Προπόνηση</div><h2 class="C" style="margin-top:16px">Διάλεξε<br><em>το ζόρι σου.</em></h2></div>
+      <div class="tgrid ph" data-note="Υπηρεσίες: να επιβεβαιωθούν με το TYPETWO (τι προσφέρουν, πακέτα, τιμές)">
+        <div class="tc rv"><span class="n">01</span><h3 class="C">Personal</h3><p>Ένας προπονητής, μόνο για σένα. Πρόγραμμα, τεχνική και κάποιος να σου λέει «ακόμα μία».</p><div class="pain">Ζόρι <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        <div class="tc rv"><span class="n">02</span><h3 class="C">Small group</h3><p>Μικρές ομάδες, μεγάλη ένταση. Ζοριζόμαστε μαζί, γελάμε μαζί.</p><div class="pain">Ζόρι <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="tc rv"><span class="n">03</span><h3 class="C">Strength</h3><p>Μπάρα, κιλά και σωστή τεχνική. Δύναμη που τη νιώθεις και έξω από το γυμναστήριο.</p><div class="pain">Ζόρι <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="early">
+    <div class="wrap rv">
+      <div class="k">Το ξυπνητήρι χτύπησε</div>
+      <div class="clock C">06<b>:</b>30</div>
+      <p class="ph" data-note="Ωράριο: να το δώσει το TYPETWO">Ναι, ανοίγουμε νωρίς. Και ναι, θα ευχαριστείς τον εαυτό σου μέχρι το μεσημέρι.</p>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="wrap">
+      <div class="k" style="color:#0a0a0a">Η πρώτη είναι η πιο δύσκολη</div>
+      <h2 class="C" style="margin-top:16px">Κάνε το<br><em>πρώτο set.</em></h2>
+      <div class="jgrid">
+        <div>
+          <a class="phone C" href="tel:+302310526996">2310 526 996</a>
+          <p>Πάρε τηλέφωνο, πες μας τον στόχο σου και κλείσε την πρώτη σου προπόνηση.</p>
+          <a class="btn" href="tel:+302310526996">Κάλεσε τώρα →</a>
+        </div>
+        <div class="info">
+          <div><h4>Διεύθυνση</h4><p class="ph" data-note="Διεύθυνση: να τη δώσει το TYPETWO">Θεσσαλονίκη</p></div>
+          <div><h4>Instagram</h4><p><a href="https://www.instagram.com/typetwo.skg/" target="_blank" rel="noopener">@typetwo.skg</a></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© TYPETWO · Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--lime)">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("t2-notes", on ? "on" : "off"); } catch (e) {}
+  });
+
+  /* ---------- hold to rep ---------- */
+  const hero = document.getElementById("hero"), hold = document.getElementById("hold"), prg = document.getElementById("prg");
+  const reps = document.getElementById("reps"), thought = document.getElementById("thought"), sub = document.getElementById("sub");
+  const R = 2 * Math.PI * 45, GOAL = 10, REP_MS = 650;
+  prg.style.strokeDasharray = R; prg.style.strokeDashoffset = R;
+  const LINES = ["Ακόμα μία.", "Εύκολο.", "Ζεσταθήκαμε.", "Οκ, καίει λίγο.", "Πολύ λίγο.", "Γιατί πλήρωσα γι' αυτό;", "Δεν ξαναέρχομαι.", "Μάνα μου.", "Μη σταματάς.", "ΑΚΟΜΑ ΜΙΑ.", "Πότε ξαναπάμε;"];
+  const QUIT = ["Μη σταματάς τώρα.", "Σε βλέπει ο προπονητής.", "Τόσο κοντά…"];
+  let prog = 0, holding = false, last = 0, shown = -1, done = false, q = 0;
+
+  function say(t) { thought.innerHTML = `<span>${t}</span>`; }
+  function frame(now) {
+    const dt = last ? now - last : 16; last = now;
+    if (done) return;
+    if (holding) prog = Math.min(GOAL, prog + dt / REP_MS);
+    else prog = Math.max(0, prog - dt / (REP_MS * 3));        // slowly lose the set if you let go
+    const n = Math.floor(prog);
+    prg.style.strokeDashoffset = R * (1 - prog / GOAL);
+    reps.textContent = `Set 1 · ${n} / ${GOAL} reps`;
+    if (holding && n !== shown) { shown = n; say(LINES[n]); }
+    hold.classList.toggle("shake", holding && n >= 5);
+    if (n >= GOAL) return finish();
+    if (holding || prog > 0) requestAnimationFrame(frame); else last = 0;
+  }
+  function start(e) {
+    if (done) return; if (e) e.preventDefault();
+    holding = true; hold.classList.add("on");
+    if (!last) requestAnimationFrame(t => { last = t; frame(t); });
+  }
+  function stop() {
+    if (!holding || done) return;
+    holding = false; hold.classList.remove("on", "shake");
+    if (prog > .5) { say(QUIT[q++ % QUIT.length]); shown = -1; }
+  }
+  function finish() {
+    done = true; holding = false; hold.classList.remove("on", "shake");
+    say(LINES[GOAL]); reps.textContent = `Set 1 · ${GOAL} / ${GOAL} reps ✓`;
+    hero.classList.add("done");
+    sub.textContent = "Αυτό ήταν το type 2 fun: ζόρι την ώρα που γίνεται, τέλειο μόλις τελειώσει. Τώρα φαντάσου να το κάνεις στ' αλήθεια.";
+  }
+  hold.addEventListener("pointerdown", start);
+  addEventListener("pointerup", stop); addEventListener("pointercancel", stop);
+  hold.addEventListener("contextmenu", e => e.preventDefault());
+  hold.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) start(e); });
+  hold.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") stop(); });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .2 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
