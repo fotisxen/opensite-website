@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BEISMENTraining · Χανιά</title>
+<meta name="description" content="BEISMENTraining: Cross Training, Strength, Personal και HYROX Training Center στα Χανιά, από το 2016.">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,500;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap&subset=greek" rel="stylesheet">
+<!--
+  Demo by OpenSite for BEISMENTraining (@bsmt_gymchania).
+  Facts: Instagram bio (since 2016, HYROX Training Center, Cross Training | Strength | Personal),
+  directory listings (Νέας Ιωνίας 13α Νεροκούρου, 697 465 6179, BSMTtraining@gmail.com, 5.0 Google rating, Αετοί 2023/2025).
+  Photos are Unsplash placeholders. Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#0b0b0d; --bg2:#121216; --concrete:#1b1b20; --line:#2a2a31;
+  --ink:#f2f0ee; --muted:#9a98a2; --pink:#ff1f8f; --pink2:#ff63b3; --chalk:#e9e6df;
+  --display:"Fira Sans Extra Condensed",Impact,sans-serif; --sans:Inter,system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.kicker{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--pink)}
+h2{font:900 clamp(44px,8vw,104px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.01em}
+h2 em{font-style:italic;font-weight:700;color:var(--pink)}
+.lead{color:var(--muted);max-width:560px;font-size:17px}
+section{position:relative}
+
+/* ---------- top bar ---------- */
+.bar{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;pointer-events:none}
+.bar>*{pointer-events:auto}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px/1 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.brand svg{width:34px;height:34px}
+.cta-s{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--pink);color:#fff;padding:11px 14px;border-radius:3px}
+
+/* elevator floor display */
+.floor{position:fixed;right:16px;top:64px;z-index:50;font:700 13px/1 var(--mono);background:#050506;border:1px solid var(--line);border-radius:4px;padding:8px 10px;display:flex;gap:10px;align-items:center;color:var(--muted)}
+.floor b{font-size:22px;color:var(--pink);text-shadow:0 0 12px rgba(255,31,143,.7);min-width:2.2ch;text-align:right}
+.floor i{font-style:normal;color:var(--pink);opacity:0;transition:opacity .3s}
+.floor.moving i{opacity:1;animation:blink .6s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+
+/* ---------- descent (hero) ---------- */
+.descent{height:340vh}
+.descent .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#stairs{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;pointer-events:none}
+.hc{grid-area:1/1;transition:opacity .4s,transform .4s}
+.hc1 h1{font:900 clamp(84px,20vw,240px)/.82 var(--display);text-transform:uppercase;letter-spacing:-.02em}
+.hc1 p{font:700 13px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:18px}
+.scrollhint{margin-top:34px;font:700 11px/1 var(--mono);letter-spacing:.2em;color:var(--pink);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+.hc2{font:900 clamp(40px,8vw,90px)/.95 var(--display);text-transform:uppercase}
+.hc2 span{color:var(--pink)}
+.hc3{align-self:end;margin-bottom:9vh}
+.hc3 h1{font:900 clamp(46px,9vw,118px)/.86 var(--display);text-transform:uppercase}
+.hc3 h1 span{color:var(--pink);text-shadow:0 0 30px rgba(255,31,143,.55)}
+.hc3 p{margin-top:14px;color:var(--chalk);font-size:clamp(15px,2vw,19px)}
+.hc3 .tags{margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.tag{font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);padding:8px 10px;border-radius:3px;background:rgba(0,0,0,.4)}
+.tag.p{border-color:var(--pink);color:var(--pink)}
+
+/* ---------- lights on ---------- */
+.lights{padding:120px 0 110px;background:linear-gradient(var(--bg),var(--bg2))}
+.tubes{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-bottom:70px}
+.tube{height:8px;border-radius:8px;background:#26262c}
+.lights.on .tube{animation:tubeOn 1.4s steps(1) forwards}
+.lights.on .tube:nth-child(2){animation-delay:.25s}.lights.on .tube:nth-child(3){animation-delay:.6s}
+.lights.on .tube:nth-child(4){animation-delay:.15s}.lights.on .tube:nth-child(5){animation-delay:.9s}.lights.on .tube:nth-child(6){animation-delay:.45s}
+@keyframes tubeOn{0%{background:#26262c}10%{background:#f6f5ff;box-shadow:0 0 30px 6px rgba(240,240,255,.5)}16%{background:#26262c;box-shadow:none}30%{background:#f6f5ff;box-shadow:0 0 30px 6px rgba(240,240,255,.5)}36%{background:#26262c;box-shadow:none}52%,100%{background:#f6f5ff;box-shadow:0 0 34px 8px rgba(240,240,255,.45)}}
+.story{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.story p+p{margin-top:16px}
+.story .lead{color:#c9c6cf}
+.since{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.since div{border-left:2px solid var(--pink);padding-left:14px}
+.since b{display:block;font:900 46px/1 var(--display)}
+.since small{font:600 11px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.neon{aspect-ratio:1;max-width:420px;width:100%;margin-inline:auto;display:grid;place-items:center;border-radius:6px;background:radial-gradient(circle at 50% 45%,rgba(255,31,143,.18),transparent 60%),#0e0e11;border:1px solid var(--line)}
+.neon svg{width:72%;filter:drop-shadow(0 0 10px rgba(255,31,143,.8)) drop-shadow(0 0 30px rgba(255,31,143,.5))}
+.neon svg path{fill:none;stroke:var(--pink);stroke-width:2.2;stroke-linejoin:round}
+.lights.on .neon svg{animation:neonOn 2.2s steps(1) .8s both}
+@keyframes neonOn{0%{opacity:.08}20%{opacity:1}26%{opacity:.08}40%{opacity:1}44%{opacity:.3}60%,100%{opacity:1}}
+
+/* ---------- disciplines ---------- */
+.disc{padding:110px 0}
+.disc-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:46px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{position:relative;min-height:440px;border-radius:6px;overflow:hidden;background:#000;isolation:isolate}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(.55);transition:transform .8s,filter .5s;z-index:-1}
+.card:hover img{transform:scale(1.06);filter:grayscale(.2) contrast(1.1) brightness(.6)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.92));z-index:-1}
+.card .in{position:absolute;inset:auto 0 0;padding:24px}
+.card .n{font:700 12px/1 var(--mono);color:var(--pink);letter-spacing:.15em}
+.card h3{font:900 46px/.95 var(--display);text-transform:uppercase;margin:10px 0 10px}
+.card p{color:#cfcbd4;font-size:15px}
+.card .bar-l{position:absolute;left:0;top:0;height:4px;width:0;background:var(--pink);transition:width .5s}
+.card:hover .bar-l{width:100%}
+
+/* ---------- hyrox ---------- */
+.hyrox{padding:110px 0;background:var(--bg2);border-block:1px solid var(--line)}
+.hx-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:40px}
+.clock{font:700 clamp(40px,7vw,76px)/1 var(--mono);color:var(--pink);text-shadow:0 0 22px rgba(255,31,143,.5);text-align:right}
+.clock small{display:block;font-size:11px;letter-spacing:.18em;color:var(--muted);text-shadow:none;margin-top:8px}
+.track{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.leg{position:relative;border:1px solid var(--line);border-radius:4px;padding:12px 10px 14px;min-height:118px;background:#0d0d10;text-align:left;transition:border-color .25s,background .25s,transform .25s}
+.leg .i{font:700 10px/1 var(--mono);color:var(--muted);letter-spacing:.12em}
+.leg b{display:block;font:800 21px/1.02 var(--display);text-transform:uppercase;margin-top:10px}
+.leg .d{font:600 12px/1 var(--mono);color:var(--muted);margin-top:8px;display:block}
+.leg.run{background:repeating-linear-gradient(90deg,#0d0d10 0 14px,#111116 14px 28px)}
+.leg.run b{color:#77757e}
+.leg.done{border-color:rgba(255,31,143,.45)}
+.leg.done b{color:var(--ink)}
+.leg.now{border-color:var(--pink);background:rgba(255,31,143,.12);transform:translateY(-4px)}
+.leg.now::after{content:"";position:absolute;right:10px;top:10px;width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink);animation:blink .5s steps(2) infinite}
+.leg.sel{outline:2px solid var(--pink);outline-offset:2px}
+.hx-foot{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:16px 20px;border-radius:3px;background:var(--pink);color:#fff;transition:filter .2s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;box-shadow:inset 0 0 0 1px var(--pink);color:var(--pink)}
+.station-info{color:#cfcbd4;min-height:3.2em}
+.station-info strong{color:var(--ink)}
+
+/* ---------- WOD board ---------- */
+.wod{padding:110px 0}
+.wod-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+.board{position:relative;border-radius:6px;padding:34px 34px 30px;background:radial-gradient(ellipse at 30% 20%,#2c3330,#1a1f1d 70%);border:10px solid #3a2c22;box-shadow:inset 0 0 60px rgba(0,0,0,.6),0 30px 60px rgba(0,0,0,.5);min-height:380px;color:var(--chalk);overflow:hidden}
+.board::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 9px);pointer-events:none}
+.board .date{font:500 14px/1 var(--mono);opacity:.7}
+.board h3{font:italic 700 clamp(40px,6vw,64px)/1 var(--display);margin:16px 0 4px;text-transform:uppercase;letter-spacing:.01em}
+.board .fmt{font:italic 700 22px/1.2 var(--display);color:#ffb4d7;margin-bottom:16px}
+.board ul{list-style:none;font:italic 700 clamp(22px,3vw,28px)/1.35 var(--display);letter-spacing:.02em}
+.board li::before{content:"— ";opacity:.5}
+.board .scale{margin-top:18px;font:500 13px/1.4 var(--mono);opacity:.65}
+.board.wipe>*{animation:chalk .7s ease both}
+@keyframes chalk{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:none}}
+
+/* ---------- reviews ---------- */
+.rev{padding:110px 0;background:var(--bg2);border-block:1px solid var(--line)}
+.score{display:flex;align-items:end;gap:24px;flex-wrap:wrap;margin:26px 0 46px}
+.score b{font:900 clamp(90px,14vw,170px)/.8 var(--display)}
+.stars{color:var(--pink);font-size:26px;letter-spacing:4px}
+.score small{display:block;font:600 12px/1.4 var(--mono);color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.q{border:1px solid var(--line);border-radius:6px;padding:24px;background:#0d0d10}
+.q p{font:700 24px/1.15 var(--display);text-transform:none}
+.q span{display:block;margin-top:14px;font:600 12px/1 var(--mono);color:var(--muted)}
+.awards{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+
+/* ---------- beyond ---------- */
+.beyond{padding:110px 0}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.b{border-top:2px solid var(--pink);padding-top:18px}
+.b h3{font:800 34px/1 var(--display);text-transform:uppercase;margin-bottom:8px}
+.b p{color:var(--muted)}
+
+/* ---------- visit ---------- */
+.visit{padding:120px 0 90px;background:radial-gradient(ellipse at 50% 0,rgba(255,31,143,.16),transparent 60%),var(--bg)}
+.vgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:start;margin-top:44px}
+.trial{border:1px solid var(--pink);border-radius:6px;padding:34px;background:rgba(255,31,143,.06)}
+.trial h3{font:900 52px/.95 var(--display);text-transform:uppercase;margin-bottom:12px}
+.trial p{color:#d4d0d9;margin-bottom:24px}
+.info{display:grid;gap:22px}
+.info h4{font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:8px}
+.info p,.info a{font-size:17px}
+.info a:hover{color:var(--pink)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font:500 14px/1.5 var(--mono)}
+.hours span:nth-child(odd){color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:26px 0 90px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--pink2);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--sans);letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:#b3005e;padding:3px 7px;max-width:280px;white-space:normal;text-align:left;text-shadow:none}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font:600 11px/1 var(--sans);padding:9px 12px;border-radius:999px;background:#18181c;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--pink);color:var(--pink)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:900px){
+  .story,.wod-grid,.vgrid{grid-template-columns:1fr;gap:40px}
+  .cards,.quotes,.bgrid{grid-template-columns:1fr}
+  .card{min-height:340px}
+  .track{grid-template-columns:repeat(4,1fr)}
+  .hx-head{grid-template-columns:1fr}.clock{text-align:left}
+  .hx-foot{grid-template-columns:1fr}
+  .tubes{gap:10px;margin-bottom:50px}
+}
+@media (max-width:520px){
+  .track{grid-template-columns:repeat(2,1fr)}
+  .leg{min-height:96px}
+  .floor{top:auto;bottom:12px;right:12px}
+  .brand span{display:none}
+  .trial{padding:24px}.trial h3{font-size:42px}
+  .board{padding:24px 20px;border-width:8px}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+<script>
+  (function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+    if(q.has("clean")||localStorage.getItem("bsmt-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+
+<header class="bar">
+  <a class="brand" href="#top" aria-label="BEISMENTraining">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#ff1f8f"/><g fill="#0b0b0d"><path d="M48 46C38 26 18 18 14 30c-4 12 8 24 34 22z"/><path d="M52 46c10-20 30-28 34-16 4 12-8 24-34 22z"/><path d="M48 55C32 56 22 66 28 76c6 8 16-2 20-15z"/><path d="M52 55c16 1 26 11 20 21-6 8-16-2-20-15z"/><rect x="47.5" y="38" width="5" height="34" rx="2.5"/></g></svg>
+    <span>BEISMENTraining</span>
+  </a>
+  <a class="cta-s" href="#visit">Δοκιμαστική</a>
+</header>
+
+<div class="floor" id="floor" aria-hidden="true">ΟΡΟΦΟΣ <b id="floorN">0</b><i>▼</i></div>
+
+<main id="top">
+  <!-- descent -->
+  <section class="descent" id="descent" aria-label="Κατέβα στο υπόγειο">
+    <div class="stage">
+      <canvas id="stairs"></canvas>
+      <div class="hero-copy">
+        <div class="hc hc1" id="hc1">
+          <p>Χανιά · Νεροκούρου</p>
+          <h1>Κατέβα.</h1>
+          <div class="scrollhint">SCROLL ▼</div>
+        </div>
+        <div class="hc hc2" id="hc2" style="opacity:0">Εδώ κάτω<br>γίνεται <span>η δουλειά.</span></div>
+        <div class="hc hc3" id="hc3" style="opacity:0">
+          <h1>BEISMENT<span>Training</span></h1>
+          <p>Redefining fitness in Chania, since 2016.</p>
+          <div class="tags"><span class="tag p">HYROX Training Center</span><span class="tag">Cross Training</span><span class="tag">Strength</span><span class="tag">Personal</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- lights on -->
+  <section class="lights" id="lights">
+    <div class="wrap">
+      <div class="tubes" aria-hidden="true"><i class="tube"></i><i class="tube"></i><i class="tube"></i><i class="tube"></i><i class="tube"></i><i class="tube"></i></div>
+      <div class="story">
+        <div class="rv">
+          <div class="kicker">−1 · Η ιστορία</div>
+          <h2 style="margin:18px 0 26px">Ένα υπόγειο<br>που <em>άλλαξε</em><br>τα Χανιά.</h2>
+          <p class="lead ph" data-note="Κείμενο-πρόταση: να γραφτεί με τον ιδιοκτήτη η πραγματική ιστορία">Το 2016 ανοίξαμε κάτι που δεν υπήρχε στην πόλη: ένα χώρο για cross training, δύναμη και σωστή τεχνική, με προπονητές που σε ξέρουν με το όνομά σου.</p>
+          <p class="lead">Δεν είμαστε το μεγαλύτερο gym. Είμαστε αυτό όπου έρχεσαι για την προπόνηση και μένεις για την παρέα. Για αρχάριους και για αθλητές, σε όλα τα επίπεδα.</p>
+          <div class="since">
+            <div><b>2016</b><small>Από τότε<br>στα Χανιά</small></div>
+            <div><b>5.0★</b><small>Βαθμολογία<br>Google</small></div>
+            <div><b>HYROX</b><small>Training<br>Center</small></div>
+          </div>
+        </div>
+        <div class="neon rv" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><path d="M48 46C38 26 18 18 14 30c-4 12 8 24 34 22z"/><path d="M52 46c10-20 30-28 34-16 4 12-8 24-34 22z"/><path d="M48 55C32 56 22 66 28 76c6 8 16-2 20-15z"/><path d="M52 55c16 1 26 11 20 21-6 8-16-2-20-15z"/><path d="M50 38v34M50 38l-6-10M50 38l6-10"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- disciplines -->
+  <section class="disc" id="training">
+    <div class="wrap">
+      <div class="disc-head rv">
+        <div><div class="kicker">Προπόνηση</div><h2 style="margin-top:16px">Τρεις δρόμοι.<br><em>Ένα υπόγειο.</em></h2></div>
+        <p class="lead">Ό,τι κι αν ψάχνεις, ξεκινάς από το ίδιο σημείο: σωστή τεχνική, βήμα βήμα.</p>
+      </div>
+      <div class="cards">
+        <article class="card rv"><i class="bar-l"></i><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=70">
+          <div class="in"><span class="n">01</span><h3>Cross<br>Training</h3><p>Ομαδικά WOD με ένταση, ποικιλία και προπονητή δίπλα σου σε κάθε επανάληψη.</p></div></article>
+        <article class="card rv"><i class="bar-l"></i><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=70">
+          <div class="in"><span class="n">02</span><h3>Strength</h3><p>Μπάρα, κιλά και πρόγραμμα. Χτίζεις δύναμη με σωστή τεχνική και σταθερή πρόοδο.</p></div></article>
+        <article class="card rv"><i class="bar-l"></i><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=70">
+          <div class="in"><span class="n">03</span><h3>Personal</h3><p>Ένας προπονητής, ένας στόχος: ο δικός σου. Ατομικό πρόγραμμα στα μέτρα σου.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- hyrox -->
+  <section class="hyrox" id="hyrox">
+    <div class="wrap">
+      <div class="hx-head rv">
+        <div>
+          <div class="kicker">HYROX Training Center</div>
+          <h2 style="margin:16px 0 18px">8 χιλιόμετρα.<br><em>8 σταθμοί.</em></h2>
+          <p class="lead">Ο αγώνας fitness που σαρώνει τον κόσμο: 1 km τρέξιμο, ένας σταθμός, και ξανά από την αρχή, οκτώ φορές. Προπονήσου γι' αυτόν εδώ, στα Χανιά.</p>
+        </div>
+        <div class="clock" id="clock">00:00:00<small>RACE CLOCK · ΕΝΔΕΙΚΤΙΚΟΙ ΧΡΟΝΟΙ</small></div>
+      </div>
+      <div class="track" id="track"></div>
+      <div class="hx-foot">
+        <button class="btn" id="race" type="button">▶ Τρέξε τον αγώνα</button>
+        <p class="station-info" id="stInfo">Πάτησε έναν σταθμό για να δεις τι περιλαμβάνει, ή τρέξε όλο τον αγώνα.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOD -->
+  <section class="wod" id="wod">
+    <div class="wrap wod-grid">
+      <div class="rv">
+        <div class="kicker">Πίνακας</div>
+        <h2 style="margin:16px 0 22px">Το WOD<br><em>της ημέρας.</em></h2>
+        <p class="lead" style="margin-bottom:26px">Κάθε μέρα κάτι διαφορετικό, γραμμένο με κιμωλία. Στο τελικό site, ο πίνακας ενημερώνεται από εσάς κάθε πρωί.</p>
+        <button class="btn ghost" id="newWod" type="button">↻ Σβήσε & γράψε νέο</button>
+      </div>
+      <div class="board rv ph" id="board" data-note="Ενδεικτικά WOD: στο τελικό site τα γράφει το BSMT"></div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section class="rev" id="reviews">
+    <div class="wrap">
+      <div class="rv">
+        <div class="kicker">Τι λένε όσοι κατέβηκαν</div>
+        <div class="score"><b>5.0</b><div><div class="stars">★★★★★</div><small class="ph" data-note="Αριθμός κριτικών από καταλόγους (240–260): να μπει live από Google">240+ κριτικές στο Google</small></div></div>
+      </div>
+      <div class="quotes">
+        <figure class="q rv ph" data-note="Σύνοψη κριτικής: να μπει αυτούσια από Google"><p>«Από τα πιο πλήρη gym της πόλης, με προπονητές που σε διορθώνουν βήμα βήμα.»</p><span>— Γιώργος · Google</span></figure>
+        <figure class="q rv ph" data-note="Σύνοψη κριτικής: να μπει αυτούσια από Google"><p>«Οργανωμένη προπόνηση για όλα τα επίπεδα, ακόμα και για εντελώς αρχάριους.»</p><span>— Ioana · Google</span></figure>
+        <figure class="q rv ph" data-note="Σύνοψη κριτικής: να μπει αυτούσια από Google"><p>«Πολύ επαγγελματική ομάδα. Τα WOD είναι εξαιρετικά.»</p><span>— Nora · Google</span></figure>
+      </div>
+      <div class="awards rv"><span class="tag p">Αετοί της Φυσικής Αγωγής · Χρυσό 2023</span><span class="tag p">Χρυσό 2025</span><span class="tag">English-speaking coaches</span></div>
+    </div>
+  </section>
+
+  <!-- beyond -->
+  <section class="beyond">
+    <div class="wrap">
+      <div class="rv"><div class="kicker">Πέρα από το υπόγειο</div><h2 style="margin-top:16px">Κοινότητα,<br><em>όχι συνδρομή.</em></h2></div>
+      <div class="bgrid">
+        <div class="b rv"><h3>Αγώνες</h3><p class="ph" data-note="Από το highlight «Competitions»: να μπουν οι αγώνες και τα αποτελέσματα">Προετοιμαζόμαστε μαζί και πάμε μαζί, από HYROX μέχρι τοπικά throwdowns.</p></div>
+        <div class="b rv"><h3>Εξορμήσεις</h3><p class="ph" data-note="Από το highlight «Adventures ⛰️»: να μπουν φωτογραφίες">Βουνό, φαράγγια και Κρήτη. Η προπόνηση συνεχίζεται και έξω από το gym.</p></div>
+        <div class="b rv"><h3>Snacks</h3><p class="ph" data-note="Από το highlight «Snacks 🤤»: να μπουν τα προϊόντα">Κάτι νόστιμο και δυναμωτικό για μετά την προπόνηση, εδώ στο γυμναστήριο.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- visit -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="rv"><div class="kicker">Ανέβα… δηλαδή κατέβα</div><h2 style="margin-top:16px">Η πρώτη<br><em>είναι δική μας.</em></h2></div>
+      <div class="vgrid">
+        <div class="trial rv">
+          <h3>Κλείσε δοκιμαστική</h3>
+          <p class="ph" data-note="Αν η πρώτη προπόνηση είναι δωρεάν: να το επιβεβαιώσει το BSMT">Συμπλήρωσε τη φόρμα και θα σε καλέσουμε για να κανονίσουμε την πρώτη σου προπόνηση. Όλα τα επίπεδα είναι ευπρόσδεκτα.</p>
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSebhwPfb-6X5h1fyb9pe80PpIz29mHz5BAafOj_Rs10g7PNRw/viewform" target="_blank" rel="noopener">Συμπλήρωσε τη φόρμα →</a>
+          <p style="margin:22px 0 0;font-size:14px" class="ph" data-note="Οι κριτικές αναφέρουν app κρατήσεων: να μπει το link">Ήδη μέλος; Κλείσε θέση στο μάθημα από το app.</p>
+        </div>
+        <div class="info rv">
+          <div><h4>Διεύθυνση</h4><a href="https://www.google.com/maps/search/?api=1&query=BEISMENTraining+%CE%9D%CE%AD%CE%B1%CF%82+%CE%99%CF%89%CE%BD%CE%AF%CE%B1%CF%82+13%CE%B1+%CE%A7%CE%B1%CE%BD%CE%B9%CE%AC" target="_blank" rel="noopener">Νέας Ιωνίας 13α, Νεροκούρου<br>731 00 Χανιά</a></div>
+          <div><h4>Επικοινωνία</h4><a href="tel:+306974656179">697 465 6179</a><br><a href="mailto:BSMTtraining@gmail.com">BSMTtraining@gmail.com</a></div>
+          <div><h4>Ωράριο</h4>
+            <div class="hours ph" data-note="Ωράριο από καταλόγους: να επιβεβαιωθεί"><span>Δευ–Παρ</span><span>08:00–13:00 · 15:00–23:00</span><span>Σάββατο</span><span>10:00–12:00</span><span>Κυριακή</span><span>Κλειστά</span></div>
+          </div>
+          <div><h4>Social</h4><a href="https://www.instagram.com/bsmt_gymchania/" target="_blank" rel="noopener">@bsmt_gymchania</a> · <a href="https://www.facebook.com/BEISMENTraining/" target="_blank" rel="noopener">Facebook</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© BEISMENTraining · Χανιά, από το 2016</span><span>Demo από <a href="https://opensite.gr" style="color:var(--pink)">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("bsmt-notes", on ? "on" : "off"); } catch (e) {}
+  });
+
+  /* ---------- stairs canvas ---------- */
+  const cv = document.getElementById("stairs"), ctx = cv.getContext("2d");
+  const sec = document.getElementById("descent");
+  const hc1 = document.getElementById("hc1"), hc2 = document.getElementById("hc2"), hc3 = document.getElementById("hc3");
+  const floor = document.getElementById("floor"), floorN = document.getElementById("floorN");
+  const N = 18, RISE = .19, RUN = .3, EYE = 1.6, HALF = .85, CEIL = 2.5;
+  const wing = [
+    "M48 46C38 26 18 18 14 30c-4 12 8 24 34 22z", "M52 46c10-20 30-28 34-16 4 12-8 24-34 22z",
+    "M48 55C32 56 22 66 28 76c6 8 16-2 20-15z", "M52 55c16 1 26 11 20 21-6 8-16-2-20-15z", "M50 38v34"
+  ].map(d => new Path2D(d));
+  let W = 0, H = 0, dpr = 1, prog = 0, lastT = -1;
+
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    if (!W || !H) return;
+    cv.width = W * dpr; cv.height = H * dpr;
+    lastT = -1;
+  }
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = x => x * x * (3 - 2 * x);
+
+  function draw(p) {
+    if (!W || !H) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const F = Math.min(W * 1.15, H * 1.1) * .8, cx = W / 2, cy = H * .5;
+    const t = ease(clamp(p / .82, 0, 1)) * N;           // steps descended
+    const light = clamp((p - .55) / .3, 0, 1);            // basement lights
+    const pitch = .62 * (1 - ease(light) * .8);           // camera looks down the stairs, then up at the sign
+    const CP = Math.cos(pitch), SP = Math.sin(pitch);
+    ctx.fillStyle = "#060607"; ctx.fillRect(0, 0, W, H);
+
+    const P = (x, y, z) => { const zc = z * CP - y * SP, yc = y * CP + z * SP; return [cx + F * x / zc, cy - F * yc / zc, zc]; };
+    const fog = z => Math.exp(-z * (.3 - light * .16));
+    const shade = (base, z, extra = 0) => { const f = fog(z) * (.6 + .4 * light) + extra; return `rgb(${base.map(c => Math.round(c * f)).join(",")})`; };
+    const quad = (pts, fill) => { if (pts.some(q => q[2] < .05)) return; ctx.beginPath(); pts.forEach((q, i) => i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.closePath(); ctx.fillStyle = fill; ctx.fill(); };
+
+    // back wall with neon sign at the bottom of the stairs
+    const zWall = (N + 10 - t) * RUN, yFloor = -(N - t) * RISE - EYE;
+    if (zWall > .05) {
+      const X = HALF * 2.4, top = yFloor + CEIL + 1.5, br = P(X, yFloor, zWall);
+      quad([P(-X, top, zWall), P(X, top, zWall), br, P(-X, yFloor, zWall)], shade([46, 44, 52], zWall, light * .15));
+      const flick = light > 0 && light < .5 ? (Math.random() > .45 ? 1 : .15) : light ? 1 : 0;
+      const c = P(0, yFloor + 1.45, zWall), s = (F * 1.3 / c[2]) / 100;
+      ctx.save(); ctx.translate(c[0] - 50 * s, c[1] - 50 * s); ctx.scale(s, s);
+      ctx.globalAlpha = .12 + .88 * flick * light; ctx.strokeStyle = "#ff1f8f"; ctx.lineWidth = 2.4; ctx.lineJoin = "round";
+      ctx.shadowColor = "#ff1f8f"; ctx.shadowBlur = 24 * flick * light;
+      wing.forEach(w => ctx.stroke(w)); ctx.restore(); ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+      // glow on the floor
+      if (light) { const g = ctx.createRadialGradient(c[0], br[1], 0, c[0], br[1], F * 2 / c[2]); g.addColorStop(0, `rgba(255,31,143,${.28 * light})`); g.addColorStop(1, "rgba(255,31,143,0)"); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
+    }
+    // landing floor
+    const zL0 = (N - t) * RUN;
+    if (zWall > .05) {
+      const a = Math.max(zL0, .05);
+      quad([P(-HALF * 2.4, yFloor, a), P(HALF * 2.4, yFloor, a), P(HALF * 2.4, yFloor, zWall), P(-HALF * 2.4, yFloor, zWall)], shade([34, 33, 38], (a + zWall) / 2));
+    }
+    // steps, far to near
+    for (let k = N - 1; k >= Math.floor(t) - 1; k--) {
+      const z0 = (k - t) * RUN, z1 = (k + 1 - t) * RUN;
+      if (z1 <= .05) continue;
+      const za = Math.max(z0, .05), y = -(k - t) * RISE - EYE;
+      // side walls
+      quad([P(-HALF, y, za), P(-HALF, y + CEIL, za), P(-HALF, y + CEIL - RISE, z1), P(-HALF, y - RISE, z1)], shade([48, 47, 54], za, (k % 2) * .02));
+      quad([P(HALF, y, za), P(HALF, y + CEIL, za), P(HALF, y + CEIL - RISE, z1), P(HALF, y - RISE, z1)], shade([40, 39, 46], za, (k % 2) * .02));
+      // handrails
+      [-HALF + .02, HALF - .02].forEach(x => { const r0 = P(x, y + .95, za), r1 = P(x, y + .95 - RISE, z1); if (r0[2] > .05) { ctx.strokeStyle = `rgba(255,31,143,${.55 * fog(za)})`; ctx.lineWidth = Math.max(1, F * .02 / r0[2]); ctx.beginPath(); ctx.moveTo(r0[0], r0[1]); ctx.lineTo(r1[0], r1[1]); ctx.stroke(); } });
+      // ceiling
+      quad([P(-HALF, y + CEIL, za), P(HALF, y + CEIL, za), P(HALF, y + CEIL - RISE, z1), P(-HALF, y + CEIL - RISE, z1)], shade([22, 22, 26], za));
+      // tread
+      quad([P(-HALF, y, za), P(HALF, y, za), P(HALF, y, z1), P(-HALF, y, z1)], shade([58, 56, 62], za, (k % 2) * .03));
+      // pink nosing strip on the far edge
+      const n0 = P(-HALF, y, z1), n1 = P(HALF, y, z1);
+      if (n0[2] > .05) {
+      ctx.strokeStyle = `rgba(255,31,143,${(.25 + .75 * fog(z1)) * (.5 + light * .5)})`; ctx.lineWidth = Math.max(1, F * .012 / z1);
+      ctx.beginPath(); ctx.moveTo(n0[0], n0[1]); ctx.lineTo(n1[0], n1[1]); ctx.stroke();
+      }
+      // fluorescent tube every 4 steps
+      const a = P(-.35, y + CEIL - .02, (za + z1) / 2), b = P(.35, y + CEIL - .02, (za + z1) / 2);
+      if (k % 4 === 0 && a[2] > .2) {
+        const on = clamp((t - (k - 9)) / 2, 0, 1) * (light > .2 || k > t + 2 ? 1 : .6);
+        ctx.strokeStyle = `rgba(240,240,255,${.15 + .85 * on * fog(za)})`; ctx.lineWidth = Math.max(1.5, F * .03 / za);
+        ctx.shadowColor = "#e8e8ff"; ctx.shadowBlur = 20 * on;
+        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); ctx.shadowBlur = 0;
+      }
+    }
+    // vignette
+    const v = ctx.createRadialGradient(cx, H * .5, H * .2, cx, H * .5, Math.max(W, H) * .8);
+    v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(0,0,0,.75)"); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+  }
+
+  function onScroll() {
+    const r = sec.getBoundingClientRect(), span = sec.offsetHeight - innerHeight;
+    prog = clamp(-r.top / span, 0, 1);
+    hc1.style.opacity = 1 - clamp(prog / .12, 0, 1);
+    hc1.style.transform = `translateY(${-prog * 200}px)`;
+    hc2.style.opacity = clamp((prog - .22) / .1, 0, 1) * (1 - clamp((prog - .48) / .1, 0, 1));
+    hc3.style.opacity = clamp((prog - .72) / .12, 0, 1);
+    hc3.style.transform = `translateY(${(1 - clamp((prog - .72) / .12, 0, 1)) * 30}px)`;
+    const below = r.bottom < innerHeight * .6;
+    floorN.textContent = prog > .5 || below ? "−1" : "0";
+    floor.classList.toggle("moving", prog > .02 && prog < .82);
+  }
+  function loop() {
+    // redraw while the neon flickers, otherwise only on change
+    if (prog !== lastT || (prog > .55 && prog < .72)) { draw(prog); lastT = prog; }
+    requestAnimationFrame(loop);
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", () => { size(); onScroll(); });
+  size(); onScroll(); draw(prog); requestAnimationFrame(loop);
+
+  /* ---------- reveal + lights ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add(e.target.id === "lights" ? "on" : "in"); io.unobserve(e.target); } }), { threshold: .2 });
+  document.querySelectorAll(".rv, #lights").forEach(el => io.observe(el));
+
+  /* ---------- HYROX ---------- */
+  const stations = [
+    ["SkiErg", "1000 m", "Κουπί όρθιος: ρυθμός, ανάσα και κορμός."],
+    ["Sled Push", "50 m", "Σπρώχνεις το έλκηθρο με όλο το σώμα. Πόδια, πόδια, πόδια."],
+    ["Sled Pull", "50 m", "Τραβάς το έλκηθρο με σχοινί, χέρι-χέρι."],
+    ["Burpee Broad Jumps", "80 m", "Burpee και άλμα μπροστά, ξανά και ξανά."],
+    ["Rowing", "1000 m", "Κωπηλατική: εδώ κερδίζεις ή χάνεις χρόνο."],
+    ["Farmers Carry", "200 m", "Δύο kettlebells και περπάτημα. Λαβή από ατσάλι."],
+    ["Sandbag Lunges", "100 m", "Lunges με σάκο στους ώμους. Το πιο δύσκολο κομμάτι."],
+    ["Wall Balls", "100 reps", "Squat και πέταγμα της μπάλας στον στόχο. Ο τελευταίος σταθμός."]
+  ];
+  const legs = [];
+  stations.forEach((s, i) => { legs.push({ run: true, i, name: "Run", d: "1 km", sec: 280 + i * 6 }); legs.push({ run: false, i, name: s[0], d: s[1], info: s[2], sec: [260, 190, 230, 300, 270, 140, 280, 330][i] }); });
+  const track = document.getElementById("track"), clock = document.getElementById("clock"), info = document.getElementById("stInfo"), raceBtn = document.getElementById("race");
+  legs.forEach((l, j) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "leg" + (l.run ? " run" : "");
+    b.innerHTML = `<span class="i">${l.run ? "RUN " + (l.i + 1) : "STATION " + (l.i + 1)}</span><b>${l.name}</b><span class="d">${l.d}</span>`;
+    b.addEventListener("click", () => select(j));
+    track.appendChild(b); l.el = b;
+  });
+  const fmt = s => [Math.floor(s / 3600), Math.floor(s / 60) % 60, Math.floor(s % 60)].map(n => String(n).padStart(2, "0")).join(":");
+  const setClock = s => clock.firstChild.nodeValue = fmt(s);
+  function select(j) {
+    legs.forEach(l => l.el.classList.remove("sel")); legs[j].el.classList.add("sel");
+    const l = legs[j];
+    info.innerHTML = l.run ? `<strong>Run ${l.i + 1} · 1 km.</strong> Πριν από κάθε σταθμό, ένα χιλιόμετρο τρέξιμο. Συνολικά 8 km.` : `<strong>${l.name} · ${l.d}.</strong> ${l.info}`;
+  }
+  let racing = 0;
+  raceBtn.addEventListener("click", () => {
+    if (racing) return;
+    racing = 1; raceBtn.textContent = "… σε αγώνα";
+    legs.forEach(l => l.el.classList.remove("done", "now", "sel"));
+    let j = 0, total = 0;
+    const step = () => {
+      if (j) { legs[j - 1].el.classList.remove("now"); legs[j - 1].el.classList.add("done"); }
+      if (j === legs.length) { racing = 0; raceBtn.textContent = "↻ Ξανά"; info.innerHTML = `<strong>Τερματισμός σε ${fmt(total)}.</strong> Θες να ρίξεις τον χρόνο σου; Ξεκίνα την προετοιμασία στο BSMT.`; return; }
+      const l = legs[j]; l.el.classList.add("now"); select(j); l.el.classList.remove("sel");
+      const from = total, to = total + l.sec, t0 = performance.now(), dur = 420;
+      const tick = now => { const k = Math.min(1, (now - t0) / dur); setClock(from + (to - from) * k); if (k < 1) requestAnimationFrame(tick); else { total = to; j++; step(); } };
+      requestAnimationFrame(tick);
+    };
+    step();
+  });
+
+  /* ---------- WOD board ---------- */
+  const wods = [
+    ["Fran", "For time · 21-15-9", ["Thrusters 42.5/30 kg", "Pull-ups"], "Scale: λάστιχο ή ring rows"],
+    ["Engine", "AMRAP 16'", ["400 m run", "15 wall balls", "10 burpees over the bar"], "Scale: 200 m run, μικρότερη μπάλα"],
+    ["Basement Grind", "EMOM 20'", ["Min 1 · 12 kettlebell swings", "Min 2 · 10 box jumps", "Min 3 · 12 cal row", "Min 4 · Rest"], "Scale: step-ups αντί για jumps"],
+    ["Hyrox Prep", "3 rounds for time", ["1000 m SkiErg", "25 m sled push", "20 sandbag lunges", "20 wall balls"], "Ρυθμός αγώνα, όχι σπριντ"],
+    ["Strength Day", "Back squat · 5×5", ["Ζέσταμα στο 50%", "5 σετ × 5 στο 75%", "Accessory: 3×12 RDL"], "Τεχνική πρώτα, μετά κιλά"],
+    ["Partner Chipper", "In pairs · 30' cap", ["100 cal row", "80 wall balls", "60 burpees", "40 farmers carry (m×10)"], "Ο ένας δουλεύει, ο άλλος ξεκουράζεται"]
+  ];
+  const board = document.getElementById("board");
+  const days = ["Κυριακή", "Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο"];
+  let wi = new Date().getDate() % wods.length;
+  function writeWod() {
+    const [name, f, items, scale] = wods[wi];
+    board.classList.remove("wipe"); void board.offsetWidth; board.classList.add("wipe");
+    board.innerHTML = `<div class="date">${days[new Date().getDay()]} · WOD</div><h3>${name}</h3><div class="fmt">${f}</div><ul>${items.map(x => `<li>${x}</li>`).join("")}</ul><div class="scale">${scale}</div>`;
+  }
+  document.getElementById("newWod").addEventListener("click", () => { wi = (wi + 1) % wods.length; writeWod(); });
+  writeWod();
+})();
+</script>
+</body>
+</html>

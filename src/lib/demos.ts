@@ -10,6 +10,7 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "bsmt", name: "BEISMENTraining (Χανιά)", kind: "Gym · HYROX", created: "2026-10-27", instagram: "https://www.instagram.com/bsmt_gymchania/" },
   { slug: "prigkipesa", name: "Πριγκηπέσα", kind: "Streetfood & wine", created: "2026-10-27", instagram: "https://www.instagram.com/prigkhpesa/" },
   { slug: "sintrofi", name: "+Τροφή (Sintrofi)", kind: "Restaurant · Bib Gourmand", created: "2026-10-27", instagram: "https://www.instagram.com/sin_trofi/" },
   { slug: "ble-vin", name: "Blé Vin", kind: "Wine bar & prosciutteria", created: "2026-10-27", instagram: "https://www.instagram.com/blevinthessaloniki/" },
