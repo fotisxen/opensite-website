@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a0a12">
+<title>Blé Vin — Wine bar, cellar & prosciutteria · Θεσσαλονίκη</title>
+<meta name="description" content="Blé Vin: wine bar, cellar & prosciutteria στη Γεωργίου Σταύρου 14. Περίπου 400 ετικέτες, αλλαντικά ωρίμανσης έως 48 μηνών.">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,600;1,7..72,300&family=Sofia+Sans+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/*
+  Demo by OpenSite for Blé Vin (Thessaloniki).
+  Signature: the cellar. A wall of ~400 bottles you can filter, and an ageing slider for the prosciutto (12 → 48 months).
+  Facts from a Dec 2023 Athinorama article and their Instagram. Photos are Unsplash placeholders.
+  Everything marked .ph is placeholder copy (toggle "Σημειώσεις", hide with ?clean).
+*/
+:root{
+  --wine:#2a0a12;
+  --wine-2:#4a0f1d;
+  --walnut:#5b3b26;
+  --linen:#f2ece2;
+  --linen-2:#e7dfd1;
+  --gold:#c9a46a;
+  --ink:#24171a;
+  --muted:#7a6a62;
+  --line:#d9cfbf;
+  --serif:"Literata",Georgia,serif;
+  --cond:"Sofia Sans Condensed",system-ui,sans-serif;
+  --pad:clamp(18px,5vw,72px);
+  --ease:cubic-bezier(.3,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;overflow-x:clip;background:var(--wine)}
+body{background:var(--linen);color:var(--ink);font-family:var(--serif);font-weight:300;font-size:clamp(17px,.45vw + 15px,20px);line-height:1.62;overflow-x:clip}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.l{font-family:var(--serif);font-weight:300;line-height:1.02;letter-spacing:-.02em}
+.l em{font-style:italic;color:var(--gold)}
+.k{font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;background:var(--gold);color:var(--wine);font-family:var(--cond);font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase;transition:background .3s}
+.btn:hover{background:#dcbb84}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);color:var(--linen);transition:background .4s,color .4s}
+.nav.solid{background:rgba(242,236,226,.94);color:var(--ink);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.brand{font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:.02em}
+.brand small{display:block;font-family:var(--cond);font-weight:700;font-size:9px;letter-spacing:.34em;opacity:.7}
+.nav .links{display:flex;gap:26px;align-items:center;font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.18em;text-transform:uppercase}
+.nav .links a.n{opacity:.75}
+.nav .btn{padding:10px 18px;font-size:13px}
+
+/* hero */
+.hero{min-height:100svh;background:var(--wine);color:var(--linen);display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(24px,4vw,60px);padding:110px var(--pad) 60px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(70px,12vw,200px)}
+.hero h1 em{display:block}
+.hero p{color:#cdb9b5;max-width:28em;margin:22px 0 28px}
+.trio{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.trio span{padding:8px 14px;box-shadow:inset 0 0 0 1px rgba(201,164,106,.5)}
+.glass{justify-self:center;width:min(60vw,320px)}
+.glass svg{width:100%;height:auto;overflow:visible}
+.glass .bowl{fill:none;stroke:rgba(242,236,226,.75);stroke-width:2.5}
+.glass .wine{fill:#7a1028;transform-origin:50% 100%;transform:scaleY(var(--fill,0));transition:transform 2.2s var(--ease)}
+.glass .shine{fill:rgba(255,255,255,.12)}
+
+/* cellar */
+.cellar{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,5vw,80px);align-items:center}
+.cellar h2{font-size:clamp(46px,6.4vw,104px)}
+.cellar .count{font-family:var(--serif);font-weight:300;font-size:clamp(90px,12vw,190px);line-height:.85;color:var(--wine-2)}
+.cellar p{color:var(--muted);max-width:28em;margin-top:16px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.filters button{padding:9px 14px;font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted);transition:all .3s}
+.filters button[aria-pressed="true"]{background:var(--wine-2);color:var(--linen);box-shadow:none}
+.rack{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;padding:16px;background:linear-gradient(180deg,#4a3020,#3b2618);border-radius:6px;box-shadow:inset 0 0 0 6px #6a4630}
+.rack i{aspect-ratio:1;border-radius:50%;background:#2a1a12;box-shadow:inset 0 0 0 2px #1a0f0a;transition:background .5s,transform .5s var(--ease)}
+.rack i.on{transform:scale(1.08)}
+.rack i.r.on{background:#7a1028}.rack i.w.on{background:#d9c27a}.rack i.s.on{background:#e9e1c8}.rack i.o.on{background:#d38a3c}
+.rack i.gr.on{box-shadow:inset 0 0 0 2px var(--gold)}
+.racknote{font-family:var(--cond);font-size:13px;letter-spacing:.06em;color:var(--muted);margin-top:10px}
+
+/* prosciutteria */
+.pros{background:var(--wine);color:var(--linen);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.pros h2{font-size:clamp(46px,6.4vw,104px)}
+.pros p{color:#cdb9b5;max-width:28em;margin-top:16px}
+.aging{margin-top:30px}
+.aging .m{font-family:var(--serif);font-size:clamp(60px,7vw,100px);line-height:1;color:var(--gold)}
+.aging .m small{font-family:var(--cond);font-weight:700;font-size:16px;letter-spacing:.2em;margin-left:8px;color:#cdb9b5}
+.aging input{-webkit-appearance:none;appearance:none;width:100%;height:40px;background:transparent}
+.aging input::-webkit-slider-runnable-track{height:6px;background:linear-gradient(90deg,#e8a4a4,#b24a4a,#6a1a24);border-radius:3px}
+.aging input::-moz-range-track{height:6px;background:linear-gradient(90deg,#e8a4a4,#b24a4a,#6a1a24);border-radius:3px}
+.aging input::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--wine)}
+.aging input::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--gold);border:0}
+.aging .ticks{display:flex;justify-content:space-between;font-family:var(--cond);font-size:13px;color:#a99390}
+.aging .note{min-height:3.2em;margin-top:14px;font-style:italic;color:var(--linen)}
+.slice{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center;border-radius:50%;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.slice img{filter:saturate(var(--sat,1)) brightness(var(--br,1)) hue-rotate(var(--hue,0deg));transition:filter .5s}
+.slice::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 10px rgba(242,236,226,.9)}
+
+/* table */
+.table{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.table h2{font-size:clamp(44px,6vw,96px)}
+.table p{color:var(--muted);max-width:30em;margin-top:16px}
+.table ul{list-style:none;margin-top:24px}
+.table li{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.table li b{font-family:var(--cond);font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--walnut);min-width:120px}
+.table .pic{aspect-ratio:4/5;overflow:hidden}
+
+/* visit */
+.visit{background:var(--linen-2);display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px)}
+.visit h2{font-size:clamp(50px,8vw,124px)}
+.visit h2 em{color:var(--wine-2)}
+.facts{display:grid;gap:22px}
+.facts h4{font-family:var(--cond);font-weight:700;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.facts .big{font-family:var(--serif);font-weight:600;font-size:clamp(24px,2.4vw,34px);line-height:1.15}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{background:var(--wine);color:#a99390;padding:26px var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--cond);font-size:14px}
+footer a{color:var(--linen);border-bottom:1px solid #5a2a34}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+section{position:relative}
+.wrap{padding:clamp(90px,12vw,160px) var(--pad)}
+
+/* placeholders */
+.notes .ph{outline:1px dashed var(--gold);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:700 12px/1.35 var(--cond);letter-spacing:.02em;text-transform:none;font-style:normal;color:var(--wine);background:var(--gold);padding:3px 7px;max-width:280px;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font-family:var(--cond);font-weight:700;font-size:12px;letter-spacing:.1em;padding:8px 12px;background:var(--linen);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--gold);color:var(--wine-2)}
+.clean .notes-toggle{display:none}
+.mbar{display:none}
+
+@media (max-width:900px){
+  .nav .links a.n{display:none}
+  .hero,.cellar,.pros,.table,.visit{grid-template-columns:1fr}
+  .glass{order:-1;width:min(46vw,200px)}
+  .rack{grid-template-columns:repeat(16,1fr);gap:3px;padding:10px}
+  .slice{max-width:300px}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;gap:8px;transform:translateY(150%);transition:transform .5s var(--ease)}
+  .mbar.on{transform:none}
+  .mbar a{flex:1;justify-content:center}
+  .notes-toggle{bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+<script>
+  try{ var q=new URLSearchParams(location.search), h=document.documentElement;
+    if(q.has("clean")||localStorage.getItem("bv-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){}
+</script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand">Blé Vin<small>Wine bar · Cellar · Prosciutteria</small></a>
+  <nav class="links" aria-label="Μενού">
+    <a class="n" href="#cellar">Κελάρι</a>
+    <a class="n" href="#pros">Prosciutteria</a>
+    <a class="n" href="#visit">Επίσκεψη</a>
+    <a class="btn" href="tel:+302310231201">Κράτηση</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div>
+      <div class="k rv in">Γεωργίου Σταύρου 14 · Θεσσαλονίκη</div>
+      <h1 class="l rv in" style="margin-top:16px">Blé<em>Vin</em></h1>
+      <p class="rv d1 in">Ένα κελάρι, ένα wine bar και μια prosciutteria, σε έναν πεζόδρομο κοντά στην Αγία Σοφία. Διάλεξε φιάλη, κόψε προσούτο, κάτσε στο τραπέζι από καρυδιά.</p>
+      <div class="trio rv d1 in"><span>Wine bar</span><span>Cellar</span><span>Prosciutteria</span></div>
+      <div class="rv d2 in" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px"><a class="btn" href="tel:+302310231201">Κλείσε τραπέζι</a><a class="btn line" href="#cellar" style="color:var(--linen)">Το κελάρι</a></div>
+    </div>
+    <div class="glass rv in" aria-hidden="true">
+      <svg viewBox="0 0 200 320">
+        <defs><clipPath id="bowl"><path d="M40 20 C30 100 40 150 100 165 C160 150 170 100 160 20 Z"/></clipPath></defs>
+        <g clip-path="url(#bowl)"><rect class="wine" x="0" y="70" width="200" height="100"/></g>
+        <path class="bowl" d="M40 20 C30 100 40 150 100 165 C160 150 170 100 160 20 Z"/>
+        <path class="shine" d="M58 34 C52 80 56 110 70 130 C60 100 60 70 66 34 Z"/>
+        <line class="bowl" x1="100" y1="165" x2="100" y2="290"/>
+        <path class="bowl" d="M55 300 Q100 285 145 300"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- CELLAR -->
+  <section class="wrap cellar" id="cellar">
+    <div>
+      <div class="k rv">Το κελάρι</div>
+      <div class="count rv d1" id="count">0</div>
+      <h2 class="l rv d1">ετικέτες,<br><em>ένας τοίχος</em></h2>
+      <p class="rv d1">Περίπου 400 ετικέτες από Έλληνες και ξένους οινοποιούς. Πολλές στο ποτήρι, όλες για να τις πάρεις μαζί σου ή να τις ανοίξεις εδώ με σταθερό corkage.</p>
+      <div class="filters rv d2" id="filters">
+        <button type="button" data-f="all" aria-pressed="true">Όλα</button>
+        <button type="button" data-f="gr">Ελληνικά</button>
+        <button type="button" data-f="r">Ερυθρά</button>
+        <button type="button" data-f="w">Λευκά</button>
+        <button type="button" data-f="o">Orange & ροζέ</button>
+        <button type="button" data-f="s">Αφρώδη</button>
+      </div>
+    </div>
+    <div class="rv d1">
+      <div class="rack" id="rack" aria-hidden="true"></div>
+      <div class="racknote ph" data-note="Ενδεικτική απεικόνιση: στο τελικό site, η πραγματική κάβα με αναζήτηση">Ενδεικτική απεικόνιση του κελαριού.</div>
+    </div>
+  </section>
+
+  <!-- PROSCIUTTERIA -->
+  <section class="wrap pros" id="pros">
+    <div>
+      <div class="k rv">Prosciutteria</div>
+      <h2 class="l rv d1" style="margin-top:14px">Ο χρόνος<br><em>κάνει τη γεύση</em></h2>
+      <p class="rv d1">Προσούτο και άλλα αλλαντικά προστατευόμενης ονομασίας, κάποια σε αποκλειστική εισαγωγή, με ωρίμανση που φτάνει τους 48 μήνες. Δίπλα τους, τυριά από Έλληνες και ξένους τυροκόμους, σπιτικά chutney και τουρσιά εποχής.</p>
+      <div class="aging rv d2">
+        <div class="m"><span id="mo">24</span><small>μήνες</small></div>
+        <input type="range" id="age" min="12" max="48" step="6" value="24" aria-label="Μήνες ωρίμανσης">
+        <div class="ticks"><span>12</span><span>24</span><span>36</span><span>48</span></div>
+        <div class="note ph" data-note="Γενική περιγραφή ωρίμανσης: να γραφτεί για τα δικά τους αλλαντικά" id="ageNote"></div>
+      </div>
+    </div>
+    <div class="slice rv d1" id="slice"><img loading="lazy" src="https://images.unsplash.com/photo-1708388465038-ec98ea62c642?auto=format&fit=crop&w=900&h=900&q=70" alt="Φέτες προσούτο"></div>
+  </section>
+
+  <!-- TABLE -->
+  <section class="wrap table">
+    <div>
+      <div class="k rv">Στο τραπέζι</div>
+      <h2 class="l rv d1" style="margin-top:14px">Καρυδιά,<br><em>κρασί, παρέα</em></h2>
+      <p class="rv d1">Ένας μίνιμαλ χώρος με το κελάρι σε κοινή θέα. Διάλεξε από τα ράφια, κάτσε σε τραπέζι από καρυδιά, και άσε τη βραδιά να κυλήσει.</p>
+      <ul class="rv d2">
+        <li><b>Στο ποτήρι</b><span>μεγάλος κατάλογος κρασιών στο ποτήρι</span></li>
+        <li><b>Corkage</b><span>κάθε φιάλη του κελαριού, ανοιχτή στο τραπέζι</span></li>
+        <li><b>Πιάτα</b><span>μικρό εβδομαδιαίο μενού, ανάλογα με την πρώτη ύλη</span></li>
+      </ul>
+    </div>
+    <div class="pic rv d1"><img loading="lazy" src="https://images.unsplash.com/photo-1575184560884-5f3ece6e636c?auto=format&fit=crop&w=900&h=1125&q=70" alt="Wine bar με ζεστό φως"></div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="wrap visit" id="visit">
+    <div><div class="k rv" style="color:var(--wine-2)">Επίσκεψη</div><h2 class="l rv d1" style="margin-top:14px">Ένα ποτήρι<br><em>ακόμα;</em></h2></div>
+    <div class="facts">
+      <div class="rv"><h4>Διεύθυνση</h4><div class="big">Γεωργίου Σταύρου 14<br>546 23 Θεσσαλονίκη</div><div style="color:var(--muted)">πεζόδρομος, κοντά στην Αγία Σοφία</div></div>
+      <div class="rv"><h4>Κρατήσεις</h4><a class="big" href="tel:+302310231201">2310 231 201</a></div>
+      <div class="rv ph" data-note="Ωράριο: να το δώσει το Blé Vin"><h4>Ωράριο</h4><div class="big">Απόγευμα & βράδυ</div></div>
+      <div class="rv acts">
+        <a class="btn" href="tel:+302310231201">Κλήση</a>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Ble+Vin+Georgiou+Stavrou+14+Thessaloniki" target="_blank" rel="noopener">Χάρτης</a>
+        <a class="btn line" href="https://www.instagram.com/blevinthessaloniki/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 Blé Vin · Wine bar, cellar & prosciutteria</span>
+  <span>Σχεδιασμός & κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+</footer>
+
+<div class="mbar" id="mbar"><a class="btn line" href="#cellar" style="background:var(--linen)">Κελάρι</a><a class="btn" href="tel:+302310231201">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+
+  // Pour the glass.
+  setTimeout(() => document.getElementById("hero").style.setProperty("--fill", ".62"), 300);
+
+  // Cellar: 400 bottles (illustrative mix) and filters.
+  const rack = document.getElementById("rack"), kinds = ["r", "r", "r", "w", "w", "w", "o", "s"];
+  let h = ""; for (let i = 0; i < 400; i++) { const k = kinds[(i * 7 + (i >> 3)) % kinds.length], gr = (i * 13) % 10 < 6 ? " gr" : ""; h += `<i class="${k}${gr} on"></i>`; }
+  rack.innerHTML = h;
+  const bottles = [...rack.children];
+  document.querySelectorAll("#filters button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll("#filters button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    const f = b.dataset.f;
+    bottles.forEach(el => el.classList.toggle("on", f === "all" || el.classList.contains(f)));
+  }));
+  const count = document.getElementById("count");
+  new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; o.disconnect(); const t0 = performance.now(); const step = t => { const k = Math.min(1, (t - t0) / 1600); count.textContent = Math.round(400 * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }, { threshold: .4 }).observe(count);
+
+  // Ageing slider.
+  const notes = { 12: "Νωπό ακόμα, γλυκό και απαλό.", 18: "Η γεύση στρογγυλεύει, το λίπος γίνεται βουτυρένιο.", 24: "Ισορροπία: γλύκα, αλάτι και ένα πιο βαθύ άρωμα.", 30: "Πιο σφιχτή υφή, πιο σύνθετη γεύση.", 36: "Βαθύ χρώμα, έντονο, με νότες ξηρών καρπών.", 42: "Πλούσιο και πικάντικο, για τους γνώστες.", 48: "Τέσσερα χρόνια υπομονής: η πιο έντονη εκδοχή." };
+  const age = document.getElementById("age"), slice = document.getElementById("slice");
+  const setAge = () => { const v = +age.value, k = (v - 12) / 36; document.getElementById("mo").textContent = v; document.getElementById("ageNote").textContent = notes[v]; slice.style.setProperty("--sat", (1 + k * .4).toFixed(2)); slice.style.setProperty("--br", (1.05 - k * .3).toFixed(2)); slice.style.setProperty("--hue", (-k * 8).toFixed(1) + "deg"); };
+  age.addEventListener("input", setAge); setAge();
+
+  // Nav, mobile bar, reveals.
+  const nav = document.getElementById("nav"), mbar = document.getElementById("mbar");
+  const onScroll = () => { const past = scrollY > innerHeight * .85; nav.classList.toggle("solid", past); mbar.classList.toggle("on", past && scrollY < document.body.scrollHeight - innerHeight * 1.7); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: .1 });
+  document.querySelectorAll(".rv:not(.in)").forEach(el => io.observe(el));
+
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("bv-notes", on ? "on" : "off"); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

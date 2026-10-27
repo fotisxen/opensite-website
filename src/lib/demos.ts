@@ -10,6 +10,11 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "prigkipesa", name: "Πριγκηπέσα", kind: "Streetfood & wine", created: "2026-10-27", instagram: "https://www.instagram.com/prigkhpesa/" },
+  { slug: "sintrofi", name: "+Τροφή (Sintrofi)", kind: "Restaurant · Bib Gourmand", created: "2026-10-27", instagram: "https://www.instagram.com/sin_trofi/" },
+  { slug: "ble-vin", name: "Blé Vin", kind: "Wine bar & prosciutteria", created: "2026-10-27", instagram: "https://www.instagram.com/blevinthessaloniki/" },
+  { slug: "mpakal", name: "Μπακάλ", kind: "Urban tavern", created: "2026-10-27", instagram: "https://www.instagram.com/mpakal.gr/" },
+  { slug: "loupino", name: "Λούπινο", kind: "Μεζεδοπωλείο · μπαρ", created: "2026-10-27", instagram: "https://www.instagram.com/loupino.skg/" },
   { slug: "morrison", name: "Morrison", kind: "Rooftop bar-restaurant", created: "2026-10-26", instagram: "https://www.instagram.com/morrison.skg/" },
   { slug: "tzaki", name: "Tzaki 'Ho", kind: "Country eating", created: "2026-10-26", instagram: "https://www.instagram.com/tzakiho/" },
   { slug: "aelios-petra", name: "Αέλιος Πέτρα", kind: "Forest restaurant", created: "2026-10-26", instagram: "https://www.instagram.com/aeliospetra_chortiatis/" },
