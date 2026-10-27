@@ -9,6 +9,12 @@ import type { Client, Transaction } from "@/types/database";
 const types = ["", "income", "expense"] as const;
 const typeLabel: Record<string, string> = { income: "Income", expense: "Expense" };
 
+// "2026-10" -> "October 2026"
+function monthLabel(ym: string) {
+  const [y, m] = ym.split("-").map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+}
+
 function fmtEuro(n: number) {
   return `€${n.toLocaleString("en-US")}`;
 }
@@ -18,6 +24,7 @@ export default function TransactionsPage() {
   const [clientById, setClientById] = useState<Map<string, string>>(new Map());
   const [loading, setLoading] = useState(true);
   const [typeFilter, setTypeFilter] = useState<(typeof types)[number]>("");
+  const [monthFilter, setMonthFilter] = useState(""); // "YYYY-MM", "" = all months
 
   async function load() {
     setLoading(true);
@@ -34,8 +41,12 @@ export default function TransactionsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeFilter]);
 
-  const income = transactions.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0);
-  const expense = transactions.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0);
+  // Months that have at least one transaction, newest first.
+  const months = [...new Set(transactions.map((t) => t.occurred_on.slice(0, 7)))].sort().reverse();
+  const shown = monthFilter ? transactions.filter((t) => t.occurred_on.startsWith(monthFilter)) : transactions;
+
+  const income = shown.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0);
+  const expense = shown.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0);
 
   return (
     <div>
@@ -73,25 +84,40 @@ export default function TransactionsPage() {
             {t ? typeLabel[t] : "All"}
           </button>
         ))}
+        <select
+          id="month-filter"
+          aria-label="Month"
+          value={monthFilter}
+          onChange={(e) => setMonthFilter(e.target.value)}
+          className="rounded-full border border-surface-border bg-transparent px-4 py-2 text-text-secondary transition-colors hover:border-primary-container"
+        >
+          <option value="">All months</option>
+          {months.map((m) => (
+            <option key={m} value={m}>
+              {monthLabel(m)}
+            </option>
+          ))}
+        </select>
       </div>
 
       {loading ? (
         <p className="mt-8 font-body-sm text-body-sm text-text-secondary">Loading…</p>
       ) : (
         <div className="mt-8 overflow-x-auto">
-          <table className="w-full min-w-[560px] border-collapse font-body-sm text-body-sm">
+          <table className="w-full min-w-[720px] border-collapse font-body-sm text-body-sm">
             <thead>
               <tr className="border-b border-surface-border text-left font-label-sm text-label-sm uppercase tracking-wide text-text-secondary">
                 <th className="py-3 pr-4">Date</th>
                 <th className="py-3 pr-4">Type</th>
                 <th className="py-3 pr-4">Category</th>
+                <th className="py-3 pr-4">Description</th>
                 <th className="py-3 pr-4">Client</th>
                 <th className="py-3 pr-4">Amount</th>
                 <th className="py-3 pr-4"></th>
               </tr>
             </thead>
             <tbody>
-              {transactions.map((t) => (
+              {shown.map((t) => (
                 <tr key={t.id} className="border-b border-surface-border/60">
                   <td className="py-3 pr-4">
                     <Link href={`/admin/transactions/edit?id=${t.id}`} className="text-text-primary hover:text-primary">
@@ -102,6 +128,7 @@ export default function TransactionsPage() {
                     <span className={t.type === "income" ? "text-secondary" : "text-error"}>{typeLabel[t.type]}</span>
                   </td>
                   <td className="py-3 pr-4 text-text-secondary">{t.category ?? "-"}</td>
+                  <td className="max-w-[320px] py-3 pr-4 text-text-secondary">{t.description || "-"}</td>
                   <td className="py-3 pr-4 text-text-secondary">{t.client_id ? clientById.get(t.client_id) ?? "-" : "-"}</td>
                   <td className="py-3 pr-4 text-text-secondary">{fmtEuro(t.amount)}</td>
                   <td className="py-3 pr-4">
@@ -111,7 +138,7 @@ export default function TransactionsPage() {
               ))}
             </tbody>
           </table>
-          {transactions.length === 0 && <p className="py-10 text-center text-text-secondary">No transactions.</p>}
+          {shown.length === 0 &&<p className="py-10 text-center text-text-secondary">No transactions.</p>}
         </div>
       )}
     </div>
