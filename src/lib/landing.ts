@@ -1,12 +1,13 @@
 import { siteConfig } from "./site.config";
 
-export type LandingKey = "web" | "eshop" | "redesign";
+export type LandingKey = "web" | "eshop" | "redesign" | "webGreece" | "eshopGreece";
 
 export const BASE_URL = "https://opensite.gr";
 
 export interface LandingContent {
   key: LandingKey;
   slug: string;
+  local?: boolean; // the page targets Thessaloniki only
   pageLabel: string; // used in the lead email subject
   title: string;
   description: string;
@@ -23,10 +24,12 @@ export interface LandingContent {
   price: { from: number | null; weeks: number | null };
 }
 
-export const landings: Record<LandingKey, LandingContent> = {
+// webGreece and eshopGreece are added below, from the Thessaloniki pages.
+export const landings = {
   web: {
     key: "web",
     slug: "kataskevi-istoselidon-thessaloniki",
+    local: true,
     pageLabel: "Ιστοσελίδες",
     title: "Κατασκευή ιστοσελίδων Θεσσαλονίκη | OpenSite",
     description:
@@ -73,6 +76,7 @@ export const landings: Record<LandingKey, LandingContent> = {
   eshop: {
     key: "eshop",
     slug: "kataskevi-eshop-thessaloniki",
+    local: true,
     pageLabel: "Eshop",
     title: "Κατασκευή eshop Θεσσαλονίκη | OpenSite",
     description:
@@ -156,6 +160,30 @@ export const landings: Record<LandingKey, LandingContent> = {
     ],
     price: { from: siteConfig.pricing.redesignFrom, weeks: siteConfig.pricing.redesignWeeks },
   },
+} as Record<LandingKey, LandingContent>;
+
+// Nationwide versions of the Thessaloniki pages, used by the Google Ads campaign for all of Greece.
+landings.webGreece = {
+  ...landings.web,
+  key: "webGreece",
+  slug: "kataskevi-istoselidon",
+  local: false,
+  title: "Κατασκευή ιστοσελίδων για επιχειρήσεις | OpenSite",
+  description:
+    "Κατασκευή ιστοσελίδων για επιχειρήσεις σε όλη την Ελλάδα. Γρήγορο site για κινητό και Google. Ζήτα δωρεάν προσφορά, απαντάμε σε 24 ώρες.",
+  h1: "Κατασκευή ιστοσελίδων για επιχειρήσεις",
+  subtitle: "Γρήγορο, καθαρό site που δουλεύει σωστά σε κινητό και Google. Για επιχειρήσεις σε όλη την Ελλάδα.",
+};
+landings.eshopGreece = {
+  ...landings.eshop,
+  key: "eshopGreece",
+  slug: "kataskevi-eshop",
+  local: false,
+  title: "Δημιουργία eshop για καταστήματα | OpenSite",
+  description:
+    "Δημιουργία eshop για καταστήματα σε όλη την Ελλάδα, εύκολο στη διαχείριση και σωστό στο κινητό. Ζήτα δωρεάν προσφορά, απαντάμε σε 24 ώρες.",
+  h1: "Δημιουργία eshop για καταστήματα",
+  subtitle: "Ηλεκτρονικό κατάστημα που δέχεται παραγγελίες από την πρώτη μέρα. Για καταστήματα σε όλη την Ελλάδα.",
 };
 
 export const landingKeys = Object.keys(landings) as LandingKey[];

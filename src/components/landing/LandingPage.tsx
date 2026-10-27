@@ -89,7 +89,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
     url,
     telephone: siteConfig.phone.e164,
     email: siteConfig.email,
-    areaServed: { "@type": "City", name: "Θεσσαλονίκη" },
+    areaServed: c.local ? { "@type": "City", name: "Θεσσαλονίκη" } : { "@type": "Country", name: "Ελλάδα" },
     address: { "@type": "PostalAddress", addressLocality: "Θεσσαλονίκη", addressCountry: "GR" },
   };
 

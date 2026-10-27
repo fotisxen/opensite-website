@@ -7,7 +7,8 @@ import { sendLead } from "@/lib/sendLead";
 import { phoneHref, siteConfig } from "@/lib/site.config";
 import { getAttribution, hasConsent, markLeadSubmitted } from "@/lib/tracking";
 
-export type LandingKey = "web" | "eshop" | "redesign";
+export type { LandingKey } from "@/lib/landing";
+import type { LandingKey } from "@/lib/landing";
 
 const NEEDS = ["Νέα ιστοσελίδα", "Eshop", "Ανακατασκευή site", "Κάτι άλλο"] as const;
 
