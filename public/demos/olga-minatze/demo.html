@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Olga Minatze · Pro Make Up Artist · Θεσσαλονίκη</title>
+<meta name="description" content="Νυφικό & glam μακιγιάζ, hairstyling, private lessons και beauty masterclass στη Θεσσαλονίκη.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Noto+Serif+Display:ital,wght@1,300;1,400&family=Commissioner:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Olga Minatze (@olgaminatzemua / @olgaminatzebeauty).
+  No photos: the face in the mirror, the powder compact and the gallery tiles are drawn with SVG/CSS/canvas.
+  Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#fbf4f1;--bg2:#f5e6e1;--ink:#2b1820;--muted:#7d6670;--rose:#c0727a;--rose2:#e7b9b6;
+  --gold:#b48c55;--gold2:#e2c48e;--line:rgba(43,24,32,.12);
+  --d:"GFS Didot",Didot,"Bodoni 72",serif;--i:"Noto Serif Display",Georgia,serif;--s:"Commissioner",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.eyebrow{font:500 11px/1 var(--s);letter-spacing:.28em;text-transform:uppercase;color:var(--rose)}
+h1,h2,h3{font-family:var(--d);font-weight:400;line-height:1.05}
+h2{font-size:clamp(36px,6vw,64px)}
+h2 em,h1 em{font-family:var(--i);font-style:italic;font-weight:300;color:var(--rose)}
+section{padding:96px 0}
+
+/* nav */
+nav{position:sticky;top:0;z-index:40;background:rgba(251,244,241,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font:400 22px/1 var(--d);letter-spacing:.06em}
+.logo small{display:block;font:500 8.5px/1 var(--s);letter-spacing:.42em;color:var(--muted);margin-top:5px}
+.links{display:flex;gap:26px;font-size:13px;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--ink);color:#fff;font:500 13px/1 var(--s);letter-spacing:.04em;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px);background:#45283a}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+@media(max-width:820px){.links{display:none}nav .btn{display:none}}
+.logo{white-space:nowrap}
+
+/* hero */
+.hero{padding:56px 0 80px;background:radial-gradient(900px 500px at 75% 30%,#f6dcd8 0,transparent 70%),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1fr minmax(0,460px);gap:56px;align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,92px);margin:18px 0 22px}
+.hero p.lead{color:var(--muted);max-width:440px;font-size:17px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.stats{display:flex;gap:30px;margin-top:40px}
+.stats b{display:block;font:400 30px/1 var(--d)}
+.stats span{font-size:12px;color:var(--muted);letter-spacing:.06em}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px}.hero{padding-top:36px}}
+
+/* mirror */
+.vanity{position:relative;width:100%;max-width:460px;margin-inline:auto}
+.mirror{position:relative;aspect-ratio:300/380;border-radius:50% 50% 7% 7%/39.5% 39.5% 5.5% 5.5%;padding:14px;background:linear-gradient(145deg,#e9d2a6,#b48c55 40%,#f3dfb6 60%,#a37a45);box-shadow:0 30px 60px -20px rgba(80,40,40,.35)}
+.glass{position:relative;width:100%;height:100%;border-radius:50% 50% 5% 5%/39.5% 39.5% 4% 4%;overflow:hidden;background:linear-gradient(180deg,#fdf3ee,#f2d9d2);touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.glass::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 42%,transparent 50%);pointer-events:none}
+.glass svg{width:100%;height:100%;display:block}
+.bulbs{position:absolute;inset:-4px;pointer-events:none}
+.bulb{position:absolute;width:15px;height:15px;margin:-7.5px;border-radius:50%;background:#e8dccb;box-shadow:inset 0 -2px 3px rgba(0,0,0,.15);transition:background .3s,box-shadow .3s}
+.lit .bulb{background:#fffaf0;box-shadow:0 0 6px 2px #fff3d6,0 0 18px 6px rgba(255,214,150,.55)}
+.mirror.lit .glass{background:linear-gradient(180deg,#fff8f2,#f7e2da)}
+.lightsw{position:absolute;right:-6px;top:-6px;z-index:5;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.12);font-size:18px}
+.mirror-cap{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:12px;color:var(--muted)}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;min-height:26px}
+.steps span{font-size:11px;padding:5px 9px;border-radius:999px;background:#fff;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);transition:all .3s}
+.steps span.on{background:var(--ink);color:#fff;box-shadow:none}
+.steps span.done{background:var(--rose2);color:var(--ink);box-shadow:none}
+
+.looks{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.look{padding:12px 6px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);text-align:center;transition:all .2s}
+.look i{display:block;height:8px;border-radius:4px;margin-bottom:8px}
+.look b{display:block;font:400 17px/1 var(--d)}
+.look small{font-size:10px;color:var(--muted);letter-spacing:.06em}
+.look.on{box-shadow:inset 0 0 0 1.5px var(--ink);transform:translateY(-2px)}
+.tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tools button{flex:1;min-width:120px;font-size:12px;padding:10px;border-radius:999px;background:var(--bg2);letter-spacing:.03em}
+.tools button:active{transform:scale(.97)}
+.hint{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+.svgfx{transition:opacity .7s ease,fill .7s ease,stroke .7s ease,stroke-width .7s ease}
+#brush{transition:transform .5s cubic-bezier(.5,0,.3,1),opacity .3s}
+.zone{cursor:pointer;fill:transparent}
+.spark{position:absolute;pointer-events:none;color:#fff;text-shadow:0 0 6px #ffe9b8;animation:spark 1.4s ease-out forwards;font-size:14px}
+@keyframes spark{0%{opacity:0;transform:translate(0,0) scale(.4)}20%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(90deg)}}
+
+/* palette strip */
+.swatches{display:grid;gap:10px;margin-top:16px}
+.swrow{display:flex;align-items:center;gap:8px}
+.swrow em{font:italic 300 14px/1 var(--i);width:72px;color:var(--muted);flex:none}
+.sw{width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6),0 1px 3px rgba(0,0,0,.15);transition:transform .15s}
+.sw:hover{transform:scale(1.12)}
+.sw.on{outline:1.5px solid var(--ink);outline-offset:2px}
+
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:18px 0;background:#fff}
+.marq div{display:flex;gap:44px;width:max-content;animation:mq 40s linear infinite;font:400 26px/1 var(--d)}
+.marq span:nth-child(even){font-family:var(--i);font-style:italic;color:var(--rose)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.svc article{background:var(--bg);padding:34px 28px;position:relative;transition:background .3s}
+.svc article:hover{background:#fff}
+.svc .n{font:italic 300 15px/1 var(--i);color:var(--rose)}
+.svc h3{font-size:30px;margin:14px 0 10px}
+.svc p{color:var(--muted);font-size:14.5px}
+.svc .tag{display:inline-block;margin-top:16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:860px){.svc{grid-template-columns:1fr}}
+
+/* compact */
+.studio{background:var(--ink);color:#f7ece8}
+.studio .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:64px;align-items:center}
+.studio p{color:#cdb8bf}
+.studio .eyebrow{color:var(--gold2)}
+.studio h2 em{color:var(--gold2)}
+.compact{position:relative;width:min(380px,100%);aspect-ratio:1;margin-inline:auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3c2532,#1c0f15);padding:7%;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 2px #5d4150}
+.pan{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:conic-gradient(from 30deg,#c9a46a,#f4e2b6,#a8824c,#f1d9a6,#c9a46a);display:grid;place-items:center;text-align:center;padding:16%}
+.pan .under{color:#3b2715}
+.pan .under b{display:block;font:400 clamp(20px,5vw,28px)/1.05 var(--d)}
+.pan .under small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:10px;opacity:.75}
+.pan canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;transition:opacity 1s}
+.pan canvas.gone{opacity:0;pointer-events:none}
+.ctip{text-align:center;font-size:12px;color:#b9a2aa;margin-top:18px;letter-spacing:.06em}
+.offer{display:grid;gap:14px;margin-top:30px}
+.offer div{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(255,255,255,.1)}
+.offer i{font:italic 300 22px/1 var(--i);color:var(--gold2);width:30px;flex:none}
+.offer b{display:block;font:400 22px/1.2 var(--d);color:#fff}
+@media(max-width:900px){.studio .wrap{grid-template-columns:1fr;gap:44px}}
+
+/* planner */
+.planner .wrap{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:56px;align-items:start}
+.form{background:#fff;border-radius:24px;padding:28px;box-shadow:0 20px 50px -30px rgba(80,40,50,.35);position:sticky;top:90px}
+.form label{display:block;font-size:12px;letter-spacing:.08em;color:var(--muted);margin:18px 0 8px;text-transform:uppercase}
+.form label:first-of-type{margin-top:0}
+.form input[type=time],.form input[type=date]{width:100%;font:400 22px/1 var(--d);padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.stepper{display:flex;align-items:center;gap:14px}
+.stepper button{width:40px;height:40px;border-radius:50%;background:var(--bg2);font-size:18px}
+.stepper output{font:400 28px/1 var(--d);min-width:30px;text-align:center}
+.chk{display:flex;align-items:center;gap:10px;font-size:14px;margin-top:16px;cursor:pointer}
+.chk input{width:18px;height:18px;accent-color:var(--rose)}
+.count{margin-top:20px;padding:14px 16px;border-radius:14px;background:var(--bg2);font-size:14px}
+.count b{font:400 26px/1 var(--d)}
+.tl{position:relative;margin-top:40px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--rose2),var(--gold))}
+.tl li{list-style:none;position:relative;padding:0 0 26px;animation:in .5s both}
+.tl li::before{content:"";position:absolute;left:-31px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 1.5px var(--rose)}
+.tl li.big::before{background:var(--rose)}
+.tl time{font:400 26px/1 var(--d);display:inline-block;min-width:80px}
+.tl b{font-weight:500}
+.tl p{color:var(--muted);font-size:14px;margin-top:4px}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+@media(max-width:900px){.planner .wrap{grid-template-columns:1fr;gap:20px}.form{position:static}}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense;gap:10px;margin-top:44px}
+.tile{position:relative;border-radius:18px;overflow:hidden;display:grid;place-items:end start;padding:16px;color:#fff;isolation:isolate}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--g);transition:transform .8s}
+.tile:hover::before{transform:scale(1.06)}
+.tile span{font:italic 300 18px/1 var(--i);text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.tile.t{grid-row:span 2}
+.tile.w{grid-column:span 2}
+.quote{margin-top:56px;text-align:center;font:italic 300 clamp(22px,3.4vw,34px)/1.35 var(--i);max-width:820px;margin-inline:auto}
+.quote small{display:block;font:500 11px/1 var(--s);letter-spacing:.28em;color:var(--rose);margin-top:20px;font-style:normal;text-transform:uppercase}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.tile.w{grid-column:span 2}}
+
+/* shop */
+.shop{background:var(--bg2)}
+.prod{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-top:40px}
+.palette{aspect-ratio:4/3;border-radius:22px;background:linear-gradient(145deg,#2d1a3f,#120a1c);padding:9%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;box-shadow:0 30px 60px -25px rgba(40,10,60,.6)}
+.palette i{border-radius:8px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);position:relative;overflow:hidden;transition:transform .2s}
+.palette i::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.4),transparent 45%);mix-blend-mode:overlay}
+.palette i:hover{transform:scale(1.08)}
+.prod h3{font-size:34px;margin:12px 0}
+.prod p{color:var(--muted)}
+@media(max-width:820px){.prod{grid-template-columns:1fr}}
+
+/* contact */
+.contact{text-align:center}
+.contact h2{font-size:clamp(40px,8vw,96px)}
+.contact .row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px}
+.contact .meta{margin-top:30px;color:var(--muted);font-size:14px;line-height:2}
+footer{border-top:1px solid var(--line);padding:26px 0;font-size:12px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.dm{position:fixed;right:14px;bottom:14px;z-index:50;box-shadow:0 10px 30px rgba(43,24,32,.3),inset 0 0 0 1px rgba(255,255,255,.3)}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--rose);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:#b0505a;padding:4px 8px;border-radius:4px;max-width:270px;width:max-content;white-space:normal;text-align:left;text-shadow:none}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:600 11px/1 var(--s);padding:10px 13px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.12);color:var(--muted)}
+.notes .notes-toggle{color:#b0505a;box-shadow:inset 0 0 0 1px #b0505a}
+.clean .notes-toggle{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ try{ var h=document.documentElement,q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("om-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body id="top">
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo ph" data-note="Εδώ μπαίνει το λογότυπό σας">OLGA MINATZE<small>PRO MAKE UP ARTIST</small></a>
+    <div class="links"><a href="#mirror">Ο καθρέφτης</a><a href="#services">Υπηρεσίες</a><a href="#studio">Studio</a><a href="#planner">Η μέρα σου</a><a href="#brides">Νύφες</a></div>
+    <a class="btn" href="https://www.instagram.com/olgaminatzemua/" target="_blank" rel="noopener">Κλείσε ραντεβού</a>
+  </div>
+</nav>
+
+<header class="hero" id="mirror">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Bridal · Beauty · Creative · Θεσσαλονίκη</span>
+      <h1>Κάθε νύφη αξίζει<br>να <em>λάμπει</em><br>με τον δικό της τρόπο.</h1>
+      <p class="lead">Νυφικό και glam μακιγιάζ, hairstyling, private lessons και beauty masterclass. Δοκίμασε ένα look στον καθρέφτη και δες πώς στήνεται, βήμα βήμα.</p>
+      <div class="cta">
+        <a class="btn" href="#planner">Σχεδίασε τη μέρα σου</a>
+        <a class="btn ghost" href="#services">Υπηρεσίες</a>
+      </div>
+      <div class="stats">
+        <div><b>13,4χ</b><span>ακόλουθοι</span></div>
+        <div><b>272</b><span>looks στο Instagram</span></div>
+        <div><b>MUA</b><span>& hairstylist</span></div>
+      </div>
+    </div>
+
+    <div class="vanity">
+      <div class="mirror" id="mirrorEl">
+        <button class="lightsw" id="lightSw" type="button" aria-label="Φώτα καθρέφτη">💡</button>
+        <div class="bulbs" id="bulbs"></div>
+        <div class="glass" id="glass">
+          <svg viewBox="0 0 300 380" aria-label="Πρόσωπο στον καθρέφτη">
+            <defs>
+              <radialGradient id="skin" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#f6dccd"/><stop offset="1" stop-color="#e7bca6"/></radialGradient>
+              <radialGradient id="found" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#f9e4d6"/><stop offset=".75" stop-color="#f0cdb9"/><stop offset="1" stop-color="#e3b49c"/></radialGradient>
+              <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a3324"/><stop offset=".5" stop-color="#5a1d16"/><stop offset="1" stop-color="#3d120e"/></linearGradient>
+              <linearGradient id="lidG" x1="0" y1="0" x2="1" y2="0"><stop id="lid1" offset="0" stop-color="#e9c7b0"/><stop id="lid2" offset="1" stop-color="#b98a77"/></linearGradient>
+              <radialGradient id="blushG"><stop id="bl1" offset="0" stop-color="#e79a9f"/><stop offset="1" stop-color="#e79a9f" stop-opacity="0"/></radialGradient>
+              <radialGradient id="hlG"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+              <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter>
+              <filter id="soft2"><feGaussianBlur stdDeviation="1.4"/></filter>
+            </defs>
+            <!-- veil -->
+            <path id="veil" class="svgfx" style="opacity:0" d="M150 30 C 60 34 30 120 26 240 C 22 320 10 360 0 380 L 300 380 C 290 360 278 320 274 240 C 270 120 240 34 150 30Z" fill="#fff" fill-opacity=".45" stroke="#fff" stroke-opacity=".7"/>
+            <!-- hair back -->
+            <path d="M150 44 C 72 44 44 112 52 200 C 56 262 46 320 36 380 L 264 380 C 254 320 244 262 248 200 C 256 112 228 44 150 44Z" fill="url(#hair)"/>
+            <!-- shoulders & neck -->
+            <path d="M28 380 Q52 326 124 314 L176 314 Q248 326 272 380Z" fill="#ebc2ad"/>
+            <path d="M124 262 L124 318 Q150 334 176 318 L176 262Z" fill="#e1b39c"/>
+            <path d="M126 300 Q150 318 174 300" stroke="#d2a088" stroke-width="2" fill="none" opacity=".5"/>
+            <!-- face -->
+            <path id="face" d="M150 74 C 204 74 226 116 224 170 C 222 230 194 284 150 292 C 106 284 78 230 76 170 C 74 116 96 74 150 74Z" fill="url(#skin)"/>
+            <g id="makeup">
+              <path id="foundation" class="svgfx" style="opacity:0" d="M150 74 C 204 74 226 116 224 170 C 222 230 194 284 150 292 C 106 284 78 230 76 170 C 74 116 96 74 150 74Z" fill="url(#found)"/>
+              <g id="contour" class="svgfx" style="opacity:0" filter="url(#soft)">
+                <ellipse cx="96" cy="214" rx="12" ry="30" transform="rotate(-25 96 214)" fill="#b07a62"/>
+                <ellipse cx="204" cy="214" rx="12" ry="30" transform="rotate(25 204 214)" fill="#b07a62"/>
+                <path d="M142 168 L140 206 M158 168 L160 206" stroke="#b07a62" stroke-width="5"/>
+              </g>
+              <g id="blush" class="svgfx" style="opacity:0">
+                <ellipse cx="108" cy="212" rx="26" ry="17" fill="url(#blushG)"/>
+                <ellipse cx="192" cy="212" rx="26" ry="17" fill="url(#blushG)"/>
+              </g>
+            </g>
+            <!-- eye (left), mirrored for right -->
+            <g id="eyeL">
+              <path id="lid" class="svgfx" style="opacity:0" d="M92 170 Q114 136 146 166 Q120 182 92 170Z" fill="url(#lidG)" filter="url(#soft2)"/>
+              <path id="brow" class="svgfx" d="M92 146 Q114 128 142 138" stroke="#6b3a2a" stroke-width="3" stroke-linecap="round" fill="none" style="opacity:.55"/>
+              <path d="M96 170 Q118 182 140 170" stroke="#5a3428" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path id="liner" class="svgfx" style="opacity:0" d="M140 170 Q118 183 96 171 L86 162 Q96 172 104 174" stroke="#1d0f0c" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="lashes" stroke="#2a1510" stroke-width="1.2" stroke-linecap="round"></g>
+              <ellipse id="hlEye" class="svgfx" style="opacity:0" cx="140" cy="160" rx="5" ry="3" fill="url(#hlG)"/>
+            </g>
+            <use href="#eyeL" transform="translate(300 0) scale(-1 1)"/>
+            <!-- nose -->
+            <path d="M152 176 Q148 204 142 214 Q150 222 158 214" stroke="#c99580" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".7"/>
+            <!-- highlight -->
+            <g id="hl" class="svgfx" style="opacity:0">
+              <ellipse cx="114" cy="190" rx="16" ry="6" transform="rotate(-18 114 190)" fill="url(#hlG)"/>
+              <ellipse cx="186" cy="190" rx="16" ry="6" transform="rotate(18 186 190)" fill="url(#hlG)"/>
+              <ellipse cx="151" cy="194" rx="3" ry="12" fill="url(#hlG)"/>
+              <ellipse cx="150" cy="234" rx="7" ry="2.5" fill="url(#hlG)"/>
+            </g>
+            <!-- lips -->
+            <g id="lips">
+              <path d="M126 246 Q137 235 146 239 Q150 241 154 239 Q163 235 174 246 Q150 251 126 246Z" fill="#d49a8c"/>
+              <path d="M126 246 Q150 251 174 246 Q162 264 150 264 Q138 264 126 246Z" fill="#dca395"/>
+              <path id="lipU" class="svgfx" style="opacity:0" d="M126 246 Q137 235 146 239 Q150 241 154 239 Q163 235 174 246 Q150 251 126 246Z" fill="#c7766f"/>
+              <path id="lipL" class="svgfx" style="opacity:0" d="M126 246 Q150 251 174 246 Q162 264 150 264 Q138 264 126 246Z" fill="#c7766f"/>
+              <path d="M127 246 Q150 250 173 246" stroke="#8e4a44" stroke-width="1" fill="none" opacity=".5"/>
+              <ellipse id="gloss" class="svgfx" style="opacity:0" cx="152" cy="255" rx="9" ry="2.6" fill="#fff"/>
+            </g>
+            <!-- front hair -->
+            <path d="M150 58 C 104 56 76 92 72 150 C 76 196 70 240 62 280 C 50 230 46 170 58 120 C 72 76 108 52 150 52 C 196 52 232 80 242 128 C 254 176 250 230 238 280 C 230 240 224 196 228 150 C 226 118 210 88 180 82 C 150 78 118 92 96 130 C 112 90 136 64 150 58Z" fill="url(#hair)"/>
+            <path d="M96 130 C 120 92 160 76 196 90" stroke="#a5452f" stroke-width="2" fill="none" opacity=".55"/>
+            <!-- earrings -->
+            <g id="ear" class="svgfx" style="opacity:0">
+              <g id="earPearl"><circle cx="80" cy="228" r="4.5" fill="#fffaf2" stroke="#e5d6c2"/><circle cx="220" cy="228" r="4.5" fill="#fffaf2" stroke="#e5d6c2"/></g>
+              <g id="earGold" style="display:none"><path d="M80 224 L80 236 M220 224 L220 236" stroke="#c9a15a" stroke-width="1.4"/><path d="M80 236 l-5 9 5 9 5-9z M220 236 l-5 9 5 9 5-9z" fill="#d9b468"/></g>
+            </g>
+            <!-- tiara -->
+            <g id="tiara" class="svgfx" style="opacity:0">
+              <path d="M110 62 Q150 40 190 62" stroke="#e8d4a8" stroke-width="2" fill="none"/>
+              <g fill="#fffaf0" stroke="#d6c09a" stroke-width=".6"><circle cx="150" cy="44" r="3.6"/><circle cx="136" cy="47" r="2.6"/><circle cx="164" cy="47" r="2.6"/><circle cx="123" cy="52" r="2"/><circle cx="177" cy="52" r="2"/></g>
+            </g>
+            <!-- tap zones -->
+            <ellipse class="zone" data-z="lid" cx="118" cy="160" rx="28" ry="18"/>
+            <ellipse class="zone" data-z="lid" cx="182" cy="160" rx="28" ry="18"/>
+            <ellipse class="zone" data-z="blush" cx="104" cy="212" rx="22" ry="18"/>
+            <ellipse class="zone" data-z="blush" cx="196" cy="212" rx="22" ry="18"/>
+            <ellipse class="zone" data-z="lip" cx="150" cy="251" rx="28" ry="15"/>
+            <!-- brush -->
+            <g id="brush" style="opacity:0;transform:translate(260px,330px)" pointer-events="none">
+              <g transform="rotate(35)">
+                <rect x="-3" y="10" width="6" height="58" rx="3" fill="#2b1820"/>
+                <rect x="-4.5" y="2" width="9" height="12" rx="1.5" fill="#d9b468"/>
+                <path d="M-7 3 Q-8 -14 0 -20 Q8 -14 7 3Z" fill="#f2d7cf" stroke="#d8b3a8" stroke-width=".6"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="steps" id="steps"></div>
+      <div class="looks" id="looks"></div>
+      <div class="tools">
+        <button type="button" id="beforeBtn">Κράτα πατημένο · πριν</button>
+        <button type="button" id="sprayBtn">✦ Setting spray</button>
+        <button type="button" id="wipeBtn">Ξεβάψου</button>
+      </div>
+      <div class="swatches" id="swatches"></div>
+      <p class="hint">Πάτα πάνω στα μάτια, στα μάγουλα ή στα χείλη για να αλλάξεις απόχρωση.</p>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div id="marq"></div></div>
+
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow">Υπηρεσίες</span>
+    <h2>Από το δοκιμαστικό<br>μέχρι το <em>«ναι»</em>.</h2>
+    <div class="svc">
+      <article><span class="n">01</span><h3>Νυφικό μακιγιάζ</h3><p>Δοκιμαστικό, το look σου και ολοκληρωμένη προετοιμασία την ημέρα του γάμου, στον χώρο σου.</p><span class="tag ph" data-note="Τιμές ή «ζητήστε προσφορά», όπως θέλετε">Bridal</span></article>
+      <article><span class="n">02</span><h3>Hairstyling</h3><p>Χτενίσματα για νύφες, κουμπάρες και καλεσμένες, που ταιριάζουν με το μακιγιάζ.</p><span class="tag">Hair</span></article>
+      <article><span class="n">03</span><h3>Glam & Beauty</h3><p>Βραδινό, βάφτιση, φωτογράφιση, event. Από soft glam μέχρι πιο τολμηρό.</p><span class="tag">Beauty</span></article>
+      <article><span class="n">04</span><h3>Creative</h3><p>Editorial και creative looks για φωτογραφίσεις και projects.</p><span class="tag">Creative</span></article>
+      <article><span class="n">05</span><h3>Private lesson</h3><p>Ατομικό μάθημα αυτομακιγιάζ με τα δικά σου προϊόντα: τι σου ταιριάζει και πώς το κάνεις μόνη σου.</p><span class="tag">Makeup trainer</span></article>
+      <article><span class="n">06</span><h3>Beauty masterclass</h3><p>Ομαδικά σεμινάρια στο studio, για όποια θέλει να μάθει τεχνική από την αρχή ή να ανέβει επίπεδο.</p><span class="tag ph" data-note="Επόμενες ημερομηνίες masterclass">Studio</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="studio" id="studio">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Olga Minatze Beauty Studio</span>
+      <h2>Πάρε λίγη <em>πούδρα.</em></h2>
+      <p style="margin-top:18px;max-width:460px">Πέρασε το πινέλο πάνω από την πούδρα και δες τι κρύβει το studio. Εδώ γίνονται τα μαθήματα και εδώ θα βρεις τα luxury beauty brands που χρησιμοποιεί η Όλγα.</p>
+      <div class="offer">
+        <div><i>i.</i><span><b>Beauty masterclass</b>Τεχνική, προϊόντα και πρακτική σε μικρή ομάδα.</span></div>
+        <div><i>ii.</i><span><b>Private lesson</b>Ένα προς ένα, πάνω στο δικό σου πρόσωπο.</span></div>
+        <div><i>iii.</i><span><b>Luxury beauty brands</b>Παραγγελίες μέσω DM.</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="compact">
+        <div class="pan">
+          <div class="under"><b>Μάθε να το κάνεις<br>μόνη σου.</b><small>Masterclass · Private lesson</small><a class="btn" style="margin-top:16px;padding:10px 16px;font-size:12px" href="https://www.instagram.com/olgaminatzebeauty/" target="_blank" rel="noopener">@olgaminatzebeauty</a></div>
+          <canvas id="powder" aria-label="Πούδρα: σύρε για να τη σβήσεις"></canvas>
+        </div>
+      </div>
+      <p class="ctip" id="ctip">Σύρε το δάχτυλο ή το ποντίκι πάνω στην πούδρα</p>
+    </div>
+  </div>
+</section>
+
+<section class="planner" id="planner">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Η μέρα σου</span>
+      <h2 style="margin:14px 0 28px">Το πρωινό<br>της <em>νύφης</em>.</h2>
+      <div class="form">
+        <label for="wdate">Ημερομηνία γάμου</label>
+        <input type="date" id="wdate">
+        <label for="ctime">Ώρα τελετής</label>
+        <input type="time" id="ctime" value="18:00" step="900">
+        <label>Πόσες ακόμα βάφονται (μητέρα, κουμπάρες)</label>
+        <div class="stepper"><button type="button" id="minus" aria-label="Λιγότερες">−</button><output id="ppl">2</output><button type="button" id="plus" aria-label="Περισσότερες">+</button></div>
+        <label class="chk"><input type="checkbox" id="hairChk" checked> Και χτένισμα για τη νύφη</label>
+        <div class="count" id="count">Διάλεξε ημερομηνία για να δεις πότε να κλείσεις δοκιμαστικό.</div>
+      </div>
+    </div>
+    <div>
+      <p style="color:var(--muted);max-width:520px;margin-top:8px">Βάλε την ώρα της τελετής και δες ένα ενδεικτικό πρόγραμμα: τι ώρα έρχεται η Όλγα, ποια βάφεται πρώτη και πότε είσαι έτοιμη για τον φωτογράφο.</p>
+      <ol class="tl ph" id="tl" data-note="Ενδεικτικοί χρόνοι. Τους ορίζετε εσείς"></ol>
+      <a class="btn" href="https://www.instagram.com/olgaminatzemua/" target="_blank" rel="noopener">Κλείσε δοκιμαστικό</a>
+    </div>
+  </div>
+</section>
+
+<section id="brides" style="background:#fff">
+  <div class="wrap">
+    <span class="eyebrow">Οι νύφες</span>
+    <h2>Κομψότητα σε<br>κάθε <em>λεπτομέρεια</em>.</h2>
+    <div class="gal ph" data-note="Εδώ μπαίνουν φωτογραφίες από τις νύφες σας (ή αυτόματα τα τελευταία posts από το Instagram)">
+      <div class="tile t" style="--g:linear-gradient(160deg,#f3d6cf,#c78f8d 60%,#6d3b45)"><span>Bridal · soft glam</span></div>
+      <div class="tile" style="--g:linear-gradient(160deg,#fbeee6,#e2b9a3)"><span>Champagne lids</span></div>
+      <div class="tile" style="--g:linear-gradient(160deg,#e7c6c9,#9a5260)"><span>Rosé</span></div>
+      <div class="tile t" style="--g:linear-gradient(160deg,#efe3d4,#b79572 55%,#4c3426)"><span>Bronze glam</span></div>
+      <div class="tile w" style="--g:linear-gradient(110deg,#2c1a24,#7a3b4b 55%,#e4a8a5)"><span>Night · berry lips</span></div>
+      <div class="tile w" style="--g:linear-gradient(120deg,#f6e9e2,#d9a9a0 70%,#a9686c)"><span>Hairstyling · bridal updo</span></div>
+      <div class="tile" style="--g:linear-gradient(160deg,#3a2342,#8a4fb8 60%,#f4c6d7)"><span>Creative</span></div>
+    </div>
+    <p class="quote">«Κάθε νύφη αξίζει να νιώθει μοναδική, να λάμπει με τον δικό της τρόπο και να κρατά για πάντα όμορφες αναμνήσεις από την πιο ξεχωριστή ημέρα της ζωής της.»<small>Όλγα</small></p>
+  </div>
+</section>
+
+<section class="shop" id="shop">
+  <div class="wrap">
+    <span class="eyebrow">Studio shop</span>
+    <h2>Luxury <em>beauty</em> brands.</h2>
+    <div class="prod">
+      <div class="palette ph" id="pal" data-note="Εδώ μπαίνουν φωτογραφίες των προϊόντων σας"></div>
+      <div>
+        <span class="eyebrow">Στο studio</span>
+        <h3>BPerfect × Stacey Marie<br>Carnival V Interstellar</h3>
+        <p>Η παλέτα που φοράει το look «a little sparkle in my eyes». Πέρασε το ποντίκι πάνω από τις αποχρώσεις.</p>
+        <p class="ph" data-note="Διαθεσιμότητα / τιμή / άλλα προϊόντα" style="margin-top:14px">Παραγγελίες μέσω DM.</p>
+        <a class="btn" style="margin-top:24px" href="https://www.instagram.com/olgaminatzebeauty/" target="_blank" rel="noopener">Παραγγελία στο Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <span class="eyebrow">Θεσσαλονίκη · Ελλάδα</span>
+    <h2>Ας φτιάξουμε<br>το <em>look</em> σου.</h2>
+    <div class="row">
+      <a class="btn" href="https://www.instagram.com/olgaminatzemua/" target="_blank" rel="noopener">@olgaminatzemua</a>
+      <a class="btn ghost" href="https://www.instagram.com/olgaminatzebeauty/" target="_blank" rel="noopener">@olgaminatzebeauty</a>
+    </div>
+    <p class="meta"><span class="ph" data-note="Τηλέφωνο, email και διεύθυνση studio">Τηλέφωνο · Email · Διεύθυνση studio</span><br>Freelance: έρχομαι στον χώρο σου.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© Olga Minatze · Pro Make Up Artist</span><span>Demo από <a href="https://opensite.gr" style="text-decoration:underline">OpenSite</a></span></div>
+</footer>
+
+<a class="btn dm" href="https://www.instagram.com/olgaminatzemua/" target="_blank" rel="noopener">DM για ραντεβού</a>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const html = document.documentElement;
+$("#notesToggle").addEventListener("click", () => {
+  const on = html.classList.toggle("notes");
+  try { localStorage.setItem("om-notes", on ? "on" : "off"); } catch (e) {}
+});
+
+/* marquee */
+const mq = ["Bridal","beauty","Creative","hairstyling","Masterclass","private lesson","Θεσσαλονίκη","glow"];
+$("#marq").innerHTML = [...mq, ...mq].map(w => `<span>${w}</span>`).join("");
+
+/* ---------- mirror ---------- */
+const mirror = $("#mirrorEl"), glass = $("#glass");
+// bulbs along the arch and sides
+(() => {
+  const b = $("#bulbs"), pts = [];
+  for (let i = 0; i <= 8; i++) { const a = Math.PI + Math.PI * i / 8; pts.push([50 + 50 * Math.cos(a), 39.5 + 39.5 * Math.sin(a) * 1]); }
+  for (let i = 1; i <= 4; i++) { pts.push([0, 39.5 + i * 13]); pts.push([100, 39.5 + i * 13]); }
+  pts.forEach(([x, y], i) => { const d = document.createElement("i"); d.className = "bulb"; d.style.left = x + "%"; d.style.top = y + "%"; d.style.transitionDelay = i * 40 + "ms"; b.appendChild(d); });
+})();
+let lit = false;
+const setLit = v => { lit = v; mirror.classList.toggle("lit", v); $("#bulbs").classList.toggle("lit", v); };
+$("#lightSw").addEventListener("click", () => setLit(!lit));
+setTimeout(() => setLit(true), 500);
+
+const LOOKS = {
+  bridal: { name: "Bridal", sub: "νυφικό", bar: "linear-gradient(90deg,#e9c7b0,#e79a9f,#c7766f)", lid: ["#ecccb6", "#b98a77"], liner: .55, wing: false, lash: 1, blush: "#e79a9f", blushO: .6, contour: .35, lip: "#c7766f", lipO: .85, gloss: .55, hl: .9, brow: .7, ear: "pearl", tiara: 1, veil: 1 },
+  glam:   { name: "Glam", sub: "βραδινό", bar: "linear-gradient(90deg,#c98b5a,#5a3426,#9e1f2e)", lid: ["#d39561", "#4f2b20"], liner: 1, wing: true, lash: 1.45, blush: "#cf7d6a", blushO: .5, contour: .8, lip: "#9e1f2e", lipO: .95, gloss: .12, hl: 1, brow: .95, ear: "gold", tiara: 0, veil: 0 },
+  soft:   { name: "Soft", sub: "καθημερινό", bar: "linear-gradient(90deg,#f2c3a8,#f4a18f,#d98b80)", lid: ["#f3cbb2", "#d79a86"], liner: .2, wing: false, lash: .75, blush: "#f4a18f", blushO: .55, contour: .2, lip: "#d98b80", lipO: .6, gloss: .9, hl: .6, brow: .55, ear: null, tiara: 0, veil: 0 },
+  night:  { name: "Night", sub: "smoky", bar: "linear-gradient(90deg,#9a6a8e,#3b1f3a,#6e1f3d)", lid: ["#a8789a", "#341a33"], liner: .95, wing: true, lash: 1.25, blush: "#c47a8a", blushO: .45, contour: .6, lip: "#6e1f3d", lipO: .95, gloss: .25, hl: .75, brow: .85, ear: "gold", tiara: 0, veil: 0 }
+};
+const SHADES = {
+  lid: [["#ecccb6", "#b98a77"], ["#d39561", "#4f2b20"], ["#f3cbb2", "#d79a86"], ["#a8789a", "#341a33"], ["#e8b9b4", "#a8606b"], ["#c9b38d", "#6b5a3a"]],
+  blush: ["#e79a9f", "#cf7d6a", "#f4a18f", "#c47a8a"],
+  lip: ["#c7766f", "#9e1f2e", "#d98b80", "#6e1f3d", "#b4505b", "#e0a196"]
+};
+const state = { lid: 0, blush: 0, lip: 0 };
+
+const el = id => document.getElementById(id);
+function setLid(c) { el("lid1").setAttribute("stop-color", c[0]); el("lid2").setAttribute("stop-color", c[1]); }
+function setBlush(c) { $$("#blushG stop").forEach(s => s.setAttribute("stop-color", c)); }
+function setLip(c) { el("lipU").style.fill = c; el("lipL").style.fill = c; }
+function lashes(scale) {
+  const g = el("lashes"); g.innerHTML = "";
+  if (!scale) return;
+  for (let i = 0; i <= 9; i++) {
+    const t = i / 9, x = (1 - t) * (1 - t) * 140 + 2 * (1 - t) * t * 118 + t * t * 96, y = (1 - t) * (1 - t) * 170 + 2 * (1 - t) * t * 182 + t * t * 170;
+    const len = (3 + 5 * t) * scale, ang = (100 + 40 * t) * Math.PI / 180;
+    g.insertAdjacentHTML("beforeend", `<path d="M${x.toFixed(1)} ${y.toFixed(1)} q${(Math.cos(ang) * len * .4).toFixed(1)} ${(len * .6).toFixed(1)} ${(Math.cos(ang) * len).toFixed(1)} ${(Math.sin(ang) * len).toFixed(1)}" fill="none"/>`);
+  }
+}
+const op = (id, v) => el(id).style.opacity = v;
+
+function clearAll() {
+  ["foundation", "contour", "blush", "lid", "liner", "hl", "hlEye", "lipU", "lipL", "gloss", "ear", "tiara", "veil"].forEach(i => op(i, 0));
+  op("brow", .55); el("brow").style.strokeWidth = 3; lashes(0);
+}
+
+/* brush travels to a zone (svg coords) */
+const brush = el("brush");
+const moveBrush = (x, y) => { brush.style.opacity = 1; brush.style.transform = `translate(${x}px,${y}px)`; };
+const hideBrush = () => { brush.style.opacity = 0; brush.style.transform = "translate(260px,330px)"; };
+
+const STEP_NAMES = ["Βάση", "Contour", "Φρύδια", "Σκιές", "Eyeliner", "Μάσκαρα", "Ρουζ", "Κραγιόν", "Highlighter", "Αξεσουάρ"];
+let runId = 0;
+const wait = ms => new Promise(r => setTimeout(r, ms));
+async function applyLook(key) {
+  const L = LOOKS[key], id = ++runId;
+  $$(".look").forEach(b => b.classList.toggle("on", b.dataset.k === key));
+  state.lid = SHADES.lid.findIndex(s => s[0] === L.lid[0]);
+  state.blush = SHADES.blush.indexOf(L.blush); state.lip = SHADES.lip.indexOf(L.lip);
+  paintSwatches();
+  clearAll();
+  const st = $("#steps"); st.innerHTML = STEP_NAMES.map(n => `<span>${n}</span>`).join("");
+  const chips = [...st.children];
+  const steps = [
+    [150, 140, () => op("foundation", 1)],
+    [96, 214, () => op("contour", L.contour)],
+    [116, 136, () => { op("brow", L.brow); el("brow").style.strokeWidth = 3 + L.brow * 1.4; }],
+    [118, 158, () => { setLid(L.lid); op("lid", .9); }],
+    [96, 170, () => { op("liner", L.liner); el("liner").setAttribute("d", L.wing ? "M140 170 Q118 183 96 171 L84 160 Q95 173 104 175" : "M140 170 Q118 182 96 171"); }],
+    [118, 178, () => lashes(L.lash)],
+    [108, 212, () => { setBlush(L.blush); op("blush", L.blushO); }],
+    [150, 252, () => { setLip(L.lip); op("lipU", L.lipO); op("lipL", L.lipO); op("gloss", L.gloss); }],
+    [114, 190, () => { op("hl", L.hl); op("hlEye", L.hl); }],
+    [150, 60, () => { el("earPearl").style.display = L.ear === "pearl" ? "" : "none"; el("earGold").style.display = L.ear === "gold" ? "" : "none"; op("ear", L.ear ? 1 : 0); op("tiara", L.tiara); op("veil", L.veil); }]
+  ];
+  for (let i = 0; i < steps.length; i++) {
+    if (id !== runId) return;
+    chips.forEach((c, j) => c.className = j < i ? "done" : j === i ? "on" : "");
+    moveBrush(steps[i][0], steps[i][1]);
+    await wait(380);
+    if (id !== runId) return;
+    steps[i][2]();
+    await wait(170);
+  }
+  chips.forEach(c => c.className = "done");
+  hideBrush();
+  spray(10);
+}
+
+$("#looks").innerHTML = Object.entries(LOOKS).map(([k, L]) => `<button class="look" type="button" data-k="${k}"><i style="background:${L.bar}"></i><b>${L.name}</b><small>${L.sub}</small></button>`).join("");
+$$(".look").forEach(b => b.addEventListener("click", () => applyLook(b.dataset.k)));
+
+/* swatches */
+function paintSwatches() {
+  const rows = [["lid", "Σκιές"], ["blush", "Ρουζ"], ["lip", "Κραγιόν"]];
+  $("#swatches").innerHTML = rows.map(([k, n]) => `<div class="swrow"><em>${n}</em>${SHADES[k].map((c, i) => `<button class="sw${state[k] === i ? " on" : ""}" type="button" aria-label="${n} ${i + 1}" data-k="${k}" data-i="${i}" style="background:${Array.isArray(c) ? `linear-gradient(135deg,${c[0]} 50%,${c[1]} 50%)` : c}"></button>`).join("")}</div>`).join("");
+  $$(".sw").forEach(b => b.addEventListener("click", () => setShade(b.dataset.k, +b.dataset.i)));
+}
+function setShade(k, i) {
+  runId++; hideBrush();
+  state[k] = i;
+  if (k === "lid") { setLid(SHADES.lid[i]); op("lid", .9); }
+  if (k === "blush") { setBlush(SHADES.blush[i]); op("blush", .55); }
+  if (k === "lip") { setLip(SHADES.lip[i]); op("lipU", .9); op("lipL", .9); }
+  paintSwatches();
+}
+$$(".zone").forEach(z => z.addEventListener("click", e => {
+  const k = z.dataset.z; setShade(k, (state[k] + 1) % SHADES[k].length);
+  const r = glass.getBoundingClientRect(); sparkAt(e.clientX - r.left, e.clientY - r.top, 5);
+}));
+
+/* before / after */
+const before = on => { $("#glass svg").style.filter = on ? "saturate(.8)" : ""; ["makeup", "hl", "lipU", "lipL", "gloss", "ear", "tiara", "veil"].forEach(i => el(i).style.visibility = on ? "hidden" : ""); ["lid", "liner", "lashes", "hlEye"].forEach(i => el(i).style.visibility = on ? "hidden" : ""); };
+const bb = $("#beforeBtn");
+["pointerdown"].forEach(ev => bb.addEventListener(ev, () => before(true)));
+["pointerup", "pointerleave", "pointercancel"].forEach(ev => bb.addEventListener(ev, () => before(false)));
+
+/* sparkles */
+function sparkAt(x, y, n) {
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement("span"); s.className = "spark"; s.textContent = Math.random() < .5 ? "✦" : "✧";
+    s.style.left = x + "px"; s.style.top = y + "px";
+    s.style.setProperty("--dx", (Math.random() * 80 - 40) + "px"); s.style.setProperty("--dy", (Math.random() * -70 - 10) + "px");
+    s.style.fontSize = 8 + Math.random() * 12 + "px";
+    glass.appendChild(s); setTimeout(() => s.remove(), 1500);
+  }
+}
+function spray(n) { const r = glass.getBoundingClientRect(); for (let i = 0; i < n; i++) setTimeout(() => sparkAt(r.width * (.2 + Math.random() * .6), r.height * (.25 + Math.random() * .5), 3), i * 60); }
+$("#sprayBtn").addEventListener("click", () => spray(16));
+$("#wipeBtn").addEventListener("click", () => { runId++; hideBrush(); clearAll(); $("#steps").innerHTML = ""; $$(".look").forEach(b => b.classList.remove("on")); });
+
+paintSwatches();
+// play the bridal look once the mirror is in view
+new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); setTimeout(() => applyLook("bridal"), 900); } }, { threshold: .4 }).observe(mirror);
+
+/* ---------- powder compact ---------- */
+(() => {
+  const cv = $("#powder"), ctx = cv.getContext("2d");
+  let W, done = false, strokes = 0;
+  function draw() {
+    const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+    W = r.width; cv.width = W * dpr; cv.height = W * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const g = ctx.createRadialGradient(W * .4, W * .35, 0, W / 2, W / 2, W * .7);
+    g.addColorStop(0, "#f6ddd4"); g.addColorStop(.6, "#e9c3b6"); g.addColorStop(1, "#d6a99b");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, W);
+    for (let i = 0; i < W * 9; i++) { ctx.fillStyle = Math.random() < .5 ? "rgba(255,255,255,.35)" : "rgba(170,110,100,.12)"; ctx.fillRect(Math.random() * W, Math.random() * W, 1, 1); }
+    // shimmer flecks
+    for (let i = 0; i < 160; i++) { ctx.fillStyle = `rgba(255,240,210,${Math.random() * .8})`; ctx.beginPath(); ctx.arc(Math.random() * W, Math.random() * W, Math.random() * 1.3, 0, 7); ctx.fill(); }
+    // embossed monogram
+    const emb = (t, size, y, font) => { ctx.font = `${size}px ${font}`; ctx.textAlign = "center"; ctx.fillStyle = "rgba(255,255,255,.55)"; ctx.fillText(t, W / 2 - 1, y - 1); ctx.fillStyle = "rgba(140,80,72,.28)"; ctx.fillText(t, W / 2 + 1, y + 1); ctx.fillStyle = "rgba(225,180,166,.9)"; ctx.fillText(t, W / 2, y); };
+    emb("OM", W * .3, W * .56, '"GFS Didot",serif');
+    emb("OLGA MINATZE BEAUTY", W * .045, W * .7, '"Commissioner",sans-serif');
+    ctx.strokeStyle = "rgba(255,255,255,.35)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(W / 2, W / 2, W * .44, 0, 7); ctx.stroke();
+  }
+  const pos = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  let down = false, last = null;
+  function dab(x, y) {
+    ctx.globalCompositeOperation = "destination-out";
+    const rad = W * .075, g = ctx.createRadialGradient(x, y, 0, x, y, rad);
+    g.addColorStop(0, "rgba(0,0,0,.9)"); g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, rad, 0, 7); ctx.fill();
+    ctx.globalCompositeOperation = "source-over";
+  }
+  function stroke(e) {
+    const [x, y] = pos(e);
+    if (last) { const d = Math.hypot(x - last[0], y - last[1]), n = Math.max(1, d / 6); for (let i = 1; i <= n; i++) dab(last[0] + (x - last[0]) * i / n, last[1] + (y - last[1]) * i / n); } else dab(x, y);
+    last = [x, y];
+    if (++strokes % 12 === 0) check();
+  }
+  function check() {
+    if (done) return;
+    const d = ctx.getImageData(0, 0, cv.width, cv.height).data; let clear = 0, tot = 0;
+    for (let i = 3; i < d.length; i += 4 * 97) { tot++; if (d[i] < 60) clear++; }
+    if (clear / tot > .42) { done = true; cv.classList.add("gone"); $("#ctip").textContent = "✦ Ορίστε: το studio σε περιμένει"; }
+  }
+  cv.addEventListener("pointerdown", e => { down = true; last = null; cv.setPointerCapture(e.pointerId); stroke(e); });
+  cv.addEventListener("pointermove", e => { if (down) stroke(e); });
+  ["pointerup", "pointercancel"].forEach(ev => cv.addEventListener(ev, () => { down = false; last = null; check(); }));
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
+  let rw = 0; addEventListener("resize", () => { if (!done && Math.abs(cv.getBoundingClientRect().width - rw) > 30) { rw = cv.getBoundingClientRect().width; draw(); } });
+})();
+
+/* ---------- planner ---------- */
+let ppl = 2;
+const fmt = m => { m = ((m % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+function plan() {
+  const [h, mi] = ($("#ctime").value || "18:00").split(":").map(Number), C = h * 60 + mi;
+  const hair = $("#hairChk").checked;
+  const leave = C - 45, photo = leave - 60, brideMakeEnd = photo - 15, brideMake = brideMakeEnd - 80;
+  const brideHair = hair ? brideMake - 60 : brideMake;
+  const others = brideHair - ppl * 40, arrive = others - 20;
+  const rows = [
+    [arrive, "Έρχεται η Όλγα", "Στήσιμο του σταθμού με φως, προϊόντα και ό,τι χρειάζεται, στον χώρο σου."],
+    ...(ppl ? [[others, `Μακιγιάζ για ${ppl === 1 ? "1 άτομο" : ppl + " άτομα"}`, "Μητέρα, κουμπάρες, αδερφές. Περίπου 40′ η καθεμιά, ώστε η νύφη να βαφτεί τελευταία και πιο φρέσκια."]] : []),
+    ...(hair ? [[brideHair, "Χτένισμα νύφης", "Πριν από το μακιγιάζ, ώστε να μη χαλάσει τίποτα."]] : []),
+    [brideMake, "Νυφικό μακιγιάζ", "Το look από το δοκιμαστικό, με προϊόντα μακράς διάρκειας."],
+    [photo - 15, "Τελευταίες πινελιές", "Βλεφαρίδες, κραγιόν, setting spray. Μένουν τα touch-ups για την τσάντα σου."],
+    [photo, "Φωτογράφος & νυφικό", "Ντύσιμο και φωτογραφίες στο σπίτι."],
+    [leave, "Αναχώρηση", "Τελευταίο touch-up πριν βγεις από την πόρτα."],
+    [C, "Τελετή", "Λάμπεις. ✦", true]
+  ];
+  $("#tl").innerHTML = rows.map((r, i) => `<li class="${r[3] ? "big" : ""}" style="animation-delay:${i * 60}ms"><time>${fmt(r[0])}</time> <b>${r[1]}</b><p>${r[2]}</p></li>`).join("");
+  const dv = $("#wdate").value;
+  if (dv) {
+    const d = new Date(dv + "T12:00:00"), now = new Date(), days = Math.round((d - now) / 864e5);
+    const trial = new Date(d - 42 * 864e5), tf = trial.toLocaleDateString("el-GR", { day: "numeric", month: "long" });
+    $("#count").innerHTML = days > 0 ? `<b>${days}</b> μέρες ακόμα.<br>Ιδανικά, κλείσε δοκιμαστικό γύρω στις <b style="font-size:inherit">${tf}</b>.` : days === 0 ? "Είναι σήμερα! ✦" : "Αυτή η ημερομηνία έχει περάσει.";
+  }
+}
+$("#minus").addEventListener("click", () => { ppl = Math.max(0, ppl - 1); $("#ppl").value = ppl; plan(); });
+$("#plus").addEventListener("click", () => { ppl = Math.min(6, ppl + 1); $("#ppl").value = ppl; plan(); });
+["#ctime", "#wdate", "#hairChk"].forEach(s => $(s).addEventListener("input", plan));
+plan();
+
+/* ---------- shop palette ---------- */
+$("#pal").innerHTML = ["#f7d9c4", "#e8a87c", "#c96f4a", "#8e3b2f", "#3b1d2b", "#f4c6d7", "#d87fb0", "#8a4fb8", "#3c3fa8", "#1a1a4a", "#fff1c7", "#e6c15c", "#b8892e", "#6d8a5e", "#2a5d6b"].map(c => `<i style="--c:${c}"></i>`).join("");
+</script>
+</body>
+</html>
