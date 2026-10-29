@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ακτή Ντοβίλ · Inspired by the Ocean</title>
+<meta name="description" content="Ακτή Ντοβίλ: θαλασσινή κουζίνα στο Καραμπουρνάκι, εκεί που κάποτε ήταν το θερινό σινεμά. Επιλογή του MICHELIN Guide Greece 2027.">
+<meta name="theme-color" content="#050914">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Inter:wght@400;500;600&display=swap&subset=greek" rel="stylesheet">
+<!--
+  Demo by OpenSite for Ακτή Ντοβίλ (@aktintovil, aktintovil.gr).
+  Facts: aktintovil.gr (Θεμιστοκλή Σοφούλη 86 Καλαμαριά, 2310 407000, info@aktintovil.gr, chef Παναγιώτης Δεληθανάσης,
+  1950s–early 70s summer club & open-air cinema, only the sign remained; menu dishes), Instagram bio ("Inspired by the Ocean",
+  @michelinguide 2027, i-host reservations), press: selected (recommended) restaurant in the MICHELIN Guide Greece 2027.
+  Michelin is mentioned in text only. Photos are Unsplash placeholders. Everything marked .ph is placeholder copy.
+-->
+<style>
+:root{
+  --night:#050914; --deep:#0b1a33; --cream:#efe6d4; --muted:#9aa3b5; --gold:#c8a565; --line:rgba(239,230,212,.14);
+  --didot:"GFS Didot",Didot,"Bodoni 72",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--night);color:var(--cream);font:400 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+.cap{font:500 11px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+h2{font:400 clamp(42px,6.6vw,86px)/1.02 var(--didot);letter-spacing:.005em}
+h2 em{font-style:normal;color:var(--gold)}
+.lead{color:var(--muted);font-size:17px;max-width:540px}
+
+/* bar */
+.bar{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:16px;transition:background .5s}
+.bar.solid{background:rgba(5,9,20,.82);backdrop-filter:blur(10px)}
+.mark{font:400 22px/1 var(--didot);letter-spacing:.08em}
+.book{font:500 11px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--gold);color:var(--gold);transition:background .3s,color .3s}
+.book:hover{background:var(--gold);color:var(--night)}
+
+/* hero: floating cinema */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+#sea{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
+.play{position:absolute;z-index:3;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:12px;font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--cream);padding:16px 22px;border:1px solid rgba(239,230,212,.5);background:rgba(5,9,20,.55);backdrop-filter:blur(4px);transition:opacity .6s,background .3s}
+.play:hover{background:rgba(200,165,101,.25)}
+.play i{width:0;height:0;border-left:10px solid var(--gold);border-block:6px solid transparent}
+.play.gone{opacity:0;pointer-events:none}
+.hero-foot{position:absolute;z-index:3;left:0;right:0;bottom:56px;display:flex;justify-content:space-between;align-items:end;padding:0 16px;pointer-events:none}
+.hero-foot>*{pointer-events:auto}
+.mich{font:400 15px/1.3 var(--didot);letter-spacing:.06em;color:var(--cream);opacity:.9}
+.mich small{display:block;font:500 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.cue{font:500 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{50%{transform:translateY(8px);opacity:.5}}
+.skip{font:500 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:3px}
+
+/* film strip story */
+.story{height:420vh;position:relative;background:linear-gradient(var(--night),#0a0d16)}
+.story .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.story-head{width:min(1140px,100% - 32px);margin:0 auto 34px;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.reel{display:flex;gap:0;will-change:transform;padding-left:max(16px,calc((100vw - 1140px)/2))}
+.frame{flex:0 0 min(64vw,560px);background:#111;padding:34px 14px;position:relative}
+.frame::before,.frame::after{content:"";position:absolute;left:0;right:0;height:16px;background:repeating-linear-gradient(90deg,transparent 0 10px,#e9e1cf 10px 24px,transparent 24px 34px);opacity:.85;-webkit-mask:linear-gradient(#000,#000) content-box;border-block:4px solid #111}
+.frame::before{top:9px}.frame::after{bottom:9px}
+.frame .pic{position:relative;aspect-ratio:16/10;overflow:hidden;background:#222}
+.frame img{width:100%;height:100%;object-fit:cover}
+.frame .pic::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");mix-blend-mode:overlay;pointer-events:none}
+.sepia img{filter:sepia(.85) contrast(1.15) brightness(.8)}
+.frame .yr{position:absolute;left:14px;top:12px;font:400 30px/1 var(--didot);color:var(--cream);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.frame figcaption{padding:16px 4px 0;color:#cfc6b4;font-size:15px}
+.frame figcaption b{display:block;font:400 26px/1.1 var(--didot);color:var(--cream);font-weight:400;margin-bottom:6px}
+.sign{display:grid;place-items:center;height:100%;background:radial-gradient(ellipse at 50% 60%,#1b2236,#0a0d16)}
+.sign span{font:400 clamp(30px,5vw,54px)/1 var(--didot);letter-spacing:.14em;color:#ffe3b0;padding:16px 26px;border:2px solid rgba(255,227,176,.6);text-shadow:0 0 12px rgba(255,190,110,.8),0 0 30px rgba(255,160,80,.5);animation:buzz 4s steps(1) infinite}
+@keyframes buzz{0%,100%{opacity:1}43%{opacity:.35}45%{opacity:1}47%{opacity:.5}49%{opacity:1}}
+.mframe{display:grid;place-items:center;height:100%;background:#0e1424;text-align:center;padding:20px}
+.mframe b{display:block;font:400 clamp(26px,3.6vw,40px)/1.15 var(--didot);color:var(--cream);font-weight:400}
+.mframe small{display:block;margin-top:12px;font:500 10px/1.5 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.progress{width:min(1140px,100% - 32px);margin:30px auto 0;height:1px;background:var(--line);position:relative}
+.progress i{position:absolute;left:0;top:-1px;height:3px;background:var(--gold);width:0}
+
+/* credits */
+.credits{padding:120px 0;text-align:center;background:#000;position:relative;overflow:hidden}
+.roll{height:min(62vh,520px);overflow:hidden;position:relative;margin-top:40px;-webkit-mask:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.roll .in{animation:roll 26s linear infinite;padding-top:min(62vh,520px)}
+.roll:hover .in{animation-play-state:paused}
+@keyframes roll{to{transform:translateY(-100%)}}
+.cr{margin-bottom:46px}
+.cr small{display:block;font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.cr b{font:400 clamp(28px,4vw,46px)/1.1 var(--didot);font-weight:400}
+.cr p{color:var(--muted);max-width:460px;margin:10px auto 0;font-size:15px}
+
+/* programme */
+.prog{padding:120px 0;background:linear-gradient(#000,var(--night))}
+.marquee{position:relative;margin:46px auto 0;max-width:820px;padding:22px;background:#15100a;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.bulbs{position:absolute;inset:0;border-radius:6px;pointer-events:none;
+  background:
+   radial-gradient(circle,#ffd98a 0 3px,transparent 4px) 0 0/22px 22px repeat-x,
+   radial-gradient(circle,#ffd98a 0 3px,transparent 4px) 0 100%/22px 22px repeat-x;
+  animation:chase 1s steps(2) infinite;filter:drop-shadow(0 0 5px #ffb84d)}
+@keyframes chase{50%{background-position:11px 0,11px 100%}}
+.board{background:#f2ece0;color:#141414;border-radius:3px;padding:22px 18px;text-align:center;box-shadow:inset 0 0 30px rgba(0,0,0,.18)}
+.board .now{font:600 11px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:#7a5a24}
+.letters{margin-top:14px;font:400 clamp(22px,4vw,40px)/1.15 var(--didot);letter-spacing:.06em;text-transform:uppercase;min-height:2.3em;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:0 .32em}
+.letters .w{display:inline-flex}
+.letters .l{display:inline-block;animation:flip .5s both}
+@keyframes flip{from{transform:rotateX(90deg);opacity:0}}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:40px 0 26px}
+.tab{font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;padding:13px 16px;color:var(--muted);border:1px solid var(--line);transition:all .3s}
+.tab[aria-selected=true]{color:var(--night);background:var(--gold);border-color:var(--gold)}
+.dishes{list-style:none;max-width:760px;margin:0 auto;columns:2;column-gap:40px}
+.dishes li{break-inside:avoid;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:color .3s,padding .3s;font:400 19px/1.35 var(--didot)}
+.dishes li:hover,.dishes li.on{color:var(--gold);padding-left:8px}
+.dishes li.on::before{content:"▸ ";color:var(--gold)}
+.menu-links{text-align:center;margin-top:30px;color:var(--muted);font-size:14px}
+.menu-links a{color:var(--gold);border-bottom:1px solid rgba(200,165,101,.4)}
+
+/* michelin */
+.guide{padding:110px 0;text-align:center;border-block:1px solid var(--line)}
+.guide .lineq{font:400 clamp(30px,4.4vw,56px)/1.15 var(--didot);max-width:900px;margin:22px auto 0}
+.guide .lineq em{font-style:normal;color:var(--gold)}
+
+/* ticket */
+.ticketsec{padding:120px 0 100px;background:radial-gradient(ellipse at 50% 0,rgba(200,165,101,.14),transparent 60%),var(--night)}
+.tgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;margin-top:20px}
+.field{margin-bottom:22px}
+.field label{display:block;font:500 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 13px/1 var(--sans);padding:11px 12px;border:1px solid var(--line);color:var(--muted);min-width:52px;text-align:center;transition:all .25s}
+.chip small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.chip[aria-pressed=true]{background:var(--cream);color:var(--night);border-color:var(--cream)}
+.step{display:inline-flex;align-items:center;border:1px solid var(--line)}
+.step button{width:46px;height:46px;font-size:20px;color:var(--gold)}
+.step output{min-width:60px;text-align:center;font:400 26px/1 var(--didot)}
+.ticket{position:relative;display:grid;grid-template-columns:1fr 128px;background:var(--cream);color:#1a1a1a;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5));transform:rotate(-2deg);transition:transform .5s}
+.ticket:hover{transform:rotate(0)}
+.ticket .main{padding:30px 28px;border-right:2px dashed rgba(26,26,26,.35);position:relative}
+.ticket .main::before,.ticket .main::after{content:"";position:absolute;right:-13px;width:24px;height:24px;border-radius:50%;background:var(--night)}
+.ticket .main::before{top:-12px}.ticket .main::after{bottom:-12px}
+.ticket .t1{font:600 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:#8a6a2c}
+.ticket h3{font:400 clamp(30px,3.6vw,44px)/1 var(--didot);margin:12px 0 4px;letter-spacing:.04em}
+.ticket .sub{font:400 15px/1 var(--didot);font-style:italic;color:#555}
+.ticket dl{display:grid;grid-template-columns:repeat(3,auto);gap:4px 26px;margin-top:22px;justify-content:start}
+.ticket dt{font:600 9px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#8a6a2c}
+.ticket dd{font:400 22px/1.2 var(--didot)}
+.stub{display:grid;place-items:center;text-align:center;padding:16px 10px;position:relative;cursor:pointer;transition:transform .7s cubic-bezier(.5,0,.6,1),opacity .7s;transform-origin:0 50%}
+.stub .adm{font:400 18px/1.1 var(--didot);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.14em}
+.stub .no{font:600 9px/1 var(--sans);letter-spacing:.2em;color:#8a6a2c;margin-top:8px}
+.ticket.torn .stub{transform:translate(60px,40px) rotate(18deg);opacity:0}
+.tear{margin-top:30px}
+.tear-note{display:block;margin-top:12px;color:var(--muted);font-size:13px}
+
+/* visit */
+.visit{padding:100px 0 80px;border-top:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px}
+.vgrid h4{font:500 10px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.vgrid p,.vgrid a{font:400 21px/1.35 var(--didot)}
+.vgrid a:hover{color:var(--gold)}
+footer{border-top:1px solid var(--line);padding:26px 0 90px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s,transform 1s}
+.rv.in{opacity:1;transform:none}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--gold);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:6;font:600 11px/1.35 var(--sans);letter-spacing:0;text-transform:none;font-style:normal;color:var(--night);background:var(--gold);padding:3px 7px;max-width:280px;white-space:normal;text-align:left;writing-mode:horizontal-tb}
+.notes-toggle{position:fixed;left:12px;bottom:12px;z-index:60;font:600 11px/1 var(--sans);padding:9px 12px;border-radius:999px;background:#0e1424;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:900px){
+  .tgrid{grid-template-columns:1fr;gap:40px}
+  .vgrid{grid-template-columns:1fr;gap:26px}
+  .dishes{columns:1}
+  .ticket{grid-template-columns:1fr 92px}
+  .ticket .main{padding:24px 18px}
+  .ticket dl{gap:4px 16px}
+  .hero-foot .cue{display:none}
+  .frame{flex-basis:82vw;padding:30px 10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+<script>
+  (function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+    if(q.has("clean")||localStorage.getItem("akti-notes")==="off") h.classList.remove("notes");
+    if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+<header class="bar" id="bar">
+  <a class="mark" href="#top">Ακτή Ντοβίλ</a>
+  <a class="book" href="#ticket">Κράτηση</a>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Ακτή Ντοβίλ: το θερινό σινεμά πάνω στο νερό">
+    <canvas id="sea"></canvas>
+    <button class="play" id="play" type="button"><i></i>Προβολή</button>
+    <div class="hero-foot">
+      <div class="mich"><small>MICHELIN Guide Greece 2027</small>Επιλογή του Οδηγού</div>
+      <button class="skip" id="skip" type="button">Παράλειψη ›</button>
+      <span class="cue">Scroll</span>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="stick">
+      <div class="story-head">
+        <div><div class="cap">Η ιστορία σε καρέ</div><h2 style="margin-top:14px">Εδώ, κάποτε,<br><em>παιζόταν σινεμά.</em></h2></div>
+        <p class="lead" style="max-width:360px">Κάνε scroll και γύρνα την ταινία από την αρχή.</p>
+      </div>
+      <div class="reel" id="reel">
+        <figure class="frame"><div class="pic sepia ph" data-note="Αρχειακή φωτογραφία του θερινού (αν υπάρχει)"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=60"><span class="yr">'50s</span></div><figcaption><b>Καλοκαιρινό κλαμπ & θερινό σινεμά</b>Στην ακτή του Καραμπουρνακίου, οι καλοκαιρινές νύχτες της Θεσσαλονίκης είχαν οθόνη, θάλασσα και αστέρια.</figcaption></figure>
+        <figure class="frame"><div class="pic"><div class="sign"><span>ΑΚΤΗ ΝΤΟΒΙΛ</span></div><span class="yr">'70s</span></div><figcaption><b>Έμεινε μόνο η ταμπέλα</b>Στις αρχές του '70 έπεσε η τελευταία αυλαία. Για χρόνια, το μόνο που θύμιζε την Ακτή Ντοβίλ ήταν η ταμπέλα της.</figcaption></figure>
+        <figure class="frame"><div class="pic ph" data-note="Φωτογραφία της σημερινής σάλας/βεράντας"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=65"><span class="yr">Σήμερα</span></div><figcaption><b>Η επιστροφή</b>Η Ακτή Ντοβίλ ξαναζεί, σε σύγχρονη μορφή: ένα εστιατόριο πάνω στον Θερμαϊκό.</figcaption></figure>
+        <figure class="frame"><div class="pic"><img loading="lazy" alt="" src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=900&q=65"><span class="yr">Inspired</span></div><figcaption><b>Inspired by the Ocean</b>Ψάρι ημέρας, όστρακα, ωμά και θαλασσινά. Η θάλασσα είναι η πρώτη ύλη και η έμπνευση.</figcaption></figure>
+        <figure class="frame"><div class="pic"><div class="mframe"><div><b>Επιλογή του Οδηγού<br>MICHELIN 2027</b><small>MICHELIN Guide Greece</small></div></div><span class="yr">2027</span></div><figcaption><b>Η νέα σκηνή</b>Ο Οδηγός MICHELIN Greece 2027 επέλεξε την Ακτή Ντοβίλ ανάμεσα στα προτεινόμενα εστιατόρια της Θεσσαλονίκης.</figcaption></figure>
+      </div>
+      <div class="progress"><i id="reelProg"></i></div>
+    </div>
+  </section>
+
+  <section class="credits">
+    <div class="wrap">
+      <div class="cap">Συντελεστές</div>
+      <h2 style="margin-top:14px">Η ομάδα<br><em>της βραδιάς.</em></h2>
+      <div class="roll" aria-label="Συντελεστές">
+        <div class="in">
+          <div class="cr"><small>Σκηνοθεσία</small><b>Παναγιώτης Δεληθανάσης</b><p>Chef της Ακτής Ντοβίλ.</p></div>
+          <div class="cr"><small>Πρωταγωνιστεί</small><b>Ο Θερμαϊκός</b><p>Και ό,τι καλύτερο φέρνει κάθε μέρα.</p></div>
+          <div class="cr"><small>Σκηνικό</small><b>Η ακτή του Καραμπουρνακίου</b></div>
+          <div class="cr"><small>Μουσική επένδυση</small><b>Τα κύματα</b></div>
+          <div class="cr"><small>Φωτισμός</small><b>Το ηλιοβασίλεμα</b><p>Κάθε βράδυ, χωρίς πρόβα.</p></div>
+          <div class="cr"><small>Κάβα</small><b>Ελληνικά & ξένα κρασιά</b><p class="ph" data-note="Να μπει περιγραφή της κάβας από τον wine list">Επιλεγμένες ετικέτες για κάθε πιάτο.</p></div>
+          <div class="cr"><small>Με την ευγενική συμμετοχή</small><b>Εσάς</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prog" id="menu">
+    <div class="wrap">
+      <div style="text-align:center" class="rv"><div class="cap">Το πρόγραμμα της βραδιάς</div><h2 style="margin-top:14px">Απόψε<br><em>προβάλλεται…</em></h2></div>
+      <div class="marquee rv">
+        <span class="bulbs" aria-hidden="true"></span>
+        <div class="board"><div class="now" id="mqKicker">Απόψε προβάλλεται</div><div class="letters" id="letters" aria-live="polite"></div></div>
+      </div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <ul class="dishes" id="dishes"></ul>
+      <p class="menu-links">Ολόκληρο το μενού, η κάβα και το Gastraw menu, στο τελικό site ως κείμενο και όχι ως PDF.</p>
+    </div>
+  </section>
+
+  <section class="guide">
+    <div class="wrap rv">
+      <div class="cap">MICHELIN Guide Greece 2027</div>
+      <p class="lineq">Ο Οδηγός MICHELIN Greece 2027 επέλεξε την Ακτή Ντοβίλ ανάμεσα στα προτεινόμενα εστιατόρια της Θεσσαλονίκης, <em>με θέα στον Θερμαϊκό.</em></p>
+    </div>
+  </section>
+
+  <section class="ticketsec" id="ticket">
+    <div class="wrap">
+      <div class="rv"><div class="cap">Κράτηση</div><h2 style="margin-top:14px">Κράτα θέση<br><em>για την προβολή.</em></h2></div>
+      <div class="tgrid">
+        <div class="rv">
+          <div class="field"><label>Ημέρα</label><div class="chips" id="days"></div></div>
+          <div class="field"><label>Ώρα</label><div class="chips" id="times"></div></div>
+          <div class="field"><label>Άτομα</label><div class="step"><button type="button" id="minus" aria-label="Λιγότερα άτομα">−</button><output id="ppl">2</output><button type="button" id="plus" aria-label="Περισσότερα άτομα">+</button></div></div>
+        </div>
+        <div class="rv">
+          <div class="ticket" id="tk">
+            <div class="main">
+              <div class="t1">Εισιτήριο · Admit <span id="tkN">2</span></div>
+              <h3>ΑΚΤΗ ΝΤΟΒΙΛ</h3>
+              <div class="sub">Inspired by the Ocean</div>
+              <dl><div><dt>Ημέρα</dt><dd id="tkD">—</dd></div><div><dt>Ώρα</dt><dd id="tkT">—</dd></div><div><dt>Άτομα</dt><dd id="tkP">2</dd></div></dl>
+            </div>
+            <div class="stub" id="stub" role="button" tabindex="0" aria-label="Κόψε το εισιτήριο και ολοκλήρωσε την κράτηση"><div><div class="adm">ADMIT</div><div class="no">Nº 1950</div></div></div>
+          </div>
+          <div class="tear"><a class="book" id="tearBtn" href="https://www.i-host.gr/reservations/new?restaurant=906&lang=eng" target="_blank" rel="noopener">Κόψε το εισιτήριο ✂</a><span class="tear-note">Η κράτηση ολοκληρώνεται στο i-host, που ήδη χρησιμοποιείτε.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div class="wrap">
+      <div class="rv"><div class="cap">Πού θα μας βρείτε</div><h2 style="margin-top:14px">Στην ακτή,<br><em>όπως πάντα.</em></h2></div>
+      <div class="vgrid">
+        <div class="rv"><h4>Διεύθυνση</h4><a href="https://www.google.com/maps/search/?api=1&query=%CE%91%CE%BA%CF%84%CE%AE+%CE%9D%CF%84%CE%BF%CE%B2%CE%AF%CE%BB+%CE%98%CE%B5%CE%BC%CE%B9%CF%83%CF%84%CE%BF%CE%BA%CE%BB%CE%AE+%CE%A3%CE%BF%CF%86%CE%BF%CF%8D%CE%BB%CE%B7+86" target="_blank" rel="noopener">Θεμιστοκλή Σοφούλη 86<br>Καραμπουρνάκι, Καλαμαριά</a></div>
+        <div class="rv"><h4>Επικοινωνία</h4><a href="tel:+302310407000">2310 407 000</a><br><a href="mailto:info@aktintovil.gr" style="font-size:17px">info@aktintovil.gr</a></div>
+        <div class="rv"><h4>Ώρες</h4><p class="ph" data-note="Ωράριο: να το δώσει η Ακτή Ντοβίλ">Μεσημέρι & βράδυ</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© Ακτή Ντοβίλ · Καραμπουρνάκι, Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--gold)">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  document.getElementById("notesToggle").addEventListener("click", () => {
+    const on = html.classList.toggle("notes");
+    try { localStorage.setItem("akti-notes", on ? "on" : "off"); } catch (e) {}
+  });
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  /* ======================= hero: the floating cinema ======================= */
+  const cv = document.getElementById("sea"), ctx = cv.getContext("2d"), playBtn = document.getElementById("play");
+  let W = 0, H = 0, dpr = 1, stars = [], lights = [], dust = [], mx = .5, my = .4;
+  let state = "idle", t0 = 0, scr = null;   // idle → flicker → count → title
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight;
+    if (!W || !H) return;
+    cv.width = W * dpr; cv.height = H * dpr;
+    const hz = H * .56;
+    stars = Array.from({ length: Math.round(W * H / 5200) }, () => [Math.random() * W, Math.random() * hz * .92, Math.random() * 1.2 + .2, Math.random() * 6]);
+    lights = Array.from({ length: Math.round(W / 9) }, (_, i) => [W * .02 + Math.random() * W * .55, hz - 2 - Math.random() * 6, Math.random() > .3 ? "#ffcf8a" : "#fff2dc", Math.random() * 6]);
+    dust = Array.from({ length: 70 }, () => [Math.random(), Math.random(), Math.random() * .6 + .2]);
+    const sw = Math.min(W * (W < 700 ? .82 : .5), 680), sh = sw / 1.9;
+    scr = { x: W / 2 - sw / 2, y: hz - sh - H * .03, w: sw, h: sh };
+    playBtn.style.left = W / 2 + "px"; playBtn.style.top = scr.y + sh / 2 + "px";
+  }
+  function screenContent(now) {
+    const { x, y, w, h } = scr, k = (now - t0) / 1000;
+    ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+    if (state === "idle") {
+      ctx.fillStyle = "#1a2236"; ctx.fillRect(x, y, w, h);
+    } else if (state === "flicker") {
+      const f = Math.random();
+      ctx.fillStyle = `rgb(${200 + f * 40},${195 + f * 40},${185 + f * 40})`; ctx.fillRect(x, y, w, h);
+      if (k > .9) { state = "count"; t0 = now; }
+    } else if (state === "count") {
+      const n = 5 - Math.floor(k), frac = k % 1;
+      if (n <= 0) { state = "title"; t0 = now; }
+      else {
+        ctx.fillStyle = "#b9b2a6"; ctx.fillRect(x, y, w, h);
+        const cx = x + w / 2, cy = y + h / 2, r = h * .42;
+        // sweeping wedge
+        ctx.fillStyle = "#8f887d"; ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, w, -Math.PI / 2, -Math.PI / 2 + frac * Math.PI * 2); ctx.closePath(); ctx.fill();
+        ctx.strokeStyle = "#f4efe6"; ctx.lineWidth = Math.max(2, h * .012);
+        [r, r * .82].forEach(rr => { ctx.beginPath(); ctx.arc(cx, cy, rr, 0, Math.PI * 2); ctx.stroke(); });
+        ctx.beginPath(); ctx.moveTo(x, cy); ctx.lineTo(x + w, cy); ctx.moveTo(cx, y); ctx.lineTo(cx, y + h); ctx.stroke();
+        ctx.fillStyle = "#1d1b18"; ctx.font = `${h * .55}px "GFS Didot", Georgia, serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(n, cx, cy + h * .03);
+      }
+    }
+    if (state === "title") {
+      const a = clamp(k / 1.6, 0, 1);
+      const g = ctx.createLinearGradient(x, y, x, y + h); g.addColorStop(0, "#14100b"); g.addColorStop(1, "#2a2117");
+      ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
+      ctx.globalAlpha = a; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillStyle = "#efe6d4";
+      ctx.font = `${h * .2}px "GFS Didot", Georgia, serif`; ctx.fillText("ΑΚΤΗ ΝΤΟΒΙΛ", x + w / 2, y + h * .44);
+      ctx.fillStyle = "#c8a565"; ctx.font = `italic ${h * .075}px "GFS Didot", Georgia, serif`; ctx.fillText("Inspired by the Ocean", x + w / 2, y + h * .64);
+      ctx.globalAlpha = a * .7; ctx.fillStyle = "#efe6d4"; ctx.font = `500 ${Math.max(9, h * .042)}px Inter, sans-serif`;
+      ctx.fillText("ΚΑΡΑΜΠΟΥΡΝΑΚΙ · ΑΠΟ ΤΑ ΧΡΟΝΙΑ ΤΟΥ ΘΕΡΙΝΟΥ ΣΙΝΕΜΑ", x + w / 2, y + h * .8);
+      ctx.globalAlpha = 1;
+    }
+    // film grain + scratches while projecting
+    if (state !== "idle") {
+      for (let i = 0; i < w * h / 900; i++) { ctx.fillStyle = Math.random() > .5 ? "rgba(255,255,255,.07)" : "rgba(0,0,0,.09)"; ctx.fillRect(x + Math.random() * w, y + Math.random() * h, 1.5, 1.5); }
+      if (Math.random() > .7) { ctx.strokeStyle = "rgba(255,255,255,.18)"; ctx.lineWidth = 1; const sx = x + Math.random() * w; ctx.beginPath(); ctx.moveTo(sx, y); ctx.lineTo(sx + 3, y + h); ctx.stroke(); }
+      ctx.fillStyle = `rgba(0,0,0,${Math.random() * .08})`; ctx.fillRect(x, y, w, h);  // projector flicker
+    }
+    ctx.restore();
+  }
+  const screenTone = () => state === "idle" ? [26, 34, 54] : state === "title" ? [120, 96, 64] : [200, 190, 175];
+
+  function draw(now) {
+    if (!W || !H) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const hz = H * .56, px = (mx - .5) * 14, py = (my - .5) * 8;
+    // sky
+    const sky = ctx.createLinearGradient(0, 0, 0, hz); sky.addColorStop(0, "#03060f"); sky.addColorStop(.7, "#0a1630"); sky.addColorStop(1, "#1a2a4a");
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, hz);
+    stars.forEach(([x, y, r, ph]) => { ctx.fillStyle = `rgba(255,255,255,${.35 + .45 * Math.sin(now / 900 + ph) ** 2})`; ctx.fillRect(x - px * .4, y - py * .4, r, r); });
+    // moon
+    const mxp = W * .82 - px, myp = H * .14 - py;
+    const mg = ctx.createRadialGradient(mxp, myp, 0, mxp, myp, 70); mg.addColorStop(0, "rgba(255,246,220,.35)"); mg.addColorStop(1, "rgba(255,246,220,0)");
+    ctx.fillStyle = mg; ctx.fillRect(mxp - 70, myp - 70, 140, 140);
+    ctx.fillStyle = "#f6edd6"; ctx.beginPath(); ctx.arc(mxp, myp, 13, 0, Math.PI * 2); ctx.fill();
+    // far coast silhouette + city lights
+    ctx.fillStyle = "#060b18"; ctx.beginPath(); ctx.moveTo(0, hz);
+    for (let x = 0; x <= W * .62; x += 20) ctx.lineTo(x, hz - 6 - Math.sin(x / 60) * 3 - (x < W * .3 ? 6 : 0));
+    ctx.lineTo(W * .66, hz); ctx.closePath(); ctx.fill();
+    lights.forEach(([x, y, c, ph]) => { ctx.fillStyle = c; ctx.globalAlpha = .55 + .45 * Math.sin(now / 700 + ph) ** 2; ctx.fillRect(x, y, 1.6, 1.6); }); ctx.globalAlpha = 1;
+    // sea
+    const sea = ctx.createLinearGradient(0, hz, 0, H); sea.addColorStop(0, "#0d1a33"); sea.addColorStop(1, "#02050c");
+    ctx.fillStyle = sea; ctx.fillRect(0, hz, W, H - hz);
+    // moon path on water
+    for (let i = 0; i < 40; i++) {
+      const yy = hz + 4 + i * i * (H - hz) / 1700, ww = 6 + i * 1.6, xx = mxp + Math.sin(now / 600 + i * 1.7) * (3 + i * .4);
+      ctx.fillStyle = `rgba(246,237,214,${.22 - i * .004})`; ctx.fillRect(xx - ww / 2, yy, ww, 1 + i * .06);
+    }
+    // waves
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 26; i++) {
+      const yy = hz + 6 + i * i * (H - hz) / 650; if (yy > H) break;
+      ctx.strokeStyle = `rgba(140,170,215,${.04 + i * .006})`; ctx.beginPath();
+      for (let x = 0; x <= W; x += 14) { const y2 = yy + Math.sin(x / (40 + i * 6) + now / (900 - i * 12) + i) * (1 + i * .25); x ? ctx.lineTo(x, y2) : ctx.moveTo(x, y2); }
+      ctx.stroke();
+    }
+    // projector beam (behind the viewer, lower centre → screen)
+    const { x, y, w, h } = scr, on = state !== "idle";
+    if (on) {
+      const sx = W / 2 + px * 2, sy = H + 30;
+      const bg = ctx.createLinearGradient(sx, sy, W / 2, y + h / 2); bg.addColorStop(0, "rgba(255,246,225,.32)"); bg.addColorStop(1, "rgba(255,246,225,.04)");
+      ctx.fillStyle = bg; ctx.beginPath(); ctx.moveTo(sx - 4, sy); ctx.lineTo(x, y + h); ctx.lineTo(x, y); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y + h); ctx.lineTo(sx + 4, sy); ctx.closePath();
+      ctx.globalAlpha = .7 + Math.random() * .2; ctx.fill(); ctx.globalAlpha = 1;
+      // dust in the beam
+      dust.forEach(d => { d[1] -= .0006 * d[2]; if (d[1] < 0) d[1] = 1; const t = d[1], lx = sx + (x + d[0] * w - sx) * (1 - t), ly = sy + (y + h / 2 - sy) * (1 - t) + (d[0] - .5) * h * (1 - t);
+        ctx.fillStyle = `rgba(255,248,230,${.5 * d[2]})`; ctx.fillRect(lx + Math.sin(now / 800 + d[0] * 9) * 3, ly, 1.4, 1.4); });
+    }
+    // screen posts + frame
+    ctx.fillStyle = "#0b0f19"; ctx.fillRect(x + w * .08, y + h, 5, hz - y - h + H * .05); ctx.fillRect(x + w * .92 - 5, y + h, 5, hz - y - h + H * .05);
+    ctx.fillStyle = "#0b0f19"; ctx.fillRect(x - 6, y - 6, w + 12, h + 12);
+    screenContent(now);
+    // screen glow & reflection on the water
+    if (on) { const [r, g, b] = screenTone(); const gl = ctx.createRadialGradient(x + w / 2, y + h / 2, h * .3, x + w / 2, y + h / 2, w * .9); gl.addColorStop(0, `rgba(${r},${g},${b},.18)`); gl.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = gl; ctx.fillRect(0, 0, W, H); }
+    const [r, g, b] = screenTone(), top = hz + H * .05;
+    for (let i = 0; i < 30; i++) {
+      const yy = top + i * 5; if (yy > H) break;
+      const off = Math.sin(now / 500 + i * .9) * (2 + i * .5);
+      ctx.fillStyle = `rgba(${r},${g},${b},${(on ? .3 : .12) * (1 - i / 30)})`; ctx.fillRect(x + w * .1 + off, yy, w * .8, 2.5);
+    }
+  }
+  function loop(now) { if (heroVisible) draw(now); requestAnimationFrame(loop); }
+  let heroVisible = true;
+  new IntersectionObserver(es => heroVisible = es[0].isIntersecting).observe(cv);
+  function project() {
+    if (state !== "idle") return;
+    playBtn.classList.add("gone");
+    state = reduce ? "title" : "flicker"; t0 = performance.now();
+  }
+  playBtn.addEventListener("click", project);
+  document.getElementById("skip").addEventListener("click", () => { playBtn.classList.add("gone"); state = "title"; t0 = performance.now() - 2000; });
+  cv.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width; my = (e.clientY - r.top) / r.height; });
+  cv.addEventListener("click", project);
+  addEventListener("resize", size);
+  size();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { requestAnimationFrame(loop); setTimeout(project, 2600); });
+
+  /* ======================= film strip on scroll ======================= */
+  const story = document.getElementById("story"), reel = document.getElementById("reel"), rp = document.getElementById("reelProg"), bar = document.getElementById("bar");
+  function onScroll() {
+    const r = story.getBoundingClientRect(), span = story.offsetHeight - innerHeight;
+    const p = clamp(-r.top / span, 0, 1), max = reel.scrollWidth - innerWidth + Math.max(16, (innerWidth - 1140) / 2);
+    reel.style.transform = `translateX(${-p * Math.max(0, max)}px)`;
+    rp.style.width = p * 100 + "%";
+    bar.classList.toggle("solid", scrollY > innerHeight * .8);
+  }
+  addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll); onScroll();
+
+  /* ======================= programme + marquee ======================= */
+  const PROG = [
+    ["Πρώτη προβολή", ["Ψαρόσουπα ΝΤΟΒΙΛ με γαρίδα, καραβίδα, ψάρι ημέρας και σαφράν", "Ταραμάς λευκός", "Αγιορείτικη μελιτζανοσαλάτα", "Αθηναϊκή με αχνιστό ψάρι ημέρας και αυγοτάραχο Μεσολογγίου", "Λακέρδα", "Γαύρος μαρινάτος"]],
+    ["Ντοβίλ special", ["Σουτζουκάκια σφυρίδας", "Κριθαράκι με ελληνικές γαρίδες, δαμάσκηνα και σαλάμι Λευκάδος", "Τραγανός μπακαλιάρος με κρέμα πατάτας και μαύρο σκόρδο", "Ριζότο με ψητό καλαμάρι, σπαράγγια, ταραμά και αυγοτάραχο", "Γλώσσα Meunière με σάλτσα βουτύρου"]],
+    ["Ωμά & όστρακα", ["Στρείδια", "Χτένια", "Ταρτάρ καραβίδας", "Σεβίτσε λαβράκι με μωβ πατάτα και κόλιανδρο", "Καρπάτσιο τσιπούρας με κρέμα λεμονιού και σουμάκ", "Ταρτάρ μπαρμπουνιού με φράουλες και βασιλικό"]],
+    ["Κυρίως", ["Σουβλάκι τόνου με λεμονόχορτο και χαρίσα", "Φιλέτο λαβράκι με πουρέ αρακά και σάλτσα δυόσμου", "Φιλέτο στήρα χουνκιάρ μπεγεντί", "Λιγκουίνι με ελληνικές γαρίδες και σάλτσα καραβίδας", "Αστακός με χειροποίητα νιόκι και βασιλικό"]],
+    ["Γλυκό φινάλε", ["Μπακλαβάς με κρεμέ φυστίκι Αιγίνης και παγωτό ντουντουρμά", "Αρμενοβίλ με σάλτσα σκούρας σοκολάτας", "Panna cotta γιαουρτιού με φρούτα εποχής"]]
+  ];
+  const tabs = document.getElementById("tabs"), dishes = document.getElementById("dishes"), letters = document.getElementById("letters"), kick = document.getElementById("mqKicker");
+  function marquee(text) {
+    letters.innerHTML = text.split(" ").map((w, wi) => `<span class="w">${[...w].map((c, i) => `<span class="l" style="animation-delay:${(wi * 4 + i) * 22}ms">${c}</span>`).join("")}</span>`).join("");
+  }
+  function showCat(i) {
+    [...tabs.children].forEach((b, j) => b.setAttribute("aria-selected", i === j));
+    dishes.innerHTML = PROG[i][1].map(d => `<li tabindex="0">${d}</li>`).join("");
+    kick.textContent = PROG[i][0];
+    pick(dishes.firstElementChild);
+  }
+  function pick(li) {
+    [...dishes.children].forEach(x => x.classList.toggle("on", x === li));
+    // the marquee shows a short title: up to the first "με"
+    marquee(li.textContent.split(/ με | και /)[0]);
+  }
+  PROG.forEach(([name], i) => { const b = document.createElement("button"); b.className = "tab"; b.type = "button"; b.setAttribute("role", "tab"); b.textContent = name; b.onclick = () => showCat(i); tabs.appendChild(b); });
+  dishes.addEventListener("click", e => { const li = e.target.closest("li"); if (li) pick(li); });
+  dishes.addEventListener("keydown", e => { const li = e.target.closest("li"); if (li && e.key === "Enter") pick(li); });
+  showCat(0);
+
+  /* ======================= ticket ======================= */
+  const DAYS = ["Κυρ", "Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ"], MON = ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαΐ", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ"];
+  const daysEl = document.getElementById("days"), timesEl = document.getElementById("times");
+  const tk = { d: null, t: "21:00", p: 2 };
+  const out = { d: document.getElementById("tkD"), t: document.getElementById("tkT"), p: document.getElementById("tkP"), n: document.getElementById("tkN"), ppl: document.getElementById("ppl") };
+  function render() { out.d.textContent = tk.d; out.t.textContent = tk.t; out.p.textContent = tk.p; out.n.textContent = tk.p; out.ppl.textContent = tk.p; }
+  function chips(el, items, sel, set) {
+    el.innerHTML = ""; items.forEach(([lab, sm, val]) => {
+      const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.innerHTML = sm ? `<small>${sm}</small>${lab}` : lab;
+      b.setAttribute("aria-pressed", val === sel); b.onclick = () => { [...el.children].forEach(c => c.setAttribute("aria-pressed", c === b)); set(val); render(); };
+      el.appendChild(b);
+    });
+  }
+  const now = new Date(), dItems = [];
+  for (let i = 0; i < 7; i++) { const d = new Date(now); d.setDate(now.getDate() + i); const v = `${d.getDate()} ${MON[d.getMonth()]}`; dItems.push([String(d.getDate()), i ? DAYS[d.getDay()] : "Σήμερα", v]); }
+  tk.d = dItems[0][2];
+  chips(daysEl, dItems, tk.d, v => tk.d = v);
+  chips(timesEl, ["13:30", "14:30", "19:30", "20:30", "21:00", "22:00", "23:00"].map(t => [t, "", t]), tk.t, v => tk.t = v);
+  document.getElementById("minus").onclick = () => { tk.p = Math.max(1, tk.p - 1); render(); };
+  document.getElementById("plus").onclick = () => { tk.p = Math.min(12, tk.p + 1); render(); };
+  render();
+  const ticket = document.getElementById("tk"), tear = () => { ticket.classList.add("torn"); setTimeout(() => ticket.classList.remove("torn"), 2600); };
+  document.getElementById("tearBtn").addEventListener("click", tear);
+  const stub = document.getElementById("stub");
+  stub.addEventListener("click", () => document.getElementById("tearBtn").click());
+  stub.addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("tearBtn").click(); });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
