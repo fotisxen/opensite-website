@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RITC Studio · back-office (δείγμα)</title>
+<style>
+  :root {
+    --ink:#2E2B29; --ink-2:#4a4542; --muted:#857c74; --cream:#F4EFE9; --paper:#fffaf3; --card:#ffffff;
+    --line:#e7dfd5; --gold:#C9A86A; --gold-2:#D9BC85; --gold-soft:#f3e9d6; --fuchsia:#ff00a8; --coral:#f16d70;
+    --lav:#ecdef6; --butter:#ffedb7; --blush:#ffdddd; --ok:#2f8a57; --ok-soft:#e1f2e7; --warn:#b7791f; --warn-soft:#fdf0d5;
+    --bad:#c23b4a; --bad-soft:#fbe2e5; --plum:#351334;
+    --ff: Manrope, Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: var(--ff); color: var(--ink); background: var(--cream); font-size: 15px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  a { color: inherit; }
+  .ribbon { background: #1d1b1a; color: #e9dcc3; font-size: 12.5px; text-align: center; padding: 6px 12px; letter-spacing: .2px; }
+  .ribbon b { color: var(--gold); font-weight: 700; }
+  .clean .ribbon { display: none; }
+
+  /* layout */
+  .app { display: grid; grid-template-columns: 236px 1fr; min-height: 100vh; }
+  aside { background: var(--ink); color: var(--cream); position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 22px 14px; display: flex; flex-direction: column; }
+  .logo { font-family: Georgia, "Times New Roman", serif; font-size: 30px; letter-spacing: 9px; color: var(--cream); padding: 0 10px; line-height: 1; }
+  .logo-sub { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); padding: 6px 10px 20px; }
+  nav a { display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 10px; text-decoration: none; color: #d9d0c5; font-weight: 600; font-size: 14.5px; margin-bottom: 2px; cursor: pointer; }
+  nav a svg { width: 19px; height: 19px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  nav a:hover { background: rgba(244,239,233,.07); color: #fff; }
+  nav a.on { background: var(--gold); color: var(--ink); }
+  nav a .cnt { margin-left: auto; background: var(--coral); color: #fff; border-radius: 999px; font-size: 11.5px; padding: 1px 7px; }
+  nav a.on .cnt { background: var(--ink); }
+  .side-foot { margin-top: auto; padding: 16px 10px 0; font-size: 12px; color: #a99f94; border-top: 1px solid rgba(244,239,233,.1); }
+  .side-foot .me { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: var(--cream); font-weight: 600; font-size: 13.5px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--lav); color: var(--plum); font-weight: 800; font-size: 13px; flex: none; }
+  .linkbtn { background: none; border: 0; color: var(--gold); cursor: pointer; padding: 0; font-weight: 700; font-size: 12.5px; }
+
+  .main { min-width: 0; }
+  .topbar { position: sticky; top: 0; z-index: 30; background: rgba(244,239,233,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .topbar-in { display: flex; align-items: center; gap: 12px; padding: 12px 28px; }
+  .burger { display: none; background: var(--ink); color: var(--cream); border: 0; border-radius: 10px; width: 42px; height: 42px; cursor: pointer; }
+  .burger svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+  .mlogo { display: none; font-family: Georgia, serif; letter-spacing: 6px; font-size: 21px; }
+  .crumb { font-weight: 800; font-size: 19px; }
+  .crumb small { display: block; font-size: 12.5px; color: var(--muted); font-weight: 500; }
+  .sp { flex: 1; }
+  .gsearch { position: relative; width: min(340px, 34vw); }
+  .gsearch input { width: 100%; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 9px 14px 9px 36px; outline: none; }
+  .gsearch input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
+  .gsearch svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--muted); fill: none; stroke-width: 2; }
+  .gres { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px rgba(46,43,41,.16); overflow: hidden; display: none; max-height: 60vh; overflow-y: auto; }
+  .gres.open { display: block; }
+  .gres .gh { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); padding: 10px 14px 4px; }
+  .gres button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 8px 14px; cursor: pointer; }
+  .gres button:hover { background: var(--cream); }
+  .gres button small { color: var(--muted); }
+  .sample-chip { background: var(--butter); color: #6b4e00; border-radius: 999px; padding: 5px 11px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+
+  .view { padding: 22px 28px 60px; max-width: 1360px; }
+  h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -.3px; }
+  h2 { font-size: 16.5px; margin: 0; letter-spacing: -.1px; }
+  .lead { color: var(--muted); margin: 0 0 16px; }
+  .muted { color: var(--muted); }
+  .note { background: var(--lav); color: var(--plum); border-radius: 14px; padding: 11px 14px; font-size: 13.5px; margin: 0 0 16px; display: flex; gap: 10px; align-items: flex-start; }
+  .note b { font-weight: 800; }
+  html:not(.notes) .note { display: none; }
+
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+  .grid { display: grid; gap: 16px; }
+  .g-kpi { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .g-2 { grid-template-columns: 1.6fr 1fr; }
+  .g-2e { grid-template-columns: 1fr 1fr; }
+  .g-3 { grid-template-columns: repeat(3, 1fr); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; min-width: 0; }
+  .card-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .kpi .lbl { font-size: 12.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .8px; }
+  .kpi .val { font-size: 26px; font-weight: 800; letter-spacing: -.6px; margin: 4px 0 2px; white-space: nowrap; }
+  .kpi .dl { font-size: 12.5px; font-weight: 700; }
+  .up { color: var(--ok); } .down { color: var(--bad); } .flat { color: var(--muted); }
+  .kpi.dark { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .kpi.dark .lbl { color: var(--gold-2); }
+
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 13px; cursor: pointer; font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .chip.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 12px; padding: 10px 16px; font-weight: 700; cursor: pointer; font-size: 14px; min-height: 42px; white-space: nowrap; }
+  .btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; }
+  .btn.pri { background: var(--ink); color: var(--cream); }
+  .btn.pri:hover { background: #45403c; }
+  .btn.gold { background: var(--gold); color: var(--ink); }
+  .btn.ghost { background: var(--card); border: 1px solid var(--line); }
+  .btn.sm { min-height: 34px; padding: 6px 11px; font-size: 13px; border-radius: 10px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .filters input[type=search], .filters select, .field input, .field select, .field textarea { border: 1px solid var(--line); background: var(--card); border-radius: 10px; padding: 9px 12px; min-height: 40px; outline: none; }
+  .filters input[type=search] { min-width: 230px; flex: 1 1 230px; max-width: 360px; }
+  .filters input:focus, .filters select:focus, .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
+  .tog { display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+  .tog input { accent-color: var(--ink); width: 16px; height: 16px; }
+  .sum { font-size: 13px; color: var(--muted); margin: -4px 0 10px; }
+  .sum b { color: var(--ink); }
+
+  /* tables */
+  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+  table.t { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.t th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); font-weight: 700; padding: 11px 14px; background: var(--paper); border-bottom: 1px solid var(--line); white-space: nowrap; }
+  table.t td { padding: 11px 14px; border-bottom: 1px solid #f1ebe3; vertical-align: middle; }
+  table.t tr:last-child td { border-bottom: 0; }
+  table.t tbody tr.click { cursor: pointer; }
+  table.t tbody tr.click:hover td { background: #fbf7f1; }
+  .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .nowrap { white-space: nowrap; }
+  .strong { font-weight: 700; }
+  .more { display: flex; justify-content: center; padding: 14px; }
+
+  .badge { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .b-new { background: var(--lav); color: var(--plum); }
+  .b-prod { background: var(--butter); color: #6b4e00; }
+  .b-ready { background: #dff0ff; color: #1d4f80; }
+  .b-ship { background: var(--gold-soft); color: #7a5a1c; }
+  .b-done { background: var(--ok-soft); color: var(--ok); }
+  .b-bad { background: var(--bad-soft); color: var(--bad); }
+  .b-grey { background: #efebe6; color: var(--ink-2); }
+  .b-vip { background: var(--ink); color: var(--gold-2); }
+  .b-sale { background: #ffe0f4; color: #b0007a; }
+
+  .sw { display: inline-block; width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(46,43,41,.18); vertical-align: middle; flex: none; }
+  .pname { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .pname div { min-width: 0; }
+  td.first .pname { min-width: 230px; }
+  .pname small { display: block; color: var(--muted); font-size: 12px; }
+
+  /* size grid */
+  .sz { display: inline-grid; place-items: center; min-width: 34px; height: 30px; border-radius: 8px; font-weight: 700; font-size: 13px; background: var(--ok-soft); color: var(--ok); font-variant-numeric: tabular-nums; }
+  .sz.low { background: var(--warn-soft); color: var(--warn); }
+  .sz.zero { background: var(--bad-soft); color: var(--bad); }
+  .sz.mto { background: var(--lav); color: var(--plum); }
+  .sz.mto0 { background: #f3eee8; color: #b3a99e; }
+  .sz.na { background: transparent; color: #d4ccc2; }
+  .sz-h { text-align: center !important; }
+  td.szc { text-align: center; padding-left: 4px !important; padding-right: 4px !important; }
+
+  /* charts */
+  svg.ch { width: 100%; height: auto; display: block; overflow: visible; }
+  svg.ch text { font-family: var(--ff); fill: var(--muted); font-size: 11px; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .hbars { display: grid; gap: 9px; }
+  .hb { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; font-size: 13.5px; }
+  .hb .bar { grid-column: 1 / -1; height: 8px; border-radius: 99px; background: #f1ebe3; overflow: hidden; }
+  .hb .bar span { display: block; height: 100%; border-radius: 99px; background: var(--gold); }
+  .hb .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 8px; }
+  .donut-wrap { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .donut-wrap svg { width: 170px; flex: none; }
+  .dleg { display: grid; gap: 8px; font-size: 13.5px; flex: 1; min-width: 160px; }
+  .dleg div { display: flex; align-items: center; gap: 8px; }
+  .dleg i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .dleg b { margin-left: auto; font-variant-numeric: tabular-nums; }
+  .tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--cream); font-size: 12.5px; padding: 8px 10px; border-radius: 10px; z-index: 100; display: none; white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+  .tip b { color: var(--gold-2); }
+
+  .alerts { display: grid; gap: 8px; }
+  .alert { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); font-size: 13.5px; cursor: pointer; }
+  .alert:hover { border-color: var(--gold); }
+  .alert .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; flex: none; }
+
+  /* kanban */
+  .kanban { display: grid; grid-template-columns: repeat(5, minmax(210px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 6px; }
+  .col { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 10px; min-width: 0; }
+  .col-h { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px 10px; font-weight: 800; font-size: 13.5px; }
+  .col-h span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; font-size: 12px; }
+  .kc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; margin-bottom: 8px; font-size: 13px; }
+  .kc.late { border-left: 4px solid var(--warn); }
+  .kc.vlate { border-left: 4px solid var(--bad); }
+  .kc .top { display: flex; justify-content: space-between; gap: 6px; font-weight: 800; font-size: 12.5px; }
+  .kc .it { display: flex; gap: 8px; align-items: center; margin: 7px 0; }
+  .kc .ft { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+  .kc .nx { background: var(--ink); color: var(--cream); border: 0; border-radius: 8px; padding: 5px 9px; font-size: 12px; font-weight: 700; cursor: pointer; }
+  .kc .more-k { color: var(--muted); font-size: 12px; text-align: center; padding: 4px; }
+  .steps { display: flex; gap: 4px; margin: 10px 0 6px; }
+  .steps i { flex: 1; height: 6px; border-radius: 99px; background: #eee6dc; }
+  .steps i.on { background: var(--gold); }
+  .coll { display: flex; flex-direction: column; gap: 6px; }
+  .coll .tag { align-self: flex-start; }
+  .prog { height: 8px; background: #f1ebe3; border-radius: 99px; overflow: hidden; }
+  .prog span { display: block; height: 100%; background: var(--ink); border-radius: 99px; }
+  .kv { display: flex; justify-content: space-between; font-size: 13px; gap: 8px; }
+  .kv span:first-child { color: var(--muted); }
+
+  .tabs { scrollbar-width: none; display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 16px; overflow-x: auto; }
+  .tabs button { background: none; border: 0; padding: 10px 14px; font-weight: 700; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+  .tabs button.on { color: var(--ink); border-color: var(--gold); }
+
+  /* drawer + modal */
+  .scrim { position: fixed; inset: 0; background: rgba(29,27,26,.45); z-index: 60; opacity: 0; pointer-events: none; transition: opacity .2s; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(480px, 100vw); background: var(--paper); z-index: 70; transform: translateX(100%); transition: transform .25s ease; overflow-y: auto; box-shadow: -20px 0 50px rgba(0,0,0,.15); }
+  .drawer.open { transform: none; }
+  .dr-h { position: sticky; top: 0; background: var(--paper); padding: 18px 20px 12px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; z-index: 1; }
+  .dr-b { padding: 16px 20px 40px; display: grid; gap: 14px; }
+  .x { background: var(--card); border: 1px solid var(--line); width: 38px; height: 38px; border-radius: 10px; cursor: pointer; font-size: 20px; line-height: 1; flex: none; }
+  .modal { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -46%); width: min(560px, calc(100vw - 24px)); max-height: calc(100vh - 40px); overflow-y: auto; background: var(--paper); border-radius: 20px; z-index: 80; opacity: 0; pointer-events: none; transition: all .2s ease; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
+  .modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); }
+  .mo-b { padding: 4px 20px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field { display: grid; gap: 5px; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+  .field.full { grid-column: 1 / -1; }
+  .field input, .field select, .field textarea { font-weight: 500; width: 100%; }
+  .mo-f { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+  .lines { display: grid; gap: 8px; }
+  .line { display: flex; gap: 10px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; font-size: 13.5px; }
+  .line .r { margin-left: auto; font-weight: 700; white-space: nowrap; }
+  .tl { display: grid; gap: 0; }
+  .tl div { display: flex; gap: 10px; font-size: 13.5px; padding: 6px 0; }
+  .tl i { width: 10px; height: 10px; border-radius: 50%; background: #d8cfc4; margin-top: 5px; flex: none; }
+  .tl i.on { background: var(--gold); }
+
+  .toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 20px); background: var(--ink); color: var(--cream); padding: 11px 18px; border-radius: 12px; font-weight: 600; font-size: 14px; z-index: 120; opacity: 0; transition: all .25s; pointer-events: none; max-width: calc(100vw - 32px); text-align: center; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .empty { text-align: center; color: var(--muted); padding: 30px 10px; }
+  .stars { color: var(--gold); letter-spacing: 1px; }
+  .bnav { display: none; }
+  .hide-m { }
+
+  @media (max-width: 1100px) {
+    .g-2, .g-3 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    aside { position: fixed; left: 0; top: 0; bottom: 0; width: 264px; z-index: 90; transform: translateX(-100%); transition: transform .25s ease; }
+    aside.open { transform: none; box-shadow: 20px 0 50px rgba(0,0,0,.25); }
+    .burger { display: grid; place-items: center; }
+    .mlogo { display: block; }
+    .crumb { display: none; }
+    .gsearch { width: auto; flex: 1; }
+    .topbar-in { padding: 10px 16px; gap: 10px; }
+    .view { padding: 18px 16px 96px; }
+    .sample-chip { display: none; }
+    .bnav { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--ink); padding: 6px 6px calc(6px + env(safe-area-inset-bottom)); }
+    .bnav button { background: none; border: 0; color: #cfc6bb; display: grid; justify-items: center; gap: 2px; font-size: 10.5px; font-weight: 700; padding: 6px 2px; border-radius: 10px; cursor: pointer; }
+    .bnav button svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .bnav button.on { color: var(--gold); }
+    .g-2e { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    h1 { font-size: 21px; }
+    .g-kpi { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .kpi { padding: 13px; }
+    .kpi .val { font-size: 20px; }
+    .kpi .lbl { font-size: 11px; letter-spacing: .4px; }
+    .filters input[type=search] { max-width: none; min-width: 0; flex-basis: 100%; }
+    .filters select { flex: 1 1 calc(50% - 8px); min-width: 0; }
+    .tw.cards { border: 0; background: none; overflow: visible; }
+    .tw.cards table.t, .tw.cards tbody, .tw.cards tr, .tw.cards td { display: block; width: 100%; }
+    .tw.cards thead { display: none; }
+    .tw.cards tr { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; padding: 8px 12px; }
+    .tw.cards td { border: 0; padding: 5px 0; display: flex; justify-content: space-between; gap: 12px; text-align: right; }
+    .tw.cards td::before { content: attr(data-l); color: var(--muted); font-size: 12px; font-weight: 700; text-align: left; flex: none; }
+    .tw.cards td.first { font-size: 15px; text-align: left; justify-content: flex-start; padding-bottom: 7px; border-bottom: 1px solid #f1ebe3; margin-bottom: 3px; }
+    .tw.cards td.first::before { display: none; }
+    .tw.cards td.num { text-align: right; }
+    .tw.cards td.szrow { display: block; }
+    .tw.cards td.szrow::before { display: block; margin-bottom: 6px; }
+    .mo-b { grid-template-columns: 1fr; }
+    .modal { top: auto; bottom: 0; left: 0; right: 0; width: 100%; transform: translateY(30px); border-radius: 20px 20px 0 0; max-height: 92vh; }
+    .modal.open { transform: none; }
+    .hide-m { display: none !important; }
+    .kanban { grid-template-columns: repeat(5, 78vw); scroll-snap-type: x mandatory; }
+    .col { scroll-snap-align: start; }
+    .donut-wrap svg { width: 140px; }
+    .toast { bottom: 84px; }
+  }
+  .szflex { display: flex; flex-wrap: wrap; gap: 6px; }
+  .szflex .szi { display: grid; justify-items: center; gap: 2px; font-size: 10.5px; color: var(--muted); font-weight: 700; }
+  @media (min-width: 761px) { .show-m { display: none; } }
+</style>
+</head>
+<body>
+<div class="ribbon">Δοκιμαστικό της <b>OpenSite</b> για την RITC · όλα τα νούμερα, οι πελάτες και οι παραγγελίες είναι <b>ψεύτικα δείγματα</b></div>
+<div class="app">
+  <aside id="side">
+    <div class="logo">RITC</div>
+    <div class="logo-sub">Studio · back-office</div>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <div class="me"><span class="avatar">RS</span><div>RITC Studio<br><span class="muted" style="font-weight:500;font-size:12px">Διαχειριστής</span></div></div>
+      Δεδομένα δείγματος · <button class="linkbtn" data-act="reset">επαναφορά</button>
+    </div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div class="topbar-in">
+      <button class="burger" data-act="menu" aria-label="Μενού"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="mlogo">RITC</div>
+      <div class="crumb" id="crumb"></div>
+      <div class="sp hide-m"></div>
+      <div class="gsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="gq" type="search" placeholder="Αναζήτηση παραγγελίας, πελάτη, προϊόντος…" autocomplete="off"><div class="gres" id="gres"></div></div>
+      <span class="sample-chip">Δεδομένα δείγματος</span>
+    </div></div>
+    <div class="view" id="view"></div>
+  </div>
+</div>
+<div class="bnav" id="bnav"></div>
+<div class="scrim" id="scrim" data-act="close"></div>
+<div class="drawer" id="drawer"></div>
+<div class="modal" id="modal"></div>
+<div class="tip" id="tip"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+try { var q0 = new URLSearchParams(location.search); if (q0.has("clean")) { document.documentElement.classList.add("clean"); document.documentElement.classList.remove("notes"); } } catch(e) {}
+
+/* ---------- helpers ---------- */
+var TODAY = new Date(2026, 9, 29);
+var $ = function(s, r){ return (r||document).querySelector(s); };
+var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+var nf0 = new Intl.NumberFormat("el-GR", {maximumFractionDigits: 0});
+var nf2 = new Intl.NumberFormat("el-GR", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+var eur = function(n){ return nf0.format(Math.round(n)) + " €"; };
+var eur2 = function(n){ return nf2.format(n) + " €"; };
+var pct = function(n){ return nf0.format(n * 100) === "0" && n > 0 ? "<1%" : (Math.round(n * 1000) / 10).toLocaleString("el-GR") + "%"; };
+var MON = ["Ιαν","Φεβ","Μαρ","Απρ","Μάι","Ιουν","Ιουλ","Αυγ","Σεπ","Οκτ","Νοε","Δεκ"];
+var MONF = ["Ιανουάριος","Φεβρουάριος","Μάρτιος","Απρίλιος","Μάιος","Ιούνιος","Ιούλιος","Αύγουστος","Σεπτέμβριος","Οκτώβριος","Νοέμβριος","Δεκέμβριος"];
+var dfmt = function(d){ return String(d.getDate()).padStart(2,"0") + "/" + String(d.getMonth()+1).padStart(2,"0") + "/" + d.getFullYear(); };
+var dshort = function(d){ return d.getDate() + " " + MON[d.getMonth()]; };
+var mkey = function(d){ return d.getFullYear() * 12 + d.getMonth(); };
+var addDays = function(d, n){ var x = new Date(d); x.setDate(x.getDate() + n); return x; };
+function workdays(a, b){ var n = 0, d = new Date(a); d.setHours(0,0,0,0); var e = new Date(b); e.setHours(0,0,0,0); while (d < e) { d.setDate(d.getDate()+1); var w = d.getDay(); if (w && w < 6) n++; } return n; }
+var seed = 20261029;
+function rnd(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
+var pick = function(a){ return a[Math.floor(rnd() * a.length)]; };
+function wpick(items, wkey){ var tot = 0, i; for (i = 0; i < items.length; i++) tot += items[i][wkey]; var r = rnd() * tot; for (i = 0; i < items.length; i++) { r -= items[i][wkey]; if (r <= 0) return items[i]; } return items[items.length-1]; }
+var sumBy = function(a, f){ var s = 0; for (var i = 0; i < a.length; i++) s += f(a[i]); return s; };
+function groupSum(a, kf, vf){ var m = {}; a.forEach(function(x){ var k = kf(x); m[k] = (m[k] || 0) + vf(x); }); return m; }
+
+/* ---------- brand data ---------- */
+var PRINTS = {
+  "Golden Brown Leopard": ["#c08a4a","#3a2414"], "Snake": ["#b8ad97","#5a4f3e"], "Bambi Bordeaux": ["#6b1d2a","#d9b38c"],
+  "Midnight Leopard": ["#26324f","#0b0f1a"], "Zebra": ["#f4efe9","#1a1a1a"], "Black": ["#1d1b1a"], "White": ["#f7f4ee"],
+  "Sage Green": ["#9cae94"], "Beige Cow": ["#e8dccb","#4a3a2d"], "Cheetah": ["#d9a85c","#2b1a0c"], "Python": ["#a39a84","#3d362a"],
+  "Deer": ["#a7744a","#f1e2cc"], "Safari Sand": ["#d8c3a0","#8a6c45"], "Green Velvet": ["#1f5a3d"], "Bordeaux": ["#5e1424"],
+  "Navy Blue": ["#1f2c4d"], "Leopard": ["#c99a5b","#2a1a0b"]
+};
+function swatch(p){ var c = PRINTS[p] || ["#ccc"]; var bg = c.length > 1 ? "radial-gradient(circle at 30% 32%," + c[1] + " 0 17%,transparent 19%),radial-gradient(circle at 70% 62%," + c[1] + " 0 13%,transparent 15%),radial-gradient(circle at 38% 78%," + c[1] + " 0 9%,transparent 11%)," + c[0] : c[0]; return '<i class="sw" style="background:' + bg + '"></i>'; }
+var SZ_W = ["XXS","XS","S","M","L","XL"], SZ_U = ["XS","S","M","L","XL","XXL","XXXL"], SZ_K = ["2","4","6","8","10","12"], SZ_1 = ["One size"];
+var ALLSZ = ["XXS","XS","S","M","L","XL","XXL","XXXL"];
+var MODELS = [
+  { m: "Renata", n: "Ολόσωμη Βελουτέ Φόρμα Renata", cat: "Ολόσωμες Φόρμες", sz: SZ_W, w: 9, mt: 2.6, prints: [["Golden Brown Leopard",90],["Snake",80],["Bambi Bordeaux",80],["Midnight Leopard",80],["Zebra",90],["Black",80],["White",80],["Sage Green",80]] },
+  { m: "Daniel", n: "Βελουτέ Σετ Daniel", cat: "Βελουτέ Σετ", sz: SZ_U, w: 10, mt: 2.4, prints: [["Beige Cow",70],["Golden Brown Leopard",70],["Cheetah",70],["Python",70],["Snake",70]] },
+  { m: "Couples", n: "Couples & Family Set", cat: "Couples & Family", sz: SZ_W, w: 5, mt: 4.6, prints: [["Golden Brown Leopard",99],["Snake",108],["Midnight Leopard",108],["Deer",108]] },
+  { m: "Libra", n: "Ανδρικό Παντελόνι Libra Velvet", cat: "Ανδρικά", sz: SZ_U, w: 4, mt: 1.3, prints: [["Beige Cow",45],["Cheetah",45],["Deer",45]] },
+  { m: "Trinity K", n: "Παιδικό Βελουτέ Σετ Trinity", cat: "Παιδικά", sz: SZ_K, w: 4, mt: 1.2, prints: [["Python",49],["Cheetah",49],["Safari Sand",49]] },
+  { m: "Mariah", n: "Ολόσωμη Φόρμα Mariah FullBody", cat: "Ολόσωμες Φόρμες", sz: SZ_W, w: 2, mt: 2.3, prints: [["Black",75]] },
+  { m: "Pant", n: "Βελουτέ Παντελόνι", cat: "Παντελόνι", sz: SZ_W, w: 5, mt: 1.4, ready: true, sale: 40, prints: [["Python",50],["Snake",50]] },
+  { m: "Leva", n: "Βελουτέ Σετ Leva", cat: "Sales%", sz: SZ_W, w: 2, mt: 2.2, ready: true, sale: 29, prints: [["Green Velvet",70]] },
+  { m: "Body", n: "Βελουτέ Κορμάκι", cat: "Βελουτέ Κορμάκια", sz: SZ_W, w: 4, mt: 0.8, ready: true, prints: [["Black",35],["Bordeaux",35],["Leopard",38]] },
+  { m: "FL", n: "Παντελόνα Fashion Limousine", cat: "Fashion Limousine", sz: SZ_W, w: 3, mt: 1.7, prints: [["Black",65],["Cheetah",65]] },
+  { m: "Scr", n: "Scrunchie Velvet", cat: "Αξεσουάρ", sz: SZ_1, w: 5, mt: 0.1, ready: true, prints: [["Green Velvet",7],["Black",7],["Leopard",7]] }
+];
+var PRODUCTS = [];
+MODELS.forEach(function(md){ md.prints.forEach(function(p, i){
+  PRODUCTS.push({ id: "P" + (PRODUCTS.length + 101), sku: "RT-" + md.m.toUpperCase().replace(/\W/g,"").slice(0,4) + "-" + p[0].replace(/[^A-Z]/g,"").slice(0,3), name: md.n, print: p[0], cat: md.cat, price: p[1], sale: md.sale || 0, sizes: md.sz, ready: !!md.ready, mt: md.mt, w: md.w * (i === 0 ? 1.6 : 1) * (p[0] === "White" ? 1.4 : 1), stock: {}, fabric: md.m === "Scr" ? "Βελούδο (ρετάλια)" : "Βελούδο" });
+}); });
+var CHANNELS = [
+  { k: "eshop", n: "E-shop (ritcclothing.com)", s: "E-shop", w: 64, fee: 0.018, col: "#2E2B29" },
+  { k: "ig", n: "Instagram / DM", s: "Instagram", w: 15, fee: 0.012, col: "#C9A86A" },
+  { k: "whole", n: "Χονδρική σε boutiques", s: "Χονδρική", w: 9, fee: 0, col: "#f16d70" },
+  { k: "pop", n: "Pop-up & bazaar", s: "Pop-up", w: 5, fee: 0.15, col: "#b9a3d6" },
+  { k: "phone", n: "Τηλεφωνικές", s: "Τηλέφωνο", w: 7, fee: 0, col: "#9cae94" }
+];
+var CH = {}; CHANNELS.forEach(function(c){ CH[c.k] = c; });
+var STATUS = {
+  "new": ["Νέα","b-new"], "cut": ["Κοπή","b-prod"], "sew": ["Ράψιμο","b-prod"], "qc": ["Έλεγχος","b-prod"], "ready": ["Έτοιμη","b-ready"],
+  "shipped": ["Απεστάλη","b-ship"], "done": ["Παραδόθηκε","b-done"], "cancel": ["Ακυρώθηκε","b-grey"], "ret": ["Επιστροφή","b-bad"]
+};
+var FLOW = ["new","cut","sew","qc","ready","shipped","done"];
+var PAY = ["Κάρτα","Κάρτα","Κάρτα","PayPal","Αντικαταβολή","IRIS","Apple Pay"];
+var CITIES = [["Αθήνα",30],["Θεσσαλονίκη",16],["Πειραιάς",6],["Πάτρα",5],["Ηράκλειο",5],["Λάρισα",4],["Βόλος",3],["Ιωάννινα",3],["Καλαμάτα",2],["Ρόδος",2],["Χανιά",2],["Σέρρες",2],["Κομοτηνή",2],["Καβάλα",2],["Κέρκυρα",2],["Λευκωσία",2],["Τρίκαλα",2],["Ξάνθη",1],["Κατερίνη",2],["Χαλκίδα",2]].map(function(c){ return { n: c[0], w: c[1] }; });
+var FN_F = ["Μαρία","Ελένη","Κατερίνα","Γεωργία","Δέσποινα","Σοφία","Αναστασία","Χριστίνα","Ιωάννα","Βασιλική","Νίκη","Αθηνά","Δήμητρα","Ευαγγελία","Φωτεινή","Άννα","Μυρτώ","Ραφαέλα","Στέλλα","Ζωή","Ειρήνη","Αλεξάνδρα","Κωνσταντίνα","Θεοδώρα","Λυδία","Μελίνα","Νεφέλη","Ηλέκτρα","Δανάη","Ξανθή"];
+var FN_M = ["Γιώργος","Νίκος","Δημήτρης","Κώστας","Γιάννης","Αλέξανδρος","Παναγιώτης","Θανάσης","Στέφανος","Μιχάλης","Άρης","Πέτρος"];
+var LN = [["Παπαδόπουλος","Παπαδοπούλου"],["Γεωργίου","Γεωργίου"],["Νικολάου","Νικολάου"],["Οικονόμου","Οικονόμου"],["Καραγιάννης","Καραγιάννη"],["Βασιλείου","Βασιλείου"],["Δημητρίου","Δημητρίου"],["Ιωάννου","Ιωάννου"],["Μαυρίδης","Μαυρίδου"],["Αλεξίου","Αλεξίου"],["Κωνσταντίνου","Κωνσταντίνου"],["Παπανικολάου","Παπανικολάου"],["Σταυρόπουλος","Σταυροπούλου"],["Χατζηγεωργίου","Χατζηγεωργίου"],["Αντωνίου","Αντωνίου"],["Μακρής","Μακρή"],["Λαμπρόπουλος","Λαμπροπούλου"],["Ζαφειρίου","Ζαφειρίου"],["Τσακίρης","Τσακίρη"],["Πετρίδης","Πετρίδου"],["Κυριακίδης","Κυριακίδου"],["Ρήγας","Ρήγα"],["Φραγκιαδάκης","Φραγκιαδάκη"],["Μιχαηλίδης","Μιχαηλίδου"],["Αθανασίου","Αθανασίου"],["Σαββίδης","Σαββίδου"]];
+var LAT = {"Μ":"m","Ε":"e","Κ":"k","Γ":"g","Δ":"d","Σ":"s","Α":"a","Χ":"ch","Ι":"i","Β":"v","Ν":"n","Φ":"f","Ζ":"z","Ρ":"r","Λ":"l","Θ":"th","Ξ":"x","Π":"p","Η":"i","Ο":"o","Τ":"t","Υ":"y","Ω":"o","Ψ":"ps","Ά":"a","Έ":"e"};
+
+var DB;
+function build(){
+  seed = 20261029;
+  var customers = [], i;
+  for (i = 0; i < 760; i++) {
+    var male = rnd() < 0.22, ln = pick(LN), fn = male ? pick(FN_M) : pick(FN_F);
+    var city = wpick(CITIES, "w").n;
+    customers.push({ id: "C" + (1001 + i), name: fn + " " + (male ? ln[0] : ln[1]), first: fn, city: city, email: (LAT[fn[0]] || "x") + "•••" + Math.floor(rnd()*90+10) + "@" + pick(["gmail.com","gmail.com","hotmail.com","yahoo.gr","outlook.com"]), phone: "69" + Math.floor(rnd()*10) + " ••• •• " + String(Math.floor(rnd()*90+10)), ig: rnd() < 0.45, news: rnd() < 0.6, since: null, orders: [], note: "" });
+  }
+  // wholesale accounts
+  var boutiques = [["Boutique «Μέλι» (δείγμα)","Θεσσαλονίκη"],["Concept store «Νήμα» (δείγμα)","Αθήνα"],["«Πορφύρα» boutique (δείγμα)","Πάτρα"],["«Άλφα Γάμμα» Kids (δείγμα)","Λάρισα"],["«Velvet Corner» (δείγμα)","Λευκωσία"]];
+  var bIds = boutiques.map(function(b, k){ var c = { id: "B" + (201 + k), name: b[0], first: "", city: b[1], email: "orders•••@shop.gr", phone: "2" + Math.floor(rnd()*9+1) + "0 ••• ••" + Math.floor(rnd()*90+10), ig: true, news: false, since: null, orders: [], b2b: true, note: "Χονδρική · τιμολόγιο" }; customers.push(c); return c; });
+
+  var orders = [], oid = 18240;
+  var season = { 10: 1.25, 11: 1.5, 0: 1.15, 1: 0.95, 2: 0.78, 3: 0.68, 4: 0.55, 5: 0.42, 6: 0.38, 7: 0.48, 8: 0.78, 9: 1.08 };
+  var start = new Date(2025, 10, 1);
+  for (var d = new Date(start); d <= TODAY; d = addDays(d, 1)) {
+    var base = 8 * season[d.getMonth()] * (d.getDay() === 0 ? 1.25 : d.getDay() === 6 ? 0.85 : 1);
+    if (d.getMonth() === 10 && d.getDate() >= 27 && d.getDate() <= 30) base *= 2.6; // Black Friday 2025
+    if (d.getMonth() === 11 && d.getDate() >= 10 && d.getDate() <= 22) base *= 1.35;
+    var n = Math.max(0, Math.round(base * (0.7 + rnd() * 0.6)));
+    for (var j = 0; j < n; j++) {
+      var ch = wpick(CHANNELS, "w").k;
+      var cust;
+      if (ch === "whole") { if (rnd() > 0.12) { ch = "eshop"; } }
+      if (ch === "whole") cust = pick(bIds);
+      else cust = customers[Math.floor(Math.pow(rnd(), 1.55) * 760)];
+      var items = [], nIt = ch === "whole" ? 4 + Math.floor(rnd()*5) : (rnd() < 0.72 ? 1 : rnd() < 0.8 ? 2 : 3);
+      for (var k = 0; k < nIt; k++) {
+        var p = wpick(PRODUCTS, "w");
+        if (p.cat === "Sales%" && d < new Date(2026, 6, 1)) p = PRODUCTS[0];
+        var sz = p.sizes === SZ_W ? wpick([{v:"XXS",w:3},{v:"XS",w:12},{v:"S",w:30},{v:"M",w:30},{v:"L",w:17},{v:"XL",w:8}],"w").v
+          : p.sizes === SZ_U ? wpick([{v:"XS",w:5},{v:"S",w:16},{v:"M",w:27},{v:"L",w:26},{v:"XL",w:16},{v:"XXL",w:7},{v:"XXXL",w:3}],"w").v
+          : pick(p.sizes);
+        var qty = ch === "whole" ? 2 + Math.floor(rnd()*4) : 1;
+        var price = p.sale && d >= new Date(2026, 6, 1) ? p.sale : p.price;
+        if (ch === "whole") price = Math.round(price * 0.55);
+        if (d.getMonth() === 10 && d.getDate() >= 27 && d.getDate() <= 30 && ch !== "whole") price = Math.round(price * 0.8);
+        items.push({ pid: p.id, size: sz, qty: qty, price: price });
+      }
+      var sub = sumBy(items, function(x){ return x.price * x.qty; });
+      var ship = ch === "whole" ? 0 : ch === "pop" ? 0 : sub >= 60 ? 0 : (rnd() < 0.6 ? 2.5 : 4.5);
+      var od = new Date(d); od.setHours(8 + Math.floor(rnd()*15), Math.floor(rnd()*60));
+      var ord = { id: "RITC-" + (oid++), date: od, cid: cust.id, ch: ch, items: items, sub: sub, ship: ship, total: sub + ship, pay: ch === "whole" ? "Τιμολόγιο 30 ημ." : ch === "pop" ? pick(["Κάρτα","Μετρητά"]) : pick(PAY), courier: ship === 4.5 ? "ACS" : "BOX NOW", status: "done", stage: null, note: "" };
+      // status by age
+      var ready = items.every(function(x){ return byId(PRODUCTS, x.pid).ready; });
+      var wd = workdays(od, TODAY), jit = Math.floor(rnd()*3) - 1;
+      if (ch === "pop") ord.status = "done";
+      else if (ready) ord.status = wd <= 1 ? "new" : wd <= 3 ? "shipped" : "done";
+      else { var a = wd - jit; ord.status = a <= 1 ? "new" : a <= 4 ? "cut" : a <= 7 ? "sew" : a <= 10 ? "qc" : a <= 12 ? "ready" : a <= 15 ? "shipped" : "done"; }
+      if (rnd() < 0.012) ord.status = "cancel";
+      orders.push(ord);
+      cust.orders.push(ord.id);
+      if (!cust.since || od < cust.since) cust.since = od;
+    }
+  }
+  // a few clearly late orders in production
+  var inProd = orders.filter(function(o){ return o.status === "sew" || o.status === "cut"; });
+  for (i = 0; i < 4 && i < inProd.length; i++) { inProd[i].date = addDays(TODAY, -(16 + i * 2)); }
+  inProd.slice(4, 7).forEach(function(o, k){ o.date = addDays(TODAY, -(13 + k)); o.status = "qc"; });
+  orders.sort(function(a, b){ return b.date - a.date; });
+
+  // returns
+  var returns = [], rid = 640;
+  var REASONS = [{n:"Μικρό μέγεθος",w:34},{n:"Μεγάλο μέγεθος",w:27},{n:"Δεν ταίριαξε το χρώμα/print",w:12},{n:"Ελάττωμα ραφής",w:6},{n:"Άλλαξε γνώμη",w:13},{n:"Λάθος αποστολή",w:3},{n:"Καθυστέρηση παράδοσης",w:5}];
+  orders.forEach(function(o){
+    if (o.status !== "done" || o.ch === "whole" || o.ch === "pop" || rnd() > 0.052) return;
+    var it = o.items[0], reason = wpick(REASONS, "w").n, p = byId(PRODUCTS, it.pid);
+    var type = /μέγεθος/.test(reason) ? (rnd() < 0.82 ? "Αλλαγή μεγέθους" : "Επιστροφή χρημάτων") : reason === "Ελάττωμα ραφής" || reason === "Λάθος αποστολή" ? "Αντικατάσταση" : "Επιστροφή χρημάτων";
+    var rd = addDays(o.date, 6 + Math.floor(rnd()*8)); if (rd > TODAY) rd = TODAY;
+    var age = workdays(rd, TODAY);
+    var to = null; if (type === "Αλλαγή μεγέθους") { var ix = p.sizes.indexOf(it.size); to = reason === "Μικρό μέγεθος" ? p.sizes[Math.min(ix + 1, p.sizes.length - 1)] : p.sizes[Math.max(ix - 1, 0)]; }
+    returns.push({ id: "RMA-" + (rid++), oid: o.id, cid: o.cid, date: rd, pid: it.pid, size: it.size, to: to, reason: reason, type: type, amount: it.price, status: age <= 1 ? "Αίτημα" : age <= 4 ? "Σε μεταφορά" : age <= 6 ? "Παραλήφθηκε" : "Ολοκληρώθηκε", cost: o.courier === "ACS" ? 4.5 : 2.5 });
+    if (type === "Επιστροφή χρημάτων") o.status = "ret";
+  });
+  returns.sort(function(a, b){ return b.date - a.date; });
+
+  // stock (ready-made + small safety stock of bestsellers)
+  PRODUCTS.forEach(function(p){
+    p.sizes.forEach(function(s){
+      var base = p.ready ? 3 + Math.floor(rnd()*12) : (rnd() < 0.55 ? 0 : Math.floor(rnd()*4));
+      if (p.ready && rnd() < 0.18) base = Math.floor(rnd()*3);
+      if ((s === "XXS" || s === "XXXL") && rnd() < 0.6) base = 0;
+      p.stock[s] = base;
+    });
+  });
+
+  // fabrics
+  var fab = {};
+  PRODUCTS.forEach(function(p){ if (p.cat !== "Αξεσουάρ") fab[p.print] = (fab[p.print] || 0) + p.w * p.mt; });
+  var fabrics = Object.keys(fab).map(function(pr, k){
+    var use30 = fab[pr] * 2.2;
+    var m = Math.round(use30 * (0.25 + rnd() * 1.6));
+    if (pr === "Golden Brown Leopard") m = Math.round(use30 * 0.32);
+    if (pr === "Snake") m = Math.round(use30 * 0.45);
+    return { id: "F" + (11 + k), print: pr, type: pr === "Green Velvet" ? "Βελούδο λείο" : "Βελούδο τυπωμένο", width: 150, meters: m, reorder: Math.round(use30 * 0.6), use30: Math.round(use30), sup: pr === "White" || pr === "Black" || pr === "Navy Blue" || pr === "Sage Green" || pr === "Bordeaux" || pr === "Green Velvet" ? "S1" : "S2", cost: pr === "Black" || pr === "White" ? 7.8 : 9.4 };
+  });
+  fabrics.push({ id: "F90", print: "White", type: "Βαμβακερό φούτερ (SS27)", width: 180, meters: 140, reorder: 60, use30: 0, sup: "S3", cost: 6.2 });
+  fabrics.push({ id: "F91", print: "Black", type: "Παγιέτα (δείγματα)", width: 130, meters: 18, reorder: 10, use30: 4, sup: "S3", cost: 14.5 });
+
+  var suppliers = [
+    { id: "S1", name: "Βελούδα Νάουσας (δείγμα)", cat: "Ύφασμα · λείο βελούδο", city: "Νάουσα", contact: "κ. Α. ••••", phone: "23320 ••• ••", lead: 7, terms: "30 ημέρες", rating: 5, balance: 2480 },
+    { id: "S2", name: "Print Velvet Textiles (δείγμα)", cat: "Ύφασμα · τυπωμένο βελούδο", city: "Πόρτο (PT)", contact: "Ana ••••", phone: "+351 ••• •••", lead: 18, terms: "Προκαταβολή 50%", rating: 4, balance: 5120 },
+    { id: "S3", name: "Βαμβακουργία Βορρά (δείγμα)", cat: "Ύφασμα · βαμβάκι, παγιέτα", city: "Θεσσαλονίκη", contact: "κα Ε. ••••", phone: "2310 ••• •••", lead: 10, terms: "60 ημέρες", rating: 4, balance: 860 },
+    { id: "S4", name: "Ραφείο «Βελονιά» φασόν (δείγμα)", cat: "Φασόν ραφή", city: "Περιστέρι", contact: "κ. Ν. ••••", phone: "210 ••• ••••", lead: 4, terms: "Ανά 15νθήμερο", rating: 5, balance: 3940 },
+    { id: "S5", name: "Υφαντά Σήματα & Ετικέτες (δείγμα)", cat: "Ετικέτες, κρεμαστά", city: "Αθήνα", contact: "κα Μ. ••••", phone: "210 ••• ••••", lead: 12, terms: "30 ημέρες", rating: 4, balance: 0 },
+    { id: "S6", name: "Χαρτοκιβώτια & Pouch (δείγμα)", cat: "Συσκευασία", city: "Ασπρόπυργος", contact: "κ. Π. ••••", phone: "210 ••• ••••", lead: 5, terms: "Αντικαταβολή", rating: 3, balance: 0 },
+    { id: "S7", name: "Φερμουάρ & Λάστιχα Παπ. (δείγμα)", cat: "Ψιλικά ραπτικής", city: "Αθήνα", contact: "κ. Δ. ••••", phone: "210 ••• ••••", lead: 3, terms: "Μετρητά", rating: 4, balance: 210 },
+    { id: "S8", name: "BOX NOW", cat: "Courier · lockers", city: "Πανελλαδικά", contact: "Λογαριασμός e-shop", phone: "—", lead: 1, terms: "Μηνιαία τιμολόγηση", rating: 5, balance: 1290 },
+    { id: "S9", name: "ACS Courier", cat: "Courier · πόρτα-πόρτα", city: "Πανελλαδικά", contact: "Λογαριασμός e-shop", phone: "—", lead: 1, terms: "Μηνιαία τιμολόγηση", rating: 4, balance: 470 }
+  ];
+  var pos = [
+    { id: "PO-311", sid: "S2", date: addDays(TODAY, -21), desc: "Golden Brown Leopard 180μ., Snake 120μ.", amount: 2820, eta: addDays(TODAY, 2), status: "Σε μεταφορά" },
+    { id: "PO-312", sid: "S1", date: addDays(TODAY, -12), desc: "Μαύρο λείο βελούδο 200μ., λευκό 160μ.", amount: 2810, eta: addDays(TODAY, -3), status: "Παραλήφθηκε" },
+    { id: "PO-313", sid: "S4", date: addDays(TODAY, -9), desc: "Ραφή 140 τεμ. Renata / Daniel (φασόν)", amount: 2380, eta: addDays(TODAY, 4), status: "Σε εξέλιξη" },
+    { id: "PO-314", sid: "S3", date: addDays(TODAY, -6), desc: "Παγιέτα μαύρη 40μ. (Holiday δείγματα)", amount: 580, eta: addDays(TODAY, 4), status: "Εστάλη" },
+    { id: "PO-315", sid: "S5", date: addDays(TODAY, -30), desc: "Υφαντές ετικέτες RITC ×3.000", amount: 690, eta: addDays(TODAY, -14), status: "Παραλήφθηκε" },
+    { id: "PO-316", sid: "S6", date: addDays(TODAY, -4), desc: "Κουτιά Velvet Collection ×1.500, pouch ×1.000", amount: 1340, eta: addDays(TODAY, 1), status: "Εστάλη" },
+    { id: "PO-317", sid: "S7", date: addDays(TODAY, -2), desc: "Λάστιχο μέσης 300μ., κορδόνια", amount: 210, eta: addDays(TODAY, 1), status: "Εστάλη" },
+    { id: "PO-305", sid: "S2", date: addDays(TODAY, -64), desc: "Cheetah 150μ., Python 140μ., Deer 90μ.", amount: 3570, eta: addDays(TODAY, -40), status: "Παραλήφθηκε" }
+  ];
+
+  // expenses per month
+  var expenses = [], eid = 1;
+  var months = []; for (i = 0; i < 12; i++) months.push(new Date(2025, 10 + i, 1));
+  months.forEach(function(m){
+    var mk = mkey(m);
+    var mo = orders.filter(function(o){ return mkey(o.date) === mk && o.status !== "cancel"; });
+    var rev = sumBy(mo, function(o){ return o.total; });
+    var cnt = mo.length;
+    var last = mk === mkey(TODAY) ? 27 : 26;
+    var E = function(cat, desc, amt, day, sid){ expenses.push({ id: "E" + (eid++), date: new Date(m.getFullYear(), m.getMonth(), Math.min(day, last)), cat: cat, desc: desc, amount: Math.round(amt), sid: sid || "" }); };
+    E("Υφάσματα & υλικά", "Βελούδο & υλικά παραγωγής", rev * (0.14 + rnd()*0.03), 6, rnd() < 0.5 ? "S1" : "S2");
+    E("Υφάσματα & υλικά", "Ψιλικά ραπτικής, λάστιχα", rev * 0.012 + 60, 14, "S7");
+    E("Φασόν / ραφή", "Εξωτερικό ραφείο", rev * (0.10 + rnd()*0.02), 15, "S4");
+    E("Μισθοδοσία", "Μισθοδοσία εργαστηρίου & e-shop (4 άτομα)", 5200 + (m.getMonth() === 11 ? 2600 : 0) + (m.getMonth() === 3 ? 1300 : 0), 25);
+    E("Ενοίκιο & λογαριασμοί", "Εργαστήριο, ρεύμα, internet", 1180 + rnd()*120, 3);
+    E("Μεταφορικά", "BOX NOW / ACS", cnt * 2.9, 28, "S8");
+    E("Συσκευασία", "Κουτιά, pouch, χαρτί", cnt * 0.95 + 40, 10, "S6");
+    E("Διαφήμιση", "Meta Ads (Instagram/Facebook)", rev * (0.06 + rnd()*0.02) + 200, 20);
+    E("Διαφήμιση", "Google Ads & influencers", rev * 0.03 + 120, 22);
+    E("Προμήθειες πληρωμών", "Viva / PayPal", rev * 0.017, 28);
+    E("Λογισμικό & λοιπά", "Hosting, WooCommerce plugins, λογιστής", 520 + rnd()*80, 5);
+  });
+  expenses.sort(function(a, b){ return b.date - a.date; });
+
+  var collections = [
+    { id: "K1", name: "The Velvet Collection", season: "FW26", status: "Σε πώληση", step: 6, launch: new Date(2026, 8, 15), planned: 1800, made: 1430, budget: 26000, spent: 21900, note: "Renata, Daniel, Libra σε animal prints" },
+    { id: "K2", name: "Couples & Family — Animal Prints", season: "FW26", status: "Σε πώληση", step: 6, launch: new Date(2026, 9, 6), planned: 420, made: 210, budget: 9500, spent: 6100, note: "Ταιριαστά σετ για ζευγάρια & παιδιά" },
+    { id: "K3", name: "Holiday Παγιέτα", season: "XMAS26", status: "Δείγματα", step: 3, launch: new Date(2026, 10, 20), planned: 300, made: 0, budget: 7200, spent: 1650, note: "Φωτογράφιση 10/11 · Black Friday teaser" },
+    { id: "K4", name: "Fashion Limousine Παντελόνες", season: "FW26", status: "Σε πώληση", step: 6, launch: new Date(2026, 8, 1), planned: 260, made: 240, budget: 4800, spent: 4400, note: "Συνεργασία, περιορισμένη σειρά" },
+    { id: "K5", name: "Cotton Sets SS27", season: "SS27", status: "Σχεδιασμός", step: 1, launch: new Date(2027, 2, 15), planned: 900, made: 0, budget: 14000, spent: 600, note: "Βαμβακερά σετ, νέα παλέτα παστέλ" }
+  ];
+
+  DB = { customers: customers, orders: orders, returns: returns, fabrics: fabrics, suppliers: suppliers, pos: pos, expenses: expenses, collections: collections, months: months };
+  DB.cust = {}; customers.forEach(function(c){ DB.cust[c.id] = c; });
+  DB.ord = {}; orders.forEach(function(o){ DB.ord[o.id] = o; });
+  DB.nextO = oid; DB.nextR = rid; DB.nextC = 1001 + 760;
+}
+function byId(a, id){ for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; return null; }
+var P = function(id){ return byId(PRODUCTS, id); };
+function custStats(c){
+  var os = c.orders.map(function(id){ return DB.ord[id]; }).filter(function(o){ return o && o.status !== "cancel"; });
+  var ltv = sumBy(os, function(o){ return o.status === "ret" ? 0 : o.total; });
+  var last = os.reduce(function(m, o){ return !m || o.date > m ? o.date : m; }, null);
+  var seg = c.b2b ? "Χονδρική" : !os.length ? "Χωρίς αγορά" : (ltv >= 330 || os.length >= 4) ? "VIP" : last && (TODAY - last) / 864e5 > 180 ? "Ανενεργός" : c.since && (TODAY - c.since) / 864e5 <= 45 ? "Νέος" : os.length >= 2 ? "Επαναλαμβανόμενος" : "Μία αγορά";
+  return { os: os, n: os.length, ltv: ltv, last: last, seg: seg };
+}
+var SEGB = { "VIP": "b-vip", "Νέος": "b-new", "Επαναλαμβανόμενος": "b-done", "Μία αγορά": "b-grey", "Ανενεργός": "b-bad", "Χονδρική": "b-ship", "Χωρίς αγορά": "b-grey" };
+function itemsTxt(o){ return o.items.map(function(x){ var p = P(x.pid); return (x.qty > 1 ? x.qty + "× " : "") + p.name.replace("Ολόσωμη Βελουτέ Φόρμα","Φόρμα").replace("Βελουτέ ","") + " " + p.print + " (" + x.size + ")"; }).join(", "); }
+function stBadge(s){ var x = STATUS[s] || [s, "b-grey"]; return '<span class="badge ' + x[1] + '">' + x[0] + "</span>"; }
+
+/* ---------- icons + nav ---------- */
+var IC = {
+  dash: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg>',
+  orders: '<svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>',
+  prod: '<svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg>',
+  stock: '<svg viewBox="0 0 24 24"><path d="M8 3 4 6v3l3 1v11h10V10l3-1V6l-4-3c-1 2-2.5 3-4 3s-3-1-4-3Z"/></svg>',
+  cust: '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c1-4 4-6 7-6s6 2 7 6"/><path d="M16 4a4 4 0 0 1 0 8M22 21c-.5-2.5-2-4.5-4-5.5"/></svg>',
+  sup: '<svg viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
+  ret: '<svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>',
+  ch: '<svg viewBox="0 0 24 24"><path d="M4 12h4l3-8 4 16 3-8h2"/></svg>',
+  fin: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></svg>',
+  more: '<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
+  plus: '<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>'
+};
+var ROUTES = [
+  { k: "dash", n: "Πίνακας", sub: "Εικόνα επιχείρησης", ic: "dash" },
+  { k: "orders", n: "Παραγγελίες", sub: "Πωλήσεις από όλα τα κανάλια", ic: "orders" },
+  { k: "prod", n: "Παραγωγή", sub: "Κοπή · ράψιμο · έλεγχος · συλλογές", ic: "prod" },
+  { k: "stock", n: "Προϊόντα & απόθεμα", sub: "Ανά μέγεθος και ύφασμα", ic: "stock" },
+  { k: "cust", n: "Πελάτες", sub: "Ιστορικό και τμήματα", ic: "cust" },
+  { k: "sup", n: "Προμηθευτές", sub: "Υφάσματα, φασόν, courier", ic: "sup" },
+  { k: "ret", n: "Επιστροφές & αλλαγές", sub: "Αιτήματα και αιτίες", ic: "ret" },
+  { k: "ch", n: "Κανάλια πώλησης", sub: "Από πού έρχονται τα έσοδα", ic: "ch" },
+  { k: "fin", n: "Οικονομικά", sub: "Έσοδα, έξοδα, κέρδος", ic: "fin" }
+];
+var cur = "dash";
+function navHtml(){
+  var newN = DB.orders.filter(function(o){ return o.status === "new"; }).length;
+  var retN = DB.returns.filter(function(r){ return r.status === "Αίτημα"; }).length;
+  $("#nav").innerHTML = ROUTES.map(function(r){
+    var c = r.k === "orders" && newN ? '<span class="cnt">' + newN + "</span>" : r.k === "ret" && retN ? '<span class="cnt">' + retN + "</span>" : "";
+    return '<a data-go="' + r.k + '" class="' + (cur === r.k ? "on" : "") + '">' + IC[r.ic] + r.n + c + "</a>";
+  }).join("");
+  $("#bnav").innerHTML = ["dash","orders","prod","stock"].map(function(k){ var r = byKey(k); return '<button data-go="' + k + '" class="' + (cur === k ? "on" : "") + '">' + IC[r.ic] + (k === "stock" ? "Απόθεμα" : r.n) + "</button>"; }).join("") + '<button data-act="menu" class="' + (["dash","orders","prod","stock"].indexOf(cur) < 0 ? "on" : "") + '">' + IC.more + "Μενού</button>";
+  var R = byKey(cur); $("#crumb").innerHTML = esc(R.n) + "<small>" + esc(R.sub) + "</small>";
+}
+function byKey(k){ for (var i = 0; i < ROUTES.length; i++) if (ROUTES[i].k === k) return ROUTES[i]; return ROUTES[0]; }
+function go(k, opts){ cur = byKey(k).k; if (location.hash !== "#" + cur) history.replaceState(null, "", "#" + cur); if (opts) Object.assign(UI[cur] || {}, opts); closeAll(); render(); window.scrollTo(0, 0); }
+var UI = {
+  dash: { per: "m", ch: "all" },
+  orders: { q: "", st: "all", ch: "all", per: "all", lim: 40 },
+  prod: { q: "", m: "all", tab: "board" },
+  stock: { tab: "ready", q: "", cat: "all", low: false },
+  cust: { q: "", seg: "all", city: "all", sort: "ltv", lim: 40 },
+  sup: { q: "", st: "all" },
+  ret: { q: "", st: "all", type: "all" },
+  ch: { per: "y" },
+  fin: { cat: "all", m: "all" }
+};
+function render(){ navHtml(); $("#view").innerHTML = V[cur](); bindAfter(); }
+
+/* ---------- period helpers ---------- */
+function perRange(per){
+  var mk = mkey(TODAY);
+  if (per === "m") return { a: mk, b: mk, pa: mk - 1, pb: mk - 1, lbl: MONF[TODAY.getMonth()] + " " + TODAY.getFullYear(), plbl: "vs " + MONF[(TODAY.getMonth() + 11) % 12] };
+  if (per === "q") return { a: mk - 2, b: mk, pa: mk - 5, pb: mk - 3, lbl: "Τελευταίοι 3 μήνες", plbl: "vs προηγ. 3μηνο" };
+  return { a: mk - 11, b: mk, pa: null, pb: null, lbl: "Τελευταίοι 12 μήνες", plbl: "" };
+}
+var inR = function(d, a, b){ var k = mkey(d); return k >= a && k <= b; };
+function stats(a, b, ch){
+  var os = DB.orders.filter(function(o){ return o.status !== "cancel" && inR(o.date, a, b) && (ch === "all" || o.ch === ch); });
+  var rev = sumBy(os, function(o){ return o.status === "ret" ? 0 : o.total; });
+  var exp = sumBy(DB.expenses.filter(function(e){ return inR(e.date, a, b); }), function(e){ return e.amount; });
+  if (ch !== "all") { var all = sumBy(DB.orders.filter(function(o){ return o.status !== "cancel" && o.status !== "ret" && inR(o.date, a, b); }), function(o){ return o.total; }); exp = all ? exp * rev / all : 0; }
+  var rets = DB.returns.filter(function(r){ return inR(r.date, a, b) && (ch === "all" || DB.ord[r.oid].ch === ch); }).length;
+  var pcs = sumBy(os, function(o){ return sumBy(o.items, function(x){ return x.qty; }); });
+  return { os: os, rev: rev, exp: exp, profit: rev - exp, n: os.length, aov: os.length ? rev / os.length : 0, rr: os.length ? rets / os.length : 0, pcs: pcs };
+}
+function delta(v, p, inv){ if (p == null || !isFinite(p) || p === 0) return '<span class="dl flat">&nbsp;</span>'; var d = (v - p) / Math.abs(p); var good = inv ? d < 0 : d > 0; return '<span class="dl ' + (Math.abs(d) < 0.005 ? "flat" : good ? "up" : "down") + '">' + (d >= 0 ? "▲ " : "▼ ") + pct(Math.abs(d)) + '</span>'; }
+
+/* ---------- charts ---------- */
+function chartMonthly(hlA, hlB, ch){
+  var sm = innerWidth < 760, W = sm ? 370 : 640, H = sm ? 240 : 250, L = sm ? 30 : 46, R = sm ? 2 : 10, T = 14, B = 28;
+  var ms = DB.months.map(function(m){ var k = mkey(m), s = stats(k, k, ch); return { m: m, k: k, rev: s.rev, exp: s.exp, pr: s.profit }; });
+  var max = Math.max.apply(null, ms.map(function(x){ return Math.max(x.rev, x.exp); })) * 1.1;
+  var min = Math.min(0, Math.min.apply(null, ms.map(function(x){ return x.pr; })));
+  var y = function(v){ return T + (H - T - B) * (1 - (v - min) / (max - min)); };
+  var bw = (W - L - R) / ms.length, out = "";
+  var step = max > 40000 ? 10000 : 5000;
+  for (var g = 0; g <= max; g += step) out += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(g) + '" y2="' + y(g) + '" stroke="#efe8df"/><text x="' + (L - 6) + '" y="' + (y(g) + 4) + '" text-anchor="end">' + (g / 1000) + "k</text>";
+  ms.forEach(function(x, i){
+    var x0 = L + i * bw, hl = x.k >= hlA && x.k <= hlB, op = hl ? 1 : 0.38;
+    out += '<g data-tip="<b>' + MONF[x.m.getMonth()] + " " + x.m.getFullYear() + "</b><br>Έσοδα " + eur(x.rev) + "<br>Έξοδα " + eur(x.exp) + "<br>Κέρδος " + eur(x.pr) + '">';
+    out += '<rect x="' + x0 + '" y="' + T + '" width="' + bw + '" height="' + (H - T - B) + '" fill="transparent"/>';
+    out += '<rect x="' + (x0 + bw * 0.14) + '" y="' + y(x.rev) + '" width="' + (bw * 0.34) + '" height="' + (y(0) - y(x.rev)) + '" rx="3" fill="#2E2B29" opacity="' + op + '"/>';
+    out += '<rect x="' + (x0 + bw * 0.52) + '" y="' + y(x.exp) + '" width="' + (bw * 0.34) + '" height="' + (y(0) - y(x.exp)) + '" rx="3" fill="#C9A86A" opacity="' + op + '"/>';
+    out += '<text x="' + (x0 + bw / 2) + '" y="' + (H - 8) + '" text-anchor="middle" style="' + (hl ? "fill:#2E2B29;font-weight:700" : "") + '">' + MON[x.m.getMonth()] + "</text></g>";
+  });
+  var pts = ms.map(function(x, i){ return (L + i * bw + bw / 2) + "," + y(x.pr); }).join(" ");
+  out += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(0) + '" y2="' + y(0) + '" stroke="#cfc5b9"/>';
+  out += '<polyline points="' + pts + '" fill="none" stroke="#f16d70" stroke-width="2.5" stroke-linejoin="round" pointer-events="none"/>';
+  ms.forEach(function(x, i){ out += '<circle cx="' + (L + i * bw + bw / 2) + '" cy="' + y(x.pr) + '" r="3.5" fill="#fff" stroke="#f16d70" stroke-width="2" pointer-events="none"/>'; });
+  return '<svg class="ch" viewBox="0 0 ' + W + " " + H + '">' + out + "</svg>";
+}
+function donut(segs, center, sub){
+  var tot = sumBy(segs, function(s){ return s.v; }) || 1, a = -Math.PI / 2, out = "", R = 70, r = 46, cx = 85, cy = 85;
+  segs.forEach(function(s){
+    var a2 = a + 2 * Math.PI * s.v / tot, large = a2 - a > Math.PI ? 1 : 0;
+    if (s.v / tot > 0.999) a2 = a + 2 * Math.PI - 0.0001;
+    var p = function(rr, aa){ return (cx + rr * Math.cos(aa)).toFixed(2) + "," + (cy + rr * Math.sin(aa)).toFixed(2); };
+    out += '<path data-tip="<b>' + esc(s.n) + "</b><br>" + eur(s.v) + " · " + pct(s.v / tot) + '" d="M' + p(R, a) + " A" + R + "," + R + " 0 " + large + " 1 " + p(R, a2) + " L" + p(r, a2) + " A" + r + "," + r + " 0 " + large + " 0 " + p(r, a) + 'Z" fill="' + s.c + '" stroke="#fff" stroke-width="2"/>';
+    a = a2;
+  });
+  out += '<text x="85" y="84" text-anchor="middle" style="font-size:17px;font-weight:800;fill:#2E2B29">' + center + '</text><text x="85" y="101" text-anchor="middle">' + sub + "</text>";
+  return '<div class="donut-wrap"><svg class="ch" viewBox="0 0 170 170">' + out + '</svg><div class="dleg">' + segs.map(function(s){ return '<div><i style="background:' + s.c + '"></i>' + esc(s.n) + "<b>" + pct(s.v / tot) + "</b></div>"; }).join("") + "</div></div>";
+}
+function hbars(items, fmt, col){
+  var max = Math.max.apply(null, items.map(function(x){ return x.v; })) || 1;
+  return '<div class="hbars">' + items.map(function(x){ return '<div class="hb"><span class="l">' + (x.pre || "") + esc(x.n) + '</span><b class="num">' + fmt(x.v) + '</b><div class="bar"><span style="width:' + (x.v / max * 100).toFixed(1) + "%;background:" + (x.c || col || "var(--gold)") + '"></span></div></div>'; }).join("") + "</div>";
+}
+function columns(items, W, H, col){
+  W = W || 360; H = H || 170; var B = 22, T = 16, bw = W / items.length, max = Math.max.apply(null, items.map(function(x){ return x.v; })) || 1, out = "";
+  items.forEach(function(x, i){ var h = (H - B - T) * x.v / max; out += '<g data-tip="<b>' + esc(x.n) + "</b><br>" + nf0.format(x.v) + ' τεμ."><rect x="' + (i * bw + bw * 0.16) + '" y="' + (H - B - h) + '" width="' + (bw * 0.68) + '" height="' + h + '" rx="5" fill="' + (x.c || col || "#C9A86A") + '"/><text x="' + (i * bw + bw / 2) + '" y="' + (H - B - h - 4) + '" text-anchor="middle" style="fill:#2E2B29;font-weight:700">' + nf0.format(x.v) + '</text><text x="' + (i * bw + bw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">' + esc(x.n) + "</text></g>"; });
+  return '<svg class="ch" viewBox="0 0 ' + W + " " + H + '">' + out + "</svg>";
+}
+function spark(vals, col){ var W = 120, H = 34, max = Math.max.apply(null, vals) || 1; var pts = vals.map(function(v, i){ return (i * W / (vals.length - 1)).toFixed(1) + "," + (H - 3 - (H - 6) * v / max).toFixed(1); }).join(" "); return '<svg class="ch" viewBox="0 0 ' + W + " " + H + '" style="width:120px"><polyline points="' + pts + '" fill="none" stroke="' + col + '" stroke-width="2" stroke-linejoin="round"/></svg>'; }
+
+/* ---------- generic table ---------- */
+function table(cols, rows, opts){
+  opts = opts || {};
+  if (!rows.length) return '<div class="card empty">Δεν βρέθηκαν εγγραφές με αυτά τα φίλτρα.</div>';
+  var h = '<div class="tw cards"><table class="t"><thead><tr>' + cols.map(function(c){ return '<th class="' + (c.cls || "") + '">' + c.l + "</th>"; }).join("") + "</tr></thead><tbody>";
+  rows.forEach(function(r){
+    h += "<tr" + (opts.act ? ' class="click" data-act="' + opts.act + '" data-id="' + esc(r.id) + '"' : "") + ">" + cols.map(function(c, i){ return '<td data-l="' + esc(c.l) + '" class="' + (i === 0 ? "first " : "") + (c.cls || "") + '">' + c.f(r) + "</td>"; }).join("") + "</tr>";
+  });
+  return h + "</tbody></table></div>";
+}
+function sel(name, val, opts, label){ return '<select data-f="' + name + '" aria-label="' + esc(label || name) + '">' + opts.map(function(o){ return '<option value="' + esc(o[0]) + '"' + (String(o[0]) === String(val) ? " selected" : "") + ">" + esc(o[1]) + "</option>"; }).join("") + "</select>"; }
+function srch(name, val, ph){ return '<input type="search" data-f="' + name + '" value="' + esc(val) + '" placeholder="' + esc(ph) + '">'; }
+var norm = function(s){ return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+var has = function(hay, q){ return !q || norm(hay).indexOf(norm(q)) >= 0; };
+
+/* ---------- views ---------- */
+var V = {};
+V.dash = function(){
+  var u = UI.dash, R = perRange(u.per), s = stats(R.a, R.b, u.ch), ps = R.pa != null ? stats(R.pa, R.pb, u.ch) : null;
+  var margin = s.rev ? s.profit / s.rev : 0;
+  var h = '<div class="head"><div><h1>Καλημέρα, ομάδα RITC</h1><p class="lead" style="margin:0">' + R.lbl + (u.ch !== "all" ? " · " + CH[u.ch].s : "") + ' · ενημέρωση ' + dfmt(TODAY) + '</p></div><div class="row">' +
+    '<div class="chips">' + [["m","Μήνας"],["q","Τρίμηνο"],["y","12 μήνες"]].map(function(x){ return '<button class="chip ' + (u.per === x[0] ? "on" : "") + '" data-set="dash.per" data-v="' + x[0] + '">' + x[1] + "</button>"; }).join("") + "</div>" +
+    '<div class="filters" style="margin:0">' + sel("dash.ch", u.ch, [["all","Όλα τα κανάλια"]].concat(CHANNELS.map(function(c){ return [c.k, c.s]; })), "Κανάλι") + "</div></div></div>";
+  h += '<div class="note">✦ <span><b>Δείγμα για την RITC.</b> Όλα τα νούμερα είναι ψεύτικα, αλλά τα προϊόντα και οι τιμές είναι από το ritcclothing.com. Πατήστε σε μήνες, παραγγελίες, πελάτες ή ειδοποιήσεις για λεπτομέρειες.</span></div>';
+  h += '<div class="grid g-kpi" style="margin-bottom:16px">' +
+    kpi("Έσοδα", eur(s.rev), ps && delta(s.rev, ps.rev), "dark") +
+    kpi("Έξοδα", eur(s.exp), ps && delta(s.exp, ps.exp, true)) +
+    kpi("Καθαρό κέρδος", eur(s.profit), ps ? delta(s.profit, ps.profit) : '<span class="dl flat">περιθώριο ' + pct(margin) + "</span>") +
+    kpi("Παραγγελίες", nf0.format(s.n), ps && delta(s.n, ps.n)) +
+    kpi("Μέσο καλάθι", eur2(s.aov), ps && delta(s.aov, ps.aov)) +
+    kpi("Επιστροφές", pct(s.rr), ps && delta(s.rr, ps.rr, true)) + "</div>";
+  // channel split + top products
+  var byCh = groupSum(s.os.filter(function(o){ return o.status !== "ret"; }), function(o){ return o.ch; }, function(o){ return o.total; });
+  var segs = CHANNELS.map(function(c){ return { n: c.s, v: byCh[c.k] || 0, c: c.col }; }).filter(function(x){ return x.v > 0; });
+  var byP = {}, bySz = {};
+  s.os.forEach(function(o){ o.items.forEach(function(x){ var p = P(x.pid); var k = p.name + "|" + p.print; byP[k] = (byP[k] || 0) + x.price * x.qty; if (ALLSZ.indexOf(x.size) >= 0) bySz[x.size] = (bySz[x.size] || 0) + x.qty; }); });
+  var top = Object.keys(byP).map(function(k){ var a = k.split("|"); return { n: a[0].replace("Ολόσωμη Βελουτέ Φόρμα", "Φόρμα") + " · " + a[1], v: byP[k], pre: swatch(a[1]) }; }).sort(function(a, b){ return b.v - a.v; }).slice(0, 7);
+  h += '<div class="grid g-2" style="margin-bottom:16px"><div class="card"><div class="card-h"><h2>Έσοδα, έξοδα και κέρδος ανά μήνα</h2><div class="legend"><span><i style="background:#2E2B29"></i>Έσοδα</span><span><i style="background:#C9A86A"></i>Έξοδα</span><span><i style="background:#f16d70;height:3px"></i>Κέρδος</span></div></div>' + chartMonthly(R.a, R.b, u.ch) + '<p class="muted" style="font-size:12.5px;margin:8px 0 0">Η αιχμή είναι Νοέμβριο–Δεκέμβριο (Black Friday, γιορτές, βελουτέ σεζόν). Τον Ιούλιο η χρονιά πέφτει, ενώ τα πάγια μένουν ίδια.</p></div>' +
+    '<div class="card"><div class="card-h"><h2>Έσοδα ανά κανάλι</h2><button class="btn ghost sm" data-go="ch">Ανάλυση</button></div>' + donut(segs, eur(s.rev).replace(" €", "€"), "έσοδα") + "</div></div>";
+  h += '<div class="grid g-3" style="margin-bottom:16px"><div class="card"><div class="card-h"><h2>Top προϊόντα (έσοδα)</h2></div>' + hbars(top, eur) + '</div>' +
+    '<div class="card"><div class="card-h"><h2>Τεμάχια ανά μέγεθος</h2><span class="muted" style="font-size:12.5px">για πλάνο κοπής</span></div>' + columns(ALLSZ.map(function(z){ return { n: z, v: bySz[z] || 0, c: z === "M" || z === "S" ? "#2E2B29" : "#C9A86A" }; })) + '<p class="muted" style="font-size:12.5px;margin:6px 0 0">Τα S και M είναι πάνω από το μισό. Ένα κόψιμο με αναλογία 1·3·5·5·3·1 ταιριάζει στη ζήτηση.</p></div>' +
+    '<div class="card"><div class="card-h"><h2>Χρειάζονται προσοχή</h2></div>' + alerts() + "</div></div>";
+  // recent orders
+  h += '<div class="card"><div class="card-h"><h2>Τελευταίες παραγγελίες</h2><button class="btn ghost sm" data-go="orders">Όλες</button></div>' + orderTable(DB.orders.filter(function(o){ return u.ch === "all" || o.ch === u.ch; }).slice(0, 6)) + "</div>";
+  return h;
+};
+function kpi(l, v, d, cls){ return '<div class="card kpi ' + (cls || "") + '"><div class="lbl">' + l + '</div><div class="val">' + v + "</div>" + (d || '<span class="dl flat">&nbsp;</span>') + "</div>"; }
+function alerts(){
+  var a = [];
+  var late = DB.orders.filter(function(o){ return ["new","cut","sew","qc"].indexOf(o.status) >= 0 && workdays(o.date, TODAY) > 12; });
+  if (late.length) a.push(["var(--bad)", "<b>" + late.length + " παραγγελίες</b> ξεπερνούν τις 12 εργάσιμες στην παραγωγή.", "prod"]);
+  var lowF = DB.fabrics.filter(function(f){ return f.meters < f.reorder; });
+  if (lowF.length) a.push(["var(--warn)", "Χαμηλό ύφασμα: <b>" + lowF.slice(0, 3).map(function(f){ return f.print; }).join(", ") + "</b>" + (lowF.length > 3 ? " +" + (lowF.length - 3) : "") + ".", "stock", { tab: "fab" }]);
+  var reqR = DB.returns.filter(function(r){ return r.status === "Αίτημα"; }).length;
+  if (reqR) a.push(["var(--coral)", "<b>" + reqR + " αιτήματα</b> επιστροφής/αλλαγής περιμένουν έγκριση.", "ret"]);
+  var lowR = 0; PRODUCTS.forEach(function(p){ if (p.ready) p.sizes.forEach(function(z){ if (!p.stock[z]) lowR++; }); });
+  if (lowR) a.push(["var(--warn)", "<b>" + lowR + " μεγέθη</b> έτοιμων προϊόντων έχουν εξαντληθεί.", "stock", { low: true, tab: "ready" }]);
+  var owed = sumBy(DB.suppliers, function(s){ return s.balance; });
+  a.push(["var(--gold)", "Ανοιχτά υπόλοιπα σε προμηθευτές: <b>" + eur(owed) + "</b>.", "sup"]);
+  var hol = byId(DB.collections, "K3");
+  a.push(["#b9a3d6", "Λανσάρισμα <b>" + hol.name + "</b> σε " + Math.round((hol.launch - TODAY) / 864e5) + " ημέρες. Η συλλογή είναι ακόμα στα δείγματα.", "prod", { tab: "coll" }]);
+  return '<div class="alerts">' + a.map(function(x){ return '<div class="alert" data-go="' + x[2] + '"' + (x[3] ? " data-opts='" + JSON.stringify(x[3]) + "'" : "") + '><span class="dot" style="background:' + x[0] + '"></span><span>' + x[1] + "</span></div>"; }).join("") + "</div>";
+}
+
+function orderTable(rows){
+  return table([
+    { l: "Παραγγελία", f: function(o){ return '<span class="strong">' + o.id + '</span>'; } },
+    { l: "Ημ/νία", cls: "nowrap", f: function(o){ return dshort(o.date) + " " + String(o.date.getHours()).padStart(2, "0") + ":" + String(o.date.getMinutes()).padStart(2, "0"); } },
+    { l: "Πελάτης", f: function(o){ var c = DB.cust[o.cid]; return esc(c.name) + '<br class="hide-m"><small class="muted hide-m">' + esc(c.city) + "</small>"; } },
+    { l: "Προϊόντα", f: function(o){ var p = P(o.items[0].pid); return '<span class="pname">' + swatch(p.print) + '<span style="max-width:280px;overflow:hidden;text-overflow:ellipsis;display:inline-block;white-space:nowrap;vertical-align:middle">' + esc(itemsTxt(o)) + "</span></span>"; } },
+    { l: "Κανάλι", f: function(o){ return CH[o.ch].s; } },
+    { l: "Σύνολο", cls: "num", f: function(o){ return '<span class="strong">' + eur2(o.total) + "</span>"; } },
+    { l: "Κατάσταση", f: function(o){ return stBadge(o.status); } }
+  ], rows, { act: "order" });
+}
+V.orders = function(){
+  var u = UI.orders, mk = mkey(TODAY);
+  var rows = DB.orders.filter(function(o){
+    if (u.st !== "all" && !(u.st === "prod" ? ["cut","sew","qc"].indexOf(o.status) >= 0 : o.status === u.st)) return false;
+    if (u.ch !== "all" && o.ch !== u.ch) return false;
+    if (u.per === "7" && (TODAY - o.date) / 864e5 > 7) return false;
+    if (u.per === "m" && mkey(o.date) !== mk) return false;
+    if (u.per === "pm" && mkey(o.date) !== mk - 1) return false;
+    if (u.q) { var c = DB.cust[o.cid]; if (!has(o.id + " " + c.name + " " + c.city + " " + itemsTxt(o), u.q)) return false; }
+    return true;
+  });
+  var tot = sumBy(rows, function(o){ return o.status === "cancel" ? 0 : o.total; });
+  var h = '<div class="head"><div><h1>Παραγγελίες</h1><p class="lead" style="margin:0">Από το e-shop, το Instagram, τις boutiques και τα pop-up, όλα σε μία λίστα.</p></div><button class="btn pri" data-act="newOrder">' + IC.plus + "Νέα παραγγελία</button></div>";
+  h += '<div class="filters">' + srch("orders.q", u.q, "Αριθμός, πελάτης, πόλη, προϊόν…") +
+    sel("orders.st", u.st, [["all","Όλες οι καταστάσεις"],["new","Νέες"],["prod","Σε παραγωγή"],["ready","Έτοιμες"],["shipped","Απεσταλμένες"],["done","Παραδομένες"],["ret","Επιστροφές"],["cancel","Ακυρωμένες"]], "Κατάσταση") +
+    sel("orders.ch", u.ch, [["all","Όλα τα κανάλια"]].concat(CHANNELS.map(function(c){ return [c.k, c.s]; })), "Κανάλι") +
+    sel("orders.per", u.per, [["all","Όλο το διάστημα"],["7","Τελευταίες 7 ημέρες"],["m","Αυτόν τον μήνα"],["pm","Προηγούμενο μήνα"]], "Περίοδος") + "</div>";
+  h += '<div class="sum"><b>' + nf0.format(rows.length) + "</b> παραγγελίες · σύνολο <b>" + eur(tot) + "</b></div>";
+  h += orderTable(rows.slice(0, u.lim));
+  if (rows.length > u.lim) h += '<div class="more"><button class="btn ghost" data-act="moreOrders">Εμφάνιση περισσότερων (' + nf0.format(rows.length - u.lim) + ")</button></div>";
+  return h;
+};
+
+V.prod = function(){
+  var u = UI.prod;
+  var h = '<div class="head"><div><h1>Παραγωγή</h1><p class="lead" style="margin:0">Κάθε κομμάτι ράβεται κατά παραγγελία, σε 5–15 εργάσιμες. Εδώ φαίνεται σε ποιο στάδιο είναι.</p></div>' +
+    (u.tab === "coll" ? '<button class="btn pri" data-act="newColl">' + IC.plus + "Νέα συλλογή</button>" : "") + "</div>";
+  h += '<div class="tabs"><button class="' + (u.tab === "board" ? "on" : "") + '" data-set="prod.tab" data-v="board">Ροή παραγωγής</button><button class="' + (u.tab === "coll" ? "on" : "") + '" data-set="prod.tab" data-v="coll">Συλλογές</button></div>';
+  if (u.tab === "coll") return h + collections();
+  var act = DB.orders.filter(function(o){ return ["new","cut","sew","qc","ready"].indexOf(o.status) >= 0 && o.ch !== "pop"; });
+  var pcs = sumBy(act, function(o){ return sumBy(o.items, function(x){ return P(x.pid).ready ? 0 : x.qty; }); });
+  var late = act.filter(function(o){ return o.status !== "ready" && workdays(o.date, TODAY) > 12; }).length;
+  var readyL = act.filter(function(o){ return o.status === "ready"; });
+  var avg = readyL.length ? sumBy(readyL, function(o){ return workdays(o.date, TODAY); }) / readyL.length : 0;
+  var fabNeed = sumBy(act, function(o){ return sumBy(o.items, function(x){ var p = P(x.pid); return p.ready ? 0 : p.mt * x.qty; }); });
+  h += '<div class="grid g-kpi" style="margin-bottom:16px">' + kpi("Σε ροή", nf0.format(act.length) + " παρ.", '<span class="dl flat">' + nf0.format(pcs) + " τεμάχια για ράψιμο</span>", "dark") +
+    kpi("Μέσος χρόνος", (Math.round(avg * 10) / 10).toLocaleString("el-GR") + " εργ.", '<span class="dl flat">από παραγγελία ως «έτοιμη» · υπόσχεση 5–15</span>') +
+    kpi("Καθυστερημένες", String(late), '<span class="dl ' + (late ? "down" : "up") + '">πάνω από 12 εργάσιμες</span>') +
+    kpi("Ύφασμα που δεσμεύεται", nf0.format(fabNeed) + " μ.", '<span class="dl flat">βελούδο για την ουρά</span>') + "</div>";
+  var models = {}; act.forEach(function(o){ o.items.forEach(function(x){ models[P(x.pid).name] = 1; }); });
+  h += '<div class="filters">' + srch("prod.q", u.q, "Παραγγελία, πελάτης, print…") + sel("prod.m", u.m, [["all","Όλα τα μοντέλα"]].concat(Object.keys(models).sort().map(function(m){ return [m, m]; })), "Μοντέλο") + '<span class="muted" style="font-size:13px">Πατήστε «Επόμενο» για να περάσει η παραγγελία στο επόμενο στάδιο.</span></div>';
+  var cols = [["new","Νέες"],["cut","Κοπή"],["sew","Ράψιμο"],["qc","Έλεγχος & σιδέρωμα"],["ready","Έτοιμες για αποστολή"]];
+  var flt = act.filter(function(o){ if (u.m !== "all" && !o.items.some(function(x){ return P(x.pid).name === u.m; })) return false; if (u.q && !has(o.id + " " + DB.cust[o.cid].name + " " + itemsTxt(o), u.q)) return false; return true; });
+  h += '<div class="kanban">' + cols.map(function(c){
+    var list = flt.filter(function(o){ return o.status === c[0]; }).sort(function(a, b){ return a.date - b.date; });
+    return '<div class="col"><div class="col-h">' + c[1] + "<span>" + list.length + "</span></div>" + list.slice(0, 7).map(function(o){
+      var wd = workdays(o.date, TODAY), cls = c[0] !== "ready" && wd > 14 ? "vlate" : c[0] !== "ready" && wd > 10 ? "late" : "";
+      var x = o.items[0], p = P(x.pid);
+      return '<div class="kc ' + cls + '"><div class="top"><span>' + o.id + '</span><span class="' + (cls ? "down" : "muted") + '">' + wd + " εργ.</span></div>" +
+        '<div class="it">' + swatch(p.print) + "<span>" + esc(p.name.replace("Ολόσωμη Βελουτέ Φόρμα", "Φόρμα")) + "<br><b>" + esc(p.print) + " · " + x.size + "</b>" + (o.items.length > 1 ? ' <span class="muted">+' + (o.items.length - 1) + "</span>" : "") + "</span></div>" +
+        '<div class="ft"><span class="muted">' + esc(DB.cust[o.cid].name.split(" ")[0]) + " · " + CH[o.ch].s + '</span><button class="nx" data-act="adv" data-id="' + o.id + '">Επόμενο →</button></div></div>';
+    }).join("") + (list.length > 7 ? '<div class="more-k">+' + (list.length - 7) + " ακόμη</div>" : "") + (list.length ? "" : '<div class="more-k">—</div>') + "</div>";
+  }).join("") + "</div>";
+  return h;
+};
+var CSTEPS = ["Σχέδιο","Πατρόν","Δείγματα","Παραγωγή","Φωτογράφιση","Λανσάρισμα"];
+function collections(){
+  return '<div class="grid g-3">' + DB.collections.map(function(k){
+    var bcls = k.status === "Σε πώληση" ? "b-done" : k.status === "Σχεδιασμός" ? "b-new" : "b-prod";
+    return '<div class="card coll"><div class="row" style="justify-content:space-between"><span class="badge ' + bcls + ' tag">' + k.status + '</span><span class="muted" style="font-size:12.5px">' + k.season + "</span></div><h2 style=\"font-size:18px\">" + esc(k.name) + '</h2><span class="muted" style="font-size:13px">' + esc(k.note) + '</span><div class="steps">' + CSTEPS.map(function(s, i){ return '<i class="' + (i < k.step ? "on" : "") + '" title="' + s + '"></i>'; }).join("") + '</div><div class="kv"><span>Στάδιο</span><b>' + CSTEPS[Math.max(0, k.step - 1)] + "</b></div>" +
+      '<div class="kv"><span>Λανσάρισμα</span><b>' + dfmt(k.launch) + '</b></div><div class="kv"><span>Κομμάτια</span><b>' + nf0.format(k.made) + " / " + nf0.format(k.planned) + '</b></div><div class="prog"><span style="width:' + Math.min(100, k.made / k.planned * 100) + '%"></span></div><div class="kv"><span>Budget</span><b>' + eur(k.spent) + " / " + eur(k.budget) + '</b></div><div class="prog"><span style="background:var(--gold);width:' + Math.min(100, k.spent / k.budget * 100) + '%"></span></div>' +
+      (k.step < 6 ? '<button class="btn ghost sm" data-act="collStep" data-id="' + k.id + '" style="margin-top:6px">Επόμενο στάδιο: ' + CSTEPS[k.step] + "</button>" : "") + "</div>";
+  }).join("") + "</div>";
+}
+
+V.stock = function(){
+  var u = UI.stock;
+  var h = '<div class="head"><div><h1>Προϊόντα & απόθεμα</h1><p class="lead" style="margin:0">Έτοιμο απόθεμα ανά μέγεθος, και το ύφασμα που απομένει για τα κατά παραγγελία κομμάτια.</p></div><div class="row">' +
+    (u.tab === "ready" ? '<button class="btn ghost" data-act="receive">Παραλαβή αποθέματος</button><button class="btn pri" data-act="newProduct">' + IC.plus + "Νέο προϊόν</button>" : '<button class="btn pri" data-act="newFabric">' + IC.plus + "Νέο ύφασμα</button>") + "</div></div>";
+  h += '<div class="tabs"><button class="' + (u.tab === "ready" ? "on" : "") + '" data-set="stock.tab" data-v="ready">Προϊόντα ανά μέγεθος</button><button class="' + (u.tab === "fab" ? "on" : "") + '" data-set="stock.tab" data-v="fab">Υφάσματα</button></div>';
+  if (u.tab === "fab") return h + fabrics();
+  var cats = {}; PRODUCTS.forEach(function(p){ cats[p.cat] = 1; });
+  h += '<div class="filters">' + srch("stock.q", u.q, "Όνομα, print, κωδικός…") + sel("stock.cat", u.cat, [["all","Όλες οι κατηγορίες"]].concat(Object.keys(cats).map(function(c){ return [c, c]; })), "Κατηγορία") + '<label class="tog"><input type="checkbox" data-f="stock.low"' + (u.low ? " checked" : "") + "> Έτοιμα με εξαντλημένα μεγέθη</label></div>";
+  var sold30 = {}; DB.orders.forEach(function(o){ if ((TODAY - o.date) / 864e5 <= 30 && o.status !== "cancel") o.items.forEach(function(x){ sold30[x.pid] = (sold30[x.pid] || 0) + x.qty; }); });
+  var rows = PRODUCTS.filter(function(p){
+    if (u.cat !== "all" && p.cat !== u.cat) return false;
+    if (u.q && !has(p.name + " " + p.print + " " + p.sku, u.q)) return false;
+    if (u.low && (!p.ready || !p.sizes.some(function(z){ return !p.stock[z]; }))) return false;
+    return true;
+  });
+  var units = sumBy(rows, function(p){ return sumBy(p.sizes, function(z){ return p.stock[z] || 0; }); });
+  var val = sumBy(rows, function(p){ return sumBy(p.sizes, function(z){ return (p.stock[z] || 0) * (p.sale || p.price); }); });
+  h += '<div class="sum"><b>' + rows.length + "</b> κωδικοί · <b>" + nf0.format(units) + "</b> τεμάχια έτοιμα · αξία λιανικής <b>" + eur(val) + '</b> · <span class="sz zero" style="height:20px;min-width:22px;font-size:11px">0</span> εξαντλημένο <span class="sz low" style="height:20px;min-width:22px;font-size:11px">2</span> χαμηλό · <span class="sz mto" style="height:20px;min-width:22px;font-size:11px">1</span> ραμμένα από πριν (κατά παραγγελία)</div>';
+  if (!rows.length) return h + '<div class="card empty">Δεν βρέθηκαν προϊόντα.</div>';
+  h += '<div class="tw cards"><table class="t"><thead><tr><th>Προϊόν</th><th class="num">Τιμή</th><th>Τύπος</th>' + ALLSZ.map(function(z){ return '<th class="sz-h">' + z + "</th>"; }).join("") + '<th class="num">Σύνολο</th><th class="num">Πωλ. 30ημ.</th></tr></thead><tbody>';
+  rows.forEach(function(p){
+    var tot = sumBy(p.sizes, function(z){ return p.stock[z] || 0; });
+    h += '<tr class="click" data-act="product" data-id="' + p.id + '"><td class="first" data-l="Προϊόν"><span class="pname">' + swatch(p.print) + "<div><b>" + esc(p.name) + "</b><small>" + esc(p.print) + " · " + esc(p.cat) + "</small></div></span></td>" +
+      '<td class="num" data-l="Τιμή">' + (p.sale ? '<span class="badge b-sale">' + eur(p.sale) + '</span> <s class="muted">' + eur(p.price) + "</s>" : eur(p.price)) + '</td><td data-l="Τύπος">' + (p.ready ? '<span class="badge b-done">Έτοιμο</span>' : '<span class="badge b-new">Κατά παραγγελία</span>') + "</td>" +
+      cellsMobile(p) + '<td class="num strong" data-l="Σύνολο">' + tot + '</td><td class="num" data-l="Πωλ. 30ημ.">' + (sold30[p.id] || 0) + "</td></tr>";
+  });
+  h += "</tbody></table></div>";
+  h += '<p class="muted" style="font-size:12.5px">Τα κατά παραγγελία προϊόντα δεν χρειάζονται απόθεμα. Το απόθεμα εδώ είναι κομμάτια που περίσσεψαν ή ράφτηκαν από πριν για γρήγορη αποστολή. Αυτό που μετράει είναι το ύφασμα (καρτέλα «Υφάσματα»).</p>';
+  return h;
+};
+function szCell(p, z){ var v = p.stock[z] || 0; return '<span class="sz ' + (!p.ready ? (v ? "mto" : "mto0") : v === 0 ? "zero" : v <= 2 ? "low" : "") + '">' + v + "</span>"; }
+function cellsMobile(p){
+  // grouped sizes (kids / one size) span the size columns; adult sizes get one column each on desktop and a compact strip on mobile
+  if (p.sizes === SZ_K || p.sizes === SZ_1) return '<td class="szrow" colspan="' + ALLSZ.length + '" data-l="' + (p.sizes === SZ_K ? "Ηλικίες" : "Μέγεθος") + '"><span class="szflex">' + p.sizes.map(function(z){ return '<span class="szi">' + szCell(p, z) + "<small>" + z + "</small></span>"; }).join("") + "</span></td>";
+  return ALLSZ.map(function(z){ return '<td class="szc hide-m">' + (p.sizes.indexOf(z) >= 0 ? szCell(p, z) : '<span class="sz na">·</span>') + "</td>"; }).join("") +
+    '<td class="szrow show-m" data-l="Μεγέθη"><span class="szflex">' + p.sizes.map(function(z){ return '<span class="szi">' + szCell(p, z) + "<small>" + z + "</small></span>"; }).join("") + "</span></td>";
+}
+function fabrics(){
+  var rows = DB.fabrics.slice().sort(function(a, b){ return a.meters / Math.max(a.reorder, 1) - b.meters / Math.max(b.reorder, 1); });
+  var low = rows.filter(function(f){ return f.meters < f.reorder; });
+  var h = '<div class="note">✦ <span>Το «φτάνει για» υπολογίζεται από τα μέτρα που χρειάζεται κάθε μοντέλο (π.χ. Renata ≈ 2,6 μ.) και τις πωλήσεις των τελευταίων 30 ημερών.</span></div>';
+  h += '<div class="sum"><b>' + rows.length + "</b> υφάσματα · <b>" + nf0.format(sumBy(rows, function(f){ return f.meters; })) + "</b> μέτρα · αξία <b>" + eur(sumBy(rows, function(f){ return f.meters * f.cost; })) + "</b> · <b class=\"down\">" + low.length + " κάτω από το όριο</b></div>";
+  return h + table([
+    { l: "Ύφασμα", f: function(f){ return '<span class="pname">' + swatch(f.print) + "<div><b>" + esc(f.print) + "</b><small>" + esc(f.type) + " · " + f.width + " εκ.</small></div></span>"; } },
+    { l: "Απόθεμα", cls: "num", f: function(f){ return '<b class="' + (f.meters < f.reorder ? "down" : "") + '">' + nf0.format(f.meters) + " μ.</b>"; } },
+    { l: "Όριο", cls: "num", f: function(f){ return nf0.format(f.reorder) + " μ."; } },
+    { l: "Χρήση 30ημ.", cls: "num", f: function(f){ return f.use30 ? nf0.format(f.use30) + " μ." : "—"; } },
+    { l: "Φτάνει για", cls: "num", f: function(f){ if (!f.use30) return "—"; var d = Math.round(f.meters / f.use30 * 30); return '<span class="badge ' + (d < 14 ? "b-bad" : d < 30 ? "b-prod" : "b-done") + '">~' + d + " ημέρες</span>"; } },
+    { l: "Προμηθευτής", f: function(f){ var s = byId(DB.suppliers, f.sup); return esc(s.name.replace(" (δείγμα)", "")) + ' <small class="muted">· ' + s.lead + " ημ.</small>"; } },
+    { l: "", f: function(f){ return f.meters < f.reorder ? '<button class="btn gold sm" data-act="reorder" data-id="' + f.id + '">Παραγγελία</button>' : ""; } }
+  ], rows);
+}
+
+V.cust = function(){
+  var u = UI.cust;
+  var all = DB.customers.map(function(c){ var s = custStats(c); return { id: c.id, c: c, s: s }; }).filter(function(x){ return x.s.n > 0 || x.c.fresh; });
+  var cities = {}; all.forEach(function(x){ cities[x.c.city] = 1; });
+  var rows = all.filter(function(x){
+    if (u.seg !== "all" && x.s.seg !== u.seg) return false;
+    if (u.city !== "all" && x.c.city !== u.city) return false;
+    if (u.q && !has(x.c.name + " " + x.c.city + " " + x.c.email + " " + x.c.id, u.q)) return false;
+    return true;
+  });
+  rows.sort(function(a, b){ return u.sort === "ltv" ? b.s.ltv - a.s.ltv : u.sort === "n" ? b.s.n - a.s.n : (b.s.last || 0) - (a.s.last || 0); });
+  var rep = all.filter(function(x){ return x.s.n >= 2; }).length;
+  var vip = all.filter(function(x){ return x.s.seg === "VIP"; });
+  var h = '<div class="head"><div><h1>Πελάτες</h1><p class="lead" style="margin:0">Ποιοι αγοράζουν, πόσο συχνά, και ποιους να ξαναθυμίσετε με ένα μήνυμα.</p></div><button class="btn pri" data-act="newCust">' + IC.plus + "Νέος πελάτης</button></div>";
+  h += '<div class="grid g-kpi" style="margin-bottom:16px">' + kpi("Ενεργοί πελάτες", nf0.format(all.length), '<span class="dl flat">με τουλάχιστον μία αγορά</span>', "dark") + kpi("Ξαναγοράζουν", pct(rep / all.length), '<span class="dl flat">' + nf0.format(rep) + " πελάτες</span>") + kpi("Μέση αξία πελάτη", eur(sumBy(all, function(x){ return x.s.ltv; }) / all.length), '<span class="dl flat">σε 12 μήνες</span>') + kpi("VIP", String(vip.length), '<span class="dl flat">' + pct(sumBy(vip, function(x){ return x.s.ltv; }) / sumBy(all, function(x){ return x.s.ltv; })) + " των εσόδων</span>") + "</div>";
+  h += '<div class="filters">' + srch("cust.q", u.q, "Όνομα, πόλη, email…") + sel("cust.seg", u.seg, [["all","Όλα τα τμήματα"],["VIP","VIP"],["Επαναλαμβανόμενος","Επαναλαμβανόμενοι"],["Νέος","Νέοι"],["Μία αγορά","Μία αγορά"],["Ανενεργός","Ανενεργοί (>6 μήνες)"],["Χονδρική","Χονδρική"]], "Τμήμα") + sel("cust.city", u.city, [["all","Όλες οι πόλεις"]].concat(Object.keys(cities).sort().map(function(c){ return [c, c]; })), "Πόλη") + sel("cust.sort", u.sort, [["ltv","Ταξινόμηση: αξία"],["n","Ταξινόμηση: παραγγελίες"],["last","Ταξινόμηση: πρόσφατοι"]], "Ταξινόμηση") + "</div>";
+  h += '<div class="sum"><b>' + nf0.format(rows.length) + "</b> πελάτες" + (u.seg === "Ανενεργός" ? ' · <button class="linkbtn" data-act="campaign" style="color:var(--ink);text-decoration:underline">Δημιουργία λίστας για καμπάνια επαναφοράς</button>' : "") + "</div>";
+  h += table([
+    { l: "Πελάτης", f: function(x){ return '<span class="pname"><span class="avatar" style="width:30px;height:30px;font-size:11.5px;background:' + (x.c.b2b ? "var(--gold-soft)" : "var(--lav)") + '">' + esc(initials(x.c.name)) + "</span><div><b>" + esc(x.c.name) + '</b><small>' + esc(x.c.email) + "</small></div></span>"; } },
+    { l: "Πόλη", f: function(x){ return esc(x.c.city); } },
+    { l: "Παραγγελίες", cls: "num", f: function(x){ return x.s.n; } },
+    { l: "Αξία", cls: "num", f: function(x){ return '<b>' + eur(x.s.ltv) + "</b>"; } },
+    { l: "Τελευταία", cls: "nowrap", f: function(x){ return x.s.last ? dfmt(x.s.last) : "—"; } },
+    { l: "Τμήμα", f: function(x){ return '<span class="badge ' + (SEGB[x.s.seg] || "b-grey") + '">' + x.s.seg + "</span>"; } }
+  ], rows.slice(0, u.lim), { act: "cust" });
+  if (rows.length > u.lim) h += '<div class="more"><button class="btn ghost" data-act="moreCust">Εμφάνιση περισσότερων (' + nf0.format(rows.length - u.lim) + ")</button></div>";
+  return h;
+};
+function initials(n){ return n.replace(/[«»"()]/g, "").split(" ").filter(Boolean).slice(0, 2).map(function(w){ return w[0]; }).join(""); }
+
+V.sup = function(){
+  var u = UI.sup;
+  var h = '<div class="head"><div><h1>Προμηθευτές</h1><p class="lead" style="margin:0">Υφάσματα, φασόν, ετικέτες, συσκευασία και courier. Μαζί με τις παραγγελίες αγοράς και ό,τι χρωστάτε.</p></div><div class="row"><button class="btn ghost" data-act="newSup">Νέος προμηθευτής</button><button class="btn pri" data-act="newPO">' + IC.plus + "Παραγγελία αγοράς</button></div></div>";
+  var openPO = DB.pos.filter(function(p){ return p.status !== "Παραλήφθηκε"; });
+  var spend = groupSum(DB.expenses.filter(function(e){ return e.sid; }), function(e){ return e.sid; }, function(e){ return e.amount; });
+  h += '<div class="grid g-kpi" style="margin-bottom:16px">' + kpi("Ανοιχτά υπόλοιπα", eur(sumBy(DB.suppliers, function(s){ return s.balance; })), '<span class="dl flat">προς ' + DB.suppliers.filter(function(s){ return s.balance; }).length + " προμηθευτές</span>", "dark") + kpi("Ανοιχτές παραγγελίες", String(openPO.length), '<span class="dl flat">' + eur(sumBy(openPO, function(p){ return p.amount; })) + "</span>") + kpi("Αγορές 12 μηνών", eur(sumBy(Object.keys(spend), function(k){ return spend[k]; })), '<span class="dl flat">υφάσματα, φασόν, courier</span>') + kpi("Μέσος χρόνος παράδοσης", nf0.format(sumBy(DB.suppliers, function(s){ return s.lead; }) / DB.suppliers.length) + " ημ.", '<span class="dl flat">υφάσματα: 7–18 ημ.</span>') + "</div>";
+  h += '<div class="filters">' + srch("sup.q", u.q, "Προμηθευτής, κατηγορία, πόλη…") + "</div>";
+  var rows = DB.suppliers.filter(function(s){ return has(s.name + " " + s.cat + " " + s.city, u.q); });
+  h += table([
+    { l: "Προμηθευτής", f: function(s){ return "<div><b>" + esc(s.name) + '</b><br><small class="muted">' + esc(s.cat) + "</small></div>"; } },
+    { l: "Πόλη", f: function(s){ return esc(s.city); } },
+    { l: "Επαφή", f: function(s){ return esc(s.contact) + '<br class="hide-m"><small class="muted"> ' + esc(s.phone) + "</small>"; } },
+    { l: "Παράδοση", cls: "num", f: function(s){ return s.lead + " ημ."; } },
+    { l: "Όροι", f: function(s){ return esc(s.terms); } },
+    { l: "Αγορές 12μ.", cls: "num", f: function(s){ return eur(spend[s.id] || 0); } },
+    { l: "Υπόλοιπο", cls: "num", f: function(s){ return s.balance ? '<b>' + eur(s.balance) + "</b>" : '<span class="muted">—</span>'; } },
+    { l: "Αξιολόγηση", f: function(s){ return '<span class="stars">' + "★★★★★".slice(0, s.rating) + '<span style="color:#e3d9cc">' + "★★★★★".slice(s.rating) + "</span></span>"; } }
+  ], rows, { act: "sup" });
+  h += '<div class="card-h" style="margin:22px 0 10px"><h2>Παραγγελίες αγοράς</h2><div class="filters" style="margin:0">' + sel("sup.st", u.st, [["all","Όλες"],["Εστάλη","Εστάλη"],["Σε εξέλιξη","Σε εξέλιξη"],["Σε μεταφορά","Σε μεταφορά"],["Παραλήφθηκε","Παραλήφθηκε"]], "Κατάσταση") + "</div></div>";
+  var POB = { "Εστάλη": "b-new", "Σε εξέλιξη": "b-prod", "Σε μεταφορά": "b-ship", "Παραλήφθηκε": "b-done" };
+  h += table([
+    { l: "Αρ.", f: function(p){ return "<b>" + p.id + "</b>"; } },
+    { l: "Προμηθευτής", f: function(p){ return esc(byId(DB.suppliers, p.sid).name.replace(" (δείγμα)", "")); } },
+    { l: "Περιγραφή", f: function(p){ return esc(p.desc); } },
+    { l: "Ποσό", cls: "num", f: function(p){ return eur(p.amount); } },
+    { l: "Άφιξη", cls: "nowrap", f: function(p){ return dfmt(p.eta); } },
+    { l: "Κατάσταση", f: function(p){ return '<span class="badge ' + POB[p.status] + '">' + p.status + "</span>" + (p.status !== "Παραλήφθηκε" ? ' <button class="btn ghost sm" data-act="poRecv" data-id="' + p.id + '">Παραλαβή</button>' : ""); } }
+  ], DB.pos.filter(function(p){ return (u.st === "all" || p.status === u.st) && has(p.desc + " " + byId(DB.suppliers, p.sid).name, u.q); }).sort(function(a, b){ return b.date - a.date; }));
+  return h;
+};
+
+V.ret = function(){
+  var u = UI.ret;
+  var y = DB.orders.filter(function(o){ return o.status !== "cancel" && o.ch !== "whole" && o.ch !== "pop"; }).length;
+  var R = DB.returns, ex = R.filter(function(r){ return r.type === "Αλλαγή μεγέθους"; }).length;
+  var reasons = groupSum(R, function(r){ return r.reason; }, function(){ return 1; });
+  var h = '<div class="head"><div><h1>Επιστροφές & αλλαγές</h1><p class="lead" style="margin:0">Κάθε αίτημα με την αιτία του. Έτσι φαίνεται ποιο μοντέλο «βγαίνει» μικρό ή μεγάλο.</p></div><button class="btn pri" data-act="newRet">' + IC.plus + "Νέο αίτημα</button></div>";
+  h += '<div class="grid g-kpi" style="margin-bottom:16px">' + kpi("Ποσοστό επιστροφών", pct(R.length / y), '<span class="dl flat">' + R.length + " αιτήματα / 12 μήνες</span>", "dark") + kpi("Αλλαγές μεγέθους", pct(ex / R.length), '<span class="dl flat">τα χρήματα μένουν στην επιχείρηση</span>') + kpi("Επιστροφές χρημάτων", eur(sumBy(R.filter(function(r){ return r.type === "Επιστροφή χρημάτων"; }), function(r){ return r.amount; })), '<span class="dl flat">12 μήνες</span>') + kpi("Κόστος μεταφορικών", eur(sumBy(R, function(r){ return r.cost * 2; })), '<span class="dl flat">παραλαβή + αποστολή</span>') + "</div>";
+  // size insight by model
+  var byM = {}; R.forEach(function(r){ if (!/μέγεθος/.test(r.reason)) return; var m = P(r.pid).name; byM[m] = byM[m] || { s: 0, b: 0 }; if (r.reason === "Μικρό μέγεθος") byM[m].s++; else byM[m].b++; });
+  var ins = Object.keys(byM).map(function(m){ return { m: m, s: byM[m].s, b: byM[m].b }; }).sort(function(a, b){ return (b.s + b.b) - (a.s + a.b); }).slice(0, 4);
+  h += '<div class="grid g-2e" style="margin-bottom:16px"><div class="card"><div class="card-h"><h2>Αιτίες</h2></div>' + hbars(Object.keys(reasons).map(function(k){ return { n: k, v: reasons[k] }; }).sort(function(a, b){ return b.v - a.v; }), function(v){ return String(v); }, "var(--coral)") + '</div><div class="card"><div class="card-h"><h2>Εφαρμογή ανά μοντέλο</h2><span class="muted" style="font-size:12.5px">μικρό vs μεγάλο</span></div><div class="alerts">' + ins.map(function(x){ var tip = x.s > x.b * 1.3 ? "μάλλον βγαίνει <b>μικρό</b>. Αξίζει μια σημείωση στον οδηγό μεγεθών." : x.b > x.s * 1.3 ? "μάλλον βγαίνει <b>μεγάλο</b>." : "η εφαρμογή είναι ισορροπημένη."; return '<div class="alert" style="cursor:default"><span class="dot" style="background:var(--gold)"></span><span><b>' + esc(x.m) + "</b>: " + x.s + " μικρό / " + x.b + " μεγάλο. " + tip + "</span></div>"; }).join("") + "</div></div></div>";
+  h += '<div class="filters">' + srch("ret.q", u.q, "RMA, παραγγελία, πελάτης…") + sel("ret.st", u.st, [["all","Όλες οι καταστάσεις"],["Αίτημα","Αίτημα"],["Σε μεταφορά","Σε μεταφορά"],["Παραλήφθηκε","Παραλήφθηκε"],["Ολοκληρώθηκε","Ολοκληρώθηκε"]], "Κατάσταση") + sel("ret.type", u.type, [["all","Όλοι οι τύποι"],["Αλλαγή μεγέθους","Αλλαγή μεγέθους"],["Επιστροφή χρημάτων","Επιστροφή χρημάτων"],["Αντικατάσταση","Αντικατάσταση"]], "Τύπος") + "</div>";
+  var RB = { "Αίτημα": "b-new", "Σε μεταφορά": "b-ship", "Παραλήφθηκε": "b-prod", "Ολοκληρώθηκε": "b-done" };
+  var rows = R.filter(function(r){ return (u.st === "all" || r.status === u.st) && (u.type === "all" || r.type === u.type) && has(r.id + " " + r.oid + " " + DB.cust[r.cid].name + " " + P(r.pid).name + " " + P(r.pid).print, u.q); });
+  h += '<div class="sum"><b>' + rows.length + "</b> αιτήματα</div>";
+  h += table([
+    { l: "RMA", f: function(r){ return "<b>" + r.id + '</b> <small class="muted">' + r.oid + "</small>"; } },
+    { l: "Ημ/νία", cls: "nowrap", f: function(r){ return dfmt(r.date); } },
+    { l: "Πελάτης", f: function(r){ return esc(DB.cust[r.cid].name); } },
+    { l: "Προϊόν", f: function(r){ var p = P(r.pid); return '<span class="pname">' + swatch(p.print) + "<span>" + esc(p.name.replace("Ολόσωμη Βελουτέ Φόρμα", "Φόρμα")) + " · " + r.size + (r.to ? " → <b>" + r.to + "</b>" : "") + "</span></span>"; } },
+    { l: "Αιτία", f: function(r){ return esc(r.reason); } },
+    { l: "Τύπος", f: function(r){ return esc(r.type); } },
+    { l: "Κατάσταση", f: function(r){ return '<span class="badge ' + RB[r.status] + '">' + r.status + "</span>" + (r.status !== "Ολοκληρώθηκε" ? ' <button class="btn ghost sm" data-act="retAdv" data-id="' + r.id + '">→</button>' : ""); } }
+  ], rows.slice(0, 60));
+  return h;
+};
+
+V.ch = function(){
+  var u = UI.ch, R = perRange(u.per), s = stats(R.a, R.b, "all");
+  var h = '<div class="head"><div><h1>Κανάλια πώλησης</h1><p class="lead" style="margin:0">Πόσα φέρνει κάθε κανάλι, αφού αφαιρεθούν προμήθειες και μεταφορικά.</p></div><div class="chips">' + [["m","Μήνας"],["q","Τρίμηνο"],["y","12 μήνες"]].map(function(x){ return '<button class="chip ' + (u.per === x[0] ? "on" : "") + '" data-set="ch.per" data-v="' + x[0] + '">' + x[1] + "</button>"; }).join("") + "</div></div>";
+  var data = CHANNELS.map(function(c){
+    var os = s.os.filter(function(o){ return o.ch === c.k && o.status !== "ret"; });
+    var rev = sumBy(os, function(o){ return o.total; });
+    var fee = rev * c.fee + (c.k === "pop" ? 0 : sumBy(os, function(o){ return o.ship ? 0 : 2.9; }));
+    var trend = DB.months.map(function(m){ var k = mkey(m); return sumBy(DB.orders.filter(function(o){ return o.ch === c.k && mkey(o.date) === k && o.status !== "cancel" && o.status !== "ret"; }), function(o){ return o.total; }); });
+    return { c: c, n: os.length, rev: rev, aov: os.length ? rev / os.length : 0, fee: fee, net: rev - fee, trend: trend, newC: os.filter(function(o){ return DB.cust[o.cid].since && mkey(DB.cust[o.cid].since) === mkey(o.date) && DB.cust[o.cid].since.getDate() === o.date.getDate(); }).length };
+  });
+  var tot = sumBy(data, function(d){ return d.rev; }) || 1;
+  h += '<div class="grid g-kpi" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin-bottom:16px">' + data.map(function(d){
+    return '<div class="card kpi"><div class="row" style="justify-content:space-between"><span class="lbl" style="display:flex;align-items:center;gap:7px"><i style="width:10px;height:10px;border-radius:3px;background:' + d.c.col + ';display:inline-block"></i>' + d.c.s + '</span><b style="font-size:13px">' + pct(d.rev / tot) + '</b></div><div class="val">' + eur(d.rev) + '</div><div class="row" style="justify-content:space-between;align-items:flex-end"><span class="muted" style="font-size:12.5px">' + nf0.format(d.n) + " παρ. · καλάθι " + eur(d.aov) + "</span>" + spark(d.trend, d.c.col) + "</div></div>";
+  }).join("") + "</div>";
+  h += '<div class="grid g-2" style="margin-bottom:16px"><div class="card"><div class="card-h"><h2>Σύγκριση καναλιών</h2><span class="muted" style="font-size:12.5px">' + R.lbl + "</span></div>" + table([
+    { l: "Κανάλι", f: function(d){ return "<b>" + esc(d.c.n) + "</b>"; } },
+    { l: "Παραγγελίες", cls: "num", f: function(d){ return nf0.format(d.n); } },
+    { l: "Έσοδα", cls: "num", f: function(d){ return eur(d.rev); } },
+    { l: "Μέσο καλάθι", cls: "num", f: function(d){ return eur2(d.aov); } },
+    { l: "Προμήθειες & δωρεάν μεταφ.", cls: "num", f: function(d){ return "−" + eur(d.fee); } },
+    { l: "Καθαρά", cls: "num", f: function(d){ return "<b>" + eur(d.net) + "</b>"; } }
+  ], data) + '</div><div class="card"><div class="card-h"><h2>Μερίδιο εσόδων</h2></div>' + donut(data.map(function(d){ return { n: d.c.s, v: d.rev, c: d.c.col }; }), eur(tot).replace(" €", "€"), "σύνολο") + '<p class="muted" style="font-size:12.5px;margin:12px 0 0">Η χονδρική έχει χαμηλότερη τιμή ανά κομμάτι αλλά μεγάλο καλάθι. Τα pop-up έχουν το κόστος του stand.</p></div></div>';
+  return h;
+};
+
+V.fin = function(){
+  var u = UI.fin;
+  var h = '<div class="head"><div><h1>Οικονομικά</h1><p class="lead" style="margin:0">Αποτελέσματα ανά μήνα και κάθε έξοδο ανά κατηγορία. Ό,τι χρειάζεται και ο λογιστής.</p></div><div class="row"><button class="btn ghost" data-act="export">Εξαγωγή CSV</button><button class="btn pri" data-act="newExp">' + IC.plus + "Νέο έξοδο</button></div></div>";
+  var ms = DB.months.map(function(m){ var k = mkey(m), s = stats(k, k, "all"); return { id: k, m: m, rev: s.rev, exp: s.exp, pr: s.profit, n: s.n }; }).reverse();
+  var tr = sumBy(ms, function(x){ return x.rev; }), te = sumBy(ms, function(x){ return x.exp; });
+  h += '<div class="grid g-kpi" style="margin-bottom:16px">' + kpi("Έσοδα 12μ.", eur(tr), "", "dark") + kpi("Έξοδα 12μ.", eur(te)) + kpi("Καθαρό κέρδος", eur(tr - te), '<span class="dl flat">περιθώριο ' + pct((tr - te) / tr) + "</span>") + kpi("Καλύτερος μήνας", MONF[ms.slice().sort(function(a, b){ return b.pr - a.pr; })[0].m.getMonth()], '<span class="dl up">' + eur(ms.slice().sort(function(a, b){ return b.pr - a.pr; })[0].pr) + " κέρδος</span>") + "</div>";
+  var cats = groupSum(DB.expenses.filter(function(e){ return u.m === "all" || mkey(e.date) === +u.m; }), function(e){ return e.cat; }, function(e){ return e.amount; });
+  var CC = ["#2E2B29","#C9A86A","#f16d70","#b9a3d6","#9cae94","#d9bc85","#857c74","#ffb98a","#6f8fb3"];
+  h += '<div class="grid g-2" style="margin-bottom:16px"><div class="card"><div class="card-h"><h2>Αποτελέσματα ανά μήνα</h2></div>' + table([
+    { l: "Μήνας", f: function(x){ return "<b>" + MONF[x.m.getMonth()] + " " + x.m.getFullYear() + "</b>" + (x.id === mkey(TODAY) ? ' <span class="badge b-new">τρέχων</span>' : ""); } },
+    { l: "Παραγγελίες", cls: "num", f: function(x){ return nf0.format(x.n); } },
+    { l: "Έσοδα", cls: "num", f: function(x){ return eur(x.rev); } },
+    { l: "Έξοδα", cls: "num", f: function(x){ return eur(x.exp); } },
+    { l: "Κέρδος", cls: "num", f: function(x){ return '<b class="' + (x.pr < 0 ? "down" : "") + '">' + eur(x.pr) + "</b>"; } },
+    { l: "Περιθώριο", cls: "num", f: function(x){ return x.rev ? pct(x.pr / x.rev) : "—"; } }
+  ], ms, { act: "finMonth" }) + '</div><div class="card"><div class="card-h"><h2>Έξοδα ανά κατηγορία</h2><span class="muted" style="font-size:12.5px">' + (u.m === "all" ? "12 μήνες" : MONF[+u.m % 12] + " " + Math.floor(+u.m / 12)) + "</span></div>" + hbars(Object.keys(cats).map(function(k, i){ return { n: k, v: cats[k], c: CC[i % CC.length] }; }).sort(function(a, b){ return b.v - a.v; }), eur) + "</div></div>";
+  var catsAll = {}; DB.expenses.forEach(function(e){ catsAll[e.cat] = 1; });
+  h += '<div class="card-h" style="margin:6px 0 10px"><h2>Έξοδα</h2></div><div class="filters">' + sel("fin.cat", u.cat, [["all","Όλες οι κατηγορίες"]].concat(Object.keys(catsAll).map(function(c){ return [c, c]; })), "Κατηγορία") + sel("fin.m", u.m, [["all","Όλοι οι μήνες"]].concat(DB.months.slice().reverse().map(function(m){ return [String(mkey(m)), MONF[m.getMonth()] + " " + m.getFullYear()]; })), "Μήνας") + "</div>";
+  var rows = DB.expenses.filter(function(e){ return (u.cat === "all" || e.cat === u.cat) && (u.m === "all" || mkey(e.date) === +u.m); });
+  h += '<div class="sum"><b>' + rows.length + "</b> εγγραφές · σύνολο <b>" + eur(sumBy(rows, function(e){ return e.amount; })) + "</b></div>";
+  h += table([
+    { l: "Ημ/νία", cls: "nowrap", f: function(e){ return dfmt(e.date); } },
+    { l: "Κατηγορία", f: function(e){ return "<b>" + esc(e.cat) + "</b>"; } },
+    { l: "Περιγραφή", f: function(e){ return esc(e.desc); } },
+    { l: "Προμηθευτής", f: function(e){ return e.sid ? esc(byId(DB.suppliers, e.sid).name.replace(" (δείγμα)", "")) : '<span class="muted">—</span>'; } },
+    { l: "Ποσό", cls: "num", f: function(e){ return "<b>" + eur2(e.amount) + "</b>"; } }
+  ], rows.slice(0, 50));
+  return h;
+};
+
+/* ---------- drawers ---------- */
+function openDrawer(html){ $("#drawer").innerHTML = html; $("#drawer").classList.add("open"); $("#scrim").classList.add("open"); $("#drawer").scrollTop = 0; }
+function closeAll(){ ["#drawer","#modal","#scrim","#side"].forEach(function(s){ $(s).classList.remove("open"); }); }
+function drOrder(id){
+  var o = DB.ord[id], c = DB.cust[o.cid];
+  var idx = FLOW.indexOf(o.status);
+  var h = '<div class="dr-h"><div><h2 style="font-size:19px">' + o.id + "</h2><span class=\"muted\">" + dfmt(o.date) + " · " + CH[o.ch].n + '</span></div><button class="x" data-act="close" aria-label="Κλείσιμο">×</button></div><div class="dr-b">';
+  h += '<div class="row">' + stBadge(o.status) + '<span class="badge b-grey">' + esc(o.pay) + '</span><span class="badge b-grey">' + (o.ch === "pop" ? "Παράδοση επί τόπου" : o.courier) + "</span></div>";
+  h += '<div class="card" style="padding:14px"><div class="kv"><span>Πελάτης</span><b><button class="linkbtn" style="color:var(--ink);font-size:14px;text-decoration:underline" data-act="cust" data-id="' + c.id + '">' + esc(c.name) + "</button></b></div><div class=\"kv\"><span>Πόλη</span><span>" + esc(c.city) + '</span></div><div class="kv"><span>Επικοινωνία</span><span>' + esc(c.phone) + "</span></div></div>";
+  h += '<div class="lines">' + o.items.map(function(x){ var p = P(x.pid); return '<div class="line">' + swatch(p.print) + "<div><b>" + esc(p.name) + "</b><br><span class=\"muted\">" + esc(p.print) + " · " + x.size + " · " + x.qty + '×</span></div><span class="r">' + eur2(x.price * x.qty) + "</span></div>"; }).join("") + "</div>";
+  h += '<div class="card" style="padding:14px"><div class="kv"><span>Υποσύνολο</span><span>' + eur2(o.sub) + '</span></div><div class="kv"><span>Μεταφορικά</span><span>' + (o.ship ? eur2(o.ship) : "Δωρεάν") + '</span></div><div class="kv" style="font-size:16px;margin-top:4px"><span>Σύνολο</span><b>' + eur2(o.total) + "</b></div></div>";
+  if (idx >= 0) h += '<div><h2 style="font-size:14px;margin-bottom:6px">Πορεία</h2><div class="tl">' + FLOW.map(function(s, i){ return '<div><i class="' + (i <= idx ? "on" : "") + '"></i><span class="' + (i <= idx ? "" : "muted") + '">' + STATUS[s][0] + "</span></div>"; }).join("") + "</div></div>";
+  if (o.note) h += '<div class="note" style="display:flex">' + esc(o.note) + "</div>";
+  h += '<div class="row">' + (idx >= 0 && idx < FLOW.length - 1 ? '<button class="btn pri" data-act="adv" data-id="' + o.id + '">Επόμενο: ' + STATUS[FLOW[idx + 1]][0] + "</button>" : "") + (o.status !== "cancel" && idx >= 0 && idx < 5 ? '<button class="btn ghost" data-act="cancelO" data-id="' + o.id + '">Ακύρωση</button>' : "") + '<button class="btn ghost" data-act="printO">Εκτύπωση δελτίου</button></div>';
+  openDrawer(h + "</div>");
+}
+function drCust(id){
+  var c = DB.cust[id], s = custStats(c);
+  var favP = {}; s.os.forEach(function(o){ o.items.forEach(function(x){ var p = P(x.pid); favP[p.print] = (favP[p.print] || 0) + 1; }); });
+  var fav = Object.keys(favP).sort(function(a, b){ return favP[b] - favP[a]; }).slice(0, 3);
+  var sizes = {}; s.os.forEach(function(o){ o.items.forEach(function(x){ sizes[x.size] = (sizes[x.size] || 0) + 1; }); });
+  var size = Object.keys(sizes).sort(function(a, b){ return sizes[b] - sizes[a]; })[0];
+  var h = '<div class="dr-h"><div class="pname"><span class="avatar" style="width:46px;height:46px;font-size:16px">' + esc(initials(c.name)) + '</span><div><h2 style="font-size:19px">' + esc(c.name) + '</h2><span class="muted">' + esc(c.city) + " · πελάτης από " + (c.since ? MONF[c.since.getMonth()] + " " + c.since.getFullYear() : "σήμερα") + '</span></div></div><button class="x" data-act="close" aria-label="Κλείσιμο">×</button></div><div class="dr-b">';
+  h += '<div class="row"><span class="badge ' + (SEGB[s.seg] || "b-grey") + '">' + s.seg + "</span>" + (c.news ? '<span class="badge b-done">Newsletter ✓</span>' : '<span class="badge b-grey">Χωρίς newsletter</span>') + (c.ig ? '<span class="badge b-new">Ακολουθεί στο Instagram</span>' : "") + "</div>";
+  h += '<div class="grid" style="grid-template-columns:repeat(3,1fr);gap:8px">' + [["Παραγγελίες", s.n], ["Αξία", eur(s.ltv)], ["Μέσο καλάθι", s.n ? eur(s.ltv / s.n) : "—"]].map(function(x){ return '<div class="card" style="padding:10px"><div class="muted" style="font-size:11.5px">' + x[0] + '</div><b style="font-size:17px">' + x[1] + "</b></div>"; }).join("") + "</div>";
+  h += '<div class="card" style="padding:14px"><div class="kv"><span>Email</span><span>' + esc(c.email) + '</span></div><div class="kv"><span>Τηλέφωνο</span><span>' + esc(c.phone) + '</span></div><div class="kv"><span>Συνήθες μέγεθος</span><b>' + (size || "—") + '</b></div><div class="kv"><span>Αγαπημένα prints</span><span style="display:flex;gap:4px">' + fav.map(function(p){ return swatch(p); }).join("") + "</span></div></div>";
+  if (c.note) h += '<div class="note" style="display:flex">' + esc(c.note) + "</div>";
+  h += '<h2 style="font-size:14px">Ιστορικό</h2><div class="lines">' + s.os.slice().sort(function(a, b){ return b.date - a.date; }).slice(0, 12).map(function(o){ return '<div class="line" style="cursor:pointer" data-act="order" data-id="' + o.id + '">' + swatch(P(o.items[0].pid).print) + '<div><b>' + o.id + '</b> <span class="muted">' + dfmt(o.date) + "</span><br><span class=\"muted\" style=\"font-size:12.5px\">" + esc(itemsTxt(o)) + '</span></div><span class="r">' + eur(o.total) + "</span></div>"; }).join("") + (s.os.length ? "" : '<div class="muted">Καμία παραγγελία ακόμα.</div>') + "</div>";
+  h += '<div class="row"><button class="btn pri" data-act="newOrder" data-id="' + c.id + '">' + IC.plus + 'Νέα παραγγελία</button><button class="btn ghost" data-act="noteC" data-id="' + c.id + '">Σημείωση</button></div>';
+  openDrawer(h + "</div>");
+}
+function drProduct(id){
+  var p = P(id), soldBy = {}, rev = 0, n = 0;
+  DB.orders.forEach(function(o){ if (o.status === "cancel") return; o.items.forEach(function(x){ if (x.pid === id) { soldBy[x.size] = (soldBy[x.size] || 0) + x.qty; rev += x.price * x.qty; n += x.qty; } }); });
+  var rets = DB.returns.filter(function(r){ return r.pid === id; }).length;
+  var h = '<div class="dr-h"><div class="pname">' + swatch(p.print).replace('class="sw" style="', 'class="sw" style="width:46px;height:46px;') + '<div><h2 style="font-size:18px">' + esc(p.name) + '</h2><span class="muted">' + esc(p.print) + " · " + p.sku + '</span></div></div><button class="x" data-act="close" aria-label="Κλείσιμο">×</button></div><div class="dr-b">';
+  h += '<div class="grid" style="grid-template-columns:repeat(3,1fr);gap:8px">' + [["Τεμάχια 12μ.", nf0.format(n)], ["Έσοδα", eur(rev)], ["Επιστροφές", n ? pct(rets / n) : "—"]].map(function(x){ return '<div class="card" style="padding:10px"><div class="muted" style="font-size:11.5px">' + x[0] + '</div><b style="font-size:17px">' + x[1] + "</b></div>"; }).join("") + "</div>";
+  h += '<div class="card"><div class="card-h"><h2 style="font-size:14px">Πωλήσεις ανά μέγεθος</h2></div>' + columns(p.sizes.map(function(z){ return { n: z === "One size" ? "OS" : z, v: soldBy[z] || 0 }; }), 360, 150) + "</div>";
+  h += '<div class="card" style="padding:14px"><h2 style="font-size:14px;margin-bottom:10px">Έτοιμο απόθεμα · αλλαγή</h2><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px">' + p.sizes.map(function(z){ return '<div style="display:grid;gap:4px;justify-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px"><b style="font-size:12px">' + z + '</b><div class="row" style="gap:4px;flex-wrap:nowrap"><button class="btn ghost sm" style="min-height:28px;padding:2px 8px" data-act="stk" data-id="' + p.id + '" data-z="' + z + '" data-d="-1">−</button>' + szCell(p, z) + '<button class="btn ghost sm" style="min-height:28px;padding:2px 8px" data-act="stk" data-id="' + p.id + '" data-z="' + z + '" data-d="1">+</button></div></div>'; }).join("") + "</div></div>";
+  h += '<div class="card" style="padding:14px"><div class="kv"><span>Κατηγορία</span><span>' + esc(p.cat) + '</span></div><div class="kv"><span>Τιμή</span><b>' + (p.sale ? eur(p.sale) + ' <s class="muted">' + eur(p.price) + "</s>" : eur(p.price)) + '</b></div><div class="kv"><span>Ύφασμα / τεμάχιο</span><span>' + nf2.format(p.mt) + ' μ. · ' + esc(p.fabric) + '</span></div><div class="kv"><span>Κόστος υφάσματος</span><span>~' + eur2(p.mt * 9.4) + '</span></div><div class="kv"><span>Παραγωγή</span><span>' + (p.ready ? "Έτοιμο απόθεμα" : "Κατά παραγγελία, 5–15 εργάσιμες") + "</span></div></div>";
+  openDrawer(h + "</div>");
+}
+function drSup(id){
+  var s = byId(DB.suppliers, id);
+  var ex = DB.expenses.filter(function(e){ return e.sid === id; });
+  var po = DB.pos.filter(function(p){ return p.sid === id; });
+  var h = '<div class="dr-h"><div><h2 style="font-size:19px">' + esc(s.name) + '</h2><span class="muted">' + esc(s.cat) + " · " + esc(s.city) + '</span></div><button class="x" data-act="close" aria-label="Κλείσιμο">×</button></div><div class="dr-b">';
+  h += '<div class="card" style="padding:14px"><div class="kv"><span>Επαφή</span><span>' + esc(s.contact) + '</span></div><div class="kv"><span>Τηλέφωνο</span><span>' + esc(s.phone) + '</span></div><div class="kv"><span>Χρόνος παράδοσης</span><span>' + s.lead + ' ημέρες</span></div><div class="kv"><span>Όροι πληρωμής</span><span>' + esc(s.terms) + '</span></div><div class="kv"><span>Αξιολόγηση</span><span class="stars">' + "★★★★★".slice(0, s.rating) + '</span></div><div class="kv" style="font-size:16px;margin-top:4px"><span>Υπόλοιπο</span><b>' + eur(s.balance) + "</b></div></div>";
+  if (s.balance) h += '<button class="btn gold" data-act="pay" data-id="' + s.id + '">Καταχώριση πληρωμής ' + eur(s.balance) + "</button>";
+  h += '<h2 style="font-size:14px">Παραγγελίες αγοράς</h2><div class="lines">' + (po.length ? po.map(function(p){ return '<div class="line"><div><b>' + p.id + '</b> <span class="muted">' + dfmt(p.date) + "</span><br><span class=\"muted\" style=\"font-size:12.5px\">" + esc(p.desc) + '</span></div><span class="r">' + eur(p.amount) + "</span></div>"; }).join("") : '<div class="muted">—</div>') + "</div>";
+  h += '<h2 style="font-size:14px">Τελευταίες χρεώσεις</h2><div class="lines">' + (ex.length ? ex.slice(0, 6).map(function(e){ return '<div class="line"><div>' + esc(e.desc) + '<br><span class="muted" style="font-size:12.5px">' + dfmt(e.date) + '</span></div><span class="r">' + eur(e.amount) + "</span></div>"; }).join("") : '<div class="muted">—</div>') + "</div>";
+  openDrawer(h + "</div>");
+}
+
+/* ---------- forms ---------- */
+var formSave = null;
+function openForm(title, fields, onSave, sub){
+  var h = '<div class="dr-h" style="background:transparent;border:0"><div><h2 style="font-size:19px">' + title + "</h2>" + (sub ? '<span class="muted" style="font-size:13px">' + sub + "</span>" : "") + '</div><button class="x" data-act="close" aria-label="Κλείσιμο">×</button></div><form class="mo-b" id="frm">';
+  fields.forEach(function(f){
+    h += '<label class="field' + (f.full ? " full" : "") + '">' + f.l;
+    if (f.t === "select") h += '<select name="' + f.k + '"' + (f.req ? " required" : "") + ">" + f.o.map(function(o){ var v = Array.isArray(o) ? o[0] : o, l = Array.isArray(o) ? o[1] : o; return '<option value="' + esc(v) + '"' + (String(v) === String(f.v) ? " selected" : "") + ">" + esc(l) + "</option>"; }).join("") + "</select>";
+    else if (f.t === "area") h += '<textarea name="' + f.k + '" rows="3">' + esc(f.v || "") + "</textarea>";
+    else h += '<input name="' + f.k + '" type="' + (f.t || "text") + '"' + (f.v != null ? ' value="' + esc(f.v) + '"' : "") + (f.req ? " required" : "") + (f.min != null ? ' min="' + f.min + '"' : "") + (f.step ? ' step="' + f.step + '"' : "") + (f.ph ? ' placeholder="' + esc(f.ph) + '"' : "") + ">";
+    h += "</label>";
+  });
+  h += '<div class="mo-f"><button type="button" class="btn ghost" data-act="close">Άκυρο</button><button type="submit" class="btn pri">Αποθήκευση</button></div></form>';
+  $("#modal").innerHTML = h; $("#modal").classList.add("open"); $("#scrim").classList.add("open");
+  formSave = onSave;
+  var first = $("#frm input, #frm select"); if (first && window.innerWidth > 760) setTimeout(function(){ first.focus(); }, 60);
+}
+function formData(){ var o = {}; new FormData($("#frm")).forEach(function(v, k){ o[k] = v; }); return o; }
+var prodOpts = function(){ return PRODUCTS.map(function(p){ return [p.id, p.name + " · " + p.print + " (" + eur(p.sale || p.price) + ")"]; }); };
+
+function newOrder(cid){
+  var cOpts = [["__new","+ Νέος πελάτης (συμπληρώστε όνομα)"]].concat(DB.customers.filter(function(c){ return c.orders.length; }).slice(0, 400).sort(function(a, b){ return a.name.localeCompare(b.name, "el"); }).map(function(c){ return [c.id, c.name + " · " + c.city]; }));
+  openForm("Νέα παραγγελία", [
+    { k: "cid", l: "Πελάτης", t: "select", o: cOpts, v: cid || "__new", full: true },
+    { k: "cname", l: "Όνομα νέου πελάτη", ph: "π.χ. Μαρία Π." },
+    { k: "city", l: "Πόλη", t: "select", o: CITIES.map(function(c){ return c.n; }) },
+    { k: "pid", l: "Προϊόν", t: "select", o: prodOpts(), full: true },
+    { k: "size", l: "Μέγεθος", t: "select", o: ALLSZ.concat(SZ_K, SZ_1), v: "M" },
+    { k: "qty", l: "Ποσότητα", t: "number", v: 1, min: 1 },
+    { k: "ch", l: "Κανάλι", t: "select", o: CHANNELS.map(function(c){ return [c.k, c.s]; }), v: "ig" },
+    { k: "pay", l: "Πληρωμή", t: "select", o: ["Κάρτα","IRIS","PayPal","Αντικαταβολή","Μετρητά"] },
+    { k: "note", l: "Σημείωση", t: "area", full: true, v: "" }
+  ], function(d){
+    var c;
+    if (d.cid === "__new") { if (!d.cname.trim()) { toast("Συμπληρώστε το όνομα του πελάτη"); return false; } c = { id: "C" + (DB.nextC++), name: d.cname.trim(), first: d.cname.split(" ")[0], city: d.city, email: "—", phone: "—", ig: d.ch === "ig", news: false, since: new Date(TODAY), orders: [], note: "", fresh: true }; DB.customers.unshift(c); DB.cust[c.id] = c; }
+    else c = DB.cust[d.cid];
+    var p = P(d.pid), size = p.sizes.indexOf(d.size) >= 0 ? d.size : p.sizes[Math.min(2, p.sizes.length - 1)];
+    var qty = Math.max(1, +d.qty || 1), price = p.sale || p.price, sub = price * qty, ship = sub >= 60 || d.ch === "pop" ? 0 : 2.5;
+    var now = new Date(TODAY); var rn = new Date(); now.setHours(rn.getHours(), rn.getMinutes());
+    var o = { id: "RITC-" + (DB.nextO++), date: now, cid: c.id, ch: d.ch, items: [{ pid: p.id, size: size, qty: qty, price: price }], sub: sub, ship: ship, total: sub + ship, pay: d.pay, courier: "BOX NOW", status: d.ch === "pop" ? "done" : "new", note: d.note, isNew: true };
+    DB.orders.unshift(o); DB.ord[o.id] = o; c.orders.push(o.id);
+    toast("Η παραγγελία " + o.id + " καταχωρίστηκε" + (size !== d.size ? " (μέγεθος " + size + ")" : ""));
+    UI.orders = { q: "", st: "all", ch: "all", per: "all", lim: 40 };
+    cur = "orders"; history.replaceState(null, "", "#orders");
+  });
+}
+
+/* ---------- events ---------- */
+function toast(t){ var el = $("#toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(function(){ el.classList.remove("show"); }, 2600); }
+document.addEventListener("click", function(e){
+  var g = e.target.closest("[data-go]");
+  if (g) { var opts = g.getAttribute("data-opts"); go(g.getAttribute("data-go"), opts ? JSON.parse(opts) : null); return; }
+  var s = e.target.closest("[data-set]");
+  if (s) { var a = s.getAttribute("data-set").split("."); UI[a[0]][a[1]] = s.getAttribute("data-v"); render(); return; }
+  var el = e.target.closest("[data-act]"); if (!el) { if (!e.target.closest(".gsearch")) $("#gres").classList.remove("open"); return; }
+  var act = el.getAttribute("data-act"), id = el.getAttribute("data-id");
+  if (el.tagName === "TR" && e.target.closest("button")) return;
+  switch (act) {
+    case "menu": $("#side").classList.add("open"); $("#scrim").classList.add("open"); break;
+    case "close": closeAll(); break;
+    case "order": drOrder(id); break;
+    case "cust": drCust(id); break;
+    case "product": drProduct(id); break;
+    case "sup": drSup(id); break;
+    case "moreOrders": UI.orders.lim += 60; render(); break;
+    case "moreCust": UI.cust.lim += 60; render(); break;
+    case "adv": {
+      var o = DB.ord[id], i = FLOW.indexOf(o.status);
+      if (i >= 0 && i < FLOW.length - 1) { if (o.status === "new" && o.items.every(function(x){ return P(x.pid).ready; })) o.status = "ready"; else o.status = FLOW[i + 1]; toast(o.id + " → " + STATUS[o.status][0]); }
+      var inDrawer = !!el.closest(".drawer"); render(); if (inDrawer) drOrder(id); break;
+    }
+    case "cancelO": DB.ord[id].status = "cancel"; toast(id + " ακυρώθηκε"); render(); drOrder(id); break;
+    case "printO": toast("Το δελτίο αποστολής θα τυπωνόταν εδώ (δείγμα)"); break;
+    case "newOrder": closeAll(); newOrder(id); break;
+    case "stk": { var p = P(id), z = el.getAttribute("data-z"); p.stock[z] = Math.max(0, (p.stock[z] || 0) + +el.getAttribute("data-d")); render(); drProduct(id); break; }
+    case "collStep": { var k = byId(DB.collections, id); k.step++; if (k.step === 4) k.status = "Σε παραγωγή"; if (k.step === 5) k.status = "Φωτογράφιση"; if (k.step >= 6) { k.status = "Σε πώληση"; } toast(k.name + ": " + CSTEPS[k.step - 1]); render(); break; }
+    case "reorder": {
+      var f = byId(DB.fabrics, id), sp = byId(DB.suppliers, f.sup), m = Math.max(50, Math.round((f.reorder * 2 - f.meters) / 10) * 10);
+      openForm("Παραγγελία υφάσματος", [
+        { k: "m", l: "Μέτρα", t: "number", v: m, min: 10 },
+        { k: "c", l: "Τιμή / μέτρο (€)", t: "number", v: f.cost, step: "0.1" },
+        { k: "s", l: "Προμηθευτής", t: "select", o: DB.suppliers.slice(0, 3).map(function(x){ return [x.id, x.name]; }), v: f.sup, full: true }
+      ], function(d){ var po = { id: "PO-" + (318 + DB.pos.length - 8), sid: d.s, date: new Date(TODAY), desc: f.print + " " + f.type.toLowerCase() + " " + d.m + "μ.", amount: Math.round(d.m * d.c), eta: addDays(TODAY, byId(DB.suppliers, d.s).lead), status: "Εστάλη", fab: f.id, m: +d.m }; DB.pos.unshift(po); toast(po.id + " στάλθηκε στον " + byId(DB.suppliers, d.s).name.replace(" (δείγμα)", "")); }, f.print + " · απόθεμα " + f.meters + " μ., όριο " + f.reorder + " μ. · " + sp.lead + " ημέρες παράδοση");
+      break;
+    }
+    case "poRecv": { var po2 = byId(DB.pos, id); po2.status = "Παραλήφθηκε"; if (po2.fab) byId(DB.fabrics, po2.fab).meters += po2.m; byId(DB.suppliers, po2.sid).balance += po2.amount; toast(po2.id + " παραλήφθηκε · το υπόλοιπο ενημερώθηκε"); render(); break; }
+    case "pay": { var su = byId(DB.suppliers, id); DB.expenses.unshift({ id: "E" + Date.now(), date: new Date(TODAY), cat: "Πληρωμή προμηθευτή", desc: "Εξόφληση " + su.name.replace(" (δείγμα)", ""), amount: 0, sid: su.id }); DB.expenses.shift(); toast("Καταχωρίστηκε πληρωμή " + eur(su.balance)); su.balance = 0; render(); drSup(id); break; }
+    case "retAdv": { var r = byId(DB.returns, id), RS = ["Αίτημα","Σε μεταφορά","Παραλήφθηκε","Ολοκληρώθηκε"]; r.status = RS[Math.min(3, RS.indexOf(r.status) + 1)]; if (r.status === "Ολοκληρώθηκε" && r.type === "Αλλαγή μεγέθους") toast("Νέο κομμάτι " + r.to + " μπήκε στην παραγωγή"); else toast(r.id + " → " + r.status); render(); break; }
+    case "reset": build(); Object.keys(UI).forEach(function(k){ UI[k] = JSON.parse(JSON.stringify(UI0[k])); }); closeAll(); render(); toast("Τα δεδομένα δείγματος επανήλθαν"); break;
+    case "campaign": toast("Η λίστα είναι έτοιμη για Mailchimp ή Viber (δείγμα)"); break;
+    case "export": exportCsv(); break;
+    case "finMonth": UI.fin.m = id; render(); break;
+    case "noteC": { var cc = DB.cust[id]; openForm("Σημείωση για " + cc.name, [{ k: "n", l: "Σημείωση", t: "area", v: cc.note, full: true }], function(d){ cc.note = d.n; toast("Η σημείωση αποθηκεύτηκε"); setTimeout(function(){ drCust(id); }, 10); }); break; }
+    case "newCust": openForm("Νέος πελάτης", [
+      { k: "name", l: "Ονοματεπώνυμο", req: true, full: true }, { k: "city", l: "Πόλη", t: "select", o: CITIES.map(function(c){ return c.n; }) },
+      { k: "phone", l: "Τηλέφωνο", t: "tel" }, { k: "email", l: "Email", t: "email", full: true }, { k: "news", l: "Newsletter", t: "select", o: [["1","Ναι, συναίνεση"],["0","Όχι"]] }, { k: "note", l: "Σημείωση", t: "area", full: true, v: "" }
+    ], function(d){ var c = { id: "C" + (DB.nextC++), name: d.name.trim(), first: d.name.split(" ")[0], city: d.city, email: d.email || "—", phone: d.phone || "—", ig: false, news: d.news === "1", since: new Date(TODAY), orders: [], note: d.note, fresh: true }; DB.customers.unshift(c); DB.cust[c.id] = c; UI.cust.q = c.name; toast(c.name + " προστέθηκε"); }); break;
+    case "newProduct": openForm("Νέο προϊόν", [
+      { k: "name", l: "Όνομα", req: true, full: true, ph: "π.χ. Βελουτέ Σετ Nina" }, { k: "print", l: "Print / χρώμα", t: "select", o: Object.keys(PRINTS) },
+      { k: "cat", l: "Κατηγορία", t: "select", o: ["Βελουτέ Σετ","Ολόσωμες Φόρμες","Παντελόνι","Βελουτέ Κορμάκια","Couples & Family","Ανδρικά","Παιδικά","Αξεσουάρ","Παγιέτα"] },
+      { k: "price", l: "Τιμή (€)", t: "number", v: 70, min: 1 }, { k: "mt", l: "Ύφασμα / τεμ. (μ.)", t: "number", v: 2.2, step: "0.1" },
+      { k: "ready", l: "Παραγωγή", t: "select", o: [["0","Κατά παραγγελία"],["1","Έτοιμο απόθεμα"]] }
+    ], function(d){ var kids = d.cat === "Παιδικά", acc = d.cat === "Αξεσουάρ"; var p = { id: "P" + (PRODUCTS.length + 101), sku: "RT-NEW-" + (PRODUCTS.length + 1), name: d.name.trim(), print: d.print, cat: d.cat, price: +d.price, sale: 0, sizes: kids ? SZ_K : acc ? SZ_1 : d.cat === "Ανδρικά" ? SZ_U : SZ_W, ready: d.ready === "1", mt: +d.mt, w: 0, stock: {}, fabric: "Βελούδο" }; p.sizes.forEach(function(z){ p.stock[z] = 0; }); PRODUCTS.unshift(p); UI.stock.q = p.name; toast(p.name + " προστέθηκε"); }); break;
+    case "receive": openForm("Παραλαβή αποθέματος", [
+      { k: "pid", l: "Προϊόν", t: "select", o: prodOpts(), full: true }, { k: "size", l: "Μέγεθος", t: "select", o: ALLSZ.concat(SZ_K, SZ_1), v: "S" }, { k: "qty", l: "Τεμάχια", t: "number", v: 5, min: 1 }
+    ], function(d){ var p = P(d.pid); if (p.sizes.indexOf(d.size) < 0) { toast("Το " + p.name + " δεν έχει μέγεθος " + d.size); return false; } p.stock[d.size] = (p.stock[d.size] || 0) + (+d.qty); toast("+" + d.qty + " " + p.print + " " + d.size); }); break;
+    case "newFabric": openForm("Νέο ύφασμα", [
+      { k: "print", l: "Print / χρώμα", t: "select", o: Object.keys(PRINTS) }, { k: "type", l: "Τύπος", v: "Βελούδο τυπωμένο" },
+      { k: "meters", l: "Μέτρα", t: "number", v: 100, min: 1 }, { k: "reorder", l: "Όριο αναπαραγγελίας", t: "number", v: 60, min: 0 },
+      { k: "cost", l: "Τιμή / μέτρο (€)", t: "number", v: 9.4, step: "0.1" }, { k: "sup", l: "Προμηθευτής", t: "select", o: DB.suppliers.slice(0, 3).map(function(x){ return [x.id, x.name]; }) }
+    ], function(d){ DB.fabrics.push({ id: "F" + (100 + DB.fabrics.length), print: d.print, type: d.type, width: 150, meters: +d.meters, reorder: +d.reorder, use30: 0, sup: d.sup, cost: +d.cost }); toast("Το ύφασμα προστέθηκε"); }); break;
+    case "newSup": openForm("Νέος προμηθευτής", [
+      { k: "name", l: "Επωνυμία", req: true, full: true }, { k: "cat", l: "Κατηγορία", t: "select", o: ["Ύφασμα","Φασόν ραφή","Ετικέτες","Συσκευασία","Ψιλικά ραπτικής","Courier","Φωτογράφιση","Άλλο"] },
+      { k: "city", l: "Πόλη" }, { k: "contact", l: "Υπεύθυνος" }, { k: "phone", l: "Τηλέφωνο", t: "tel" }, { k: "lead", l: "Χρόνος παράδοσης (ημ.)", t: "number", v: 7, min: 0 }, { k: "terms", l: "Όροι πληρωμής", v: "30 ημέρες" }
+    ], function(d){ DB.suppliers.push({ id: "S" + (DB.suppliers.length + 1), name: d.name.trim(), cat: d.cat, city: d.city || "—", contact: d.contact || "—", phone: d.phone || "—", lead: +d.lead || 0, terms: d.terms, rating: 4, balance: 0 }); toast(d.name + " προστέθηκε"); }); break;
+    case "newPO": openForm("Νέα παραγγελία αγοράς", [
+      { k: "sid", l: "Προμηθευτής", t: "select", o: DB.suppliers.map(function(x){ return [x.id, x.name]; }), full: true }, { k: "desc", l: "Περιγραφή", req: true, full: true, ph: "π.χ. Cheetah βελούδο 120μ." },
+      { k: "amount", l: "Ποσό (€)", t: "number", v: 1000, min: 0 }, { k: "eta", l: "Αναμενόμενη άφιξη", t: "date", v: iso(addDays(TODAY, 7)) }
+    ], function(d){ DB.pos.unshift({ id: "PO-" + (318 + DB.pos.length - 8), sid: d.sid, date: new Date(TODAY), desc: d.desc, amount: +d.amount, eta: d.eta ? new Date(d.eta + "T12:00") : addDays(TODAY, 7), status: "Εστάλη" }); toast("Η παραγγελία αγοράς καταχωρίστηκε"); }); break;
+    case "newRet": {
+      var recent = DB.orders.filter(function(o){ return o.status === "done" || o.status === "shipped"; }).slice(0, 80);
+      openForm("Νέο αίτημα επιστροφής / αλλαγής", [
+        { k: "oid", l: "Παραγγελία", t: "select", o: recent.map(function(o){ return [o.id, o.id + " · " + DB.cust[o.cid].name]; }), full: true },
+        { k: "type", l: "Τύπος", t: "select", o: ["Αλλαγή μεγέθους","Επιστροφή χρημάτων","Αντικατάσταση"] },
+        { k: "reason", l: "Αιτία", t: "select", o: ["Μικρό μέγεθος","Μεγάλο μέγεθος","Δεν ταίριαξε το χρώμα/print","Ελάττωμα ραφής","Άλλαξε γνώμη","Λάθος αποστολή"] },
+        { k: "to", l: "Νέο μέγεθος (για αλλαγή)", t: "select", o: [""].concat(ALLSZ) }
+      ], function(d){ var o = DB.ord[d.oid], it = o.items[0]; DB.returns.unshift({ id: "RMA-" + (DB.nextR++), oid: o.id, cid: o.cid, date: new Date(TODAY), pid: it.pid, size: it.size, to: d.type === "Αλλαγή μεγέθους" ? (d.to || null) : null, reason: d.reason, type: d.type, amount: it.price, status: "Αίτημα", cost: 2.5 }); toast("Το αίτημα καταχωρίστηκε · ο πελάτης θα λάβει κωδικό BOX NOW"); });
+      break;
+    }
+    case "newExp": openForm("Νέο έξοδο", [
+      { k: "cat", l: "Κατηγορία", t: "select", o: ["Υφάσματα & υλικά","Φασόν / ραφή","Μισθοδοσία","Ενοίκιο & λογαριασμοί","Μεταφορικά","Συσκευασία","Διαφήμιση","Προμήθειες πληρωμών","Λογισμικό & λοιπά","Φωτογράφιση"] },
+      { k: "amount", l: "Ποσό (€)", t: "number", v: "", min: 0, step: "0.01", req: true }, { k: "desc", l: "Περιγραφή", req: true, full: true },
+      { k: "date", l: "Ημερομηνία", t: "date", v: iso(TODAY) }, { k: "sid", l: "Προμηθευτής", t: "select", o: [["","—"]].concat(DB.suppliers.map(function(x){ return [x.id, x.name]; })) }
+    ], function(d){ DB.expenses.unshift({ id: "E" + Date.now(), date: d.date ? new Date(d.date + "T12:00") : new Date(TODAY), cat: d.cat, desc: d.desc, amount: +d.amount, sid: d.sid }); DB.expenses.sort(function(a, b){ return b.date - a.date; }); toast("Το έξοδο καταχωρίστηκε"); }); break;
+    case "newColl": openForm("Νέα συλλογή", [
+      { k: "name", l: "Όνομα", req: true, full: true, ph: "π.χ. Valentine's Velvet" }, { k: "season", l: "Σεζόν", v: "SS27" },
+      { k: "launch", l: "Λανσάρισμα", t: "date", v: iso(addDays(TODAY, 90)) }, { k: "planned", l: "Κομμάτια (πλάνο)", t: "number", v: 300, min: 0 }, { k: "budget", l: "Budget (€)", t: "number", v: 6000, min: 0 }, { k: "note", l: "Περιγραφή", full: true }
+    ], function(d){ DB.collections.push({ id: "K" + (DB.collections.length + 1), name: d.name, season: d.season, status: "Σχεδιασμός", step: 1, launch: new Date(d.launch + "T12:00"), planned: +d.planned || 0, made: 0, budget: +d.budget || 0, spent: 0, note: d.note || "" }); toast(d.name + " προστέθηκε"); }); break;
+  }
+});
+function iso(d){ return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+document.addEventListener("submit", function(e){
+  if (e.target.id !== "frm") return; e.preventDefault();
+  if (formSave && formSave(formData()) === false) return;
+  closeAll(); render();
+});
+var tmr;
+document.addEventListener("input", function(e){
+  var f = e.target.getAttribute && e.target.getAttribute("data-f");
+  if (f && e.target.type === "search") { var a = f.split("."); UI[a[0]][a[1]] = e.target.value; clearTimeout(tmr); tmr = setTimeout(function(){ var pos = e.target.selectionStart; render(); var el = document.querySelector('[data-f="' + f + '"]'); if (el) { el.focus(); try { el.setSelectionRange(pos, pos); } catch(x) {} } }, 180); }
+  if (e.target.id === "gq") gsearch(e.target.value);
+});
+document.addEventListener("change", function(e){
+  var f = e.target.getAttribute && e.target.getAttribute("data-f"); if (!f || e.target.type === "search") return;
+  var a = f.split("."); UI[a[0]][a[1]] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+  if (a[0] === "orders") UI.orders.lim = 40; if (a[0] === "cust") UI.cust.lim = 40;
+  render();
+});
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") { closeAll(); $("#gres").classList.remove("open"); } });
+function gsearch(q){
+  var box = $("#gres"); if (q.trim().length < 2) { box.classList.remove("open"); return; }
+  var os = DB.orders.filter(function(o){ return has(o.id + " " + DB.cust[o.cid].name, q); }).slice(0, 4);
+  var cs = DB.customers.filter(function(c){ return c.orders.length && has(c.name + " " + c.city, q); }).slice(0, 4);
+  var ps = PRODUCTS.filter(function(p){ return has(p.name + " " + p.print + " " + p.sku, q); }).slice(0, 4);
+  var h = "";
+  if (os.length) h += '<div class="gh">Παραγγελίες</div>' + os.map(function(o){ return '<button data-act="order" data-id="' + o.id + '"><b>' + o.id + "</b> <small>" + esc(DB.cust[o.cid].name) + " · " + eur(o.total) + "</small></button>"; }).join("");
+  if (cs.length) h += '<div class="gh">Πελάτες</div>' + cs.map(function(c){ return '<button data-act="cust" data-id="' + c.id + '"><b>' + esc(c.name) + "</b> <small>" + esc(c.city) + "</small></button>"; }).join("");
+  if (ps.length) h += '<div class="gh">Προϊόντα</div>' + ps.map(function(p){ return '<button data-act="product" data-id="' + p.id + '"><span class="pname">' + swatch(p.print) + "<span><b>" + esc(p.name) + "</b> <small>" + esc(p.print) + "</small></span></span></button>"; }).join("");
+  box.innerHTML = h || '<div class="gh" style="padding:12px 14px">Δεν βρέθηκε κάτι</div>'; box.classList.add("open");
+}
+function exportCsv(){
+  var rows = [["Ημερομηνία","Κατηγορία","Περιγραφή","Ποσό"]].concat(DB.expenses.map(function(e){ return [dfmt(e.date), e.cat, e.desc, String(e.amount).replace(".", ",")]; }));
+  var csv = "﻿" + rows.map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g, '""') + '"'; }).join(";"); }).join("\n");
+  var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" })); a.download = "ritc-exoda-deigma.csv"; a.click(); toast("Λήψη ritc-exoda-deigma.csv");
+}
+// chart tooltips
+var tip = $("#tip");
+document.addEventListener("mousemove", function(e){
+  var t = e.target.closest && e.target.closest("[data-tip]");
+  if (!t) { tip.style.display = "none"; return; }
+  tip.innerHTML = t.getAttribute("data-tip"); tip.style.display = "block";
+  var x = e.clientX + 14, y = e.clientY + 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14; if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+});
+document.addEventListener("touchstart", function(e){ var t = e.target.closest && e.target.closest("[data-tip]"); if (!t) { tip.style.display = "none"; return; } var r = t.getBoundingClientRect(); tip.innerHTML = t.getAttribute("data-tip"); tip.style.display = "block"; tip.style.left = Math.max(8, Math.min(innerWidth - tip.offsetWidth - 8, r.left + r.width / 2 - tip.offsetWidth / 2)) + "px"; tip.style.top = Math.max(8, r.top - tip.offsetHeight - 8) + "px"; }, { passive: true });
+function bindAfter(){}
+window.addEventListener("hashchange", function(){ var k = location.hash.slice(1); if (k && k !== cur && byKey(k).k === k) { cur = k; closeAll(); render(); } });
+
+var UI0 = JSON.parse(JSON.stringify(UI));
+build(); $("#gq").value = "";
+var h0 = location.hash.slice(1); if (h0 && byKey(h0).k === h0) cur = h0;
+render();
+})();
+</script>
+</body>
+</html>
