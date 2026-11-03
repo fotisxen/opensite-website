@@ -92,7 +92,7 @@ export const siteConfig: SiteConfig = {
   testimonial: {
     el: "Από τον σχεδιασμό μέχρι το launch, το OpenSite δημιούργησε ένα website που αποτυπώνει την κομψότητα των ιστιοπλοϊκών μας εμπειριών και δίνει στους πελάτες μας μια διαδικασία κράτησης χωρίς εμπόδια.",
   },
-  landingProjects: null,
+  landingProjects: 4,
   company: {
     legalName: "ΞΕΝΙΤΙΔΗΣ ΦΩΤΗΣ",
     legalForm: { el: "Ατομική επιχείρηση", en: "Sole proprietorship" },
