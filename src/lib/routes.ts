@@ -3,9 +3,11 @@
 export const LANDING_PATHS = [
   "/kataskevi-istoselidon-thessaloniki",
   "/kataskevi-eshop-thessaloniki",
+  "/anakataskevi-istoselidas",
+  // Nationwide pages used by the Google Ads campaign. New entries go last:
+  // lib/greek.ts reads the first three by position.
   "/kataskevi-istoselidon",
   "/kataskevi-eshop",
-  "/anakataskevi-istoselidas",
 ] as const;
 
 export const THANKS_PATH = "/efcharistoume";

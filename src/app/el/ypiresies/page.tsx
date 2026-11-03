@@ -20,7 +20,7 @@ export default function GreekServices() {
     <GreekFrame>
       <PageHero
         title="Τι φτιάχνουμε"
-        text="Από μια απλή ιστοσελίδα μέχρι εφαρμογές και εσωτερικά συστήματα. Σε κάθε έργο μιλάς με τον ίδιο άνθρωπο, από την πρώτη κουβέντα μέχρι την παράδοση."
+        text="Από μια απλή ιστοσελίδα μέχρι εφαρμογές και εσωτερικά συστήματα. Σε κάθε έργο μιλάτε με τον ίδιο άνθρωπο, από την πρώτη κουβέντα μέχρι την παράδοση."
       />
 
       {/* Quick jump to each service */}
@@ -62,7 +62,7 @@ export default function GreekServices() {
                     href={`${s.landing}/`}
                     className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-primary-container px-5 font-label-md text-label-md text-white transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
                   >
-                    Ζήτα προσφορά
+                    Δωρεάν δείγμα
                     <Icon name="arrow_forward" className="text-[18px]" />
                   </Link>
                 )}
@@ -85,7 +85,7 @@ export default function GreekServices() {
         ))}
       </div>
 
-      <CtaBand title="Δεν ξέρεις τι ταιριάζει;" text="Πες μας τι θέλεις να πετύχεις και σου προτείνουμε τι χρειάζεται." />
+      <CtaBand title="Δεν ξέρετε τι ταιριάζει;" text="Πείτε μας τι θέλετε να πετύχετε και σας προτείνουμε τι χρειάζεται." />
     </GreekFrame>
   );
 }

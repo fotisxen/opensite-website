@@ -90,7 +90,7 @@ export const siteConfig: SiteConfig = {
     metaPixelId: "2111724882722505",
   },
   testimonial: {
-    el: "Από τον σχεδιασμό μέχρι το launch, το OpenSite δημιούργησε ένα website που αποτυπώνει την κομψότητα των ιστιοπλοϊκών μας εμπειριών και δίνει στους πελάτες μας μια διαδικασία κράτησης χωρίς εμπόδια.",
+    el: "Από τον σχεδιασμό μέχρι την παράδοση, το OpenSite δημιούργησε μια ιστοσελίδα που αποτυπώνει την κομψότητα των ιστιοπλοϊκών μας εμπειριών και δίνει στους πελάτες μας μια διαδικασία κράτησης χωρίς εμπόδια.",
   },
   landingProjects: 4,
   company: {
@@ -102,8 +102,8 @@ export const siteConfig: SiteConfig = {
     gemi: null,
   },
   legal: {
-    updatedEl: "9 Οκτωβρίου 2026",
-    updatedEn: "9 October 2026",
+    updatedEl: "3 Νοεμβρίου 2026",
+    updatedEn: "3 November 2026",
     serverCountry: null,
     emailProvider: "Zoho Mail (Zoho Corporation)",
     supabaseRegion: null,

@@ -59,11 +59,11 @@ export function CtaBand({ title, text }: { title: string; text: string }) {
               href="/el/epikoinonia/"
               className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-primary-container px-6 font-label-md text-label-md text-white transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
             >
-              Ζήτα δωρεάν προσφορά
+              Θέλω το δωρεάν δείγμα
             </Link>
           </div>
-          <p className="mt-4 font-body-md text-body-md text-text-secondary">ή κάλεσε</p>
-          <ContactButtons phoneLabel="Κάλεσε τώρα" className="mt-2" />
+          <p className="mt-4 font-body-md text-body-md text-text-secondary">ή καλέστε</p>
+          <ContactButtons phoneLabel="Καλέστε τώρα" className="mt-2" />
         </div>
       </Reveal>
     </section>
@@ -80,7 +80,7 @@ export function CaseCard({ c }: { c: GreekCase }) {
       )}
       <div className="p-5">
         <p className="font-label-sm text-label-sm text-text-secondary">
-          {c.field} · {c.platform}
+          {c.field}
         </p>
         <h3 className="mt-1 font-headline-sm text-headline-sm font-semibold text-text-primary">{c.name}</h3>
         <p className="mt-1 font-body-md text-body-md text-text-secondary">{c.intro}</p>
@@ -88,7 +88,7 @@ export function CaseCard({ c }: { c: GreekCase }) {
           href={`/el/ergasies/${c.slug}/`}
           className="mt-3 inline-block font-label-md text-label-md text-primary underline underline-offset-4"
         >
-          Δες την περίπτωση
+          Δείτε την περίπτωση
         </Link>
       </div>
     </article>

@@ -2,19 +2,19 @@ import Link from "next/link";
 import GreekFrame from "@/components/greek/GreekFrame";
 import GreekHeroScene from "@/components/greek/GreekHeroScene";
 import HeroGlow from "@/components/greek/HeroGlow";
-import TechMarquee from "@/components/greek/TechMarquee";
 import Icon from "@/components/Icon";
 import { CaseCard, CtaBand, greekMetadata, SECTION } from "@/components/greek/pieces";
 import { AltContactLine } from "@/components/landing/ContactButtons";
 import Reveal from "@/components/landing/Reveal";
+import Testimonials, { ReviewsLine } from "@/components/landing/Testimonials";
 import { greekCases, greekServices, greekSteps, greekWhy } from "@/lib/greek";
-import { BASE_URL, testimonial } from "@/lib/landing";
+import { BASE_URL } from "@/lib/landing";
 import { siteConfig } from "@/lib/site.config";
 
 export const metadata = greekMetadata({
   title: "OpenSite | Κατασκευή ιστοσελίδων και e-shop στη Θεσσαλονίκη",
   description:
-    "Στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Ιστοσελίδες, e-shop, ανακατασκευές, CRM και εφαρμογές. Μιλάς απευθείας με τον developer.",
+    "Στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Ιστοσελίδες, e-shop, ανακατασκευές, CRM και εφαρμογές. Μιλάτε απευθείας με τον developer.",
   path: "/el/",
   enPath: "/",
 });
@@ -48,23 +48,22 @@ export default function GreekHome() {
           Ιστοσελίδες και e‑shop που φέρνουν πελάτες.
         </h1>
         <p className="mt-5 max-w-2xl font-body-lg text-base text-text-secondary lg:text-lg">
-          Το OpenSite είναι στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάς απευθείας με τον developer που φτιάχνει το
-          site σου.
+          Το OpenSite είναι στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάτε απευθείας με τον developer που φτιάχνει το
+          site σας.
         </p>
+        <ReviewsLine />
         <div className="mt-7 flex flex-wrap items-center gap-4">
           <Link
             href="/el/epikoinonia/"
             className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-primary-container px-6 font-label-md text-label-md text-white transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
           >
-            Ζήτα δωρεάν προσφορά
+            Θέλω το δωρεάν δείγμα
           </Link>
           <AltContactLine />
         </div>
         </div>
         <GreekHeroScene />
       </section>
-
-      <TechMarquee />
 
       <section className="border-b border-surface-border bg-surface-container-lowest py-14">
         <Reveal className={SECTION}>
@@ -137,28 +136,10 @@ export default function GreekHome() {
       </section>
 
       <section className="border-t border-surface-border bg-surface-container-lowest py-14">
-        <Reveal className="mx-auto max-w-3xl px-4 md:px-margin-desktop">
-          <figure className="relative overflow-hidden rounded-2xl border border-surface-border bg-surface-card p-6 md:p-8">
-            <span aria-hidden="true" className="pointer-events-none absolute -right-2 -top-10 select-none font-display-lg text-[160px] leading-none text-primary/10">
-              ”
-            </span>
-            <blockquote
-              className="font-body-lg text-body-lg italic text-text-primary"
-              lang={siteConfig.testimonial.el ? "el" : "en"}
-            >
-              “{siteConfig.testimonial.el ?? testimonial.en}”
-            </blockquote>
-            <figcaption className="mt-4 font-body-sm text-body-sm text-text-secondary">
-              {testimonial.author}, {testimonial.role}
-              {siteConfig.testimonial.el && (
-                <span className="mt-1 block text-xs text-text-secondary/80">Μετάφραση από τα αγγλικά</span>
-              )}
-            </figcaption>
-          </figure>
-        </Reveal>
+        <Testimonials />
       </section>
 
-      <CtaBand title="Πες μας τι χρειάζεσαι" text="Απαντάμε μέσα σε 24 ώρες, με πρόταση και χωρίς δέσμευση." />
+      <CtaBand title="Πείτε μας τι χρειάζεστε" text="Απαντάμε μέσα σε 24 ώρες, χωρίς δέσμευση." />
     </GreekFrame>
   );
 }

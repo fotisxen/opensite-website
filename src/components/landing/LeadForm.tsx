@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { LEAD_FORM_ID, LEAD_NAME_ID } from "@/lib/leadForm";
-import { sendLead } from "@/lib/sendLead";
+import { saveLeadToCrm, sendLead } from "@/lib/sendLead";
 import { phoneHref, siteConfig } from "@/lib/site.config";
 import { getAttribution, hasConsent, markLeadSubmitted } from "@/lib/tracking";
 
@@ -64,16 +64,30 @@ export default function LeadForm({
       // A filled hidden field usually means a bot, but autofill can fill it
       // for a real person. So the request is still sent, marked as possible
       // spam, and it is not counted as a conversion.
-      await sendLead({
-        subject: `${honey ? "[πιθανό spam] " : ""}Νέο lead: ${pageLabel}`,
+      const attribution = getAttribution(hasConsent());
+      const backup = saveLeadToCrm({
         name,
         phone,
-        need,
-        website: website || undefined,
-        page: pageKey,
-        honeypot: honey || undefined,
-        ...getAttribution(hasConsent()),
+        message: [
+          honey ? "[πιθανό spam]" : "",
+          `Σελίδα: ${pageLabel}`,
+          showWebsite ? `Site: ${website || "-"}` : `Χρειάζεται: ${need}`,
+          attribution.utm_campaign ? `Καμπάνια: ${attribution.utm_campaign}` : "",
+        ].filter(Boolean).join("\n"),
       });
+      await sendLead(
+        {
+          subject: `${honey ? "[πιθανό spam] " : ""}Νέο lead: ${pageLabel}`,
+          name,
+          phone,
+          need,
+          website: website || undefined,
+          page: pageKey,
+          honeypot: honey || undefined,
+          ...attribution,
+        },
+        backup,
+      );
       if (!honey) markLeadSubmitted();
       router.push("/efcharistoume/");
     } catch {

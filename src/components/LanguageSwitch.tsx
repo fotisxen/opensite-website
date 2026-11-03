@@ -50,6 +50,14 @@ export default function LanguageSwitch({
   return (
     <Link
       href={href}
+      onClick={() => {
+        // Remembered so that a Greek browser is not sent back from "/" to "/el/".
+        try {
+          localStorage.setItem("os_lang", to);
+        } catch {
+          // storage unavailable: nothing to remember
+        }
+      }}
       hrefLang={to}
       lang={to}
       aria-label={greek ? "Ελληνικά" : "English"}

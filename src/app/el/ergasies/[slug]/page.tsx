@@ -38,7 +38,7 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
           Όλες οι δουλειές
         </Link>
         <p className="mt-6 font-label-md text-label-md text-text-secondary">
-          {c.field} · {c.platform}
+          {c.field}
         </p>
         <h1 className="mt-1 max-w-3xl font-display-lg text-[30px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
           {c.name}
@@ -51,7 +51,7 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
             rel="noopener noreferrer"
             className="mt-4 inline-block font-label-md text-label-md text-primary underline underline-offset-4"
           >
-            Δες το site
+            Δείτε το site
           </a>
         )}
       </section>
@@ -86,7 +86,7 @@ export default async function GreekCasePage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <CtaBand title="Θέλεις κάτι αντίστοιχο;" text="Πες μας τι χρειάζεσαι και σου στέλνουμε προσφορά με τιμή και ημερομηνία παράδοσης." />
+      <CtaBand title="Θέλετε κάτι αντίστοιχο;" text="Πείτε μας τι χρειάζεστε και σας στέλνουμε δωρεάν δείγμα." />
     </GreekFrame>
   );
 }

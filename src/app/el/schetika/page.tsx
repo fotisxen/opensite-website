@@ -13,7 +13,7 @@ const SHOTS = [
 export const metadata = greekMetadata({
   title: "Σχετικά | OpenSite, Θεσσαλονίκη",
   description:
-    "Το OpenSite είναι στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάς απευθείας με τον developer που φτιάχνει το site σου.",
+    "Το OpenSite είναι στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάτε απευθείας με τον developer που φτιάχνει το site σας.",
   path: "/el/schetika/",
   enPath: "/about/",
 });
@@ -23,7 +23,7 @@ export default function GreekAbout() {
     <GreekFrame>
       <PageHero
         title="Σχετικά με το OpenSite"
-        text="Στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάς απευθείας με τον developer που φτιάχνει το site σου."
+        text="Στούντιο ανάπτυξης ιστοσελίδων στη Θεσσαλονίκη. Μιλάτε απευθείας με τον developer που φτιάχνει το site σας."
       />
 
       <section className="pb-12">
@@ -70,7 +70,7 @@ export default function GreekAbout() {
         </Reveal>
       </section>
 
-      <CtaBand title="Ας μιλήσουμε" text="Πες μας τι χρειάζεσαι. Απαντάμε μέσα σε 24 ώρες." />
+      <CtaBand title="Ας μιλήσουμε" text="Πείτε μας τι χρειάζεστε. Απαντάμε μέσα σε 24 ώρες." />
     </GreekFrame>
   );
 }

@@ -20,8 +20,9 @@ const ANSWER_WAIT_MS = 4000;
  * Sends one form submission. Throws only when the provider answers in time
  * and says it failed, or the request cannot be sent at all. A slow answer
  * counts as sent: the keepalive request carries on after the page changes.
+ * With a `backup` save, it throws only when both the email and the save fail.
  */
-export async function sendLead(payload: LeadPayload): Promise<void> {
+export async function sendLead(payload: LeadPayload, backup?: Promise<void>): Promise<void> {
   const { subject, ...rest } = payload;
   const fields: Record<string, string> = {};
   const all = OWN_ENDPOINT ? payload : { _subject: subject, _template: "table", ...rest };
@@ -54,7 +55,25 @@ export async function sendLead(payload: LeadPayload): Promise<void> {
   });
 
   const slow = new Promise<"slow">((resolve) => setTimeout(() => resolve("slow"), ANSWER_WAIT_MS));
-  await Promise.race([request, slow]);
+  await Promise.race([backup ? Promise.any([request, backup]) : request, slow]);
   // Past the wait, a late failure must not surface as an unhandled rejection.
   request.catch(() => {});
+  backup?.catch(() => {});
+}
+
+/**
+ * Saves a form lead straight to the CRM (Admin -> Leads), so a lead survives
+ * even if the email provider fails. Plain fetch: the Greek pages do not load
+ * the Supabase client. RLS allows public inserts on `leads` and nothing else.
+ */
+export async function saveLeadToCrm(lead: { name: string; phone: string; message: string }): Promise<void> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) throw new Error("crm: not configured");
+  const res = await fetch(`${url}/rest/v1/leads`, {
+    method: "POST",
+    headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+    body: JSON.stringify({ full_name: lead.name, phone: lead.phone, source: "site_form", message: lead.message }),
+  });
+  if (!res.ok) throw new Error(`crm: ${res.status}`);
 }

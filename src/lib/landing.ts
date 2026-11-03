@@ -315,4 +315,5 @@ export const testimonial = {
   en: "From design to launch, OpenSite created a website that captures the elegance of our sailing experiences while providing a seamless booking journey for our clients.",
   author: "T. Markas",
   role: "Co-Owner, Yacht Charter & Sailing Experiences, Adonis Sail Yachts",
+  roleEl: "Adonis Sail Yachts, ναύλωση ιστιοπλοϊκών",
 };

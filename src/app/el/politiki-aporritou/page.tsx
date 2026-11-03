@@ -6,7 +6,7 @@ import { privacyDoc } from "@/lib/legal";
 export const metadata = greekMetadata({
   title: "Πολιτική απορρήτου | OpenSite",
   description:
-    "Ποια προσωπικά δεδομένα συλλέγει το opensite.gr, γιατί, πού πηγαίνουν και ποια δικαιώματα έχεις.",
+    "Ποια προσωπικά δεδομένα συλλέγει το opensite.gr, γιατί, πού πηγαίνουν και ποια δικαιώματα έχετε.",
   path: "/el/politiki-aporritou/",
   enPath: "/privacy-policy/",
 });
