@@ -90,7 +90,7 @@ export default function GreekNav() {
               </Link>
             ))}
             <a href={phoneHref} className="mt-3 mb-2 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-primary-container font-label-md text-label-md text-white">
-              Κάλεσε {siteConfig.phone.display}
+              Καλέστε {siteConfig.phone.display}
             </a>
           </div>
         </nav>

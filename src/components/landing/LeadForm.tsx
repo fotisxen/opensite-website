@@ -53,8 +53,8 @@ export default function LeadForm({
     const honey = String(form.get("hp_extra") ?? "").trim();
 
     const next: { name?: string; phone?: string } = {};
-    if (name.length < 2) next.name = "Γράψε το όνομά σου.";
-    if (!isValidPhone(phone)) next.phone = "Γράψε ένα τηλέφωνο με τουλάχιστον 10 ψηφία.";
+    if (name.length < 2) next.name = "Γράψτε το όνομά σας.";
+    if (!isValidPhone(phone)) next.phone = "Γράψτε ένα τηλέφωνο με τουλάχιστον 10 ψηφία.";
     setErrors(next);
     setFailed(false);
     if (next.name || next.phone) return;
@@ -122,7 +122,7 @@ export default function LeadForm({
       {showWebsite ? (
         // Rebuild page: the need is known, so the form asks for the site instead.
         <label className="mt-3 block font-label-md text-label-md text-text-secondary">
-          Το site σου
+          Το site σας
           <input
             name="website"
             type="text"
@@ -134,7 +134,7 @@ export default function LeadForm({
         </label>
       ) : (
         <label className="mt-3 block font-label-md text-label-md text-text-secondary">
-          Τι χρειάζεσαι
+          Τι χρειάζεστε
           <select name="need" defaultValue={defaultNeed} className={inputClass}>
             {NEEDS.map((n) => (
               <option key={n} value={n}>
@@ -160,7 +160,7 @@ export default function LeadForm({
 
       {failed && (
         <p role="alert" className="mt-3 text-sm text-error">
-          Κάτι πήγε στραβά. Δοκίμασε ξανά ή κάλεσέ μας στο{" "}
+          Κάτι πήγε στραβά. Δοκιμάστε ξανά ή καλέστε μας στο{" "}
           <a href={phoneHref} className="underline">
             {siteConfig.phone.display}
           </a>
@@ -172,7 +172,7 @@ export default function LeadForm({
         Απαντάμε μέσα σε 24 ώρες. Χωρίς δέσμευση.
       </p>
       <p className="mt-1.5 text-center text-xs text-text-secondary/80">
-        Χρησιμοποιούμε τα στοιχεία σου μόνο για να σου απαντήσουμε.{" "}
+        Χρησιμοποιούμε τα στοιχεία σας μόνο για να σας απαντήσουμε.{" "}
         <a href="/el/politiki-aporritou/" className="underline">
           Πολιτική απορρήτου
         </a>

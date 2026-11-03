@@ -29,7 +29,7 @@ export default function LandingStickyBar({ requestLabel }: { requestLabel: strin
           href={phoneHref}
           className="flex h-11 flex-1 items-center justify-center rounded-xl border border-surface-border bg-surface-container-high font-label-md text-label-md text-text-primary"
         >
-          Κάλεσε
+          Κλήση
         </a>
         <button
           type="button"

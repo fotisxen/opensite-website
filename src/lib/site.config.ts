@@ -80,7 +80,7 @@ export const siteConfig: SiteConfig = {
     eshopWeeks: null,
     redesignFrom: null,
     redesignWeeks: null,
-    vatMode: "plus", // prices are without VAT
+    vatMode: null, // no price on the site, by the owner's choice (2026-11-03)
   },
   tracking: {
     googleAdsId: "AW-18442051743",

@@ -3,6 +3,8 @@
 export const LANDING_PATHS = [
   "/kataskevi-istoselidon-thessaloniki",
   "/kataskevi-eshop-thessaloniki",
+  "/kataskevi-istoselidon",
+  "/kataskevi-eshop",
   "/anakataskevi-istoselidas",
 ] as const;
 

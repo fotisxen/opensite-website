@@ -53,12 +53,12 @@ export default function ContactButtons({
   );
 }
 
-// The single line under the form: "ή κάλεσε 698 449 6660" plus chat links.
+// The single line under the form: "ή καλέστε 698 449 6660" plus chat links.
 export function AltContactLine() {
   return (
     <p className="flex flex-wrap items-center gap-x-4 gap-y-1 font-body-md text-body-md text-text-secondary">
       <span>
-        ή κάλεσε{" "}
+        ή καλέστε{" "}
         <a href={phoneHref} className="whitespace-nowrap font-semibold text-text-primary underline decoration-primary/60 underline-offset-4">
           {siteConfig.phone.display}
         </a>

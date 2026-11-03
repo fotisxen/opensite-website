@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getCaseStudy } from "@/lib/case-studies";
 import {
   BASE_URL,
+  googleReviews,
   landings,
   resolveFaqs,
   steps,
@@ -106,6 +107,9 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               {c.h1}
             </h1>
             <p className="mt-3 font-body-lg text-base text-text-secondary lg:text-lg">{subtitleWithFacts(c)}</p>
+            <p className="mt-3 font-label-md text-label-md text-text-primary">
+              <span aria-hidden="true" className="text-amber-400">★</span> {googleReviews.rating}/5 · {googleReviews.count} κριτικές στο Google
+            </p>
           </div>
 
           <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
@@ -127,7 +131,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
 
       <section className="border-y border-surface-border bg-surface-container-lowest py-14">
         <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
-          <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Τι παίρνεις</h2>
+          <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Τι παίρνετε</h2>
           <ul data-stagger className="mt-6 grid gap-5 md:grid-cols-3">
             {c.gets.map((text) => (
               <li key={text} className="lift flex gap-3 rounded-2xl border border-surface-border bg-surface-card p-5 text-text-primary">
@@ -166,7 +170,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
                         rel="noopener noreferrer"
                         className="mt-3 inline-block font-label-md text-label-md text-primary underline underline-offset-4"
                       >
-                        Δες το site
+                        Δείτε το site
                       </a>
                     )}
                   </div>
@@ -178,9 +182,20 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
       )}
 
       <section className={`${showWork ? "border-t border-surface-border" : ""} bg-surface-container-lowest py-14`}>
-        <Reveal className="mx-auto max-w-3xl px-4 md:px-margin-desktop">
-          <figure className="rounded-2xl border border-surface-border bg-surface-card p-6 md:p-8">
-            <blockquote className="font-body-lg text-body-lg italic text-text-primary" lang={siteConfig.testimonial.el ? "el" : "en"}>
+        <Reveal className="mx-auto max-w-container-max px-4 md:px-margin-desktop">
+          <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Τι λένε οι πελάτες μας</h2>
+          <div data-stagger className="mt-6 grid gap-5 md:grid-cols-3">
+          {googleReviews.quotes.map((q) => (
+            <figure key={q.author} className="rounded-2xl border border-surface-border bg-surface-card p-6">
+              <blockquote className="font-body-md text-body-md text-text-primary">&ldquo;{q.text}&rdquo;</blockquote>
+              <figcaption className="mt-4">
+                <span className="block font-label-md text-label-md text-text-primary">{q.author}</span>
+                <span className="block font-body-sm text-body-sm text-text-secondary">Κριτική στο Google</span>
+              </figcaption>
+            </figure>
+          ))}
+          <figure className="rounded-2xl border border-surface-border bg-surface-card p-6">
+            <blockquote className="font-body-md text-body-md text-text-primary" lang={siteConfig.testimonial.el ? "el" : "en"}>
               &ldquo;{siteConfig.testimonial.el ?? testimonial.en}&rdquo;
             </blockquote>
             <figcaption className="mt-4">
@@ -193,6 +208,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               )}
             </figcaption>
           </figure>
+          </div>
         </Reveal>
       </section>
 
@@ -235,13 +251,13 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
 
       <section className="border-t border-surface-border py-16">
         <Reveal className="mx-auto max-w-2xl px-4 text-center md:px-margin-desktop">
-          <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Πες μας τι χρειάζεσαι</h2>
+          <h2 className="font-headline-md text-headline-md font-semibold text-text-primary">Πείτε μας τι χρειάζεστε</h2>
           <p className="mt-3 font-body-lg text-body-lg text-text-secondary">
-            Στείλε τη φόρμα και σου απαντάμε μέσα σε 24 ώρες.
+            Στείλτε τη φόρμα και σας απαντάμε μέσα σε 24 ώρες.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <FocusFormButton>{c.ctaButton}</FocusFormButton>
-            <ContactButtons phoneLabel={`Κάλεσε ${siteConfig.phone.display}`} className="justify-center" />
+            <ContactButtons phoneLabel={`Καλέστε ${siteConfig.phone.display}`} className="justify-center" />
           </div>
         </Reveal>
       </section>
