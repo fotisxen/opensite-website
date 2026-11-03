@@ -918,7 +918,7 @@
             src="/demos/gkonias/94-medium_default/p.jpg"
                           alt="ΜΕΙΓΜΑ ΚΡΕΠΑΣ 1ΚΛ"
               title="ΜΕΙΓΜΑ ΚΡΕΠΑΣ 1ΚΛ"
-                        loading="lazy"
+                       
             width="800"
             height="800"
           >
@@ -941,7 +941,7 @@
                 data-image-large-sources="{&quot;jpg&quot;:&quot;\/demos\/gkonias\/94-medium_default\/p.jpg&quot;}"                src="/demos/gkonias/94-small_default/p.jpg"
                                   alt="ΜΕΙΓΜΑ ΚΡΕΠΑΣ 1ΚΛ"
                   title="ΜΕΙΓΜΑ ΚΡΕΠΑΣ 1ΚΛ"
-                                loading="lazy"
+                               
                 width="98"
                 height="98"
               >
@@ -1596,7 +1596,7 @@ if(isIn('search')){
     var hits=all.filter(function(p){var h=norm(p[0]+' '+p[1]);return w.length&&w.every(function(x){return h.indexOf(x)>=0})}).slice(0,48);
     var box=document.querySelector('#products .products, .products');
     if(box)box.innerHTML=hits.map(function(p){
-      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img loading="lazy" src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
+      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
     var c=document.querySelector('.total-products');if(c)c.textContent='Βρέθηκαν '+hits.length+' προϊόντα.';
     document.querySelectorAll('.pagination').forEach(function(p){p.style.display='none'});
   });

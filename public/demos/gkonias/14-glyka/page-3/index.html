@@ -1085,7 +1085,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/glyka/4167-tarta-phrouta-tou-dasous-12tmch-ktps.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/580-home_default/p.jpg" alt="ΤΑΡΤΑ ΦΡΟΥΤΑ ΤΟΥ ΔΑΣΟΥΣ 12τμχ ΚΤΨ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/580-home_default/p.jpg" alt="ΤΑΡΤΑ ΦΡΟΥΤΑ ΤΟΥ ΔΑΣΟΥΣ 12τμχ ΚΤΨ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1120,7 +1120,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/glyka/4168-zeo-maphin-cheesecake-125gr.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/581-home_default/p.jpg" alt="ΖΕΟ BASQUE CHEESECAKE (ΒΑΣΚΙΚΟ)10τμχ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/581-home_default/p.jpg" alt="ΖΕΟ BASQUE CHEESECAKE (ΒΑΣΚΙΚΟ)10τμχ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1155,7 +1155,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/glyka/4170-zeo-salted-caramel-12tmch.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/582-home_default/p.jpg" alt="ΖΕΟ SALTED CARAMEL 12τμχ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/582-home_default/p.jpg" alt="ΖΕΟ SALTED CARAMEL 12τμχ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1190,7 +1190,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/glyka/4171-zeo-lotus-cheesecake-12tmch.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/583-home_default/p.jpg" alt="ΖΕΟ LOTUS CHEESECAKE 12τμχ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/583-home_default/p.jpg" alt="ΖΕΟ LOTUS CHEESECAKE 12τμχ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1225,7 +1225,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/glyka/3973-zeo-cookies-sokolata-300tmch-syskeuasmena.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/584-home_default/p.jpg" alt="ΖΕΟ COOKIES ΣΟΚΟΛΑΤΑ 300ΤΜΧ - (ΣΥΣΚΕΥΑΣΜΕΝΑ)" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/584-home_default/p.jpg" alt="ΖΕΟ COOKIES ΣΟΚΟΛΑΤΑ 300ΤΜΧ - (ΣΥΣΚΕΥΑΣΜΕΝΑ)" width="320" height="320" />
                       </a>
         
       </div>
@@ -1260,7 +1260,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/glyka/3045-poikilia-mini-ntonats6-eide-aryzta-72x26gr-ktps.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/585-home_default/p.jpg" alt="ΠΟΙΚΙΛΙΑ ΜΙΝΙ ΝΤΟΝΑΤΣ (6 είδη) 26gr ΚΤΨ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/585-home_default/p.jpg" alt="ΠΟΙΚΙΛΙΑ ΜΙΝΙ ΝΤΟΝΑΤΣ (6 είδη) 26gr ΚΤΨ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1742,7 +1742,7 @@ if(isIn('search')){
     var hits=all.filter(function(p){var h=norm(p[0]+' '+p[1]);return w.length&&w.every(function(x){return h.indexOf(x)>=0})}).slice(0,48);
     var box=document.querySelector('#products .products, .products');
     if(box)box.innerHTML=hits.map(function(p){
-      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img loading="lazy" src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
+      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
     var c=document.querySelector('.total-products');if(c)c.textContent='Βρέθηκαν '+hits.length+' προϊόντα.';
     document.querySelectorAll('.pagination').forEach(function(p){p.style.display='none'});
   });

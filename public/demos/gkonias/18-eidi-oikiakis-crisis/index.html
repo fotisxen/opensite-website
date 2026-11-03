@@ -1083,7 +1083,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/eidi-oikiakis-crisis/1831-spongopetseta-perphore-14ch32cm.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/978-home_default/p.jpg" alt="ΣΠΟΓΓΟΠΕΤΣΕΤΑ ΠΕΡΦΟΡΕ 14χ32cm" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/978-home_default/p.jpg" alt="ΣΠΟΓΓΟΠΕΤΣΕΤΑ ΠΕΡΦΟΡΕ 14χ32cm" width="320" height="320" />
                       </a>
         
       </div>
@@ -1118,7 +1118,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/eidi-oikiakis-crisis/1830-sphoungaraki-11-doro.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/979-home_default/p.jpg" alt="ΣΦΟΥΓΓΑΡΙ ΜΕΓΑΛΟ ΜΕ ΣΥΡΜΑ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/979-home_default/p.jpg" alt="ΣΦΟΥΓΓΑΡΙ ΜΕΓΑΛΟ ΜΕ ΣΥΡΜΑ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1153,7 +1153,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/eidi-oikiakis-crisis/3004-syrma-chondro-asemi-chalkino-50tmch.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/980-home_default/p.jpg" alt="ΣΥΡΜΑ ΧΟΝΔΡΟ ΑΣΗΜΙ-ΧΑΛΚΙΝΟ 50τμχ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/980-home_default/p.jpg" alt="ΣΥΡΜΑ ΧΟΝΔΡΟ ΑΣΗΜΙ-ΧΑΛΚΙΝΟ 50τμχ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1188,7 +1188,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/eidi-oikiakis-crisis/3203-betex-spongopetseta-no2-20ch22.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/981-home_default/p.jpg" alt="ΒΕΤΕΞ ΣΠΟΓΓΟΠΕΤΣΕΤΑ Νο2" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/981-home_default/p.jpg" alt="ΒΕΤΕΞ ΣΠΟΓΓΟΠΕΤΣΕΤΑ Νο2" width="320" height="320" />
                       </a>
         
       </div>
@@ -1223,7 +1223,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/eidi-oikiakis-crisis/3626-sphoungaropano-karo-40ch50ek.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/982-home_default/p.jpg" alt="ΣΦΟΥΓΓΑΡΟΠΑΝΟ ΚΑΡΩ 40χ50εκ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/982-home_default/p.jpg" alt="ΣΦΟΥΓΓΑΡΟΠΑΝΟ ΚΑΡΩ 40χ50εκ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1659,7 +1659,7 @@ if(isIn('search')){
     var hits=all.filter(function(p){var h=norm(p[0]+' '+p[1]);return w.length&&w.every(function(x){return h.indexOf(x)>=0})}).slice(0,48);
     var box=document.querySelector('#products .products, .products');
     if(box)box.innerHTML=hits.map(function(p){
-      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img loading="lazy" src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
+      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
     var c=document.querySelector('.total-products');if(c)c.textContent='Βρέθηκαν '+hits.length+' προϊόντα.';
     document.querySelectorAll('.pagination').forEach(function(p){p.style.display='none'});
   });

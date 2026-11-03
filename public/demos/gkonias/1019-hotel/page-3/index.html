@@ -1346,7 +1346,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/himoi-kompostes-fryganies-tsai/3814-phrygania-elite-olikes-aleses-360gr.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/669-home_default/p.jpg" alt="ΦΡΥΓΑΝΙΑ ELITE ΟΛΙΚΗΣ ΑΛΕΣΗΣ 360γρ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/669-home_default/p.jpg" alt="ΦΡΥΓΑΝΙΑ ELITE ΟΛΙΚΗΣ ΑΛΕΣΗΣ 360γρ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1381,7 +1381,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/1883-friendly-url-autogeneration-failed.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/699-home_default/p.jpg" alt="ΠΡΑΛΙΝΑ BAMBU 500 15kg" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/699-home_default/p.jpg" alt="ΠΡΑΛΙΝΑ BAMBU 500 15kg" width="320" height="320" />
                       </a>
         
       </div>
@@ -1416,7 +1416,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/2868-pralina-phystikiou-5kg-.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/700-home_default/p.jpg" alt="ΠΡΑΛΙΝΑ ΦΥΣΤΙΚΙ 2.5kg" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/700-home_default/p.jpg" alt="ΠΡΑΛΙΝΑ ΦΥΣΤΙΚΙ 2.5kg" width="320" height="320" />
                       </a>
         
       </div>
@@ -1451,7 +1451,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/2941-phystikoboutyro-380gr.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/701-home_default/p.jpg" alt="ΦΥΣΤΙΚΟΒΟΥΤΥΡΟ 380gr" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/701-home_default/p.jpg" alt="ΦΥΣΤΙΚΟΒΟΥΤΥΡΟ 380gr" width="320" height="320" />
                       </a>
         
       </div>
@@ -1486,7 +1486,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/3254-pralina-phystiki-380g.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/702-home_default/p.jpg" alt="ΠΡΑΛΙΝΑ ΦΥΣΤΙΚΙ 380g" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/702-home_default/p.jpg" alt="ΠΡΑΛΙΝΑ ΦΥΣΤΙΚΙ 380g" width="320" height="320" />
                       </a>
         
       </div>
@@ -1521,7 +1521,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/3466-meli-antheon-bazo-900gr.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/703-home_default/p.jpg" alt="ΜΕΛΙ ΑΝΘΕΩΝ ΒΑΖΟ 900γρ" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/703-home_default/p.jpg" alt="ΜΕΛΙ ΑΝΘΕΩΝ ΒΑΖΟ 900γρ" width="320" height="320" />
                       </a>
         
       </div>
@@ -1556,7 +1556,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/3743-marmelada-phraoula-5750kg.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/704-home_default/p.jpg" alt="ΜΑΡΜΕΛΑΔΑ ΦΡΑΟΥΛΑ 5,750kg" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/704-home_default/p.jpg" alt="ΜΑΡΜΕΛΑΔΑ ΦΡΑΟΥΛΑ 5,750kg" width="320" height="320" />
                       </a>
         
       </div>
@@ -1591,7 +1591,7 @@
       <div class="thumbnail-top">
         
           <a href="/demos/gkonias/meli-marmelades-pralines/3750-marmelada-kerasi-575kg.html" class="thumbnail product-thumbnail">
-                          <img src="/demos/gkonias/705-home_default/p.jpg" alt="ΜΑΡΜΕΛΑΔΑ ΚΕΡΑΣΙ 5.75kg" loading="lazy" width="320" height="320" />
+                          <img src="/demos/gkonias/705-home_default/p.jpg" alt="ΜΑΡΜΕΛΑΔΑ ΚΕΡΑΣΙ 5.75kg" width="320" height="320" />
                       </a>
         
       </div>
@@ -2073,7 +2073,7 @@ if(isIn('search')){
     var hits=all.filter(function(p){var h=norm(p[0]+' '+p[1]);return w.length&&w.every(function(x){return h.indexOf(x)>=0})}).slice(0,48);
     var box=document.querySelector('#products .products, .products');
     if(box)box.innerHTML=hits.map(function(p){
-      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img loading="lazy" src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
+      return '<div class="js-product product"><article class="product-miniature"><div class="thumbnail-container"><div class="thumbnail-top"><a class="thumbnail product-thumbnail" href="'+p[2]+'"><img src="'+p[3]+'" alt=""></a></div><div class="product-description"><div class="gk-ref">'+esc(p[1])+'</div><h2 class="h3 product-title"><a href="'+p[2]+'">'+esc(p[0])+'</a></h2><div class="product-price-and-shipping"><span class="price">'+p[4]+'</span>'+(p[5]?'<span class="gk-unit"> / '+p[5]+'</span>':'')+(p[6]>1?'<div class="gk-min">Ελάχιστη ποσότητα: '+p[6]+'</div>':'')+'</div><form class="gk-add"><input type="hidden" name="id_product" value="'+p[8]+'"><input type="hidden" name="qty" value="'+p[6]+'"><button class="btn btn-primary" data-button-action="add-to-cart"'+(p[7]?'':' disabled')+'>'+(p[7]?'Στο καλάθι':'Μη διαθέσιμο')+'</button></form></div></div></article></div>'}).join('')||'<p style="grid-column:1/-1">Δεν βρέθηκαν προϊόντα για «'+esc(q)+'».</p>';
     var c=document.querySelector('.total-products');if(c)c.textContent='Βρέθηκαν '+hits.length+' προϊόντα.';
     document.querySelectorAll('.pagination').forEach(function(p){p.style.display='none'});
   });
