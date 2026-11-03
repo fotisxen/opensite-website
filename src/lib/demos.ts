@@ -10,6 +10,7 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "gkonias", name: "Γκώνιας Τροφοδοσίες", kind: "E-shop · τροφοδοσίες (B2C)", created: "2026-11-03" },
   { slug: "olga-minatze", name: "Olga Minatze", kind: "Pro make up artist", created: "2026-10-29", instagram: "https://www.instagram.com/olgaminatzemua/" },
   { slug: "luckpack", name: "Luckpack", kind: "Mystery box store", created: "2026-10-29", instagram: "https://www.instagram.com/luckpack.gr/" },
   { slug: "ritc-crm", name: "RITC Clothing · back-office", kind: "CRM · loungewear brand", created: "2026-10-29", instagram: "https://www.instagram.com/ritcclothing/" },
