@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wine Sousou | Greek wines & kinky tasting notes</title>
+<meta name="description" content="Το ελληνικό κρασί, όπως θα στο έλεγε ένας φίλος. Από τον Λάμπρο και την Ειρήνη.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="https://www.wine-sousou.gr/Logo%20Mark_Terracotta.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Serif+Display:ital,wdth,wght@0,62.5..100,300..900;1,62.5..100,300..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f2ea;--ivory:#f3e3c0;--terracotta:#c86a4a;--olive:#5a6a45;--garnet:#2b0d14;--burgundy:#5a1425;--crimson:#7a1a30;--ink:#1d1416;
+  --display:"Noto Serif Display",Georgia,serif;--body:"Manrope",system-ui,sans-serif;--pad:clamp(18px,4vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden;position:relative}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:var(--display);font-stretch:62.5%;font-weight:800;letter-spacing:-.012em;line-height:.92}
+h2{font-size:clamp(58px,min(12vw,19vh),210px);text-transform:uppercase}
+h2 em{font-weight:400;text-transform:none;font-stretch:80%;letter-spacing:-.02em}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+.lede{font-size:clamp(16px,1.35vw,20px);line-height:1.55;max-width:560px}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);pointer-events:none;transition:transform .5s}
+.nav>*{pointer-events:auto}
+.nav .mark{width:52px;height:52px;border-radius:50%;background:var(--paper);display:block;box-shadow:0 8px 24px rgba(43,13,20,.18)}
+.nav .mark img{width:100%;height:100%;display:block}
+.nav .links{display:flex;gap:4px;background:rgba(247,242,234,.92);backdrop-filter:blur(10px);padding:6px;border-radius:99px;font-size:13px;font-weight:700;box-shadow:0 8px 24px rgba(43,13,20,.14);color:var(--burgundy)}
+.nav .links a{padding:9px 14px;border-radius:99px;transition:background .25s,color .25s}
+.nav .links a:hover{background:var(--burgundy);color:var(--paper)}
+@media(max-width:760px){.nav .links a:not(.keep){display:none}.gauge{width:24px;right:8px}}
+
+/* bottle progress */
+.gauge{position:fixed;right:14px;bottom:18px;z-index:60;width:34px;filter:drop-shadow(0 6px 14px rgba(43,13,20,.3))}
+.gauge svg{display:block;width:100%;height:auto;overflow:visible}
+
+/* wine stains */
+.stain{position:absolute;width:150px;height:150px;pointer-events:none;z-index:2;mix-blend-mode:multiply}
+
+/* hero */
+.hero{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--paper)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-top{position:absolute;left:var(--pad);right:var(--pad);top:clamp(92px,15vh,150px);display:flex;justify-content:space-between;gap:20px;color:var(--burgundy)}
+.hero-top p{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(25px,3.5vw,54px);line-height:1;max-width:760px}
+.hero-top .eyebrow{white-space:nowrap;padding-top:8px}
+.hero-bottom{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(20px,5vh,48px);display:flex;justify-content:space-between;align-items:flex-end;gap:22px;color:var(--paper)}
+.hero-bottom p{font-size:15px;line-height:1.5;max-width:420px}
+.hero-bottom .hint{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+@media(max-width:760px){.hero-top .eyebrow{display:none}.hero-bottom .hint{display:none}}
+
+/* 60/30/10 */
+.recipe{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--burgundy);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 var(--pad);gap:clamp(20px,5vw,80px)}
+.recipe-glass{height:min(78vh,720px);justify-self:center;position:relative}
+.recipe-glass svg{height:100%;width:auto;display:block;overflow:visible}
+.recipe-pct{font-family:var(--display);font-stretch:62.5%;font-weight:800;font-size:clamp(100px,18vh,190px);line-height:.85}
+.recipe-stack{position:relative;min-height:min(62vh,480px);margin-top:18px}
+.recipe-item{position:absolute;inset:0}
+.recipe-item h3{font-size:clamp(44px,min(6vw,10vh),92px);text-transform:uppercase}
+.recipe-item p{font-size:clamp(16px,1.3vw,19px);line-height:1.55;margin-top:18px;max-width:480px;opacity:.86}
+@media(max-width:820px){.recipe{grid-template-columns:1fr;grid-template-rows:38vh 1fr;align-items:start;padding-top:84px;gap:8px}.recipe-glass{height:36vh}.recipe-pct{font-size:82px}.recipe-stack{min-height:280px}}
+
+/* dating */
+.dating{background:var(--terracotta);color:var(--garnet);padding:clamp(90px,14vh,160px) var(--pad);display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,90px);align-items:center;overflow:hidden;position:relative}
+.dating h2 em{color:var(--paper)}
+.dating .lede{margin-top:24px}
+.dating-note{margin-top:22px;font-size:14px;line-height:1.5;font-weight:700;max-width:430px}
+.matches{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;min-height:40px}
+.matches span{background:var(--garnet);color:var(--paper);border-radius:99px;padding:9px 14px;font-size:13px;font-weight:700}
+.deck-wrap{display:flex;flex-direction:column;align-items:center;gap:24px}
+.deck{position:relative;width:min(390px,88vw);height:min(560px,74vh);min-height:470px}
+.w-card{position:absolute;inset:0;border-radius:30px;background:var(--paper);overflow:hidden;box-shadow:0 26px 60px rgba(43,13,20,.32);display:flex;flex-direction:column;touch-action:pan-y;user-select:none;cursor:grab}
+.w-card:active{cursor:grabbing}
+.w-top{flex:1;min-height:0;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.w-top svg{height:92%;width:auto;display:block;position:relative;transform:translateY(8%)}
+.w-top .abv{position:absolute;top:18px;right:18px;background:rgba(247,242,234,.88);color:var(--garnet);padding:7px 11px;border-radius:99px;font-size:12px;font-weight:800}
+.w-body{padding:20px 22px 22px}
+.w-body h3{font-size:44px;text-transform:uppercase;color:var(--burgundy)}
+.w-body small{display:block;font-size:12px;font-weight:700;margin-top:6px;letter-spacing:.04em;color:var(--olive)}
+.w-body p{font-size:15px;line-height:1.45;margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chips i{font-style:normal;font-size:12px;font-weight:700;border:1px solid rgba(90,20,37,.3);border-radius:99px;padding:5px 10px;color:var(--burgundy)}
+.stamp{position:absolute;top:26px;padding:6px 14px;border:4px solid;border-radius:10px;font-family:var(--display);font-stretch:62.5%;font-weight:800;font-size:38px;opacity:0;pointer-events:none;z-index:3}
+.stamp.yes{left:20px;color:#2f6b3a;transform:rotate(-13deg)}
+.stamp.no{right:20px;color:var(--burgundy);transform:rotate(13deg)}
+.deck-btns{display:flex;gap:14px}
+.deck-btns button{width:64px;height:64px;border-radius:50%;background:var(--paper);font-size:26px;display:grid;place-items:center;box-shadow:0 12px 24px rgba(43,13,20,.24);transition:transform .25s}
+.deck-btns button:hover{transform:scale(1.1) rotate(-6deg)}
+.deck-end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:30px;border:2px dashed rgba(43,13,20,.5);border-radius:30px}
+.deck-end b{font-family:var(--display);font-stretch:62.5%;font-size:48px;line-height:1;text-transform:uppercase}
+.deck-end button{background:var(--garnet);color:var(--paper);border-radius:99px;padding:13px 20px;font-weight:700;font-size:14px}
+.match{position:fixed;inset:0;z-index:90;background:rgba(43,13,20,.94);color:var(--paper);display:none;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:hidden}
+.match.on{display:flex}
+.match-in{max-width:560px;position:relative;z-index:2}
+.match h3{font-size:clamp(70px,14vw,150px);text-transform:uppercase;color:var(--terracotta)}
+.match .with{font-family:var(--display);font-style:italic;font-size:clamp(26px,4vw,40px);margin-top:12px}
+.match p{font-size:16px;line-height:1.55;margin-top:16px;opacity:.9}
+.match button{margin-top:26px;background:var(--paper);color:var(--garnet);border-radius:99px;padding:15px 26px;font-weight:800}
+.heart{position:absolute;color:var(--terracotta);pointer-events:none}
+@media(max-width:900px){.dating{grid-template-columns:1fr}}
+
+/* scratch */
+.notes{padding:clamp(100px,16vh,180px) var(--pad);background:var(--paper)}
+.notes h2{color:var(--burgundy)}
+.notes .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.labels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,30px);margin-top:clamp(40px,7vh,72px)}
+.label{position:relative;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:var(--ivory);border:1px solid rgba(90,20,37,.2);padding:clamp(22px,2.4vw,36px);display:flex;flex-direction:column;justify-content:space-between;color:var(--burgundy)}
+.label:nth-child(2){transform:translateY(34px)}
+.label .wine-n{font-family:var(--display);font-stretch:62.5%;font-weight:800;font-size:clamp(32px,3vw,50px);line-height:.95;text-transform:uppercase}
+.label blockquote{font-family:var(--display);font-style:italic;font-size:clamp(23px,2.1vw,32px);line-height:1.14}
+.label small{font-size:12px;font-weight:700;letter-spacing:.06em}
+.label canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;transition:opacity .7s}
+@media(max-width:820px){.labels{grid-template-columns:1fr}.label{aspect-ratio:4/4.3}.label:nth-child(2){transform:none}}
+
+/* translator */
+.lex{background:var(--olive);color:var(--paper);padding:clamp(100px,16vh,180px) var(--pad)}
+.lex .lede{margin-top:24px}
+.flips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(40px,7vh,70px);perspective:1400px}
+.flip{position:relative;min-height:clamp(220px,31vh,300px);text-align:left;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.flip.on,.flip:focus-visible{transform:rotateY(180deg)}
+@media(hover:hover){.flip:hover{transform:rotateY(180deg)}}
+.flip>span{position:absolute;inset:0;border-radius:20px;padding:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.flip .f{background:rgba(247,242,234,.1);border:1px solid rgba(247,242,234,.32)}
+.flip .f b{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(32px,3vw,46px);line-height:1}
+.flip .k{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.flip .b{background:var(--paper);color:var(--garnet);transform:rotateY(180deg)}
+.flip .b em{font-style:normal;font-size:16px;line-height:1.45;font-weight:500}
+@media(max-width:900px){.flips{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.flips{grid-template-columns:1fr}}
+
+/* calculator */
+.calc{background:var(--garnet);color:var(--paper);padding:clamp(100px,16vh,180px) var(--pad)}
+.calc h2 em{color:var(--terracotta)}
+.calc .lede{margin-top:22px;opacity:.85}
+.calc-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,70px);margin-top:clamp(40px,7vh,70px)}
+.field{margin-bottom:28px}
+.field label,.field .lab{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:700;margin-bottom:12px}
+.field output{font-family:var(--display);font-stretch:62.5%;font-weight:800;font-size:38px;line-height:1;color:var(--terracotta)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(247,242,234,.22);border-radius:9px;outline-offset:6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--terracotta);border:4px solid var(--paper);cursor:grab}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--terracotta);border:4px solid var(--paper);cursor:grab}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid rgba(247,242,234,.35);border-radius:99px;padding:10px 14px;font-size:13px;font-weight:700;transition:background .2s,color .2s}
+.seg button.on{background:var(--paper);color:var(--garnet)}
+.cellar{background:rgba(247,242,234,.05);border:1px solid rgba(247,242,234,.16);border-radius:24px;padding:clamp(20px,2.5vw,34px);display:flex;flex-direction:column;min-height:520px}
+.total{display:flex;align-items:flex-end;gap:14px}
+.total b{font-family:var(--display);font-stretch:62.5%;font-weight:800;font-size:clamp(110px,14vw,190px);line-height:.8}
+.total span{font-size:14px;font-weight:700;padding-bottom:6px;line-height:1.3}
+.rack{flex:1;display:flex;flex-wrap:wrap;gap:3px 2px;align-content:flex-start;margin:24px 0}
+.rack svg{width:clamp(15px,1.9vw,24px);height:auto;display:block}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:13px;line-height:1.4;border-top:1px solid rgba(247,242,234,.18);padding-top:16px}
+.summary b{display:block;font-size:20px}
+.copybtn{margin-top:18px;background:var(--terracotta);color:var(--garnet);border-radius:99px;padding:14px 20px;font-weight:800;font-size:14px;align-self:flex-start}
+@media(max-width:900px){.calc-grid{grid-template-columns:1fr}.cellar{min-height:0}.rack{min-height:120px}}
+
+/* road */
+.road{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ivory);color:var(--burgundy)}
+.road-head{position:absolute;left:var(--pad);top:clamp(80px,12vh,120px);z-index:2;max-width:760px}
+.road-head h2{font-size:clamp(50px,min(8vw,14vh),130px)}
+.road-track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:flex-end;will-change:transform}
+.road-track svg{position:absolute;left:0;top:0;height:100%;width:100%;pointer-events:none;overflow:visible}
+.stop{position:relative;flex:0 0 clamp(290px,31vw,450px);padding:0 clamp(14px,2vw,28px) clamp(26px,6vh,60px);z-index:2}
+.stop:first-child{margin-left:clamp(240px,46vw,760px)}
+.stop:last-child{margin-right:12vw}
+.stop .n{font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--terracotta)}
+.stop h3{font-size:clamp(46px,min(5.4vw,9vh),82px);text-transform:uppercase;margin-top:8px}
+.stop p{font-size:15px;line-height:1.5;margin-top:10px;max-width:340px;color:var(--ink)}
+
+/* series */
+.series{background:var(--paper);padding:clamp(100px,16vh,170px) 0;overflow:hidden}
+.series .head{padding:0 var(--pad)}
+.series h2{color:var(--burgundy)}
+.reels{display:flex;gap:18px;width:max-content;margin-top:clamp(40px,7vh,70px);padding:14px var(--pad);animation:reels 48s linear infinite}
+.reels:hover{animation-play-state:paused}
+@keyframes reels{to{transform:translateX(-50%)}}
+.reel{width:clamp(220px,20vw,280px);aspect-ratio:9/14;border-radius:22px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper);position:relative;transition:transform .5s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.reel:nth-child(odd){transform:rotate(-2deg)}.reel:nth-child(even){transform:rotate(2deg)}
+.reel:hover{transform:rotate(0) scale(1.04)}
+.reel b{font-family:var(--display);font-stretch:62.5%;font-weight:800;font-size:clamp(38px,3.3vw,50px);line-height:.95;text-transform:uppercase;position:relative}
+.reel small{font-size:13px;line-height:1.42;position:relative}
+.reel .tag{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;position:relative}
+
+/* story */
+.story{background:var(--burgundy);color:var(--paper);padding:clamp(100px,16vh,180px) var(--pad);display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center;overflow:hidden}
+.pola{position:relative;height:clamp(390px,62vh,600px)}
+.pola figure{position:absolute;width:min(50%,330px);background:var(--paper);color:var(--garnet);padding:12px 12px 16px;box-shadow:0 28px 60px rgba(0,0,0,.34)}
+.pola figure:first-child{left:2%;top:0;transform:rotate(-6deg)}
+.pola figure:last-child{right:2%;bottom:0;transform:rotate(5deg)}
+.pola .ph{aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:16px;font-size:12px;font-weight:700;background:var(--ivory);color:var(--burgundy)}
+.pola .ph svg{width:44%;display:block;margin:0 auto 8px}
+.pola figcaption{font-family:var(--display);font-style:italic;font-size:30px;margin-top:10px;text-align:center}
+.story .lede{margin-top:24px;opacity:.92}
+@media(max-width:860px){.story{grid-template-columns:1fr}}
+
+/* newsletter + footer */
+.join{background:var(--terracotta);color:var(--garnet);padding:clamp(100px,16vh,170px) var(--pad);text-align:center;position:relative;overflow:hidden}
+.join h2{margin:18px auto 0}
+.join .lede{margin:22px auto 0}
+.bottle-form{margin:36px auto 0;max-width:560px;display:flex;background:var(--paper);border-radius:99px;padding:7px;position:relative}
+.bottle-form input{flex:1;min-width:0;border:0;background:none;padding:12px 20px;font:inherit;font-size:15px;outline:0}
+.bottle-form button{background:var(--garnet);color:var(--paper);border-radius:99px;padding:13px 22px;font-weight:800;font-size:14px;white-space:nowrap}
+.cork{position:fixed;width:22px;height:38px;border-radius:7px;background:repeating-linear-gradient(0deg,#c99c68 0 4px,#b98a56 4px 7px);z-index:92;pointer-events:none}
+.confetti{position:fixed;z-index:91;pointer-events:none;border-radius:50%}
+.sent{margin-top:18px;font-weight:800;min-height:24px}
+.foot{background:var(--garnet);color:var(--paper);padding:clamp(70px,12vh,120px) var(--pad) 28px}
+.foot-logo{display:block;width:100%;max-width:1260px;margin:0 auto}
+.foot-line{font-family:var(--display);font-style:italic;font-size:clamp(28px,4vw,56px);line-height:1.05;text-align:center;margin:44px auto 0;max-width:900px}
+.cheers{display:flex;justify-content:center;margin-top:30px}
+.cheers button{display:inline-flex;align-items:center;gap:10px;background:var(--paper);color:var(--garnet);border-radius:99px;padding:15px 24px;font-weight:800}
+.cheers svg{width:30px;height:30px;overflow:visible}
+.foot-cols{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:64px;font-size:14px;border-top:1px solid rgba(247,242,234,.2);padding-top:20px;padding-right:48px}
+.foot-cols a{font-weight:700}.foot-cols div{display:flex;gap:18px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){.reels{animation:none}.flip{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="mark" href="#top" aria-label="Wine Sousou"><img src="https://www.wine-sousou.gr/Logo%20Mark_Terracotta.png" alt=""></a>
+  <div class="links">
+    <a href="#dating" class="keep">Dating</a>
+    <a href="#notes">Tasting notes</a>
+    <a href="#lex">Λεξικό</a>
+    <a href="#calc" class="keep">Calculator</a>
+    <a href="#road">Διαδρομές</a>
+    <a href="#join">Παρέα</a>
+  </div>
+</nav>
+
+<div class="gauge" aria-hidden="true">
+  <svg viewBox="0 0 40 120">
+    <defs><clipPath id="gb"><path d="M15 3h10v28c0 7 11 11 11 24v58a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V55c0-13 11-17 11-24z"/></clipPath></defs>
+    <path d="M15 3h10v28c0 7 11 11 11 24v58a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V55c0-13 11-17 11-24z" fill="#f7f2ea"/>
+    <g clip-path="url(#gb)"><rect id="gaugeFill" x="0" y="30" width="40" height="90" fill="#5a1425"/></g>
+    <path d="M15 3h10v28c0 7 11 11 11 24v58a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V55c0-13 11-17 11-24z" fill="none" stroke="#2b0d14" stroke-width="2"/>
+  </svg>
+</div>
+
+<main id="top">
+  <section class="hero" id="hero" aria-label="Wine Sousou">
+    <canvas id="wine" aria-hidden="true"></canvas>
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden">Wine Sousou</h1>
+    <div class="hero-top" id="heroTop">
+      <p>Το ελληνικό κρασί, όπως θα στο έλεγε ένας φίλος.</p>
+      <span class="eyebrow">Greek wines<br>&amp; kinky tasting notes</span>
+    </div>
+    <div class="hero-bottom" id="heroBottom">
+      <p>Είμαστε ο Λάμπρος και η Ειρήνη. Κρασί, ιστορίες και λίγη σουσουδιά. Με γνώση, χωρίς ύφος.</p>
+      <span class="hint">κούνα το ποντίκι · κάνε scroll για να γεμίσει</span>
+    </div>
+  </section>
+
+  <section class="recipe" id="recipe">
+    <div class="recipe-glass">
+      <svg viewBox="0 0 200 320" aria-hidden="true">
+        <defs><clipPath id="bowlC"><path d="M34 12 H166 C170 92 152 148 100 168 C48 148 30 92 34 12Z"/></clipPath></defs>
+        <g clip-path="url(#bowlC)">
+          <rect id="l60" x="0" y="170" width="200" height="0" fill="#c86a4a"/>
+          <rect id="l30" x="0" y="170" width="200" height="0" fill="#f3e3c0"/>
+          <rect id="l10" x="0" y="170" width="200" height="0" fill="#a93c4e"/>
+        </g>
+        <path d="M34 12 H166 C170 92 152 148 100 168 C48 148 30 92 34 12Z M100 168 V296 M58 302 H142" fill="none" stroke="#f7f2ea" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="eyebrow">Η συνταγή μας</div>
+      <div class="recipe-pct"><span id="pct">0</span>%</div>
+      <div class="recipe-stack">
+        <article class="recipe-item"><h3>Wine wisdom για noobs</h3><p>Σύντομα, κατανοητά, χωρίς φλυαρία: τι να κοιτάς στην ετικέτα, πώς να σερβίρεις, τι πάει με τι, και πώς να διαλέγεις με κριτήριο το «θα το απολαύσω».</p></article>
+        <article class="recipe-item"><h3>Σουσουδιάρικα wine tales</h3><p>Ιστορίες από οινοποιεία, ανθρώπους, μικρά drama του κρασιού και «μηνύματα» που αφήνουν οι ποικιλίες. Κουτσομπολιό, αλλά classy.</p></article>
+        <article class="recipe-item"><h3>Bougie wine tourism</h3><p>Διαδρομές, hidden gems, εμπειρίες σε αμπελώνες και ιδέες για εκδρομές με αφορμή το κρασί. Ελλάδα, αλλά σαν να την ανακαλύπτεις πρώτη φορά.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dating" id="dating">
+    <div>
+      <div class="eyebrow">Η σειρά μας, τώρα app</div>
+      <h2>Wine Sousou <em>Dating</em></h2>
+      <p class="lede">Δεν ξέρεις τι να ανοίξεις απόψε; Δες τα προφίλ. Σύρε δεξιά ό,τι σου γυαλίζει, αριστερά ό,τι δεν είναι ο τύπος σου.</p>
+      <p class="dating-note">Κάθε match φέρνει και το tip για το ραντεβού.</p>
+      <div class="matches" id="matches" aria-live="polite"></div>
+    </div>
+    <div class="deck-wrap">
+      <div class="deck" id="deck"></div>
+      <div class="deck-btns">
+        <button id="nope" aria-label="Πάσο">✕</button>
+        <button id="like" aria-label="Το θέλω" style="color:var(--burgundy)">♥</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes" id="notes">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Kinky tasting notes · 18+</div>
+        <h2>Ξύσε <em>την ετικέτα</em></h2>
+      </div>
+      <p class="lede">Κάποια πράγματα δεν λέγονται στην πρώτη γουλιά. Πέρασε το δάχτυλο ή το ποντίκι πάνω από κάθε ετικέτα.</p>
+    </div>
+    <div class="labels">
+      <article class="label"><div class="wine-n">Τσαπουρνάκος</div><blockquote>Όνομα σαν βατράχι, κρασί σαν πρίγκιπας. Ζουμερό κεράσι και ένα πέπλο γραφίτη. Το πέπλο βγαίνει με την πρώτη γουλιά.</blockquote><small>Κτήμα Βογιατζή · Βελβεντό Κοζάνης</small><canvas></canvas></article>
+      <article class="label"><div class="wine-n">Moschato Bubbly</div><blockquote>Χαμηλό αλκοόλ, ψηλές προθέσεις. Άνθη πορτοκαλιάς, τριαντάφυλλο, μέλι, και δεν σε στέλνει για ύπνο στις 9.</blockquote><small>Matamis Wines · 6,5% · σέρβις 6-10°C</small><canvas></canvas></article>
+      <article class="label"><div class="wine-n">Ρετσίνα</div><blockquote>Από το χθες της ταβέρνας με coca-cola σε ένα σήμερα με πρόθεση και χαρακτήρα. Μυρίζει πεύκο, και ναι… έχει σούσου.</blockquote><small>Aoton Winery · χαλέπιος πεύκη</small><canvas></canvas></article>
+    </div>
+  </section>
+
+  <section class="lex" id="lex">
+    <div class="eyebrow">Wisdom for wine noobs</div>
+    <h2>Σομελιέ <em>→ ελληνικά</em></h2>
+    <p class="lede">Αν είσαι «δεν ξέρω από κρασί», είσαι ακριβώς το κοινό μας. Δεν χρειάζεται λεξιλόγιο σομελιέ. Χρειάζεται περιέργεια.</p>
+    <div class="flips" id="flips"></div>
+  </section>
+
+  <section class="calc" id="calc">
+    <div class="eyebrow">Wine Sousou calculator v2</div>
+    <h2>Πόσες <em>φιάλες</em> θέλει το τραπέζι;</h2>
+    <p class="lede">Έχεις τραπέζι, πάρτι ή γάμο; Ο υπολογιστής μας σε βγάζει ασπροπρόσωπο σε 30 δευτερόλεπτα. Και βλέπεις την κάβα να γεμίζει όσο τον παίζεις.</p>
+    <div class="calc-grid">
+      <div>
+        <div class="field"><label for="guests">Καλεσμένοι <output id="oGuests">50</output></label><input id="guests" type="range" min="2" max="250" value="50"></div>
+        <div class="field"><div class="lab">Τύπος event</div><div class="seg" id="dur">
+          <button data-v="2">Aperitivo · 2ω</button><button data-v="3">Γιορτή · 3ω</button><button data-v="4" class="on">Πάρτι · 4ω</button><button data-v="5">Γάμος · 5ω</button><button data-v="6">Gala · 6ω</button>
+        </div></div>
+        <div class="field"><div class="lab">Ρυθμός</div><div class="seg" id="pace">
+          <button data-v="0.5" class="on">Οικογενειακός</button><button data-v="0.75">Classy</button><button data-v="1">Πάρτι</button>
+        </div></div>
+        <div class="field"><div class="lab">Περιθώριο</div><div class="seg" id="buf">
+          <button data-v="0">Τσίμα τσίμα</button><button data-v="0.15" class="on">Το ορθό +15%</button><button data-v="0.25">Θα μείνουν κάβα +25%</button>
+        </div></div>
+        <div class="field"><label for="mix">Κόκκινο / λευκό <output id="oMix" style="font-size:24px">50 / 50</output></label><input id="mix" type="range" min="0" max="100" step="5" value="50"></div>
+      </div>
+      <div class="cellar">
+        <div class="total"><b id="tBottles">24</b><span>φιάλες<br><span id="tGlasses" style="padding:0;font-weight:500">100 ποτήρια</span></span></div>
+        <div class="rack" id="rack" aria-hidden="true"></div>
+        <div class="summary">
+          <div><b id="sRed">12</b>κόκκινα</div>
+          <div><b id="sWhite">12</b>λευκά</div>
+          <div><b id="sIce">8 kg</b>πάγος</div>
+        </div>
+        <button class="copybtn" id="copy">Αντιγραφή λίστας</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="road" id="road">
+    <div class="road-head">
+      <div class="eyebrow">Bougie wine tourism</div>
+      <h2>Βάλε <em>μπρος</em></h2>
+    </div>
+    <div class="road-track" id="roadTrack">
+      <svg aria-hidden="true"><path id="roadPath" fill="none" stroke="#c86a4a" stroke-width="3" stroke-dasharray="1" stroke-dashoffset="1" pathLength="1"/><g id="roadGlass"><path d="M-14 -58H14C15 -38 10 -28 0 -24C-10 -28 -15 -38 -14 -58Z" fill="#5a1425"/><path d="M0 -24V-3M-9 -2H9" fill="none" stroke="#5a1425" stroke-width="2.5" stroke-linecap="round"/></g></svg>
+      <article class="stop"><div class="n">Στάση 1 · Κοζάνη</div><h3>Βελβεντό</h3><p>Τσαπουρνάκος με θέα τη λίμνη Πολυφύτου. Συγγενής του Cabernet Franc, με όνομα που δεν θα μαντέψεις.</p></article>
+      <article class="stop"><div class="n">Στάση 2 · Φλώρινα</div><h3>Αμύνταιο</h3><p>Ψηλοί, δροσεροί αμπελώνες και λίμνες. Το Ξινόμαυρο εδώ γίνεται ροζέ και αφρώδες.</p></article>
+      <article class="stop"><div class="n">Στάση 3 · Ημαθία</div><h3>Νάουσα</h3><p>Η έδρα του Ξινόμαυρου. Τανίνες, οξύτητα και πολλά χρόνια μπροστά του στο κελάρι.</p></article>
+      <article class="stop"><div class="n">Στάση 4 · Κορινθία</div><h3>Νεμέα</h3><p>Η πατρίδα του Αγιωργίτικου. Βελούδινο κόκκινο και βόλτα ανάμεσα σε κτήματα.</p></article>
+      <article class="stop"><div class="n">Στάση 5 · Κυκλάδες</div><h3>Σαντορίνη</h3><p>Ασύρτικο, ηφαιστειακό χώμα και αμπέλια πλεγμένα σε κουλούρες, για να αντέχουν τον άνεμο.</p></article>
+      <article class="stop"><div class="n">Στάση 6 · τέλος διαδρομής</div><h3>Κρήτη</h3><p>Βιδιανό με ώριμα εσπεριδοειδή και μεσογειακά βότανα. Το ερωτιάρικο τέλος της διαδρομής.</p></article>
+    </div>
+  </section>
+
+  <section class="series" id="series">
+    <div class="head">
+      <div class="eyebrow">Από το Instagram μας</div>
+      <h2>Τι πίνουμε <em>σήμερα</em></h2>
+    </div>
+    <div class="reels" id="reels"></div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="pola">
+      <figure><div class="ph"><div><svg viewBox="0 0 200 320"><path d="M34 12 H166 C170 92 152 148 100 168 C48 148 30 92 34 12Z M100 168 V296 M58 302 H142" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>εδώ μπαίνει η δική σας φωτογραφία</div></div><figcaption>Λάμπρος</figcaption></figure>
+      <figure><div class="ph"><div><svg viewBox="0 0 200 320"><path d="M34 12 H166 C170 92 152 148 100 168 C48 148 30 92 34 12Z M100 168 V296 M58 302 H142" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>εδώ μπαίνει η δική σας φωτογραφία</div></div><figcaption>Ειρήνη</figcaption></figure>
+    </div>
+    <div>
+      <div class="eyebrow">By Lambros &amp; Irini</div>
+      <h2 style="margin-top:20px">Κανονικές δουλειές. <em>Κρασί από αγάπη.</em></h2>
+      <p class="lede">Το πρωί έχουμε τις δουλειές μας. Το βράδυ ανοίγουμε μια φιάλη, ανοίγουμε και την κάμερα. Κανένας από τους δυο μας δεν θέλει να σε κάνει σομελιέ. Θέλουμε μόνο την επόμενη φορά να διαλέξεις κάτι που θα απολαύσεις.</p>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="eyebrow">Updates χωρίς spam</div>
+    <h2>Άνοιξε <em>μαζί μας</em></h2>
+    <p class="lede">Μια φορά στο τόσο: νέα tastings, προτάσεις και announcements.</p>
+    <form class="bottle-form" id="form"><input type="email" required placeholder="το email σου" aria-label="Email"><button>Γράψε με στη λίστα</button></form>
+    <div class="sent" id="sent" aria-live="polite"></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <img class="foot-logo" src="https://www.wine-sousou.gr/Secondary%20Logo_Terracotta.png" alt="Wine Sousou">
+  <p class="foot-line">Ένα καλό κρασί θέλει και καλή παρέα.</p>
+  <div class="cheers"><button id="cheers"><svg viewBox="-30 -40 60 44"><g id="gL"><path d="M-14 -36H0C1 -22-2-12-7-9C-12-12-15-22-14-36Z M-7 -9V3M-13 3H-1" fill="none" stroke="currentColor" stroke-width="2.4"/></g><g id="gR"><path d="M0 -36H14C15 -22 12-12 7-9C2-12-1-22 0-36Z M7 -9V3M1 3H13" fill="none" stroke="currentColor" stroke-width="2.4"/></g></svg>Στην υγειά σας</button></div>
+  <div class="foot-cols">
+    <span>© 2026 Wine Sousou · By Lambros &amp; Irini</span>
+    <div><a href="https://www.instagram.com/wine.sousou/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@wine_sousou" target="_blank" rel="noopener">TikTok</a><a href="mailto:info@winesousou.gr">info@winesousou.gr</a></div>
+    <span style="opacity:.6">Demo · σχεδιασμός &amp; κατασκευή OpenSite</span>
+  </div>
+</footer>
+
+<div class="match" id="match" role="dialog" aria-modal="true" aria-label="It's a match">
+  <div class="match-in">
+    <h3>It's a match</h3>
+    <div class="with" id="mWith"></div>
+    <p id="mTip"></p>
+    <button id="mClose">Συνέχισε να ψάχνεις</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";   // the pour always starts from the top
+
+let lenis;
+if (!reduce) {
+  lenis = new Lenis({ lerp: 0.1 });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+document.addEventListener("click", (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (a) {
+    const t = $(a.getAttribute("href"));
+    if (t) { e.preventDefault(); lenis ? lenis.scrollTo(t.closest(".pin-spacer") || t) : t.scrollIntoView(); }
+  }
+});
+
+/* ---------- Hero: real wine physics. A 1D wave sim drives the surface; the logo inverts where wine covers it. ---------- */
+const hero = (() => {
+  const cv = $("#wine"), ctx = cv.getContext("2d");
+  const N = 96;
+  const h = new Float32Array(N), v = new Float32Array(N);
+  let W = 0, H = 0, dpr = 1;
+  const state = { level: 0, target: 0.27, pour: 1 };
+  let lastX = null, bubbles = [], drops = [];
+  const logo = new Image();
+  let logoDark, logoLight;
+
+  function tint(col) {
+    const c = document.createElement("canvas");
+    c.width = logo.naturalWidth; c.height = logo.naturalHeight;
+    const g = c.getContext("2d");
+    g.drawImage(logo, 0, 0);
+    g.globalCompositeOperation = "source-in";
+    g.fillStyle = col; g.fillRect(0, 0, c.width, c.height);
+    return c;
+  }
+  logo.onload = () => { logoDark = tint("#5a1425"); logoLight = tint("#f7f2ea"); };
+  logo.src = "https://www.wine-sousou.gr/Secondary%20Logo_Terracotta.png";
+
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  addEventListener("resize", size); size();
+
+  function poke(x, power) {
+    const i = clamp(Math.round((x / W) * (N - 1)), 1, N - 2);
+    for (let k = -3; k <= 3; k++) { const j = clamp(i + k, 0, N - 1); v[j] += power * (1 - Math.abs(k) / 4); }
+  }
+  function splash(x, y, n, f) {
+    for (let i = 0; i < n; i++) drops.push({ x, y, vx: (Math.random() - .5) * 7 * f, vy: -(2 + Math.random() * 8) * f, r: 1.5 + Math.random() * 4 });
+    if (drops.length > 90) drops.splice(0, drops.length - 90);
+  }
+  const hx = $("#hero");
+  hx.addEventListener("pointermove", (e) => {
+    const r = cv.getBoundingClientRect(), x = e.clientX - r.left;
+    if (lastX !== null) poke(x, clamp((x - lastX) * .13, -5, 5));
+    lastX = x;
+  });
+  hx.addEventListener("pointerdown", (e) => {
+    const x = e.clientX - cv.getBoundingClientRect().left;
+    poke(x, -22); splash(x, surfaceY(x), 22, 1.25);
+  });
+
+  function surfaceY(x) { return H * (1 - state.level) + h[clamp(Math.round((x / W) * (N - 1)), 0, N - 1)]; }
+  function wavePath() {
+    ctx.beginPath(); ctx.moveTo(0, H + 2);
+    for (let i = 0; i < N; i++) ctx.lineTo((i / (N - 1)) * W, H * (1 - state.level) + h[i]);
+    ctx.lineTo(W, H + 2); ctx.closePath();
+  }
+  function drawLogo(img) {
+    if (!img) return;
+    const w = Math.min(W * .94, 1800), lh = w * (814 / 2958);
+    ctx.drawImage(img, (W - w) / 2, H * .5 - lh * .42, w, lh);
+  }
+  let t = 0, lastV = 0;
+  function frame() {
+    t += 1;
+    // pour stream while the page opens
+    if (state.pour > 0.01 && !reduce) {
+      const w = 7 + 12 * state.pour, x = W * .5;
+      if (t % 2 === 0) { poke(x + (Math.random() - .5) * 12, 2.4 * state.pour); if (t % 6 === 0) splash(x, surfaceY(x), 3, .8 * state.pour); }
+      state.pourW = w;
+    }
+    const scrollV = lenis ? lenis.velocity : 0;
+    const dv = scrollV - lastV; lastV = scrollV;
+    // wave equation with damping; scroll velocity tips the whole surface
+    for (let i = 0; i < N; i++) {
+      const l = h[Math.max(i - 1, 0)], r = h[Math.min(i + 1, N - 1)];
+      v[i] += (l + r - 2 * h[i]) * .22 - h[i] * .012;
+      v[i] *= .982;
+    }
+    for (let i = 0; i < N; i++) h[i] += v[i];
+    if (Math.abs(dv) > .2) { const k = clamp(dv * .9, -9, 9); for (let i = 0; i < N; i++) v[i] += k * ((i / (N - 1)) - .5); }
+    // an idle swirl, so the glass is never dead
+    for (let i = 0; i < N; i++) h[i] += Math.sin(t * .022 + i * .13) * .05;
+
+    state.level += (state.target - state.level) * .05;
+
+    ctx.clearRect(0, 0, W, H);
+    drawLogo(logoDark);
+
+    ctx.save(); wavePath(); ctx.clip();
+    ctx.fillStyle = "#5a1425"; ctx.fillRect(0, 0, W, H);
+    const sy = H * (1 - state.level);
+    const g = ctx.createLinearGradient(0, sy - 30, 0, sy + 160);
+    g.addColorStop(0, "#8c2a3f"); g.addColorStop(1, "#5a1425");
+    ctx.fillStyle = g; ctx.fillRect(0, sy - 60, W, 240);
+    drawLogo(logoLight);
+    // bubbles
+    if (t % 9 === 0 && bubbles.length < 42) bubbles.push({ x: Math.random() * W, y: H + 10, r: 1 + Math.random() * 3.4, s: .5 + Math.random() * 1.1, p: Math.random() * 6 });
+    ctx.strokeStyle = "rgba(247,242,234,.34)"; ctx.lineWidth = 1;
+    bubbles = bubbles.filter((b) => {
+      b.y -= b.s; b.p += .05; const x = b.x + Math.sin(b.p) * 3;
+      if (b.y < sy) return false;
+      ctx.beginPath(); ctx.arc(x, b.y, b.r, 0, 7); ctx.stroke(); return true;
+    });
+    ctx.restore();
+
+    // meniscus highlight
+    ctx.beginPath();
+    for (let i = 0; i < N; i++) { const x = (i / (N - 1)) * W, y = H * (1 - state.level) + h[i]; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.strokeStyle = "rgba(200,106,74,.85)"; ctx.lineWidth = 2; ctx.stroke();
+
+    // the pour itself
+    if (state.pour > .01 && !reduce) {
+      const x = W * .5, y = surfaceY(x), w = state.pourW * state.pour;
+      ctx.fillStyle = "#5a1425"; ctx.fillRect(x - w / 2, 0, w, y + 3);
+    }
+    // droplets
+    ctx.fillStyle = "#5a1425";
+    drops = drops.filter((d) => {
+      d.vy += .28; d.x += d.vx; d.y += d.vy;
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 7); ctx.fill();
+      return d.y < surfaceY(clamp(d.x, 0, W - 1));
+    });
+  }
+  if (reduce) { state.level = state.target; state.pour = 0; }
+  else gsap.to(state, { pour: 0, duration: 1.1, delay: 1.5, ease: "power2.in" });
+  gsap.ticker.add(frame);
+  return state;
+})();
+
+if (!reduce) {
+  gsap.timeline({ scrollTrigger: { trigger: "#hero", start: "top top", end: "+=130%", pin: true, scrub: true } })
+    .to(hero, { target: 1.12, ease: "none", duration: 1 }, 0)
+    .to("#heroTop", { opacity: 0, y: -30, duration: .34 }, .2)
+    .to("#heroBottom", { opacity: 0, y: -30, duration: .25 }, .05);
+}
+gsap.fromTo("#heroTop p", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 1.1, delay: .5, ease: "expo.out" });
+
+/* ---------- 60 / 30 / 10: the brand's own recipe, poured in layers ---------- */
+(() => {
+  const items = $$(".recipe-item");
+  const parts = [["#l60", 60], ["#l30", 30], ["#l10", 10]];
+  const top = 170, full = 158; // bowl height in viewBox
+  const pctEl = $("#pct"), pc = { v: 0 };
+  // pct is drawn from the running total of the layers
+  const set = (id, from, to) => {
+    const y = top - full * (to / 100), hh = full * ((to - from) / 100);
+    return { id, y, hh };
+  };
+  if (reduce) {
+    let f = 0; parts.forEach(([id, p]) => { const s = set(id, f, f + p); gsap.set(id, { attr: { y: s.y, height: s.hh } }); f += p; });
+    pctEl.textContent = 100; gsap.set(items.slice(0, 2), { opacity: 0 }); return;
+  }
+  gsap.set(items.slice(1), { opacity: 0, y: 40 });
+  const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: "#recipe", start: "top top", end: "+=240%", pin: true, scrub: 1 } });
+  let f = 0;
+  parts.forEach(([id, p], i) => {
+    const s = set(id, f, f + p);
+    tl.to(id, { attr: { y: s.y, height: s.hh }, duration: 1, ease: "power1.inOut" }, i * 1.5)
+      .to(pc, { v: f + p, duration: 1, ease: "power1.inOut", onUpdate: () => { pctEl.textContent = Math.round(pc.v); } }, i * 1.5);
+    if (i) tl.to(items[i - 1], { opacity: 0, y: -40, duration: .35 }, i * 1.5).to(items[i], { opacity: 1, y: 0, duration: .45 }, i * 1.5 + .25);
+    f += p;
+  });
+  tl.to({}, { duration: .5 });
+})();
+
+/* ---------- Wine Sousou Dating ---------- */
+(() => {
+  const wines = [
+    { n: "Moschato Bubbly", by: "Matamis Wines", abv: "6,5% · ημιαφρώδες", c: "#efdf9a", bg: "#f6e7b8", cap: "#c86a4a",
+      bio: "Πρώτο ραντεβού. Παιχνιδιάρικο, ανάλαφρο και δεν θα σε στείλει για ύπνο στις 9.", tags: ["άνθη πορτοκαλιάς", "τριαντάφυλλο", "μέλι"],
+      tip: "Σέρβις στους 6-10°C. Ιδανικό για όσους λένε «δεν πίνω πολύ κρασί… αλλά αυτό μου αρέσει». Μην το ανοίξεις με sabrage, αλλιώς μάλλον θα το πιείτε μόνοι." },
+    { n: "Τσαπουρνάκος", by: "Κτήμα Βογιατζή · Βελβεντό", abv: "κόκκινο", c: "#5a1425", bg: "#e6b7a4", cap: "#2b0d14",
+      bio: "Όνομα σαν βατράχι, κρασί σαν πρίγκιπας. Ίδια οικογένεια με το Cabernet Franc.", tags: ["ζουμερό κεράσι", "γραφίτης", "πράσινη πιπεριά"],
+      tip: "Λένε ότι το όνομά του βγήκε από κακή εκφώνηση του «Cabernet». Μπορεί όμως και από την τσαπουρνιά, την άγρια δαμασκηνιά. Έχεις πια θέμα για το πρώτο ραντεβού." },
+    { n: "Βιδιανό", by: "Theros Collectiva · Κρήτη", abv: "λευκό", c: "#e6d478", bg: "#dfe3b6", cap: "#5a6a45",
+      bio: "Ερωτιάρικο, με σώμα και φρεσκάδα. Στέκεται δίπλα σου χωρίς να σε πνίγει.", tags: ["ώριμα εσπεριδοειδή", "μεσογειακά βότανα"],
+      tip: "Sushi με καπνιστό σολομό, αβοκάντο και cream cheese. Και δεν ξεχνάμε: αγαπάτε (κατ)αλλήλους." },
+    { n: "Ρετσίνα", by: "Aoton Winery", abv: "λευκό με ρητίνη", c: "#d9b35c", bg: "#d9dfc6", cap: "#5a6a45",
+      bio: "Κάποτε κάλυπτε αδυναμίες. Σήμερα δείχνει πρόθεση και χαρακτήρα. Και ναι, έχει σούσου.", tags: ["χαλέπιος πεύκη", "παράδοση αιώνων"],
+      tip: "Τσικνοπέμπτη, ψησταριά, παρέα. Χωρίς coca-cola αυτή τη φορά." },
+    { n: "Ξινόμαυρο", by: "Νάουσα · Αμύνταιο", abv: "κόκκινο", c: "#6b1a2a", bg: "#ecc9b6", cap: "#2b0d14",
+      bio: "Δύσκολος χαρακτήρας, τανίνες παντού. Αν κάνεις υπομονή όμως, δεν τον ξεχνάς.", tags: ["λιαστή ντομάτα", "ελιά", "κόκκινα φρούτα"],
+      tip: "Θέλει μεγάλο ποτήρι, χρόνο και ένα καλό κομμάτι κρέας δίπλα του." },
+    { n: "Ασύρτικο", by: "Σαντορίνη", abv: "λευκό", c: "#eadf9e", bg: "#cfe0e0", cap: "#2b0d14",
+      bio: "Μεγάλωσε σε ηφαίστειο με αέρα και ήλιο. Κοφτερό, αλμυρό, χωρίς φίλτρα.", tags: ["λεμόνι", "αλμύρα", "πέτρα"],
+      tip: "Με οτιδήποτε έρχεται από τη θάλασσα. Το βρίσκεις πια και εκτός Σαντορίνης." },
+  ];
+  const deck = $("#deck"), matchesEl = $("#matches");
+  let idx = 0, busy = false;
+
+  const bottle = (w) => `<svg viewBox="0 0 80 240" aria-hidden="true"><path d="M31 6h18v62c0 15 21 22 21 48v118a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6V116c0-26 21-33 21-48z" fill="${w.c}" stroke="#2b0d14" stroke-width="2"/><rect x="31" y="6" width="18" height="24" fill="${w.cap}"/><rect x="10" y="134" width="60" height="62" fill="#f7f2ea" stroke="#2b0d14" stroke-width="1"/><path d="M28 152h24M24 164h32M30 176h20" stroke="#5a1425" stroke-width="3"/></svg>`;
+  function cardEl(w, depth) {
+    const el = document.createElement("article");
+    el.className = "w-card";
+    el.innerHTML = `<div class="stamp yes">ΝΑΙ</div><div class="stamp no">ΠΑΣΟ</div>
+      <div class="w-top" style="background:${w.bg}">${bottle(w)}<span class="abv">${w.abv}</span></div>
+      <div class="w-body"><h3>${w.n}</h3><small>${w.by}</small><p>${w.bio}</p><div class="chips">${w.tags.map((t) => `<i>${t}</i>`).join("")}</div></div>`;
+    gsap.set(el, { scale: 1 - depth * .045, y: depth * 16, rotate: depth ? (depth % 2 ? 2 : -2) : 0 });
+    el.style.zIndex = 10 - depth;
+    return el;
+  }
+  function render() {
+    deck.innerHTML = "";
+    if (idx >= wines.length) {
+      deck.innerHTML = `<div class="deck-end"><b>Τελείωσαν τα προφίλ.</b><span>Η σωστή στιγμή για να ανοίξεις κάτι.</span><button id="again">Πάμε ξανά</button></div>`;
+      $("#again").onclick = () => { idx = 0; matchesEl.innerHTML = ""; render(); };
+      return;
+    }
+    wines.slice(idx, idx + 3).forEach((w, i) => deck.prepend(cardEl(w, i)));
+    bind(deck.lastElementChild);
+  }
+  function bind(el) {
+    let sx = 0, sy = 0, dx = 0, drag = false, decided = false;
+    el.addEventListener("pointerdown", (e) => { sx = e.clientX; sy = e.clientY; drag = true; decided = false; dx = 0; });
+    el.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      const mx = e.clientX - sx, my = e.clientY - sy;
+      if (!decided) {
+        if (Math.abs(mx) < 6 && Math.abs(my) < 6) return;
+        if (Math.abs(my) > Math.abs(mx)) { drag = false; return; }   // vertical: let the page scroll
+        decided = true; el.setPointerCapture(e.pointerId);
+      }
+      dx = mx;
+      gsap.set(el, { x: dx, y: my * .25, rotate: dx * .06 });
+      gsap.set($(".stamp.yes", el), { opacity: clamp(dx / 90, 0, 1) });
+      gsap.set($(".stamp.no", el), { opacity: clamp(-dx / 90, 0, 1) });
+    });
+    const end = () => {
+      if (!drag) return; drag = false;
+      if (Math.abs(dx) > 100) fly(dx > 0);
+      else { gsap.to(el, { x: 0, y: 0, rotate: 0, duration: .5, ease: "back.out(2)" }); gsap.to($$(".stamp", el), { opacity: 0, duration: .2 }); }
+    };
+    el.addEventListener("pointerup", end);
+    el.addEventListener("pointercancel", end);
+  }
+  function fly(yes) {
+    const el = deck.lastElementChild;
+    if (busy || !el || !el.classList.contains("w-card")) return;
+    busy = true;
+    const w = wines[idx];
+    gsap.to($(yes ? ".stamp.yes" : ".stamp.no", el), { opacity: 1, duration: .12 });
+    gsap.to(el, { x: (yes ? 1 : -1) * (innerWidth * .9), rotate: yes ? 26 : -26, opacity: .9, duration: .55, ease: "power2.in", onComplete() {
+      idx++; render(); busy = false;
+      if (yes) showMatch(w);
+    } });
+  }
+  function showMatch(w) {
+    const s = document.createElement("span"); s.textContent = w.n; matchesEl.append(s);
+    gsap.from(s, { scale: 0, duration: .5, ease: "back.out(3)" });
+    $("#mWith").textContent = `Εσύ και ${w.n}`;
+    $("#mTip").textContent = w.tip;
+    const m = $("#match"); m.classList.add("on");
+    lenis && lenis.stop();
+    gsap.fromTo(".match-in > *", { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: .08, duration: .6, ease: "expo.out" });
+    for (let i = 0; i < 26; i++) {
+      const h = document.createElement("span"); h.className = "heart"; h.textContent = "♥";
+      h.style.left = Math.random() * 100 + "%"; h.style.top = "108%"; h.style.fontSize = 14 + Math.random() * 36 + "px";
+      m.append(h);
+      gsap.to(h, { y: -innerHeight * (1 + Math.random() * .3), x: (Math.random() - .5) * 120, rotate: (Math.random() - .5) * 90, opacity: 0, duration: 2 + Math.random() * 2, delay: Math.random() * .6, ease: "power1.out", onComplete: () => h.remove() });
+    }
+    $("#mClose").focus();
+  }
+  $("#mClose").onclick = () => { $("#match").classList.remove("on"); lenis && lenis.start(); };
+  $("#like").onclick = () => fly(true);
+  $("#nope").onclick = () => fly(false);
+  render();
+})();
+
+/* ---------- Scratch-off tasting notes ---------- */
+(() => {
+  $$(".label canvas").forEach((c, ci) => {
+    const g = c.getContext("2d", { willReadFrequently: true });
+    let done = false, down = false, last = null, moved = 0;
+    function paint() {
+      if (done) return;
+      const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+      c.width = r.width * d; c.height = r.height * d; g.setTransform(d, 0, 0, d, 0, 0);
+      const gr = g.createLinearGradient(0, 0, r.width, r.height);
+      const bg = [["#5a1425", "#8a2338", "#3c0c19"], ["#c86a4a", "#e0937d", "#a5502f"], ["#5a6a45", "#7f8f66", "#414d31"]][ci];
+      gr.addColorStop(0, bg[0]); gr.addColorStop(.5, bg[1]); gr.addColorStop(1, bg[2]);
+      g.globalCompositeOperation = "source-over"; g.fillStyle = gr; g.fillRect(0, 0, r.width, r.height);
+      // foil grain + text
+      for (let i = 0; i < 900; i++) { g.fillStyle = `rgba(255,255,255,${Math.random() * .07})`; g.fillRect(Math.random() * r.width, Math.random() * r.height, 2, 2); }
+      g.fillStyle = "#f7f2ea"; g.textAlign = "center";
+      g.font = `italic 400 ${Math.min(r.width * .14, 56)}px "Noto Serif Display",serif`;
+      g.fillText("ξύσε με", r.width / 2, r.height / 2);
+      g.font = `700 12px Manrope,sans-serif`;
+      g.fillText("18+ · μόνο αν αντέχεις σούσου", r.width / 2, r.height / 2 + 34);
+    }
+    const pos = (e) => { const r = c.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+    function scratch(p) {
+      g.globalCompositeOperation = "destination-out"; g.lineCap = "round"; g.lineWidth = 46;
+      g.beginPath(); g.moveTo((last || p).x, (last || p).y); g.lineTo(p.x + .01, p.y); g.stroke(); last = p;
+      if (++moved % 8 === 0) check();
+    }
+    function check() {
+      const d = g.getImageData(0, 0, c.width, c.height).data; let clear = 0;
+      for (let i = 3; i < d.length; i += 160) if (!d[i]) clear++;
+      if (clear / (d.length / 160) > .42) { done = true; c.style.opacity = 0; c.style.pointerEvents = "none"; }
+    }
+    // mouse scratches on hover too; touch needs the finger down
+    c.addEventListener("pointerdown", (e) => { down = true; last = pos(e); scratch(last); });
+    c.addEventListener("pointermove", (e) => { if (down || e.pointerType === "mouse") scratch(pos(e)); });
+    addEventListener("pointerup", () => { down = false; last = null; });
+    c.addEventListener("pointerleave", () => { if (!down) last = null; });
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(paint);
+    addEventListener("resize", paint);
+  });
+})();
+
+/* ---------- Σομελιέ → ελληνικά ---------- */
+(() => {
+  const terms = [
+    ["Έχει σώμα", "Πόσο «γεμάτο» το νιώθεις στο στόμα. Σκέψου πλήρες γάλα δίπλα στο άπαχο."],
+    ["Τανίνες", "Αυτό που σου στεγνώνει τα ούλα, όπως το δυνατό τσάι. Δεν φταις εσύ, το κρασί φταίει."],
+    ["Μυρίζει βαρέλι", "Άλλο να μυρίζει βαρέλι και άλλο να έχει περάσει βαρέλι. Το βαρέλι κοστίζει γύρω στα 1.000€, γι' αυτό υπάρχουν και τα oak chips."],
+    ["Να αναπνεύσει", "Άνοιξέ το, βάλ' το σε μεγάλο ποτήρι και μην βιάζεσαι. Αυτό ήταν."],
+    ["Μακρά επίγευση", "Έφυγε από το στόμα, αλλά ακόμα το σκέφτεσαι. Σαν καλό πρώτο ραντεβού."],
+    ["Να κρατήσει ανοιχτό", "Αντλία κενού, ψυγείο (ναι, και για τα κόκκινα) και φιάλη όρθια. Κερδίζεις 2-3 μέρες στις περισσότερες περιπτώσεις."],
+  ];
+  $("#flips").innerHTML = terms.map(([a, b]) => `<button class="flip" aria-label="${a}: ${b}"><span class="f"><i class="k" style="font-style:normal">ο σομελιέ λέει</i><b>«${a}»</b></span><span class="b"><i class="k" style="font-style:normal">στα ελληνικά</i><em>${b}</em></span></button>`).join("");
+  $$(".flip").forEach((f) => f.addEventListener("click", () => f.classList.toggle("on")));
+})();
+
+/* ---------- Calculator: the same formula as their live tool ---------- */
+(() => {
+  const STILL = 4.8, ICE = .65, BAG = 4;
+  const st = { guests: 50, hours: 4, pace: .5, buffer: .15, red: 50 };
+  const rack = $("#rack"), CAP = 120;
+  const bottleSvg = () => `<svg viewBox="0 0 24 70"><path d="M9 1h6v18c0 5 7 7 7 15v33a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V34c0-8 7-10 7-15z"/></svg>`;
+  function update() {
+    // pace drops 55% after hour four (their "fatigue factor")
+    const eff = Math.min(st.hours, 4) + Math.max(st.hours - 4, 0) * .45;
+    const glasses = Math.round(st.guests * st.pace * eff);
+    const withBuf = glasses * (1 + st.buffer);
+    const red = st.red ? Math.ceil(withBuf * (st.red / 100) / STILL) : 0;
+    const white = st.red < 100 ? Math.ceil(withBuf * ((100 - st.red) / 100) / STILL) : 0;
+    const total = red + white;
+    const ice = Math.ceil(white * ICE);
+    $("#oGuests").textContent = st.guests;
+    $("#oMix").textContent = `${st.red} / ${100 - st.red}`;
+    $("#tBottles").textContent = total;
+    $("#tGlasses").textContent = `${glasses} ποτήρια`;
+    $("#sRed").textContent = red; $("#sWhite").textContent = white;
+    $("#sIce").textContent = `${ice} kg`;
+    st.list = `Wine Sousou:\nΣύνολο: ${total} φιάλες\nΚόκκινα: ${red}\nΛευκά: ${white}\nΠάγος: ${ice} kg (${Math.ceil(ice / BAG)} σακούλες των ${BAG}kg)`;
+    const show = Math.min(total, CAP);
+    while (rack.children.length > show) rack.lastChild.remove();
+    while (rack.children.length < show) {
+      const w = document.createElement("span"); w.innerHTML = bottleSvg(); rack.append(w);
+      if (!reduce) gsap.from(w, { y: -26, opacity: 0, duration: .45, ease: "bounce.out" });
+    }
+    const reds = total ? Math.round(show * red / total) : 0;
+    [...rack.children].forEach((b, i) => { b.firstChild.style.fill = i < reds ? "#a93c4e" : "#f3e3c0"; });
+  }
+  $("#guests").addEventListener("input", (e) => { st.guests = +e.target.value; update(); });
+  $("#mix").addEventListener("input", (e) => { st.red = +e.target.value; update(); });
+  [["#dur", "hours"], ["#pace", "pace"], ["#buf", "buffer"]].forEach(([s, k]) => {
+    $(s).addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      $$("button", $(s)).forEach((x) => x.classList.toggle("on", x === b));
+      st[k] = +b.dataset.v; update();
+    });
+  });
+  $("#copy").addEventListener("click", async (e) => {
+    try { await navigator.clipboard.writeText(st.list); e.target.textContent = "Αντιγράφηκε!"; } catch { e.target.textContent = st.list.replace(/\n/g, " · "); }
+    setTimeout(() => { e.target.textContent = "Αντιγραφή λίστας"; }, 2200);
+  });
+  update();
+})();
+
+/* ---------- Wine road ---------- */
+(() => {
+  const sec = $("#road"), track = $("#roadTrack"), path = $("#roadPath"), glass = $("#roadGlass");
+  function build() {
+    const w = track.scrollWidth, H = sec.clientHeight, base = H * .46, amp = H * .055;
+    let d = `M0 ${base}`;
+    for (let x = 60; x <= w; x += 60) d += ` L${x} ${(base + Math.sin(x * .0052) * amp + Math.sin(x * .0017) * amp * .7).toFixed(1)}`;
+    path.setAttribute("d", d);
+    track.style.width = w + "px";
+  }
+  build();
+  const place = (p) => {
+    const L = path.getTotalLength(), pt = path.getPointAtLength(L * p);
+    glass.setAttribute("transform", `translate(${pt.x} ${pt.y})`);
+    path.setAttribute("stroke-dashoffset", 1 - p);
+  };
+  if (reduce) { sec.style.overflowX = "auto"; place(1); return; }
+  const dist = () => track.scrollWidth - innerWidth;
+  gsap.timeline({ scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + dist(), pin: true, scrub: 1, invalidateOnRefresh: true, onRefresh: build,
+    onUpdate: (s) => place(Math.min(.03 + s.progress * .97, 1)) } })
+    .to(track, { x: () => -dist(), ease: "none" }, 0)
+    .to(".road-head", { x: () => -innerWidth * .34, opacity: .12, ease: "none", duration: .4 }, 0);
+  place(.03);
+})();
+
+/* ---------- Their real series ---------- */
+(() => {
+  const ig = "https://www.instagram.com/wine.sousou/reel/";
+  const reels = [
+    ["DSPc0uCDlO8", "Wine Sousou Dating", "Ραντεβού πρώτο. Θέλουμε κάτι παιχνιδιάρικο.", "#7a1a30", "series"],
+    ["DUoiLf8jjYL", "Τσικνοπέμπτη & ρετσίνα", "Δεν είναι απλώς «κρασί με ρητίνη».", "#5a6a45", "wine tales"],
+    ["DUgeMK_Dof-", "Oak chips", "Άλλο να «μυρίζει βαρέλι», άλλο να έχει «περάσει βαρέλι».", "#c86a4a", "wisdom"],
+    ["DSnjddnjlRI", "Wine Sousou Gadgets", "Αντλία κενού: τι κάνει όταν δεν τελειώσεις τη φιάλη.", "#2b0d14", "gadgets"],
+    ["DR23Y7PDsTp", "Cabernet Franc Day", "Κι εμείς ανοίγουμε έναν Τσαπουρνάκο.", "#a93c4e", "wine tales"],
+    ["DUvA3AzjqS3", "Αγίου Βαλεντίνου", "Sushi και ένα ερωτιάρικο Βιδιανό.", "#8a4a2c", "pairing"],
+  ];
+  const html = reels.map(([id, t, s, c, g]) => `<a class="reel" style="background:${c}" href="${ig}${id}/" target="_blank" rel="noopener"><span class="tag">${g}</span><b>${t}</b><small>${s}<br>Δες το ↗</small></a>`).join("");
+  $("#reels").innerHTML = html + html;
+})();
+
+/* ---------- Newsletter: pop the cork ---------- */
+$("#form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const r = e.target.querySelector("button").getBoundingClientRect();
+  const x = r.left + r.width / 2, y = r.top;
+  const cork = document.createElement("div"); cork.className = "cork";
+  cork.style.left = x + "px"; cork.style.top = y + "px"; document.body.append(cork);
+  gsap.to(cork, { y: -innerHeight * .75, x: 90, rotate: 900, duration: .9, ease: "power2.out" });
+  gsap.to(cork, { y: innerHeight, duration: .9, delay: .9, ease: "power2.in", onComplete: () => cork.remove() });
+  const cols = ["#5a1425", "#f7f2ea", "#f3e3c0", "#2b0d14"];
+  for (let i = 0; i < 70; i++) {
+    const c = document.createElement("div"); c.className = "confetti";
+    const s = 5 + Math.random() * 9; c.style.cssText = `width:${s}px;height:${s}px;left:${x}px;top:${y}px;background:${cols[i % 4]}`;
+    document.body.append(c);
+    const a = Math.random() * Math.PI - Math.PI, f = 120 + Math.random() * 380;
+    gsap.to(c, { x: Math.cos(a) * f, y: Math.sin(a) * f, duration: .7, ease: "power3.out" });
+    gsap.to(c, { y: "+=" + innerHeight * .7, opacity: 0, duration: 1.2, delay: .55, ease: "power1.in", onComplete: () => c.remove() });
+  }
+  $("#sent").textContent = "Μέσα είσαι. (Στο demo δεν αποθηκεύεται κανένα email.)";
+  e.target.reset();
+});
+
+/* ---------- Cheers: the clink is synthesised, and only ever plays on click ---------- */
+$("#cheers").addEventListener("click", () => {
+  gsap.timeline()
+    .to("#gL", { x: 6, rotate: 14, transformOrigin: "50% 100%", duration: .16, ease: "power2.in" })
+    .to("#gR", { x: -6, rotate: -14, transformOrigin: "50% 100%", duration: .16, ease: "power2.in" }, 0)
+    .to(["#gL", "#gR"], { x: 0, rotate: 0, duration: .7, ease: "elastic.out(1,.35)" });
+  try {
+    const A = new (window.AudioContext || window.webkitAudioContext)();
+    [2093, 3136, 4186].forEach((f, i) => {
+      const o = A.createOscillator(), g = A.createGain();
+      o.frequency.value = f; g.gain.setValueAtTime(.14 / (i + 1), A.currentTime + .15);
+      g.gain.exponentialRampToValueAtTime(.0001, A.currentTime + 1.1);
+      o.connect(g).connect(A.destination); o.start(A.currentTime + .15); o.stop(A.currentTime + 1.15);
+    });
+  } catch {}
+});
+
+/* ---------- Stains: click anywhere and you've spilled a little ---------- */
+(() => {
+  const list = [];
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("a,button,input,canvas,.w-card,.match,.flip")) return;
+    const ns = "http://www.w3.org/2000/svg", s = document.createElementNS(ns, "svg");
+    s.setAttribute("viewBox", "0 0 100 100"); s.setAttribute("class", "stain");
+    const a = Math.random() * 360;
+    s.innerHTML = `<g transform="rotate(${a} 50 50)"><circle cx="50" cy="50" r="38" fill="none" stroke="#7a1a30" stroke-opacity=".5" stroke-width="3.5" stroke-dasharray="170 6 40 3"/><circle cx="50" cy="50" r="35" fill="#7a1a30" fill-opacity=".07"/><circle cx="93" cy="58" r="2.5" fill="#7a1a30" fill-opacity=".5"/></g>`;
+    s.style.left = e.pageX - 75 + "px"; s.style.top = e.pageY - 75 + "px";
+    document.body.append(s);
+    gsap.from(s, { scale: .4, opacity: 0, duration: .5, ease: "expo.out" });
+    list.push(s); if (list.length > 7) list.shift().remove();
+  });
+})();
+
+/* ---------- Bottle gauge: it empties as you read ---------- */
+(() => {
+  const f = $("#gaugeFill");
+  const up = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+    f.setAttribute("y", 30 + 90 * p);
+  };
+  addEventListener("scroll", up, { passive: true }); up();
+})();
+
+/* ---------- Section reveals ---------- */
+if (!reduce) {
+  ["#dating", "#notes", "#lex", "#calc", "#series", "#story", "#join"].forEach((s) => {
+    gsap.from($$(`${s} h2, ${s} .lede, ${s} .eyebrow`), { y: 46, opacity: 0, stagger: .08, duration: 1, ease: "expo.out", scrollTrigger: { trigger: s, start: "top 72%" } });
+  });
+  gsap.from(".pola figure", { y: 120, rotate: 0, opacity: 0, stagger: .18, duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: ".pola", start: "top 80%" } });
+  gsap.from(".foot-logo", { y: 60, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".foot", start: "top 85%" } });
+}
+addEventListener("load", () => ScrollTrigger.refresh());
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => ScrollTrigger.refresh());
+</script>
+</body>
+</html>
