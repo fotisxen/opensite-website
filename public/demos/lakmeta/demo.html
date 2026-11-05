@@ -4,7 +4,7 @@
 <!--
   Demo by OpenSite for Δικηγορικό Γραφείο Έφη Γ. Λακμέτα.
   Facts, decisions, news titles and photos come from dikigoroslarisa.gr.
-  The one-line topic descriptions are drafts for the firm to approve.
+  Topic one-liners summarise the firm's pages and need its approval; full texts stay linked on its site.
 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -154,7 +154,10 @@ h2{font:400 clamp(36px,5vw,60px)/1.08 var(--serif);letter-spacing:-.005em;margin
 .topic:hover .topic-row{padding-left:16px;padding-right:16px}
 .topic h3{font:400 26px/1.22 var(--serif)}
 .topic p{grid-column:1;color:var(--ink-soft);font-size:16px;line-height:1.55}
-.ask{grid-column:2;grid-row:1 / span 2;background:none;border:0;border-bottom:1px solid var(--gold);padding:4px 0;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--gold-text);transition:color .2s}
+.acts{grid-column:2;grid-row:1 / span 2;display:flex;align-items:center;gap:20px}
+.more{font-size:15px;color:var(--ink-soft);white-space:nowrap;text-underline-offset:3px}
+.more:hover{color:var(--ink)}
+.ask{background:none;border:0;border-bottom:1px solid var(--gold);padding:4px 0;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--gold-text);transition:color .2s}
 .ask:hover{color:var(--ink)}
 .empty{padding:28px 0;color:var(--ink-soft)}
 .empty a{font-weight:600}
@@ -174,17 +177,26 @@ h2{font:400 clamp(36px,5vw,60px)/1.08 var(--serif);letter-spacing:-.005em;margin
 .creds{margin-top:32px;border-top:1px solid var(--ink)}
 .creds li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:15px 0;border-bottom:1px solid var(--line)}
 .creds b{font:400 22px/1.3 var(--serif);color:var(--gold-text);white-space:nowrap}
-.partners{margin-top:24px;color:var(--ink-soft);max-width:60ch}
+.partners strong{font-weight:600;color:var(--ink)}
+.partners{margin-top:18px;color:var(--ink-soft);max-width:60ch}
 
 /* Decisions */
 .proof{position:relative;color:var(--on-dark);isolation:isolate}
 .proof .photo{z-index:-1}
 .proof .photo img{object-position:50% 30%}
 .proof .photo::after{background:linear-gradient(90deg,rgba(22,19,22,.95),rgba(22,19,22,.86) 60%,rgba(22,19,22,.66))}
-.cases{display:grid;grid-template-columns:1fr 1fr;margin-top:52px;border-top:1px solid var(--gold)}
-.case{padding:32px 40px 8px 0}
-.case + .case{padding-left:40px;border-left:1px solid var(--line-dark)}
-.case .case-num{font:400 clamp(46px,6.8vw,84px)/1.05 var(--serif);color:var(--gold-hi)}
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:52px;border-top:1px solid var(--gold)}
+.case{padding:32px 32px 8px 0}
+.case + .case{padding-left:32px;border-left:1px solid var(--line-dark)}
+.case .case-num{font:400 clamp(44px,4.4vw,58px)/1.05 var(--serif);color:var(--gold-hi);white-space:nowrap}
+.case a{text-decoration-color:var(--gold);text-underline-offset:4px}
+.case a:hover{color:var(--gold-hi)}
+.dec-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;margin-top:40px}
+.dec-list li{border-top:1px solid var(--line-dark)}
+.dec-list a{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:baseline;padding:13px 0;text-decoration:none;font-size:16px;line-height:1.45;transition:color .2s}
+.dec-list a:hover{color:var(--gold-hi)}
+.dec-list b{font:400 22px/1.2 var(--serif);color:var(--gold-hi)}
+.note a{color:var(--gold-hi);margin-left:6px;text-underline-offset:3px}
 .case p{margin-top:12px;max-width:34ch}
 .case time{display:block;margin-top:6px;font-size:14px;color:var(--on-dark-soft)}
 .note{margin-top:36px;font-size:14px;color:var(--on-dark-soft)}
@@ -194,6 +206,10 @@ h2{font:400 clamp(36px,5vw,60px)/1.08 var(--serif);letter-spacing:-.005em;margin
 .news li{padding-top:20px;border-top:1px solid var(--ink)}
 .news time{font-size:14px;color:var(--gold-text);font-weight:500}
 .news h3{font:400 24px/1.28 var(--serif);margin-top:10px}
+.news h3 a{text-decoration:none;transition:color .2s}
+.news h3 a:hover{color:var(--gold-text)}
+.all-news{margin-top:36px;font-weight:500}
+.all-news a{color:var(--gold-text);text-underline-offset:4px}
 
 /* Contact */
 .contact{background:var(--ink);color:var(--on-dark)}
@@ -257,6 +273,10 @@ footer a{color:var(--on-dark)}
   .about-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
   .figure{max-width:440px}
   .news{grid-template-columns:minmax(0,1fr);gap:28px}
+  .cases{grid-template-columns:minmax(0,1fr)}
+  .case,.case + .case{padding:26px 0;border-left:0}
+  .case + .case{border-top:1px solid var(--line-dark)}
+  .dec-list{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   body{padding-bottom:60px}
@@ -276,8 +296,8 @@ footer a{color:var(--on-dark)}
   .topic-row{grid-template-columns:minmax(0,1fr)}
   .topic:hover .topic-row{padding-left:0;padding-right:0}
   .topic:hover{background:none}
-  .ask{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
-  .cases{grid-template-columns:minmax(0,1fr)}
+  .acts{grid-column:1;grid-row:auto;margin-top:8px}
+  .cases,.dec-list{grid-template-columns:minmax(0,1fr)}
   .case{padding:28px 0}
   .case + .case{padding-left:0;border-left:0;border-top:1px solid var(--line-dark)}
   .proof .photo::after{background:rgba(22,19,22,.88)}
@@ -382,14 +402,16 @@ footer a{color:var(--on-dark)}
         <p class="mark"><b>§ 2</b> Το γραφείο</p>
         <h2>Έφη Γ. Λακμέτα</h2>
         <p class="lede">Ιδρύτρια του γραφείου. Δικηγόρος, μέλος του Δικηγορικού Συλλόγου Λάρισας, με δημοσιεύσεις σε νομικά περιοδικά και ομιλίες σε συνέδρια στην Ελλάδα και το εξωτερικό.</p>
+        <p class="lede">Το γραφείο καλύπτει τη μαχόμενη δικηγορία και την προληπτική νομική συμβουλευτική, με βασικό τομέα ειδίκευσης το εργατικό δίκαιο.</p>
         <ul class="creds">
           <li><span>Αριστούχος απόφοιτος Νομικής ΑΠΘ</span></li>
-          <li><span>Μεταπτυχιακό στο Αστικό και Εργατικό Δίκαιο</span><b>9,5</b></li>
-          <li><span>Μεταπτυχιακό στο Ποινικό Δίκαιο, με ειδίκευση στον Νόμο περί Ναρκωτικών (υπότροφος)</span><b>9,8</b></li>
-          <li><span>Υποψήφια Διδάκτωρ Νομικής, Αριστοτέλειο Πανεπιστήμιο</span></li>
+          <li><span>Μεταπτυχιακό στο Αστικό και Εργατικό Δίκαιο</span><b>9,5 Άριστα</b></li>
+          <li><span>Μεταπτυχιακό στο Ποινικό Δίκαιο, με ειδίκευση στον Νόμο περί Ναρκωτικών (υπότροφος)</span><b>9,8 Άριστα</b></li>
+          <li><span>Υποψήφια Διδάκτωρ Νομικής, Αριστοτέλειο Πανεπιστήμιο, από το 2019</span></li>
           <li><span>Επιμόρφωση: Harvard (Contract Law), Würzburg (Εταιρικό και Οικονομικό Δίκαιο)</span></li>
         </ul>
-        <p class="partners">Το γραφείο συνεργάζεται με οικονομικούς και φοροτεχνικούς συμβούλους, καθώς και με δικηγορικά γραφεία στην Ελλάδα, την Κύπρο, τη Γερμανία, την Ελβετία και τη Βουλγαρία.</p>
+        <p class="partners">Υπηρεσίες σε όλη την Ελλάδα και το εξωτερικό, με μόνιμες συνεργασίες με δικηγορικά γραφεία σε ελληνικές πόλεις και σε Κύπρο, Γερμανία, Ελβετία και Βουλγαρία.</p>
+        <p class="partners"><strong>Ειδικοί σύμβουλοι:</strong> οικονομικοί και φοροτεχνικοί σύμβουλοι, καθώς και εξειδικευμένοι σύμβουλοι σε τραπεζικές, επενδυτικές και χρηματιστηριακές συναλλαγές και στον τομέα των ακινήτων.</p>
       </div>
     </div>
   </section>
@@ -399,22 +421,32 @@ footer a{color:var(--on-dark)}
     <div class="wrap">
       <div data-r>
         <p class="mark"><b>§ 3</b> Αποφάσεις</p>
-        <h2>Ρυθμίσεις οφειλών εντολέων μας</h2>
-        <p class="lede">Μέσω του Εξωδικαστικού Μηχανισμού.</p>
+        <h2>Ρυθμίσεις και διαγραφές οφειλών εντολέων μας</h2>
+        <p class="lede">Επιλογή από τις υποθέσεις του γραφείου, κυρίως μέσω του Εξωδικαστικού Μηχανισμού.</p>
       </div>
       <div class="cases" data-r>
         <article class="case">
+          <p class="case-num">67%</p>
+          <p><a href="https://www.dikigoroslarisa.gr/αποφάσεις/διαγραφή-67-σε-οφειλές-εντολέα-μας-άνω-του-11-εκατ-ευρώ-μέσω-του-εξωδικαστικού-μηχανισμού" target="_blank" rel="noopener">Διαγραφή σε οφειλές άνω του 1,1 εκατ. ευρώ.</a></p>
+        </article>
+        <article class="case">
           <p class="case-num">473.443 €</p>
-          <p>Ρύθμιση οφειλών σε 264 δόσεις.</p>
-          <time datetime="2025-03-27">27 Μαρτίου 2025</time>
+          <p><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-ρύθμιση-οφειλών-εντολέα-μας-473443-ευρώ-σε-264-δόσεις" target="_blank" rel="noopener">Ρύθμιση οφειλών σε 264 δόσεις.</a></p>
         </article>
         <article class="case">
           <p class="case-num">52.545 €</p>
-          <p>Ρύθμιση οφειλών προς τον e-ΕΦΚΑ σε 240 μηνιαίες δόσεις.</p>
-          <time datetime="2025-03-13">13 Μαρτίου 2025</time>
+          <p><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-ρύθμιση-οφειλών-εντολέα-μας-52545-ευρώ-προς-τον-e-εφκα-σε-240" target="_blank" rel="noopener">Ρύθμιση οφειλών προς τον e-ΕΦΚΑ σε 240 μηνιαίες δόσεις.</a></p>
         </article>
       </div>
-      <p class="note" data-r>Κάθε υπόθεση έχει τα δικά της δεδομένα και εξετάζεται ξεχωριστά.</p>
+      <ul class="dec-list" data-r>
+        <li><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-διαγραφή-64-των-οφειλών-και-διάσωση-της-κατοικίας-εντολέα-μας-εν" target="_blank" rel="noopener"><b>64%</b> Διαγραφή οφειλών και διάσωση κατοικίας εν μέσω πλειστηριασμού</a></li>
+        <li><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-διαγραφή-60-των-οφειλών-και-διάσωση-της-κατοικίας-εντολέα-μας" target="_blank" rel="noopener"><b>60%</b> Διαγραφή οφειλών και διάσωση κατοικίας</a></li>
+        <li><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-διαγραφή-46-των-οφειλών-και-διάσωση-της-κατοικίας-εντολέα-μας-εν" target="_blank" rel="noopener"><b>46%</b> Διαγραφή οφειλών και διάσωση κατοικίας εν μέσω πλειστηριασμού</a></li>
+        <li><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-διαγραφή-45-των-οφειλών-εντολέα-μας-προς-τον-e-εφκα" target="_blank" rel="noopener"><b>45%</b> Διαγραφή οφειλών προς τον e-ΕΦΚΑ</a></li>
+        <li><a href="https://www.dikigoroslarisa.gr/αποφάσεις/εξωδικαστικός-μηχανισμός-ρύθμιση-σε-420-δόσεις-και-διάσωση-της-κατοικίας-εντολέα-μας-εν" target="_blank" rel="noopener"><b>420</b> Δόσεις και διάσωση κατοικίας εν μέσω πλειστηριασμού</a></li>
+        <li><a href="https://www.dikigoroslarisa.gr/αποφάσεις/άρση-απαλλοτρίωσης-στε-6002014" target="_blank" rel="noopener"><b>ΣτΕ</b> Άρση απαλλοτρίωσης, απόφαση 600/2014</a></li>
+      </ul>
+      <p class="note" data-r>Κάθε υπόθεση έχει τα δικά της δεδομένα και εξετάζεται ξεχωριστά. <a href="https://www.dikigoroslarisa.gr/αποφάσεις" target="_blank" rel="noopener">Όλες οι αποφάσεις</a></p>
     </div>
   </section>
 
@@ -427,17 +459,18 @@ footer a{color:var(--on-dark)}
       <ul class="news" data-r>
         <li>
           <time datetime="2026-11-05">5 Νοεμβρίου 2026</time>
-          <h3>Δύο νέες παρεμβάσεις για την προστασία των δανειοληπτών στο νομοσχέδιο για το ιδιωτικό χρέος</h3>
+          <h3><a href="https://www.dikigoroslarisa.gr/νέα/δύο-νέες-παρεμβάσεις-για-την-προστασία-των-δανειοληπτών-στο-νομοσχέδιο-για-το-ιδιωτικό-χρέος" target="_blank" rel="noopener">Δύο νέες παρεμβάσεις για την προστασία των δανειοληπτών στο νομοσχέδιο για το ιδιωτικό χρέος</a></h3>
         </li>
         <li>
           <time datetime="2026-11-04">4 Νοεμβρίου 2026</time>
-          <h3>ΔΣΑ: Κατάργηση της διάταξης που καθιστά εκτελεστό τίτλο τη σύμβαση αναδιάρθρωσης χρέους στον εξωδικαστικό</h3>
+          <h3><a href="https://www.dikigoroslarisa.gr/νέα/δσα-κατάργηση-της-διάταξης-που-καθιστά-εκτελεστό-τίτλο-τη-σύμβαση-αναδιάρθρωσης-χρέους-στον" target="_blank" rel="noopener">ΔΣΑ: Κατάργηση της διάταξης που καθιστά εκτελεστό τίτλο τη σύμβαση αναδιάρθρωσης χρέους στον εξωδικαστικό</a></h3>
         </li>
         <li>
           <time datetime="2026-11-02">2 Νοεμβρίου 2026</time>
-          <h3>Εξωδικαστικός μηχανισμός: Αίτημα για κατάργηση της διάταξης περί εκτελεστού τίτλου της συμφωνίας αναδιάρθρωσης χρέους</h3>
+          <h3><a href="https://www.dikigoroslarisa.gr/νέα/εξωδικαστικός-μηχανισμός-αίτημα-για-κατάργηση-της-διάταξης-περί-εκτελεστού-τίτλου-της-συμφωνίας" target="_blank" rel="noopener">Εξωδικαστικός μηχανισμός: Αίτημα για κατάργηση της διάταξης περί εκτελεστού τίτλου της συμφωνίας αναδιάρθρωσης χρέους</a></h3>
         </li>
       </ul>
+      <p class="all-news" data-r><a href="https://www.dikigoroslarisa.gr/νέα" target="_blank" rel="noopener">Όλα τα νέα</a></p>
     </div>
   </section>
 
@@ -448,12 +481,12 @@ footer a{color:var(--on-dark)}
         <h2>Μιλήστε μας για την υπόθεσή σας</h2>
         <p class="lede">Πείτε μας με λίγα λόγια τι συμβαίνει και θα επικοινωνήσουμε μαζί σας.</p>
         <dl class="places">
-          <div><dt>Τηλέφωνο</dt><dd><a href="tel:+302411171770">2411 171770</a></dd></div>
+          <div><dt>Τηλέφωνο και Fax</dt><dd><a href="tel:+302411171770">2411 171770</a></dd></div>
           <div><dt>Κινητό</dt><dd><a href="tel:+306975990954">6975 990954</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:efilakmeta@dikigoroslarisa.gr">efilakmeta@dikigoroslarisa.gr</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:efilakmeta@dikigoroslarisa.gr">efilakmeta@dikigoroslarisa.gr</a><br><a href="mailto:info@dikigoroslarisa.gr">info@dikigoroslarisa.gr</a></dd></div>
           <div>
             <dt>Διεύθυνση</dt>
-            <dd>Παπαναστασίου 67-69, 3ος όροφος, Λάρισα 41222<br>Έναντι Κτηρίου Περιφέρειας (πρώην Νομαρχία), κοντά στο Δικαστικό Μέγαρο<br>
+            <dd>Παπαναστασίου 67-69, 3ος όροφος, Λάρισα 41222<br>Έναντι Κτηρίου Περιφέρειας Θεσσαλίας (πρώην Νομαρχία), Πλατεία Ρήγα Φεραίου, κοντά στο Δικαστικό Μέγαρο<br>Σύγχρονες εγκαταστάσεις, σε χώρο χωρίς κάπνισμα<br>
             <a class="dir" href="https://www.google.com/maps/search/?api=1&query=%CE%A0%CE%B1%CF%80%CE%B1%CE%BD%CE%B1%CF%83%CF%84%CE%B1%CF%83%CE%AF%CE%BF%CF%85%2067%2C%20%CE%9B%CE%AC%CF%81%CE%B9%CF%83%CE%B1%2041222" target="_blank" rel="noopener">Οδηγίες στον χάρτη</a></dd>
           </div>
         </dl>
@@ -462,7 +495,8 @@ footer a{color:var(--on-dark)}
         <p class="form-title">Στείλτε μας μήνυμα</p>
         <div class="field"><label for="f-name">Ονοματεπώνυμο</label><input id="f-name" autocomplete="name" required></div>
         <div class="field"><label for="f-tel">Τηλέφωνο</label><input id="f-tel" type="tel" autocomplete="tel" required></div>
-        <div class="field full"><label for="f-sub">Θέμα</label><input id="f-sub"></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-sub">Θέμα</label><input id="f-sub"></div>
         <div class="field full"><label for="f-msg">Μήνυμα</label><textarea id="f-msg"></textarea></div>
         <p class="consent">Τα στοιχεία σας χρησιμοποιούνται μόνο για να απαντήσουμε στο αίτημά σας και αποστέλλονται με ασφάλεια.</p>
         <div class="form-end">
@@ -476,7 +510,7 @@ footer a{color:var(--on-dark)}
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year">2026</span> Δικηγορικό Γραφείο Έφη Γ. Λακμέτα</span>
+    <span>© <span id="year">2026</span> Δικηγορικό Γραφείο Έφη Γ. Λακμέτα · <a href="https://www.dikigoroslarisa.gr/όροι-χρήσης" target="_blank" rel="noopener">Όροι χρήσης</a></span>
     <span>Ενδεικτικό demo · Σχεδιασμός &amp; κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
   </div>
 </footer>
@@ -487,53 +521,55 @@ footer a{color:var(--on-dark)}
 </nav>
 
 <aside class="cookie" id="cookie" aria-label="Επιλογή για cookies" hidden>
-  Χρησιμοποιούμε προαιρετικά cookies μόνο με τη συγκατάθεσή σας. Το site λειτουργεί κανονικά και χωρίς αυτά.
+  Χρησιμοποιούμε προαιρετικά cookies μόνο με τη συγκατάθεσή σας. Το site λειτουργεί κανονικά και χωρίς αυτά. <a href="https://www.dikigoroslarisa.gr/όροι-χρήσης" target="_blank" rel="noopener">Πληροφορίες</a>
   <div><button type="button" data-c="yes">Αποδοχή</button><button type="button" data-c="no">Απόρριψη</button></div>
 </aside>
 
 <script>
+const SITE = "https://www.dikigoroslarisa.gr/";
+const S = "υπηρεσίες/", E = "εξειδίκευση/";
 const CATS = [
   ["Εργασία & ασφάλιση", [
-    ["Εργατικό Δίκαιο", "Συμβάσεις εργασίας, απολύσεις και διαφορές με τον εργοδότη.", "μισθος απολυση εργοδοτης υπαλληλος"],
-    ["Εργατικές Αποζημιώσεις", "Αποζημίωση απόλυσης και οφειλόμενες αποδοχές.", "απολυση μισθος δεδουλευμενα"],
-    ["Κοινωνικοασφαλιστικό Δίκαιο", "Διαφορές με ασφαλιστικούς φορείς, ένσημα και συντάξεις.", "συνταξη εφκα ενσημα ασφαλιση"],
-    ["Μνημονιακές Περικοπές", "Διεκδίκηση για περικοπές μισθών και συντάξεων.", "συνταξη μισθος αναδρομικα"]
+    ["Εργατικό Δίκαιο", "Ο βασικός τομέας ειδίκευσης του γραφείου: συμβάσεις εργασίας, καταγγελίες και διαφορές με τον εργοδότη.", "μισθος απολυση εργοδοτης υπαλληλος", S + "εργατικό-δίκαιο"],
+    ["Εργατικές Αποζημιώσεις", "Αποζημίωση απόλυσης, με συγκεντρωτικό πίνακα για τους υπαλλήλους.", "απολυση μισθος δεδουλευμενα", E + "εργατικές-αποζημιώσεις"],
+    ["Κοινωνικοασφαλιστικό Δίκαιο", "Διαφορές με ασφαλιστικούς οργανισμούς, συντάξεις και περίθαλψη.", "συνταξη εφκα ενσημα ασφαλιση", S + "κοινωνικοασφαλιστικό-δίκαιο"],
+    ["Μνημονιακές Περικοπές", "Δικαστική διεκδίκηση περικοπών, όπως στα μισθολόγια των ιατρών του Ε.Σ.Υ.", "συνταξη μισθος αναδρομικα γιατρος", E + "μνημονιακές-περικοπές"]
   ]],
   ["Χρέη & τράπεζες", [
-    ["Διαχείριση Χρεών", "Οργάνωση και ρύθμιση οφειλών ιδιωτών και επιχειρήσεων.", "δανειο οφειλες εξωδικαστικος"],
-    ["Ρύθμιση-Διαγραφή Χρεών", "Εξωδικαστικός Μηχανισμός και προστασία πρώτης κατοικίας.", "δανειο εξωδικαστικος πρωτη κατοικια πλειστηριασμος εφκα εφορια"],
-    ["Τραπεζικό Δίκαιο", "Διαφορές από τις συναλλαγές με τράπεζες.", "τραπεζα δανειο"],
-    ["Τραπεζικές Συμβάσεις", "Έλεγχος δανειακών και άλλων τραπεζικών συμβάσεων.", "τραπεζα δανειο ελβετικο φραγκο"],
-    ["Χρηματιστηριακές Απάτες", "Διεκδίκηση χρημάτων από επενδυτικές απάτες.", "απατη επενδυση"]
+    ["Διαχείριση Χρεών", "Ολοκληρωμένες λύσεις για ιδιώτες και επιχειρήσεις με οφειλές.", "δανειο οφειλες εξωδικαστικος", S + "διαχείριση-χρεών"],
+    ["Ρύθμιση-Διαγραφή Χρεών", "Εξωδικαστικός Μηχανισμός και προστασία της πρώτης κατοικίας.", "δανειο εξωδικαστικος πρωτη κατοικια πλειστηριασμος εφκα εφορια", E + "ρύθμιση-διαγραφή-χρεών"],
+    ["Τραπεζικό Δίκαιο", "Συμβουλευτική για τις υποχρεώσεις σας απέναντι στην τράπεζα.", "τραπεζα δανειο", S + "τραπεζικό-δίκαιο"],
+    ["Τραπεζικές Συμβάσεις", "Καταχρηστικοί όροι, παράνομες χρεώσεις και προμήθειες.", "τραπεζα δανειο ελβετικο φραγκο", E + "τραπεζικές-συμβάσεις"],
+    ["Χρηματιστηριακές Απάτες", "Υποθέσεις απάτης σε επενδύσεις και τίτλους.", "απατη επενδυση", E + "χρηματιστηριακές-απάτες"]
   ]],
   ["Οικογένεια & κληρονομιά", [
-    ["Οικογενειακό – Κληρονομικό Δίκαιο", "Διαζύγιο, διακοπή συμβίωσης και κληρονομικά θέματα.", "διαζυγιο γαμος κληρονομια αποποιηση"],
-    ["Διανομή Συζυγικής Περιουσίας – Επιμέλεια Τέκνου", "Περιουσιακά ζητήματα μετά το διαζύγιο, επιμέλεια και επικοινωνία.", "διαζυγιο παιδι επιμελεια αλιμεντα"],
-    ["Προσβολή Διαθηκών", "Αμφισβήτηση του κύρους μιας διαθήκης.", "διαθηκη κληρονομια"]
+    ["Οικογενειακό – Κληρονομικό Δίκαιο", "Διαζύγιο, διακοπή συμβίωσης και κληρονομικά θέματα.", "διαζυγιο γαμος κληρονομια αποποιηση", S + "οικογενειακό-–-κληρονομικό-δίκαιο"],
+    ["Διανομή Συζυγικής Περιουσίας – Επιμέλεια Τέκνου", "Τα περιουσιακά δικαιώματα των συζύγων μετά το διαζύγιο και η επιμέλεια των παιδιών.", "διαζυγιο παιδι επιμελεια αλιμεντα", E + "διανομή-συζυγικής-περιουσίας-–-επιμέλεια-τέκνου"],
+    ["Προσβολή Διαθηκών", "Λόγοι ακυρότητας ιδιόγραφης και δημόσιας διαθήκης.", "διαθηκη κληρονομια", E + "προσβολή-διαθηκών"]
   ]],
   ["Ακίνητα", [
-    ["Μισθώσεις-Ακίνητα-Απαλλοτριώσεις", "Ενοίκια, αγοραπωλησίες και απαλλοτριώσεις.", "ενοικιο εξωση οικοπεδο σπιτι"],
-    ["Κτηματολόγιο-Δασικοί Χάρτες", "Διορθώσεις εγγραφών και αντιρρήσεις στους δασικούς χάρτες.", "οικοπεδο χωραφι δηλωση"]
+    ["Μισθώσεις-Ακίνητα-Απαλλοτριώσεις", "Ενοίκια, ακίνητη περιουσία και απαλλοτριώσεις.", "ενοικιο εξωση οικοπεδο σπιτι"],
+    ["Κτηματολόγιο-Δασικοί Χάρτες", "Η καταγραφή και η κατοχύρωση της ακίνητης περιουσίας σας.", "οικοπεδο χωραφι δηλωση", S + "κτηματολόγιο-δασικοί-χάρτες"]
   ]],
   ["Επιχειρήσεις & φόροι", [
-    ["Εμπορικό Δίκαιο", "Εμπορικές συναλλαγές και διαφορές επιχειρήσεων.", "εταιρεια επιχειρηση"],
-    ["Εταιρικό Δίκαιο", "Σύσταση, λειτουργία και μεταβολές εταιρειών.", "εταιρεια επιχειρηση καταστατικο"],
-    ["Φορολογικό Δίκαιο", "Φόροι, τέλη και πρόστιμα, για ιδιώτες και επιχειρήσεις.", "εφορια προστιμο εφκα"],
-    ["Ηλεκτρονικό Εμπόριο", "Νομικό πλαίσιο για online καταστήματα.", "eshop online e-shop"],
-    ["Δημόσια Έργα και Προμήθειες", "Διαγωνισμοί και συμβάσεις με το Δημόσιο.", "διαγωνισμος δημοσιο"]
+    ["Εμπορικό Δίκαιο", "Εμπορικές πράξεις και εθνικό και διεθνές εμπόριο.", "εταιρεια επιχειρηση", S + "εμπορικό-δίκαιο"],
+    ["Εταιρικό Δίκαιο", "Οι κανόνες που διέπουν τη λειτουργία των εταιρειών.", "εταιρεια επιχειρηση καταστατικο", S + "εταιρικό-δίκαιο"],
+    ["Φορολογικό Δίκαιο", "Φόροι, τέλη και πρόστιμα, για ιδιώτες και επιχειρήσεις.", "εφορια προστιμο εφκα", S + "φορολογικό-δίκαιο"],
+    ["Ηλεκτρονικό Εμπόριο", "Νομική υποστήριξη για το ηλεκτρονικό σας κατάστημα.", "eshop online e-shop", E + "ηλεκτρονικό-εμπόριο"],
+    ["Δημόσια Έργα και Προμήθειες", "Διαγωνισμοί και δημόσιες συμβάσεις, σύμφωνα με τους ν. 4412 και 4413/2016.", "διαγωνισμος δημοσιο", E + "δημόσια-έργα-και-προμήθειες"]
   ]],
   ["Ποινικά", [
-    ["Ποινικό Δίκαιο", "Υπεράσπιση και υποστήριξη σε ποινικές υποθέσεις.", "μηνυση δικαστηριο ναρκωτικα"],
-    ["Οικονομικό Έγκλημα", "Ποινικές υποθέσεις με οικονομικό αντικείμενο.", "απατη φοροδιαφυγη χρεη δημοσιο"]
+    ["Ποινικό Δίκαιο", "Το νομικό πλαίσιο αντιμετώπισης των εγκλημάτων και η υπεράσπισή σας.", "μηνυση δικαστηριο ναρκωτικα", S + "ποινικό-δίκαιο"],
+    ["Οικονομικό Έγκλημα", "Αδικήματα στο πλαίσιο οικονομικής δραστηριότητας.", "απατη φοροδιαφυγη χρεη δημοσιο", S + "οικονομικό-έγκλημα"]
   ]],
   ["Αποζημιώσεις", [
-    ["Τροχαία Ατυχήματα", "Δικαστική επιδίωξη πλήρους αποζημίωσης.", "τροχαιο ατυχημα αυτοκινητο ασφαλεια"],
-    ["Ιατρική Ευθύνη", "Υποθέσεις ιατρικού λάθους.", "γιατρος νοσοκομειο λαθος"],
-    ["Ευθύνη-Αποζημίωση Δημοσίου", "Αποζημίωση για ζημιές από το Δημόσιο.", "δημος κρατος"]
+    ["Τροχαία Ατυχήματα", "Δικαστική επιδίωξη πλήρους αποκατάστασης κάθε ζημίας.", "τροχαιο ατυχημα αυτοκινητο ασφαλεια", E + "τροχαία-ατυχήματα"],
+    ["Ιατρική Ευθύνη", "Αστική και ποινική ευθύνη ιατρών και παραϊατρικού προσωπικού.", "γιατρος νοσοκομειο λαθος", S + "ιατρική-ευθύνη"],
+    ["Ευθύνη-Αποζημίωση Δημοσίου", "Αστική ευθύνη του Δημοσίου και των Ο.Τ.Α.", "δημος κρατος ατυχημα", E + "ευθύνη-αποζημίωση-δημοσίου"]
   ]],
   ["Αλλοδαποί", [
-    ["Αλλοδαποί", "Νομική υποστήριξη αλλοδαπών στην Ελλάδα.", "μεταναστες"],
-    ["Άδειες Διαμονής – Ιθαγένεια", "Αιτήσεις για άδεια διαμονής και ελληνική ιθαγένεια.", "visa μετανάστες"]
+    ["Αλλοδαποί", "Βοήθεια για να τακτοποιήσετε τα έγγραφά σας στην Ελλάδα.", "μεταναστες χαρτια", S + "αλλοδαποί"],
+    ["Άδειες Διαμονής – Ιθαγένεια", "Κτήση ελληνικής ιθαγένειας και δικαιολογητικά.", "visa μετανάστες", E + "άδειες-διαμονής-–-ιθαγένεια"]
   ]]
 ];
 
@@ -559,10 +595,10 @@ function render() {
     ...CATS.map(([name, list], i) => catButton(name.replace("&", "&amp;"), list.length, i)));
   let list = active < 0 ? ALL : CATS[active][1];
   if (q) {
-    list = ALL.filter(t => norm(t.join(" ")).includes(q));
+    list = ALL.filter(t => norm(t.slice(0, 3).join(" ")).includes(q));
     cats.querySelectorAll(".cat").forEach(b => b.setAttribute("aria-pressed", "false"));
   }
-  $("topics").replaceChildren(...list.map(([title, desc]) => {
+  $("topics").replaceChildren(...list.map(([title, desc, , path]) => {
     const li = document.createElement("li");
     li.className = "topic";
     const row = document.createElement("div");
@@ -581,7 +617,17 @@ function render() {
       $("epikoinonia").scrollIntoView();
       $("f-name").focus({ preventScroll: true });
     };
-    row.append(h, b, p);
+    const more = document.createElement("a");
+    more.className = "more";
+    more.href = SITE + path;
+    more.target = "_blank";
+    more.rel = "noopener";
+    more.textContent = "Όλο το κείμενο";
+    more.setAttribute("aria-label", `Όλο το κείμενο: ${title}`);
+    const acts = document.createElement("div");
+    acts.className = "acts";
+    acts.append(...(path ? [more] : []), b);
+    row.append(h, acts, p);
     li.append(row);
     return li;
   }));
@@ -592,10 +638,10 @@ render();
 
 $("form").addEventListener("submit", e => {
   e.preventDefault();
-  const ok = $("f-name").value.trim() && $("f-tel").value.trim();
+  const ok = $("f-name").value.trim() && ($("f-tel").value.trim() || $("f-email").value.trim());
   $("sent").textContent = ok
     ? "Στο demo το μήνυμα δεν αποστέλλεται. Στο κανονικό site θα έφτανε στο email του γραφείου."
-    : "Συμπληρώστε ονοματεπώνυμο και τηλέφωνο.";
+    : "Συμπληρώστε ονοματεπώνυμο και τηλέφωνο ή email.";
 });
 
 $("year").textContent = new Date().getFullYear();
