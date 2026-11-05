@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="el">
+<head>
+<!--
+  Demo by OpenSite for Δικηγορικό Γραφείο Έφη Γ. Λακμέτα.
+  Facts, decisions and news titles come from dikigoroslarisa.gr.
+  The one-line topic descriptions are drafts for the firm to approve.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Δικηγόρος Λάρισα | Έφη Γ. Λακμέτα, Δικηγορικό Γραφείο</title>
+<meta name="description" content="Δικηγορικό γραφείο στη Λάρισα, Παπαναστασίου 67-69. Εργατικό, οικογενειακό, ποινικό δίκαιο, ρύθμιση χρεών και ακόμη 22 θέματα. Τηλ. 2411 171770.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#2b272c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600&family=GFS+Didot&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Δικηγορικό Γραφείο Έφη Γ. Λακμέτα",
+  "url": "https://www.dikigoroslarisa.gr/",
+  "telephone": "+302411171770",
+  "email": "efilakmeta@dikigoroslarisa.gr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Παπαναστασίου 67-69, 3ος όροφος",
+    "addressLocality": "Λάρισα",
+    "postalCode": "41222",
+    "addressCountry": "GR"
+  },
+  "areaServed": ["Λάρισα", "Βόλος", "Τρίκαλα", "Καρδίτσα", "Λαμία"],
+  "founder": { "@type": "Person", "name": "Έφη Γ. Λακμέτα", "jobTitle": "Δικηγόρος" }
+}
+</script>
+<style>
+:root{
+  --ink:#2b272c;
+  --ink-soft:#5d5860;
+  --paper:#f7f4ee;
+  --card:#fffdf9;
+  --line:#ddd6c8;
+  --gold:#cda956;
+  --gold-text:#7d6118;
+  --on-dark:#f4efe6;
+  --on-dark-soft:#bdb7ae;
+  --line-dark:#47424a;
+  --serif:"GFS Didot","Times New Roman",serif;
+  --sans:"Commissioner",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1160px;
+  --gutter:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans)}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--ink);padding:8px 14px;z-index:60}
+.skip:focus{left:8px}
+
+h2{font:400 clamp(32px,4.6vw,50px)/1.12 var(--serif);letter-spacing:-.005em}
+.lede{color:var(--ink-soft);max-width:56ch;margin-top:14px}
+section{padding:clamp(64px,9vw,112px) 0}
+
+/* Header */
+.top{position:sticky;top:0;z-index:40;background:var(--ink);color:var(--on-dark)}
+.top .wrap{display:flex;align-items:center;gap:28px;min-height:72px}
+.brand{display:block;text-decoration:none;flex:none}
+.brand img{height:32px;width:auto}
+.brand span{display:none;font:400 21px/1 var(--serif)}
+.brand.no-logo img{display:none}
+.brand.no-logo span{display:block}
+.nav{display:flex;gap:24px;margin-left:auto;font-size:15px}
+.nav a{text-decoration:none;color:var(--on-dark-soft);padding:8px 0;transition:color .2s}
+.nav a:hover{color:var(--on-dark)}
+.top-call{flex:none;text-decoration:none;font-weight:600;font-size:15px;background:var(--gold);color:var(--ink);padding:10px 16px;border-radius:3px;white-space:nowrap;transition:background .2s}
+.top-call:hover{background:#dcbb6c}
+
+/* Hero */
+.hero{background:var(--ink);color:var(--on-dark);padding:clamp(48px,6vw,80px) 0 clamp(36px,4vw,52px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);gap:clamp(40px,6vw,88px);align-items:end}
+.hero h1{font:500 15px/1.5 var(--sans);letter-spacing:.02em;color:var(--gold)}
+.hero-line{text-wrap:balance;font:400 clamp(42px,5.4vw,70px)/1.08 var(--serif);margin-top:22px;letter-spacing:-.01em}
+.hero-sub{color:var(--on-dark-soft);max-width:48ch;margin-top:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-block;text-decoration:none;border:1px solid transparent;border-radius:3px;padding:14px 22px;font-weight:600;font-size:16px;line-height:1.3;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:#dcbb6c}
+.btn-ghost{border-color:var(--line-dark);color:var(--on-dark)}
+.btn-ghost:hover{border-color:var(--gold)}
+.reach{border-top:1px solid var(--line-dark)}
+.reach div{padding:16px 0;border-bottom:1px solid var(--line-dark)}
+.reach dt{font-size:13px;color:var(--on-dark-soft)}
+.reach dd{margin-top:2px;font-size:16px}
+.reach a{text-decoration:none}
+.reach a:hover{color:var(--gold)}
+.cities{margin-top:clamp(40px,6vw,64px);padding-top:18px;border-top:1px solid var(--line-dark);display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--on-dark-soft);font-size:15px}
+.cities strong{font-weight:500;color:var(--on-dark)}
+
+/* Topic finder */
+.finder-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
+.search{position:relative;flex:1 1 320px;max-width:420px}
+.search label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
+.search input{width:100%;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:13px 14px}
+.search input:focus{border-color:var(--ink);outline:none}
+.finder{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,5vw,64px);margin-top:44px}
+.cats{display:flex;flex-direction:column;align-self:start;position:sticky;top:96px}
+.cat{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:12px 0;cursor:pointer;color:var(--ink-soft);transition:color .2s}
+.cat:hover{color:var(--ink)}
+.cat[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.cat[aria-pressed="true"] small{color:var(--gold-text)}
+.cat small{font-size:14px;font-weight:400}
+.topics{border-top:1px solid var(--ink)}
+.topic{border-bottom:1px solid var(--line)}
+.topic-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:20px 0}
+.topic h3{font:400 24px/1.25 var(--serif)}
+.topic p{grid-column:1;color:var(--ink-soft);font-size:16px;line-height:1.55}
+.ask{grid-column:2;grid-row:1 / span 2;background:none;border:1px solid var(--line);border-radius:3px;padding:9px 14px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;transition:border-color .2s,background .2s}
+.ask:hover{border-color:var(--ink);background:var(--card)}
+.empty{padding:28px 0;color:var(--ink-soft)}
+.empty a{font-weight:600}
+
+/* About */
+.about{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(32px,6vw,88px)}
+.mono{background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;padding:48px;align-self:start}
+.mono img{width:100%;max-width:170px;height:auto}
+.mono span{display:none;font:400 30px/1.2 var(--serif);text-align:center}
+.mono.no-logo img{display:none}
+.mono.no-logo span{display:block}
+.about h2 small{display:block;font:500 15px/1.5 var(--sans);letter-spacing:.02em;color:var(--gold-text);margin-bottom:10px}
+.creds{margin-top:32px;border-top:1px solid var(--line)}
+.creds li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.creds b{font-weight:500;color:var(--gold-text);white-space:nowrap}
+.values{margin-top:32px;font:400 clamp(24px,3vw,30px)/1.3 var(--serif)}
+.partners{margin-top:18px;color:var(--ink-soft);max-width:60ch}
+
+/* Decisions and news */
+.proof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,7vw,96px)}
+.case{padding:26px 0;border-top:1px solid var(--line)}
+.case:first-of-type{margin-top:34px;border-top:1px solid var(--ink)}
+.case .case-num{font:400 clamp(38px,4.6vw,52px)/1.1 var(--serif);margin:0;color:var(--ink)}
+.case p{margin-top:8px;color:var(--ink-soft)}
+.case time{display:block;margin-top:6px;font-size:14px;color:var(--ink-soft)}
+.note{margin-top:4px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+.news{margin-top:34px;border-top:1px solid var(--ink)}
+.news li{padding:22px 0;border-bottom:1px solid var(--line)}
+.news time{font-size:14px;color:var(--gold-text);font-weight:500}
+.news h3{font:500 18px/1.45 var(--sans);margin-top:6px}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--on-dark)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(40px,7vw,96px)}
+.contact .lede{color:var(--on-dark-soft)}
+.places{margin-top:36px;border-top:1px solid var(--line-dark)}
+.places div{padding:16px 0;border-bottom:1px solid var(--line-dark)}
+.places dt{font-size:13px;color:var(--on-dark-soft)}
+.places dd{margin-top:2px}
+.places a{text-decoration:none}
+.places a:hover{color:var(--gold)}
+.places .dir{display:inline-block;margin-top:8px;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1 / -1}
+.field label{font-size:14px;color:var(--on-dark-soft)}
+.field input,.field textarea{width:100%;background:#37323a;border:1px solid var(--line-dark);border-radius:3px;padding:13px 14px;color:var(--on-dark)}
+.field input:focus,.field textarea:focus{border-color:var(--gold);outline:none}
+.field textarea{min-height:130px;resize:vertical}
+.consent{grid-column:1 / -1;font-size:14px;color:var(--on-dark-soft);line-height:1.5}
+.form-end{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.sent{color:var(--gold);font-size:15px}
+
+/* Footer */
+footer{background:#221f23;color:var(--on-dark-soft);font-size:14px;padding:26px 0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px}
+footer a{color:var(--on-dark)}
+
+/* Mobile call bar */
+.callbar{display:none}
+
+/* Cookie choice */
+.cookie{position:fixed;right:16px;bottom:16px;z-index:50;max-width:400px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:16px 18px;font-size:14px;line-height:1.5;box-shadow:0 10px 30px rgba(20,17,20,.22)}
+.cookie[hidden]{display:none}
+.cookie div{display:flex;gap:8px;margin-top:12px}
+.cookie button{flex:1;border-radius:3px;padding:9px 12px;font-weight:600;cursor:pointer;border:1px solid var(--ink);background:none}
+.cookie button:first-child{background:var(--ink);color:var(--on-dark)}
+
+@media (max-width:960px){
+  .nav{display:none}
+  .top-call{margin-left:auto}
+  .hero-grid,.about-grid,.proof-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .mono{aspect-ratio:auto;padding:36px 22%;max-height:280px}
+  .mono img{max-height:200px}
+  .finder{grid-template-columns:minmax(0,1fr)}
+  .cats{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
+  .cat{width:auto;border:1px solid var(--line);border-radius:3px;padding:8px 12px;font-size:15px;gap:8px}
+  .cat[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
+  .cat[aria-pressed="true"] small{color:var(--gold)}
+}
+@media (max-width:640px){
+  body{padding-bottom:64px}
+  .top-call{display:none}
+  .brand{margin:0 auto}
+  .top .wrap{min-height:60px}
+  html{scroll-padding-top:72px}
+  .topic-row{grid-template-columns:minmax(0,1fr)}
+  .ask{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
+  form{grid-template-columns:minmax(0,1fr)}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--ink);border-top:1px solid var(--line-dark);padding-bottom:env(safe-area-inset-bottom)}
+  .callbar a{display:block;text-align:center;text-decoration:none;font-weight:600;padding:18px 8px;color:var(--on-dark)}
+  .callbar a:first-child{background:var(--gold);color:var(--ink)}
+  .cookie{left:12px;right:12px;bottom:72px;max-width:none}
+  footer{padding-bottom:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#main" aria-label="Έφη Γ. Λακμέτα, Δικηγόρος, αρχική">
+      <img src="https://www.dikigoroslarisa.gr/sites/default/files/logo_lakmeta_horizontal-02.png" alt="" width="283" height="40" onerror="this.parentNode.classList.add('no-logo')">
+      <span>Έφη Γ. Λακμέτα</span>
+    </a>
+    <nav class="nav" aria-label="Κύρια πλοήγηση">
+      <a href="#themata">Θέματα</a>
+      <a href="#grafeio">Το γραφείο</a>
+      <a href="#apofaseis">Αποφάσεις</a>
+      <a href="#nea">Νέα</a>
+      <a href="#epikoinonia">Επικοινωνία</a>
+    </nav>
+    <a class="top-call" href="tel:+302411171770">2411 171770</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>Έφη Γ. Λακμέτα, Δικηγόρος Λάρισα</h1>
+          <p class="hero-line">Στόχος μας είναι να προσφέρουμε λύσεις.</p>
+          <p class="hero-sub">Δικηγορικό γραφείο στο κέντρο της Λάρισας, για ιδιώτες και επιχειρήσεις, με άμεση και προσωπική εξυπηρέτηση.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="tel:+302411171770">Καλέστε 2411 171770</a>
+            <a class="btn btn-ghost" href="#themata">Βρείτε το θέμα σας</a>
+          </div>
+        </div>
+        <dl class="reach">
+          <div><dt>Γραφείο</dt><dd>Παπαναστασίου 67-69, 3ος όροφος<br>Λάρισα 41222</dd></div>
+          <div><dt>Κινητό</dt><dd><a href="tel:+306975990954">6975 990954</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:efilakmeta@dikigoroslarisa.gr">efilakmeta@dikigoroslarisa.gr</a></dd></div>
+        </dl>
+      </div>
+      <p class="cities"><strong>Δραστηριότητα:</strong> <span>Λάρισα</span><span>Βόλος</span><span>Τρίκαλα</span><span>Καρδίτσα</span><span>Λαμία</span></p>
+    </div>
+  </div>
+
+  <section id="themata">
+    <div class="wrap">
+      <div class="finder-head">
+        <div>
+          <h2>Τι σας απασχολεί;</h2>
+          <p class="lede">Οι 14 τομείς και οι 12 εξειδικεύσεις του γραφείου, οργανωμένοι με βάση το πρόβλημα που έχετε μπροστά σας.</p>
+        </div>
+        <div class="search">
+          <label for="q">Αναζήτηση θέματος</label>
+          <input id="q" type="search" placeholder="π.χ. απόλυση, διαζύγιο, τροχαίο" autocomplete="off">
+        </div>
+      </div>
+      <div class="finder">
+        <div class="cats" id="cats" role="group" aria-label="Κατηγορίες θεμάτων"></div>
+        <div>
+          <ul class="topics" id="topics"></ul>
+          <p class="empty" id="empty" hidden>Δεν βρέθηκε αυτό το θέμα. <a href="#epikoinonia">Περιγράψτε μας την περίπτωσή σας.</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="grafeio">
+    <div class="wrap about-grid">
+      <div class="mono">
+        <img src="https://www.dikigoroslarisa.gr/sites/default/files/logo_lakmeta_vertical-02.png" alt="Λογότυπο Έφη Γ. Λακμέτα" onerror="this.parentNode.classList.add('no-logo')">
+        <span>Έφη Γ. Λακμέτα<br>Δικηγόρος</span>
+      </div>
+      <div>
+        <h2><small>Ιδρύτρια</small>Έφη Γ. Λακμέτα</h2>
+        <p class="lede">Δικηγόρος, μέλος του Δικηγορικού Συλλόγου Λάρισας, με δημοσιεύσεις σε νομικά περιοδικά και ομιλίες σε συνέδρια στην Ελλάδα και το εξωτερικό.</p>
+        <ul class="creds">
+          <li><span>Αριστούχος απόφοιτος Νομικής ΑΠΘ</span></li>
+          <li><span>Μεταπτυχιακό στο Αστικό και Εργατικό Δίκαιο</span><b>9,5 Άριστα</b></li>
+          <li><span>Μεταπτυχιακό στο Ποινικό Δίκαιο, με ειδίκευση στον Νόμο περί Ναρκωτικών (υπότροφος)</span><b>9,8 Άριστα</b></li>
+          <li><span>Υποψήφια Διδάκτωρ Νομικής, Αριστοτέλειο Πανεπιστήμιο</span></li>
+          <li><span>Επιμόρφωση: Harvard (Contract Law), Würzburg (Εταιρικό και Οικονομικό Δίκαιο)</span></li>
+        </ul>
+        <p class="values">Εντιμότητα, ειλικρίνεια, αμεσότητα.</p>
+        <p class="partners">Το γραφείο συνεργάζεται με οικονομικούς και φοροτεχνικούς συμβούλους, καθώς και με δικηγορικά γραφεία στην Ελλάδα, την Κύπρο, τη Γερμανία, την Ελβετία και τη Βουλγαρία.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap proof-grid">
+      <div id="apofaseis">
+        <h2>Αποφάσεις</h2>
+        <p class="lede">Ρυθμίσεις οφειλών εντολέων μας μέσω του Εξωδικαστικού Μηχανισμού.</p>
+        <article class="case">
+          <p class="case-num">473.443 €</p>
+          <p>Ρύθμιση οφειλών σε 264 δόσεις.</p>
+          <time datetime="2025-03-27">27 Μαρτίου 2025</time>
+        </article>
+        <article class="case">
+          <p class="case-num">52.545 €</p>
+          <p>Ρύθμιση οφειλών προς τον e-ΕΦΚΑ σε 240 μηνιαίες δόσεις.</p>
+          <time datetime="2025-03-13">13 Μαρτίου 2025</time>
+        </article>
+        <p class="note">Κάθε υπόθεση έχει τα δικά της δεδομένα και εξετάζεται ξεχωριστά.</p>
+      </div>
+      <div id="nea">
+        <h2>Νέα</h2>
+        <p class="lede">Οι εξελίξεις που επηρεάζουν τους εντολείς μας.</p>
+        <ul class="news">
+          <li>
+            <time datetime="2026-11-05">5 Νοεμβρίου 2026</time>
+            <h3>Δύο νέες παρεμβάσεις για την προστασία των δανειοληπτών στο νομοσχέδιο για το ιδιωτικό χρέος</h3>
+          </li>
+          <li>
+            <time datetime="2026-11-04">4 Νοεμβρίου 2026</time>
+            <h3>ΔΣΑ: Κατάργηση της διάταξης που καθιστά εκτελεστό τίτλο τη σύμβαση αναδιάρθρωσης χρέους στον εξωδικαστικό</h3>
+          </li>
+          <li>
+            <time datetime="2026-11-02">2 Νοεμβρίου 2026</time>
+            <h3>Εξωδικαστικός μηχανισμός: Αίτημα για κατάργηση της διάταξης περί εκτελεστού τίτλου της συμφωνίας αναδιάρθρωσης χρέους</h3>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="epikoinonia">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Επικοινωνία</h2>
+        <p class="lede">Πείτε μας με λίγα λόγια τι συμβαίνει και θα επικοινωνήσουμε μαζί σας.</p>
+        <dl class="places">
+          <div><dt>Τηλέφωνο</dt><dd><a href="tel:+302411171770">2411 171770</a></dd></div>
+          <div><dt>Κινητό</dt><dd><a href="tel:+306975990954">6975 990954</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:efilakmeta@dikigoroslarisa.gr">efilakmeta@dikigoroslarisa.gr</a></dd></div>
+          <div>
+            <dt>Διεύθυνση</dt>
+            <dd>Παπαναστασίου 67-69, 3ος όροφος, Λάρισα 41222<br>Έναντι Κτηρίου Περιφέρειας (πρώην Νομαρχία), κοντά στο Δικαστικό Μέγαρο<br>
+            <a class="dir" href="https://www.google.com/maps/search/?api=1&query=%CE%A0%CE%B1%CF%80%CE%B1%CE%BD%CE%B1%CF%83%CF%84%CE%B1%CF%83%CE%AF%CE%BF%CF%85%2067%2C%20%CE%9B%CE%AC%CF%81%CE%B9%CF%83%CE%B1%2041222" target="_blank" rel="noopener">Οδηγίες στον χάρτη</a></dd>
+          </div>
+        </dl>
+      </div>
+      <form id="form" novalidate>
+        <div class="field"><label for="f-name">Ονοματεπώνυμο</label><input id="f-name" autocomplete="name" required></div>
+        <div class="field"><label for="f-tel">Τηλέφωνο</label><input id="f-tel" type="tel" autocomplete="tel" required></div>
+        <div class="field full"><label for="f-sub">Θέμα</label><input id="f-sub"></div>
+        <div class="field full"><label for="f-msg">Μήνυμα</label><textarea id="f-msg"></textarea></div>
+        <p class="consent">Τα στοιχεία σας χρησιμοποιούνται μόνο για να απαντήσουμε στο αίτημά σας και αποστέλλονται με ασφάλεια.</p>
+        <div class="form-end">
+          <button class="btn btn-gold" type="submit">Αποστολή</button>
+          <span class="sent" id="sent" role="status"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Δικηγορικό Γραφείο Έφη Γ. Λακμέτα</span>
+    <span>Ενδεικτικό demo · Σχεδιασμός &amp; κατασκευή: <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Γρήγορη επικοινωνία">
+  <a href="tel:+302411171770">Κλήση</a>
+  <a href="#epikoinonia">Μήνυμα</a>
+</nav>
+
+<aside class="cookie" id="cookie" aria-label="Επιλογή για cookies" hidden>
+  Χρησιμοποιούμε προαιρετικά cookies μόνο με τη συγκατάθεσή σας. Το site λειτουργεί κανονικά και χωρίς αυτά.
+  <div><button type="button" data-c="yes">Αποδοχή</button><button type="button" data-c="no">Απόρριψη</button></div>
+</aside>
+
+<script>
+const CATS = [
+  ["Εργασία & ασφάλιση", [
+    ["Εργατικό Δίκαιο", "Συμβάσεις εργασίας, απολύσεις και διαφορές με τον εργοδότη.", "μισθος απολυση εργοδοτης υπαλληλος"],
+    ["Εργατικές Αποζημιώσεις", "Αποζημίωση απόλυσης και οφειλόμενες αποδοχές.", "απολυση μισθος δεδουλευμενα"],
+    ["Κοινωνικοασφαλιστικό Δίκαιο", "Διαφορές με ασφαλιστικούς φορείς, ένσημα και συντάξεις.", "συνταξη εφκα ενσημα ασφαλιση"],
+    ["Μνημονιακές Περικοπές", "Διεκδίκηση για περικοπές μισθών και συντάξεων.", "συνταξη μισθος αναδρομικα"]
+  ]],
+  ["Χρέη & τράπεζες", [
+    ["Διαχείριση Χρεών", "Οργάνωση και ρύθμιση οφειλών ιδιωτών και επιχειρήσεων.", "δανειο οφειλες εξωδικαστικος"],
+    ["Ρύθμιση-Διαγραφή Χρεών", "Εξωδικαστικός Μηχανισμός και προστασία πρώτης κατοικίας.", "δανειο εξωδικαστικος πρωτη κατοικια πλειστηριασμος εφκα εφορια"],
+    ["Τραπεζικό Δίκαιο", "Διαφορές από τις συναλλαγές με τράπεζες.", "τραπεζα δανειο"],
+    ["Τραπεζικές Συμβάσεις", "Έλεγχος δανειακών και άλλων τραπεζικών συμβάσεων.", "τραπεζα δανειο ελβετικο φραγκο"],
+    ["Χρηματιστηριακές Απάτες", "Διεκδίκηση χρημάτων από επενδυτικές απάτες.", "απατη επενδυση"]
+  ]],
+  ["Οικογένεια & κληρονομιά", [
+    ["Οικογενειακό – Κληρονομικό Δίκαιο", "Διαζύγιο, διακοπή συμβίωσης και κληρονομικά θέματα.", "διαζυγιο γαμος κληρονομια αποποιηση"],
+    ["Διανομή Συζυγικής Περιουσίας – Επιμέλεια Τέκνου", "Περιουσιακά ζητήματα μετά το διαζύγιο, επιμέλεια και επικοινωνία.", "διαζυγιο παιδι επιμελεια αλιμεντα"],
+    ["Προσβολή Διαθηκών", "Αμφισβήτηση του κύρους μιας διαθήκης.", "διαθηκη κληρονομια"]
+  ]],
+  ["Ακίνητα", [
+    ["Μισθώσεις-Ακίνητα-Απαλλοτριώσεις", "Ενοίκια, αγοραπωλησίες και απαλλοτριώσεις.", "ενοικιο εξωση οικοπεδο σπιτι"],
+    ["Κτηματολόγιο-Δασικοί Χάρτες", "Διορθώσεις εγγραφών και αντιρρήσεις στους δασικούς χάρτες.", "οικοπεδο χωραφι δηλωση"]
+  ]],
+  ["Επιχειρήσεις & φόροι", [
+    ["Εμπορικό Δίκαιο", "Εμπορικές συναλλαγές και διαφορές επιχειρήσεων.", "εταιρεια επιχειρηση"],
+    ["Εταιρικό Δίκαιο", "Σύσταση, λειτουργία και μεταβολές εταιρειών.", "εταιρεια επιχειρηση καταστατικο"],
+    ["Φορολογικό Δίκαιο", "Φόροι, τέλη και πρόστιμα, για ιδιώτες και επιχειρήσεις.", "εφορια προστιμο εφκα"],
+    ["Ηλεκτρονικό Εμπόριο", "Νομικό πλαίσιο για online καταστήματα.", "eshop online e-shop"],
+    ["Δημόσια Έργα και Προμήθειες", "Διαγωνισμοί και συμβάσεις με το Δημόσιο.", "διαγωνισμος δημοσιο"]
+  ]],
+  ["Ποινικά", [
+    ["Ποινικό Δίκαιο", "Υπεράσπιση και υποστήριξη σε ποινικές υποθέσεις.", "μηνυση δικαστηριο ναρκωτικα"],
+    ["Οικονομικό Έγκλημα", "Ποινικές υποθέσεις με οικονομικό αντικείμενο.", "απατη φοροδιαφυγη χρεη δημοσιο"]
+  ]],
+  ["Αποζημιώσεις", [
+    ["Τροχαία Ατυχήματα", "Δικαστική επιδίωξη πλήρους αποζημίωσης.", "τροχαιο ατυχημα αυτοκινητο ασφαλεια"],
+    ["Ιατρική Ευθύνη", "Υποθέσεις ιατρικού λάθους.", "γιατρος νοσοκομειο λαθος"],
+    ["Ευθύνη-Αποζημίωση Δημοσίου", "Αποζημίωση για ζημιές από το Δημόσιο.", "δημος κρατος"]
+  ]],
+  ["Αλλοδαποί", [
+    ["Αλλοδαποί", "Νομική υποστήριξη αλλοδαπών στην Ελλάδα.", "μεταναστες"],
+    ["Άδειες Διαμονής – Ιθαγένεια", "Αιτήσεις για άδεια διαμονής και ελληνική ιθαγένεια.", "visa μετανάστες"]
+  ]]
+];
+
+const $ = id => document.getElementById(id);
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ς/g, "σ");
+const ALL = CATS.flatMap(([, list]) => list);
+let active = -1;
+
+const catButton = (label, count, i) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "cat";
+  b.setAttribute("aria-pressed", i === active);
+  b.innerHTML = `<span>${label}</span><small>${count}</small>`;
+  b.onclick = () => { active = i; $("q").value = ""; render(); };
+  return b;
+};
+
+function render() {
+  const q = norm($("q").value.trim());
+  const cats = $("cats");
+  cats.replaceChildren(catButton("Όλα τα θέματα", ALL.length, -1),
+    ...CATS.map(([name, list], i) => catButton(name.replace("&", "&amp;"), list.length, i)));
+  let list = active < 0 ? ALL : CATS[active][1];
+  if (q) {
+    list = ALL.filter(t => norm(t.join(" ")).includes(q));
+    cats.querySelectorAll(".cat").forEach(b => b.setAttribute("aria-pressed", "false"));
+  }
+  $("topics").replaceChildren(...list.map(([title, desc]) => {
+    const li = document.createElement("li");
+    li.className = "topic";
+    const row = document.createElement("div");
+    row.className = "topic-row";
+    const h = document.createElement("h3");
+    h.textContent = title;
+    const p = document.createElement("p");
+    p.textContent = desc;
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "ask";
+    b.textContent = "Ρωτήστε μας";
+    b.setAttribute("aria-label", `Ρωτήστε μας για: ${title}`);
+    b.onclick = () => {
+      $("f-sub").value = title;
+      $("epikoinonia").scrollIntoView();
+      $("f-name").focus({ preventScroll: true });
+    };
+    row.append(h, b, p);
+    li.append(row);
+    return li;
+  }));
+  $("empty").hidden = list.length > 0;
+}
+$("q").addEventListener("input", render);
+render();
+
+$("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const ok = $("f-name").value.trim() && $("f-tel").value.trim();
+  $("sent").textContent = ok
+    ? "Στο demo το μήνυμα δεν αποστέλλεται. Στο κανονικό site θα έφτανε στο email του γραφείου."
+    : "Συμπληρώστε ονοματεπώνυμο και τηλέφωνο.";
+});
+
+$("year").textContent = new Date().getFullYear();
+
+const cookie = $("cookie");
+let choice = null;
+try { choice = sessionStorage.getItem("lakmeta-cookie"); } catch (e) {}
+if (!choice) cookie.hidden = false;
+cookie.addEventListener("click", e => {
+  const c = e.target.dataset.c;
+  if (!c) return;
+  cookie.hidden = true;
+  try { sessionStorage.setItem("lakmeta-cookie", c); } catch (e) {}
+});
+</script>
+</body>
+</html>
