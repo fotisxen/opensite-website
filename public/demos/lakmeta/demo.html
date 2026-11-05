@@ -3,7 +3,7 @@
 <head>
 <!--
   Demo by OpenSite for Δικηγορικό Γραφείο Έφη Γ. Λακμέτα.
-  Facts, decisions and news titles come from dikigoroslarisa.gr.
+  Facts, decisions, news titles and photos come from dikigoroslarisa.gr.
   The one-line topic descriptions are drafts for the firm to approve.
 -->
 <meta charset="utf-8">
@@ -11,7 +11,7 @@
 <title>Δικηγόρος Λάρισα | Έφη Γ. Λακμέτα, Δικηγορικό Γραφείο</title>
 <meta name="description" content="Δικηγορικό γραφείο στη Λάρισα, Παπαναστασίου 67-69. Εργατικό, οικογενειακό, ποινικό δίκαιο, ρύθμιση χρεών και ακόμη 22 θέματα. Τηλ. 2411 171770.">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#2b272c">
+<meta name="theme-color" content="#211e22">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600&family=GFS+Didot&display=swap" rel="stylesheet">
@@ -34,150 +34,193 @@
   "founder": { "@type": "Person", "name": "Έφη Γ. Λακμέτα", "jobTitle": "Δικηγόρος" }
 }
 </script>
+<script>document.documentElement.classList.add("js")</script>
 <style>
 :root{
-  --ink:#2b272c;
+  --ink:#211e22;
+  --ink-2:#2b272c;
   --ink-soft:#5d5860;
   --paper:#f7f4ee;
   --card:#fffdf9;
   --line:#ddd6c8;
   --gold:#cda956;
+  --gold-hi:#dfc074;
   --gold-text:#7d6118;
-  --on-dark:#f4efe6;
-  --on-dark-soft:#bdb7ae;
-  --line-dark:#47424a;
+  --on-dark:#f6f1e8;
+  --on-dark-soft:#c6c0b6;
+  --line-dark:rgba(246,241,232,.2);
   --serif:"GFS Didot","Times New Roman",serif;
   --sans:"Commissioner",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --wrap:1160px;
-  --gutter:clamp(16px,4vw,40px);
+  --wrap:1200px;
+  --gutter:clamp(20px,4.5vw,48px);
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans)}
 img{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3,p,ul,ol,dl,dd{margin:0;padding:0}
 ul,ol{list-style:none}
-button,input,select,textarea{font:inherit;color:inherit}
+button,input,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
 .skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--ink);padding:8px 14px;z-index:60}
 .skip:focus{left:8px}
 
-h2{font:400 clamp(32px,4.6vw,50px)/1.12 var(--serif);letter-spacing:-.005em}
-.lede{color:var(--ink-soft);max-width:56ch;margin-top:14px}
-section{padding:clamp(64px,9vw,112px) 0}
+/* Section marks: the § runs through the page like the articles of a code */
+.mark{display:flex;align-items:baseline;gap:12px;font-size:15px;font-weight:500;color:var(--gold-text)}
+.mark b{font:400 26px/1 var(--serif)}
+.on-dark .mark{color:var(--gold)}
+h2{font:400 clamp(36px,5vw,60px)/1.08 var(--serif);letter-spacing:-.005em;margin-top:14px}
+.lede{color:var(--ink-soft);max-width:54ch;margin-top:18px}
+.on-dark .lede{color:var(--on-dark-soft)}
+.sec{padding:clamp(72px,10vw,128px) 0}
+
+/* Photo layers */
+.photo{position:absolute;inset:0;overflow:hidden;background:var(--ink)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo::after{content:"";position:absolute;inset:0}
 
 /* Header */
-.top{position:sticky;top:0;z-index:40;background:var(--ink);color:var(--on-dark)}
-.top .wrap{display:flex;align-items:center;gap:28px;min-height:72px}
+.top{position:fixed;inset:0 0 auto;z-index:40;color:var(--on-dark);transition:background .3s,box-shadow .3s}
+.top.solid{background:var(--ink);box-shadow:0 1px 0 var(--line-dark)}
+.top .wrap{display:flex;align-items:center;gap:28px;min-height:84px;transition:min-height .3s}
+.top.solid .wrap{min-height:68px}
 .brand{display:block;text-decoration:none;flex:none}
-.brand img{height:32px;width:auto}
-.brand span{display:none;font:400 21px/1 var(--serif)}
+.brand img{height:34px;width:auto}
+.brand span{display:none;font:400 22px/1 var(--serif)}
 .brand.no-logo img{display:none}
 .brand.no-logo span{display:block}
-.nav{display:flex;gap:24px;margin-left:auto;font-size:15px}
-.nav a{text-decoration:none;color:var(--on-dark-soft);padding:8px 0;transition:color .2s}
-.nav a:hover{color:var(--on-dark)}
-.top-call{flex:none;text-decoration:none;font-weight:600;font-size:15px;background:var(--gold);color:var(--ink);padding:10px 16px;border-radius:3px;white-space:nowrap;transition:background .2s}
-.top-call:hover{background:#dcbb6c}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:15px}
+.nav a{position:relative;text-decoration:none;padding:8px 0;color:var(--on-dark)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:3px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:hover::after{transform:scaleX(1)}
+.top-call{flex:none;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--gold);color:var(--on-dark);padding:9px 16px;border-radius:2px;white-space:nowrap;transition:background .2s,color .2s}
+.top-call:hover{background:var(--gold);color:var(--ink)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line-dark);border-radius:2px;padding:9px 14px;font-size:15px;font-weight:500;color:var(--on-dark);cursor:pointer}
 
 /* Hero */
-.hero{background:var(--ink);color:var(--on-dark);padding:clamp(48px,6vw,80px) 0 clamp(36px,4vw,52px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);gap:clamp(40px,6vw,88px);align-items:end}
-.hero h1{font:500 15px/1.5 var(--sans);letter-spacing:.02em;color:var(--gold)}
-.hero-line{text-wrap:balance;font:400 clamp(42px,5.4vw,70px)/1.08 var(--serif);margin-top:22px;letter-spacing:-.01em}
-.hero-sub{color:var(--on-dark-soft);max-width:48ch;margin-top:26px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.btn{display:inline-block;text-decoration:none;border:1px solid transparent;border-radius:3px;padding:14px 22px;font-weight:600;font-size:16px;line-height:1.3;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.hero{position:relative;color:var(--on-dark);min-height:min(100svh,880px);display:flex;align-items:flex-end;padding:140px 0 clamp(112px,12vw,148px);isolation:isolate}
+.hero .photo{z-index:-1}
+.hero .photo img{transform:scaleX(-1) scale(1.02);object-position:50% 40%}
+.hero .photo{animation:settle 2.4s var(--ease) both}
+.hero .photo::after{background:
+  linear-gradient(90deg,rgba(22,19,22,.95) 0%,rgba(22,19,22,.84) 44%,rgba(22,19,22,.34) 76%,rgba(22,19,22,.28) 100%),
+  linear-gradient(0deg,rgba(22,19,22,.72) 0%,rgba(22,19,22,0) 40%)}
+.hero::after{content:"";position:absolute;inset:16px;border:1px solid rgba(205,169,86,.36);pointer-events:none}
+@keyframes settle{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hero .wrap{width:100%}
+.hero h1{display:flex;align-items:center;gap:14px;font:500 15px/1.5 var(--sans);letter-spacing:.02em;color:var(--gold-hi)}
+.hero h1::before{content:"";width:44px;height:1px;background:var(--gold);flex:none}
+.hero-line{font:400 clamp(46px,7.2vw,92px)/1.03 var(--serif);margin-top:22px;letter-spacing:-.01em}
+.hero-line span{display:block}
+.hero-sub{color:var(--on-dark);opacity:.86;max-width:46ch;margin-top:26px;font-size:18px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-block;text-decoration:none;border:1px solid transparent;border-radius:2px;padding:15px 24px;font-weight:600;font-size:16px;line-height:1.3;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
 .btn-gold{background:var(--gold);color:var(--ink)}
-.btn-gold:hover{background:#dcbb6c}
-.btn-ghost{border-color:var(--line-dark);color:var(--on-dark)}
-.btn-ghost:hover{border-color:var(--gold)}
-.reach{border-top:1px solid var(--line-dark)}
-.reach div{padding:16px 0;border-bottom:1px solid var(--line-dark)}
-.reach dt{font-size:13px;color:var(--on-dark-soft)}
-.reach dd{margin-top:2px;font-size:16px}
-.reach a{text-decoration:none}
-.reach a:hover{color:var(--gold)}
-.cities{margin-top:clamp(40px,6vw,64px);padding-top:18px;border-top:1px solid var(--line-dark);display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--on-dark-soft);font-size:15px}
-.cities strong{font-weight:500;color:var(--on-dark)}
+.btn-gold:hover{background:var(--gold-hi)}
+.btn-ghost{border-color:rgba(246,241,232,.5);color:var(--on-dark)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-hi)}
+.cities{display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:40px;font-size:15px;color:var(--on-dark);opacity:.86}
+
+/* Contact strip, set over the edge of the hero */
+.strip{position:relative;z-index:2;margin-top:-64px}
+.strip dl{display:grid;grid-template-columns:1fr 1fr 1.35fr 1.5fr;background:var(--card);box-shadow:0 24px 60px rgba(33,30,34,.2);border-top:2px solid var(--gold)}
+.strip div{padding:24px 26px;border-left:1px solid var(--line)}
+.strip div:first-child{border-left:0}
+.strip dt{font-size:13px;color:var(--ink-soft)}
+.strip dd{margin-top:3px;font-size:17px;font-weight:500;line-height:1.4}
+.strip a{text-decoration:none;overflow-wrap:anywhere}
+.strip a:hover{color:var(--gold-text)}
 
 /* Topic finder */
-.finder-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
-.search{position:relative;flex:1 1 320px;max-width:420px}
-.search label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
-.search input{width:100%;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:13px 14px}
-.search input:focus{border-color:var(--ink);outline:none}
-.finder{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,5vw,64px);margin-top:44px}
-.cats{display:flex;flex-direction:column;align-self:start;position:sticky;top:96px}
-.cat{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:12px 0;cursor:pointer;color:var(--ink-soft);transition:color .2s}
-.cat:hover{color:var(--ink)}
+.finder-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px}
+.search{flex:1 1 320px;max-width:420px}
+.search label{display:block;font-size:14px;font-weight:500;margin-bottom:8px}
+.search input{width:100%;background:var(--card);border:1px solid var(--line);border-bottom:1px solid var(--ink);border-radius:0;padding:14px 16px}
+.search input:focus{border-color:var(--gold-text);outline:none}
+.finder{display:grid;grid-template-columns:270px minmax(0,1fr);gap:clamp(28px,6vw,80px);margin-top:52px}
+.cats{display:flex;flex-direction:column;align-self:start;position:sticky;top:92px}
+.cat{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:13px 0;cursor:pointer;color:var(--ink-soft);transition:color .2s,padding .25s var(--ease)}
+.cat:hover{color:var(--ink);padding-left:6px}
 .cat[aria-pressed="true"]{color:var(--ink);font-weight:600}
 .cat[aria-pressed="true"] small{color:var(--gold-text)}
 .cat small{font-size:14px;font-weight:400}
 .topics{border-top:1px solid var(--ink)}
-.topic{border-bottom:1px solid var(--line)}
-.topic-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:20px 0}
-.topic h3{font:400 24px/1.25 var(--serif)}
+.topic{border-bottom:1px solid var(--line);transition:background .25s}
+.topic:hover{background:var(--card)}
+.topic-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:22px 0;transition:padding .25s var(--ease)}
+.topic:hover .topic-row{padding-left:16px;padding-right:16px}
+.topic h3{font:400 26px/1.22 var(--serif)}
 .topic p{grid-column:1;color:var(--ink-soft);font-size:16px;line-height:1.55}
-.ask{grid-column:2;grid-row:1 / span 2;background:none;border:1px solid var(--line);border-radius:3px;padding:9px 14px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;transition:border-color .2s,background .2s}
-.ask:hover{border-color:var(--ink);background:var(--card)}
+.ask{grid-column:2;grid-row:1 / span 2;background:none;border:0;border-bottom:1px solid var(--gold);padding:4px 0;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;color:var(--gold-text);transition:color .2s}
+.ask:hover{color:var(--ink)}
 .empty{padding:28px 0;color:var(--ink-soft)}
 .empty a{font-weight:600}
 
-/* About */
-.about{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(32px,6vw,88px)}
-.mono{background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;padding:48px;align-self:start}
-.mono img{width:100%;max-width:170px;height:auto}
-.mono span{display:none;font:400 30px/1.2 var(--serif);text-align:center}
-.mono.no-logo img{display:none}
-.mono.no-logo span{display:block}
-.about h2 small{display:block;font:500 15px/1.5 var(--sans);letter-spacing:.02em;color:var(--gold-text);margin-bottom:10px}
-.creds{margin-top:32px;border-top:1px solid var(--line)}
-.creds li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
-.creds b{font-weight:500;color:var(--gold-text);white-space:nowrap}
-.values{margin-top:32px;font:400 clamp(24px,3vw,30px)/1.3 var(--serif)}
-.partners{margin-top:18px;color:var(--ink-soft);max-width:60ch}
+/* Quote band */
+.band{position:relative;color:var(--on-dark);padding:clamp(96px,13vw,172px) 0;text-align:center;isolation:isolate}
+.band .photo{z-index:-1}
+.band .photo::after{background:rgba(22,19,22,.72)}
+.band blockquote{margin:0 auto;max-width:17em;font:400 clamp(36px,5.4vw,68px)/1.1 var(--serif);text-wrap:balance}
+.band p{margin-top:30px;color:var(--gold-hi);font-size:16px;font-weight:500;letter-spacing:.02em}
 
-/* Decisions and news */
-.proof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,7vw,96px)}
-.case{padding:26px 0;border-top:1px solid var(--line)}
-.case:first-of-type{margin-top:34px;border-top:1px solid var(--ink)}
-.case .case-num{font:400 clamp(38px,4.6vw,52px)/1.1 var(--serif);margin:0;color:var(--ink)}
-.case p{margin-top:8px;color:var(--ink-soft)}
-.case time{display:block;margin-top:6px;font-size:14px;color:var(--ink-soft)}
-.note{margin-top:4px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
-.news{margin-top:34px;border-top:1px solid var(--ink)}
-.news li{padding:22px 0;border-bottom:1px solid var(--line)}
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(44px,8vw,112px);align-items:center}
+.figure{position:relative;margin:0 18px 18px 0}
+.figure::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold)}
+.figure img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;background:var(--ink)}
+.creds{margin-top:32px;border-top:1px solid var(--ink)}
+.creds li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:15px 0;border-bottom:1px solid var(--line)}
+.creds b{font:400 22px/1.3 var(--serif);color:var(--gold-text);white-space:nowrap}
+.partners{margin-top:24px;color:var(--ink-soft);max-width:60ch}
+
+/* Decisions */
+.proof{position:relative;color:var(--on-dark);isolation:isolate}
+.proof .photo{z-index:-1}
+.proof .photo img{object-position:50% 30%}
+.proof .photo::after{background:linear-gradient(90deg,rgba(22,19,22,.95),rgba(22,19,22,.86) 60%,rgba(22,19,22,.66))}
+.cases{display:grid;grid-template-columns:1fr 1fr;margin-top:52px;border-top:1px solid var(--gold)}
+.case{padding:32px 40px 8px 0}
+.case + .case{padding-left:40px;border-left:1px solid var(--line-dark)}
+.case .case-num{font:400 clamp(46px,6.8vw,84px)/1.05 var(--serif);color:var(--gold-hi)}
+.case p{margin-top:12px;max-width:34ch}
+.case time{display:block;margin-top:6px;font-size:14px;color:var(--on-dark-soft)}
+.note{margin-top:36px;font-size:14px;color:var(--on-dark-soft)}
+
+/* News */
+.news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,4vw,48px);margin-top:48px}
+.news li{padding-top:20px;border-top:1px solid var(--ink)}
 .news time{font-size:14px;color:var(--gold-text);font-weight:500}
-.news h3{font:500 18px/1.45 var(--sans);margin-top:6px}
+.news h3{font:400 24px/1.28 var(--serif);margin-top:10px}
 
 /* Contact */
 .contact{background:var(--ink);color:var(--on-dark)}
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(40px,7vw,96px)}
-.contact .lede{color:var(--on-dark-soft)}
-.places{margin-top:36px;border-top:1px solid var(--line-dark)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(44px,8vw,104px);align-items:start}
+.places{margin-top:38px;border-top:1px solid var(--line-dark)}
 .places div{padding:16px 0;border-bottom:1px solid var(--line-dark)}
 .places dt{font-size:13px;color:var(--on-dark-soft)}
 .places dd{margin-top:2px}
-.places a{text-decoration:none}
-.places a:hover{color:var(--gold)}
-.places .dir{display:inline-block;margin-top:8px;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
-form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.field{display:flex;flex-direction:column;gap:6px}
+.places a{text-decoration:none;overflow-wrap:anywhere}
+.places a:hover{color:var(--gold-hi)}
+.places .dir{display:inline-block;margin-top:8px;color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:22px;background:var(--paper);color:var(--ink);padding:clamp(24px,4vw,44px);border-top:2px solid var(--gold)}
+.form-title{grid-column:1 / -1;font:400 30px/1.15 var(--serif)}
+.field{display:flex;flex-direction:column;gap:4px}
 .field.full{grid-column:1 / -1}
-.field label{font-size:14px;color:var(--on-dark-soft)}
-.field input,.field textarea{width:100%;background:#37323a;border:1px solid var(--line-dark);border-radius:3px;padding:13px 14px;color:var(--on-dark)}
-.field input:focus,.field textarea:focus{border-color:var(--gold);outline:none}
-.field textarea{min-height:130px;resize:vertical}
-.consent{grid-column:1 / -1;font-size:14px;color:var(--on-dark-soft);line-height:1.5}
+.field label{font-size:14px;color:var(--ink-soft)}
+.field input,.field textarea{width:100%;background:var(--card);border:1px solid var(--line);border-bottom:1px solid var(--ink-soft);border-radius:0;padding:12px 14px}
+.field input:focus,.field textarea:focus{border-color:var(--gold-text);outline:none}
+.field textarea{min-height:120px;resize:vertical}
+.consent{grid-column:1 / -1;font-size:14px;color:var(--ink-soft);line-height:1.5}
 .form-end{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
-.sent{color:var(--gold);font-size:15px}
+.form-end .btn{background:var(--ink);color:var(--on-dark)}
+.form-end .btn:hover{background:var(--ink-2)}
+.sent{color:var(--gold-text);font-size:15px;font-weight:500}
 
 /* Footer */
-footer{background:#221f23;color:var(--on-dark-soft);font-size:14px;padding:26px 0}
+footer{background:#181619;color:var(--on-dark-soft);font-size:14px;padding:26px 0}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px}
 footer a{color:var(--on-dark)}
 
@@ -185,55 +228,84 @@ footer a{color:var(--on-dark)}
 .callbar{display:none}
 
 /* Cookie choice */
-.cookie{position:fixed;right:16px;bottom:16px;z-index:50;max-width:400px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:16px 18px;font-size:14px;line-height:1.5;box-shadow:0 10px 30px rgba(20,17,20,.22)}
+.cookie{position:fixed;right:16px;bottom:16px;z-index:50;width:min(360px,calc(100vw - 24px));background:var(--card);color:var(--ink);border-top:2px solid var(--gold);padding:16px 18px;font-size:14px;line-height:1.5;box-shadow:0 14px 40px rgba(20,17,20,.3)}
 .cookie[hidden]{display:none}
 .cookie div{display:flex;gap:8px;margin-top:12px}
-.cookie button{flex:1;border-radius:3px;padding:9px 12px;font-weight:600;cursor:pointer;border:1px solid var(--ink);background:none}
+.cookie button{flex:1;border-radius:2px;padding:9px 12px;font-weight:600;cursor:pointer;border:1px solid var(--ink);background:none}
 .cookie button:first-child{background:var(--ink);color:var(--on-dark)}
 
-@media (max-width:960px){
-  .nav{display:none}
-  .top-call{margin-left:auto}
-  .hero-grid,.about-grid,.proof-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
-  .mono{aspect-ratio:auto;padding:36px 22%;max-height:280px}
-  .mono img{max-height:200px}
+/* Reveal on scroll */
+.js [data-r]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+
+@media (max-width:1040px){
+  .menu-btn{display:block}
+  .top-call{display:none}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:6px var(--gutter) 18px;background:var(--ink);font-size:17px}
+  .nav.open{display:flex}
+  .nav a{padding:12px 0;border-bottom:1px solid var(--line-dark)}
+  .nav a::after{display:none}
+  .strip dl{grid-template-columns:1fr 1fr}
+  .strip div:nth-child(3){border-left:0}
+  .strip div:nth-child(n+3){border-top:1px solid var(--line)}
   .finder{grid-template-columns:minmax(0,1fr)}
   .cats{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
-  .cat{width:auto;border:1px solid var(--line);border-radius:3px;padding:8px 12px;font-size:15px;gap:8px}
+  .cat{width:auto;border:1px solid var(--line);border-radius:2px;padding:8px 12px;font-size:15px;gap:8px}
+  .cat:hover{padding-left:12px}
   .cat[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
-  .cat[aria-pressed="true"] small{color:var(--gold)}
+  .cat[aria-pressed="true"] small{color:var(--gold-hi)}
+  .about-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .figure{max-width:440px}
+  .news{grid-template-columns:minmax(0,1fr);gap:28px}
 }
 @media (max-width:640px){
-  body{padding-bottom:64px}
-  .top-call{display:none}
-  .brand{margin:0 auto}
-  .top .wrap{min-height:60px}
+  body{padding-bottom:60px}
   html{scroll-padding-top:72px}
+  .top .wrap,.top.solid .wrap{min-height:64px}
+  .brand img{height:28px}
+  .hero{min-height:calc(100svh - 60px);padding:112px 0 96px}
+  .hero::after{display:none}
+  .hero .photo::after{background:linear-gradient(180deg,rgba(22,19,22,.72) 0%,rgba(22,19,22,.78) 45%,rgba(22,19,22,.95) 100%)}
+  .hero-line span{display:inline}
+  .hero-sub{font-size:17px}
+  .hero-actions .btn{flex:1 1 100%;text-align:center}
+  .strip{margin-top:-48px}
+  .strip dl{grid-template-columns:minmax(0,1fr)}
+  .strip div,.strip div:nth-child(n){border-left:0;border-top:1px solid var(--line);padding:14px 20px}
+  .strip div:first-child{border-top:0}
   .topic-row{grid-template-columns:minmax(0,1fr)}
+  .topic:hover .topic-row{padding-left:0;padding-right:0}
+  .topic:hover{background:none}
   .ask{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
+  .cases{grid-template-columns:minmax(0,1fr)}
+  .case{padding:28px 0}
+  .case + .case{padding-left:0;border-left:0;border-top:1px solid var(--line-dark)}
+  .proof .photo::after{background:rgba(22,19,22,.88)}
   form{grid-template-columns:minmax(0,1fr)}
   .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--ink);border-top:1px solid var(--line-dark);padding-bottom:env(safe-area-inset-bottom)}
-  .callbar a{display:block;text-align:center;text-decoration:none;font-weight:600;padding:18px 8px;color:var(--on-dark)}
+  .callbar a{display:block;text-align:center;text-decoration:none;font-weight:600;padding:17px 8px;color:var(--on-dark)}
   .callbar a:first-child{background:var(--gold);color:var(--ink)}
-  .cookie{left:12px;right:12px;bottom:72px;max-width:none}
+  .cookie{left:12px;right:12px;width:auto;bottom:70px}
   footer{padding-bottom:30px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *{transition:none!important}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js [data-r]{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
 
-<header class="top">
+<header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="#main" aria-label="Έφη Γ. Λακμέτα, Δικηγόρος, αρχική">
       <img src="https://www.dikigoroslarisa.gr/sites/default/files/logo_lakmeta_horizontal-02.png" alt="" width="283" height="40" onerror="this.parentNode.classList.add('no-logo')">
       <span>Έφη Γ. Λακμέτα</span>
     </a>
-    <nav class="nav" aria-label="Κύρια πλοήγηση">
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Μενού</button>
+    <nav class="nav" id="nav" aria-label="Κύρια πλοήγηση">
       <a href="#themata">Θέματα</a>
       <a href="#grafeio">Το γραφείο</a>
       <a href="#apofaseis">Αποφάσεις</a>
@@ -246,31 +318,35 @@ footer a{color:var(--on-dark)}
 
 <main id="main">
   <div class="hero">
+    <div class="photo"><img src="https://www.dikigoroslarisa.gr/sites/default/files/slide1.jpg" alt="" fetchpriority="high"></div>
     <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <h1>Έφη Γ. Λακμέτα, Δικηγόρος Λάρισα</h1>
-          <p class="hero-line">Στόχος μας είναι να προσφέρουμε λύσεις.</p>
-          <p class="hero-sub">Δικηγορικό γραφείο στο κέντρο της Λάρισας, για ιδιώτες και επιχειρήσεις, με άμεση και προσωπική εξυπηρέτηση.</p>
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="tel:+302411171770">Καλέστε 2411 171770</a>
-            <a class="btn btn-ghost" href="#themata">Βρείτε το θέμα σας</a>
-          </div>
-        </div>
-        <dl class="reach">
-          <div><dt>Γραφείο</dt><dd>Παπαναστασίου 67-69, 3ος όροφος<br>Λάρισα 41222</dd></div>
-          <div><dt>Κινητό</dt><dd><a href="tel:+306975990954">6975 990954</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:efilakmeta@dikigoroslarisa.gr">efilakmeta@dikigoroslarisa.gr</a></dd></div>
-        </dl>
+      <h1>Έφη Γ. Λακμέτα, Δικηγόρος Λάρισα</h1>
+      <p class="hero-line"><span>Στόχος μας είναι</span> <span>να προσφέρουμε</span> <span>λύσεις.</span></p>
+      <p class="hero-sub">Δικηγορικό γραφείο στο κέντρο της Λάρισας, για ιδιώτες και επιχειρήσεις, με άμεση και προσωπική εξυπηρέτηση.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="tel:+302411171770">Καλέστε 2411 171770</a>
+        <a class="btn btn-ghost" href="#themata">Βρείτε το θέμα σας</a>
       </div>
-      <p class="cities"><strong>Δραστηριότητα:</strong> <span>Λάρισα</span><span>Βόλος</span><span>Τρίκαλα</span><span>Καρδίτσα</span><span>Λαμία</span></p>
+      <p class="cities"><span>Λάρισα</span><span>Βόλος</span><span>Τρίκαλα</span><span>Καρδίτσα</span><span>Λαμία</span></p>
     </div>
   </div>
 
-  <section id="themata">
+  <div class="strip">
     <div class="wrap">
-      <div class="finder-head">
+      <dl>
+        <div><dt>Τηλέφωνο</dt><dd><a href="tel:+302411171770">2411 171770</a></dd></div>
+        <div><dt>Κινητό</dt><dd><a href="tel:+306975990954">6975 990954</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:efilakmeta@dikigoroslarisa.gr">efilakmeta@dikigoroslarisa.gr</a></dd></div>
+        <div><dt>Γραφείο</dt><dd>Παπαναστασίου 67-69, 3ος όροφος, Λάρισα</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="sec" id="themata">
+    <div class="wrap">
+      <div class="finder-head" data-r>
         <div>
+          <p class="mark"><b>§ 1</b> Θέματα</p>
           <h2>Τι σας απασχολεί;</h2>
           <p class="lede">Οι 14 τομείς και οι 12 εξειδικεύσεις του γραφείου, οργανωμένοι με βάση το πρόβλημα που έχετε μπροστά σας.</p>
         </div>
@@ -289,33 +365,44 @@ footer a{color:var(--on-dark)}
     </div>
   </section>
 
-  <section class="about" id="grafeio">
+  <div class="band">
+    <div class="photo"><img src="https://www.dikigoroslarisa.gr/sites/default/files/about-image.jpg" alt="" loading="lazy"></div>
+    <div class="wrap" data-r>
+      <blockquote>Δε μας αρέσει να ακολουθούμε την πεπατημένη.</blockquote>
+      <p>Εντιμότητα · Ειλικρίνεια · Αμεσότητα</p>
+    </div>
+  </div>
+
+  <section class="sec" id="grafeio">
     <div class="wrap about-grid">
-      <div class="mono">
-        <img src="https://www.dikigoroslarisa.gr/sites/default/files/logo_lakmeta_vertical-02.png" alt="Λογότυπο Έφη Γ. Λακμέτα" onerror="this.parentNode.classList.add('no-logo')">
-        <span>Έφη Γ. Λακμέτα<br>Δικηγόρος</span>
+      <div class="figure" data-r>
+        <img src="https://www.dikigoroslarisa.gr/sites/default/files/aksiologisi.jpg" alt="Άγαλμα της Θέμιδας με τη ζυγαριά" loading="lazy">
       </div>
-      <div>
-        <h2><small>Ιδρύτρια</small>Έφη Γ. Λακμέτα</h2>
-        <p class="lede">Δικηγόρος, μέλος του Δικηγορικού Συλλόγου Λάρισας, με δημοσιεύσεις σε νομικά περιοδικά και ομιλίες σε συνέδρια στην Ελλάδα και το εξωτερικό.</p>
+      <div data-r>
+        <p class="mark"><b>§ 2</b> Το γραφείο</p>
+        <h2>Έφη Γ. Λακμέτα</h2>
+        <p class="lede">Ιδρύτρια του γραφείου. Δικηγόρος, μέλος του Δικηγορικού Συλλόγου Λάρισας, με δημοσιεύσεις σε νομικά περιοδικά και ομιλίες σε συνέδρια στην Ελλάδα και το εξωτερικό.</p>
         <ul class="creds">
           <li><span>Αριστούχος απόφοιτος Νομικής ΑΠΘ</span></li>
-          <li><span>Μεταπτυχιακό στο Αστικό και Εργατικό Δίκαιο</span><b>9,5 Άριστα</b></li>
-          <li><span>Μεταπτυχιακό στο Ποινικό Δίκαιο, με ειδίκευση στον Νόμο περί Ναρκωτικών (υπότροφος)</span><b>9,8 Άριστα</b></li>
+          <li><span>Μεταπτυχιακό στο Αστικό και Εργατικό Δίκαιο</span><b>9,5</b></li>
+          <li><span>Μεταπτυχιακό στο Ποινικό Δίκαιο, με ειδίκευση στον Νόμο περί Ναρκωτικών (υπότροφος)</span><b>9,8</b></li>
           <li><span>Υποψήφια Διδάκτωρ Νομικής, Αριστοτέλειο Πανεπιστήμιο</span></li>
           <li><span>Επιμόρφωση: Harvard (Contract Law), Würzburg (Εταιρικό και Οικονομικό Δίκαιο)</span></li>
         </ul>
-        <p class="values">Εντιμότητα, ειλικρίνεια, αμεσότητα.</p>
         <p class="partners">Το γραφείο συνεργάζεται με οικονομικούς και φοροτεχνικούς συμβούλους, καθώς και με δικηγορικά γραφεία στην Ελλάδα, την Κύπρο, τη Γερμανία, την Ελβετία και τη Βουλγαρία.</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="wrap proof-grid">
-      <div id="apofaseis">
-        <h2>Αποφάσεις</h2>
-        <p class="lede">Ρυθμίσεις οφειλών εντολέων μας μέσω του Εξωδικαστικού Μηχανισμού.</p>
+  <section class="sec proof on-dark" id="apofaseis">
+    <div class="photo"><img src="https://www.dikigoroslarisa.gr/sites/default/files/slide2.jpg" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <div data-r>
+        <p class="mark"><b>§ 3</b> Αποφάσεις</p>
+        <h2>Ρυθμίσεις οφειλών εντολέων μας</h2>
+        <p class="lede">Μέσω του Εξωδικαστικού Μηχανισμού.</p>
+      </div>
+      <div class="cases" data-r>
         <article class="case">
           <p class="case-num">473.443 €</p>
           <p>Ρύθμιση οφειλών σε 264 δόσεις.</p>
@@ -326,33 +413,39 @@ footer a{color:var(--on-dark)}
           <p>Ρύθμιση οφειλών προς τον e-ΕΦΚΑ σε 240 μηνιαίες δόσεις.</p>
           <time datetime="2025-03-13">13 Μαρτίου 2025</time>
         </article>
-        <p class="note">Κάθε υπόθεση έχει τα δικά της δεδομένα και εξετάζεται ξεχωριστά.</p>
       </div>
-      <div id="nea">
-        <h2>Νέα</h2>
-        <p class="lede">Οι εξελίξεις που επηρεάζουν τους εντολείς μας.</p>
-        <ul class="news">
-          <li>
-            <time datetime="2026-11-05">5 Νοεμβρίου 2026</time>
-            <h3>Δύο νέες παρεμβάσεις για την προστασία των δανειοληπτών στο νομοσχέδιο για το ιδιωτικό χρέος</h3>
-          </li>
-          <li>
-            <time datetime="2026-11-04">4 Νοεμβρίου 2026</time>
-            <h3>ΔΣΑ: Κατάργηση της διάταξης που καθιστά εκτελεστό τίτλο τη σύμβαση αναδιάρθρωσης χρέους στον εξωδικαστικό</h3>
-          </li>
-          <li>
-            <time datetime="2026-11-02">2 Νοεμβρίου 2026</time>
-            <h3>Εξωδικαστικός μηχανισμός: Αίτημα για κατάργηση της διάταξης περί εκτελεστού τίτλου της συμφωνίας αναδιάρθρωσης χρέους</h3>
-          </li>
-        </ul>
-      </div>
+      <p class="note" data-r>Κάθε υπόθεση έχει τα δικά της δεδομένα και εξετάζεται ξεχωριστά.</p>
     </div>
   </section>
 
-  <section class="contact" id="epikoinonia">
+  <section class="sec" id="nea">
+    <div class="wrap">
+      <div data-r>
+        <p class="mark"><b>§ 4</b> Νέα</p>
+        <h2>Οι εξελίξεις που σας αφορούν</h2>
+      </div>
+      <ul class="news" data-r>
+        <li>
+          <time datetime="2026-11-05">5 Νοεμβρίου 2026</time>
+          <h3>Δύο νέες παρεμβάσεις για την προστασία των δανειοληπτών στο νομοσχέδιο για το ιδιωτικό χρέος</h3>
+        </li>
+        <li>
+          <time datetime="2026-11-04">4 Νοεμβρίου 2026</time>
+          <h3>ΔΣΑ: Κατάργηση της διάταξης που καθιστά εκτελεστό τίτλο τη σύμβαση αναδιάρθρωσης χρέους στον εξωδικαστικό</h3>
+        </li>
+        <li>
+          <time datetime="2026-11-02">2 Νοεμβρίου 2026</time>
+          <h3>Εξωδικαστικός μηχανισμός: Αίτημα για κατάργηση της διάταξης περί εκτελεστού τίτλου της συμφωνίας αναδιάρθρωσης χρέους</h3>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec contact on-dark" id="epikoinonia">
     <div class="wrap contact-grid">
-      <div>
-        <h2>Επικοινωνία</h2>
+      <div data-r>
+        <p class="mark"><b>§ 5</b> Επικοινωνία</p>
+        <h2>Μιλήστε μας για την υπόθεσή σας</h2>
         <p class="lede">Πείτε μας με λίγα λόγια τι συμβαίνει και θα επικοινωνήσουμε μαζί σας.</p>
         <dl class="places">
           <div><dt>Τηλέφωνο</dt><dd><a href="tel:+302411171770">2411 171770</a></dd></div>
@@ -365,14 +458,15 @@ footer a{color:var(--on-dark)}
           </div>
         </dl>
       </div>
-      <form id="form" novalidate>
+      <form id="form" novalidate data-r>
+        <p class="form-title">Στείλτε μας μήνυμα</p>
         <div class="field"><label for="f-name">Ονοματεπώνυμο</label><input id="f-name" autocomplete="name" required></div>
         <div class="field"><label for="f-tel">Τηλέφωνο</label><input id="f-tel" type="tel" autocomplete="tel" required></div>
         <div class="field full"><label for="f-sub">Θέμα</label><input id="f-sub"></div>
         <div class="field full"><label for="f-msg">Μήνυμα</label><textarea id="f-msg"></textarea></div>
         <p class="consent">Τα στοιχεία σας χρησιμοποιούνται μόνο για να απαντήσουμε στο αίτημά σας και αποστέλλονται με ασφάλεια.</p>
         <div class="form-end">
-          <button class="btn btn-gold" type="submit">Αποστολή</button>
+          <button class="btn" type="submit">Αποστολή</button>
           <span class="sent" id="sent" role="status"></span>
         </div>
       </form>
@@ -505,6 +599,31 @@ $("form").addEventListener("submit", e => {
 });
 
 $("year").textContent = new Date().getFullYear();
+
+const top_ = $("top");
+const menuBtn = $("menu-btn");
+const nav = $("nav");
+const setSolid = () => top_.classList.toggle("solid", scrollY > 40 || nav.classList.contains("open"));
+addEventListener("scroll", setSolid, { passive: true });
+setSolid();
+const setMenu = open => {
+  nav.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.textContent = open ? "Κλείσιμο" : "Μενού";
+  setSolid();
+};
+menuBtn.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+nav.addEventListener("click", e => { if (e.target.tagName === "A") setMenu(false); });
+
+const revealed = document.querySelectorAll("[data-r]");
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+  }), { rootMargin: "0px 0px -6% 0px" });
+  revealed.forEach(el => io.observe(el));
+} else {
+  revealed.forEach(el => el.classList.add("in"));
+}
 
 const cookie = $("cookie");
 let choice = null;
