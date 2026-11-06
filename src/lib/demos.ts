@@ -10,6 +10,7 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "peftouloglou", name: "Φαρμακείο Πεφτούλογλου", kind: "E-shop · φαρμακείο (Άνω Τούμπα, Θεσσαλονίκη)", created: "2026-11-06" },
   { slug: "lakmeta", name: "Έφη Γ. Λακμέτα", kind: "Δικηγορικό γραφείο (Λάρισα)", created: "2026-11-05" },
   { slug: "coyar", name: "COYÁR Boutique", kind: "E-shop · multi brand boutique (Ηράκλειο)", created: "2026-11-04", instagram: "https://www.instagram.com/coyarboutique/" },
   { slug: "wine-sousou", name: "Wine Sousou", kind: "Greek wine stories · Λάμπρος & Ειρήνη", created: "2026-11-04", instagram: "https://www.instagram.com/wine.sousou/" },
