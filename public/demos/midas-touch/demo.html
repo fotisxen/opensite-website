@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The kalaMIDAS Touch · CrossFit · changing lifestyles since 2012</title>
+<meta name="description" content="Ό,τι αγγίζεις γίνεται χρυσό. CrossFit, ολυμπιακές άρσεις και gymnastics, από το 2012.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Sofia+Sans+Extra+Condensed:ital,wght@0,600;0,800;0,900;1,800&family=Commissioner:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for The kalaMIDAS Touch (@klmidastouch).
+  Concept: the visitor's cursor/finger is Midas' hand. Whatever it touches turns to gold.
+  No photos: everything is drawn with CSS/SVG/canvas. Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#0b0a09;--bg2:#141210;--stone:#4a4540;--stone2:#6d665e;--ink:#f3ede2;--muted:#9c9488;--line:rgba(243,237,226,.1);
+  --g1:#fff1b8;--g2:#f5c94a;--g3:#d99b1f;--g4:#9a6510;--gold:#e8b53a;
+  --goldgrad:linear-gradient(115deg,#8a5a0c 0%,#d99b1f 18%,#fff1b8 32%,#f5c94a 45%,#b47812 62%,#ffe08a 78%,#c08416 100%);
+  --c:"Sofia Sans Extra Condensed",Impact,sans-serif;--d:"GFS Didot",Didot,serif;--s:"Commissioner",system-ui,sans-serif;--m:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.eyebrow{font:700 12px/1 var(--m);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--c);font-weight:900;line-height:.9;text-transform:uppercase;letter-spacing:.005em}
+h2{font-size:clamp(46px,8vw,104px)}
+.goldtext{background:var(--goldgrad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+section{padding:110px 0;position:relative}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;border-radius:4px;background:var(--goldgrad);background-size:200% 100%;color:#1a1206;font:800 15px/1 var(--c);letter-spacing:.14em;text-transform:uppercase;transition:background-position .6s,transform .2s;box-shadow:0 10px 30px -10px rgba(232,181,58,.6)}
+.btn:hover{background-position:-100% 0;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--gold);color:var(--g2)}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s}
+nav.solid{background:rgba(11,10,9,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font:900 22px/1 var(--c);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.logo .coin{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--g1),var(--g2) 40%,var(--g4));display:grid;place-items:center;color:#3a2606;font:400 17px/1 var(--d);box-shadow:0 0 0 2px rgba(255,241,184,.25)}
+.logo small{color:var(--muted);font-weight:600}
+.links{display:flex;gap:26px;font:700 14px/1 var(--c);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.links a:hover{color:var(--g2)}
+@media(max-width:900px){.links{display:none}nav .btn{padding:12px 16px;font-size:13px}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;padding:110px 0 70px;overflow:hidden;cursor:none;background:radial-gradient(1000px 600px at 70% 30%,#1d1915 0,transparent 70%),var(--bg)}
+@media(pointer:coarse){.hero{cursor:auto}}
+#veins{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(64px,13.5vw,196px);line-height:.84;margin:22px 0 26px;user-select:none;-webkit-user-select:none}
+.hero h1 .w{display:inline-block;white-space:nowrap}
+.l{display:inline-block;color:var(--stone);transition:color .2s,transform .35s cubic-bezier(.3,1.6,.5,1),text-shadow .4s;text-shadow:0 2px 0 rgba(0,0,0,.4)}
+.l.gold{color:transparent;background:var(--goldgrad);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 4s linear infinite;transform:translateY(-.04em);filter:drop-shadow(0 0 18px rgba(245,201,74,.35))}
+.hero .sub{font-size:clamp(17px,1.6vw,21px);color:var(--muted);max-width:520px}
+.hero .sub b{color:var(--ink);font-weight:500}
+.meter{display:flex;align-items:center;gap:14px;margin-top:30px;font:700 12px/1 var(--m);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.meter .bar{width:min(260px,50vw);height:4px;background:#2a2622;border-radius:2px;overflow:hidden}
+.meter .bar i{display:block;height:100%;width:0;background:var(--goldgrad);transition:width .3s}
+.meter b{color:var(--g2);min-width:44px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hint{position:absolute;right:24px;bottom:26px;z-index:2;font:700 11px/1.5 var(--m);letter-spacing:.18em;color:var(--muted);text-transform:uppercase;text-align:right}
+@media(max-width:700px){.hint{display:none}}
+.cursor{position:fixed;left:0;top:0;z-index:70;width:46px;height:46px;margin:-23px;border-radius:50%;pointer-events:none;border:1.5px solid rgba(245,201,74,.8);box-shadow:0 0 22px rgba(245,201,74,.5),inset 0 0 14px rgba(245,201,74,.3);opacity:0;transition:opacity .3s,width .2s,height .2s,margin .2s}
+.cursor::after{content:"";position:absolute;inset:40%;border-radius:50%;background:var(--g1);box-shadow:0 0 12px var(--g2)}
+.cursor.on{opacity:1}
+.cursor.big{width:70px;height:70px;margin:-35px}
+@media(pointer:coarse){.cursor{display:none}}
+.unlock{position:fixed;left:50%;top:50%;z-index:90;transform:translate(-50%,-50%) scale(.8);opacity:0;pointer-events:none;text-align:center;transition:all .6s cubic-bezier(.3,1.5,.5,1);background:rgba(11,10,9,.88);backdrop-filter:blur(10px);padding:34px 40px;border-radius:8px;box-shadow:0 0 0 1px rgba(245,201,74,.4),0 30px 80px rgba(0,0,0,.6);width:min(460px,calc(100% - 32px))}
+.unlock.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.unlock h3{font-size:48px;margin:14px 0 10px}
+.unlock p{color:var(--muted)}
+.unlock .bigcoin{width:96px;height:96px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--g1),var(--g2) 40%,var(--g4));display:grid;place-items:center;font:400 46px/1 var(--d);color:#3a2606;animation:spin 3s linear infinite;box-shadow:0 0 40px rgba(245,201,74,.6)}
+@keyframes spin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+
+/* name / myth */
+.myth{background:var(--bg2);overflow:hidden}
+.myth .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center}
+.name{font:900 clamp(56px,10vw,140px)/.9 var(--c);text-transform:uppercase;letter-spacing:.01em;user-select:none}
+.name span{display:inline-block;transition:all .8s cubic-bezier(.6,0,.2,1)}
+.name .kala{color:var(--stone2)}
+.name .midas{color:var(--ink)}
+.name.fused .kala{opacity:.25;transform:translateX(-.06em);filter:blur(1px)}
+.name.fused .midas{color:transparent;background:var(--goldgrad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 5s linear infinite}
+.name-cap{font:700 13px/1.5 var(--m);letter-spacing:.12em;color:var(--muted);margin-top:16px;text-transform:uppercase}
+.name-cap b{color:var(--g2)}
+.myth p.story{font:400 clamp(19px,1.9vw,24px)/1.55 var(--d);color:#d7cfc2}
+.myth p.story em{color:var(--g2);font-style:normal}
+.myth .twist{margin-top:26px;padding:20px 22px;border-left:2px solid var(--gold);font-size:16px;color:var(--muted)}
+.myth .twist b{color:var(--ink);font-weight:600}
+.toggle-name{margin-top:20px;font:700 12px/1 var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:10px 14px;border:1px solid rgba(245,201,74,.4);border-radius:4px}
+@media(max-width:900px){.myth .wrap{grid-template-columns:1fr;gap:34px}}
+
+/* lift lab */
+.lab .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:50px;align-items:center}
+.platform{position:relative;border-radius:8px;background:linear-gradient(180deg,#171410,#0e0c0a);box-shadow:inset 0 0 0 1px var(--line);padding:18px 18px 0;overflow:hidden}
+.platform svg{display:block;width:100%;height:auto}
+.plate{transition:fill .5s,transform .3s}
+.platform.gold .plate{fill:url(#goldP)!important}
+.platform.gold .plate-edge{stroke:#fff1b8}
+#barGroup{transition:transform .25s}
+.platform .pr{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) scale(.6);opacity:0;font:900 clamp(60px,9vw,110px)/1 var(--c);transition:all .5s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+.platform.gold .pr{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.liftbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.liftbar button{padding:10px 14px;border-radius:4px;font:800 14px/1 var(--c);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.liftbar button.on{color:#1a1206;background:var(--goldgrad);box-shadow:none}
+.ctrl{display:grid;gap:18px}
+.ctrl label{display:flex;justify-content:space-between;font:700 12px/1 var(--m);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.ctrl label b{color:var(--ink);font-size:14px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:#2a2622;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--g1),var(--g2) 45%,var(--g4));box-shadow:0 0 12px rgba(245,201,74,.6);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border:0;border-radius:50%;background:var(--g2);cursor:pointer}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.out div{padding:16px;border-radius:6px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line)}
+.out span{display:block;font:700 11px/1 var(--m);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.out b{display:block;font:900 40px/1 var(--c);margin-top:8px}
+.pct{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.pct button{padding:10px 4px;border-radius:4px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line);text-align:center}
+.pct button.on{box-shadow:inset 0 0 0 1.5px var(--gold)}
+.pct small{display:block;font:700 11px/1 var(--m);color:var(--muted)}
+.pct b{display:block;font:800 20px/1.1 var(--c);margin-top:4px}
+.load{font:500 13px/1.5 var(--m);color:var(--muted)}
+.load b{color:var(--g2)}
+.holdbtn{position:relative;overflow:hidden;width:100%;padding:20px;border-radius:6px;background:#1c1915;box-shadow:inset 0 0 0 1px rgba(245,201,74,.5);font:900 20px/1 var(--c);letter-spacing:.16em;text-transform:uppercase;user-select:none;-webkit-user-select:none;touch-action:none}
+.holdbtn i{position:absolute;inset:0;width:0;background:var(--goldgrad);opacity:.9}
+.holdbtn span{position:relative}
+.holdbtn.full span{color:#1a1206}
+.prs{font:700 12px/1 var(--m);letter-spacing:.12em;color:var(--muted);text-transform:uppercase;text-align:center}
+.prs b{color:var(--g2)}
+@media(max-width:960px){.lab .wrap{grid-template-columns:1fr}}
+
+/* coins */
+.firsts{background:radial-gradient(800px 400px at 50% 0,#1c1814,transparent),var(--bg)}
+.coins{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 20px;margin-top:56px}
+.coinwrap{perspective:900px;aspect-ratio:1;max-width:260px;width:100%;margin-inline:auto;cursor:pointer}
+.coin3d{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,1.4,.5,1)}
+.coinwrap.flip .coin3d{transform:rotateY(180deg)!important}
+.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;text-align:center;padding:18%}
+.front{background:radial-gradient(circle at 32% 28%,#fff6cf,#f5c94a 30%,#c98a14 62%,#7a4b08);box-shadow:inset 0 0 0 7px rgba(122,75,8,.55),inset 0 0 0 9px rgba(255,241,184,.6),inset 0 -12px 30px rgba(80,45,0,.5),0 18px 40px -12px rgba(0,0,0,.7);color:#3a2404}
+.front .ic{font-size:clamp(28px,4vw,40px);filter:sepia(1) saturate(3) hue-rotate(-10deg) brightness(.75)}
+.front b{display:block;font:900 clamp(20px,2.4vw,28px)/.95 var(--c);text-transform:uppercase;margin-top:6px;text-shadow:0 1px 0 rgba(255,241,184,.6)}
+.front small{display:block;font:700 10px/1.2 var(--m);letter-spacing:.12em;text-transform:uppercase;margin-top:6px;opacity:.75}
+.back{transform:rotateY(180deg);background:radial-gradient(circle at 50% 40%,#2a2419,#14110d);box-shadow:inset 0 0 0 2px rgba(245,201,74,.6),0 18px 40px -12px rgba(0,0,0,.7);font-size:clamp(13px,1.3vw,15px);line-height:1.45;color:#d9d0c2;padding:16%}
+.back b{display:block;font:800 13px/1 var(--m);letter-spacing:.1em;color:var(--g2);margin-bottom:8px;text-transform:uppercase}
+.coins-cap{text-align:center;color:var(--muted);font:700 12px/1 var(--m);letter-spacing:.14em;text-transform:uppercase;margin-top:34px}
+@media(max-width:900px){.coins{grid-template-columns:repeat(2,1fr)}}
+.quote{max-width:860px;margin:80px auto 0;text-align:center}
+.quote p{font:400 clamp(22px,3vw,34px)/1.4 var(--d)}
+.quote small{display:block;margin-top:18px;font:700 12px/1 var(--m);letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+
+/* programs */
+.progs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line)}
+.prog{position:relative;background:var(--bg);padding:34px 28px 30px;overflow:hidden;min-height:250px;transition:background .4s}
+.prog::before{content:"";position:absolute;inset:0;background:radial-gradient(260px 200px at var(--x,50%) var(--y,50%),rgba(245,201,74,.18),transparent 70%);opacity:0;transition:opacity .3s}
+.prog:hover::before{opacity:1}
+.prog .n{font:700 12px/1 var(--m);color:var(--gold);letter-spacing:.14em}
+.prog h3{font-size:42px;margin:16px 0 12px;transition:color .3s}
+.prog:hover h3{color:var(--g2)}
+.prog p{color:var(--muted);font-size:15px;position:relative}
+@media(max-width:900px){.progs{grid-template-columns:1fr}}
+
+/* schedule */
+.sched{background:var(--bg2)}
+.days{display:flex;gap:6px;flex-wrap:wrap;margin-top:40px}
+.days button{padding:12px 16px;border-radius:4px;font:800 15px/1 var(--c);letter-spacing:.12em;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.days button.on{color:#1a1206;background:var(--goldgrad);box-shadow:none}
+.days button.today::after{content:"•";color:var(--g2);margin-left:6px}
+.days button.on.today::after{color:#1a1206}
+.slots{display:grid;gap:8px;margin-top:18px}
+.slot{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center;padding:16px 18px;border-radius:6px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line);animation:up .4s both}
+.slot time{font:700 16px/1 var(--m);color:var(--ink)}
+.slot b{font:800 22px/1 var(--c);text-transform:uppercase;letter-spacing:.04em}
+.slot small{font:700 11px/1 var(--m);letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.slot.now{box-shadow:inset 0 0 0 1.5px var(--gold)}
+.slot.now small{color:var(--g2)}
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+@media(max-width:600px){.slot{grid-template-columns:1fr;gap:6px}}
+
+/* community */
+.comm .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:0}
+.stat{padding:30px;border-radius:6px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line)}
+.stat b{display:block;font:900 clamp(60px,8vw,96px)/.9 var(--c)}
+.stat span{color:var(--muted);font-size:15px}
+@media(max-width:860px){.comm .wrap{grid-template-columns:1fr}}
+
+/* join */
+.join{text-align:center;background:radial-gradient(700px 400px at 50% 100%,#2a2015,transparent),var(--bg)}
+.join h2{font-size:clamp(54px,10vw,140px)}
+.join p.lead{color:var(--muted);max-width:520px;margin:20px auto 0}
+.joinform{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:560px;margin:40px auto 0;text-align:left}
+.joinform input{width:100%;font:inherit;color:var(--ink);padding:15px 16px;border-radius:4px;border:1px solid var(--line);background:var(--bg2)}
+.joinform input:focus{outline:none;border-color:var(--gold)}
+.goals{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.goals button{padding:9px 12px;border-radius:4px;font:700 12px/1 var(--m);letter-spacing:.06em;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.goals button.on{color:#1a1206;background:var(--g2);box-shadow:none}
+.print{grid-column:1/-1;display:grid;justify-items:center;gap:12px;margin-top:20px;user-select:none;-webkit-user-select:none}
+.print button{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#1d1915,#0e0c0a);box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;touch-action:none;transition:box-shadow .3s}
+.print button.done{box-shadow:inset 0 0 0 2px var(--gold),0 0 50px rgba(245,201,74,.5)}
+.print svg path{fill:none;stroke-linecap:round;stroke-width:2.2}
+.print .base path{stroke:#3a3530}
+.print .fill path{stroke:url(#goldF)}
+.print small{font:700 12px/1.4 var(--m);letter-spacing:.14em;color:var(--muted);text-transform:uppercase;text-align:center}
+.print small b{color:var(--g2)}
+
+/* westie */
+.westie{position:fixed;left:18px;bottom:-80px;z-index:55;width:84px;cursor:pointer;transition:bottom .6s cubic-bezier(.3,1.5,.5,1)}
+.westie.peek{bottom:-14px}
+.westie.gold svg .fur{fill:url(#goldW)}
+.westie svg{display:block;width:100%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+.bubble{position:absolute;left:70px;bottom:62px;width:max-content;max-width:220px;font:600 13px/1.35 var(--s);background:var(--ink);color:#1a1206;padding:8px 11px;border-radius:10px 10px 10px 2px;opacity:0;transform:translateY(6px);transition:all .3s;pointer-events:none}
+.westie.peek .bubble{opacity:1;transform:none}
+
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+
+/* midas mode: whole page goes gold */
+.midas .eyebrow,.midas .links a{color:var(--g2)}
+.midas h2{color:transparent;background:var(--goldgrad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 6s linear infinite}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--gold);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#1a1206;background:var(--g2);padding:4px 8px;border-radius:3px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;right:12px;bottom:14px;z-index:60;font:700 11px/1 var(--m);padding:10px 13px;border-radius:999px;background:#1c1915;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{color:var(--g2);box-shadow:inset 0 0 0 1px var(--gold)}
+.clean .notes-toggle{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ try{ var h=document.documentElement,q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("mt-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body id="top">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".35" stop-color="#f5c94a"/><stop offset=".7" stop-color="#c98a14"/><stop offset="1" stop-color="#7a4b08"/></linearGradient>
+    <linearGradient id="goldF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".5" stop-color="#f5c94a"/><stop offset="1" stop-color="#c98a14"/></linearGradient>
+    <linearGradient id="goldW" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#f5c94a"/><stop offset="1" stop-color="#b47812"/></linearGradient>
+  </defs>
+</svg>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo ph" data-note="Εδώ μπαίνει το λογότυπό σας"><span class="coin">M</span>The Midas Touch</a>
+    <div class="links"><a href="#name">Το όνομα</a><a href="#lab">Lift lab</a><a href="#firsts">Τα χρυσά πρώτα</a><a href="#programs">Προγράμματα</a><a href="#schedule">Πρόγραμμα</a></div>
+    <a class="btn" href="#join">Δοκιμαστική</a>
+  </div>
+</nav>
+
+<div class="cursor" id="cursor"></div>
+
+<header class="hero" id="hero">
+  <canvas id="veins"></canvas>
+  <div class="wrap">
+    <span class="eyebrow">CrossFit · Olympic lifting · Gymnastics · since 2012</span>
+    <h1 id="h1" aria-label="Ό,τι αγγίζεις γίνεται χρυσό">Ό,τι αγγίζεις γίνεται χρυσό.</h1>
+    <p class="sub"><b>Κούνησε το ποντίκι ή σύρε το δάχτυλο πάνω στα γράμματα.</b> Εδώ ο χρυσός δεν χαρίζεται: βγαίνει με ιδρώτα, μία επανάληψη τη φορά.</p>
+    <div class="meter">Χρυσό <div class="bar"><i id="gbar"></i></div><b id="gpct">0%</b></div>
+    <div class="cta"><a class="btn" href="#join">Κλείσε δοκιμαστική</a><a class="btn ghost" href="#lab">Χρύσωσε την μπάρα σου</a></div>
+  </div>
+  <div class="hint">Χρύσωσε όλα τα γράμματα<br>για να ξυπνήσει ο Μίδας ✦</div>
+</header>
+
+<div class="unlock" id="unlock" role="dialog" aria-label="Midas mode">
+  <div class="bigcoin">M</div>
+  <h3 class="goldtext">Midas mode</h3>
+  <p>Τα χρύσωσες όλα. Το άγγιγμα είναι πλέον δικό σου, και όλο το site γίνεται χρυσό.</p>
+  <button class="btn" type="button" id="unlockOk" style="margin-top:20px">Πάμε δυνατά ✦</button>
+</div>
+
+<section class="myth" id="name">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Το όνομα</span>
+      <div class="name" id="nameEl" style="margin-top:20px"><span class="kala">KALA</span><span class="midas">MIDAS</span></div>
+      <p class="name-cap" id="nameCap">Ένα επώνυμο. Και μέσα του, <b>ένας βασιλιάς</b>.</p>
+      <button class="toggle-name" id="nameBtn" type="button">✦ Δες το ξανά</button>
+    </div>
+    <div>
+      <p class="story">Ο βασιλιάς <em>Μίδας</em> ζήτησε ό,τι αγγίζει να γίνεται χρυσό. Του δόθηκε, και έγινε κατάρα: χρυσό το ψωμί, χρυσό το κρασί, χρυσά όλα όσα αγαπούσε.</p>
+      <p class="twist">Εμείς κρατήσαμε μόνο <b>το καλό κομμάτι</b>. Στο box, ό,τι αγγίζεις με υπομονή γίνεται χρυσό: η πρώτη αυστηρή έλξη, το πρώτο muscle up, το πρώτο 100άρι. Και ο χρυσός αυτός δεν αγοράζεται. Κερδίζεται.</p>
+    </div>
+  </div>
+</section>
+
+<section class="lab" id="lab">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Lift lab</span>
+      <h2 style="margin:14px 0 26px">Χρύσωσε<br><span class="goldtext">την μπάρα σου</span></h2>
+      <div class="platform" id="platform">
+        <span class="pr goldtext">PR!</span>
+        <svg viewBox="0 0 600 300" aria-label="Μπάρα με δίσκους">
+          <rect x="0" y="268" width="600" height="32" fill="#2a241d"/>
+          <rect x="150" y="268" width="300" height="32" fill="#3a3027"/>
+          <g id="barGroup"><g id="barInner"></g></g>
+        </svg>
+      </div>
+    </div>
+    <div class="ctrl">
+      <div class="liftbar" id="lifts"></div>
+      <div><label>Βάρος <b id="wv">80 kg</b></label><input type="range" id="w" min="20" max="220" step="2.5" value="80"></div>
+      <div><label>Επαναλήψεις <b id="rv">3</b></label><input type="range" id="r" min="1" max="10" step="1" value="3"></div>
+      <div class="out"><div><span>Εκτιμώμενο 1RM</span><b id="orm" class="goldtext">88</b></div><div><span>Στην μπάρα</span><b id="onbar">80</b></div></div>
+      <div><label>Ποσοστά του 1RM <b>πάτα για φόρτωση</b></label><div class="pct" id="pct"></div></div>
+      <p class="load" id="load"></p>
+      <button class="holdbtn" id="hold" type="button"><i id="holdFill"></i><span id="holdTxt">Κράτα πατημένο για άρση</span></button>
+      <p class="prs">Χρυσά PR σήμερα: <b id="prCount">0</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="firsts" id="firsts">
+  <div class="wrap">
+    <span class="eyebrow">Τα χρυσά πρώτα</span>
+    <h2 style="margin-top:14px">Αυτές είναι<br><span class="goldtext">νίκες</span></h2>
+    <p style="color:var(--muted);max-width:520px;margin-top:18px">Κάθε «πρώτο» στο box γίνεται χρυσό νόμισμα. Πέρασε από πάνω τους, γύρισέ τα, δες την ιστορία.</p>
+    <div class="coins" id="coins"></div>
+    <p class="coins-cap">Πάτα ένα νόμισμα για να το γυρίσεις</p>
+    <div class="quote">
+      <p>«Να βάζετε στόχους και να έχετε <span class="goldtext">πίστη στο πρόγραμμα</span>!»</p>
+      <small>Από την ιστορία της Γιάννας και των 4 αυστηρών έλξεων</small>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <span class="eyebrow">Προγράμματα</span>
+    <h2 style="margin-top:14px">Ένα box.<br><span class="goldtext">Πολλοί δρόμοι.</span></h2>
+    <div class="progs ph" id="progs" data-note="Περιγραφές και ονόματα προγραμμάτων όπως τα δουλεύετε εσείς">
+      <article class="prog"><span class="n">01</span><h3>CrossFit classes</h3><p>Ομαδικές προπονήσεις με πρόγραμμα, κλιμάκωση για κάθε επίπεδο και προπονητή δίπλα σε κάθε επανάληψη.</p></article>
+      <article class="prog"><span class="n">02</span><h3>Olympic lifting</h3><p>Snatch, clean &amp; jerk, μπροστινά καθίσματα. Τεχνική πρώτα, κιλά μετά, και κύκλοι με στόχο το επόμενο ρεκόρ.</p></article>
+      <article class="prog"><span class="n">03</span><h3>Gymnastics</h3><p>Από την πρώτη αυστηρή έλξη μέχρι το muscle up στους κρίκους. Βήμα βήμα, χωρίς βιασύνη.</p></article>
+      <article class="prog"><span class="n">04</span><h3>Strength cycles</h3><p>Deadlift, back squat, front squat σε οργανωμένους κύκλους, με μέτρηση και ρεκόρ στο τέλος κάθε κύκλου.</p></article>
+      <article class="prog"><span class="n">05</span><h3>Open gym</h3><p>Ο χώρος δικός σου για να δουλέψεις αυτό που θέλεις, με την κοινότητα γύρω σου.</p></article>
+      <article class="prog"><span class="n">06</span><h3>Workshops</h3><p>Ειδικές ημέρες με καλεσμένους που μοιράζονται γνώσεις. Το πρώτο έγινε ήδη. There's more to come.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sched" id="schedule">
+  <div class="wrap">
+    <span class="eyebrow">Πρόγραμμα εβδομάδας</span>
+    <h2 style="margin-top:14px">Πότε <span class="goldtext">ερχόμαστε</span></h2>
+    <div class="days" id="days"></div>
+    <div class="slots ph" id="slots" data-note="Παράδειγμα ωραρίου. Μπαίνει το δικό σας, και το «ΤΩΡΑ» δουλεύει ζωντανά"></div>
+  </div>
+</section>
+
+<section class="comm">
+  <div class="wrap">
+    <div class="stat"><b class="goldtext" id="years">14</b><span>χρόνια αλλάζουμε τρόπο ζωής, από το 2012</span></div>
+    <div class="stat"><b class="goldtext">1</b><span>πίτα τον χρόνο, όλοι μαζί. Η κοινότητα είναι το μεγαλύτερο PR μας</span></div>
+    <div class="stat"><b class="goldtext">∞</b><span>«πρώτα» που περιμένουν. Το επόμενο μπορεί να είναι δικό σου</span></div>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <span class="eyebrow">Δοκιμαστική προπόνηση</span>
+    <h2 style="margin-top:14px">Άγγιξε<br><span class="goldtext">το πρώτο σου</span></h2>
+    <p class="lead">Πες μας ποιος είσαι και τι θέλεις να πετύχεις. Μετά σφράγισέ το με το δαχτυλικό σου αποτύπωμα.</p>
+    <form class="joinform" id="joinform" onsubmit="return false">
+      <input placeholder="Όνομα" id="jn" autocomplete="name">
+      <input placeholder="Τηλέφωνο" id="jp" inputmode="tel">
+      <div class="goals" id="goals"><button type="button">Πρώτη έλξη</button><button type="button">Muscle up</button><button type="button">100kg deadlift</button><button type="button">Snatch</button><button type="button">Να χάσω κιλά</button><button type="button">Απλά να ξεκινήσω</button></div>
+      <div class="print">
+        <button type="button" id="printBtn" aria-label="Κράτα πατημένο για να σφραγίσεις">
+          <svg width="74" height="84" viewBox="0 0 74 84">
+            <g class="base" id="pBase"></g>
+            <g class="fill" id="pFill"></g>
+          </svg>
+        </button>
+        <small id="printTxt">Κράτα πατημένο το αποτύπωμα</small>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© The kalaMIDAS Touch · changing lifestyles since 2012 · <a href="https://www.instagram.com/klmidastouch/" target="_blank" rel="noopener">@klmidastouch</a> · <span class="ph" data-note="Διεύθυνση και τηλέφωνο">Διεύθυνση · Τηλέφωνο</span></span><span>Demo από <a href="https://opensite.gr">OpenSite</a></span></div>
+</footer>
+
+<div class="westie" id="westie" aria-label="Η μασκότ του box">
+  <span class="bubble" id="wbubble">Γεια! Άγγιξέ με 🐾</span>
+  <svg viewBox="0 0 100 80">
+    <ellipse class="fur" cx="50" cy="62" rx="34" ry="20" fill="#f4f1ea"/>
+    <g class="head">
+      <circle class="fur" cx="50" cy="38" r="24" fill="#fbf9f4"/>
+      <path class="fur" d="M30 22 L26 4 L40 16Z M70 22 L74 4 L60 16Z" fill="#f4f1ea"/>
+      <path class="fur" d="M28 40 q-6 10 4 14 M72 40 q6 10 -4 14" stroke="#e6e1d6" stroke-width="3" fill="#fbf9f4"/>
+      <circle cx="41" cy="36" r="3.2" fill="#1b1714"/><circle cx="59" cy="36" r="3.2" fill="#1b1714"/>
+      <circle cx="42" cy="35" r="1" fill="#fff"/><circle cx="60" cy="35" r="1" fill="#fff"/>
+      <ellipse cx="50" cy="46" rx="5" ry="3.8" fill="#1b1714"/>
+      <path d="M45 52 q5 4 10 0" stroke="#1b1714" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+</div>
+
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const html = document.documentElement;
+const fine = matchMedia("(pointer:fine)").matches;
+$("#notesToggle").addEventListener("click", () => {
+  const on = html.classList.toggle("notes");
+  try { localStorage.setItem("mt-notes", on ? "on" : "off"); } catch (e) {}
+});
+addEventListener("scroll", () => $("#nav").classList.toggle("solid", scrollY > 40), { passive: true });
+
+/* ---------- hero: letters & golden veins ---------- */
+const h1 = $("#h1");
+h1.innerHTML = h1.textContent.split(" ").map(w => `<span class="w" aria-hidden="true">${[...w].map(c => `<span class="l">${c}</span>`).join("")}</span>`).join(" ");
+const letters = $$(".l");
+let goldCount = 0, midas = false;
+function gild(el) {
+  if (el.classList.contains("gold")) return;
+  el.classList.add("gold"); goldCount++;
+  const r = el.getBoundingClientRect(), hr = hero.getBoundingClientRect();
+  burst(r.left + r.width / 2 - hr.left, r.top + r.height / 2 - hr.top, 10);
+  const p = Math.round(goldCount / letters.length * 100);
+  $("#gbar").style.width = p + "%"; $("#gpct").textContent = p + "%";
+  if (goldCount === letters.length && !midas) setTimeout(midasMode, 500);
+}
+
+const hero = $("#hero"), cv = $("#veins"), ctx = cv.getContext("2d");
+let W, H, dpr;
+const sparks = [];
+let veinCanvas = document.createElement("canvas"), vctx = veinCanvas.getContext("2d");
+function size() {
+  dpr = Math.min(2, devicePixelRatio || 1); W = hero.clientWidth; H = hero.clientHeight;
+  const old = veinCanvas;
+  cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  veinCanvas = document.createElement("canvas"); veinCanvas.width = W * dpr; veinCanvas.height = H * dpr;
+  vctx = veinCanvas.getContext("2d"); vctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  if (old.width) vctx.drawImage(old, 0, 0, old.width / dpr, old.height / dpr);
+}
+size(); addEventListener("resize", size);
+
+let last = null;
+function vein(x, y) {
+  if (last) {
+    const dx = x - last.x, dy = y - last.y, d = Math.hypot(dx, dy);
+    if (d < 2) return;
+    const w = Math.max(1.2, 7 - d / 9);
+    const g = vctx.createLinearGradient(last.x, last.y, x, y);
+    g.addColorStop(0, "#d99b1f"); g.addColorStop(.5, "#fff1b8"); g.addColorStop(1, "#f5c94a");
+    vctx.strokeStyle = g; vctx.lineWidth = w; vctx.lineCap = "round";
+    vctx.shadowColor = "rgba(245,201,74,.8)"; vctx.shadowBlur = 14;
+    vctx.beginPath(); vctx.moveTo(last.x, last.y);
+    vctx.quadraticCurveTo(last.x + dx / 2 + (Math.random() - .5) * 6, last.y + dy / 2 + (Math.random() - .5) * 6, x, y); vctx.stroke();
+    // kintsugi-like cracks branching off the stroke
+    if (Math.random() < .12) {
+      vctx.lineWidth = .8; vctx.shadowBlur = 6; vctx.beginPath(); vctx.moveTo(x, y);
+      let cx = x, cy = y, a = Math.random() * 6.28;
+      for (let i = 0; i < 5; i++) { a += (Math.random() - .5) * 1.2; cx += Math.cos(a) * 9; cy += Math.sin(a) * 9; vctx.lineTo(cx, cy); }
+      vctx.stroke();
+    }
+    if (Math.random() < .5) sparks.push(spark(x, y, 1.2));
+  }
+  last = { x, y };
+}
+function spark(x, y, sp) { const a = Math.random() * 6.28, v = (Math.random() * 2 + .5) * sp; return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 1, life: 1, r: Math.random() * 2 + .8 }; }
+function burst(x, y, n) { for (let i = 0; i < n; i++) sparks.push(spark(x, y, 2.4)); }
+const rain = [];
+function loop() {
+  ctx.clearRect(0, 0, W, H);
+  ctx.globalAlpha = 1; ctx.drawImage(veinCanvas, 0, 0, W, H);
+  // slowly fade the veins so the hero never gets fully covered
+  vctx.save(); vctx.setTransform(1, 0, 0, 1, 0, 0); vctx.globalCompositeOperation = "destination-out"; vctx.fillStyle = "rgba(0,0,0,.006)"; vctx.fillRect(0, 0, veinCanvas.width, veinCanvas.height); vctx.restore();
+  for (let i = sparks.length - 1; i >= 0; i--) {
+    const s = sparks[i]; s.x += s.vx; s.y += s.vy; s.vy += .06; s.life -= .022;
+    if (s.life <= 0) { sparks.splice(i, 1); continue; }
+    ctx.globalAlpha = s.life; ctx.fillStyle = s.life > .6 ? "#fff1b8" : "#f5c94a"; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill();
+  }
+  for (let i = rain.length - 1; i >= 0; i--) {
+    const c = rain[i]; c.y += c.v; c.rot += c.vr;
+    if (c.y > H + 20) { rain.splice(i, 1); continue; }
+    ctx.globalAlpha = .95; ctx.save(); ctx.translate(c.x, c.y); ctx.scale(Math.cos(c.rot), 1);
+    const g = ctx.createRadialGradient(-2, -2, 0, 0, 0, c.r); g.addColorStop(0, "#fff1b8"); g.addColorStop(.5, "#f5c94a"); g.addColorStop(1, "#9a6510");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, c.r, 0, 7); ctx.fill(); ctx.restore();
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+const cursor = $("#cursor");
+function touchAt(clientX, clientY) {
+  const r = hero.getBoundingClientRect();
+  if (clientY < r.top || clientY > r.bottom) { last = null; return; }
+  vein(clientX - r.left, clientY - r.top);
+  const el = document.elementFromPoint(clientX, clientY);
+  if (el && el.classList && el.classList.contains("l")) gild(el);
+  // a generous radius makes it easy on phones
+  letters.forEach(l => { if (l.classList.contains("gold")) return; const b = l.getBoundingClientRect(); if (Math.abs(b.left + b.width / 2 - clientX) < b.width * .7 && Math.abs(b.top + b.height / 2 - clientY) < b.height * .45) gild(l); });
+}
+// fast moves skip letters, so walk the segment between two events
+let prevPt = null;
+function moveTo(x, y) {
+  if (prevPt) { const d = Math.hypot(x - prevPt[0], y - prevPt[1]), n = Math.min(60, Math.ceil(d / 14)); for (let i = 1; i <= n; i++) touchAt(prevPt[0] + (x - prevPt[0]) * i / n, prevPt[1] + (y - prevPt[1]) * i / n); }
+  else touchAt(x, y);
+  prevPt = [x, y];
+}
+hero.addEventListener("pointermove", e => moveTo(e.clientX, e.clientY));
+hero.addEventListener("pointerleave", () => { last = null; prevPt = null; cursor.classList.remove("on"); });
+addEventListener("scroll", () => { if (scrollY > hero.offsetHeight * .6) cursor.classList.remove("on"); }, { passive: true });
+hero.addEventListener("touchmove", e => { const t = e.touches[0]; moveTo(t.clientX, t.clientY); }, { passive: true });
+hero.addEventListener("touchend", () => { last = null; prevPt = null; });
+if (fine) {
+  addEventListener("pointermove", e => { cursor.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; const inHero = e.target.closest && e.target.closest("#hero"); cursor.classList.toggle("on", !!inHero); cursor.classList.toggle("big", !!(e.target.classList && e.target.classList.contains("l"))); });
+}
+// hint for touch screens: a ghost finger gilds the first word
+setTimeout(() => { if (goldCount) return; const first = [...$$(".w")[0].children]; first.forEach((l, i) => setTimeout(() => gild(l), 140 * i)); }, 1600);
+
+function midasMode() {
+  midas = true; html.classList.add("midas");
+  for (let i = 0; i < 90; i++) rain.push({ x: Math.random() * W, y: -Math.random() * H, v: 2 + Math.random() * 4, r: 5 + Math.random() * 7, rot: Math.random() * 6, vr: .05 + Math.random() * .15 });
+  $("#unlock").classList.add("on");
+}
+$("#unlockOk").addEventListener("click", () => $("#unlock").classList.remove("on"));
+
+/* ---------- name ---------- */
+const nameEl = $("#nameEl");
+function playName() {
+  nameEl.classList.remove("fused"); $("#nameCap").innerHTML = "Ένα επώνυμο. Και μέσα του, <b>ένας βασιλιάς</b>.";
+  setTimeout(() => { nameEl.classList.add("fused"); $("#nameCap").innerHTML = "Καλα<b>μίδας</b> → kala<b>MIDAS</b> → The <b>Midas</b> Touch"; }, 1400);
+}
+new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); playName(); } }, { threshold: .5 }).observe(nameEl);
+$("#nameBtn").addEventListener("click", playName);
+nameEl.addEventListener("pointerenter", () => nameEl.classList.add("fused"));
+
+/* ---------- lift lab ---------- */
+const LIFTS = { deadlift: "Deadlift", squat: "Back squat", front: "Front squat", snatch: "Snatch", cj: "Clean & jerk" };
+let lift = "deadlift", prs = 0;
+$("#lifts").innerHTML = Object.entries(LIFTS).map(([k, n]) => `<button type="button" data-l="${k}" class="${k === lift ? "on" : ""}">${n}</button>`).join("");
+$("#lifts").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; lift = b.dataset.l; $$("#lifts button").forEach(x => x.classList.toggle("on", x === b)); platform.classList.remove("gold"); updateLab(); });
+// IWF bumper colours
+const PLATES = [[25, "#c8202b", 112], [20, "#1f5fbf", 112], [15, "#e2b71a", 104], [10, "#2c9a4a", 96], [5, "#e9e6df", 70], [2.5, "#c8202b", 54], [1.25, "#9a9a9a", 46]];
+function plates(perSide) { const out = []; let left = perSide; for (const p of PLATES) while (left >= p[0] - 1e-9) { out.push(p); left -= p[0]; } return out; }
+let barKg = 80;
+function drawBar(kg) {
+  barKg = kg;
+  const ps = plates(Math.max(0, (kg - 20) / 2));
+  let svg = `<rect x="40" y="146" width="520" height="8" rx="4" fill="#bdb6aa"/><rect x="120" y="140" width="12" height="20" rx="2" fill="#8d867b"/><rect x="468" y="140" width="12" height="20" rx="2" fill="#8d867b"/>`;
+  const draw = (side) => {
+    let x = side < 0 ? 118 : 482;
+    ps.forEach(p => {
+      const w = p[0] >= 10 ? 22 : p[0] >= 5 ? 14 : 10, h = p[2];
+      x += side < 0 ? -w - 1 : 1;
+      svg += `<rect class="plate plate-edge" x="${x}" y="${150 - h}" width="${w}" height="${h * 2}" rx="3" fill="${p[1]}" stroke="rgba(0,0,0,.35)" stroke-width="1"/>`;
+      if (side > 0) x += w;
+    });
+  };
+  draw(-1); draw(1);
+  $("#barInner").innerHTML = svg;
+  $("#onbar").textContent = kg.toLocaleString("el-GR");
+  $("#load").innerHTML = ps.length ? `Ανά πλευρά: <b>${ps.map(p => String(p[0]).replace(".", ",")).join(" + ")}</b> kg · μπάρα 20 kg` : "Μόνο η μπάρα, 20 kg. Τεχνική πρώτα!";
+}
+const round25 = x => Math.round(x / 2.5) * 2.5;
+let oneRM = 0;
+function updateLab() {
+  const w = +$("#w").value, r = +$("#r").value;
+  $("#wv").textContent = w.toLocaleString("el-GR") + " kg"; $("#rv").textContent = r;
+  oneRM = r === 1 ? w : Math.round(w * (1 + r / 30) * 2) / 2; // Epley
+  $("#orm").textContent = oneRM.toLocaleString("el-GR");
+  $("#pct").innerHTML = [60, 70, 80, 90].map(p => `<button type="button" data-p="${p}"><small>${p}%</small><b>${round25(oneRM * p / 100).toLocaleString("el-GR")}</b></button>`).join("");
+  drawBar(w);
+}
+$("#w").addEventListener("input", () => { platform.classList.remove("gold"); updateLab(); });
+$("#r").addEventListener("input", () => { platform.classList.remove("gold"); updateLab(); });
+$("#pct").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; $$("#pct button").forEach(x => x.classList.toggle("on", x === b)); platform.classList.remove("gold"); drawBar(Math.max(20, round25(oneRM * b.dataset.p / 100))); });
+const platform = $("#platform");
+let holdT = null, holdP = 0;
+const holdBtn = $("#hold");
+function holdStart(e) {
+  e.preventDefault(); if (holdT) return; platform.classList.remove("gold"); holdP = 0;
+  holdT = setInterval(() => {
+    holdP = Math.min(1, holdP + .025);
+    $("#holdFill").style.width = holdP * 100 + "%";
+    const lift = Math.sin(holdP * Math.PI / 2) * 95, shake = holdP < 1 ? (Math.random() - .5) * 3 * holdP : 0;
+    $("#barGroup").style.transform = `translate(${shake}px,${-lift}px)`;
+    $("#holdTxt").textContent = holdP < 1 ? "Σπρώξε…" : "Χρυσό!";
+    if (holdP >= 1) {
+      clearInterval(holdT); holdT = null; holdBtn.classList.add("full");
+      platform.classList.add("gold"); prs++; $("#prCount").textContent = prs;
+      $("#holdTxt").textContent = `PR ${barKg.toLocaleString("el-GR")} kg ✦ Επόμενος στόχος: ${(barKg + 2.5).toLocaleString("el-GR")}`;
+    }
+  }, 30);
+}
+function holdEnd() {
+  if (holdT) { clearInterval(holdT); holdT = null; $("#holdTxt").textContent = "Άφησες νωρίς. Ξανά!"; }
+  setTimeout(() => { $("#barGroup").style.transform = ""; $("#holdFill").style.width = "0"; holdBtn.classList.remove("full"); if (!platform.classList.contains("gold")) $("#holdTxt").textContent = "Κράτα πατημένο για άρση"; }, platform.classList.contains("gold") ? 1600 : 300);
+}
+holdBtn.addEventListener("pointerdown", holdStart);
+["pointerup", "pointerleave", "pointercancel"].forEach(ev => holdBtn.addEventListener(ev, holdEnd));
+holdBtn.addEventListener("keydown", e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) holdStart(e); });
+holdBtn.addEventListener("keyup", e => { if (e.key === " " || e.key === "Enter") holdEnd(); });
+updateLab();
+
+/* ---------- golden firsts (from the box's own posts) ---------- */
+const FIRSTS = [
+  ["🏋️", "100 kg", "Deadlift", "Πρώτος κύκλος deadlift και ένα «σχετικά εύκολο 100άρι». Πολλά μπράβο!"],
+  ["⚡", "Full snatch", "Πρώτο", "First full snatch for Ioanna! Η πιο τεχνική άρση, καθαρή από την αρχή μέχρι το τέλος."],
+  ["💪", "Αυστηρή έλξη", "Πρώτη", "Με πολλή δουλειά και υπομονή, η πρώτη καθαρή και αυστηρή έλξη. Από τότε έχουν γίνει άλλες είκοσι."],
+  ["🔥", "100 kg", "Front squat", "Από το μηδέν σε ένα «πανεύκολο» 100άρι μπροστινό κάθισμα. Αυτές είναι νίκες!"],
+  ["💥", "Muscle up", "Στους κρίκους", "Τρίτη προπόνηση καθαρά για το muscle up και μπουμ: πρώτο αυστηρό muscle up. Σειρά έχει το μονόζυγο!"],
+  ["✨", "4 έλξεις", "Μία μέρα", "«Δεν το βλέπω για φέτος», είπε η Γιάννα. Και μια μέρα από το πουθενά έγιναν 4 αυστηρές έλξεις."],
+  ["🤸", "Μονόζυγο", "Πρώτο καθαρό", "Το πρώτο καθαρό μονόζυγο. Έρχονται πολλά άλλα, και σύντομα!"],
+  ["🏆", "PRs", "Κύκλος squat", "Καλές προσπάθειες και αρκετά προσωπικά ρεκόρ στο back squat. Πάμε για τον επόμενο κύκλο!"]
+];
+$("#coins").innerHTML = FIRSTS.map(f => `<div class="coinwrap" tabindex="0"><div class="coin3d"><div class="face front"><div><div class="ic">${f[0]}</div><b>${f[1]}</b><small>${f[2]}</small></div></div><div class="face back"><div><b>${f[2]} · ${f[1]}</b>${f[3]}</div></div></div></div>`).join("");
+$$(".coinwrap").forEach(c => {
+  const inner = c.firstElementChild;
+  c.addEventListener("click", () => { c.classList.toggle("flip"); inner.style.transform = ""; });
+  c.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); c.classList.toggle("flip"); } });
+  if (fine) {
+    c.addEventListener("pointermove", e => { if (c.classList.contains("flip")) return; const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; inner.style.transform = `rotateY(${x * 34}deg) rotateX(${-y * 34}deg)`; inner.style.transition = "transform .1s"; });
+    c.addEventListener("pointerleave", () => { inner.style.transition = ""; inner.style.transform = ""; });
+  }
+});
+
+/* ---------- programs glow follows the pointer ---------- */
+$$(".prog").forEach(p => p.addEventListener("pointermove", e => { const r = p.getBoundingClientRect(); p.style.setProperty("--x", e.clientX - r.left + "px"); p.style.setProperty("--y", e.clientY - r.top + "px"); }));
+
+/* ---------- schedule (example data, live "now") ---------- */
+const DAYN = ["ΚΥΡ", "ΔΕΥ", "ΤΡΙ", "ΤΕΤ", "ΠΕΜ", "ΠΑΡ", "ΣΑΒ"];
+const WEEK = { 1: "c", 2: "o", 3: "c", 4: "o", 5: "c", 6: "s" };
+const PLAN = {
+  c: [["07:00", "08:00", "CrossFit"], ["09:30", "10:30", "CrossFit"], ["17:00", "18:00", "CrossFit"], ["18:00", "19:00", "Gymnastics"], ["19:00", "20:00", "CrossFit"], ["20:00", "21:00", "CrossFit"]],
+  o: [["07:00", "08:00", "CrossFit"], ["09:30", "10:30", "Olympic lifting"], ["17:00", "18:00", "CrossFit"], ["18:00", "19:00", "Strength cycle"], ["19:00", "20:00", "Olympic lifting"], ["20:00", "21:00", "CrossFit"]],
+  s: [["10:00", "11:00", "CrossFit"], ["11:00", "13:00", "Open gym"]]
+};
+const ath = () => { const p = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Athens", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date()); const g = t => p.find(x => x.type === t).value; return { d: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(g("weekday")), m: (+g("hour") % 24) * 60 + +g("minute") }; };
+const now = ath();
+let selDay = WEEK[now.d] ? now.d : 1;
+const mins = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+function renderDays() {
+  $("#days").innerHTML = [1, 2, 3, 4, 5, 6].map(d => `<button type="button" data-d="${d}" class="${d === selDay ? "on" : ""} ${d === now.d ? "today" : ""}">${DAYN[d]}</button>`).join("");
+  const list = PLAN[WEEK[selDay]];
+  $("#slots").innerHTML = list.map((s, i) => {
+    const live = selDay === now.d && now.m >= mins(s[0]) && now.m < mins(s[1]);
+    const next = selDay === now.d && !live && now.m < mins(s[0]) && !list.slice(0, i).some(x => now.m < mins(x[0]));
+    return `<div class="slot ${live ? "now" : ""}" style="animation-delay:${i * 50}ms"><time>${s[0]}–${s[1]}</time><b>${s[2]}</b><small>${live ? "● Τώρα σε εξέλιξη" : next ? "Επόμενο" : ""}</small></div>`;
+  }).join("");
+}
+$("#days").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; selDay = +b.dataset.d; renderDays(); });
+renderDays();
+$("#years").textContent = new Date().getFullYear() - 2012;
+
+/* ---------- join: golden fingerprint ---------- */
+$("#goals").addEventListener("click", e => { const b = e.target.closest("button"); if (b) b.classList.toggle("on"); });
+(() => {
+  // concentric arcs that look like a fingerprint
+  const paths = [];
+  for (let i = 0; i < 9; i++) {
+    const rx = 6 + i * 3.6, ry = 8 + i * 4.2, cx = 37, cy = 46, gap = .35 + (i % 3) * .12;
+    const a0 = -Math.PI + gap, a1 = Math.PI * (i % 2 ? .15 : .05) - gap;
+    const p = (a) => `${(cx + rx * Math.cos(a)).toFixed(1)} ${(cy + ry * Math.sin(a)).toFixed(1)}`;
+    paths.push(`M${p(a0)} A${rx} ${ry} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${p(a1)}`);
+  }
+  $("#pBase").innerHTML = paths.map(d => `<path d="${d}"/>`).join("");
+  $("#pFill").innerHTML = paths.map(d => `<path d="${d}" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`).join("");
+  const fills = $$("#pFill path"), btn = $("#printBtn");
+  let t = null, p = 0, done = false;
+  const paint = () => fills.forEach((f, i) => f.style.strokeDashoffset = Math.max(0, Math.min(1, 1 - (p * fills.length - i))));
+  btn.addEventListener("pointerdown", e => {
+    e.preventDefault(); if (done || t) return;
+    t = setInterval(() => { p = Math.min(1, p + .02); paint(); if (p >= 1) { clearInterval(t); t = null; done = true; btn.classList.add("done");
+      const n = $("#jn").value.trim();
+      $("#printTxt").innerHTML = `<b>Σφραγίστηκε με το άγγιγμα του Μίδα ✦</b><br>${n ? n + ", θα" : "Θα"} σε καλέσουμε για τη δοκιμαστική σου.<br>(Demo: δεν στάλθηκε τίποτα.)`;
+      const r = btn.getBoundingClientRect(); for (let i = 0; i < 20; i++) floatCoin(r.left + r.width / 2, r.top + r.height / 2); } }, 25);
+  });
+  ["pointerup", "pointerleave", "pointercancel"].forEach(ev => btn.addEventListener(ev, () => { if (t) { clearInterval(t); t = null; } if (!done) { p = 0; paint(); } }));
+})();
+function floatCoin(x, y) {
+  const c = document.createElement("span"); c.textContent = "●";
+  const a = Math.random() * 6.28, d = 60 + Math.random() * 90;
+  c.style.cssText = `position:fixed;left:${x}px;top:${y}px;z-index:80;color:#f5c94a;text-shadow:0 0 8px #fff1b8;font-size:${8 + Math.random() * 10}px;pointer-events:none;transition:transform 1s cubic-bezier(.2,.8,.3,1),opacity 1s;`;
+  document.body.appendChild(c);
+  requestAnimationFrame(() => { c.style.transform = `translate(${Math.cos(a) * d}px,${Math.sin(a) * d}px)`; c.style.opacity = 0; });
+  setTimeout(() => c.remove(), 1100);
+}
+
+/* ---------- the westie ---------- */
+(() => {
+  const w = $("#westie"), b = $("#wbubble");
+  let shown = false, gold = false;
+  addEventListener("scroll", () => { if (!shown && scrollY > innerHeight * 1.5) { shown = true; w.classList.add("peek"); setTimeout(() => { if (!gold) w.classList.remove("peek"); }, 5000); } }, { passive: true });
+  w.addEventListener("click", () => {
+    if (!gold) {
+      gold = true; w.classList.add("gold", "peek"); b.textContent = "Ούτε εγώ γλίτωσα! Ο χρυσός φύλακας του box σε καλωσορίζει ✦";
+      const r = w.getBoundingClientRect(); for (let i = 0; i < 18; i++) floatCoin(r.left + r.width / 2, r.top + 20);
+      setTimeout(() => w.classList.remove("peek"), 4500);
+    } else { w.classList.toggle("peek"); }
+  });
+})();
+</script>
+</body>
+</html>
