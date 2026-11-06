@@ -43,7 +43,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .logo i{width:34px;height:34px;border-radius:50%;background:var(--lav);display:grid;place-items:center;font-style:normal;font-size:17px}
 .links{display:flex;gap:24px;font-size:14px;color:var(--muted)}
 .links a:hover{color:var(--ink)}
-@media(max-width:860px){.links{display:none}nav .btn{display:none}}
+.links a,.libbtn{white-space:nowrap}
+@media(max-width:1100px){.links{display:none}}
+@media(max-width:860px){nav .btn{display:none}}
+@media(max-width:420px){.libbtn span{display:none}}
 
 /* hero */
 .hero{padding:50px 0 70px;background:radial-gradient(700px 420px at 80% 20%,#efe5fc 0,transparent 70%)}
@@ -208,6 +211,99 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .press small{color:var(--muted)}
 @media(max-width:860px){.proof{grid-template-columns:1fr 1fr}.press{flex-direction:column;align-items:flex-start;gap:8px}}
 
+
+/* shop */
+.shop{background:linear-gradient(180deg,#fff,#f4eefc)}
+.shop-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.filters{display:flex;gap:6px;background:#fff;padding:5px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+.filters button{padding:9px 14px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.filters button.on{background:var(--ink);color:#fff}
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.prod{background:#fff;border-radius:22px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 24px 44px -26px rgba(60,30,110,.45)}
+.cover{position:relative;aspect-ratio:4/3.3;padding:18px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:var(--g)}
+.cover .kind{align-self:flex-start;font:700 11px/1 var(--s);letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.22);padding:6px 9px;border-radius:999px}
+.cover b{font:700 19px/1.2 var(--h);text-shadow:0 1px 10px rgba(0,0,0,.15)}
+.cover .em{position:absolute;right:14px;top:12px;font-size:40px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.15))}
+.cover.book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.18),transparent)}
+.pbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pbody p{font-size:14px;color:var(--muted)}
+.pmeta{display:flex;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.pmeta span{background:var(--bg);padding:4px 8px;border-radius:8px}
+.pfoot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.price{font:700 22px/1 var(--h);white-space:nowrap}
+.price s{font:500 14px var(--s);color:var(--muted);margin-left:6px}
+.buy{padding:11px 16px;font-size:13.5px}
+.owned{background:var(--mint);box-shadow:none}
+.bundle{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:22px 26px;border-radius:22px;background:var(--ink);color:#fff}
+.bundle .em{font-size:44px}
+.bundle b{font:700 22px/1.2 var(--h)}
+.bundle p{color:#c7bde6;font-size:14.5px;margin-top:4px}
+.trust{display:flex;gap:10px 22px;flex-wrap:wrap;justify-content:center;margin-top:24px;font-size:13px;color:var(--muted)}
+@media(max-width:1000px){.prods{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.prods{grid-template-columns:1fr}.cover{aspect-ratio:16/8}.bundle{grid-template-columns:1fr;gap:10px}}
+
+/* library button */
+.libbtn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:13.5px;font-weight:600}
+.libbtn em{font-style:normal;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--lav);color:#fff;font-size:11.5px;display:grid;place-items:center}
+.libbtn.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.15)}}
+.navr{display:flex;gap:8px;align-items:center}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(30,22,50,.5);backdrop-filter:blur(4px)}
+.modal.on{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.sheet{position:relative;width:min(460px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:#fff;border-radius:24px;padding:24px;box-shadow:0 40px 80px rgba(0,0,0,.3);animation:pop .3s}
+.sheet.wide{width:min(880px,100%)}
+.x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--bg);font-size:16px}
+.sheet h3{font-size:22px;margin-bottom:4px;padding-right:40px}
+.line{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.line.tot{border:0;font-weight:700;font-size:17px}
+.sheet label{display:block;font-size:13px;font-weight:600;margin:16px 0 7px}
+.sheet input{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg)}
+.paybtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.paybtns button{padding:13px;border-radius:12px;font-weight:600;font-size:14px;box-shadow:inset 0 0 0 1px var(--line)}
+.paybtns .apple{background:#000;color:#fff;box-shadow:none}
+.stripe-note{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;font-size:12px;color:var(--muted);margin-top:14px}
+.stripe-note b{color:#635bff;font-weight:700}
+.okmark{width:64px;height:64px;border-radius:50%;background:#e6f6ef;color:var(--mint);display:grid;place-items:center;font-size:30px;margin:6px auto 12px}
+.center{text-align:center}
+.center p{color:var(--muted);font-size:15px}
+
+/* library */
+.lib-empty{padding:30px 10px;text-align:center;color:var(--muted)}
+.libgrid{display:grid;gap:10px;margin-top:16px}
+.libitem{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:10px;border-radius:16px;background:var(--bg)}
+.libitem .mini{width:64px;height:64px;border-radius:12px;background:var(--g);display:grid;place-items:center;font-size:28px}
+.libitem b{font:700 15px/1.3 var(--h);display:block}
+.libitem small{color:var(--muted);font-size:12.5px}
+.libitem .bar{height:5px;border-radius:3px;background:var(--lav2);margin-top:6px;overflow:hidden}
+.libitem .bar i{display:block;height:100%;background:var(--lav)}
+.libitem button{padding:10px 14px;border-radius:999px;background:var(--lav);color:#fff;font-size:13px;font-weight:600;white-space:nowrap}
+@media(max-width:480px){.libitem{grid-template-columns:52px 1fr}.libitem .mini{width:52px;height:52px}.libitem button{grid-column:1/-1}}
+.toast{position:fixed;left:50%;bottom:76px;transform:translateX(-50%);z-index:90;background:var(--ink);color:#fff;padding:12px 16px;border-radius:14px;font-size:14px;width:max-content;max-width:min(420px,calc(100% - 32px));box-shadow:0 10px 30px rgba(0,0,0,.25);animation:pop .3s}
+
+/* player */
+.player{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:18px;margin-top:14px}
+.screen{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#3a2c5e,#1c1530)}
+.screen .dogwrap{position:absolute;inset:12% 18% 0}
+.screen .dogwrap svg{width:100%;height:100%}
+.screen .play{position:absolute;inset:0;margin:auto;width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--lav);font-size:24px;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:opacity .3s}
+.screen.playing .play{opacity:0;pointer-events:none}
+.screen .cap{position:absolute;left:12px;top:12px;right:12px;color:#fff;font:700 13px/1.3 var(--h)}
+.screen .cap span{background:rgba(0,0,0,.3);padding:6px 10px;border-radius:10px;display:inline-block}
+.screen .scrub{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.2)}
+.screen .scrub i{display:block;height:100%;width:0;background:var(--treat)}
+.screen .wm{position:absolute;right:12px;bottom:12px;font-size:11px;color:rgba(255,255,255,.45)}
+.chapters{display:grid;gap:6px;align-content:start}
+.chap{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;text-align:left;padding:10px 12px;border-radius:12px;background:var(--bg);font-size:14px}
+.chap i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#fff;font-size:12px;font-weight:700;color:var(--muted)}
+.chap.on{box-shadow:inset 0 0 0 1.5px var(--lav)}
+.chap.done i{background:var(--mint);color:#fff}
+.chap small{color:var(--muted)}
+@media(max-width:760px){.player{grid-template-columns:1fr}}
+
 /* faq */
 .faq{max-width:780px;margin:36px auto 0}
 .faq details{background:#fff;border-radius:18px;margin-bottom:10px;box-shadow:inset 0 0 0 1px var(--line)}
@@ -260,8 +356,8 @@ footer a{text-decoration:underline}
 <nav>
   <div class="wrap">
     <a href="#top" class="logo ph" data-note="Εδώ μπαίνει το λογότυπό σας"><i>🐾</i>Anna Dogtrainer</a>
-    <div class="links"><a href="#language">Η γλώσσα του σκύλου</a><a href="#train">Θετική εκπαίδευση</a><a href="#services">Μαθήματα</a><a href="#faq">Q&amp;A</a></div>
-    <a class="btn" href="#contact">Κλείσε μάθημα</a>
+    <div class="links"><a href="#language">Η γλώσσα του σκύλου</a><a href="#train">Θετική εκπαίδευση</a><a href="#services">Μαθήματα</a><a href="#shop">Ebooks &amp; σεμινάρια</a><a href="#faq">Q&amp;A</a></div>
+    <div class="navr"><button class="libbtn" id="libBtn" type="button">📚 <span>Η βιβλιοθήκη μου</span><em id="libCount">0</em></button><a class="btn" href="#contact">Κλείσε μάθημα</a></div>
   </div>
 </nav>
 
@@ -331,6 +427,20 @@ footer a{text-decoration:underline}
       <article><div class="ic">🧒</div><h3>Σκύλος &amp; παιδί</h3><p>Ασφαλής και χαρούμενη συμβίωση: τι να μάθουν τα παιδιά και πώς να προστατεύσουμε και τον σκύλο.</p></article>
       <article><div class="ic">🌱</div><h3>Δύσκολες συμπεριφορές</h3><p>Φόβος, επιθετικότητα, τράβηγμα στο λουρί. Με υπομονή και θετικές μεθόδους, χωρίς πίεση και τιμωρίες.</p></article>
     </div>
+  </div>
+</section>
+
+<section class="shop" id="shop">
+  <div class="wrap">
+    <div class="shop-head">
+      <div>
+        <span class="tag">📚 Ebooks &amp; σεμινάρια</span>
+        <h2 style="margin-top:12px">Μάθε από το σπίτι,<br><span style="color:var(--lav)">με τον δικό σου ρυθμό</span>.</h2>
+      </div>
+      <div class="filters" id="filters"><button class="on" data-f="all" type="button">Όλα</button><button data-f="ebook" type="button">Ebooks</button><button data-f="video" type="button">Σεμινάρια</button></div>
+    </div>
+    <div class="prods ph" id="prods" data-note="Παράδειγμα: εδώ μπαίνουν τα δικά σας ebooks και σεμινάρια, με τίτλους και τιμές που ορίζετε εσείς"></div>
+    <div class="trust"><span>🔒 Ασφαλής πληρωμή με Stripe</span><span>💳 Κάρτα · Apple Pay · Google Pay</span><span>⚡ Άμεση πρόσβαση μετά την αγορά</span><span>🧾 Απόδειξη στο email σου</span></div>
   </div>
 </section>
 
@@ -413,6 +523,39 @@ footer a{text-decoration:underline}
 <footer>
   <div class="wrap"><span>© Anna Dogtrainer · Θετική εκπαίδευση σκύλων και κηδεμόνων</span><span>Demo από <a href="https://opensite.gr">OpenSite</a></span></div>
 </footer>
+
+<div class="modal" id="checkout" role="dialog" aria-modal="true" aria-label="Ταμείο">
+  <div class="sheet">
+    <button class="x" type="button" data-close aria-label="Κλείσιμο">✕</button>
+    <div id="coStep1">
+      <h3>Ολοκλήρωση αγοράς</h3>
+      <p style="color:var(--muted);font-size:14px">Στο κανονικό site εδώ ανοίγει το ασφαλές ταμείο του Stripe.</p>
+      <div class="line"><span id="coName"></span><b id="coPrice"></b></div>
+      <div class="line tot"><span>Σύνολο</span><span id="coTotal"></span></div>
+      <label for="coEmail">Email για την πρόσβαση και την απόδειξη</label>
+      <input id="coEmail" type="email" placeholder="you@example.com" autocomplete="off">
+      <div class="paybtns"><button class="apple" type="button" data-pay>Apple Pay</button><button type="button" data-pay>Google Pay</button></div>
+      <button class="btn" type="button" data-pay style="width:100%;margin-top:8px">💳 Πληρωμή με κάρτα</button>
+      <div class="stripe-note">🔒 Powered by <b>stripe</b> · Στο demo δεν γίνεται χρέωση</div>
+    </div>
+    <div id="coStep2" class="center" style="display:none">
+      <div class="okmark">✓</div>
+      <h3 style="padding:0">Ευχαριστώ! 💜</h3>
+      <p>Το <b id="okName"></b> είναι πλέον στη βιβλιοθήκη σου. Στάλθηκε email στο <b id="okEmail"></b> με τον σύνδεσμο πρόσβασης και την απόδειξη.</p>
+      <button class="btn" type="button" id="goLib" style="margin-top:18px">Άνοιξε τη βιβλιοθήκη μου</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="library" role="dialog" aria-modal="true" aria-label="Η βιβλιοθήκη μου">
+  <div class="sheet wide">
+    <button class="x" type="button" data-close aria-label="Κλείσιμο">✕</button>
+    <h3>📚 Η βιβλιοθήκη μου</h3>
+    <p style="color:var(--muted);font-size:14px">Μπαίνεις με το email σου, χωρίς κωδικό. Ό,τι αγόρασες μένει εδώ για πάντα.</p>
+    <div id="libList"></div>
+    <div id="playerWrap" style="display:none"></div>
+  </div>
+</div>
 
 <a class="btn dm" href="https://www.instagram.com/annadogtrainer.positive/" target="_blank" rel="noopener">💜 Μήνυμα</a>
 <button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
@@ -570,6 +713,119 @@ new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { $("#mani").cla
   });
   new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); loop(); } }, { threshold: .3 }).observe($("#tstage"));
 })();
+
+/* ---------- shop & library ---------- */
+const PRODUCTS = [
+  { id: "calm", type: "ebook", kind: "Ebook · PDF", em: "📖", title: "Σήματα ηρεμίας", sub: "Ο οδηγός για να καταλάβεις τι σου λέει ο σκύλος σου", meta: ["48 σελίδες", "με εικονογραφήσεις"], price: 12, g: "linear-gradient(150deg,#b89ae6,#7a52c7)" },
+  { id: "puppy", type: "ebook", kind: "Ebook · PDF", em: "🐶", title: "Ο πρώτος μήνας με το κουτάβι", sub: "Τουαλέτα, δάγκωμα, ύπνος, μοναξιά: βήμα βήμα", meta: ["36 σελίδες", "+ πρόγραμμα ημέρας"], price: 9, g: "linear-gradient(150deg,#f6c08a,#e4895a)" },
+  { id: "leash", type: "video", kind: "Σεμινάριο · βίντεο", em: "🦮", title: "Βόλτα χωρίς τράβηγμα", sub: "Χωρίς πνίχτες, με παιχνίδι και υπομονή", meta: ["4 μαθήματα", "1 ώρα 40′"], price: 35, g: "linear-gradient(150deg,#7fd0b0,#3f9c7d)",
+    ch: [["Γιατί τραβάει;", "18′"], ["Ο εξοπλισμός που βοηθάει", "22′"], ["Ασκήσεις στο σπίτι", "31′"], ["Στον δρόμο", "29′"]] },
+  { id: "kids", type: "video", kind: "Σεμινάριο · βίντεο", em: "🧒", title: "Σκύλος & παιδί", sub: "Ασφαλής και χαρούμενη συμβίωση για όλη την οικογένεια", meta: ["3 μαθήματα", "1 ώρα 10′"], price: 29, g: "linear-gradient(150deg,#f3a6be,#c9608a)",
+    ch: [["Τι λέει ο σκύλος στο παιδί", "24′"], ["Κανόνες για τα παιδιά", "21′"], ["Όταν έρχεται μωρό", "25′"]] }
+];
+const BUNDLE = { title: "Όλα μαζί", price: 69, was: 85 };
+let owned = [], progress = {}, buyer = "";
+try { owned = JSON.parse(localStorage.getItem("ad-owned") || "[]"); progress = JSON.parse(localStorage.getItem("ad-prog") || "{}"); buyer = localStorage.getItem("ad-email") || ""; } catch (e) {}
+const save = () => { try { localStorage.setItem("ad-owned", JSON.stringify(owned)); localStorage.setItem("ad-prog", JSON.stringify(progress)); localStorage.setItem("ad-email", buyer); } catch (e) {} };
+const eur = n => n.toLocaleString("el-GR") + " €";
+let filter = "all";
+function renderShop() {
+  const list = PRODUCTS.filter(p => filter === "all" || p.type === filter);
+  $("#prods").innerHTML = list.map(p => `
+    <article class="prod">
+      <div class="cover ${p.type === "ebook" ? "book" : ""}" style="--g:${p.g}"><span class="kind">${p.kind}</span><span class="em">${p.em}</span><b>${p.title}</b></div>
+      <div class="pbody"><p>${p.sub}</p><div class="pmeta">${p.meta.map(m => `<span>${m}</span>`).join("")}</div>
+        <div class="pfoot"><span class="price">${eur(p.price)}</span>${owned.includes(p.id) ? `<button class="btn buy owned" type="button" data-open="${p.id}">✓ Στη βιβλιοθήκη</button>` : `<button class="btn buy" type="button" data-buy="${p.id}">Αγορά</button>`}</div></div>
+    </article>`).join("") + (filter === "all" ? `
+    <div class="bundle"><span class="em">🎁</span><div><b>${BUNDLE.title}: 2 ebooks + 2 σεμινάρια</b><p>Όλο το υλικό σε ένα πακέτο, για όποιον θέλει να τα μάθει όλα.</p></div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span class="price">${eur(BUNDLE.price)}<s>${eur(BUNDLE.was)}</s></span>${PRODUCTS.every(p => owned.includes(p.id)) ? `<button class="btn buy owned" type="button" data-lib>✓ Τα έχεις όλα</button>` : `<button class="btn buy" type="button" data-buy="all" style="background:var(--treat)">Αγορά πακέτου</button>`}</div></div>` : "");
+  $("#libCount").textContent = owned.length;
+}
+$("#filters").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; filter = b.dataset.f; $$("#filters button").forEach(x => x.classList.toggle("on", x === b)); renderShop(); });
+
+const openM = id => $("#" + id).classList.add("on"), closeM = id => $("#" + id).classList.remove("on");
+$$(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m || e.target.closest("[data-close]")) { m.classList.remove("on"); stopPlay(); } }));
+addEventListener("keydown", e => { if (e.key === "Escape") { $$(".modal").forEach(m => m.classList.remove("on")); stopPlay(); } });
+function toast(t) { const d = document.createElement("div"); d.className = "toast"; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 3600); }
+
+let cart = null;
+$("#prods").addEventListener("click", e => {
+  const b = e.target.closest("[data-buy]"), o = e.target.closest("[data-open]"), l = e.target.closest("[data-lib]");
+  if (o) { openLib(); const p = PRODUCTS.find(x => x.id === o.dataset.open); if (p.ch) playItem(p.id); return; }
+  if (l) { openLib(); return; }
+  if (!b) return;
+  cart = b.dataset.buy === "all" ? { ids: PRODUCTS.map(p => p.id), name: "πακέτο «Όλα μαζί»", price: BUNDLE.price } : (p => ({ ids: [p.id], name: "«" + p.title + "»", price: p.price }))(PRODUCTS.find(p => p.id === b.dataset.buy));
+  $("#coName").textContent = cart.name.charAt(0).toUpperCase() + cart.name.slice(1); $("#coPrice").textContent = eur(cart.price); $("#coTotal").textContent = eur(cart.price);
+  $("#coEmail").value = buyer;
+  $("#coStep1").style.display = ""; $("#coStep2").style.display = "none";
+  openM("checkout"); setTimeout(() => $("#coEmail").focus(), 50);
+});
+const PAYLABELS = ["Apple Pay", "Google Pay", "💳 Πληρωμή με κάρτα"];
+$$("[data-pay]").forEach(b => b.addEventListener("click", () => {
+  const em = $("#coEmail").value.trim();
+  if (!/^\S+@\S+\.\S+$/.test(em)) { $("#coEmail").focus(); $("#coEmail").style.borderColor = "var(--no)"; return; }
+  $("#coEmail").style.borderColor = "";
+  b.textContent = "Επεξεργασία…";
+  setTimeout(() => {
+    cart.ids.forEach(id => { if (!owned.includes(id)) owned.push(id); });
+    buyer = em; save(); renderShop();
+    $("#okName").textContent = cart.name; $("#okEmail").textContent = em;
+    $("#coStep1").style.display = "none"; $("#coStep2").style.display = "";
+    $$("[data-pay]").forEach((x, i) => x.textContent = PAYLABELS[i]);
+    $("#libBtn").classList.remove("bump"); void $("#libBtn").offsetWidth; $("#libBtn").classList.add("bump");
+  }, 900);
+}));
+$("#goLib").addEventListener("click", () => { closeM("checkout"); openLib(); });
+$("#libBtn").addEventListener("click", openLib);
+
+function openLib() { stopPlay(); $("#playerWrap").style.display = "none"; renderLib(); openM("library"); }
+function renderLib() {
+  const items = PRODUCTS.filter(p => owned.includes(p.id));
+  $("#libList").innerHTML = items.length ? `<div class="libgrid">${items.map(p => {
+    const done = p.ch ? (progress[p.id] || []).length : 0;
+    return `<div class="libitem"><div class="mini" style="--g:${p.g}">${p.em}</div><div><b>${p.title}</b><small>${p.type === "ebook" ? "PDF · " + p.meta[0] : done + " από " + p.ch.length + " μαθήματα"}</small>${p.ch ? `<div class="bar"><i style="width:${done / p.ch.length * 100}%"></i></div>` : ""}</div>
+      ${p.type === "ebook" ? `<button type="button" data-dl="${p.id}">⬇ Λήψη PDF</button>` : `<button type="button" data-play="${p.id}">▶ ${done ? "Συνέχεια" : "Ξεκίνα"}</button>`}</div>`;
+  }).join("")}</div>` : `<div class="lib-empty"><div style="font-size:40px">🐾</div><p>Η βιβλιοθήκη σου είναι άδεια.<br>Διάλεξε ένα ebook ή ένα σεμινάριο για να ξεκινήσεις.</p><a class="btn" href="#shop" data-close style="margin-top:16px">Δες τα ebooks &amp; σεμινάρια</a></div>`;
+}
+$("#libList").addEventListener("click", e => {
+  const d = e.target.closest("[data-dl]"), p = e.target.closest("[data-play]");
+  if (d) toast("📥 Στο κανονικό site το PDF κατεβαίνει από ασφαλές link που λήγει σε λίγες ώρες, με το email του αγοραστή στις σελίδες.");
+  if (p) playItem(p.dataset.play);
+  if (e.target.closest("[data-close]")) closeM("library");
+});
+
+let playTimer = null, cur = null, curCh = 0;
+function stopPlay() { clearInterval(playTimer); playTimer = null; }
+function playItem(id) {
+  const p = PRODUCTS.find(x => x.id === id); if (!p || !p.ch) return;
+  cur = p; const done = progress[id] || []; curCh = Math.min(done.length, p.ch.length - 1);
+  $("#libList").innerHTML = `<button class="opt" type="button" id="backLib" style="margin-top:12px;padding:8px 12px">← Πίσω στη βιβλιοθήκη</button>`;
+  $("#backLib").addEventListener("click", () => { stopPlay(); $("#playerWrap").style.display = "none"; renderLib(); });
+  $("#playerWrap").style.display = "";
+  renderPlayer();
+}
+function renderPlayer() {
+  const p = cur, done = progress[p.id] || [];
+  $("#playerWrap").innerHTML = `<div class="player">
+    <div><div class="screen" id="screen"><div class="dogwrap">${DOG}</div><div class="cap"><span>${p.title} · ${curCh + 1}. ${p.ch[curCh][0]}</span></div><button class="play" type="button" id="playBtn" aria-label="Αναπαραγωγή">▶</button><span class="wm">${buyer || "you@example.com"}</span><div class="scrub"><i id="scrub"></i></div></div>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">Στο κανονικό site εδώ παίζει το βίντεο του σεμιναρίου από ιδιωτικό server, με link που δεν μοιράζεται.</p></div>
+    <div class="chapters">${p.ch.map((c, i) => `<button class="chap ${i === curCh ? "on" : ""} ${done.includes(i) ? "done" : ""}" type="button" data-ch="${i}"><i>${done.includes(i) ? "✓" : i + 1}</i><span>${c[0]}</span><small>${c[1]}</small></button>`).join("")}</div>
+  </div>`;
+  setState($("#screen .dog"), ["happy", "sit", "bow", "lick"][curCh % 4]);
+  $("#playBtn").addEventListener("click", () => {
+    $("#screen").classList.add("playing"); let t = 0; stopPlay();
+    playTimer = setInterval(() => {
+      t += 2; $("#scrub").style.width = t + "%";
+      if (t >= 100) {
+        stopPlay(); const d = progress[p.id] || (progress[p.id] = []); if (!d.includes(curCh)) d.push(curCh); save();
+        if (curCh < p.ch.length - 1) curCh++;
+        renderPlayer(); toast(d.length === p.ch.length ? "🎉 Ολοκλήρωσες το σεμινάριο!" : "✓ Το μάθημα ολοκληρώθηκε");
+      }
+    }, 60);
+  });
+  $$("#playerWrap .chap").forEach(b => b.addEventListener("click", () => { stopPlay(); curCh = +b.dataset.ch; renderPlayer(); }));
+}
+renderShop();
 
 /* ---------- form ---------- */
 $$(".pick").forEach(p => p.addEventListener("click", e => {
