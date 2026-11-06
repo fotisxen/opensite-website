@@ -14,6 +14,7 @@ export const DEMOS: Demo[] = [
   { slug: "coyar", name: "COYÁR Boutique", kind: "E-shop · multi brand boutique (Ηράκλειο)", created: "2026-11-04", instagram: "https://www.instagram.com/coyarboutique/" },
   { slug: "wine-sousou", name: "Wine Sousou", kind: "Greek wine stories · Λάμπρος & Ειρήνη", created: "2026-11-04", instagram: "https://www.instagram.com/wine.sousou/" },
   { slug: "gkonias", name: "Γκώνιας Τροφοδοσίες", kind: "E-shop · τροφοδοσίες (B2C)", created: "2026-11-03" },
+  { slug: "anna-dogtrainer", name: "Anna Dogtrainer", kind: "Positive dog trainer", created: "2026-11-06", instagram: "https://www.instagram.com/annadogtrainer.positive/" },
   { slug: "olga-minatze", name: "Olga Minatze", kind: "Pro make up artist", created: "2026-10-29", instagram: "https://www.instagram.com/olgaminatzemua/" },
   { slug: "luckpack", name: "Luckpack", kind: "Mystery box store", created: "2026-10-29", instagram: "https://www.instagram.com/luckpack.gr/" },
   { slug: "ritc-crm", name: "RITC Clothing · back-office", kind: "CRM · loungewear brand", created: "2026-10-29", instagram: "https://www.instagram.com/ritcclothing/" },

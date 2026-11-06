@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anna Dogtrainer · Θετική εκπαίδευση σκύλων και κηδεμόνων</title>
+<meta name="description" content="Θετική εκπαίδευση σκύλων και κηδεμόνων. Κατ' οίκον στην Αθήνα και online παντού. Όχι σε crate, όχι σε πνίχτες.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Commissioner:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Άννα Σολομωνίδου (@annadogtrainer.positive).
+  No photos: the dogs are drawn in SVG and animated with CSS.
+  Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#f8f4fc;--card:#fff;--ink:#271f3d;--muted:#6f6787;--lav:#8a63d2;--lav2:#e9e0f8;--lav3:#cbb8ef;
+  --treat:#f0a35c;--mint:#5fbf9a;--no:#e06b6b;--line:rgba(39,31,61,.1);
+  --h:"Comfortaa",system-ui,sans-serif;--s:"Commissioner",system-ui,sans-serif;
+  --fur:#d99a5b;--fur2:#b8743a;--belly:#f3d3a6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--s);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--h);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+h2{font-size:clamp(30px,5vw,50px)}
+.tag{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 var(--s);letter-spacing:.12em;text-transform:uppercase;color:var(--lav)}
+section{padding:90px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:999px;background:var(--lav);color:#fff;font:600 14px/1 var(--s);transition:transform .2s,box-shadow .2s;box-shadow:0 8px 20px -8px rgba(138,99,210,.7)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.hl{background:linear-gradient(transparent 62%,var(--lav2) 62%)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:40;background:rgba(248,244,252,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font:700 17px/1 var(--h);white-space:nowrap}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--lav);display:grid;place-items:center;font-style:normal;font-size:17px}
+.links{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+@media(max-width:860px){.links{display:none}nav .btn{display:none}}
+
+/* hero */
+.hero{padding:50px 0 70px;background:radial-gradient(700px 420px at 80% 20%,#efe5fc 0,transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,6.2vw,70px);margin:16px 0 20px}
+.hero h1 em{font-style:normal;color:var(--lav)}
+.hero .lead{font-size:18px;color:var(--muted);max-width:470px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.chips span{font-size:13px;padding:7px 12px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+@media(max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* game card */
+.game{background:var(--card);border-radius:28px;padding:20px;box-shadow:0 30px 60px -30px rgba(60,30,110,.35)}
+.game-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.dots{display:flex;gap:5px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--lav2);transition:background .3s}
+.dots i.ok{background:var(--mint)}.dots i.bad{background:var(--no)}.dots i.now{background:var(--lav)}
+.stage{position:relative;margin:12px 0;border-radius:20px;background:linear-gradient(#f3ecfd,#fbf8ff 70%);overflow:hidden;aspect-ratio:400/260}
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16%;background:#ece2f9}
+.stage svg{position:relative;z-index:1;width:100%;height:100%;display:block}
+.bubble{position:absolute;z-index:2;left:14px;top:12px;font:700 13px/1 var(--h);background:#fff;padding:9px 12px;border-radius:14px 14px 14px 4px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.q{font:700 20px/1.3 var(--h);margin:6px 2px 12px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;padding:13px 16px;border-radius:14px;background:var(--bg);font-size:15px;box-shadow:inset 0 0 0 1px var(--line);transition:all .2s}
+.opt:hover:not(:disabled){box-shadow:inset 0 0 0 1.5px var(--lav)}
+.opt.ok{background:#e6f6ef;box-shadow:inset 0 0 0 1.5px var(--mint)}
+.opt.bad{background:#fbe9e9;box-shadow:inset 0 0 0 1.5px var(--no)}
+.opt:disabled{cursor:default}
+.explain{display:none;margin-top:12px;padding:14px 16px;border-radius:16px;background:var(--lav2);font-size:15px}
+.explain.on{display:block;animation:pop .35s}
+.explain b{display:block;font:700 14px/1.2 var(--h);color:var(--lav);margin-bottom:4px}
+.next{margin-top:12px;width:100%}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+
+/* dog parts */
+.dog *{transform-box:fill-box}
+.dog .whole{transform-origin:30% 100%;transition:transform .5s}
+.dog .tail{transform-origin:100% 90%}
+.dog .head{transform-origin:20% 80%;transition:transform .5s}
+.dog .ear{transform-origin:50% 0;transition:transform .4s}
+.dog .bodyg{transform-origin:50% 50%}
+.dog .tongue{opacity:0;transform-origin:50% 0}
+.dog .yawn{opacity:0;transform-origin:50% 0;transform:scaleY(.2)}
+.dog .sclera{opacity:0;transition:opacity .3s}
+.dog .lid{opacity:0}
+.dog .backleg{transform-origin:50% 0;transition:transform .5s}
+.dog .shakefx{opacity:0}
+.dog .heart{opacity:0}
+/* idle */
+.dog .tail{animation:wagSlow 2.4s ease-in-out infinite}
+@keyframes wagSlow{50%{transform:rotate(8deg)}}
+/* stiff wag: fast, tight, high, body frozen */
+.s-stiff .tail{animation:wagStiff .18s linear infinite}
+@keyframes wagStiff{0%,100%{transform:rotate(-26deg)}50%{transform:rotate(-14deg)}}
+.s-stiff .head{transform:rotate(-6deg)}
+.s-stiff .ear{transform:rotate(-14deg)}
+/* happy: whole body wiggles */
+.s-happy .tail{animation:wagHappy .3s ease-in-out infinite}
+@keyframes wagHappy{0%,100%{transform:rotate(-30deg)}50%{transform:rotate(25deg)}}
+.s-happy .bodyg{animation:wiggle .3s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(-2.5deg) translateX(-2px)}50%{transform:rotate(2.5deg) translateX(2px)}}
+.s-happy .tongue{opacity:1;animation:pant .3s infinite}
+.s-happy .heart{animation:float 1.8s ease-out infinite}
+@keyframes pant{50%{transform:scaleY(1.2)}}
+@keyframes float{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
+/* lip lick */
+.s-lick .tongue{animation:lick 1.6s ease-in-out infinite}
+@keyframes lick{0%,55%,100%{opacity:0;transform:scaleY(.3) translateY(0)}65%,80%{opacity:1;transform:scaleY(1) translate(4px,-14px) rotate(-40deg)}}
+.s-lick .tail{animation:none}
+/* yawn */
+.s-yawn .yawn{animation:yawn 2.6s ease-in-out infinite}
+.s-yawn .lid{animation:lid 2.6s ease-in-out infinite}
+.s-yawn .head{transform:rotate(-12deg)}
+@keyframes yawn{0%,15%,85%,100%{opacity:0;transform:scaleY(.2)}35%,65%{opacity:1;transform:scaleY(1)}}
+@keyframes lid{0%,20%,80%,100%{opacity:0}35%,65%{opacity:1}}
+/* turn away */
+.s-turn .head{transform:rotate(22deg) translate(-6px,6px)}
+.s-turn .tail{animation:none;transform:rotate(14deg)}
+/* play bow */
+.s-bow .whole{transform:rotate(9deg)}
+.s-bow .tail{animation:wagHappy .4s ease-in-out infinite}
+.s-bow .head{transform:rotate(-14deg)}
+.s-bow .tongue{opacity:1}
+/* shake off */
+.s-shake .bodyg{animation:shake .12s linear infinite}
+.s-shake .shakefx{opacity:1;animation:blink .24s steps(2) infinite}
+.s-shake .lid{opacity:1}
+@keyframes shake{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes blink{50%{opacity:.2}}
+/* whale eye */
+.s-whale .sclera{opacity:1}
+.s-whale .head{transform:rotate(14deg) translate(-4px,4px)}
+.s-whale .tail{animation:none;transform:rotate(30deg)}
+.s-whale .ear{transform:rotate(18deg)}
+/* sit */
+.s-sit .whole{transform:rotate(-14deg) translateY(4px)}
+.s-sit .backleg{transform:scaleY(.45)}
+.dog .frontleg{transform-origin:50% 0;transition:transform .5s}
+.s-sit .frontleg{transform:scaleY(1.4)}
+.s-sit .tail{animation:wagSlow 1.2s ease-in-out infinite}
+/* scared */
+.s-scared .ear{transform:rotate(30deg)}
+.s-scared .tail{animation:none;transform:rotate(45deg)}
+.s-scared .head{transform:rotate(16deg) translate(-4px,6px)}
+.s-scared .whole{transform:translateY(6px) scaleY(.95)}
+.s-scared .sclera{opacity:1}
+
+/* manifesto */
+.mani{background:var(--ink);color:#fff;text-align:center;padding:100px 0}
+.mani h2{font-size:clamp(34px,7vw,82px);line-height:1.05}
+.mani s{position:relative;text-decoration:none;color:#b9aedb}
+.mani s::after{content:"";position:absolute;left:-4%;right:-4%;top:52%;height:.09em;background:var(--no);border-radius:4px;transform:scaleX(0);transform-origin:left;transition:transform .7s .2s cubic-bezier(.6,0,.2,1)}
+.mani.in s::after{transform:scaleX(1)}
+.mani.in s:nth-of-type(2)::after{transition-delay:.7s}
+.mani p{margin-top:26px;font:700 clamp(18px,2.6vw,26px)/1.4 var(--h);color:var(--lav3)}
+
+/* trainer game */
+.train .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:56px;align-items:center}
+.train p.lead{color:var(--muted);margin-top:14px;max-width:470px}
+.meters{display:grid;gap:12px;margin:14px 0}
+.meter{font-size:13px;color:var(--muted)}
+.meter div{height:10px;border-radius:5px;background:var(--lav2);margin-top:6px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;border-radius:5px;transition:width .5s}
+.meter.learn i{background:linear-gradient(90deg,var(--lav3),var(--lav))}
+.meter.stress i{background:linear-gradient(90deg,#f4b6a8,var(--no))}
+.tbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tbtns button{padding:14px;border-radius:16px;font-weight:600;font-size:14px}
+.treat{background:var(--treat);color:#fff}
+.yell{background:#f1eef6;color:var(--muted)}
+.tmsg{min-height:48px;margin-top:12px;font-size:14.5px;padding:12px 14px;border-radius:14px;background:var(--bg)}
+.cookie{position:absolute;z-index:3;font-size:22px;animation:toss .7s ease-in forwards;pointer-events:none}
+@keyframes toss{0%{transform:translate(0,0)}60%{transform:translate(var(--tx),-60px)}100%{transform:translate(var(--tx2),var(--ty));opacity:.2}}
+@media(max-width:920px){.train .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.svc article{background:#fff;border-radius:22px;padding:26px;box-shadow:inset 0 0 0 1px var(--line);transition:transform .25s,box-shadow .25s}
+.svc article:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(60,30,110,.4)}
+.svc .ic{font-size:28px}
+.svc h3{font-size:21px;margin:12px 0 8px}
+.svc p{color:var(--muted);font-size:15px}
+@media(max-width:860px){.svc{grid-template-columns:1fr}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;counter-reset:s}
+.steps div{position:relative;padding:22px;border-radius:20px;background:var(--lav2)}
+.steps div::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--lav);color:#fff;font:700 15px/1 var(--h);margin-bottom:14px}
+.steps b{font:700 17px/1.3 var(--h);display:block;margin-bottom:6px}
+.steps p{font-size:14.5px;color:var(--muted)}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* social proof */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.stat{background:#fff;border-radius:20px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
+.stat b{display:block;font:700 34px/1 var(--h);color:var(--lav)}
+.stat span{font-size:13px;color:var(--muted)}
+.press{display:flex;gap:20px;align-items:center;margin-top:14px;background:#fff;border-radius:20px;padding:22px 24px;box-shadow:inset 0 0 0 1px var(--line)}
+.press .src{font:700 22px/1 var(--h);color:#d0232a;flex:none}
+.press p{font-size:15px}
+.press small{color:var(--muted)}
+@media(max-width:860px){.proof{grid-template-columns:1fr 1fr}.press{flex-direction:column;align-items:flex-start;gap:8px}}
+
+/* faq */
+.faq{max-width:780px;margin:36px auto 0}
+.faq details{background:#fff;border-radius:18px;margin-bottom:10px;box-shadow:inset 0 0 0 1px var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 22px;font:700 17px/1.35 var(--h);display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--lav);font-size:22px;line-height:1;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 22px 18px;color:var(--muted)}
+
+/* contact */
+.contact{background:linear-gradient(160deg,#efe6fc,#f8f4fc)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:48px;align-items:start}
+.form{background:#fff;border-radius:26px;padding:26px;box-shadow:0 30px 60px -30px rgba(60,30,110,.35)}
+.form label{display:block;font-size:13px;font-weight:600;margin:16px 0 7px}
+.form label:first-child{margin-top:0}
+.form input,.form textarea{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.form textarea{min-height:80px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pick{display:flex;flex-wrap:wrap;gap:7px}
+.pick button{padding:8px 12px;border-radius:999px;background:var(--bg);font-size:13.5px;box-shadow:inset 0 0 0 1px var(--line)}
+.pick button.on{background:var(--lav);color:#fff;box-shadow:none}
+.form .btn{width:100%;margin-top:20px}
+.sent{display:none;text-align:center;padding:30px 10px}
+.sent.on{display:block;animation:pop .4s}
+.sent b{display:block;font:700 24px/1.2 var(--h);margin:10px 0}
+.sign{font:700 22px/1.3 var(--h);color:var(--lav);margin-top:24px}
+@media(max-width:920px){.contact .wrap{grid-template-columns:1fr}}
+
+footer{padding:26px 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+
+/* notes */
+.notes .ph{outline:1.5px dashed var(--lav);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#fff;background:#6b45b5;padding:4px 8px;border-radius:5px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:600 11px/1 var(--s);padding:10px 13px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.12);color:var(--muted)}
+.notes .notes-toggle{color:#6b45b5;box-shadow:inset 0 0 0 1px #6b45b5}
+.clean .notes-toggle{display:none}
+.dm{position:fixed;right:14px;bottom:14px;z-index:50}
+@media (prefers-reduced-motion:reduce){*{animation-duration:0s!important;transition:none!important}}
+</style>
+<script>
+(function(){ try{ var h=document.documentElement,q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("ad-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body id="top">
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo ph" data-note="Εδώ μπαίνει το λογότυπό σας"><i>🐾</i>Anna Dogtrainer</a>
+    <div class="links"><a href="#language">Η γλώσσα του σκύλου</a><a href="#train">Θετική εκπαίδευση</a><a href="#services">Μαθήματα</a><a href="#faq">Q&amp;A</a></div>
+    <a class="btn" href="#contact">Κλείσε μάθημα</a>
+  </div>
+</nav>
+
+<header class="hero" id="language">
+  <div class="wrap">
+    <div>
+      <span class="tag">💜 Θετική εκπαίδευση σκύλων &amp; κηδεμόνων</span>
+      <h1>Ο σκύλος σου σου μιλάει. <em>Τον ακούς;</em></h1>
+      <p class="lead">Το καλύτερο δώρο για τον σκύλο σου δεν είναι ακριβά λουριά και παιχνίδια. Είναι να μάθεις τη <span class="hl">γλώσσα του σώματός του</span>. Δοκίμασε: τι σου λέει ο σκύλος δίπλα;</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Κλείσε μάθημα</a>
+        <a class="btn ghost" href="#train">Πώς δουλεύω</a>
+      </div>
+      <div class="chips"><span>🏠 Κατ' οίκον Αθήνα</span><span>🌎 Online παντού</span><span>🚫 Όχι crate</span><span>🚫 Όχι πνίχτες</span></div>
+    </div>
+
+    <div class="game" id="game">
+      <div class="game-top"><span id="gcount">Σήμα 1 από 8</span><div class="dots" id="dots"></div></div>
+      <div class="stage"><span class="bubble" id="gname">Τι λέει;</span><div id="dog1"></div></div>
+      <p class="q" id="gq">Τι σου λέει ο σκύλος;</p>
+      <div class="opts" id="opts"></div>
+      <div class="explain" id="explain"><b>Η Άννα εξηγεί</b><span id="exText"></span></div>
+      <button class="btn next" id="nextBtn" type="button" style="display:none">Επόμενο σήμα →</button>
+    </div>
+  </div>
+</header>
+
+<section class="mani" id="mani">
+  <div class="wrap">
+    <h2>Όχι σε <s>crate</s>.<br>Όχι σε <s>πνίχτες</s>.</h2>
+    <p>Μόνο θετικές μέθοδοι και πάντα με αγάπη 💜</p>
+  </div>
+</section>
+
+<section class="train" id="train">
+  <div class="wrap">
+    <div>
+      <span class="tag">Παίξε: μάθε του «κάτσε»</span>
+      <h2 style="margin-top:12px">Λιχουδιά τη σωστή στιγμή. <span style="color:var(--lav)">Όχι φωνές.</span></h2>
+      <p class="lead">Ο σκύλος μαθαίνει αυτό που ανταμείβεται. Δώσε λιχουδιά <b>τη στιγμή που κάθεται</b> και δες πόσο γρήγορα το μαθαίνει. Μετά δοκίμασε να του φωνάξεις και δες τι γίνεται.</p>
+      <p class="lead">Αυτό ακριβώς μαθαίνουμε μαζί στα μαθήματα: δεν εκπαιδεύω μόνο τον σκύλο, εκπαιδεύω <span class="hl">εσένα</span> να τον καταλαβαίνεις.</p>
+    </div>
+    <div class="game">
+      <div class="stage" id="tstage"><span class="bubble" id="tname">Ο Μπίσκοτος 🐶</span><div id="dog2"></div></div>
+      <div class="meters">
+        <div class="meter learn">Πόσο έμαθε το «κάτσε» <span id="lv">0%</span><div><i id="lbar"></i></div></div>
+        <div class="meter stress">Άγχος <span id="sv">0%</span><div><i id="sbar"></i></div></div>
+      </div>
+      <div class="tbtns">
+        <button class="treat" id="treatBtn" type="button">🍪 Μπράβο + λιχουδιά</button>
+        <button class="yell" id="yellBtn" type="button">😠 Φώναξέ του</button>
+      </div>
+      <p class="tmsg" id="tmsg">Περίμενε να καθίσει μόνος του και τότε πάτα τη λιχουδιά.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:#fff">
+  <div class="wrap">
+    <span class="tag">Μαθήματα</span>
+    <h2 style="margin-top:12px">Για κάθε σκύλο και<br>κάθε <span style="color:var(--lav)">οικογένεια</span>.</h2>
+    <div class="svc">
+      <article><div class="ic">🏠</div><h3>Κατ' οίκον στην Αθήνα</h3><p>Τα μαθήματα γίνονται στο σπίτι σας και στη γειτονιά σας, εκεί που ζει ο σκύλος σας.</p></article>
+      <article><div class="ic">🌎</div><h3>Online, παντού</h3><p>Βιντεοκλήσεις για όποιον μένει εκτός Αθήνας ή στο εξωτερικό, με εξάσκηση ανάμεσα στα μαθήματα.</p></article>
+      <article><div class="ic">🐶</div><h3>Κουτάβια</h3><p>Τα πρώτα βήματα σωστά: τουαλέτα, δάγκωμα, μοναξιά, βόλτα, κοινωνικοποίηση.</p></article>
+      <article><div class="ic">💬</div><h3>Γλώσσα σώματος</h3><p>Σήματα ηρεμίας, ουρά, αυτιά, βλέμμα. Μάθε να διαβάζεις τι νιώθει ο σκύλος σου πριν φτάσει στο γάβγισμα.</p></article>
+      <article><div class="ic">🧒</div><h3>Σκύλος &amp; παιδί</h3><p>Ασφαλής και χαρούμενη συμβίωση: τι να μάθουν τα παιδιά και πώς να προστατεύσουμε και τον σκύλο.</p></article>
+      <article><div class="ic">🌱</div><h3>Δύσκολες συμπεριφορές</h3><p>Φόβος, επιθετικότητα, τράβηγμα στο λουρί. Με υπομονή και θετικές μεθόδους, χωρίς πίεση και τιμωρίες.</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="tag">Πώς ξεκινάμε</span>
+    <h2 style="margin-top:12px">Τέσσερα απλά βήματα.</h2>
+    <div class="steps ph" data-note="Τα βήματα, η διάρκεια και οι τιμές όπως τα δουλεύετε εσείς">
+      <div><b>Μου γράφεις</b><p>Για τον σκύλο σου και ό,τι σε απασχολεί, από τη φόρμα ή στο Instagram.</p></div>
+      <div><b>Γνωριμία</b><p>Βλέπουμε μαζί τον σκύλο, το σπίτι και την καθημερινότητά σας.</p></div>
+      <div><b>Μαθήματα</b><p>Στο σπίτι ή online, με απλές ασκήσεις που κάνεις κι εσύ.</p></div>
+      <div><b>Δίπλα σου</b><p>Για απορίες και ερωτήσεις, όσο προχωράτε.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="tag">Μια κοινότητα με αγάπη για τους σκύλους</span>
+    <div class="proof">
+      <a class="stat" href="https://www.instagram.com/annadogtrainer.positive/" target="_blank" rel="noopener"><b>17,1χ</b><span>ακόλουθοι στο Instagram</span></a>
+      <a class="stat" href="https://www.tiktok.com/@anna_dogtrainer" target="_blank" rel="noopener"><b>13,8χ</b><span>ακόλουθοι στο TikTok</span></a>
+      <a class="stat" href="https://www.tiktok.com/@anna_dogtrainer" target="_blank" rel="noopener"><b>80χ+</b><span>likes στα βίντεο</span></a>
+      <a class="stat" href="https://youtube.com/@anna_dogtrainer" target="_blank" rel="noopener"><b>▶</b><span>Βίντεο στο YouTube</span></a>
+    </div>
+    <a class="press" href="https://www.in.gr/2025/12/13/pet-stories/pos-mporoume-na-epikoinonisoume-enan-tyflo-skylo/" target="_blank" rel="noopener">
+      <span class="src">in.gr</span>
+      <p>«Πώς μπορούμε να επικοινωνήσουμε με έναν τυφλό σκύλο;» <small>· Η Άννα μιλά για τις λεκτικές εντολές, το άγγιγμα και την ανταμοιβή.</small></p>
+    </a>
+  </div>
+</section>
+
+<section id="faq" style="background:#fff">
+  <div class="wrap">
+    <div style="text-align:center"><span class="tag">Q&amp;A</span><h2 style="margin-top:12px">Είπατε, ρωτήσατε 🙏</h2></div>
+    <div class="faq">
+      <details open><summary>Χρησιμοποιείτε crate ή πνίχτη;</summary><p>Όχι. Ποτέ. Δουλεύω μόνο με θετικές μεθόδους: ανταμείβουμε αυτό που θέλουμε να ξαναδούμε και βοηθάμε τον σκύλο να νιώθει ασφαλής.</p></details>
+      <details><summary>Γίνονται μαθήματα εκτός Αθήνας;</summary><p>Ναι, online, όπου κι αν βρίσκεστε. Στην Αθήνα τα μαθήματα γίνονται και κατ' οίκον.</p></details>
+      <details><summary>Ο σκύλος μου κουνάει την ουρά. Άρα είναι χαρούμενος;</summary><p>Όχι απαραίτητα! Για να είναι χαρά, πρέπει να κουνιέται και το υπόλοιπο σώμα, ή ο ποπός. Παίξε το παιχνίδι στην αρχή της σελίδας για να δεις τη διαφορά.</p></details>
+      <details><summary>Από ποια ηλικία ξεκινάμε;</summary><p class="ph" data-note="Συμπληρώνετε εσείς">Από κουτάβι μέχρι ενήλικο σκύλο. Ποτέ δεν είναι αργά για να μάθει, ούτε για να μάθουμε εμείς.</p></details>
+      <details><summary>Πόσο κοστίζει ένα μάθημα;</summary><p class="ph" data-note="Τιμές / πακέτα μαθημάτων">Στείλτε μου μήνυμα για τον σκύλο σας και σας λέω τι θα χρειαστεί.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="tag">Επικοινωνία</span>
+      <h2 style="margin-top:12px">Πες μου για τον σκύλο σου.</h2>
+      <p style="color:var(--muted);margin-top:14px;max-width:440px">Μην διστάσεις να έρθεις σε επικοινωνία μαζί μου για οποιαδήποτε απορία έχεις.</p>
+      <div class="cta" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn" href="https://www.instagram.com/annadogtrainer.positive/" target="_blank" rel="noopener">Μήνυμα στο Instagram</a>
+        <a class="btn ghost ph" data-note="Τηλέφωνο / email / Viber" href="#contact">Τηλέφωνο</a>
+      </div>
+      <p class="sign">Πάντα με αγάπη 💜<br>Άννα Σολομωνίδου</p>
+      <p style="color:var(--muted);font-size:14px">Θετική εκπαιδεύτρια σκύλων και κηδεμόνων</p>
+    </div>
+    <form class="form" id="form" onsubmit="return false">
+      <div id="fbody">
+        <div class="row2">
+          <div><label for="f1">Το όνομά σου</label><input id="f1" autocomplete="name"></div>
+          <div><label for="f2">Του σκύλου</label><input id="f2" placeholder="π.χ. Μπίσκοτος"></div>
+        </div>
+        <label>Ηλικία</label>
+        <div class="pick" data-one><button type="button">Κουτάβι</button><button type="button">Νεαρός</button><button type="button">Ενήλικος</button><button type="button">Ηλικιωμένος</button></div>
+        <label>Τι σε απασχολεί;</label>
+        <div class="pick"><button type="button">Τραβάει στο λουρί</button><button type="button">Γαβγίζει</button><button type="button">Φοβάται</button><button type="button">Επιθετικότητα</button><button type="button">Μένει μόνος</button><button type="button">Δαγκώνει / μασάει</button><button type="button">Σκύλος &amp; παιδί</button><button type="button">Τουαλέτα</button></div>
+        <label>Πού;</label>
+        <div class="pick" data-one><button type="button">🏠 Στο σπίτι (Αθήνα)</button><button type="button">🌎 Online</button></div>
+        <label for="f3">Πες μου λίγα λόγια</label>
+        <textarea id="f3"></textarea>
+        <button class="btn" id="send" type="button">Στείλε στην Άννα 💜</button>
+      </div>
+      <div class="sent" id="sent"><div style="font-size:44px">🐾</div><b>Ευχαριστώ, <span id="sname">φίλε</span>!</b><p style="color:var(--muted)">Αυτό είναι demo, οπότε το μήνυμα δεν στάλθηκε. Στο κανονικό site φτάνει κατευθείαν στην Άννα.</p></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© Anna Dogtrainer · Θετική εκπαίδευση σκύλων και κηδεμόνων</span><span>Demo από <a href="https://opensite.gr">OpenSite</a></span></div>
+</footer>
+
+<a class="btn dm" href="https://www.instagram.com/annadogtrainer.positive/" target="_blank" rel="noopener">💜 Μήνυμα</a>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+$("#notesToggle").addEventListener("click", () => {
+  const on = document.documentElement.classList.toggle("notes");
+  try { localStorage.setItem("ad-notes", on ? "on" : "off"); } catch (e) {}
+});
+
+/* ---------- the dog (side view, facing right) ---------- */
+const DOG = `
+<svg class="dog" viewBox="0 0 400 260" aria-hidden="true">
+  <ellipse cx="200" cy="236" rx="120" ry="9" fill="#d9cdee" opacity=".7"/>
+  <g class="whole">
+    <g class="shakefx" stroke="#b9a6e0" stroke-width="3" stroke-linecap="round" fill="none">
+      <path d="M70 120 q-12 10 0 20 M58 112 q-16 16 0 32 M330 60 q12 -6 18 4 M336 46 q18 -8 26 8"/>
+    </g>
+    <g class="backleg">
+      <rect x="104" y="170" width="22" height="64" rx="11" fill="var(--fur2)"/>
+      <rect x="130" y="172" width="22" height="62" rx="11" fill="var(--fur)"/>
+    </g>
+    <g class="bodyg">
+      <g class="tail"><path d="M100 150 C 80 140 66 118 70 92" stroke="var(--fur)" stroke-width="15" stroke-linecap="round" fill="none"/></g>
+      <ellipse cx="180" cy="160" rx="92" ry="46" fill="var(--fur)"/>
+      <ellipse cx="190" cy="178" rx="70" ry="24" fill="var(--belly)"/>
+      <rect class="frontleg" x="226" y="172" width="22" height="62" rx="11" fill="var(--fur2)"/>
+      <rect class="frontleg" x="252" y="170" width="22" height="64" rx="11" fill="var(--fur)"/>
+      <g class="head">
+        <path d="M250 150 Q256 104 278 96 L300 130 Q286 160 262 166Z" fill="var(--fur)"/>
+        <path d="M252 148 Q270 140 290 150" stroke="#8a63d2" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <circle cx="272" cy="160" r="7" fill="#f0c24a" stroke="#c99a26" stroke-width="1.5"/>
+        <circle cx="292" cy="92" r="40" fill="var(--fur)"/>
+        <ellipse cx="330" cy="108" rx="32" ry="21" fill="var(--belly)"/>
+        <g class="yawn"><ellipse cx="332" cy="126" rx="20" ry="13" fill="#5b2a35"/><ellipse cx="334" cy="132" rx="11" ry="5" fill="#e98a8f"/></g>
+        <path d="M312 122 Q330 130 350 120" stroke="#6b3d22" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path class="tongue" d="M330 124 q4 22 12 20 q8 -2 4 -20z" fill="#ef8a95"/>
+        <ellipse cx="358" cy="100" rx="9" ry="7.5" fill="#3a2418"/>
+        <ellipse cx="356" cy="97" rx="3" ry="2" fill="#fff" opacity=".6"/>
+        <ellipse class="sclera" cx="302" cy="80" rx="10" ry="8" fill="#fff"/>
+        <circle cx="306" cy="80" r="5.5" fill="#2b1a12"/>
+        <circle cx="308" cy="78" r="1.6" fill="#fff"/>
+        <path class="lid" d="M298 80 q8 6 16 0" stroke="#2b1a12" stroke-width="3" stroke-linecap="round" fill="var(--fur)"/>
+        <path d="M296 68 q8 -6 16 -2" stroke="var(--fur2)" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <g class="ear"><path d="M270 60 Q250 64 248 92 Q246 118 262 124 Q276 110 282 70Z" fill="var(--fur2)"/></g>
+      </g>
+    </g>
+    <g class="heart" font-size="20"><text x="330" y="40">💜</text></g>
+  </g>
+</svg>`;
+$("#dog1").innerHTML = DOG;
+$("#dog2").innerHTML = DOG;
+const dog1 = $("#dog1 .dog"), dog2 = $("#dog2 .dog");
+const setState = (d, s) => { d.setAttribute("class", "dog" + (s ? " s-" + s : "")); };
+
+/* ---------- body-language quiz ---------- */
+const SIGNALS = [
+  { s: "stiff", name: "Κουνάει την ουρά", q: "Κουνάει την ουρά του. Είναι χαρούμενος;", o: ["Ναι, φυσικά!", "Όχι απαραίτητα: κοίτα και το υπόλοιπο σώμα", "Θέλει φαγητό"], a: 1,
+    e: "Η ουρά μόνη της δεν σημαίνει χαρά. Εδώ κουνιέται γρήγορα και ψηλά, ενώ το σώμα μένει σφιχτό και ακίνητο. Αυτό είναι ένταση ή διέγερση, όχι χαρά." },
+  { s: "happy", name: "Κουνάει… τα πάντα", q: "Και τώρα; Κουνιέται ολόκληρος.", o: ["Είναι αγχωμένος", "Είναι χαρούμενος", "Είναι θυμωμένος"], a: 1,
+    e: "Αυτή είναι χαρά! Για να είναι χαρά, πρέπει να κουνιέται και το υπόλοιπο σώμα ή ο ποπός. Χαλαρό σώμα, ανοιχτό στόμα, ουρά που κάνει κύκλους." },
+  { s: "lick", name: "Γλείφει τη μουσούδα", q: "Γλείφει γρήγορα τη μουσούδα του, χωρίς να έχει φάει.", o: ["Πεινάει", "Είναι σήμα ηρεμίας: κάτι τον αγχώνει", "Του άρεσε κάτι"], a: 1,
+    e: "Είναι από τα πιο συχνά σήματα ηρεμίας. Ο σκύλος προσπαθεί να ηρεμήσει τον εαυτό του ή εσένα. Ρώτα τον εαυτό σου: τι άλλαξε γύρω του;" },
+  { s: "yawn", name: "Χασμουριέται", q: "Χασμουριέται στη μέση της βόλτας.", o: ["Νύσταξε", "Βαριέται", "Ίσως νιώθει άβολα και προσπαθεί να ηρεμήσει"], a: 2,
+    e: "Το χασμουρητό είναι συχνά σήμα ηρεμίας, όχι νύστα. Εμφανίζεται όταν υπάρχει πίεση: κόσμος, άλλος σκύλος, μια αγκαλιά που δεν θέλει." },
+  { s: "turn", name: "Γυρίζει το κεφάλι", q: "Ένας άλλος σκύλος πλησιάζει και ο δικός σου γυρίζει το κεφάλι αλλού.", o: ["Τον αγνοεί από αγένεια", "Λέει «ήρεμα, δεν θέλω καβγά»", "Δεν τον είδε"], a: 1,
+    e: "Γυρίζοντας το κεφάλι ο σκύλος δείχνει ότι δεν θέλει σύγκρουση. Είναι ευγένεια στη γλώσσα των σκύλων. Σεβάσου το και δώσε απόσταση." },
+  { s: "bow", name: "Σκύβει μπροστά", q: "Κατεβάζει το μπροστινό μέρος του σώματος, με τον ποπό ψηλά.", o: ["Θέλει να παίξει", "Ετοιμάζεται να επιτεθεί", "Τεντώνεται μόνο"], a: 0,
+    e: "Η «υπόκλιση του παιχνιδιού»: η πιο γλυκιά πρόσκληση! Λέει «ό,τι κάνω μετά είναι για πλάκα, πάμε να παίξουμε»." },
+  { s: "shake", name: "Τινάζεται", q: "Τινάζεται ολόκληρος, ενώ δεν είναι βρεγμένος.", o: ["Κρυώνει", "Ξεφορτώνει την ένταση μιας στιγμής", "Έχει ψύλλους"], a: 1,
+    e: "Όπως εμείς παίρνουμε μια βαθιά ανάσα, ο σκύλος τινάζεται για να «αδειάσει» μετά από κάτι που τον αναστάτωσε: ένα χάδι που δεν ήθελε, ένα μπάνιο, μια συνάντηση." },
+  { s: "whale", name: "Δείχνει το άσπρο του ματιού", q: "Γυρίζει το κεφάλι αλλού, αλλά σε κοιτάζει με την άκρη του ματιού και φαίνεται το άσπρο.", o: ["Σε παρακολουθεί από περιέργεια", "Νιώθει άβολα: δώσε του χώρο", "Ντρέπεται"], a: 1,
+    e: "Τα «μάτια φάλαινας» λένε «δεν νιώθω καλά». Σταμάτα ό,τι κάνεις, άφησε χώρο και μην πλησιάσεις περισσότερο. Αν δεν το ακούσουμε, μπορεί να φτάσει στο γρύλισμα." }
+];
+let qi = 0, score = 0;
+const res = [];
+function drawDots() { $("#dots").innerHTML = SIGNALS.map((_, i) => `<i class="${res[i] === true ? "ok" : res[i] === false ? "bad" : i === qi ? "now" : ""}"></i>`).join(""); }
+function showQ() {
+  const S = SIGNALS[qi];
+  setState(dog1, S.s);
+  $("#gcount").textContent = `Σήμα ${qi + 1} από ${SIGNALS.length}`;
+  $("#gname").textContent = S.name;
+  $("#gq").textContent = S.q;
+  $("#opts").innerHTML = S.o.map((t, i) => `<button class="opt" type="button" data-i="${i}">${t}</button>`).join("");
+  $("#explain").classList.remove("on");
+  $("#nextBtn").style.display = "none";
+  $$("#opts .opt").forEach(b => b.addEventListener("click", () => answer(+b.dataset.i)));
+  drawDots();
+}
+function answer(i) {
+  const S = SIGNALS[qi], ok = i === S.a;
+  res[qi] = ok; if (ok) score++;
+  $$("#opts .opt").forEach((b, j) => { b.disabled = true; if (j === S.a) b.classList.add("ok"); else if (j === i) b.classList.add("bad"); });
+  $("#exText").textContent = S.e;
+  $("#explain").classList.add("on");
+  const last = qi === SIGNALS.length - 1;
+  $("#nextBtn").textContent = last ? "Δες το σκορ σου →" : "Επόμενο σήμα →";
+  $("#nextBtn").style.display = "";
+  drawDots();
+}
+$("#nextBtn").addEventListener("click", () => {
+  if (qi < SIGNALS.length - 1) { qi++; showQ(); return; }
+  setState(dog1, "happy");
+  qi = SIGNALS.length;
+  drawDots();
+  $("#gcount").textContent = "Τέλος!";
+  $("#gname").textContent = `${score}/${SIGNALS.length} 💜`;
+  $("#gq").textContent = score >= 7 ? "Μιλάς σκυλίσια! Ο σκύλος σου είναι τυχερός." : score >= 4 ? "Καλή αρχή! Λίγα μαθήματα ακόμα και θα τον καταλαβαίνεις τέλεια." : "Ο σκύλος σου έχει πολλά να σου πει. Ας μάθουμε μαζί να τον ακούμε.";
+  $("#opts").innerHTML = `<a class="btn" href="#contact">Κλείσε μάθημα</a><button class="opt" type="button" id="again" style="text-align:center">Παίξε ξανά</button>`;
+  $("#again").addEventListener("click", () => { qi = 0; score = 0; res.length = 0; showQ(); });
+  $("#explain").classList.remove("on");
+  $("#nextBtn").style.display = "none";
+});
+showQ();
+
+/* ---------- manifesto strike ---------- */
+new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { $("#mani").classList.add("in"); o.disconnect(); } }, { threshold: .5 }).observe($("#mani"));
+
+/* ---------- train "sit" ---------- */
+(() => {
+  let learn = 0, stress = 0, sitting = false, timer;
+  const lbar = $("#lbar"), sbar = $("#sbar"), msg = $("#tmsg");
+  const ui = () => { lbar.style.width = learn + "%"; sbar.style.width = stress + "%"; $("#lv").textContent = Math.round(learn) + "%"; $("#sv").textContent = Math.round(stress) + "%"; };
+  function loop() {
+    // the more he has learned (and the calmer he is), the more often he offers a sit
+    const pSit = .22 + learn / 140 - stress / 160;
+    if (stress > 55) { sitting = false; setState(dog2, "scared"); }
+    else { sitting = Math.random() < pSit; setState(dog2, sitting ? "sit" : (Math.random() < .3 ? "happy" : "")); }
+    stress = Math.max(0, stress - 4); ui();
+    timer = setTimeout(loop, sitting ? 1700 : 1300 + Math.random() * 900);
+  }
+  function toss() {
+    const st = $("#tstage"), c = document.createElement("span"); c.className = "cookie"; c.textContent = "🍪";
+    c.style.left = "8%"; c.style.top = "70%"; c.style.setProperty("--tx", st.clientWidth * .4 + "px"); c.style.setProperty("--tx2", st.clientWidth * .72 + "px"); c.style.setProperty("--ty", -st.clientHeight * .25 + "px");
+    st.appendChild(c); setTimeout(() => c.remove(), 750);
+  }
+  $("#treatBtn").addEventListener("click", () => {
+    toss();
+    if (sitting) {
+      learn = Math.min(100, learn + 20 - stress / 10);
+      msg.textContent = learn >= 100 ? "🎉 Το έμαθε! Κάθεται μόνος του, γιατί ξέρει ότι αξίζει. Αυτή είναι η θετική εκπαίδευση." : "Τέλεια στιγμή! Ανταμείβεις αυτό που θέλεις να ξαναδείς.";
+      setState(dog2, "happy"); clearTimeout(timer); timer = setTimeout(loop, 900);
+    } else {
+      learn = Math.max(0, learn - 2);
+      msg.textContent = "Ωπ, δεν καθόταν. Η λιχουδιά ανταμείβει ό,τι κάνει εκείνη τη στιγμή. Περίμενε να καθίσει.";
+    }
+    ui();
+  });
+  $("#yellBtn").addEventListener("click", () => {
+    stress = Math.min(100, stress + 35); learn = Math.max(0, learn - 10);
+    setState(dog2, "scared"); clearTimeout(timer); timer = setTimeout(loop, 1600);
+    msg.textContent = stress > 55 ? "Ο Μπίσκοτος φοβήθηκε και σταμάτησε να προσπαθεί. Οι φωνές δεν διδάσκουν, φοβίζουν." : "Δες τα αυτιά και την ουρά του. Δεν έμαθε τίποτα, μόνο αγχώθηκε.";
+    ui();
+  });
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); loop(); } }, { threshold: .3 }).observe($("#tstage"));
+})();
+
+/* ---------- form ---------- */
+$$(".pick").forEach(p => p.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (p.hasAttribute("data-one")) p.querySelectorAll("button").forEach(x => x !== b && x.classList.remove("on"));
+  b.classList.toggle("on");
+}));
+$("#send").addEventListener("click", () => {
+  $("#sname").textContent = $("#f1").value.trim() || "φίλε";
+  $("#fbody").style.display = "none"; $("#sent").classList.add("on");
+});
+</script>
+</body>
+</html>
