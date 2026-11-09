@@ -6,14 +6,14 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#040405">
 <title>SimplyDominus · The life of one dollar</title>
-<meta name="description" content="The story of one ad dollar, from the feed to profit. Panagis Karydas, SimplyDominus: Meta and TikTok ads run by hand, judged on profit.">
+<meta name="description" content="The story of one ad dollar, and of the man who looks after it. Panagis Karydas, SimplyDominus: Meta and TikTok ads run by hand, judged on profit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <!--
   OpenSite concept for SimplyDominus (Panagis Karydas).
-  One canvas, ~3,000 particles of light. Scroll tells the life of one ad dollar; the visuals move, the words stay still.
-  Facts come from simplydominus.com.
+  One canvas, ~3,000 particles of light. Scroll tells two stories: the life of one ad dollar, and the man who looks after it.
+  The visuals move, the words stay still. Facts come from simplydominus.com.
 -->
 <style>
 :root{--bg:#040405;--ink:#f1f0ea;--muted:#8a8c8f;--lime:#d4f25a;--s:"Instrument Serif",Georgia,serif;--f:"Inter Tight",system-ui,sans-serif;--m:"JetBrains Mono",ui-monospace,monospace}
@@ -22,20 +22,21 @@ html,body{background:var(--bg);color:var(--ink);overflow-x:clip}
 body{font:400 16px/1.5 var(--f);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 #art{position:fixed;inset:0;width:100vw;height:100vh;height:100lvh;display:block;z-index:0}
-.mark{position:fixed;left:clamp(16px,3vw,32px);top:clamp(16px,3vw,28px);z-index:3;font:500 12px/1 var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);mix-blend-mode:difference}
+.mark{position:fixed;left:clamp(16px,3vw,32px);top:clamp(16px,3vw,28px);z-index:3;font:500 12px/1 var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .mark b{color:var(--ink);font-weight:500}
 .count{position:fixed;right:clamp(16px,3vw,32px);top:clamp(16px,3vw,28px);z-index:3;font:500 12px/1 var(--m);letter-spacing:.2em;color:var(--muted)}
 .count b{color:var(--ink);font-weight:500}
-.rail{position:fixed;right:clamp(16px,3vw,32px);top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:10px}
+.rail{position:fixed;right:clamp(16px,3vw,32px);top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:9px}
 .rail i{display:block;width:4px;height:4px;border-radius:50%;background:#3a3c3f;transition:background .4s,transform .4s}
 .rail i.on{background:var(--lime);transform:scale(1.8)}
+.rail i.act2{background:#55574a}
 @media(max-width:640px){.rail{display:none}.mark span{display:none}}
 main{position:relative;z-index:2}
 .ch{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:0 clamp(16px,6vw,96px) clamp(48px,12vh,120px);pointer-events:none}
 .ch.top{align-items:flex-start;padding-top:clamp(90px,18vh,180px)}
 .ch.mid{align-items:center}
 .ch.right{justify-content:flex-end;text-align:right}
-.txt{max-width:min(760px,100%);opacity:0;transition:opacity 1.4s ease;text-shadow:0 2px 30px rgba(4,4,5,.95),0 0 60px rgba(4,4,5,.8)}
+.txt{max-width:min(720px,100%);opacity:0;transition:opacity 1.4s ease;text-shadow:0 2px 30px rgba(4,4,5,.95),0 0 60px rgba(4,4,5,.8)}
 .ch.in .txt{opacity:1}
 .n{display:block;font:500 11px/1 var(--m);letter-spacing:.24em;color:var(--lime);margin-bottom:18px}
 h2{font:400 clamp(40px,7vw,104px)/.96 var(--s);letter-spacing:-.02em}
@@ -44,7 +45,10 @@ p{margin-top:18px;font-size:clamp(15px,1.3vw,18px);color:#b9bbbe;max-width:460px
 .ch.right p{margin-left:auto}
 .fact{display:inline-block;margin-top:22px;font:500 12px/1.4 var(--m);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .fact b{color:var(--ink);font-weight:500}
-.end{min-height:120vh;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-bottom:0}
+.act{min-height:80vh;justify-content:center;align-items:center;text-align:center}
+.act h2{font-size:clamp(28px,4vw,52px);color:var(--muted)}
+.act h2 i{color:var(--ink)}
+.end{min-height:130vh;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-bottom:0}
 .end .txt{max-width:900px}
 .end h2{font-size:clamp(46px,8.6vw,132px)}
 .sig{margin-top:26px;font:500 12px/1.6 var(--m);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
@@ -52,40 +56,73 @@ p{margin-top:18px;font-size:clamp(15px,1.3vw,18px);color:#b9bbbe;max-width:460px
 .cta a{padding:15px 22px;border-radius:999px;font:700 14px/1 var(--f);background:var(--lime);color:#0b0d02;transition:transform .2s}
 .cta a.g{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(241,240,234,.25)}
 .cta a:hover{transform:translateY(-2px)}
-.hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;font:500 11px/1 var(--m);letter-spacing:.24em;color:var(--muted);text-transform:uppercase;transition:opacity .6s}
+.hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;font:500 11px/1 var(--m);letter-spacing:.24em;color:var(--muted);text-transform:uppercase;transition:opacity .6s;white-space:nowrap}
 .hint.off{opacity:0}
 .credit{position:fixed;left:clamp(16px,3vw,32px);bottom:18px;z-index:3;font:500 10px/1 var(--m);letter-spacing:.14em;color:#4c4e51;text-transform:uppercase}
 .credit a{text-decoration:underline}
+@media(max-width:640px){.credit{display:none}}
 @media (prefers-reduced-motion:reduce){.txt{transition:none}}
 </style>
 </head>
 <body>
 <canvas id="art" aria-hidden="true"></canvas>
 <div class="mark"><b>SimplyDominus</b><span> · the life of one dollar</span></div>
-<div class="count"><b id="cn">01</b> / 08</div>
+<div class="count"><b id="cn">01</b> / <span id="ct">15</span></div>
 <div class="rail" id="rail"></div>
 <div class="hint" id="hint">Scroll · touch the light</div>
 <div class="credit">Concept by <a href="https://opensite.gr">OpenSite</a></div>
 
 <main>
-  <section class="ch mid"><div class="txt"><span class="n">01 · THE DOLLAR</span><h2>Every story starts<br>with <i>one dollar.</i></h2><p>This one is yours. Watch what happens to it.</p></div></section>
-  <section class="ch"><div class="txt"><span class="n">02 · THE FEED</span><h2>It enters <i>the feed.</i></h2><p>Billions of thumbs, scrolling. Meta, TikTok. Your dollar is now one light among millions.</p></div></section>
-  <section class="ch right top"><div class="txt"><span class="n">03 · THE NOISE</span><h2>Most of it<br>gets <i>lost.</i></h2><p>Platform ROAS. Screenshots. Set-and-forget. One ad takes the budget, the rest spend scraps, and nobody notices.</p></div></section>
-  <section class="ch"><div class="txt"><span class="n">04 · EVERY MORNING</span><h2>Unless someone<br>opens the account. <i>Every morning.</i></h2><p>By hand. No account managers, no juniors, no automated rules. Scale and kill decisions the day the data says so.</p></div></section>
-  <section class="ch right"><div class="txt"><span class="n">05 · THE LINE</span><h2>Above this line,<br>you <i>make money.</i></h2><p>Break-even ROAS: one divided by your margin. The only line that decides if an account made money.</p><span class="fact">Home decor · <b>2.18×</b> on a <b>1.60×</b> break-even</span></div></section>
-  <section class="ch top"><div class="txt"><span class="n">06 · THE SCALE</span><h2><i>100+ brands.</i><br>$60M+ of spend.</h2><p>Since 2018, every one of them run personally. Each light here is a brand that grew.</p><span class="fact">$0 → <b>$1.46M</b> in 15 months · $42K/mo → <b>$10.5M</b></span></div></section>
-  <section class="ch"><div class="txt"><span class="n">07 · THE PEOPLE</span><h2>And then,<br>people <i>answer.</i></h2><p>Real customers, standing up for a product they love.</p><span class="fact"><b>122,236</b> orders for one brand alone</span></div></section>
-  <section class="ch end"><div class="txt"><span class="n">08 · BACK TO ONE</span><h2>“Every dollar of your budget gets treated <i>like it's mine.</i>”</h2><div class="sig">Panagis Karydas · Founder, SimplyDominus</div><div class="cta"><a href="https://simplydominus.com/" target="_blank" rel="noopener">Book a call →</a><a class="g" href="https://simplydominus.com/" target="_blank" rel="noopener">See the proof</a></div></div></section>
+  <section class="ch mid" data-k="dot"><div class="txt"><span class="n">01 · THE DOLLAR</span><h2>Every story starts<br>with <i>one dollar.</i></h2><p>This one is yours. Watch what happens to it.</p></div></section>
+  <section class="ch" data-k="feed"><div class="txt"><span class="n">02 · THE FEED</span><h2>It enters <i>the feed.</i></h2><p>Billions of thumbs, scrolling. Meta, TikTok. Your dollar is now one light among millions.</p></div></section>
+  <section class="ch right top" data-k="noise"><div class="txt"><span class="n">03 · THE NOISE</span><h2>Most of it<br>gets <i>lost.</i></h2><p>Platform ROAS. Screenshots. Set-and-forget. One ad takes the budget, the rest spend scraps, and nobody notices.</p></div></section>
+  <section class="ch" data-k="curve"><div class="txt"><span class="n">04 · EVERY MORNING</span><h2>Unless someone<br>opens the account. <i>Every morning.</i></h2><p>By hand. No account managers, no juniors, no automated rules. Scale and kill decisions the day the data says so.</p></div></section>
+  <section class="ch right" data-k="line"><div class="txt"><span class="n">05 · THE LINE</span><h2>Above this line,<br>you <i>make money.</i></h2><p>Break-even ROAS: one divided by your margin. The only line that decides if an account made money.</p><span class="fact">Home decor · <b>2.18×</b> on a <b>1.60×</b> break-even</span></div></section>
+  <section class="ch" data-k="flower"><div class="txt"><span class="n">06 · THE WINNER</span><h2>When something <i>blooms,</i><br>you don't touch it.</h2><p>The most expensive mistake in paid social is “improving” a winner. Protect it, and grow the next one beside it, never inside it.</p></div></section>
+  <section class="ch right top" data-k="eye"><div class="txt"><span class="n">07 · THE CREATIVE</span><h2>The ad finds<br>its own <i>people.</i></h2><p>In 2026 the creative is the targeting. Move around. It's watching you too.</p></div></section>
+  <section class="ch" data-k="tree"><div class="txt"><span class="n">08 · FROM ZERO</span><h2>No pixel. No list.<br><i>No creatives.</i></h2><p>A brand with nothing, grown from a seed into $1,463,891 of sales in fifteen months.</p><span class="fact"><b>2.94×</b> on a <b>1.4×</b> break-even</span></div></section>
+  <section class="ch right" data-k="live"><div class="txt"><span class="n">09 · LIVE</span><h2>Then, a format<br><i>nobody else</i> was running.</h2><p>The Live Ads Strategy: advertising the live streams themselves, on TikTok Shop, for an unknown brand.</p></div></section>
+  <section class="ch top" data-k="trophy"><div class="txt"><span class="n">10 · NUMBER ONE</span><h2>Twelve months later:<br><i>number one.</i></h2><p>The #1 TikTok Shop in collectibles. An outlier, and he says so.</p><span class="fact"><b>$10.58M</b> at <b>12.37×</b> · from $42K a month</span></div></section>
+  <section class="ch right top" data-k="galaxy"><div class="txt"><span class="n">11 · THE SCALE</span><h2><i>100+ brands.</i><br>$60M+ of spend.</h2><p>Since 2018. Each light here is a brand that grew, connected by one pair of hands.</p></div></section>
+  <section class="ch" data-k="crowd"><div class="txt"><span class="n">12 · THE PEOPLE</span><h2>And then,<br>people <i>answer.</i></h2><p>Real customers, standing up for a product they love.</p><span class="fact"><b>122,236</b> orders for one brand alone</span></div></section>
+  <section class="ch act" data-k="dark"><div class="txt"><h2>That's the dollar.<br><i>Now, the man behind it.</i></h2></div></section>
+  <section class="ch right" data-k="boxes"><div class="txt"><span class="n">13 · BEFORE</span><h2>Before all this,<br><i>Amazon.</i></h2><p>GM at a top marketing firm, running listings that drove more than $8M a year in profit. Box after box after box.</p></div></section>
+  <section class="ch" data-k="oneline"><div class="txt"><span class="n">14 · ONE THING</span><h2>Then he chose<br><i>one thing.</i></h2><p>Paid social, for a small roster of brands. Solo by design. Every account, every morning, himself.</p></div></section>
+  <section class="ch end" data-k="heart"><div class="txt"><span class="n">15 · BACK TO ONE</span><h2>“Every dollar of your budget gets treated <i>like it's mine.</i>”</h2><div class="sig">Panagis Karydas · Founder, SimplyDominus</div><div class="cta"><a href="https://simplydominus.com/" target="_blank" rel="noopener">Book a call →</a><a class="g" href="https://simplydominus.com/" target="_blank" rel="noopener">See the proof</a></div></div></section>
 </main>
 
 <script>
 (() => {
   const cv = document.getElementById("art"), ctx = cv.getContext("2d", { alpha: false });
-  const CH = 8;
-  let W, H, D, N, MIN;
-  let x, y, vx, vy, r1, r2, r3;
+  const sections = [...document.querySelectorAll(".ch")];
+  const KEYS = sections.map(s => s.dataset.k), CH = KEYS.length;
+  const TAU = Math.PI * 2, GOLD = 2.39996;
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  let W, H, D, N, MIN, x, y, vx, vy, r1, r2, r3;
+  let tree = [], trophy = [], stars = [];
 
+  function rnd(seed) { return () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }; }
+  function buildTree() { // a fractal tree that grows from a seed
+    tree = []; const R = rnd(7);
+    (function br(x0, y0, len, ang, depth) {
+      const x1 = x0 + Math.cos(ang) * len, y1 = y0 + Math.sin(ang) * len;
+      tree.push({ x0, y0, x1, y1, d: depth });
+      if (depth >= 9) return;
+      const spread = .32 + R() * .22;
+      br(x1, y1, len * (.7 + R() * .08), ang - spread, depth + 1);
+      br(x1, y1, len * (.7 + R() * .08), ang + spread * (.8 + R() * .4), depth + 1);
+      if (depth > 3 && R() < .25) br(x1, y1, len * .55, ang + (R() - .5) * .4, depth + 2);
+    })(W / 2, H * .94, MIN * .2, -Math.PI / 2, 0);
+  }
+  function buildTrophy() { // sample the trophy glyph into points
+    trophy = [];
+    const S = Math.round(MIN * .62), c = document.createElement("canvas"), g = c.getContext("2d", { willReadFrequently: true });
+    c.width = c.height = S; g.textAlign = "center"; g.textBaseline = "middle"; g.font = `${S * .86}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
+    g.fillText("🏆", S / 2, S * .54);
+    const d = g.getImageData(0, 0, S, S).data, step = Math.max(2, Math.round(S / 120));
+    for (let yy = 0; yy < S; yy += step) for (let xx = 0; xx < S; xx += step) { const a = d[(yy * S + xx) * 4 + 3]; if (a > 120) trophy.push([xx - S / 2, yy - S / 2]); }
+    if (trophy.length < 200) { trophy = []; for (let k = 0; k < 900; k++) { const u = k / 900, an = u * TAU; trophy.push([Math.cos(an) * S * .25 * (u < .5 ? 1 : .4), Math.sin(an) * S * .2 - (u < .5 ? S * .1 : -S * .25)]); } }
+  }
   function setup() {
     D = Math.min(1.5, devicePixelRatio || 1);
     W = innerWidth; H = innerHeight; MIN = Math.min(W, H);
@@ -97,69 +134,95 @@ p{margin-top:18px;font-size:clamp(15px,1.3vw,18px);color:#b9bbbe;max-width:460px
       r1 = new Float32Array(N); r2 = new Float32Array(N); r3 = new Float32Array(N);
       for (let i = 0; i < N; i++) { r1[i] = Math.random(); r2[i] = Math.random(); r3[i] = Math.random(); x[i] = W / 2 + (Math.random() - .5) * 4; y[i] = H / 2 + (Math.random() - .5) * 4; }
     }
+    stars = Array.from({ length: Math.round(W * H / 9000) }, () => [Math.random() * W, Math.random() * H, Math.random() * TAU, Math.random()]);
+    buildTree(); buildTrophy();
     ctx.fillStyle = "#040405"; ctx.fillRect(0, 0, W, H);
   }
   setup();
-  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(setup, 120); });
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(setup, 150); });
 
-  // ---- where every particle wants to be, per chapter ----
-  const TAU = Math.PI * 2, GOLD = 2.39996;
-  const curveY = u => H * .78 - (Math.pow(u, 1.6) * .55 + Math.sin(u * 9) * .025 * (1 - u)) * H; // a rising account
+  // ---- pointer ----
+  let px = W / 2, py = H / 2, pOn = 0, shocks = [];
+  addEventListener("pointermove", e => { px = e.clientX; py = e.clientY; pOn = 1; }, { passive: true });
+  addEventListener("touchmove", e => { const t = e.touches[0]; px = t.clientX; py = t.clientY; pOn = 1; }, { passive: true });
+  addEventListener("touchend", () => { pOn = 0; });
+  addEventListener("pointerdown", e => { if (e.target.closest("a")) return; shocks.push({ x: e.clientX, y: e.clientY, r: 0 }); });
+  document.addEventListener("pointerleave", () => pOn = 0);
+
+  // ---- where each particle wants to be ----
+  const enter = {}; // local time per chapter, so shapes can grow when you arrive
+  const curveY = u => H * .78 - (Math.pow(u, 1.6) * .55 + Math.sin(u * 9) * .025 * (1 - u)) * H;
   const beY = () => H * .55;
-  function target(c, i, t, out) {
-    const a = r1[i], b = r2[i], d = r3[i];
-    switch (c) {
-      case 0: { // one dollar: a tight, breathing point of light
-        const rr = Math.pow(a, 3) * MIN * .06 * (1 + .15 * Math.sin(t * 2)), an = b * TAU + t * .3;
-        out[0] = W / 2 + Math.cos(an) * rr; out[1] = H / 2 + Math.sin(an) * rr; break;
+  let eyeX = 0, eyeY = 0, blink = 1;
+  function target(key, i, t, out) {
+    const a = r1[i], b = r2[i], d = r3[i], lt = t - (enter[key] ?? t);
+    switch (key) {
+      case "dot": { const rr = Math.pow(a, 3) * MIN * .06 * (1 + .15 * Math.sin(t * 2)), an = b * TAU + t * .3; out[0] = W / 2 + Math.cos(an) * rr; out[1] = H / 2 + Math.sin(an) * rr; return; }
+      case "feed": { const span = W * 1.3, xx = ((a * span + t * (40 + d * 70)) % span) - W * .15, lane = (b - .5) * H * .34; out[0] = xx; out[1] = H * .5 + lane + Math.sin(xx * .006 + t * .8 + d * 2) * H * .12 * (1 - Math.abs(b - .5)); return; }
+      case "noise": { out[0] = a * W + Math.sin(t * .7 + d * 40) * 40 + Math.sin(t * 1.9 + b * 30) * 12; out[1] = b * H + Math.cos(t * .6 + a * 40) * 40; return; }
+      case "curve": case "line": { const u = i / N; out[0] = W * .08 + u * W * .84 + (d - .5) * 6; out[1] = curveY(u) + (a - .5) * (10 + 26 * (1 - u)) + Math.sin(t * 2 + u * 20) * 2; return; }
+      case "flower": { // a five-petal bloom, then a second one beside it
+        const grow = Math.min(1, lt / 2.2), grow2 = Math.max(0, Math.min(1, (lt - 1.8) / 2.2)), sm = v => v * v * (3 - 2 * v);
+        const cx = W * (W > H ? .62 : .5), cy = H * .42, R = MIN * .26;
+        if (d < .1) { out[0] = cx + Math.sin(a * 6 + t) * 3; out[1] = cy + a * (H * .95 - cy) * sm(grow); return; }
+        const second = d > .72, fx = second ? cx + R * 1.55 * (W > H ? 1 : .55) : cx, fy = second ? cy + R * .75 : cy, sc = second ? .55 * sm(grow2) : sm(grow);
+        const th = a * Math.PI, rr = R * sc * Math.abs(Math.cos(5 * th)) * Math.sqrt(b), rot = t * .12 * (second ? -1 : 1);
+        out[0] = fx + Math.cos(th * 2 + rot) * rr; out[1] = fy + Math.sin(th * 2 + rot) * rr; return;
       }
-      case 1: { // the feed: a river of light flowing across the screen
-        const span = W * 1.3, px = ((a * span + t * (40 + d * 70)) % span) - W * .15;
-        const lane = (b - .5) * H * .34;
-        out[0] = px; out[1] = H * .5 + lane + Math.sin(px * .006 + t * .8 + d * 2) * H * .12 * (1 - Math.abs(b - .5)); break;
+      case "eye": { // an eye that follows your pointer and blinks
+        const cx = W / 2, cy = H * .5, ew = Math.min(W * .42, MIN * .75), eh = ew * .38 * blink;
+        if (a < .42) { const u = b * 2 - 1, top = d < .5; out[0] = cx + u * ew; out[1] = cy + (top ? -1 : 1) * eh * (1 - u * u) + (Math.random() - .5) * 2; return; }
+        const ir = ew * .36, rr = ir * (a < .9 ? .45 + .55 * Math.sqrt(b) : .18 * b), an = d * TAU + t * .2;
+        let ox = cx + eyeX + Math.cos(an) * rr, oy = cy + eyeY + Math.sin(an) * rr * Math.min(1, blink * 1.2);
+        oy = Math.max(cy - eh * .98, Math.min(cy + eh * .98, oy)); out[0] = ox; out[1] = oy; return;
       }
-      case 2: { // noise: everything drifts apart
-        out[0] = a * W + Math.sin(t * .7 + d * 40) * 40 + Math.sin(t * 1.9 + b * 30) * 12;
-        out[1] = b * H + Math.cos(t * .6 + a * 40) * 40; break;
+      case "tree": { // grows branch by branch from the seed
+        const s = tree[Math.floor(a * tree.length)], level = lt * 3.2, k = Math.max(0, Math.min(1, level - s.d));
+        const along = b * k; out[0] = s.x0 + (s.x1 - s.x0) * along + Math.sin(t + d * 9) * (s.d > 6 ? 2 : 0); out[1] = s.y0 + (s.y1 - s.y0) * along; return;
       }
-      case 3: case 4: { // order: the particles line up into a rising curve
-        const u = (i / N), px = W * .08 + u * W * .84;
-        out[0] = px + (d - .5) * 6; out[1] = curveY(u) + (a - .5) * (10 + 26 * (1 - u)) + Math.sin(t * 2 + u * 20) * 2; break;
+      case "live": { // a phone, broadcasting
+        const pw = Math.min(W * .5, MIN * .36), ph = pw * 1.95, cx = W * (W > H ? .38 : .5), cy = H / 2;
+        if (a < .34) { const p = b * 2 * (pw + ph); let ox, oy; if (p < pw) { ox = -pw / 2 + p; oy = -ph / 2; } else if (p < pw + ph) { ox = pw / 2; oy = -ph / 2 + (p - pw); } else if (p < 2 * pw + ph) { ox = pw / 2 - (p - pw - ph); oy = ph / 2; } else { ox = -pw / 2; oy = ph / 2 - (p - 2 * pw - ph); } out[0] = cx + ox; out[1] = cy + oy; return; }
+        if (a < .44) { const rr = Math.sqrt(b) * pw * .08 * (1 + .3 * Math.sin(t * 6)), an = d * TAU; out[0] = cx + Math.cos(an) * rr; out[1] = cy - ph * .32 + Math.sin(an) * rr; return; }
+        const ring = Math.floor(b * 6), ph2 = ((t * .45 + ring / 6) % 1), rr = pw * .15 + ph2 * MIN * .7, an = d * TAU;
+        out[0] = cx + Math.cos(an) * rr; out[1] = cy - ph * .32 + Math.sin(an) * rr; return;
       }
-      case 5: { // scale: 100 brands become a slow spiral galaxy
-        const k = i % 100, rr = Math.sqrt((k + .5) / 100) * MIN * .46, an = k * GOLD + t * (.08 + .25 / (1 + k / 12));
-        const cx = W / 2 + Math.cos(an) * rr, cy = H / 2 + Math.sin(an) * rr * .78;
-        const sr = Math.pow(a, 2) * (4 + (100 - k) * .08), sa = b * TAU + t;
-        out[0] = cx + Math.cos(sa) * sr; out[1] = cy + Math.sin(sa) * sr; break;
+      case "trophy": { const p = trophy[i % trophy.length], s = 1 + .03 * Math.sin(t * 2.4), cx = W * (W > H ? .64 : .5), cy = H * (W > H ? .52 : .56); out[0] = cx + p[0] * s + (a - .5) * 2; out[1] = cy + p[1] * s + (b - .5) * 2; return; }
+      case "galaxy": { const k = i % 100, rr = Math.sqrt((k + .5) / 100) * MIN * .46, an = k * GOLD + t * (.08 + .25 / (1 + k / 12)), cx = W / 2 + Math.cos(an) * rr, cy = H / 2 + Math.sin(an) * rr * .78, sr = Math.pow(a, 2) * (4 + (100 - k) * .08), sa = b * TAU + t; out[0] = cx + Math.cos(sa) * sr; out[1] = cy + Math.sin(sa) * sr; return; }
+      case "crowd": { const rows = 16, row = Math.floor(a * rows), rowT = row / (rows - 1), arc = (b - .5) * Math.PI * .95, R = MIN * .28 + rowT * MIN * .62; let xx = W / 2 + Math.sin(arc) * R * (W > H ? 1.25 : .9), yy = H * 1.02 - Math.cos(arc) * R * .62; const wave = Math.max(0, Math.sin(arc * 3 - t * 2.4)); yy -= Math.pow(wave, 6) * (10 + rowT * 22); out[0] = xx + (d - .5) * 3; out[1] = yy; return; }
+      case "dark": { const an = a * TAU + t * .05, rr = MIN * (.6 + b * .5); out[0] = W / 2 + Math.cos(an) * rr * (W / MIN); out[1] = H / 2 + Math.sin(an) * rr; return; }
+      case "boxes": { // a stack of parcels landing one by one
+        const s = MIN * .14, idx = i % 10, rows = [4, 3, 2, 1]; let r = 0, c = idx; while (c >= rows[r]) { c -= rows[r]; r++; }
+        const bx = W * (W > H ? .36 : .5) + (c - (rows[r] - 1) / 2) * s * 1.08, by = H * .86 - r * s * 1.02 - s / 2;
+        const drop = Math.max(0, 1 - (lt * 2.4 - idx * .28)), fall = drop * drop * H * .9;
+        let ox, oy; const p = b * 4;
+        if (d < .78) { if (p < 1) { ox = -s / 2 + p * s; oy = -s / 2; } else if (p < 2) { ox = s / 2; oy = -s / 2 + (p - 1) * s; } else if (p < 3) { ox = s / 2 - (p - 2) * s; oy = s / 2; } else { ox = -s / 2; oy = s / 2 - (p - 3) * s; } }
+        else { ox = (b - .5) * s; oy = (d < .9 ? -s * .12 : s * .12) * 0 + (a - .5) * 4; if (d >= .9) { ox = (a - .5) * 4; oy = (b - .5) * s; } }
+        out[0] = bx + ox * .92; out[1] = by + oy * .92 - fall; return;
       }
-      case 6: { // people: a stadium of lights doing the wave
-        const rows = 16, row = Math.floor(a * rows), rowT = row / (rows - 1);
-        const arc = (b - .5) * Math.PI * .95, R = MIN * .28 + rowT * MIN * .62;
-        let px = W / 2 + Math.sin(arc) * R * (W > H ? 1.25 : .9), py = H * 1.02 - Math.cos(arc) * R * .62;
-        const wave = Math.max(0, Math.sin(arc * 3 - t * 2.4)); py -= Math.pow(wave, 6) * (10 + rowT * 22);
-        out[0] = px + (d - .5) * 3; out[1] = py; break;
-      }
-      case 7: { // back to one: a single heart of light with rings that pulse out
-        const ring = Math.floor(a * 5), ph = ((t * .35 + ring / 5) % 1);
-        const rr = a < .55 ? Math.pow(b, 2.5) * MIN * .05 : ph * MIN * .55, an = d * TAU;
-        out[0] = W / 2 + Math.cos(an) * rr; out[1] = H / 2 + Math.sin(an) * rr; break;
+      case "oneline": { const u = a, wob = Math.sin(u * 30 + t * 3) * 1.5; out[0] = W * .06 + u * W * .88; out[1] = H * .5 + wob + (b - .5) * 2; return; }
+      case "heart": { // a heart of light, with rings pulsing out of it
+        if (a < .62) { const th = b * TAU, s = MIN * .018 * (1 + .06 * Math.sin(t * 3.2)) * (d < .7 ? 1 : .75 * Math.sqrt(d)); out[0] = W / 2 + 16 * Math.pow(Math.sin(th), 3) * s; out[1] = H * .46 - (13 * Math.cos(th) - 5 * Math.cos(2 * th) - 2 * Math.cos(3 * th) - Math.cos(4 * th)) * s; return; }
+        const ring = Math.floor(d * 5), ph = ((t * .3 + ring / 5) % 1), rr = MIN * .3 + ph * MIN * .6, an = b * TAU; out[0] = W / 2 + Math.cos(an) * rr; out[1] = H * .46 + Math.sin(an) * rr * .9; return;
       }
     }
+    out[0] = W / 2; out[1] = H / 2;
   }
 
   // ---- scroll drives the story ----
-  let prog = 0, progT = 0;
-  const sections = [...document.querySelectorAll(".ch")];
+  let prog = 0, progT = 0, lastK = -1;
   const rail = document.getElementById("rail");
-  rail.innerHTML = sections.map(() => "<i></i>").join("");
+  rail.innerHTML = sections.map(s => `<i class="${s.dataset.k === "dark" ? "act2" : ""}"></i>`).join("");
   const dots = [...rail.children];
+  document.getElementById("ct").textContent = KEYS.filter(k => k !== "dark").length;
   function onScroll() {
     const tops = sections.map(s => s.offsetTop), mid = scrollY + innerHeight * .15;
     let k = 0; for (let i = 0; i < tops.length; i++) if (mid >= tops[i]) k = i;
     const next = tops[k + 1] ?? (tops[k] + sections[k].offsetHeight);
     const fr = Math.max(0, Math.min(1, (mid - tops[k]) / (next - tops[k])));
     progT = Math.min(CH - 1, k + Math.max(0, (fr - .55) / .45) * .999);
-    document.getElementById("cn").textContent = String(k + 1).padStart(2, "0");
+    const shown = KEYS.slice(0, k + 1).filter(x => x !== "dark").length;
+    document.getElementById("cn").textContent = String(Math.max(1, shown)).padStart(2, "0");
     dots.forEach((d, i) => d.classList.toggle("on", i === k));
     if (scrollY > 40) document.getElementById("hint").classList.add("off");
   }
@@ -167,79 +230,70 @@ p{margin-top:18px;font-size:clamp(15px,1.3vw,18px);color:#b9bbbe;max-width:460px
   const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("in", e.isIntersecting)), { threshold: .45 });
   sections.forEach(s => io.observe(s));
 
-  // ---- touch the light ----
-  let px = -999, py = -999, pOn = 0, shocks = [];
-  addEventListener("pointermove", e => { px = e.clientX; py = e.clientY; pOn = 1; }, { passive: true });
-  addEventListener("touchmove", e => { const t = e.touches[0]; px = t.clientX; py = t.clientY; pOn = 1; }, { passive: true });
-  addEventListener("pointerdown", e => { if (e.target.closest("a")) return; shocks.push({ x: e.clientX, y: e.clientY, r: 0 }); });
-  addEventListener("pointerleave", () => pOn = 0);
-
-  // ---- palette per chapter (core, accent) ----
-  const PAL = [["255,246,214", "212,242,90"], ["160,200,255", "212,242,90"], ["150,150,160", "255,110,90"], ["212,242,90", "255,255,255"], ["212,242,90", "255,98,98"], ["212,242,90", "160,200,255"], ["255,220,150", "212,242,90"], ["255,246,214", "212,242,90"]];
+  // ---- colours: [core, accent] per chapter ----
+  const PAL = { dot: ["255,246,214", "212,242,90"], feed: ["160,200,255", "212,242,90"], noise: ["150,150,160", "255,110,90"], curve: ["212,242,90", "255,255,255"], line: ["212,242,90", "255,98,98"],
+    flower: ["255,170,200", "212,242,90"], eye: ["170,220,255", "212,242,90"], tree: ["212,242,90", "255,214,140"], live: ["255,90,120", "255,255,255"], trophy: ["255,206,92", "255,246,214"],
+    galaxy: ["212,242,90", "160,200,255"], crowd: ["255,220,150", "212,242,90"], dark: ["90,92,96", "140,142,146"], boxes: ["230,180,120", "255,236,200"], oneline: ["212,242,90", "255,255,255"], heart: ["255,110,130", "212,242,90"] };
   const mixC = (a, b, f) => { const A = a.split(",").map(Number), B = b.split(",").map(Number); return A.map((v, i) => Math.round(v + (B[i] - v) * f)).join(","); };
   const smooth = f => f * f * (3 - 2 * f);
   const ta = [0, 0], tb = [0, 0];
   const bucket = [new Int32Array(4000), new Int32Array(4000), new Int32Array(4000)];
-  let t0 = performance.now();
+  const t0 = performance.now();
+  let lastT = 0, nextBlink = 3;
+
+  function glow(cx, cy, r, rgb, a) { const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r); g.addColorStop(0, `rgba(${rgb},${a})`); g.addColorStop(1, "rgba(4,4,5,0)"); ctx.fillStyle = g; ctx.fillRect(cx - r, cy - r, r * 2, r * 2); }
 
   function frame(now) {
-    const t = (now - t0) / 1000;
-    prog += (progT - prog) * .09;
-    const c0 = Math.floor(prog), c1 = Math.min(CH - 1, c0 + 1), f = smooth(prog - c0);
-    // trails: the canvas never fully clears, which leaves light streaks behind
-    ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = `rgba(4,4,5,${c0 === 2 ? .32 : .2})`; ctx.fillRect(0, 0, W, H);
+    const t = (now - t0) / 1000, dt = Math.min(.1, t - lastT); lastT = t;
+    prog += (progT - prog) * (1 - Math.pow(.02, dt));
+    const c0 = Math.floor(prog), c1 = Math.min(CH - 1, c0 + 1), f = smooth(prog - c0), k0 = KEYS[c0], k1 = KEYS[c1];
+    const near = Math.round(prog);
+    if (near !== lastK) { lastK = near; enter[KEYS[near]] = t; if (t > 1) shocks.push({ x: W / 2, y: H / 2, r: 0, auto: 1 }); }
+    if (enter[k0] === undefined) enter[k0] = t; if (enter[k1] === undefined) enter[k1] = t;
+    // eye tracking + blinking
+    eyeX += ((pOn ? (px - W / 2) : Math.sin(t * .7) * W * .2) * .18 - eyeX) * .08; eyeY += ((pOn ? (py - H / 2) : Math.cos(t * .5) * H * .1) * .12 - eyeY) * .08;
+    eyeX = Math.max(-MIN * .12, Math.min(MIN * .12, eyeX)); eyeY = Math.max(-MIN * .05, Math.min(MIN * .05, eyeY));
+    if (t > nextBlink) { const bt = t - nextBlink; blink = bt < .12 ? 1 - bt / .12 : bt < .24 ? (bt - .12) / .12 : 1; if (bt > .24) { blink = 1; nextBlink = t + 2.5 + Math.random() * 3; } blink = Math.max(.06, blink); }
 
-    // big soft glows for the "one dollar" moments
-    const glowAmt = (c0 === 0 ? 1 - f : 0) + (c1 === 7 ? f : 0) + (c0 === 7 ? 1 : 0);
-    if (glowAmt > .01) {
-      const g = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, MIN * (.32 + .04 * Math.sin(t * 2)));
-      g.addColorStop(0, `rgba(255,246,214,${.22 * glowAmt})`); g.addColorStop(.3, `rgba(212,242,90,${.08 * glowAmt})`); g.addColorStop(1, "rgba(4,4,5,0)");
-      ctx.globalCompositeOperation = "lighter"; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-    }
-    // the break-even line, drawn by light
-    const lineAmt = (c0 === 4 ? 1 : 0) * (1 - f) + (c1 === 4 ? f : 0) + (c0 === 3 ? 0 : 0);
-    if (lineAmt > .01) {
-      ctx.globalCompositeOperation = "lighter";
-      const lg = ctx.createLinearGradient(0, 0, W, 0); lg.addColorStop(0, "rgba(255,98,98,0)"); lg.addColorStop(.5, `rgba(255,98,98,${.7 * lineAmt})`); lg.addColorStop(1, "rgba(255,98,98,0)");
-      ctx.fillStyle = lg; ctx.fillRect(0, beY() - 1, W, 2);
-    }
-    // the morning sun, rising behind the curve
-    const sunAmt = (c0 === 3 ? 1 - f * .7 : 0) + (c1 === 3 ? f : 0);
-    if (sunAmt > .01) {
-      const sy = H * (.95 - .35 * sunAmt), g = ctx.createRadialGradient(W * .78, sy, 0, W * .78, sy, MIN * .4);
-      g.addColorStop(0, `rgba(255,214,120,${.25 * sunAmt})`); g.addColorStop(.4, `rgba(255,170,80,${.08 * sunAmt})`); g.addColorStop(1, "rgba(4,4,5,0)");
-      ctx.globalCompositeOperation = "lighter"; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = `rgba(4,4,5,${k0 === "noise" ? .32 : k0 === "live" ? .16 : .2})`; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    // stars far behind everything
+    for (const s of stars) { const tw = .25 + .25 * Math.sin(t * 1.3 + s[2]); ctx.fillStyle = `rgba(200,205,215,${tw * .35 * s[3]})`; ctx.fillRect(s[0], s[1], 1, 1); }
+    const w = (key) => (k0 === key ? 1 - f : 0) + (k1 === key ? f : 0);
+    // set pieces drawn behind the particles
+    let v;
+    if ((v = w("dot") + w("heart")) > .01) glow(W / 2, H * (w("heart") > .5 ? .46 : .5), MIN * (.34 + .04 * Math.sin(t * 2)), "255,246,214", .22 * v);
+    if ((v = w("curve")) > .01) glow(W * .78, H * (.95 - .35 * v), MIN * .42, "255,200,110", .25 * v);
+    if ((v = w("line")) > .01) { const lg = ctx.createLinearGradient(0, 0, W, 0); lg.addColorStop(0, "rgba(255,98,98,0)"); lg.addColorStop(.5, `rgba(255,98,98,${.7 * v})`); lg.addColorStop(1, "rgba(255,98,98,0)"); ctx.fillStyle = lg; ctx.fillRect(0, beY() - 1, W, 2); }
+    if ((v = w("trophy")) > .01) glow(W * (W > H ? .64 : .5), H * .5, MIN * .5, "255,190,80", .22 * v);
+    if ((v = w("live")) > .01) glow(W * (W > H ? .38 : .5), H * .5 - Math.min(W * .5, MIN * .36) * 1.95 * .32, MIN * .12, "255,60,90", (.35 + .2 * Math.sin(t * 6)) * v);
+    if ((v = w("oneline")) > .01) { const sx = W * .06 + ((t * .25) % 1) * W * .88; glow(sx, H * .5, MIN * .12, "212,242,90", .5 * v); }
+    if ((v = w("galaxy")) > .01) { // constellation lines between the 100 brands
+      ctx.strokeStyle = `rgba(212,242,90,${.12 * v})`; ctx.lineWidth = 1; ctx.beginPath();
+      for (let k = 0; k < 100; k++) { const rr = Math.sqrt((k + .5) / 100) * MIN * .46, an = k * GOLD + t * (.08 + .25 / (1 + k / 12)), cx = W / 2 + Math.cos(an) * rr, cy = H / 2 + Math.sin(an) * rr * .78; k ? ctx.lineTo(cx, cy) : ctx.moveTo(cx, cy); }
+      ctx.stroke();
     }
 
     // physics
-    const k = reduce ? .2 : .045, damp = .86, pr = MIN * .16, pr2 = pr * pr;
-    shocks.forEach(s => s.r += 14); shocks = shocks.filter(s => s.r < MIN * .9);
-    const cnt = [0, 0, 0], be = beY(), breakEven = (c0 === 4 || c1 === 4);
+    const kk = reduce ? .2 : .045, damp = .86, pr = MIN * .16, pr2 = pr * pr;
+    shocks.forEach(s => s.r += s.auto ? 18 : 14); shocks = shocks.filter(s => s.r < MIN * 1.1);
+    const cnt = [0, 0, 0], be = beY(), breakEven = (k0 === "line" || k1 === "line");
     for (let i = 0; i < N; i++) {
-      target(c0, i, t, ta); target(c1, i, t, tb);
+      target(k0, i, t, ta); if (f > .001) target(k1, i, t, tb); else { tb[0] = ta[0]; tb[1] = ta[1]; }
       const tx = ta[0] + (tb[0] - ta[0]) * f, ty = ta[1] + (tb[1] - ta[1]) * f;
-      vx[i] += (tx - x[i]) * k; vy[i] += (ty - y[i]) * k;
-      if (pOn) { // the pointer swirls the light around it
-        const dx = x[i] - px, dy = y[i] - py, d2 = dx * dx + dy * dy;
-        if (d2 < pr2 && d2 > 1) { const dd = Math.sqrt(d2), s = (1 - dd / pr) * 2.2; vx[i] += (dx / dd) * s - (dy / dd) * s * 1.4; vy[i] += (dy / dd) * s + (dx / dd) * s * 1.4; }
-      }
-      for (const s of shocks) { const dx = x[i] - s.x, dy = y[i] - s.y, dd = Math.sqrt(dx * dx + dy * dy) || 1; if (Math.abs(dd - s.r) < 30) { const p = (1 - Math.abs(dd - s.r) / 30) * 5; vx[i] += dx / dd * p; vy[i] += dy / dd * p; } }
+      vx[i] += (tx - x[i]) * kk; vy[i] += (ty - y[i]) * kk;
+      if (pOn && k0 !== "eye") { const dx = x[i] - px, dy = y[i] - py, d2 = dx * dx + dy * dy; if (d2 < pr2 && d2 > 1) { const dd = Math.sqrt(d2), s = (1 - dd / pr) * 2.2; vx[i] += (dx / dd) * s - (dy / dd) * s * 1.4; vy[i] += (dy / dd) * s + (dx / dd) * s * 1.4; } }
+      for (const s of shocks) { const dx = x[i] - s.x, dy = y[i] - s.y, dd = Math.sqrt(dx * dx + dy * dy) || 1; if (Math.abs(dd - s.r) < 30) { const p = (1 - Math.abs(dd - s.r) / 30) * (s.auto ? 3 : 5); vx[i] += dx / dd * p; vy[i] += dy / dd * p; } }
       vx[i] *= damp; vy[i] *= damp; x[i] += vx[i]; y[i] += vy[i];
       let g = r3[i] < .12 ? 1 : 0;
       if (breakEven) g = y[i] < be ? 0 : 2;
       bucket[g][cnt[g]++] = i;
     }
-    // draw: three batches so colour changes stay cheap
-    ctx.globalCompositeOperation = "lighter";
-    const core = mixC(PAL[c0][0], PAL[c1][0], f), acc = mixC(PAL[c0][1], PAL[c1][1], f);
+    const core = mixC(PAL[k0][0], PAL[k1][0], f), acc = mixC(PAL[k0][1], PAL[k1][1], f);
     const cols = [`rgba(${core},.75)`, `rgba(${acc},.95)`, breakEven ? "rgba(255,98,98,.6)" : `rgba(${core},.75)`];
-    for (let g = 0; g < 3; g++) {
-      ctx.fillStyle = cols[g]; const L = cnt[g], B = bucket[g];
-      for (let j = 0; j < L; j++) { const i = B[j], s = 1 + r2[i] * 1.6 + Math.min(2, Math.abs(vx[i]) + Math.abs(vy[i])) * .25; ctx.fillRect(x[i], y[i], s, s); }
-    }
-    // the shockwave ring itself
-    shocks.forEach(s => { ctx.strokeStyle = `rgba(212,242,90,${.4 * (1 - s.r / (MIN * .9))})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, TAU); ctx.stroke(); });
+    for (let g = 0; g < 3; g++) { ctx.fillStyle = cols[g]; const L = cnt[g], B = bucket[g]; for (let j = 0; j < L; j++) { const i = B[j], s = 1 + r2[i] * 1.6 + Math.min(2, Math.abs(vx[i]) + Math.abs(vy[i])) * .25; ctx.fillRect(x[i], y[i], s, s); } }
+    shocks.forEach(s => { ctx.strokeStyle = `rgba(212,242,90,${(s.auto ? .18 : .4) * (1 - s.r / (MIN * 1.1))})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, TAU); ctx.stroke(); });
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
