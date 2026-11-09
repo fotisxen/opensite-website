@@ -242,6 +242,11 @@ export const steps = [
 // with no public screenshot), `hideLink` drops the link (private admin).
 export const workCards: readonly WorkCard[] = [
   {
+    slug: "platterie-box",
+    name: "The Platterie Box",
+    blurb: "Storytelling site για deli και κρασί στη Θεσσαλονίκη: η ιστορία κάθε πιατέλας, από τους μικρούς παραγωγούς μέχρι το τραπέζι.",
+  },
+  {
     slug: "akinita-fotiadis",
     name: "Ακίνητα Φωτιάδης",
     blurb: "Μεσιτικό γραφείο. Το παλιό site ήταν αργό και δεν έδειχνε την ποιότητα του γραφείου. Το νέο είναι γρήγορο και οδηγεί τον επισκέπτη στην επικοινωνία.",

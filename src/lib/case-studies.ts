@@ -28,6 +28,65 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "platterie-box",
+    industry: "Storytelling Website",
+    duration: "Custom Build",
+    title: "The Platterie Box",
+    subtitle:
+      "A storytelling website for a Thessaloniki deli and wine room: instead of a product list, the site tells the story behind every platter, from the producers to the table.",
+    liveUrl: "https://theplatteriebox.gr/",
+    platform: "Next.js",
+    image: "/work/platterie-box.webp",
+    heroMetrics: [
+      { value: "4", label: "Story Chapters" },
+      { value: "8", label: "Cheeses Presented" },
+      { value: "Next.js", label: "Platform" },
+      { value: "100%", label: "Custom Build" },
+    ],
+    problem: {
+      description:
+        "The Platterie Box is a deli and wine room in Thessaloniki that works with small Greek producers. It needed a site that shows what makes it different: the people behind the products, the pairings, and the space itself.",
+      bullets: [
+        "Stand out from shops that only list products",
+        "Give the small producers behind each cheese and wine a face",
+        "Show the space for parties and workshops",
+      ],
+    },
+    solution: {
+      description:
+        "We built a scroll-driven story: four chapters (the mountain, the cellar, the charcuterie, the vineyard) lead the visitor from the producers to the platter, and then to the boxes, the menu and the space.",
+      highlights: [
+        { title: "Story in Chapters", desc: "Full-screen chapters that unfold as the visitor scrolls." },
+        { title: "Real Producers", desc: "Every cheese and cold cut is shown with its producer and region." },
+        { title: "Cheese and Wine Pairing", desc: "Pick a cheese and the site suggests the wine that goes with it." },
+        { title: "Menu and Space", desc: "Full menu with prices, plus the space for parties and workshops." },
+      ],
+    },
+    impact: [
+      {
+        icon: "auto_awesome",
+        iconWrap: "bg-primary/10",
+        iconColor: "text-primary",
+        value: "4 chapters",
+        text: "The shop's story, told from the mountain to the table.",
+      },
+      {
+        icon: "store",
+        iconWrap: "bg-secondary/10",
+        iconColor: "text-secondary",
+        value: "10 producers",
+        text: "Small Greek producers and wineries, each named on the site.",
+      },
+      {
+        icon: "smartphone",
+        iconWrap: "bg-tertiary/10",
+        iconColor: "text-tertiary",
+        value: "Mobile first",
+        text: "Designed to be read on the phone, where most visitors arrive.",
+      },
+    ],
+  },
+  {
     slug: "one-menoo",
     industry: "Hospitality Tech",
     duration: "Custom Build",

@@ -25,6 +25,19 @@ export interface GreekService {
 
 export const greekServices: GreekService[] = [
   {
+    id: "storytelling",
+    icon: "auto_awesome",
+    image: { src: "/work/platterie-box.webp", width: 800, height: 500, alt: "Το site του The Platterie Box" },
+    title: "Storytelling sites",
+    summary:
+      "Για επιχειρήσεις που έχουν κάτι να πουν. Το site αφηγείται την ιστορία σας, αντί να είναι απλώς ένας κατάλογος.",
+    points: [
+      "Η ιστορία σας σε κεφάλαια που ξετυλίγονται καθώς ο επισκέπτης κάνει scroll",
+      "Ιδανικό για μικρές και μεσαίες επιχειρήσεις με χαρακτήρα: μαγαζιά, παραγωγούς, εστίαση, οινοποιεία",
+      "Οι άνθρωποι, τα προϊόντα και ο χώρος σας, όπως στο The Platterie Box",
+    ],
+  },
+  {
     id: "istoselides",
     icon: "code",
     image: { src: "/work/akinita-fotiadis.webp", width: 800, height: 500, alt: "Το site των Ακινήτων Φωτιάδη" },
@@ -147,6 +160,27 @@ export interface GreekCase {
 }
 
 export const greekCases: GreekCase[] = [
+  {
+    slug: "platterie-box",
+    name: "The Platterie Box",
+    field: "Storytelling site · Deli και κρασί",
+    platform: "Next.js",
+    intro:
+      "Δεν είναι κατάλογος προϊόντων: το site αφηγείται την ιστορία κάθε πιατέλας, από τους μικρούς παραγωγούς μέχρι το τραπέζι.",
+    problem: [
+      "Να ξεχωρίζει από τα μαγαζιά που απλώς παραθέτουν προϊόντα",
+      "Να γνωρίσει ο επισκέπτης τους μικρούς παραγωγούς πίσω από κάθε τυρί και κρασί",
+      "Να φαίνεται ο χώρος για πάρτι και workshops",
+    ],
+    built: [
+      { title: "Η ιστορία σε κεφάλαια", text: "Το βουνό, το κελάρι, τα αλλαντικά και ο αμπελώνας, καθώς ο επισκέπτης κάνει scroll." },
+      { title: "Οι παραγωγοί με το όνομά τους", text: "Κάθε τυρί και αλλαντικό με τον παραγωγό και τον τόπο του." },
+      { title: "Τυρί και κρασί", text: "Διαλέγετε τυρί και το site προτείνει το κρασί που ταιριάζει." },
+      { title: "Μενού και χώρος", text: "Ολόκληρο το μενού με τιμές και ο χώρος για πάρτι και workshops." },
+    ],
+    link: "https://theplatteriebox.gr/",
+    image: { src: "/work/platterie-box.webp", width: 800, height: 500 },
+  },
   {
     slug: "akinita-fotiadis",
     name: "Ακίνητα Φωτιάδης",

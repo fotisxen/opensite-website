@@ -19,7 +19,7 @@ export const metadata = greekMetadata({
   enPath: "/",
 });
 
-const featured = ["akinita-fotiadis", "df-real-estate", "one-menoo"].map((slug) =>
+const featured = ["platterie-box", "akinita-fotiadis", "one-menoo"].map((slug) =>
   greekCases.find((c) => c.slug === slug),
 );
 

@@ -10,6 +10,7 @@ import Icon from "@/components/Icon";
 
 const filters = [
   "All Industries",
+  "Storytelling Website",
   "Real Estate",
   "Hospitality Tech",
   "Yacht & Marine Tourism",
@@ -19,6 +20,22 @@ const filters = [
 ];
 
 const cases = [
+  {
+    slug: "platterie-box",
+    image: "/work/platterie-box.webp",
+    industry: "Storytelling Website",
+    tag: "Storytelling Website",
+    tagClass: "bg-primary-container text-white",
+    title: "The Platterie Box: a Deli Tells Its Story",
+    problem:
+      "A deli that works with small Greek producers wanted a site that shows the people, the pairings and the space, not just products.",
+    solution:
+      "A scroll-driven storytelling site in four chapters, from the mountain and the cellar to the platter, the menu and the space.",
+    result: "Storytelling website",
+    stat1: { value: "4", label: "Story Chapters" },
+    stat2: { value: "8", label: "Cheeses Presented" },
+    statColor: "text-primary",
+  },
   {
     slug: "one-menoo",
     image: "/work/one-menoo.webp",

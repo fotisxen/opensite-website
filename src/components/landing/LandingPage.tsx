@@ -49,7 +49,7 @@ function CheckIcon() {
 }
 
 // Only cards with a real screenshot of the delivered site are shown.
-const WEBSITE_PROJECTS = ["akinita-fotiadis", "df-real-estate", "adonis-sail-yachts", "one-menoo"];
+const WEBSITE_PROJECTS = ["platterie-box", "akinita-fotiadis", "df-real-estate", "adonis-sail-yachts", "one-menoo"];
 
 function getWorkCards() {
   const list =
@@ -147,8 +147,14 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
               Δουλειές που έχουμε παραδώσει
             </h2>
             <div data-stagger className="mt-6 grid gap-5 sm:grid-cols-2">
-              {work.map((card) => (
-                <article key={card.slug} className="lift overflow-hidden rounded-2xl border border-surface-border bg-surface-card">
+              {work.map((card, i) => (
+                <article
+                  key={card.slug}
+                  // With an odd number of cards the newest one gets the full row.
+                  className={`lift overflow-hidden rounded-2xl border border-surface-border bg-surface-card ${
+                    i === 0 && work.length % 2 === 1 ? "sm:col-span-2" : ""
+                  }`}
+                >
                   {card.image && (
                     <WorkShot
                       src={card.image.src}
