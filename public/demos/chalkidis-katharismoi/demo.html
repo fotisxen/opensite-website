@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b2a4a">
+<title>Συνεργείο Καθαρισμού Θεσσαλονίκη · Χαλκίδης Θ. & ΣΙΑ Ο.Ε. · Πανόραμα</title>
+<meta name="description" content="Συνεργείο καθαρισμού στη Θεσσαλονίκη: σπίτια, γραφεία, καταστήματα, κοινόχρηστα πολυκατοικιών, τζάμια και καθαρισμός μετά από ανακαίνιση. Χαλκίδης Θ. & ΣΙΑ Ο.Ε., Άνω Πανόραμα. Τηλ. 2310 345508.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700;800;900&family=Noto+Serif+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for ΧΑΛΚΙΔΗΣ Θ. & ΣΙΑ Ο.Ε. (εταιρεία καθαρισμού, Άνω Πανόραμα).
+  No photos: the dirty glass, the bubbles and the rooms are drawn with canvas/SVG.
+  Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#f6fbfd;--white:#fff;--navy:#0b2a4a;--navy2:#123a63;--aqua:#19b6d2;--aqua2:#7fe3f2;--green:#2fc98a;--ink:#0d2236;--muted:#5d7187;--line:rgba(11,42,74,.1);
+  --f:"Commissioner",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.k{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--aqua)}
+h1,h2,h3{font-weight:800;letter-spacing:-.025em;line-height:1.02}
+h2{font-size:clamp(34px,5.2vw,64px)}
+h2 em,h1 em{font-family:var(--s);font-style:italic;font-weight:400;color:var(--aqua)}
+section{position:relative;padding:100px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 24px;border-radius:999px;background:var(--navy);color:#fff;font:700 15px/1 var(--f);transition:transform .2s,background .2s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);background:var(--navy2);box-shadow:0 12px 30px -12px rgba(11,42,74,.6)}
+.btn.aqua{background:var(--aqua)}
+.btn.aqua:hover{background:#13a3be}
+.btn.ghost{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--line)}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+nav.solid{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;font:800 18px/1.05 var(--f);color:var(--navy);white-space:nowrap}
+.logo i{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--aqua),var(--green));display:grid;place-items:center;color:#fff;font-style:normal;font-size:20px}
+.logo small{display:block;font:600 10px/1 var(--f);letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-top:4px}
+.links{display:flex;gap:26px;font:600 14px/1 var(--f);color:var(--muted)}
+.links a:hover{color:var(--navy)}
+@media(max-width:960px){.links{display:none}}
+@media(max-width:480px){nav .btn span{display:none}}
+
+/* hero: wipe the dirty glass */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;padding:100px 0 60px;overflow:hidden;background:radial-gradient(800px 500px at 80% 20%,#d9f6fb,transparent 70%),radial-gradient(700px 500px at 0% 100%,#e2fbef,transparent 70%),#fff}
+#bubbles{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:center;pointer-events:none}
+.hero .wrap > *{pointer-events:auto}
+.hero h1{font-size:clamp(44px,6.6vw,92px);color:var(--navy);margin:18px 0 20px}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:480px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;font:600 14px/1.3 var(--f);color:var(--navy)}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust span::before{content:"✓";width:22px;height:22px;border-radius:50%;background:#e2fbef;color:var(--green);display:grid;place-items:center;font-size:12px;font-weight:800}
+.window{position:relative;aspect-ratio:1/1.05;border-radius:24px;padding:16px;background:linear-gradient(145deg,#fff,#e8f3f7);box-shadow:0 30px 70px -30px rgba(11,42,74,.45),inset 0 0 0 1px var(--line)}
+.pane{position:relative;width:100%;height:100%;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#bfe9f7 0%,#e9f9ff 55%,#c9f0d8 56%,#9fe0b8 100%)}
+.pane .sun{position:absolute;right:16%;top:12%;width:22%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff6c9,#ffd76a 60%,rgba(255,215,106,0) 72%)}
+.pane .hill{position:absolute;left:-10%;right:-10%;bottom:-20%;height:60%;border-radius:50% 50% 0 0;background:linear-gradient(#7fd3a0,#56b880)}
+.pane .town{position:absolute;left:8%;right:8%;bottom:30%;height:22%;display:flex;align-items:flex-end;gap:3%}
+.pane .town i{flex:1;background:#fff;border-radius:4px 4px 0 0;box-shadow:inset 0 -4px 0 #e2eef3}
+.pane .msg{position:absolute;left:0;right:0;top:30%;text-align:center;font:800 clamp(20px,2.6vw,32px)/1.1 var(--f);color:var(--navy);opacity:0;transform:scale(.9);transition:all .6s cubic-bezier(.3,1.5,.5,1)}
+.pane .msg small{display:block;font:600 14px/1.4 var(--f);color:var(--navy2);margin-top:8px}
+.pane.clean .msg{opacity:1;transform:none}
+.pane canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:none}
+.frame-v,.frame-h{position:absolute;background:linear-gradient(145deg,#fff,#e8f3f7);z-index:3;pointer-events:none}
+.frame-v{left:50%;top:16px;bottom:16px;width:12px;margin-left:-6px}
+.frame-h{top:50%;left:16px;right:16px;height:12px;margin-top:-6px}
+.squeegee{position:fixed;left:0;top:0;z-index:60;width:86px;height:40px;margin:-8px 0 0 -43px;pointer-events:none;opacity:0;transition:opacity .2s}
+.squeegee.on{opacity:1}
+.cleanbar{margin-top:14px;display:flex;align-items:center;gap:12px;font:700 13px/1 var(--f);color:var(--muted)}
+.cleanbar .b{flex:1;height:8px;border-radius:4px;background:#e3eef3;overflow:hidden}
+.cleanbar .b i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--aqua),var(--green));transition:width .3s}
+.cleanbar b{color:var(--navy);min-width:44px;text-align:right}
+@media(max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:30px}.window{max-width:520px;width:100%;margin-inline:auto}}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.card{position:relative;background:#fff;border-radius:22px;padding:28px;box-shadow:0 1px 0 var(--line),0 20px 40px -30px rgba(11,42,74,.3);overflow:hidden;transition:transform .3s}
+.card:hover{transform:translateY(-6px)}
+.card .ic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:28px;background:var(--t,#e4f7fb)}
+.card h3{font-size:22px;margin:18px 0 8px;color:var(--navy)}
+.card p{color:var(--muted);font-size:15px}
+.card::after{content:"";position:absolute;right:-30px;bottom:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.9),rgba(127,227,242,.25) 60%,rgba(127,227,242,0) 72%);transform:scale(0);transition:transform .5s cubic-bezier(.3,1.5,.5,1)}
+.card:hover::after{transform:scale(1)}
+@media(max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc{grid-template-columns:1fr}}
+
+/* before / after */
+.ba-sec{background:var(--navy);color:#fff}
+.ba-sec h2 em{color:var(--aqua2)}
+.ba-sec .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:50px;align-items:center}
+.ba-sec p{color:#b8cde0}
+.ba{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none;cursor:ew-resize;box-shadow:0 30px 60px -30px #000}
+.ba svg{position:absolute;inset:0;width:100%;height:100%}
+.ba .dirty{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.4)}
+.ba .handle i{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;font-style:normal;font-weight:800;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.ba .tag{position:absolute;top:14px;padding:7px 11px;border-radius:999px;font:700 11px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.45);color:#fff}
+.ba .tag.l{left:14px}.ba .tag.r{right:14px;background:rgba(47,201,138,.85)}
+.rooms{display:flex;gap:6px;flex-wrap:wrap;margin-top:24px}
+.rooms button{padding:10px 14px;border-radius:999px;font:600 14px/1 var(--f);color:#b8cde0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.rooms button.on{background:#fff;color:var(--navy);box-shadow:none}
+.checklist{margin-top:20px;display:grid;gap:8px}
+.checklist li{list-style:none;display:flex;gap:10px;align-items:center;font-size:15px;color:#e3eef8;opacity:0;transform:translateX(-8px);animation:tick .4s forwards}
+.checklist li::before{content:"✓";width:22px;height:22px;flex:none;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+@keyframes tick{to{opacity:1;transform:none}}
+@media(max-width:900px){.ba-sec .wrap{grid-template-columns:1fr}}
+
+/* planner */
+.plan .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:start}
+.box{background:#fff;border-radius:26px;padding:28px;box-shadow:0 1px 0 var(--line),0 30px 60px -40px rgba(11,42,74,.45)}
+.box label{display:flex;justify-content:space-between;font:700 12px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:22px 0 12px}
+.box label:first-child{margin-top:0}
+.box label b{color:var(--navy);font-size:15px;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{padding:11px 14px;border-radius:14px;font:600 14px/1.1 var(--f);color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--line);transition:all .2s}
+.chips button.on{background:var(--navy);color:#fff;box-shadow:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--aqua) var(--p,30%),#e3eef3 var(--p,30%));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px var(--aqua),0 4px 10px rgba(0,0,0,.2);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 4px var(--aqua);cursor:pointer}
+.result{position:sticky;top:96px;background:linear-gradient(160deg,var(--navy),#0f3a66);color:#fff;border-radius:26px;padding:30px;overflow:hidden}
+.result::before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(127,227,242,.35),transparent 70%)}
+.result .k{color:var(--aqua2)}
+.crew{display:flex;gap:6px;margin:18px 0 6px;min-height:46px}
+.crew span{font-size:38px;animation:pop .35s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{transform:scale(0)}}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.rgrid div{padding:14px;border-radius:14px;background:rgba(255,255,255,.08)}
+.rgrid small{display:block;font:700 10px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;color:#9fbad3}
+.rgrid b{display:block;font:800 26px/1.1 var(--f);margin-top:6px}
+.result ul{margin-top:18px;display:grid;gap:6px}
+.result li{list-style:none;font-size:14.5px;color:#d6e6f3;display:flex;gap:8px}
+.result li::before{content:"✓";color:var(--green);font-weight:800}
+.result .acts{display:grid;gap:8px;margin-top:22px}
+.result .btn{width:100%}
+.result small.note{display:block;margin-top:12px;color:#9fbad3;font-size:12.5px}
+@media(max-width:900px){.plan .wrap{grid-template-columns:1fr}.result{position:relative;top:0}}
+
+/* why us */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.why div{padding:24px;border-radius:20px;background:#fff;box-shadow:0 1px 0 var(--line)}
+.why b{display:block;font:800 40px/1 var(--f);color:var(--aqua)}
+.why span{display:block;margin-top:10px;font-weight:600;color:var(--navy)}
+.why p{color:var(--muted);font-size:14px;margin-top:6px}
+@media(max-width:900px){.why{grid-template-columns:1fr 1fr}}
+
+/* reviews + area */
+.area .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:stretch}
+.map{border-radius:22px;overflow:hidden;min-height:380px;box-shadow:0 1px 0 var(--line),0 30px 60px -40px rgba(11,42,74,.45);background:#e3eef3}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+.places{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.places span{padding:9px 13px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:600 14px/1 var(--f);color:var(--navy)}
+.places span.home{background:var(--navy);color:#fff}
+.reviews{display:grid;gap:10px;margin-top:26px}
+.rev{padding:18px;border-radius:18px;background:#fff;box-shadow:0 1px 0 var(--line)}
+.rev .st{color:#f5b301;letter-spacing:2px}
+.rev p{color:var(--muted);font-size:15px;margin:6px 0}
+.rev b{font-size:14px;color:var(--navy)}
+@media(max-width:900px){.area .wrap{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:linear-gradient(160deg,#e4f7fb,#e2fbef)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:50px;align-items:center}
+.phone-big{display:inline-flex;align-items:center;gap:14px;margin-top:24px;font:900 clamp(32px,4.6vw,54px)/1 var(--f);color:var(--navy);letter-spacing:-.02em}
+.phone-big i{width:64px;height:64px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-style:normal;font-size:28px;animation:ring 2.4s infinite}
+@keyframes ring{0%,80%,100%{transform:rotate(0)}84%{transform:rotate(-14deg)}88%{transform:rotate(14deg)}92%{transform:rotate(-10deg)}96%{transform:rotate(8deg)}}
+.addr{margin-top:20px;color:var(--muted);font-size:15px;line-height:1.8}
+.addr b{color:var(--navy)}
+.form{background:#fff;border-radius:26px;padding:28px;box-shadow:0 30px 60px -40px rgba(11,42,74,.45)}
+.form label{display:block;font:700 12px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.form label:first-child{margin-top:0}
+.form input,.form textarea{width:100%;font:500 16px var(--f);color:var(--ink);padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg)}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--aqua)}
+.form textarea{min-height:90px;resize:vertical}
+.form .btn{width:100%;margin-top:18px}
+.sent{display:none;text-align:center;padding:26px 0}
+.sent.on{display:block;animation:pop .4s}
+.sent b{display:block;font:800 26px/1.2 var(--f);color:var(--navy);margin:10px 0}
+@media(max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+
+footer{background:var(--navy);color:#b8cde0;padding:40px 0 100px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{color:#fff}
+footer a{text-decoration:underline}
+.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:55;display:none;gap:8px}
+.callbar a{flex:1;justify-content:center}
+@media(max-width:760px){.callbar{display:flex}}
+
+/* notes */
+.notes .ph{outline:1.5px dashed var(--aqua);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--navy);padding:4px 8px;border-radius:5px;max-width:270px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:700 11px/1 var(--f);padding:10px 13px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.12);color:var(--muted)}
+.notes .notes-toggle{color:var(--aqua);box-shadow:inset 0 0 0 1px var(--aqua)}
+.clean .notes-toggle{display:none}
+@media(max-width:760px){.notes-toggle{bottom:76px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("ck-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body id="top">
+
+<nav id="nav"><div class="wrap">
+  <a class="logo ph" data-note="Εδώ μπαίνει το λογότυπό σας (ή φτιάχνουμε ένα)" href="#top"><i>✦</i><span>Χαλκίδης<small>Συνεργείο καθαρισμού</small></span></a>
+  <div class="links"><a href="#ypiresies">Υπηρεσίες</a><a href="#prin-meta">Πριν & μετά</a><a href="#prosfora">Προσφορά</a><a href="#perioxes">Περιοχές</a></div>
+  <a class="btn aqua" href="tel:+302310345508">📞 <span>2310 345508</span></a>
+</div></nav>
+
+<header class="hero">
+  <canvas id="bubbles"></canvas>
+  <div class="wrap">
+    <div>
+      <span class="k">✦ Συνεργείο καθαρισμού · Θεσσαλονίκη</span>
+      <h1>Καθαρό σπίτι.<br>Καθαρό γραφείο.<br><em>Καθαρό μυαλό.</em></h1>
+      <p class="lead">Σπίτια, γραφεία, καταστήματα, κοινόχρηστα πολυκατοικιών, τζάμια και καθαρισμός μετά από ανακαίνιση. Από το Πανόραμα, σε όλη τη Θεσσαλονίκη.</p>
+      <div class="cta"><a class="btn" href="#prosfora">Βρείτε τι χρειάζεστε</a><a class="btn ghost" href="tel:+302310345508">📞 2310 345508</a></div>
+      <div class="trust"><span>Οικογενειακή επιχείρηση</span><span>Τιμολόγιο &amp; απόδειξη</span><span class="ph" data-note="Επιβεβαιώστε: ασφαλισμένο προσωπικό, δικά σας υλικά">Δικά μας υλικά</span></div>
+    </div>
+    <div>
+      <div class="window">
+        <div class="pane" id="pane">
+          <div class="sun"></div><div class="town"><i style="height:60%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:75%"></i><i style="height:55%"></i></div><div class="hill"></div>
+          <div class="msg">✨ Πεντακάθαρο!<small>Αυτό κάνουμε κάθε μέρα. Και στο δικό σας τζάμι.</small></div>
+          <canvas id="dirt" aria-label="Βρώμικο τζάμι: σύρετε για να το καθαρίσετε"></canvas>
+        </div>
+        <span class="frame-v"></span><span class="frame-h"></span>
+      </div>
+      <div class="cleanbar">Καθαρό <div class="b"><i id="cleanBar"></i></div><b id="cleanPct">0%</b></div>
+    </div>
+  </div>
+</header>
+<svg class="squeegee" id="squeegee" viewBox="0 0 86 40" aria-hidden="true"><rect x="2" y="2" width="82" height="9" rx="3" fill="#0b2a4a"/><rect x="2" y="9" width="82" height="4" rx="2" fill="#19b6d2"/><rect x="38" y="12" width="10" height="26" rx="4" fill="#123a63"/></svg>
+
+<section id="ypiresies">
+  <div class="wrap">
+    <span class="k">Υπηρεσίες</span>
+    <h2 style="margin-top:14px">Ό,τι χρειάζεται <em>καθάρισμα.</em></h2>
+    <div class="svc ph" data-note="Ενδεικτικές υπηρεσίες: κρατάμε όσες κάνετε">
+      <article class="card"><div class="ic">🏠</div><h3>Σπίτια &amp; διαμερίσματα</h3><p>Γενικός ή εβδομαδιαίος καθαρισμός, με κουζίνα, μπάνια, πατώματα και τζάμια.</p></article>
+      <article class="card"><div class="ic" style="--t:#e2fbef">🏢</div><h3>Γραφεία &amp; καταστήματα</h3><p>Τακτικός καθαρισμός πριν ανοίξετε ή μετά το κλείσιμο, χωρίς να σας ενοχλούμε.</p></article>
+      <article class="card"><div class="ic" style="--t:#fff4dc">🏘️</div><h3>Κοινόχρηστα πολυκατοικιών</h3><p>Σκάλες, είσοδος, ασανσέρ, κάδοι. Με σταθερό πρόγραμμα που συμφωνείτε με τον διαχειριστή.</p></article>
+      <article class="card"><div class="ic" style="--t:#eaf0ff">🪟</div><h3>Τζάμια &amp; βιτρίνες</h3><p>Τζάμια, κουφώματα, τζαμαρίες και βιτρίνες καταστημάτων, χωρίς σημάδια.</p></article>
+      <article class="card"><div class="ic" style="--t:#ffe9ec">🧱</div><h3>Μετά από ανακαίνιση</h3><p>Σκόνη, μπογιές, σοβάδες. Παραδίδουμε τον χώρο έτοιμο να μπείτε.</p></article>
+      <article class="card"><div class="ic" style="--t:#f0e9ff">📦</div><h3>Μετακόμιση</h3><p>Καθαρισμός πριν μπείτε ή αφού φύγετε, για να πάρετε πίσω και την εγγύηση.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="ba-sec" id="prin-meta">
+  <div class="wrap">
+    <div>
+      <span class="k" style="color:var(--aqua2)">Πριν &amp; μετά</span>
+      <h2 style="margin-top:14px">Σύρετε και δείτε <em>τη διαφορά.</em></h2>
+      <p style="margin-top:16px">Διαλέξτε χώρο και δείτε τι καθαρίζουμε σε κάθε επίσκεψη.</p>
+      <div class="rooms" id="rooms"></div>
+      <ul class="checklist" id="checklist"></ul>
+    </div>
+    <div class="ba ph" id="ba" data-note="Εδώ μπαίνουν πραγματικές φωτογραφίες πριν/μετά από δουλειές σας">
+      <svg viewBox="0 0 400 300" id="baClean"></svg>
+      <svg viewBox="0 0 400 300" id="baDirty" class="dirty"></svg>
+      <span class="tag l">Πριν</span><span class="tag r">Μετά</span>
+      <div class="handle"><i>⇆</i></div>
+    </div>
+  </div>
+</section>
+
+<section class="plan" id="prosfora">
+  <div class="wrap">
+    <div>
+      <span class="k">Σε 20 δευτερόλεπτα</span>
+      <h2 style="margin:14px 0 26px">Τι <em>χρειάζεστε;</em></h2>
+      <div class="box">
+        <label>Χώρος</label>
+        <div class="chips" id="cType"></div>
+        <label>Τετραγωνικά <b id="sqmOut">80 τ.μ.</b></label>
+        <input type="range" id="sqm" min="20" max="400" step="10" value="80">
+        <label>Πόσο συχνά</label>
+        <div class="chips" id="cFreq"></div>
+        <label>Έξτρα</label>
+        <div class="chips" id="cExtra"></div>
+      </div>
+    </div>
+    <aside class="result" id="result">
+      <span class="k">Το πλάνο σας</span>
+      <div class="crew" id="crew"></div>
+      <div class="rgrid ph" data-note="Ενδεικτικός υπολογισμός: τον ρυθμίζουμε με τους δικούς σας χρόνους"><div><small>Συνεργείο</small><b id="rCrew">2 άτομα</b></div><div><small>Διάρκεια</small><b id="rTime">~3 ώρες</b></div></div>
+      <ul id="rList"></ul>
+      <div class="acts">
+        <a class="btn aqua" href="tel:+302310345508">📞 Καλέστε για προσφορά</a>
+        <a class="btn ghost" href="#epikoinonia" id="sendPlan">Στείλτε το πλάνο γραπτώς</a>
+      </div>
+      <small class="note">Η τιμή δίνεται μετά από σύντομη συζήτηση ή αυτοψία. Χωρίς δέσμευση.</small>
+    </aside>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <span class="k">Γιατί εμάς</span>
+    <h2 style="margin-top:14px">Καθαρά <em>πράγματα.</em></h2>
+    <div class="why ph" data-note="Αριθμοί και χρόνια: να τα συμπληρώσετε">
+      <div><b>20+</b><span>χρόνια εμπειρία</span><p>Οικογενειακή επιχείρηση με όνομα και ευθύνη.</p></div>
+      <div><b>Ο.Ε.</b><span>με τιμολόγιο</span><p>Για επιχειρήσεις, πολυκατοικίες και ιδιώτες.</p></div>
+      <div><b>24ω</b><span>απάντηση</span><p>Σας καλούμε πίσω μέσα στην ίδια ή την επόμενη μέρα.</p></div>
+      <div><b>100%</b><span>ικανοποίηση</span><p>Αν κάτι δεν σας αρέσει, ξαναπερνάμε.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="area" id="perioxes">
+  <div class="wrap">
+    <div>
+      <span class="k">Περιοχές</span>
+      <h2 style="margin-top:14px">Από το Πανόραμα, <em>σε όλη τη Θεσσαλονίκη.</em></h2>
+      <div class="places ph" data-note="Οι περιοχές που εξυπηρετείτε"><span class="home">📍 Πανόραμα</span><span>Πυλαία</span><span>Θέρμη</span><span>Καλαμαριά</span><span>Χορτιάτης</span><span>Ασβεστοχώρι</span><span>Τριανδρία</span><span>Κέντρο</span><span>Νέα Ελβετία</span></div>
+      <div class="reviews ph" data-note="Εδώ μπαίνουν κριτικές Google. Μόλις στήσουμε το προφίλ, ζητάμε από 5-10 πελάτες να γράψουν">
+        <div class="rev"><span class="st">★★★★★</span><p>«Η κριτική του πρώτου πελάτη μπαίνει εδώ.»</p><b>Όνομα πελάτη · Google</b></div>
+        <div class="rev"><span class="st">★★★★★</span><p>«Και η δεύτερη, μόλις τη γράψει.»</p><b>Όνομα πελάτη · Google</b></div>
+      </div>
+    </div>
+    <div class="map"><iframe loading="lazy" title="Χάρτης" src="https://www.google.com/maps?q=%CE%A5%CE%B4%CF%81%CE%B1%CE%B3%CF%89%CE%B3%CE%B5%CE%AF%CE%BF%CF%85%204%2C%20%CE%86%CE%BD%CF%89%20%CE%A0%CE%B1%CE%BD%CF%8C%CF%81%CE%B1%CE%BC%CE%B1%2055236&output=embed"></iframe></div>
+  </div>
+</section>
+
+<section class="contact" id="epikoinonia">
+  <div class="wrap">
+    <div>
+      <span class="k">Επικοινωνία</span>
+      <h2 style="margin-top:14px">Ένα τηλεφώνημα <em>και τελειώσατε.</em></h2>
+      <a class="phone-big" href="tel:+302310345508"><i>📞</i>2310 345508</a>
+      <p class="addr"><b>ΧΑΛΚΙΔΗΣ Θ. &amp; ΣΙΑ Ο.Ε.</b><br>Υδραγωγείου 4, Άνω Πανόραμα, 552 36 Θεσσαλονίκη<br><span class="ph" data-note="Κινητό, email, ωράριο">Κινητό · Email · Ωράριο</span></p>
+    </div>
+    <form class="form" id="form" onsubmit="return false">
+      <div id="fbody">
+        <label for="fn">Όνομα</label><input id="fn" autocomplete="name">
+        <label for="ft">Τηλέφωνο</label><input id="ft" inputmode="tel" autocomplete="tel">
+        <label for="fm">Τι χρειάζεστε;</label><textarea id="fm"></textarea>
+        <button class="btn" type="button" id="send">Ζητήστε προσφορά</button>
+      </div>
+      <div class="sent" id="sent"><div style="font-size:48px">✨</div><b>Ευχαριστούμε!</b><p style="color:var(--muted)">Αυτό είναι demo, οπότε δεν στάλθηκε. Στο κανονικό site το αίτημα έρχεται κατευθείαν σε εσάς, με email και ειδοποίηση στο κινητό.</p></div>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap"><span><b>ΧΑΛΚΙΔΗΣ Θ. &amp; ΣΙΑ Ο.Ε.</b> · Εταιρεία καθαρισμού · Υδραγωγείου 4, Άνω Πανόραμα · 2310 345508</span><span>Demo από <a href="https://opensite.gr">OpenSite</a></span></div></footer>
+<div class="callbar"><a class="btn aqua" href="tel:+302310345508">📞 Κλήση</a><a class="btn" href="#prosfora">✦ Προσφορά</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const html = document.documentElement, fine = matchMedia("(pointer:fine)").matches;
+$("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("ck-notes", on ? "on" : "off"); } catch (e) {} });
+addEventListener("scroll", () => $("#nav").classList.toggle("solid", scrollY > 30), { passive: true });
+
+/* ---------- soap bubbles: they float up and pop when touched ---------- */
+(() => {
+  const hero = $(".hero"), cv = $("#bubbles"), ctx = cv.getContext("2d"); let W, H; const B = [], drops = [];
+  const size = () => { const d = Math.min(2, devicePixelRatio || 1); W = hero.clientWidth; H = hero.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener("resize", size);
+  const add = (y) => B.push({ x: Math.random() * W, y: y ?? H + 40, r: 8 + Math.random() * 28, v: .3 + Math.random() * .7, w: Math.random() * 6, hue: Math.random() * 360 });
+  for (let i = 0; i < 18; i++) add(Math.random() * H);
+  function pop(b) { for (let i = 0; i < 10; i++) { const a = i / 10 * 6.28; drops.push({ x: b.x + Math.cos(a) * b.r, y: b.y + Math.sin(a) * b.r, vx: Math.cos(a) * 2, vy: Math.sin(a) * 2, life: 1 }); } }
+  function hit(x, y) { for (let i = B.length - 1; i >= 0; i--) { const b = B[i]; if (Math.hypot(b.x - x, b.y - y) < b.r + 6) { pop(b); B.splice(i, 1); setTimeout(() => add(), 600); } } }
+  hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect(); hit(e.clientX - r.left, e.clientY - r.top); });
+  hero.addEventListener("pointerdown", e => { const r = hero.getBoundingClientRect(); hit(e.clientX - r.left, e.clientY - r.top); });
+  (function loop() {
+    ctx.clearRect(0, 0, W, H);
+    B.forEach(b => {
+      b.y -= b.v; b.w += .02; b.x += Math.sin(b.w) * .4; b.hue += .5;
+      if (b.y < -60) { b.y = H + 40; b.x = Math.random() * W; }
+      const g = ctx.createRadialGradient(b.x - b.r * .35, b.y - b.r * .35, b.r * .1, b.x, b.y, b.r);
+      g.addColorStop(0, "rgba(255,255,255,.9)"); g.addColorStop(.6, `hsla(${b.hue},90%,85%,.12)`); g.addColorStop(.92, `hsla(${b.hue + 60},90%,70%,.35)`); g.addColorStop(1, "rgba(255,255,255,0)");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 7); ctx.fill();
+      ctx.strokeStyle = `hsla(${b.hue},80%,70%,.35)`; ctx.lineWidth = 1; ctx.stroke();
+    });
+    for (let i = drops.length - 1; i >= 0; i--) { const d = drops[i]; d.x += d.vx; d.y += d.vy; d.vy += .1; d.life -= .04; if (d.life <= 0) { drops.splice(i, 1); continue; } ctx.fillStyle = `rgba(25,182,210,${d.life})`; ctx.beginPath(); ctx.arc(d.x, d.y, 2, 0, 7); ctx.fill(); }
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ---------- the dirty window: wipe it clean with a squeegee ---------- */
+(() => {
+  const pane = $("#pane"), cv = $("#dirt"), ctx = cv.getContext("2d"), sq = $("#squeegee");
+  let W, H, done = false, n = 0;
+  function dirty() {
+    const r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W; cv.height = H;
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba(150,132,104,.82)"; ctx.fillRect(0, 0, W, H);
+    // grime blotches, drips, specks and a "wash me" note in the dust
+    for (let i = 0; i < 40; i++) { const x = Math.random() * W, y = Math.random() * H, rr = 20 + Math.random() * 80, g = ctx.createRadialGradient(x, y, 0, x, y, rr); g.addColorStop(0, `rgba(${90 + Math.random() * 40},${75 + Math.random() * 30},${50 + Math.random() * 20},.5)`); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.fillRect(x - rr, y - rr, rr * 2, rr * 2); }
+    for (let i = 0; i < 18; i++) { const x = Math.random() * W, y = Math.random() * H * .5, len = 40 + Math.random() * 140; const g = ctx.createLinearGradient(x, y, x, y + len); g.addColorStop(0, "rgba(90,72,48,.5)"); g.addColorStop(1, "rgba(90,72,48,0)"); ctx.fillStyle = g; ctx.fillRect(x, y, 3 + Math.random() * 4, len); }
+    for (let i = 0; i < 900; i++) { ctx.fillStyle = `rgba(${60 + Math.random() * 60},${50 + Math.random() * 40},30,${Math.random() * .5})`; ctx.fillRect(Math.random() * W, Math.random() * H, Math.random() * 2.5, Math.random() * 2.5); }
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.font = `700 ${Math.max(22, W / 11)}px Commissioner, sans-serif`; ctx.textAlign = "center"; ctx.lineWidth = 5; ctx.strokeStyle = "rgba(0,0,0,.55)";
+    ctx.strokeText("ΚΑΘΑΡΙΣΕ ΜΕ", W / 2, H * .42); ctx.font = `600 ${Math.max(14, W / 22)}px Commissioner, sans-serif`; ctx.lineWidth = 3; ctx.strokeText("σύρε το δάχτυλο ↔", W / 2, H * .56);
+    ctx.globalCompositeOperation = "source-over";
+  }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(dirty);
+  let rw = 0; addEventListener("resize", () => { const w = cv.getBoundingClientRect().width; if (!done && Math.abs(w - rw) > 40) { rw = w; dirty(); } });
+  let down = false, last = null;
+  const pos = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  function wipe(x, y) {
+    ctx.globalCompositeOperation = "destination-out";
+    const bw = Math.max(44, W * .16), steps = last ? Math.ceil(Math.hypot(x - last[0], y - last[1]) / 4) : 1;
+    for (let i = 1; i <= steps; i++) { const px = last ? last[0] + (x - last[0]) * i / steps : x, py = last ? last[1] + (y - last[1]) * i / steps : y; ctx.fillStyle = "rgba(0,0,0,1)"; ctx.fillRect(px - bw / 2, py - 10, bw, 22); }
+    ctx.globalCompositeOperation = "source-over";
+    // a thin water streak at the blade's edge
+    ctx.fillStyle = "rgba(255,255,255,.18)"; ctx.fillRect(x - bw / 2, y + 12, bw, 2);
+    last = [x, y];
+    if (++n % 10 === 0) check();
+  }
+  function check() {
+    if (done) return;
+    const d = ctx.getImageData(0, 0, cv.width, cv.height).data; let c = 0, t = 0;
+    for (let i = 3; i < d.length; i += 4 * 53) { t++; if (d[i] < 70) c++; }
+    const p = Math.min(100, Math.round(c / t * 100 / .6));
+    $("#cleanBar").style.width = p + "%"; $("#cleanPct").textContent = p + "%";
+    if (p >= 80) { done = true; $("#cleanBar").style.width = "100%"; $("#cleanPct").textContent = "100%"; cv.style.transition = "opacity 1s"; cv.style.opacity = 0; pane.classList.add("clean"); sparkle(); setTimeout(() => cv.remove(), 1000); }
+  }
+  function sparkle() { const r = pane.getBoundingClientRect(); for (let i = 0; i < 26; i++) { const s = document.createElement("span"); s.textContent = ["✨", "✦", "🫧"][i % 3]; s.style.cssText = `position:fixed;left:${r.left + Math.random() * r.width}px;top:${r.top + Math.random() * r.height}px;z-index:70;font-size:${14 + Math.random() * 18}px;pointer-events:none;transition:all 1.4s ease-out`; document.body.appendChild(s); requestAnimationFrame(() => { s.style.transform = `translateY(-${40 + Math.random() * 80}px) scale(1.3)`; s.style.opacity = 0; }); setTimeout(() => s.remove(), 1500); } }
+  cv.addEventListener("pointerdown", e => { down = true; last = null; cv.setPointerCapture(e.pointerId); wipe(...pos(e)); });
+  cv.addEventListener("pointermove", e => { if (fine) { sq.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; sq.classList.add("on"); } if (down || (fine && e.pointerType === "mouse")) wipe(...pos(e)); });
+  cv.addEventListener("pointerleave", () => { sq.classList.remove("on"); last = null; });
+  ["pointerup", "pointercancel"].forEach(ev => cv.addEventListener(ev, () => { down = false; last = null; check(); }));
+})();
+
+/* ---------- before / after + room checklists ---------- */
+(() => {
+  const ROOMS = {
+    "Κουζίνα": ["Πάγκοι, πλακάκια και νεροχύτης", "Εστίες και απορροφητήρας", "Ντουλάπια απ' έξω", "Πάτωμα, σφουγγάρισμα"],
+    "Μπάνιο": ["Πλακάκια και αρμοί", "Λεκάνη, νιπτήρας, ντουζιέρα", "Άλατα από βρύσες", "Καθρέφτες χωρίς σημάδια"],
+    "Σαλόνι": ["Ξεσκόνισμα σε όλες τις επιφάνειες", "Ηλεκτρική σκούπα σε χαλιά και καναπέ", "Διακόπτες και πόρτες", "Σφουγγάρισμα"],
+    "Τζάμια": ["Τζάμια μέσα και έξω", "Κουφώματα και ράγες", "Περβάζια", "Σίτες"],
+    "Κοινόχρηστα": ["Σκάλες και κουπαστές", "Είσοδος και γραμματοκιβώτια", "Ασανσέρ", "Χώρος κάδων"]
+  };
+  const keys = Object.keys(ROOMS);
+  $("#rooms").innerHTML = keys.map((k, i) => `<button type="button" class="${i ? "" : "on"}">${k}</button>`).join("");
+  const showRoom = k => { $("#checklist").innerHTML = ROOMS[k].map((t, i) => `<li style="animation-delay:${i * 120}ms">${t}</li>`).join(""); };
+  $("#rooms").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; $$("#rooms button").forEach(x => x.classList.toggle("on", x === b)); showRoom(b.textContent); });
+  showRoom(keys[0]);
+  // the same kitchen, clean and dirty
+  const kitchen = (dirty) => `
+    <rect width="400" height="300" fill="${dirty ? "#d9cdb6" : "#f3f8fa"}"/>
+    <g opacity="${dirty ? .9 : 1}">${Array.from({ length: 8 }, (_, i) => Array.from({ length: 4 }, (_, j) => `<rect x="${i * 50}" y="${j * 30 + 60}" width="49" height="29" fill="${dirty ? "#e6dcc5" : "#ffffff"}" stroke="${dirty ? "#a8987a" : "#dbe7ee"}"/>`).join("")).join("")}</g>
+    <rect x="40" y="18" width="120" height="70" rx="4" fill="${dirty ? "#a9b4a2" : "#bfe9f7"}" stroke="${dirty ? "#7d725e" : "#fff"}" stroke-width="6"/>
+    <rect x="0" y="180" width="400" height="16" fill="${dirty ? "#8c7f68" : "#0b2a4a"}"/>
+    <rect x="0" y="196" width="400" height="104" fill="${dirty ? "#b5a68a" : "#e4eef3"}"/>
+    ${[0, 1, 2, 3].map(i => `<rect x="${12 + i * 98}" y="206" width="88" height="84" rx="6" fill="${dirty ? "#cbbc9e" : "#fff"}" stroke="${dirty ? "#9c8d70" : "#d3e1e9"}"/><rect x="${48 + i * 98}" y="214" width="16" height="4" rx="2" fill="${dirty ? "#7b6d55" : "#19b6d2"}"/>`).join("")}
+    <rect x="230" y="160" width="90" height="22" rx="4" fill="${dirty ? "#8f8a80" : "#cfd8dd"}"/><path d="M270 160 V138 Q270 128 282 128 H290" stroke="${dirty ? "#7a756c" : "#9aa7ae"}" stroke-width="5" fill="none"/>
+    <circle cx="90" cy="172" r="12" fill="${dirty ? "#6b5f4a" : "#2a3a46"}"/><circle cx="130" cy="172" r="12" fill="${dirty ? "#6b5f4a" : "#2a3a46"}"/>
+    ${dirty ? `
+      <g fill="#7a5f38" opacity=".55"><ellipse cx="95" cy="176" rx="34" ry="8"/><ellipse cx="300" cy="120" rx="40" ry="26"/><ellipse cx="200" cy="90" rx="22" ry="40"/><ellipse cx="60" cy="250" rx="30" ry="12"/><ellipse cx="350" cy="240" rx="24" ry="30"/></g>
+      <g stroke="#5d4a2f" stroke-width="2" opacity=".5">${Array.from({ length: 14 }, () => { const x = Math.random() * 400; return `<line x1="${x}" y1="60" x2="${x + 2}" y2="${90 + Math.random() * 60}"/>`; }).join("")}</g>
+      <path d="M330 0 Q340 30 400 30 M350 0 Q356 16 400 12 M380 0 L400 50" stroke="#fff" stroke-width="1" fill="none" opacity=".6"/>
+      <g fill="#4a3a22" opacity=".6">${Array.from({ length: 70 }, () => `<circle cx="${Math.random() * 400}" cy="${Math.random() * 300}" r="${Math.random() * 1.8}"/>`).join("")}</g>` : `
+      <g fill="#fff">${[[70, 40], [150, 70], [300, 110], [360, 200], [120, 230]].map(([x, y]) => `<path d="M${x} ${y - 8} L${x + 2} ${y - 2} L${x + 8} ${y} L${x + 2} ${y + 2} L${x} ${y + 8} L${x - 2} ${y + 2} L${x - 8} ${y} L${x - 2} ${y - 2}Z" opacity=".95"/>`).join("")}</g>`}`;
+  $("#baClean").innerHTML = kitchen(false); $("#baDirty").innerHTML = kitchen(true);
+  const ba = $("#ba"); let drag = false;
+  const set = e => { const r = ba.getBoundingClientRect(); const x = Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)); ba.style.setProperty("--x", x + "%"); };
+  ba.addEventListener("pointerdown", e => { drag = true; ba.setPointerCapture(e.pointerId); set(e); });
+  ba.addEventListener("pointermove", e => { if (drag) set(e); });
+  ba.addEventListener("pointerup", () => drag = false);
+  // a little sweep when it comes into view
+  new IntersectionObserver((es, o) => { if (!es[0].isIntersecting) return; o.disconnect(); let t0 = performance.now(); (function sw(t) { const p = Math.min(1, (t - t0) / 1600); ba.style.setProperty("--x", (85 - 60 * Math.sin(p * Math.PI)) + "%"); if (p < 1 && !drag) requestAnimationFrame(sw); })(t0); }, { threshold: .5 }).observe(ba);
+})();
+
+/* ---------- planner: crew & time (no prices) ---------- */
+(() => {
+  const TYPES = { "🏠 Σπίτι": [1, 25, ["Κουζίνα και μπάνια", "Ξεσκόνισμα και σκούπισμα", "Σφουγγάρισμα"]], "🏢 Γραφείο": [1, 35, ["Γραφεία και επιφάνειες", "Κουζινάκι και WC", "Κάδοι και πατώματα"]], "🏘️ Κοινόχρηστα": [1, 60, ["Σκάλες και κουπαστές", "Είσοδος και ασανσέρ", "Χώρος κάδων"]], "🧱 Μετά από ανακαίνιση": [2, 14, ["Σκόνη από παντού", "Μπογιές και σοβάδες από τζάμια και πλακάκια", "Τελικό γυάλισμα"]], "🪟 Τζάμια": [1, 45, ["Τζάμια μέσα και έξω", "Κουφώματα και ράγες", "Περβάζια"]] };
+  const FREQ = ["Μία φορά", "Κάθε εβδομάδα", "Κάθε 15 μέρες", "Κάθε μήνα"];
+  const EXTRA = { "Ψυγείο μέσα": .5, "Φούρνος": .7, "Ντουλάπια μέσα": 1, "Μπαλκόνια": .8, "Σίτες": .5 };
+  let type = Object.keys(TYPES)[0], freq = FREQ[0]; const extra = new Set();
+  $("#cType").innerHTML = Object.keys(TYPES).map((t, i) => `<button type="button" class="${i ? "" : "on"}">${t}</button>`).join("");
+  $("#cFreq").innerHTML = FREQ.map((t, i) => `<button type="button" class="${i ? "" : "on"}">${t}</button>`).join("");
+  $("#cExtra").innerHTML = Object.keys(EXTRA).map(t => `<button type="button">${t}</button>`).join("");
+  const one = (sel, cb) => $(sel).addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; $$(sel + " button").forEach(x => x.classList.toggle("on", x === b)); cb(b.textContent); calc(); });
+  one("#cType", t => type = t); one("#cFreq", t => freq = t);
+  $("#cExtra").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; b.classList.toggle("on"); extra.has(b.textContent) ? extra.delete(b.textContent) : extra.add(b.textContent); calc(); });
+  const sqm = $("#sqm"); sqm.addEventListener("input", calc);
+  let lastCrew = 0;
+  function calc() {
+    const m = +sqm.value; sqm.style.setProperty("--p", (m - 20) / 380 * 100 + "%"); $("#sqmOut").textContent = m + " τ.μ.";
+    const [base, perHour, list] = TYPES[type];
+    let hours = m / perHour + [...extra].reduce((s, k) => s + EXTRA[k], 0);
+    if (freq !== FREQ[0]) hours *= .8; // regular visits are quicker
+    let crew = Math.max(base, Math.min(5, Math.ceil(hours / 4)));
+    const time = Math.max(1.5, hours / crew);
+    $("#rCrew").textContent = crew + (crew === 1 ? " άτομο" : " άτομα");
+    $("#rTime").textContent = "~" + (Math.round(time * 2) / 2).toString().replace(".", ",") + " ώρες";
+    if (crew !== lastCrew) { $("#crew").innerHTML = Array.from({ length: crew }, (_, i) => `<span style="animation-delay:${i * 80}ms">${["🧑‍🔧", "👩‍🔧", "🧑‍🔧", "👩‍🔧", "🧑‍🔧"][i]}</span>`).join("") + `<span style="animation-delay:${crew * 80}ms">🧽</span>`; lastCrew = crew; }
+    $("#rList").innerHTML = [...list, ...extra, freq === FREQ[0] ? "Μία επίσκεψη" : "Σταθερό πρόγραμμα: " + freq.toLowerCase()].map(t => `<li>${t}</li>`).join("");
+    $("#sendPlan").dataset.plan = `${type.replace(/^\S+\s/, "")}, ${m} τ.μ., ${freq.toLowerCase()}${extra.size ? ", μαζί με: " + [...extra].join(", ").toLowerCase() : ""}.`;
+  }
+  $("#sendPlan").addEventListener("click", () => { $("#fm").value = "Θα ήθελα προσφορά για: " + $("#sendPlan").dataset.plan; setTimeout(() => $("#fn").focus(), 600); });
+  calc();
+})();
+
+/* ---------- contact ---------- */
+$("#send").addEventListener("click", () => { $("#fbody").style.display = "none"; $("#sent").classList.add("on"); });
+</script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#050708">
+<title>Phenom Sports Services · Basketball Agency · #bePHENOMenal</title>
+<meta name="description" content="Phenom Sports Services: FIBA-licensed basketball agency from Thessaloniki. Contract negotiation, legal services, endorsements, social media, wealth management and post-career planning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Phenom Sports Services (phenomsports.eu).
+  Player and coach cards are loaded straight from phenomsports.eu. The court, the ball game and the play diagram are drawn live.
+  Everything marked .ph is placeholder (toggle "Notes", hide with ?clean).
+-->
+<style>
+:root{
+  --bg:#050708;--bg2:#0b1012;--bg3:#111a1d;--ink:#eef6f6;--muted:#7f9a9c;--line:rgba(238,246,246,.1);
+  --teal:#1fb3b5;--teal2:#5fe3e0;--teal3:#0d6e72;--hot:#ff6a3d;
+  --f:"Archivo",system-ui,sans-serif;--m:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+.kicker{font:700 12px/1 var(--m);letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
+.big{font-family:var(--f);font-weight:900;font-style:italic;font-stretch:115%;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.big .o{-webkit-text-stroke:1.5px var(--teal);color:transparent}
+.big .t{color:var(--teal)}
+h2.big{font-size:clamp(46px,8.4vw,128px)}
+section{position:relative;padding:120px 0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;background:var(--teal);color:#021213;font:800 14px/1 var(--f);font-stretch:110%;letter-spacing:.12em;text-transform:uppercase;font-style:italic;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:background .25s,transform .2s}
+.btn:hover{background:var(--teal2);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.ghost:hover{color:var(--teal2);box-shadow:inset 0 0 0 1.5px var(--teal)}
+
+/* overture: shot clock */
+.ov{position:fixed;inset:0;z-index:100;background:#000;display:grid;place-content:center;justify-items:center;gap:18px;animation:ovOut .6s ease 1.9s forwards}
+.ov .clock{font:700 clamp(90px,22vw,220px)/1 var(--m);color:#ff3b2f;text-shadow:0 0 30px rgba(255,59,47,.7);letter-spacing:-.04em}
+.ov .tag{font:900 italic clamp(20px,4vw,34px)/1 var(--f);font-stretch:120%;letter-spacing:.06em;opacity:0;transition:opacity .3s}
+.ov.buzz{animation:buzz .15s 3,ovOut .6s ease 1.9s forwards}
+.ov.buzz .tag{opacity:1}
+html.seen .ov{display:none}
+@keyframes buzz{50%{background:#0d2a2c}}
+@keyframes ovOut{to{opacity:0;visibility:hidden}}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s}
+nav.solid{background:rgba(5,7,8,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:40px;width:auto}
+.links{display:flex;gap:28px;font:700 12px/1 var(--f);font-stretch:110%;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.links a:hover{color:var(--teal2)}
+@media(max-width:980px){.links{display:none}nav .btn{padding:12px 16px;font-size:12px}}
+
+/* hero */
+.hero{min-height:100svh;padding:110px 0 50px;display:grid;align-items:center;overflow:hidden;background:radial-gradient(900px 600px at 72% 40%,rgba(31,179,181,.16),transparent 70%),radial-gradient(600px 400px at 10% 90%,rgba(31,179,181,.08),transparent 70%),var(--bg)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(95,227,224,.18) 1px,transparent 1.4px);background-size:22px 22px;mask-image:radial-gradient(ellipse at 70% 40%,#000 0,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 0,transparent 70%);opacity:.6}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:center}
+.hero h1{font-size:clamp(44px,5.6vw,88px);font-stretch:100%;margin:22px 0}
+.hero h1 .tag{display:block;font-size:.42em;font-weight:300;font-style:italic;letter-spacing:.02em;margin-top:.25em;text-transform:none;font-stretch:100%}
+.hero h1 .tag b{font-weight:900;color:var(--ink)}
+.hero h1 .tag span{color:var(--teal)}
+.hero p.lead{color:var(--muted);max-width:470px;font-size:18px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.court{position:relative;aspect-ratio:1/.92;border-radius:6px;overflow:hidden;background:linear-gradient(180deg,#0b1416,#081012);box-shadow:inset 0 0 0 1px var(--line),0 40px 80px -40px rgba(31,179,181,.4);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.court canvas{position:absolute;inset:0;width:100%;height:100%}
+.court .hud{position:absolute;left:14px;top:12px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;font:700 12px/1.3 var(--m);letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.court .hud b{display:block;font:700 34px/1 var(--m);color:var(--ink);letter-spacing:0}
+.court .hud .r{text-align:right}
+.court .msg{position:absolute;left:0;right:0;top:42%;text-align:center;font:900 italic clamp(30px,5vw,58px)/1 var(--f);font-stretch:120%;text-transform:uppercase;pointer-events:none;opacity:0;transform:scale(.7);transition:all .35s cubic-bezier(.3,1.6,.5,1);text-shadow:0 0 30px rgba(31,179,181,.7)}
+.court .msg.on{opacity:1;transform:none}
+.court .help{position:absolute;left:0;right:0;bottom:12px;text-align:center;font:700 11px/1 var(--m);letter-spacing:.16em;color:var(--muted);text-transform:uppercase;pointer-events:none;transition:opacity .4s}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:96px}.court{aspect-ratio:1/1}}
+
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--line);background:var(--bg2);padding:20px 0}
+.marq div{display:flex;gap:40px;width:max-content;animation:mq 40s linear infinite;font:900 italic 34px/1 var(--f);font-stretch:120%;text-transform:uppercase}
+.marq span:nth-child(odd){color:transparent;-webkit-text-stroke:1px var(--teal)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* scoreboard */
+.board{background:#030405;border:1px solid #182326;border-radius:10px;padding:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;box-shadow:0 30px 80px -40px rgba(31,179,181,.5),inset 0 0 40px rgba(0,0,0,.8)}
+.cell{text-align:center;padding:14px 8px;border-radius:6px;background:#06090a;box-shadow:inset 0 0 0 1px #121c1f}
+.cell small{display:block;font:700 11px/1 var(--m);letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.cell b{display:block;font:700 clamp(46px,6vw,76px)/1.05 var(--m);color:#ffb02e;text-shadow:0 0 16px rgba(255,176,46,.55);margin-top:10px;letter-spacing:-.02em}
+.cell.t b{color:var(--teal2);text-shadow:0 0 16px rgba(95,227,224,.55)}
+@media(max-width:760px){.board{grid-template-columns:1fr 1fr}}
+
+/* starting five */
+.five .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:50px;align-items:center}
+.fcourt{position:relative;aspect-ratio:1/.94;border-radius:6px;background:linear-gradient(180deg,#3a2614,#2b1b0e);overflow:hidden;box-shadow:0 30px 60px -30px #000}
+.fcourt::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 46px)}
+.fcourt svg.lines{position:absolute;inset:0;width:100%;height:100%}
+.jersey{position:absolute;width:clamp(64px,9vw,92px);transform:translate(-50%,-50%);text-align:center;transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.jersey:hover,.jersey.on{transform:translate(-50%,-56%) scale(1.08)}
+.jersey svg{width:100%;filter:drop-shadow(0 10px 12px rgba(0,0,0,.6))}
+.jersey .shirt{fill:#0c1416;stroke:var(--teal);stroke-width:3;transition:fill .3s}
+.jersey.on .shirt{fill:var(--teal)}
+.jersey.on .num{fill:#021213}
+.jersey small{display:block;margin-top:4px;font:800 10px/1.1 var(--f);font-stretch:110%;letter-spacing:.1em;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px #000}
+.bio{min-height:420px}
+.bio .role{font:700 12px/1 var(--m);letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
+.bio h3{font:900 italic clamp(36px,4.8vw,64px)/.9 var(--f);font-stretch:115%;text-transform:uppercase;margin:12px 0 8px}
+.bio .lic{display:inline-block;font:700 11px/1 var(--m);letter-spacing:.1em;padding:7px 9px;background:rgba(31,179,181,.12);color:var(--teal2);margin-bottom:16px}
+.bio p{color:#b9cccd;margin-top:10px}
+.bio .facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.bio .facts span{font:700 11px/1 var(--m);letter-spacing:.06em;padding:8px 10px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.fadein{animation:fi .45s ease}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+@media(max-width:900px){.five .wrap{grid-template-columns:1fr}.bio{min-height:0}}
+
+/* the play */
+.play{background:var(--bg2)}
+.play .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:start}
+.board2{position:sticky;top:96px;aspect-ratio:1/.94;border-radius:6px;background:#0d1a1c;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.board2 svg{width:100%;height:100%;display:block}
+.steps{display:grid;gap:8px}
+.step{display:grid;grid-template-columns:54px 1fr;gap:14px;text-align:left;padding:18px;border-radius:4px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line);transition:all .3s}
+.step .n{font:900 italic 40px/1 var(--f);font-stretch:120%;color:transparent;-webkit-text-stroke:1px var(--muted);transition:all .3s}
+.step b{display:block;font:900 italic 20px/1.1 var(--f);font-stretch:115%;text-transform:uppercase}
+.step p{display:none;color:#a9bfc0;font-size:15px;margin-top:8px}
+.step.on{background:linear-gradient(90deg,rgba(31,179,181,.14),transparent);box-shadow:inset 3px 0 0 var(--teal)}
+.step.on .n{color:var(--teal);-webkit-text-stroke:0}
+.step.on p{display:block;animation:fi .4s}
+.runbtn{margin-bottom:16px}
+@media(max-width:900px){.play .wrap{grid-template-columns:1fr}.board2{position:relative;top:0}}
+
+/* roster */
+.roster{background:radial-gradient(1000px 500px at 50% 0,rgba(31,179,181,.12),transparent 70%),var(--bg)}
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:30px}
+.filters button{padding:11px 14px;font:800 12px/1 var(--f);font-stretch:110%;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.filters button.on{background:var(--teal);color:#021213;box-shadow:none}
+.filters button em{font-style:normal;opacity:.6;margin-left:6px}
+.search{display:flex;align-items:center;gap:10px;padding:12px 14px;box-shadow:inset 0 0 0 1px var(--line);min-width:260px}
+.search input{background:none;border:0;color:var(--ink);font:500 15px var(--f);outline:none;width:100%}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;margin-top:30px;perspective:1200px}
+.card{position:relative;aspect-ratio:1/1.08;border-radius:6px;overflow:hidden;background:#0a5f62;transform-style:preserve-3d;transition:transform .15s,box-shadow .3s;box-shadow:0 14px 30px -14px #000;cursor:pointer;animation:deal .5s both}
+.card img{width:100%;height:100%;object-fit:cover}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.45),transparent 40%),linear-gradient(115deg,transparent 20%,rgba(95,227,224,.35) 40%,rgba(255,106,214,.25) 50%,rgba(255,220,120,.3) 60%,transparent 80%);background-size:100% 100%,250% 250%;background-position:center,var(--hx,50%) var(--hy,50%);mix-blend-mode:color-dodge}
+.card:hover::after{opacity:1}
+.card:hover{box-shadow:0 30px 50px -20px rgba(31,179,181,.5)}
+.card .sk{position:absolute;inset:0;background:linear-gradient(110deg,#0a5f62 30%,#11898c 50%,#0a5f62 70%);background-size:300% 100%;animation:sk 1.4s infinite}
+.card img{position:relative;opacity:0;transition:opacity .4s}
+.card img.ld{opacity:1}
+@keyframes sk{to{background-position:-300% 0}}
+@keyframes deal{from{opacity:0;transform:translateY(20px) rotateX(20deg)}}
+.empty{color:var(--muted);padding:30px 0}
+@media(max-width:480px){.cards{grid-template-columns:1fr 1fr;gap:10px}}
+.modal{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px)}
+.modal.on{display:grid;animation:fi .3s}
+.mbox{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:28px;align-items:center;width:min(820px,100%);max-height:calc(100dvh - 40px);overflow:auto;background:var(--bg2);padding:24px;border-radius:8px;box-shadow:0 0 0 1px var(--line),0 40px 100px rgba(0,0,0,.8);position:relative}
+.mbox img{border-radius:6px;width:100%}
+.mbox h3{font:900 italic clamp(34px,4.4vw,56px)/.9 var(--f);font-stretch:115%;text-transform:uppercase;margin:10px 0 14px}
+.mbox p{color:#a9bfc0}
+.mbox .x{position:absolute;right:12px;top:12px;width:36px;height:36px;box-shadow:inset 0 0 0 1px var(--line);font-size:16px}
+.mbox .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+@media(max-width:700px){.mbox{grid-template-columns:1fr}.mbox img{max-width:280px;margin:0 auto}}
+
+/* contact */
+.contact{background:linear-gradient(180deg,var(--bg),#06191b)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:60px;align-items:start}
+.contact p.lead{color:var(--muted);margin-top:20px;max-width:440px}
+.meta{margin-top:30px;display:grid;gap:12px;font:500 15px/1.5 var(--f)}
+.meta b{display:block;font:700 11px/1 var(--m);letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:6px}
+.socials{display:flex;gap:8px;flex-wrap:wrap}
+.socials a{padding:10px 12px;font:700 12px/1 var(--m);letter-spacing:.08em;box-shadow:inset 0 0 0 1px var(--line)}
+.socials a:hover{color:var(--teal2);box-shadow:inset 0 0 0 1px var(--teal)}
+.clip{position:relative;background:#e9eef0;color:#0b1214;border-radius:10px;padding:46px 26px 26px;box-shadow:0 30px 60px -30px #000}
+.clip::before{content:"";position:absolute;left:50%;top:-14px;transform:translateX(-50%);width:120px;height:34px;border-radius:8px;background:linear-gradient(180deg,#9aa6a8,#5d6a6c);box-shadow:0 4px 8px rgba(0,0,0,.4)}
+.clip h3{font:900 italic 26px/1 var(--f);font-stretch:115%;text-transform:uppercase}
+.clip label{display:block;font:700 10px/1 var(--m);letter-spacing:.16em;text-transform:uppercase;color:#4d5b5e;margin:16px 0 7px}
+.clip input,.clip textarea{width:100%;font:500 15px var(--f);padding:11px 12px;border:1.5px solid #c5d0d2;border-radius:4px;background:#fff;color:#0b1214}
+.clip textarea{min-height:90px;resize:vertical}
+.who{display:flex;flex-wrap:wrap;gap:6px}
+.who button{padding:9px 12px;font:800 12px/1 var(--f);letter-spacing:.08em;text-transform:uppercase;border-radius:4px;box-shadow:inset 0 0 0 1.5px #c5d0d2;color:#2d3a3d}
+.who button.on{background:#0b1214;color:#fff;box-shadow:none}
+.clip .btn{width:100%;justify-content:center;margin-top:20px}
+.sent{display:none;text-align:center;padding:30px 0}
+.sent.on{display:block;animation:fi .4s}
+.sent .whistle{font-size:54px;display:inline-block;animation:toot .4s 3}
+@keyframes toot{50%{transform:rotate(-14deg) scale(1.15)}}
+@media(max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:30px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+
+/* notes */
+.notes .ph{outline:1px dashed var(--teal);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#021213;background:var(--teal2);padding:4px 8px;max-width:270px;width:max-content;white-space:normal;text-align:left;-webkit-text-stroke:0}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:700 11px/1 var(--m);padding:10px 13px;background:rgba(5,7,8,.85);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.notes .notes-toggle{color:var(--teal2);box-shadow:inset 0 0 0 1px var(--teal)}
+.clean .notes-toggle{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("ph-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean");
+  if(sessionStorage.getItem("ph-seen")) h.classList.add("seen"); else sessionStorage.setItem("ph-seen","1");
+}catch(e){} })();
+</script>
+</head>
+<body id="top">
+
+<div class="ov" id="ov" aria-hidden="true"><div class="clock" id="ovClock">24</div><div class="tag">#be<b>PHENOM</b>enal</div></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo"><img src="https://www.phenomsports.eu/uploads/9/4/2/2/9422596/phenom-logo-01_orig.png" alt="Phenom Sports Services"></a>
+    <div class="links"><a href="#five">Our people</a><a href="#play">Services</a><a href="#roster">Players / Coaches</a><a href="#contact">Contact</a></div>
+    <a class="btn" href="#contact">Call a timeout</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">FIBA licensed basketball agency · Thessaloniki · since 2020</span>
+      <h1 class="big">Game<br><span class="o">changers.</span><span class="tag">#be<b>PHENOM</b><span>enal</span></span></h1>
+      <p class="lead">We represent players and coaches across Greece and Europe. From the first contract to the day after the last game. Take a shot first →</p>
+      <div class="cta"><a class="btn" href="#roster">Meet the roster</a><a class="btn ghost" href="#play">Run the play</a></div>
+    </div>
+    <div class="court" id="court">
+      <canvas id="game"></canvas>
+      <div class="hud"><div>Phenom<b id="pts">0</b></div><div class="r">Streak<b id="streak">0</b></div></div>
+      <div class="msg" id="gmsg">Swish!</div>
+      <div class="help" id="ghelp">Drag the ball back · release to shoot</div>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div id="marq"></div></div>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">The scoreboard</span>
+    <h2 class="big" style="margin:16px 0 40px">By the <span class="t">numbers</span></h2>
+    <div class="board" id="board">
+      <div class="cell t"><small>Players</small><b data-to="64">0</b></div>
+      <div class="cell t"><small>Coaches</small><b data-to="7">0</b></div>
+      <div class="cell"><small>Services</small><b data-to="8">0</b></div>
+      <div class="cell"><small>Est.</small><b data-to="2020">0</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="five" id="five">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Our people</span>
+      <h2 class="big" style="margin:16px 0 30px">The starting <span class="t">five</span></h2>
+      <div class="fcourt" id="fcourt">
+        <svg class="lines" viewBox="0 0 500 470" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3">
+            <rect x="10" y="10" width="480" height="450"/>
+            <rect x="170" y="10" width="160" height="190"/>
+            <circle cx="250" cy="200" r="60"/>
+            <path d="M40 10 V110 A215 215 0 0 0 460 110 V10"/>
+            <path d="M190 460 A60 60 0 0 1 310 460"/>
+            <circle cx="250" cy="52" r="10" stroke="#ff6a3d"/>
+            <line x1="220" y1="38" x2="280" y2="38"/>
+          </g>
+        </svg>
+        <div id="jerseys"></div>
+      </div>
+    </div>
+    <div class="bio" id="bio"></div>
+  </div>
+</section>
+
+<section class="play" id="play">
+  <div class="wrap">
+    <div class="board2">
+      <svg id="playSvg" viewBox="0 0 500 470" aria-label="Play diagram"></svg>
+    </div>
+    <div>
+      <span class="kicker">Our services</span>
+      <h2 class="big" style="margin:16px 0 26px">Run the <span class="t">play</span></h2>
+      <button class="btn runbtn" type="button" id="runBtn">▶ Run the full play</button>
+      <div class="steps" id="steps"></div>
+    </div>
+  </div>
+</section>
+
+<section class="roster" id="roster">
+  <div class="wrap">
+    <div class="rhead">
+      <div>
+        <span class="kicker">Players / Coaches</span>
+        <h2 class="big" style="margin-top:16px">The <span class="t">roster</span></h2>
+      </div>
+      <label class="search"><span aria-hidden="true">⌕</span><input id="q" placeholder="Search a name…" autocomplete="off"></label>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="mbox" id="mbox"></div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Contact</span>
+      <h2 class="big" style="margin-top:16px">Call a <span class="t">timeout</span></h2>
+      <p class="lead">Player, coach, club or brand? Tell us who you are and what you need. We'll get back to you.</p>
+      <div class="meta">
+        <div><b>Office</b>Palaiologon 4, 57001 Thermi, Thessaloniki, Greece</div>
+        <div class="ph" data-note="Τηλέφωνο & email"><b>Phone · Email</b>+30 … · info@…</div>
+        <div><b>Follow</b><div class="socials"><a href="https://www.instagram.com/phenom_sports_services/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/Phenom-Sports-Services-100538754901573/" target="_blank" rel="noopener">Facebook</a><a href="https://twitter.com/Phenom_Agency" target="_blank" rel="noopener">X / Twitter</a><a href="https://www.youtube.com/channel/UChjUc5V5wjHsEHDuiixTYMQ" target="_blank" rel="noopener">YouTube</a></div></div>
+      </div>
+    </div>
+    <form class="clip" id="clip" onsubmit="return false">
+      <div id="cbody">
+        <h3>Timeout · Phenom</h3>
+        <label>I am a</label>
+        <div class="who" id="who"><button type="button" class="on">Player</button><button type="button">Coach</button><button type="button">Club</button><button type="button">Brand</button><button type="button">Parent</button></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div><label for="cn">Name</label><input id="cn" autocomplete="name"></div>
+          <div><label for="ce">Email</label><input id="ce" type="email" autocomplete="email"></div>
+        </div>
+        <label for="cm">Message</label>
+        <textarea id="cm"></textarea>
+        <button class="btn" type="button" id="csend">Blow the whistle</button>
+      </div>
+      <div class="sent" id="sent"><span class="whistle">📣</span><h3 style="margin-top:14px">Timeout called!</h3><p style="color:#4d5b5e;margin-top:8px">This is a demo, so nothing was sent. On the real site your message goes straight to the Phenom team.</p></div>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© Phenom Sports Services · #bePHENOMenal</span><span>Demo by <a href="https://opensite.gr">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Notes</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const html = document.documentElement, fine = matchMedia("(pointer:fine)").matches;
+$("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("ph-notes", on ? "on" : "off"); } catch (e) {} });
+addEventListener("scroll", () => $("#nav").classList.toggle("solid", scrollY > 40), { passive: true });
+
+/* overture: 24-second shot clock runs out */
+if (!html.classList.contains("seen")) {
+  let n = 24; const ov = $("#ov");
+  const t = setInterval(() => { n--; $("#ovClock").textContent = n; if (n <= 0) { clearInterval(t); ov.classList.add("buzz"); setTimeout(() => ov.remove(), 2600); } }, 38);
+  ov.addEventListener("click", () => ov.remove());
+}
+
+$("#marq").innerHTML = Array(2).fill(["#bePHENOMenal", "Contract negotiation", "Legal services", "Endorsements", "Social media", "Wealth management", "Post career planning"]).flat().map(w => `<span>${w}</span>`).join("");
+
+/* ---------- hero shooting game ---------- */
+(() => {
+  const court = $("#court"), cv = $("#game"), ctx = cv.getContext("2d");
+  let W, H, s, hoop, ball, drag = null, pts = 0, streak = 0, shots = 0, net = 0, flying = false, scoredThis = false, trail = [];
+  const size = () => { const d = Math.min(2, devicePixelRatio || 1); W = court.clientWidth; H = court.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); s = W / 600; hoop = { x: W * .76, y: H * .36, r: 30 * s }; if (!flying) reset(); };
+  function reset() { ball = { x: W * .2, y: H * .74, vx: 0, vy: 0, r: 17 * s, rot: 0 }; flying = false; scoredThis = false; trail = []; }
+  new ResizeObserver(size).observe(court);
+  const msg = (t) => { const m = $("#gmsg"); m.textContent = t; m.classList.add("on"); setTimeout(() => m.classList.remove("on"), 900); };
+  const pos = e => { const r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  court.addEventListener("pointerdown", e => { if (flying) return; const p = pos(e); if (Math.hypot(p.x - ball.x, p.y - ball.y) > ball.r * 4) return; drag = p; court.setPointerCapture(e.pointerId); $("#ghelp").style.opacity = 0; });
+  court.addEventListener("pointermove", e => { if (drag) drag = pos(e); });
+  court.addEventListener("pointerup", () => {
+    if (!drag) return;
+    const dx = ball.x - drag.x, dy = ball.y - drag.y, k = PULL;
+    let vx = dx * k, vy = dy * k; const sp = Math.hypot(vx, vy), max = 24 * Math.sqrt(s);
+    if (sp > max) { vx *= max / sp; vy *= max / sp; }
+    drag = null; if (sp < 2) return;
+    ball.vx = vx; ball.vy = vy; flying = true; shots++;
+  });
+  // the computer takes a demo shot if nobody plays
+  setTimeout(function auto() {
+    if (shots || flying || !ball) return;
+    // aim a little above the rim centre so it drops in
+    const T = 40, tx = hoop.x - 4 * s, ty = hoop.y - 6 * s;
+    ball.vx = (tx - ball.x) / T; ball.vy = ((ty - ball.y) - .5 * G() * T * (T + 1)) / T; flying = true;
+  }, 2600);
+  const G = () => .55 * s;
+  const PULL = .12; // slingshot strength: px of drag -> px/frame
+  function rimHit(px, py) {
+    const dx = ball.x - px, dy = ball.y - py, d = Math.hypot(dx, dy), min = ball.r + 3 * s;
+    if (d < min && d > 0) { const nx = dx / d, ny = dy / d, dot = ball.vx * nx + ball.vy * ny; if (dot < 0) { ball.vx -= 1.6 * dot * nx; ball.vy -= 1.6 * dot * ny; ball.vx *= .8; ball.vy *= .8; } ball.x = px + nx * min; ball.y = py + ny * min; }
+  }
+  function step() {
+    if (flying) {
+      const py = ball.y;
+      ball.vy += G(); ball.x += ball.vx; ball.y += ball.vy; ball.rot += ball.vx * .05;
+      trail.push({ x: ball.x, y: ball.y }); if (trail.length > 14) trail.shift();
+      const L = { x: hoop.x - hoop.r, y: hoop.y }, R = { x: hoop.x + hoop.r, y: hoop.y };
+      rimHit(L.x, L.y); rimHit(R.x, R.y);
+      // backboard
+      const bx = hoop.x + hoop.r + 10 * s;
+      if (ball.x + ball.r > bx && ball.x < bx + 10 && ball.y > hoop.y - 90 * s && ball.y < hoop.y + 12 * s && ball.vx > 0) { ball.x = bx - ball.r; ball.vx *= -.55; }
+      // score: falls through the rim from above
+      if (!scoredThis && py < hoop.y && ball.y >= hoop.y && ball.x > L.x + 4 * s && ball.x < R.x - 4 * s && ball.vy > 0) {
+        scoredThis = true; net = 1; streak++; const three = ball._three; pts += three ? 3 : 2;
+        $("#pts").textContent = pts; $("#streak").textContent = streak;
+        msg(streak >= 3 ? "On fire! 🔥" : three ? "From downtown!" : ["Swish!", "Bucket!", "Phenomenal!", "Money!"][Math.floor(Math.random() * 4)]);
+      }
+      // floor
+      if (ball.y + ball.r > H - 6) { ball.y = H - 6 - ball.r; ball.vy *= -.55; ball.vx *= .8; }
+      if (ball.x < -60 || ball.x > W + 60 || (Math.abs(ball.vy) < 1 && ball.y + ball.r >= H - 8)) {
+        if (!scoredThis && shots) { streak = 0; $("#streak").textContent = 0; }
+        setTimeout(reset, 300); flying = false;
+      }
+    }
+    net *= .94;
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // floor + three point arc
+    ctx.strokeStyle = "rgba(95,227,224,.18)"; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(0, H - 6); ctx.lineTo(W, H - 6); ctx.stroke();
+    ctx.beginPath(); ctx.arc(hoop.x + 20 * s, H - 6, W * .52, Math.PI, Math.PI * 1.5); ctx.stroke();
+    ctx.font = `700 ${11 * Math.max(.8, s)}px JetBrains Mono`; ctx.fillStyle = "rgba(95,227,224,.35)"; ctx.fillText("3PT", hoop.x + 20 * s - W * .52 + 6, H - 14);
+    // backboard + pole
+    const bx = hoop.x + hoop.r + 10 * s;
+    ctx.fillStyle = "#1b2a2d"; ctx.fillRect(bx + 6 * s, hoop.y - 60 * s, 8 * s, H);
+    ctx.fillStyle = "rgba(238,246,246,.9)"; ctx.fillRect(bx, hoop.y - 90 * s, 8 * s, 102 * s);
+    ctx.strokeStyle = "#ff6a3d"; ctx.lineWidth = 2; ctx.strokeRect(bx + 1, hoop.y - 50 * s, 6 * s, 34 * s);
+    // net (sways after a make)
+    ctx.strokeStyle = "rgba(238,246,246,.75)"; ctx.lineWidth = 1.4;
+    const nb = hoop.r * .55, nh = 46 * s;
+    for (let i = 0; i <= 6; i++) { const t = i / 6, x0 = hoop.x - hoop.r + t * hoop.r * 2, x1 = hoop.x - nb + t * nb * 2 + Math.sin(i + performance.now() / 60) * net * 6; ctx.beginPath(); ctx.moveTo(x0, hoop.y); ctx.quadraticCurveTo((x0 + x1) / 2, hoop.y + nh * .5 + net * 10, x1, hoop.y + nh + net * 14); ctx.stroke(); }
+    for (let j = 1; j <= 3; j++) { const t = j / 4, w = hoop.r - (hoop.r - nb) * t; ctx.beginPath(); ctx.moveTo(hoop.x - w, hoop.y + nh * t + net * 8 * t); ctx.lineTo(hoop.x + w, hoop.y + nh * t + net * 8 * t); ctx.stroke(); }
+    // aim guide
+    if (drag) {
+      const k = PULL; let vx = (ball.x - drag.x) * k, vy = (ball.y - drag.y) * k; const sp = Math.hypot(vx, vy), max = 24 * Math.sqrt(s); if (sp > max) { vx *= max / sp; vy *= max / sp; }
+      let x = ball.x, y = ball.y; ctx.fillStyle = "rgba(95,227,224,.8)";
+      for (let i = 0; i < 26; i++) { vy += G() * 2; x += vx * 2; y += vy * 2; if (i % 2) continue; ctx.globalAlpha = 1 - i / 26; ctx.beginPath(); ctx.arc(x, y, 3, 0, 7); ctx.fill(); }
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = "rgba(95,227,224,.5)"; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(ball.x, ball.y); ctx.lineTo(drag.x, drag.y); ctx.stroke(); ctx.setLineDash([]);
+      ball._three = ball.x < hoop.x + 20 * s - W * .52 + 10;
+    }
+    // trail (fire when streaking)
+    trail.forEach((p, i) => { ctx.globalAlpha = i / trail.length * .5; ctx.fillStyle = streak >= 3 ? "#ff6a3d" : "#1fb3b5"; ctx.beginPath(); ctx.arc(p.x, p.y, ball.r * (i / trail.length), 0, 7); ctx.fill(); });
+    ctx.globalAlpha = 1;
+    // ball: Phenom teal
+    ctx.save(); ctx.translate(ball.x, ball.y); ctx.rotate(ball.rot);
+    const g = ctx.createRadialGradient(-ball.r * .35, -ball.r * .35, 1, 0, 0, ball.r); g.addColorStop(0, "#7ff0ec"); g.addColorStop(.5, "#1fb3b5"); g.addColorStop(1, "#0b5a5e");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, ball.r, 0, 7); ctx.fill();
+    ctx.strokeStyle = "#062b2d"; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(-ball.r, 0); ctx.lineTo(ball.r, 0); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, -ball.r); ctx.lineTo(0, ball.r); ctx.stroke();
+    ctx.beginPath(); ctx.arc(-ball.r * 1.15, 0, ball.r * .85, -.9, .9); ctx.stroke();
+    ctx.beginPath(); ctx.arc(ball.r * 1.15, 0, ball.r * .85, Math.PI - .9, Math.PI + .9); ctx.stroke();
+    ctx.restore();
+    // front rim drawn over the ball
+    ctx.strokeStyle = "#ff6a3d"; ctx.lineWidth = 4 * s;
+    ctx.beginPath(); ctx.ellipse(hoop.x, hoop.y, hoop.r, 6 * s, 0, 0, Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hoop.x + hoop.r, hoop.y); ctx.lineTo(bx, hoop.y); ctx.stroke();
+    if (!flying && !drag) { ctx.strokeStyle = "rgba(95,227,224,.5)"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r + 8 + Math.sin(performance.now() / 300) * 3, 0, 7); ctx.stroke(); }
+  }
+  (function loop() { if (W) { step(); draw(); } requestAnimationFrame(loop); })();
+})();
+
+/* ---------- scoreboard count-up ---------- */
+new IntersectionObserver((es, o) => { if (!es[0].isIntersecting) return; o.disconnect(); $$("#board b").forEach(b => { const to = +b.dataset.to, from = to > 100 ? 1990 : 0, t0 = performance.now(); (function tick(t) { const p = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - p, 3); b.textContent = Math.round(from + (to - from) * e); if (p < 1) requestAnimationFrame(tick); })(t0); }); }, { threshold: .4 }).observe($("#board"));
+
+/* ---------- starting five ---------- */
+const FIVE = [
+  { pos: "PG", x: 50, y: 82, ini: "AP", name: "Alex Papasiopis", role: "Co-founder", lic: "FIBA Licence No. 202000124", facts: ["Law · Aristotle University", "Ex semi-pro player", "Agent since 2010"], bio: ["Graduated from the Law School of the Aristotle University of Thessaloniki in 2004 and has been involved in basketball for 20 years, playing semi-professionally in Greece until 2010.", "Sports journalist for 5 years and GM at ICBS B.C. (A2) for 3. Holder of the official Greek Basketball Federation Agents Licence since 2010, he started at Sfera Sports Group before founding Phenom with Nick Chaitoglou in 2020. He has signed American, European and other players across Greece and Europe."] },
+  { pos: "SG", x: 21, y: 52, ini: "NC", name: "Nick Chaitoglou", role: "Co-founder", lic: "", facts: ["Anatolia College · ULV", "U18 National Champion", "Ex VP SAAK Anatolia"], bio: ["Graduated from Anatolia College of Thessaloniki and holds a Business Administration degree from ULV.", "U18 National Champion with Iraklis B.C. in 1995, semi-pro until 2008. From 2015 to 2020 he was VP of Basketball Operations at SAAK Anatolia B.C., leading the club to a title and promotion to the Greek A2, before launching Phenom in 2020."] },
+  { pos: "SF", x: 79, y: 52, ini: "ZC", name: "Zois Christou", role: "Agent", lic: "FIBA Licence No. 201800434", facts: ["Physical Education · Athens", "Ex Greece Deaf NT assistant", "FIBA agent since 2018"], bio: ["Graduated in Physical Education and Sport Science in Athens, with a postgraduate degree in Special Education.", "Assistant coach of the Greek National Deaf Basketball teams: European champions with the Women in 2016 and 4th at the Deaflympics with the Men (2013, 2017). FIBA agent since February 2018, at Phenom since 2020."] },
+  { pos: "PF", x: 30, y: 24, ini: "AL", name: "Alexandra Liaga", role: "Head of Legal Services", lic: "", facts: ["LLM International Law", "Member of the BAR since 2004", "Certified Mediator"], bio: ["Law School graduate of the Aristotle University of Thessaloniki with an LLM in International Law from the same university.", "Member of the BAR since 2004 and a certified Mediator in civil and commercial cases. Fluent in Greek, English, French, Italian and German."] },
+  { pos: "C", x: 70, y: 24, ini: "FT", name: "Fotis Triantafillidis", role: "Media & Communications Coordinator", lic: "", facts: ["20 years semi-pro", "Ex Team Manager SAAK Anatolia", "Title in B division"], bio: ["Born in Thessaloniki. Semi-professional player for 20 years, then Team Manager of SAAK Anatolia B.C., winning the B division title.", "Joined Phenom in 2020 to run media and communications."] }
+];
+(() => {
+  const J = $("#jerseys");
+  J.innerHTML = FIVE.map((p, i) => `<button class="jersey" type="button" data-i="${i}" style="left:${p.x}%;top:${p.y}%"><svg viewBox="0 0 100 100"><path class="shirt" d="M30 8 Q50 22 70 8 L92 18 L84 44 L76 40 L76 94 L24 94 L24 40 L16 44 L8 18Z"/><text class="num" x="50" y="66" text-anchor="middle" font-family="Archivo" font-weight="900" font-style="italic" font-size="28" fill="#5fe3e0">${p.ini}</text></svg><small>${p.pos} · ${p.name.split(" ")[0]}</small></button>`).join("");
+  function show(i) {
+    const p = FIVE[i];
+    $$(".jersey").forEach((j, k) => j.classList.toggle("on", k === i));
+    $("#bio").innerHTML = `<div class="fadein"><span class="role">${p.pos} · ${p.role}</span><h3>${p.name}</h3>${p.lic ? `<span class="lic">${p.lic}</span>` : ""}${p.bio.map(t => `<p>${t}</p>`).join("")}<div class="facts">${p.facts.map(f => `<span>${f}</span>`).join("")}</div></div>`;
+  }
+  J.addEventListener("click", e => { const b = e.target.closest(".jersey"); if (b) show(+b.dataset.i); });
+  show(0);
+})();
+
+/* ---------- the play (services) ---------- */
+const PLAY = [
+  { t: "Player representation", d: "We represent players and coaches with one goal: the right team, at the right moment, on the right terms.", ph: true, path: "M250 400 L250 300" },
+  { t: "Scouting & placement", d: "We study every market, follow the clubs and match each client with the team and role that fits.", ph: true, path: "M90 300 Q120 200 170 150" },
+  { t: "Contract negotiation", d: "We negotiate and draft contracts between our clients and basketball clubs. The most obvious is sometimes the most difficult. We pursue every possible benefit so our clients get the best possible deal. In some cases, maybe even the impossible one!", path: "M410 300 Q380 200 330 150" },
+  { t: "Legal services", d: "Our legal team of experienced lawyers in Sports and International Law covers all matters of Sports and Employment Law, including contract disputes at ASEAD, Labor Courts, BAT or CAS.", path: "M170 150 L330 150" },
+  { t: "Endorsements & brand building", d: "We actively seek endorsements and marketing opportunities, working with advertising companies and media outlets to present our clients to brands looking for a face for their products.", path: "M330 150 Q300 90 250 70" },
+  { t: "Social media & image building", d: "Regular weekly updates that connect athletes with their fans, protection against fake profiles and fake news, and Social Media Awareness so they use social media responsibly.", path: "M170 150 Q200 90 250 70" },
+  { t: "Wealth management", d: "Upon request, we advise on investment opportunities and help tackle tax issues that may arise depending on the country of employment.", path: "M250 300 L250 120" },
+  { t: "Post career planning", d: "When the playing career is over, our work doesn't stop. Coaching, sports media or a legacy plan: we help veterans navigate their next steps.", path: "M250 120 L250 58" }
+];
+(() => {
+  const svg = $("#playSvg");
+  const O = [[250, 400], [90, 300], [410, 300], [170, 150], [330, 150]];
+  let base = `<rect width="500" height="470" fill="#0d1a1c"/><g fill="none" stroke="rgba(238,246,246,.22)" stroke-width="2.5"><rect x="10" y="10" width="480" height="450"/><rect x="170" y="10" width="160" height="190"/><circle cx="250" cy="200" r="60"/><path d="M40 10 V110 A215 215 0 0 0 460 110 V10"/><circle cx="250" cy="52" r="10" stroke="#ff6a3d"/><line x1="220" y1="38" x2="280" y2="38"/></g>`;
+  base += `<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#5fe3e0"/></marker></defs><g id="paths"></g><g id="dots">${O.map((o, i) => `<g class="pl" data-i="${i}" transform="translate(${o[0]} ${o[1]})"><circle r="17" fill="#050708" stroke="#1fb3b5" stroke-width="2.5"/><text y="6" text-anchor="middle" font-family="Archivo" font-weight="900" font-style="italic" font-size="17" fill="#5fe3e0">${i + 1}</text></g>`).join("")}</g><circle id="pball" r="7" fill="#ff6a3d" cx="250" cy="400"/>`;
+  svg.innerHTML = base;
+  $("#steps").innerHTML = PLAY.map((p, i) => `<button class="step ${p.ph ? "ph" : ""}" ${p.ph ? 'data-note="Οι υπηρεσίες 1 και 2 λείπουν από το τωρινό site: να συμπληρωθούν"' : ""} type="button" data-i="${i}"><span class="n">${String(i + 1).padStart(2, "0")}</span><span><b>${p.t}</b><p>${p.d}</p></span></button>`).join("");
+  const paths = $("#paths"), ball = $("#pball");
+  let cur = -1, auto = null;
+  function show(i) {
+    cur = i;
+    $$(".step").forEach((s, k) => s.classList.toggle("on", k === i));
+    paths.innerHTML = PLAY.slice(0, i + 1).map((p, k) => `<path d="${p.path}" fill="none" stroke="${k === i ? "#5fe3e0" : "rgba(95,227,224,.3)"}" stroke-width="${k === i ? 3.5 : 2}" stroke-dasharray="${k === i ? "" : "6 6"}" marker-end="url(#ah)" ${k === i ? 'pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .9s ease"' : ""}/>`).join("");
+    const last = paths.lastElementChild; requestAnimationFrame(() => requestAnimationFrame(() => { last.style.strokeDashoffset = 0; }));
+    // the ball travels along the newest pass
+    const len = last.getTotalLength ? 1 : 0; const t0 = performance.now(), el = last;
+    (function mv(t) { const p = Math.min(1, (t - t0) / 900), L = el.getTotalLength(), pt = el.getPointAtLength(L * p); ball.setAttribute("cx", pt.x); ball.setAttribute("cy", pt.y); if (p < 1) requestAnimationFrame(mv); })(t0);
+  }
+  $("#steps").addEventListener("click", e => { const b = e.target.closest(".step"); if (!b) return; clearInterval(auto); auto = null; $("#runBtn").textContent = "▶ Run the full play"; show(+b.dataset.i); });
+  $("#runBtn").addEventListener("click", () => {
+    if (auto) { clearInterval(auto); auto = null; $("#runBtn").textContent = "▶ Run the full play"; return; }
+    let i = -1; $("#runBtn").textContent = "❚❚ Pause"; const go = () => { i++; if (i >= PLAY.length) { clearInterval(auto); auto = null; $("#runBtn").textContent = "↺ Run it again"; return; } show(i); }; go(); auto = setInterval(go, 2600);
+  });
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); if (cur < 0) show(0); } }, { threshold: .3 }).observe(svg);
+})();
+
+/* ---------- roster (cards from phenomsports.eu) ---------- */
+const U = "https://www.phenomsports.eu/uploads/9/4/2/2/9422596/";
+const R = {
+  guards: [["ryan-allen", "Ryan Allen"], ["ermeidis-dimitris-2025-signed", "Dimitrios Ermeidis"], ["james-signed", "Christian James"], ["mclean-signed", "Zavian McLean"], ["tyler-peterson-2025-signed", "Tyler Peterson"], ["kyle-pulliam", "Kyle Pulliam"], ["rhyjon-blackwell-2", "Rhyjon Blackwell"], ["tyre-cathright-2026-2", "Tyre Gathright"], ["alex-komnia-2", "Alex Komnia", 1], ["reggie-mesidor-si", "Reggie Mesidor"], ["poulianitis-m-2", "M. Poulianitis"], ["justice-shoats-2", "Justice Shoats"], ["tyree-boykin-signed-25", "Tyree Boykin"], ["quentin-hardrict-2023-si", "Quentin Hardrict"], ["komnianidis-ioannis-2", "Ioannis Komnianidis", 1], ["naoumis-2021-sign", "Naoumis"], ["stelios-poulianitis-2025-signed", "Stelios Poulianitis"], ["evan-taylor-2025-signed", "Evan Taylor"], ["anthony-durham-ii-2025-signed", "Anthony Durham II"], ["supreme-hannah-2025-si", "Supreme Hannah"], ["aleksa-kovaceviv-si", "Aleksa Kovacevic"], ["jack-pagenkopf-signed-25", "Jack Pagenkopf"], ["gyasi-powell-2025-signed", "Gyasi Powell"], ["jamarii-thomas-signed-2025", "Jamarii Thomas"]],
+  wings: [["dalan-ancrum-2022-2", "Dalan Ancrum"], ["eikens-signed", "DeSean Eikens"], ["jesse-hafemeister-2", "Jesse Hafemeister"], ["craig-lecesne-2026-signed", "Craig LeCesne"], ["giannis-sidiroilias-2024-si", "Giannis Sidiroilias"], ["barnes-auston-signed", "Auston Barnes"], ["justin-elder-davis-2025-signed", "Justin Elder-Davis"], ["justin-gray-2025-signed", "Justin Gray"], ["manthopoulos-si", "Manthopoulos", 1], ["skoulidas-2025-signed", "Skoulidas"], ["judah-brown-4", "Judah Brown"], ["georgiou-christos-2022-signed", "Christos Georgiou"], ["signed", "Jehloni James"], ["greg-mckay-2025-si", "Greg McKay"], ["nick-stampley-2", "Nick Stampley"], ["tyree-eady-si", "Tyree Eady"], ["gravas-2022-signed", "Gravas"], ["kamaras-2025-signed", "Kamaras"], ["ioannis-mermigkis-2025-signed", "Ioannis Mermigkis"], ["elijah-watson-2025-2", "Elijah Watson"]],
+  bigs: [["adams-eric-2023-signed", "Eric Adams"], ["keyshawn-feazell-2023-signed", "Keyshawn Feazell"], ["iatridis-2023-2", "Iatridis"], ["kavvadas-signed-22", "Kavvadas"], ["eralpenn2", "Eral Penn"], ["nana-2", "Nana Antwi-Boasiako"], ["georgalas-2023", "Georgalas"], ["tristan-ikpe-si", "Tristan Ikpe"], ["kottas-2022-signed", "Kottas"], ["sachpatzidis-2021-sign", "Sachpatzidis"], ["signed-2", "Nehemiah Benson"], ["gkiouzelis-si", "Gkiouzelis"], ["2", "Saiquan Jamison"], ["kouze2", "Ioannis Kouzeloglou"], ["stamatogiannis-2023-signed", "Stamatogiannis"], ["bold-signed", "Nikiforos Boldoglou"], ["signed-3", "Alex Holt"], ["kamperidis-signed-2023", "Kamperidis"], ["malelis-fotis-2022-signed", "Fotis Malelis"], ["thanos-vlachos-2", "Thanos Vlachos", 1]],
+  coaches: [["chasanidis-2024-signed", "Chasanidis"], ["livadiotis-2021-si", "Livadiotis"], ["mexas-signed", "Mexas"], ["nerantzakis-signed", "Nerantzakis"], ["kalyvas-av", "Kalyvas"], ["ziagkos-2024-signed", "Ziagkos"], ["vincent-van-sliedregt", "Vincent van Sliedregt"]]
+};
+const GROUPS = [["guards", "Guards"], ["wings", "Wings & Forwards"], ["bigs", "Bigs"], ["young", "Young prospects"], ["coaches", "Coaches"]];
+const ALL = Object.entries(R).flatMap(([g, list]) => list.map(([f, n, y]) => ({ g, f, n, y: !!y })));
+(() => {
+  let grp = "guards";
+  const count = g => g === "young" ? ALL.filter(p => p.y).length : R[g].length;
+  $("#filters").innerHTML = GROUPS.map(([g, n]) => `<button type="button" data-g="${g}" class="${g === grp ? "on" : ""}">${n}<em>${count(g)}</em></button>`).join("");
+  function render() {
+    const q = $("#q").value.trim().toLowerCase();
+    const list = q ? ALL.filter(p => p.n.toLowerCase().includes(q)) : grp === "young" ? ALL.filter(p => p.y) : ALL.filter(p => p.g === grp);
+    $("#cards").innerHTML = list.length ? list.map((p, i) => `<div class="card" data-f="${p.f}" style="animation-delay:${Math.min(i, 16) * 35}ms" tabindex="0" aria-label="${p.n}"><div class="sk"></div><img loading="lazy" src="${U + p.f}_orig.png" alt="${p.n}" onload="this.classList.add('ld');this.previousElementSibling.remove()"></div>`).join("") : `<p class="empty">No one by that name… yet.</p>`;
+  }
+  $("#filters").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; grp = b.dataset.g; $("#q").value = ""; $$("#filters button").forEach(x => x.classList.toggle("on", x === b)); render(); });
+  $("#q").addEventListener("input", render);
+  const cards = $("#cards");
+  cards.addEventListener("pointermove", e => {
+    const c = e.target.closest(".card"); if (!c || !fine) return;
+    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.transform = `rotateY(${(x - .5) * 22}deg) rotateX(${(.5 - y) * 22}deg) scale(1.04)`;
+    c.style.setProperty("--mx", x * 100 + "%"); c.style.setProperty("--my", y * 100 + "%"); c.style.setProperty("--hx", x * 100 + "%"); c.style.setProperty("--hy", y * 100 + "%");
+  });
+  cards.addEventListener("pointerout", e => { const c = e.target.closest(".card"); if (c && !c.contains(e.relatedTarget)) c.style.transform = ""; });
+  const open = c => {
+    const p = ALL.find(x => x.f === c.dataset.f), gn = GROUPS.find(g => g[0] === p.g)[1];
+    $("#mbox").innerHTML = `<button class="x" type="button" data-close>✕</button><img src="${U + p.f}_orig.png" alt="${p.n}"><div><span class="kicker">${gn}${p.y ? " · Young prospect" : ""}</span><h3>${p.n}</h3><p class="ph" data-note="Εδώ μπαίνουν στατιστικά, ομάδες, highlights video και social για κάθε παίκτη">Career stats, previous teams, highlights and social links go here.</p><div class="acts"><a class="btn" href="#contact" data-close data-ask="${p.n}">Ask about ${p.n.split(" ")[0]}</a><button class="btn ghost" type="button" data-close>Back to roster</button></div></div>`;
+    $("#modal").classList.add("on");
+  };
+  cards.addEventListener("click", e => { const c = e.target.closest(".card"); if (c) open(c); });
+  cards.addEventListener("keydown", e => { const c = e.target.closest(".card"); if (c && e.key === "Enter") open(c); });
+  $("#modal").addEventListener("click", e => {
+    const ask = e.target.closest("[data-ask]"); if (ask) { $("#cm").value = `Hi Phenom team, I'd like to know more about ${ask.dataset.ask}.`; $$("#who button").forEach(b => b.classList.toggle("on", b.textContent === "Club")); }
+    if (e.target === e.currentTarget || e.target.closest("[data-close]")) $("#modal").classList.remove("on");
+  });
+  addEventListener("keydown", e => { if (e.key === "Escape") $("#modal").classList.remove("on"); });
+  render();
+})();
+
+/* ---------- contact ---------- */
+$("#who").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; $$("#who button").forEach(x => x.classList.toggle("on", x === b)); });
+$("#csend").addEventListener("click", () => { $("#cbody").style.display = "none"; $("#sent").classList.add("on"); });
+</script>
+</body>
+</html>
