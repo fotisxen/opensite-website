@@ -16,7 +16,7 @@ export const DEMOS: Demo[] = [
   { slug: "wine-sousou", name: "Wine Sousou", kind: "Greek wine stories · Λάμπρος & Ειρήνη", created: "2026-11-04", instagram: "https://www.instagram.com/wine.sousou/" },
   { slug: "gkonias", name: "Γκώνιας Τροφοδοσίες", kind: "E-shop · τροφοδοσίες (B2C)", created: "2026-11-03" },
   { slug: "chalkidis-katharismoi", name: "Χαλκίδης Θ. & ΣΙΑ Ο.Ε.", kind: "Συνεργείο καθαρισμού", created: "2026-11-09" },
-  { slug: "simplydominus", name: "SimplyDominus", kind: "Meta & TikTok ads (concept)", created: "2026-11-09" },
+  { slug: "simplydominus", name: "SimplyDominus", kind: "Storytelling art piece", created: "2026-11-09" },
   { slug: "phenom", name: "Phenom Sports Services", kind: "Basketball agency", created: "2026-11-09", instagram: "https://www.instagram.com/phenom_sports_services/" },
   { slug: "archontiko", name: "Αρχοντικό Meat Restaurant", kind: "Steakhouse · Θέρμη & Χαλκιδική", created: "2026-11-09", instagram: "https://www.instagram.com/archontiko_meat_restaurant/" },
   { slug: "midas-touch", name: "The kalaMIDAS Touch", kind: "CrossFit box", created: "2026-11-06", instagram: "https://www.instagram.com/klmidastouch/" },
