@@ -10,6 +10,8 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "palia-athina", name: "Παλιά Αθήνα", kind: "Υπόγειο εστιατόριο · κάβα 1000+ κρασιών (Τούμπα)", created: "2026-11-10", instagram: "https://www.instagram.com/palia.athina/" },
+  { slug: "dacristo", name: "Dacristo Deli & Meat", kind: "E-shop · deli & premium κρεοπωλείο", created: "2026-11-10", instagram: "https://www.instagram.com/dacristodeli/" },
   { slug: "peftouloglou", name: "Φαρμακείο Πεφτούλογλου", kind: "E-shop · φαρμακείο (Άνω Τούμπα, Θεσσαλονίκη)", created: "2026-11-06" },
   { slug: "lakmeta", name: "Έφη Γ. Λακμέτα", kind: "Δικηγορικό γραφείο (Λάρισα)", created: "2026-11-05" },
   { slug: "coyar", name: "COYÁR Boutique", kind: "E-shop · multi brand boutique (Ηράκλειο)", created: "2026-11-04", instagram: "https://www.instagram.com/coyarboutique/" },

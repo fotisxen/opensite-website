@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f0a07">
+<title>Παλιά Αθήνα · από το 1976 · ένα υπόγειο στην Τούμπα</title>
+<meta name="description" content="Παλιά Αθήνα, Ίμβρου 24, Τούμπα Θεσσαλονίκης. Ένα υπόγειο από το 1976, κρεατικά στα κάρβουνα και μια κάβα με πάνω από 1000 κρασιά.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&family=Noto+Serif+Display:ital,wght@0,300;0,500;1,300;1,400&family=GFS+Didot&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Παλιά Αθήνα (@palia.athina).
+  No photos: the stairs, the vault, the 1000 bottles, the glass and the embers are drawn live on canvas.
+  Facts come from Google, reviews and their Instagram. Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{--bg:#0f0a07;--bg2:#17100b;--ink:#efe4d0;--muted:#a8977f;--amber:#e8a54b;--gold:#d4af6a;--wine:#8e1b2e;--line:rgba(239,228,208,.13);
+  --f:"Commissioner",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif;--d:"GFS Didot",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:300 17px/1.65 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.k{font:600 11px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--amber)}
+h2{font:300 clamp(40px,6.4vw,92px)/.98 var(--s);letter-spacing:-.02em}
+h2 em{font-style:italic;color:var(--amber)}
+.lead{color:var(--muted);max-width:560px;margin-top:22px}
+section{position:relative}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,3vw,34px);transition:background .4s}
+.nav.solid{background:rgba(15,10,7,.82);backdrop-filter:blur(10px)}
+.logo{font:400 21px/1 var(--d);letter-spacing:.04em}
+.logo small{display:block;font:600 9px/1 var(--f);letter-spacing:.3em;color:var(--amber);margin-top:5px}
+.nav-r{display:flex;gap:10px;align-items:center}
+.live{display:flex;align-items:center;gap:8px;font:500 12px/1 var(--f);color:var(--muted)}
+.live i{width:8px;height:8px;border-radius:50%;background:#7a6a55}
+.live.on i{background:#8fd18a;box-shadow:0 0 0 4px rgba(143,209,138,.18)}
+.btn{display:inline-flex;align-items:center;gap:9px;font:600 13px/1 var(--f);letter-spacing:.06em;padding:13px 20px;border-radius:999px;background:var(--amber);color:#1a0f06;white-space:nowrap}
+.btn.ghost{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+
+/* descent */
+.descent{height:330vh}
+.descent .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#stairs{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-t{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none;padding:0 16px}
+.hero-t h1{font:400 clamp(58px,13vw,190px)/.9 var(--d);letter-spacing:-.01em;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.hero-t h1 span{display:block;font:italic 300 .32em/1.2 var(--s);color:var(--amber);letter-spacing:.02em;margin-top:.25em}
+.hero-t p{font:500 12px/1.6 var(--f);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:26px}
+.scrollhint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font:600 10px/1 var(--f);letter-spacing:.3em;color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scrollhint i{width:1px;height:38px;background:linear-gradient(var(--amber),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.step-cap{position:absolute;left:clamp(16px,4vw,54px);bottom:clamp(70px,10vh,110px);max-width:min(420px,calc(100% - 32px));opacity:0;transition:opacity .6s;pointer-events:none}
+.step-cap .k{display:block;margin-bottom:10px}
+.step-cap b{font:300 clamp(26px,3.4vw,44px)/1.1 var(--s);display:block}
+.step-cap.show{opacity:1}
+
+/* fifty */
+.fifty{padding:clamp(90px,14vw,170px) 0;text-align:center;background:radial-gradient(60% 50% at 50% 50%,rgba(232,165,75,.08),transparent)}
+.big50{font:400 clamp(150px,30vw,380px)/.8 var(--d);background:linear-gradient(180deg,#f6d9a4,#b77a33 60%,#5a3415);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.04em}
+.fifty .yrs{display:flex;justify-content:center;gap:clamp(16px,4vw,60px);margin-top:26px;font:500 13px/1.4 var(--f);letter-spacing:.2em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
+.fifty .yrs b{display:block;font:300 36px/1 var(--s);color:var(--ink);letter-spacing:0;margin-bottom:8px}
+.fifty p.q{font:italic 300 clamp(22px,2.6vw,32px)/1.4 var(--s);max-width:760px;margin:40px auto 0;padding:0 16px}
+
+/* cellar */
+.cellar{padding:clamp(80px,10vw,130px) 0 0}
+.cellar-head{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:40px}
+.count{font:300 clamp(64px,9vw,128px)/.9 var(--s);color:var(--amber)}
+.count small{display:block;font:600 11px/1.4 var(--f);letter-spacing:.24em;color:var(--muted);text-transform:uppercase;margin-top:12px}
+.wall-wrap{position:relative;height:min(78vh,680px);min-height:440px;border-block:1px solid var(--line);background:#0a0705;cursor:none;touch-action:pan-y}
+#wall{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wall-tip{position:absolute;left:50%;top:18px;transform:translateX(-50%);font:600 10px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);background:rgba(10,7,5,.7);padding:9px 14px;border-radius:999px;pointer-events:none;white-space:nowrap}
+.label{position:absolute;width:min(330px,calc(100% - 32px));background:#efe4d0;color:#2a1b10;padding:26px 24px 22px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translate(-50%,-50%) rotate(-1.5deg) scale(.6);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.2,1.4,.4,1),opacity .3s;z-index:4;text-align:center;
+  background-image:radial-gradient(120% 90% at 50% 0,#f7efe0,#e3d3b6)}
+.label.show{opacity:1;transform:translate(-50%,-50%) rotate(-1.5deg) scale(1);pointer-events:auto}
+.label .yr{font:400 15px/1 var(--d);letter-spacing:.3em;color:#8e1b2e}
+.label h3{font:400 30px/1.05 var(--d);margin:12px 0 6px}
+.label .reg{font:italic 400 15px/1.3 var(--s);color:#6b5236}
+.label hr{border:0;border-top:1px solid rgba(42,27,16,.25);margin:16px 30px}
+.label p{font:400 14px/1.5 var(--f);color:#4a3622}
+.label .x{position:absolute;right:10px;top:8px;font-size:20px;color:#6b5236;padding:6px}
+.cellar-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.cellar-foot div{background:var(--bg);padding:28px clamp(16px,2.4vw,30px)}
+.cellar-foot b{display:block;font:400 22px/1.2 var(--s);margin-bottom:8px}
+.cellar-foot span{color:var(--muted);font-size:15px}
+
+/* manolis */
+.ask{padding:clamp(90px,12vw,150px) 0}
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{padding:12px 17px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font:500 14px/1 var(--f);transition:.25s}
+.chip:hover{box-shadow:inset 0 0 0 1px var(--amber)}
+.chip.on{background:var(--ink);color:var(--bg)}
+.pick{margin-top:34px;min-height:150px;border-left:2px solid var(--amber);padding-left:22px}
+.pick .k{display:block;margin-bottom:10px}
+.pick h3{font:400 clamp(28px,3vw,40px)/1.1 var(--d)}
+.pick p{color:var(--muted);margin-top:8px;font-size:15px}
+.glass-box{position:relative;aspect-ratio:4/5;max-height:640px;width:100%;border-radius:4px;background:radial-gradient(70% 55% at 50% 42%,rgba(232,165,75,.14),transparent 70%);touch-action:none;cursor:grab}
+#glass{position:absolute;inset:0;width:100%;height:100%;display:block}
+.glass-tip{position:absolute;left:0;right:0;bottom:6px;text-align:center;font:600 10px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);pointer-events:none}
+
+/* grill */
+.grill{padding:clamp(90px,12vw,150px) 0;overflow:hidden}
+#embers{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.95}
+.grill .wrap{position:relative}
+.menu{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(239,228,208,.08)}
+.dish{background:rgba(15,10,7,.78);backdrop-filter:blur(3px);padding:30px 26px;min-height:170px;transition:background .3s}
+.dish:hover{background:rgba(40,22,10,.85)}
+.dish .n{font:400 12px/1 var(--d);color:var(--amber);letter-spacing:.2em}
+.dish h3{font:400 clamp(24px,2.3vw,30px)/1.15 var(--s);margin:14px 0 8px}
+.dish p{color:var(--muted);font-size:15px}
+
+/* people */
+.people{padding:clamp(80px,10vw,130px) 0;border-top:1px solid var(--line)}
+.ppl{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:46px}
+.p-card{display:flex;gap:22px;align-items:center;padding:26px;border:1px solid var(--line)}
+.p-ph{flex:0 0 96px;height:96px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3a2617,#140d08);display:grid;place-items:center;font:400 34px/1 var(--d);color:var(--amber)}
+.p-card h3{font:400 26px/1.15 var(--s)}
+.p-card p{color:var(--muted);font-size:15px;margin-top:4px}
+
+/* reserve */
+.reserve{padding:clamp(90px,12vw,150px) 0;background:linear-gradient(#0f0a07,#1b100a)}
+.res-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,80px);align-items:start}
+.form{background:#efe4d0;color:#2a1b10;padding:clamp(24px,3vw,40px);position:relative}
+.form h3{font:400 30px/1.1 var(--d)}
+.row{margin-top:22px}
+.row>label{display:block;font:600 10px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:#7a5b3b;margin-bottom:10px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{padding:11px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(42,27,16,.25);font:500 14px/1 var(--f);color:#2a1b10}
+.seg button.on{background:#2a1b10;color:#efe4d0}
+.form input{width:100%;font:400 16px/1 var(--f);padding:13px 14px;border:1px solid rgba(42,27,16,.25);background:#f7efe0;color:#2a1b10;border-radius:3px}
+.form .btn{margin-top:26px;width:100%;justify-content:center;background:#2a1b10;color:#efe4d0}
+.done{position:absolute;inset:0;background:#efe4d0;display:grid;place-items:center;text-align:center;padding:30px;opacity:0;pointer-events:none;transition:opacity .4s}
+.done.show{opacity:1;pointer-events:auto}
+.done h3{font:400 34px/1.1 var(--d);margin:14px 0 10px}
+.done p{color:#5a4128}
+.seal{width:84px;height:84px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b52a3f,#6d1424);display:grid;place-items:center;font:400 28px/1 var(--d);color:#f3cfa0;box-shadow:0 6px 18px rgba(109,20,36,.45);transform:scale(2.4) rotate(-30deg);opacity:0;transition:transform .55s cubic-bezier(.3,1.6,.5,1) .15s,opacity .2s .15s}
+.done.show .seal{transform:none;opacity:1}
+.info{display:grid;gap:1px;background:var(--line);margin-top:40px}
+.info div{background:var(--bg2);padding:20px 22px;display:flex;justify-content:space-between;gap:20px;font-size:15px}
+.info span{color:var(--muted)}
+.info b{font-weight:500;text-align:right}
+
+footer{padding:60px 0 90px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .logo{color:var(--ink)}
+
+/* notes */
+.notes .ph{outline:1.5px dashed var(--amber);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#1a0f06;background:var(--amber);padding:4px 8px;border-radius:5px;max-width:270px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:600 11px/1 var(--f);padding:10px 13px;border-radius:999px;background:#1d140d;box-shadow:0 4px 14px rgba(0,0,0,.4);color:var(--muted)}
+.notes .notes-toggle{color:var(--amber);box-shadow:inset 0 0 0 1px var(--amber)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:860px){
+  .cellar-head,.ask-grid,.res-grid{grid-template-columns:1fr}
+  .menu{grid-template-columns:1fr 1fr}
+  .ppl{grid-template-columns:1fr}
+  .cellar-foot{grid-template-columns:1fr}
+  .glass-box{max-height:520px;max-width:420px;margin-inline:auto}
+  .live{display:none}
+}
+@media (max-width:560px){
+  .menu{grid-template-columns:1fr}
+  .nav .btn.ghost{display:none}
+  .p-card{flex-direction:column;align-items:flex-start}
+  .info div{flex-direction:column;gap:4px}
+  .info b{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("pa-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#top">Παλιά Αθήνα<small>ΑΠΟ ΤΟ 1976</small></a>
+  <div class="nav-r">
+    <span class="live" id="live"><i></i><span>…</span></span>
+    <a class="btn ghost" href="tel:+302310912292">2310 912292</a>
+    <a class="btn" href="#reserve">Κράτηση</a>
+  </div>
+</nav>
+
+<!-- 1. the descent -->
+<section class="descent" id="top">
+  <div class="stick">
+    <canvas id="stairs"></canvas>
+    <div class="hero-t" id="heroT">
+      <div>
+        <h1>Παλιά Αθήνα<span>ένα υπόγειο στην Τούμπα</span></h1>
+        <p>Ίμβρου 24 · Θεσσαλονίκη · από το 1976</p>
+      </div>
+    </div>
+    <div class="step-cap" id="cap1"><span class="k">Σκαλί 1</span><b>Η πόρτα στην Ίμβρου. Τα σκαλιά κατεβαίνουν.</b></div>
+    <div class="step-cap" id="cap2"><span class="k">Σκαλί 7</span><b>Η μυρωδιά από τα κάρβουνα φτάνει πρώτη.</b></div>
+    <div class="step-cap" id="cap3"><span class="k">Κάτω</span><b>Και μετά, ο τοίχος με τα κρασιά.</b></div>
+    <div class="scrollhint" id="hint">κατέβα<i></i></div>
+  </div>
+</section>
+
+<!-- 2. fifty years -->
+<section class="fifty">
+  <div class="wrap">
+    <span class="k">1976 → 2026</span>
+    <div class="big50" id="big50">0</div>
+    <div class="yrs">
+      <div><b>1976</b>άνοιξε το υπόγειο</div>
+      <div><b>4,7 ★</b>1.365 κριτικές Google</div>
+      <div><b>1000+</b>κρασιά στην κάβα</div>
+    </div>
+    <p class="q">Πενήντα χρόνια φέτος. Ίδια σκαλιά, ίδια κάρβουνα, και μια κάβα που μεγαλώνει κάθε χρόνο.</p>
+  </div>
+</section>
+
+<!-- 3. the cellar wall -->
+<section class="cellar" id="cellar">
+  <div class="wrap cellar-head">
+    <div>
+      <span class="k">Η κάβα</span>
+      <h2>Ένας τοίχος<br>με <em>χίλια</em> κρασιά.</h2>
+      <p class="lead">Στον κατάλογο είναι μόνο τα ελληνικά. Τα υπόλοιπα είναι στο μυαλό του ιδιοκτήτη. Πάρε το κερί και ψάξε: τα χρυσά καπάκια είναι οι θησαυροί.</p>
+    </div>
+    <div class="count"><span id="bcount">0</span>+<small>φιάλες · Masterzen wine towers · ένα ποτήρι για κάθε κρασί</small></div>
+  </div>
+  <div class="wall-wrap" id="wallWrap">
+    <canvas id="wall"></canvas>
+    <div class="wall-tip" id="wallTip">πέρνα το κερί · πάτα ένα μπουκάλι</div>
+    <div class="label" id="label">
+      <button class="x" id="labelX" aria-label="Κλείσιμο">×</button>
+      <div class="yr" id="lYr">2004</div>
+      <h3 id="lName">Pétrus</h3>
+      <div class="reg" id="lReg">Pomerol · Bordeaux</div>
+      <hr>
+      <p id="lTxt">…</p>
+    </div>
+  </div>
+  <div class="wrap cellar-foot" style="width:100%">
+    <div><b>Τα ελληνικά, στον κατάλογο</b><span>Από κάθε αμπελώνα της χώρας, στο χαρτί.</span></div>
+    <div><b>Τα υπόλοιπα, στο μυαλό του</b><span>Ρωτάς, και το μπουκάλι βγαίνει από την κάβα.</span></div>
+    <div><b>Ένα ποτήρι για κάθε κρασί</b><span>Στους μπουφέδες, για κάθε στυλ το σωστό ποτήρι.</span></div>
+  </div>
+</section>
+
+<!-- 4. ask manolis -->
+<section class="ask" id="ask">
+  <div class="wrap ask-grid">
+    <div>
+      <span class="k">Ρώτα τον Μανώλη</span>
+      <h2>Τι τρως;<br><em>Αυτό</em> πίνεις.</h2>
+      <p class="lead">Διάλεξε πιάτο και το ποτήρι γεμίζει. Μετά πιάσ' το και κούνησέ το.</p>
+      <div class="chips" id="chips"></div>
+      <div class="pick ph" data-note="Τα ζευγάρια είναι ενδεικτικά: τα γράφει ο Μανώλης" id="pick">
+        <span class="k" id="pickK">Για τη bistecca</span>
+        <h3 id="pickH">Tignanello</h3>
+        <p id="pickP">…</p>
+      </div>
+    </div>
+    <div class="glass-box" id="glassBox">
+      <canvas id="glass"></canvas>
+      <div class="glass-tip">σύρε για να στροβιλίσεις</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. grill -->
+<section class="grill" id="menu">
+  <canvas id="embers"></canvas>
+  <div class="wrap">
+    <span class="k">Στα κάρβουνα</span>
+    <h2>Κρέας, φωτιά<br>και <em>υπομονή</em>.</h2>
+    <p class="lead">Από τα σουτζουκάκια που φέρνουν όλη την παρέα ξανά, ως τις premium κοπές για τους μερακλήδες.</p>
+    <div class="menu" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- 6. people -->
+<section class="people">
+  <div class="wrap">
+    <span class="k">Οι άνθρωποι</span>
+    <h2>Στο υπόγειο<br><em>σε ξέρουν</em>.</h2>
+    <div class="ppl">
+      <div class="p-card"><div class="p-ph ph" data-note="Φωτογραφία του Μανώλη">Μ</div><div><h3>Μανώλης Γεωργακάκης</h3><p>Η κάβα, τα κρασιά, η ιστορία του μαγαζιού.</p></div></div>
+      <div class="p-card"><div class="p-ph ph" data-note="Φωτογραφία του Κωνσταντίνου">Κ</div><div><h3>Κωνσταντίνος</h3><p class="ph" data-note="Ρόλος του Κωνσταντίνου στο μαγαζί">Η σάλα, τα τραπέζια, το καλωσόρισμα.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. reserve -->
+<section class="reserve" id="reserve">
+  <div class="wrap res-grid">
+    <div>
+      <span class="k">Κράτηση</span>
+      <h2>Κράτα<br>ένα <em>τραπέζι</em>.</h2>
+      <p class="lead">Το υπόγειο γεμίζει νωρίς. Διάλεξε μέρα και ώρα, και σε παίρνουμε τηλέφωνο να το επιβεβαιώσουμε.</p>
+      <div class="info">
+        <div><span>Διεύθυνση</span><b><a href="https://maps.google.com/?q=Παλιά+Αθήνα+Ίμβρου+24+Θεσσαλονίκη" target="_blank" rel="noopener">Ίμβρου 24, Τούμπα, 544 53</a></b></div>
+        <div><span>Τηλέφωνο</span><b><a href="tel:+302310912292">2310 912292</a></b></div>
+        <div><span>Ώρες</span><b class="ph" data-note="Μέρες και ώρα κλεισίματος: να επιβεβαιωθούν">καθημερινά από 19:30</b></div>
+        <div><span>Google</span><b>4,7 ★ · 1.365 κριτικές · 25–50 €</b></div>
+      </div>
+    </div>
+    <form class="form" id="form" onsubmit="return false">
+      <h3>Ένα τραπέζι στο υπόγειο</h3>
+      <div class="row"><label>Μέρα</label><div class="seg" id="days"></div></div>
+      <div class="row"><label>Ώρα</label><div class="seg" id="times"></div></div>
+      <div class="row"><label>Άτομα</label><div class="seg" id="ppl"></div></div>
+      <div class="row"><label for="nm">Όνομα & τηλέφωνο</label><input id="nm" placeholder="π.χ. Γιώργος · 69…" autocomplete="off"></div>
+      <button class="btn" id="send" type="submit">Κράτησε το τραπέζι</button>
+      <div class="done" id="done"><div><div class="seal">ΠΑ</div><h3>Το κρατήσαμε.</h3><p id="doneTxt"></p><p style="margin-top:14px;font-size:14px" class="ph" data-note="Η κράτηση στέλνεται στο μαγαζί (email/SMS)">Θα σε πάρουμε τηλέφωνο για επιβεβαίωση.</p></div></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Παλιά Αθήνα</div>
+    <div>Ίμβρου 24, Τούμπα · <a href="tel:+302310912292">2310 912292</a> · <a href="https://www.instagram.com/palia.athina/" target="_blank" rel="noopener">@palia.athina</a></div>
+    <div>demo από την <a href="https://opensite.gr" style="color:var(--amber)">OpenSite</a></div>
+  </div>
+</footer>
+
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s);
+const html = document.documentElement;
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+$("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("pa-notes", on ? "on" : "off"); } catch (e) {} });
+addEventListener("scroll", () => $("#nav").classList.toggle("solid", scrollY > innerHeight * 3), { passive: true });
+
+/* live status (opens 19:30, closing time assumed 01:00) */
+(function () {
+  const p = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Athens", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  const m = +p.find(x => x.type === "hour").value * 60 + +p.find(x => x.type === "minute").value;
+  const open = m >= 19 * 60 + 30 || m < 60;
+  const el = $("#live"); el.classList.toggle("on", open);
+  el.querySelector("span").textContent = open ? "Ανοιχτά τώρα" : "Ανοίγουμε 19:30";
+})();
+
+function fit(c) {
+  const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+  c.width = Math.max(1, r.width * d); c.height = Math.max(1, r.height * d);
+  const x = c.getContext("2d"); x.setTransform(d, 0, 0, d, 0, 0); return { x, w: r.width, h: r.height };
+}
+const vis = new Map();
+const io = new IntersectionObserver(es => es.forEach(e => vis.set(e.target, e.isIntersecting)), { rootMargin: "100px" });
+
+/* ---------- 1. the descent ---------- */
+(function () {
+  const c = $("#stairs"), sec = $(".descent"); io.observe(c);
+  let g = fit(c); addEventListener("resize", () => g = fit(c));
+  const N = 16, D = 1, R = .52, HW = 1.25, END = N * D + 3.2;
+  let p = 0, sp = 0, t = 0;
+  function prog() { const r = sec.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / (r.height - innerHeight))); }
+  addEventListener("scroll", () => p = prog(), { passive: true }); p = prog();
+  function floorY(z) { return z <= 0 ? 0 : z >= N * D ? -N * R : -Math.ceil(z / D - 1e-6) * R; }
+  function frame() {
+    requestAnimationFrame(frame); t += .016;
+    sp += (p - sp) * (RM ? 1 : .08);
+    if (vis.get(c) === false) return;
+    const { x, w, h } = g, f = Math.min(h * .95, w * 1.1), cz = -1.6 + sp * (N * D - .2), cy = 1.45;
+    const hy = h * .34;
+    // the camera "leans" down the stairs: heights are measured from a line that follows the slope
+    const cf = z => -Math.min(N * D, Math.max(0, z)) / D * R;
+    const P = (X, Y, Z) => { const rz = Math.max(.05, Z - cz); return [w / 2 + X * f / rz, hy - (Y - cf(Z) - cy) * f / rz, rz]; };
+    const light = z => { let l = .15 + .85 * Math.exp(-(END - z) / 3.2); for (let s = 2; s < N; s += 4) l += .32 * Math.exp(-((z - s * D - .5) ** 2) / 1.4); return Math.min(1, l) * (.6 + .4 * Math.min(1, (z - cz) / 2.5)); };
+    x.fillStyle = "#050302"; x.fillRect(0, 0, w, h);
+    // far glow (the cellar)
+    const e1 = P(-HW, -N * R, END), e2 = P(HW, -N * R + 3, END);
+    const gx = w / 2, gyc = (e1[1] + e2[1]) / 2, gr = Math.max(40, (e2[0] - e1[0]) * 2.2);
+    const flick = .9 + Math.sin(t * 7) * .04 + Math.sin(t * 13.1) * .03;
+    let gg = x.createRadialGradient(gx, gyc, 2, gx, gyc, gr);
+    gg.addColorStop(0, `rgba(255,190,110,${.95 * flick})`); gg.addColorStop(.35, "rgba(200,110,40,.55)"); gg.addColorStop(1, "rgba(0,0,0,0)");
+    x.fillStyle = gg; x.fillRect(0, 0, w, h);
+    // bottle hint on the far wall
+    x.save(); x.beginPath(); x.rect(e1[0], e2[1], e2[0] - e1[0], e1[1] - e2[1]); x.clip();
+    const bs = Math.max(2, (e2[0] - e1[0]) / 16);
+    for (let yy = e2[1]; yy < e1[1]; yy += bs) for (let xx = e1[0] + ((yy / bs | 0) % 2 ? bs / 2 : 0); xx < e2[0]; xx += bs) {
+      x.fillStyle = "rgba(30,14,6,.85)"; x.beginPath(); x.arc(xx, yy, bs * .4, 0, 7); x.fill();
+      x.fillStyle = "rgba(255,200,130,.35)"; x.beginPath(); x.arc(xx - bs * .1, yy - bs * .1, bs * .12, 0, 7); x.fill();
+    }
+    x.restore();
+    // vault rings, far to near
+    const ring = (z) => {
+      const y0 = floorY(z), pts = [];
+      pts.push(P(-HW, y0, z), P(-HW, y0 + 1.9, z));
+      for (let a = 0; a <= 12; a++) { const an = Math.PI - a / 12 * Math.PI; pts.push(P(Math.cos(an) * HW, y0 + 1.9 + Math.sin(an) * HW, z)); }
+      pts.push(P(HW, y0, z)); return pts;
+    };
+    const step = .5, z0 = Math.ceil((cz + .15) / step) * step;
+    let rings = [];
+    for (let z = END; z >= z0; z -= step) rings.push([z, ring(z)]);
+    for (let i = 0; i < rings.length - 1; i++) {
+      const [zf, far] = rings[i], [zn, near] = rings[i + 1];
+      // brightness: warmer near the light
+      const k = light(zn);
+      const odd = (Math.round(zn / step) % 2) ? 1 : .86;
+      x.beginPath(); near.forEach((q, j) => j ? x.lineTo(q[0], q[1]) : x.moveTo(q[0], q[1])); x.closePath();
+      far.forEach((q, j) => j ? x.lineTo(q[0], q[1]) : x.moveTo(q[0], q[1])); x.closePath();
+      x.fillStyle = `rgb(${(28 + 150 * k) * odd | 0},${(18 + 88 * k) * odd | 0},${(12 + 44 * k) * odd | 0})`; x.fill("evenodd");
+      x.strokeStyle = "rgba(0,0,0,.35)"; x.lineWidth = 1; x.beginPath(); near.forEach((q, j) => j ? x.lineTo(q[0], q[1]) : x.moveTo(q[0], q[1])); x.stroke();
+      // stone courses running down the vault
+      x.strokeStyle = `rgba(0,0,0,${.18 + .2 * k})`; x.beginPath();
+      for (let j = 1; j < near.length - 1; j++) { x.moveTo(near[j][0], near[j][1]); x.lineTo(far[j][0], far[j][1]); }
+      x.stroke();
+    }
+    // treads, far to near
+    for (let s = N + 2; s >= 0; s--) {
+      const za = s * D, zb = (s + 1) * D; if (zb < cz + .1) continue;
+      const y = s >= N ? -N * R : -s * R, zA = Math.max(za, cz + .15);
+      const a = P(-HW, y, zA), b = P(HW, y, zA), cc = P(HW, y, Math.min(zb, END)), d = P(-HW, y, Math.min(zb, END));
+      const k = Math.min(1, light((za + Math.min(zb, END)) / 2) * 1.15);
+      x.fillStyle = `rgb(${40 + 170 * k | 0},${30 + 118 * k | 0},${22 + 70 * k | 0})`;
+      x.beginPath(); x.moveTo(a[0], a[1]); x.lineTo(b[0], b[1]); x.lineTo(cc[0], cc[1]); x.lineTo(d[0], d[1]); x.closePath(); x.fill();
+      if (s < N && za > cz + .15) { // worn marble nosing
+        x.strokeStyle = `rgba(255,${200 * k + 40 | 0},140,${.25 + .6 * k})`; x.lineWidth = Math.max(1, 3 / Math.max(.6, za - cz));
+        x.beginPath(); x.moveTo(a[0], a[1]); x.lineTo(b[0], b[1]); x.stroke();
+      }
+    }
+    // candle sconces on the walls
+    for (let s = 2; s < N; s += 4) {
+      const z = s * D + .5; if (z < cz + .4) continue;
+      const q = P(-HW + .02, floorY(z) + 1.6, z), q2 = P(HW - .02, floorY(z) + 1.6, z), rz = q[2];
+      [q, q2].forEach((qq, i) => {
+        const fl = 1 + Math.sin(t * 9 + s + i * 2) * .12, r = Math.min(160, 60 * fl / rz * 3);
+        const rg = x.createRadialGradient(qq[0], qq[1], 0, qq[0], qq[1], r);
+        rg.addColorStop(0, "rgba(255,210,140,.9)"); rg.addColorStop(.15, "rgba(255,150,60,.45)"); rg.addColorStop(1, "rgba(255,120,40,0)");
+        x.fillStyle = rg; x.beginPath(); x.arc(qq[0], qq[1], r, 0, 7); x.fill();
+      });
+    }
+    // vignette
+    const vg = x.createRadialGradient(w / 2, h / 2, Math.min(w, h) * .3, w / 2, h / 2, Math.max(w, h) * .75);
+    vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.75)"); x.fillStyle = vg; x.fillRect(0, 0, w, h);
+    // overlay text
+    $("#heroT").style.opacity = Math.max(0, 1 - sp * 4.5);
+    $("#heroT").style.transform = `translateY(${-sp * 120}px)`;
+    $("#hint").style.opacity = Math.max(0, 1 - sp * 8);
+    $("#cap1").classList.toggle("show", sp > .2 && sp < .45);
+    $("#cap2").classList.toggle("show", sp > .5 && sp < .72);
+    $("#cap3").classList.toggle("show", sp > .8);
+  }
+  frame();
+})();
+
+/* ---------- counters ---------- */
+function countUp(el, to, ms) {
+  const o = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; o.disconnect();
+    const t0 = performance.now(); (function tick(n) { const k = Math.min(1, (n - t0) / ms), e = 1 - Math.pow(1 - k, 3); el.textContent = Math.round(to * e).toLocaleString("el-GR"); if (k < 1) requestAnimationFrame(tick); })(t0); }, { threshold: .4 });
+  o.observe(el);
+}
+countUp($("#big50"), 50, 1800); countUp($("#bcount"), 1000, 2200);
+
+/* ---------- 2. the wall of 1000 bottles ---------- */
+const WINES = [
+  { yr: "2004", n: "Pétrus", reg: "Pomerol · Bordeaux", t: "Ο θρύλος της δεξιάς όχθης. Σχεδόν μόνο Merlot, από ένα κομμάτι αργίλου που δεν μοιάζει με κανένα άλλο." },
+  { yr: "2017", n: "Château de Beaucastel", reg: "Châteauneuf-du-Pape · Rhône", t: "Και οι δεκατρείς ποικιλίες της ονομασίας σε ένα μπουκάλι, με τη Mourvèdre να κρατάει τον τόνο." },
+  { yr: "2003", n: "Clos des Papes", reg: "Châteauneuf-du-Pape · Rhône", t: "Από τη ζεστή χρονιά του 2003, με είκοσι και πλέον χρόνια στη φιάλη. Για όσους ξέρουν να περιμένουν." },
+  { yr: "2017", n: "Zenato Amarone Riserva", reg: "Valpolicella · Veneto", t: "Σταφύλια που στεγνώνουν μήνες πριν το πάτημα. Πυκνό, γλυκόπικρο, για το τέλος της βραδιάς." },
+  { yr: "Toscana", n: "Tignanello", reg: "Marchesi Antinori · Toscana", t: "Το super Tuscan που άλλαξε την Ιταλία. Sangiovese με λίγο Cabernet, φτιαγμένο για μπριζόλα." },
+];
+(function () {
+  const wrap = $("#wallWrap"), c = $("#wall"); io.observe(c);
+  let g, B = [], gold = [], mx = -999, my = -999, lx = -999, ly = -999, t = 0, active = -1;
+  function build() {
+    g = fit(c); B = []; const { w, h } = g;
+    const r = w < 600 ? 10 : 12.5, dx = r * 2.15, dy = r * 1.9;
+    for (let row = 0, y = r + 6; y < h - r; y += dy, row++) for (let x = r + 4 + (row % 2) * dx / 2; x < w - r; x += dx) {
+      const s = Math.random();
+      B.push({ x, y, r: r * (.92 + Math.random() * .1), cap: s < .5 ? "#3a0d14" : s < .75 ? "#1a1a16" : s < .9 ? "#6b1424" : "#2b2a20", glint: 0, ph: Math.random() * 6 });
+    }
+    // five gold caps spread across the wall
+    gold = []; const n = B.length;
+    [.14, .33, .52, .7, .88].forEach((k, i) => { let j = Math.floor(n * k + (i % 2 ? 7 : -5)); j = Math.max(0, Math.min(n - 1, j)); B[j].gold = i; gold.push(j); });
+  }
+  build(); addEventListener("resize", build);
+  function pos(e) { const r = c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  wrap.addEventListener("pointermove", e => { [mx, my] = pos(e); $("#wallTip").style.opacity = 0; });
+  wrap.addEventListener("pointerleave", () => { mx = -999; my = -999; });
+  wrap.addEventListener("pointerdown", e => {
+    if (e.target.closest(".label")) return;
+    const [px, py] = pos(e); mx = px; my = py; lx = px; ly = py;
+    let best = -1, bd = 1e9;
+    B.forEach((b, i) => { const d = (b.x - px) ** 2 + (b.y - py) ** 2; if (d < bd) { bd = d; best = i; } });
+    if (best < 0 || bd > 900) return;
+    // a nearby gold cap wins, so they are findable on touch
+    gold.forEach(j => { const b = B[j]; if ((b.x - px) ** 2 + (b.y - py) ** 2 < 1600) best = j; });
+    show(best, px, py);
+  });
+  function show(i, px, py) {
+    active = i; const b = B[i], L = $("#label"), { w, h } = g;
+    if (b.gold != null) { const W = WINES[b.gold]; $("#lYr").textContent = W.yr; $("#lName").textContent = W.n; $("#lReg").textContent = W.reg; $("#lTxt").textContent = W.t; }
+    else { $("#lYr").textContent = "φιάλη " + (i + 1); $("#lName").textContent = "Αυτό δεν είναι στον κατάλογο"; $("#lReg").textContent = "είναι στο μυαλό του Μανώλη"; $("#lTxt").textContent = "Πες του τι τρως και τι σου αρέσει. Θα ξέρει ποιο μπουκάλι να βγάλει. Τα πέντε χρυσά καπάκια κρύβουν μερικούς από τους θησαυρούς της κάβας."; }
+    const lw = Math.min(330, w - 32), lh = 300;
+    L.style.left = Math.min(w - lw / 2 - 16, Math.max(lw / 2 + 16, px)) + "px";
+    L.style.top = Math.min(h - lh / 2 - 10, Math.max(lh / 2 + 10, py)) + "px";
+    L.classList.add("show");
+  }
+  $("#labelX").addEventListener("click", () => { $("#label").classList.remove("show"); active = -1; });
+  function frame() {
+    requestAnimationFrame(frame); t += .016;
+    if (vis.get(c) === false) return;
+    const { x, w, h } = g;
+    lx += (mx - lx) * .18; ly += (my - ly) * .18;
+    if (mx < -900 && !RM) { lx = w / 2 + Math.sin(t * .4) * w * .35; ly = h / 2 + Math.sin(t * .7) * h * .3; }
+    x.fillStyle = "#0a0705"; x.fillRect(0, 0, w, h);
+    const L = Math.max(170, Math.min(w, h) * .42), fl = 1 + Math.sin(t * 8) * .03 + Math.sin(t * 17) * .02;
+    // rack wood behind
+    const rg = x.createRadialGradient(lx, ly, 0, lx, ly, L * 1.4 * fl);
+    rg.addColorStop(0, "rgba(120,70,30,.55)"); rg.addColorStop(1, "rgba(20,10,5,0)");
+    x.fillStyle = rg; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < B.length; i++) {
+      const b = B[i], d = Math.hypot(b.x - lx, b.y - ly), k = Math.max(0, 1 - d / (L * fl));
+      const amb = .22;
+      const lit = amb + k * .86;
+      // glass
+      const gr = x.createRadialGradient(b.x - b.r * .3, b.y - b.r * .3, b.r * .1, b.x, b.y, b.r);
+      gr.addColorStop(0, `rgba(${40 + 60 * lit | 0},${50 + 50 * lit | 0},${26 + 20 * lit | 0},1)`);
+      gr.addColorStop(1, `rgba(${6 + 10 * lit | 0},${8 + 10 * lit | 0},${5 + 6 * lit | 0},1)`);
+      x.fillStyle = gr; x.beginPath(); x.arc(b.x, b.y, b.r, 0, 7); x.fill();
+      // capsule / punt
+      const isG = b.gold != null;
+      x.fillStyle = isG ? `rgba(${200 + 40 * lit | 0},${150 + 50 * lit | 0},${70 + 30 * lit | 0},${.55 + .45 * lit})` : b.cap;
+      x.globalAlpha = isG ? 1 : .35 + .65 * lit;
+      x.beginPath(); x.arc(b.x, b.y, b.r * .5, 0, 7); x.fill(); x.globalAlpha = 1;
+      if (isG) { const pu = .5 + .5 * Math.sin(t * 2.4 + b.ph); x.strokeStyle = `rgba(255,215,140,${.15 + .35 * pu})`; x.lineWidth = 1.5; x.beginPath(); x.arc(b.x, b.y, b.r + 2 + pu * 3, 0, 7); x.stroke(); }
+      // specular from the candle
+      if (k > .02) {
+        const a = Math.atan2(ly - b.y, lx - b.x);
+        x.strokeStyle = `rgba(255,${210 + 30 * k | 0},160,${k * .9})`; x.lineWidth = Math.max(1, b.r * .16);
+        x.beginPath(); x.arc(b.x, b.y, b.r * .78, a - .55, a + .55); x.stroke();
+      }
+      if (i === active) { x.strokeStyle = "#e8a54b"; x.lineWidth = 2; x.beginPath(); x.arc(b.x, b.y, b.r + 3, 0, 7); x.stroke(); }
+    }
+    // the candle itself
+    if (lx > -900) {
+      const fg = x.createRadialGradient(lx, ly - 10, 0, lx, ly - 10, 46 * fl);
+      fg.addColorStop(0, "rgba(255,240,200,.95)"); fg.addColorStop(.2, "rgba(255,170,70,.5)"); fg.addColorStop(1, "rgba(255,120,30,0)");
+      x.fillStyle = fg; x.beginPath(); x.arc(lx, ly - 10, 46 * fl, 0, 7); x.fill();
+      x.fillStyle = "#fff4d8"; x.beginPath(); x.ellipse(lx + Math.sin(t * 11) * .8, ly - 10, 3.4, 8 * fl, 0, 0, 7); x.fill();
+      x.fillStyle = "#e9dcc2"; x.fillRect(lx - 6, ly, 12, 26);
+    }
+  }
+  frame();
+})();
+
+/* ---------- 3. ask manolis: the glass ---------- */
+const PAIR = [
+  { d: "Bistecca fiorentina", w: "Tignanello", c: [120, 18, 30], t: "Sangiovese για μπριζόλα στη φλόγα: η οξύτητα κόβει το λίπος, οι τανίνες κρατάνε το κρέας." },
+  { d: "Παϊδάκια", w: "Ξινόμαυρο Νάουσας", c: [130, 30, 34], t: "Το κρασί της Μακεδονίας για το πιο ελληνικό πιάτο στα κάρβουνα. Ντομάτα, ελιά, μπαχάρι." },
+  { d: "Σουτζουκάκια", w: "Αγιωργίτικο Νεμέας", c: [110, 14, 40], t: "Μαλακό, ζουμερό κόκκινο για το κύμινο και τη σάλτσα." },
+  { d: "Ταλιάτα", w: "Château de Beaucastel 2017", c: [96, 16, 28], t: "Ρόδανος με μπαχάρια και γη, για φέτες ψητού κρέατος με ρόκα και παρμεζάνα." },
+  { d: "Tartare", w: "Μαλαγουζιά", c: [222, 196, 110], t: "Λευκό με άρωμα και δροσιά: αφήνει το ωμό κρέας να μιλήσει." },
+  { d: "Κοκορέτσι", w: "Λημνιό", c: [150, 40, 46], t: "Ελαφρύ κόκκινο με ρίγανη και κεράσι, για τα δυνατά, τα σπιτικά." },
+  { d: "Συκώτι σε μπόλια", w: "Zenato Amarone Riserva 2017", c: [84, 10, 24], t: "Πυκνό και γλυκόπικρο για το γλυκό του συκωτιού." },
+];
+(function () {
+  const box = $("#glassBox"), c = $("#glass"); io.observe(c);
+  let g = fit(c); addEventListener("resize", () => g = fit(c));
+  let col = PAIR[0].c.slice(), tgt = PAIR[0].c.slice(), level = 0, lvT = .55, pour = 0, ang = 0, av = 0, slosh = 0, sv = 0, t = 0, drag = null;
+  const chips = $("#chips");
+  PAIR.forEach((p, i) => { const b = document.createElement("button"); b.className = "chip" + (i ? "" : " on"); b.textContent = p.d; b.onclick = () => choose(i); chips.appendChild(b); });
+  function choose(i) {
+    [...chips.children].forEach((b, j) => b.classList.toggle("on", i === j));
+    const p = PAIR[i]; $("#pickK").textContent = "Για " + (/^[ΑΕΗΙΟΥΩ]/.test(p.d) ? "το " : "τα ") + p.d.toLowerCase(); $("#pickH").textContent = p.w; $("#pickP").textContent = p.t;
+    if (/^(Bistecca|Ταλιάτα|Tartare)/.test(p.d)) $("#pickK").textContent = "Για " + (p.d === "Ταλιάτα" ? "την ταλιάτα" : p.d === "Tartare" ? "το tartare" : "τη bistecca");
+    if (p.d === "Κοκορέτσι") $("#pickK").textContent = "Για το κοκορέτσι";
+    if (p.d === "Συκώτι σε μπόλια") $("#pickK").textContent = "Για το συκώτι σε μπόλια";
+    tgt = p.c.slice(); level = Math.min(level, .08); pour = 1;
+  }
+  choose(0); level = 0;
+  box.addEventListener("pointerdown", e => { drag = { x: e.clientX }; box.setPointerCapture(e.pointerId); box.style.cursor = "grabbing"; });
+  box.addEventListener("pointermove", e => { if (!drag) return; const dx = e.clientX - drag.x; drag.x = e.clientX; av += dx * .0022; sv += dx * .004; });
+  const up = () => { drag = null; box.style.cursor = ""; };
+  box.addEventListener("pointerup", up); box.addEventListener("pointercancel", up);
+  let started = false;
+  new IntersectionObserver(es => { if (es[0].isIntersecting && !started) { started = true; pour = 1; } }, { threshold: .4 }).observe(box);
+  function frame() {
+    requestAnimationFrame(frame); t += .016;
+    if (vis.get(c) === false) return;
+    const { x, w, h } = g;
+    for (let i = 0; i < 3; i++) col[i] += (tgt[i] - col[i]) * .06;
+    if (pour > 0 && started) { level += (lvT - level) * .035; if (Math.abs(lvT - level) < .005) pour = 0; }
+    av += -ang * .02; av *= .95; ang += av; ang = Math.max(-.35, Math.min(.35, ang));
+    sv += (-slosh * .05 - av * .6); sv *= .96; slosh += sv * .1;
+    x.clearRect(0, 0, w, h);
+    const cx = w / 2, s = Math.min(w / 340, h / 470), bw = 112 * s, bt = h * .12, bh = 200 * s, stemH = 150 * s, by = bt + bh;
+    x.save(); x.translate(cx, by + stemH); x.rotate(ang); x.translate(-cx, -(by + stemH));
+    // bowl path (tulip)
+    const bowl = new Path2D();
+    bowl.moveTo(cx - bw * .78, bt);
+    bowl.bezierCurveTo(cx - bw * 1.08, bt + bh * .45, cx - bw * 1.02, bt + bh * .88, cx, by);
+    bowl.bezierCurveTo(cx + bw * 1.02, bt + bh * .88, cx + bw * 1.08, bt + bh * .45, cx + bw * .78, bt);
+    // wine inside: clip to bowl, surface tilts opposite to glass rotation
+    x.save(); x.clip(bowl);
+    const ly = by - level * bh * .92, tilt = -ang - slosh * .3;
+    x.translate(cx, ly); x.rotate(tilt);
+    const [r, gg, b] = col.map(v => v | 0);
+    const wg = x.createLinearGradient(0, 0, 0, bh);
+    wg.addColorStop(0, `rgba(${Math.min(255, r + 70)},${gg + 30},${b + 30},.95)`); wg.addColorStop(1, `rgba(${r * .45 | 0},${gg * .4 | 0},${b * .5 | 0},1)`);
+    x.fillStyle = wg; x.beginPath(); x.moveTo(-w, 0);
+    for (let i = -20; i <= 20; i++) { const xx = i / 20 * bw * 1.4; x.lineTo(xx, Math.sin(xx * .05 + t * 3) * (1.5 + Math.abs(sv) * 20) * s); }
+    x.lineTo(w, 0); x.lineTo(w, h * 2); x.lineTo(-w, h * 2); x.closePath(); x.fill();
+    x.fillStyle = `rgba(255,230,210,.18)`; x.fillRect(-bw * 1.4, -1, bw * 2.8, 3 * s);
+    x.restore();
+    // pouring stream
+    if (pour > 0 && started) {
+      const sx = cx + bw * .12, top = 0;
+      x.strokeStyle = `rgba(${r},${gg},${b},.9)`; x.lineWidth = 5 * s; x.lineCap = "round";
+      x.beginPath(); x.moveTo(sx, top); x.quadraticCurveTo(sx - 4 * s, (top + ly) / 2, sx - 6 * s, ly); x.stroke();
+    }
+    // glass outline and reflections
+    x.strokeStyle = "rgba(239,228,208,.55)"; x.lineWidth = 1.6; x.stroke(bowl);
+    x.strokeStyle = "rgba(255,255,255,.22)"; x.lineWidth = 6 * s; x.lineCap = "round";
+    x.beginPath(); x.moveTo(cx - bw * .7, bt + bh * .14); x.quadraticCurveTo(cx - bw * .95, bt + bh * .5, cx - bw * .6, bt + bh * .82); x.stroke();
+    x.strokeStyle = "rgba(239,228,208,.5)"; x.lineWidth = 1.4;
+    x.beginPath(); x.ellipse(cx, bt, bw * .78, 7 * s, 0, 0, 7); x.stroke();
+    // stem and foot
+    x.fillStyle = "rgba(239,228,208,.35)"; x.fillRect(cx - 3 * s, by, 6 * s, stemH);
+    x.beginPath(); x.ellipse(cx, by + stemH, bw * .75, 10 * s, 0, 0, 7); x.fill();
+    x.restore();
+    // candle reflection on the table
+    const tg = x.createRadialGradient(cx, by + stemH + 14 * s, 0, cx, by + stemH + 14 * s, bw * 1.6);
+    tg.addColorStop(0, `rgba(${r},${gg},${b},.35)`); tg.addColorStop(1, "rgba(0,0,0,0)");
+    x.fillStyle = tg; x.beginPath(); x.ellipse(cx, by + stemH + 14 * s, bw * 1.6, 22 * s, 0, 0, 7); x.fill();
+  }
+  frame();
+})();
+
+/* ---------- 4. the menu over embers ---------- */
+const DISHES = [
+  ["Σουτζουκάκια", "Αυτά που σε φέρνουν πίσω. Κύμινο, κάρβουνο, και το ψωμί για τη σάλτσα."],
+  ["Παϊδάκια", "Στη σχάρα, με αλάτι, ρίγανη και λεμόνι. Τίποτε άλλο δε χρειάζεται."],
+  ["Bistecca fiorentina", "Η μεγάλη μπριζόλα με κόκαλο, για το κέντρο του τραπεζιού."],
+  ["Premium κοπές", "Για τους μερακλήδες: ρώτα τι κοπές έχει σήμερα."],
+  ["Κοκορέτσι", "Όπως το θυμάσαι, στη σούβλα, αργά."],
+  ["Συκώτι σε μπόλια", "Τυλιγμένο, ψημένο στα κάρβουνα, ζουμερό."],
+  ["Ταλιάτα", "Φέτες ψημένου μοσχαριού με ρόκα και παρμεζάνα."],
+  ["Tartare", "Ψιλοκομμένο στο χέρι, για να ξεκινήσει η βραδιά."],
+  ["Πατάτες με κασέρι", "Το συνοδευτικό που παραγγέλνει δεύτερη φορά όλο το τραπέζι."],
+];
+(function () {
+  const grid = $("#menuGrid");
+  DISHES.forEach(([n, p], i) => { const d = document.createElement("div"); d.className = "dish"; d.innerHTML = `<div class="n">${String(i + 1).padStart(2, "0")}</div><h3>${n}</h3><p>${p}</p>`; grid.appendChild(d); });
+  grid.insertAdjacentHTML("afterend", '<p class="ph" data-note="Περιγραφές ενδεικτικές· τιμές και πλήρες μενού από το μαγαζί" style="margin-top:22px;color:var(--muted);font-size:14px">Το πλήρες μενού με τις τιμές, πάντα ενημερωμένο.</p>');
+  const c = $("#embers"); io.observe(c);
+  let g = fit(c), E = [], S = [], t = 0;
+  function seed() { g = fit(c); E = []; const n = Math.round(g.w * g.h / 5200); for (let i = 0; i < n; i++) E.push({ x: Math.random() * g.w, y: g.h * (.55 + Math.random() * .45), r: 4 + Math.random() * 16, ph: Math.random() * 7, sp: .5 + Math.random() * 2 }); }
+  seed(); addEventListener("resize", seed);
+  function frame() {
+    requestAnimationFrame(frame); t += .016;
+    if (vis.get(c) === false) return;
+    const { x, w, h } = g;
+    x.fillStyle = "#0f0a07"; x.fillRect(0, 0, w, h);
+    const bg = x.createLinearGradient(0, h * .4, 0, h); bg.addColorStop(0, "rgba(0,0,0,0)"); bg.addColorStop(1, "rgba(120,40,8,.5)");
+    x.fillStyle = bg; x.fillRect(0, 0, w, h);
+    for (const e of E) {
+      const k = .45 + .55 * (.5 + .5 * Math.sin(t * e.sp + e.ph)) * (.6 + .4 * Math.sin(t * 2.7 + e.ph * 3));
+      const gr = x.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.r * 2.2);
+      gr.addColorStop(0, `rgba(255,${120 + 100 * k | 0},${40 + 40 * k | 0},${.55 * k})`); gr.addColorStop(.45, `rgba(200,50,10,${.3 * k})`); gr.addColorStop(1, "rgba(0,0,0,0)");
+      x.fillStyle = gr; x.beginPath(); x.arc(e.x, e.y, e.r * 2.2, 0, 7); x.fill();
+      x.fillStyle = `rgba(20,10,6,${.7 - .4 * k})`; x.beginPath(); x.arc(e.x, e.y, e.r * .55, 0, 7); x.fill();
+    }
+    if (!RM && Math.random() < .5) S.push({ x: Math.random() * w, y: h, vx: (Math.random() - .5) * .6, vy: -1 - Math.random() * 2.2, l: 1 });
+    for (let i = S.length - 1; i >= 0; i--) { const s = S[i]; s.x += s.vx + Math.sin(t * 2 + s.y * .02) * .4; s.y += s.vy; s.l -= .006; if (s.l <= 0) { S.splice(i, 1); continue; }
+      x.fillStyle = `rgba(255,${170 + 60 * s.l | 0},90,${s.l})`; x.fillRect(s.x, s.y, 2, 2); }
+  }
+  frame();
+})();
+
+/* ---------- 5. reservation ---------- */
+(function () {
+  const days = $("#days"), times = $("#times"), ppl = $("#ppl"), sel = { d: 0, t: 1, p: 2 };
+  const fmt = new Intl.DateTimeFormat("el-GR", { weekday: "short", day: "numeric", timeZone: "Europe/Athens" });
+  const D = [...Array(6)].map((_, i) => { const d = new Date(Date.now() + i * 864e5); return i === 0 ? "Απόψε" : i === 1 ? "Αύριο" : fmt.format(d); });
+  const T = ["19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30"], Pp = ["2", "3", "4", "5", "6", "8+"];
+  function seg(el, arr, key) { el.innerHTML = ""; arr.forEach((v, i) => { const b = document.createElement("button"); b.type = "button"; b.textContent = v; b.className = i === sel[key] ? "on" : ""; b.onclick = () => { sel[key] = i; seg(el, arr, key); }; el.appendChild(b); }); }
+  seg(days, D, "d"); seg(times, T, "t"); seg(ppl, Pp, "p");
+  $("#send").addEventListener("click", () => {
+    $("#doneTxt").textContent = `${D[sel.d]} στις ${T[sel.t]}, για ${Pp[sel.p]} άτομα${$("#nm").value.trim() ? ", στο όνομα " + $("#nm").value.trim().split("·")[0].trim() : ""}.`;
+    $("#done").classList.add("show");
+    setTimeout(() => $("#done").classList.remove("show"), 6000);
+  });
+})();
+</script>
+</body>
+</html>

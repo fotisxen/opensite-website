@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1b130d">
+<title>Dacristo Deli & Meat · ο κουρσάρος των γεύσεων · Θεσσαλονίκη</title>
+<meta name="description" content="Dacristo Deli & Meat, Παλαιών Πατρών Γερμανού 13, Θεσσαλονίκη. Premium κρεοπωλείο, αλλαντικά και τυριά από την Ιταλία, την Ισπανία και την Ελλάδα, πλατό και gift boxes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://imageproxy.wolt.com">
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;1,300;1,400&family=GFS+Didot&display=swap" rel="stylesheet">
+<!--
+  OpenSite e-shop demo for Dacristo Deli & Meat (@dacristodeli).
+  Products, prices and photos are the real ones from their Wolt store (Nov 2026), photos hotlinked from Wolt's image proxy.
+  The sea chart, the butcher's chart and the chest are drawn with canvas/SVG/CSS.
+  Cart and checkout are a working mock (no payment). Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{--bg:#1b130d;--bg2:#241910;--par:#f1e6cf;--par2:#e6d6b6;--ink:#2a1c12;--muted:#8a7258;--gold:#c9a24a;--gold2:#e8c877;--ox:#6b1e1e;--ver:#3e6b5f;--line:rgba(42,28,18,.14);
+  --f:"Commissioner",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif;--d:"GFS Didot",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--par);color:var(--ink);font:400 16px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+.k{font:600 11px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--ox)}
+h2{font:300 clamp(38px,5.6vw,80px)/1 var(--s);letter-spacing:-.02em}
+h2 em{font-style:italic;color:var(--ox)}
+.lead{color:var(--muted);max-width:560px;margin-top:18px;font-size:17px}
+.eur{font-family:var(--d)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:50;background:rgba(27,19,13,.94);backdrop-filter:blur(10px);color:var(--par);border-bottom:1px solid rgba(201,162,74,.25)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{flex:0 0 34px}
+.logo b{font:400 22px/1 var(--d);letter-spacing:.06em}
+.logo small{display:block;font:600 8.5px/1 var(--f);letter-spacing:.32em;color:var(--gold);margin-top:4px}
+.bar nav{display:flex;gap:26px;font:500 13px/1 var(--f);letter-spacing:.04em;color:#d9c9a8}
+.bar nav a:hover{color:var(--gold2)}
+.bar-r{display:flex;align-items:center;gap:14px}
+.live{display:flex;align-items:center;gap:8px;font:500 12px/1 var(--f);color:#bfae8c;white-space:nowrap}
+.live i{width:8px;height:8px;border-radius:50%;background:#7a6a55}
+.live.on i{background:#8fd18a;box-shadow:0 0 0 4px rgba(143,209,138,.18)}
+.cartbtn{position:relative;display:flex;align-items:center;gap:9px;padding:10px 16px 10px 13px;border-radius:999px;background:var(--gold);color:#1b130d;font:600 13px/1 var(--f)}
+.cartbtn .n{min-width:20px;height:20px;border-radius:10px;background:#1b130d;color:var(--gold2);display:grid;place-items:center;font-size:11px;padding:0 5px}
+.cartbtn.bump{animation:bump .5s}
+@keyframes bump{30%{transform:scale(1.15) rotate(-4deg)}60%{transform:scale(.96)}}
+
+/* hero: the sea chart */
+.hero{position:relative;background:#e9dcbf;overflow:hidden;border-bottom:1px solid rgba(42,28,18,.25)}
+#chart{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(233,220,191,.7),rgba(233,220,191,.25) 38%,transparent 55%)}
+.hero-in{z-index:1}
+.hero-in{position:relative;display:grid;grid-template-columns:1fr 380px;gap:30px;min-height:calc(100svh - 64px);align-items:center;padding:40px 0 50px;pointer-events:none}
+.hero-in>*{pointer-events:auto}
+.hero h1{font:300 clamp(46px,7vw,104px)/.95 var(--s);letter-spacing:-.025em;text-shadow:0 0 30px #e9dcbf,0 0 12px #e9dcbf}
+.hero h1 em{font-style:italic;color:var(--ox)}
+.hero .tag{font:italic 400 clamp(18px,1.9vw,23px)/1.45 var(--s);color:#4b3522;max-width:520px;margin-top:22px;text-shadow:0 0 14px #e9dcbf}
+.hero .cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:600 13px/1 var(--f);letter-spacing:.06em;padding:15px 22px;border-radius:999px;background:var(--bg);color:var(--par);white-space:nowrap;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:var(--gold);color:#1b130d}
+.btn.line{background:rgba(241,230,207,.6);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(42,28,18,.35)}
+.stats{display:flex;gap:30px;margin-top:38px;flex-wrap:wrap}
+.stats div{font:500 12px/1.3 var(--f);letter-spacing:.14em;text-transform:uppercase;color:#5d4630}
+.stats b{display:block;font:400 34px/1 var(--d);letter-spacing:0;color:var(--ink);margin-bottom:6px}
+.voyage{background:var(--par);box-shadow:0 30px 70px rgba(42,28,18,.3),0 0 0 1px rgba(42,28,18,.2);padding:14px;position:relative}
+.voyage::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,162,74,.6);pointer-events:none}
+.voyage .vk{display:flex;justify-content:space-between;align-items:center;font:600 10px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--ox);padding:8px 8px 12px}
+.voyage .img{aspect-ratio:4/3;background:#fff;overflow:hidden}
+.voyage .img img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.voyage h3{font:400 26px/1.1 var(--s);margin:14px 8px 4px}
+.voyage .route{font:italic 400 15px/1.3 var(--s);color:var(--muted);margin:0 8px}
+.voyage p{font-size:13px;color:#5d4630;margin:10px 8px 0;min-height:60px}
+.voyage .vf{display:flex;justify-content:space-between;align-items:center;margin:14px 8px 6px}
+.voyage .vf .eur{font-size:28px}
+.vdots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.vdots button{width:30px;height:4px;background:rgba(42,28,18,.18);border-radius:2px}
+.vdots button.on{background:var(--ox)}
+
+/* marquee */
+.ribbon{background:var(--bg);color:var(--gold2);overflow:hidden;white-space:nowrap;padding:14px 0;font:400 18px/1 var(--d);letter-spacing:.14em}
+.ribbon div{display:inline-block;animation:mq 40s linear infinite}
+.ribbon span{margin:0 26px}
+.ribbon i{color:var(--ox);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* shop */
+.shop{padding:clamp(70px,9vw,120px) 0 80px}
+.shop-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.search{display:flex;align-items:center;gap:10px;background:#fff8ea;border:1px solid rgba(42,28,18,.2);border-radius:999px;padding:0 16px;height:48px;width:min(360px,100%)}
+.search input{border:0;background:none;outline:0;font:400 15px/1 var(--f);width:100%;color:var(--ink)}
+.cats{position:sticky;top:64px;z-index:20;background:var(--par);margin-top:34px;border-block:1px solid var(--line)}
+.cats .wrap{display:flex;gap:6px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.cats .wrap::-webkit-scrollbar{display:none}
+.cat{flex:0 0 auto;padding:10px 15px;border-radius:999px;font:500 13.5px/1 var(--f);color:#5d4630;transition:.2s;white-space:nowrap}
+.cat:hover{background:rgba(42,28,18,.06)}
+.cat.on{background:var(--bg);color:var(--par)}
+.cat sup{font-size:10px;opacity:.6;margin-left:3px}
+.orig{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;align-items:center}
+.orig>span{font:600 10px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.og{padding:8px 12px;border-radius:6px;font:500 13px/1 var(--f);box-shadow:inset 0 0 0 1px var(--line)}
+.og.on{background:var(--ox);color:var(--par);box-shadow:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px 22px;margin-top:34px}
+.card{position:relative;perspective:900px}
+.card .fr{position:relative;background:#fff;padding:10px;box-shadow:0 0 0 1px rgba(42,28,18,.12),0 10px 26px rgba(42,28,18,.08);transition:transform .25s,box-shadow .25s;transform-style:preserve-3d;cursor:pointer}
+.card .fr::before{content:"";position:absolute;inset:4px;border:1px solid rgba(201,162,74,.55);pointer-events:none;z-index:1}
+.card:hover .fr{box-shadow:0 0 0 1px rgba(201,162,74,.8),0 24px 44px rgba(42,28,18,.18)}
+.card .im{aspect-ratio:1;overflow:hidden;background:#fff}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .im img{transform:scale(1.06)}
+.card .flag{position:absolute;left:16px;top:16px;z-index:2;font:600 9.5px/1 var(--f);letter-spacing:.18em;text-transform:uppercase;background:rgba(241,230,207,.94);color:var(--ox);padding:6px 8px}
+.card h3{font:500 15px/1.35 var(--f);margin:14px 2px 0;min-height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:0 2px}
+.card .eur{font-size:22px}
+.add{width:42px;height:42px;border-radius:50%;background:var(--bg);color:var(--gold2);display:grid;place-items:center;font-size:22px;line-height:1;transition:.2s}
+.add:hover{background:var(--ox);transform:rotate(90deg)}
+.qty{display:flex;align-items:center;gap:2px;background:var(--bg);color:var(--par);border-radius:999px;height:42px;padding:0 4px}
+.qty button{width:34px;height:34px;border-radius:50%;font-size:18px;color:var(--gold2)}
+.qty span{min-width:20px;text-align:center;font:600 14px/1 var(--f)}
+.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);font:italic 400 22px/1.4 var(--s)}
+.more{margin-top:40px;text-align:center;color:var(--muted);font-size:14px}
+
+/* butcher */
+.butcher{background:var(--bg);color:var(--par);padding:clamp(80px,10vw,130px) 0}
+.butcher h2 em{color:var(--gold2)}
+.butcher .k{color:var(--gold)}
+.butcher .lead{color:#bfae8c}
+.b-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(30px,4vw,60px);align-items:center;margin-top:40px}
+.cow{width:100%;height:auto;display:block;overflow:visible}
+.cow .rg{fill:rgba(201,162,74,.06);stroke:rgba(232,200,119,.55);stroke-width:1.2;transition:fill .3s;cursor:pointer}
+.cow .rg:hover,.cow .rg.on{fill:rgba(201,162,74,.38)}
+.cow .rg.off{cursor:default}
+.cow .rg.off:hover{fill:rgba(201,162,74,.06)}
+.cow text{fill:#e8d9b8;font:italic 400 15px var(--s);pointer-events:none}
+.cow .sil{fill:none;stroke:var(--gold2);stroke-width:2}
+.cutlist h3{font:400 34px/1.1 var(--s);color:var(--gold2)}
+.cutlist .sub{color:#bfae8c;font-size:14px;margin-top:6px}
+.cl{margin-top:20px;display:grid;gap:10px}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:10px;background:rgba(241,230,207,.05);border:1px solid rgba(201,162,74,.18)}
+.ci img{width:64px;height:64px;object-fit:cover;background:#fff}
+.ci b{font:500 14px/1.3 var(--f);display:block}
+.ci small{color:#bfae8c}
+.ci .add{background:var(--gold);color:#1b130d;width:38px;height:38px}
+
+/* chest */
+.chestsec{padding:clamp(80px,10vw,130px) 0;background:radial-gradient(70% 60% at 70% 40%,#f7eedb,var(--par))}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center;margin-top:40px}
+.pickers{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px;margin-top:24px}
+.pk{background:#fff;padding:6px;box-shadow:0 0 0 1px var(--line);text-align:left;transition:.2s;position:relative}
+.pk:hover{box-shadow:0 0 0 1px var(--gold),0 8px 18px rgba(42,28,18,.12);transform:translateY(-2px)}
+.pk img{aspect-ratio:1;width:100%;object-fit:cover}
+.pk span{display:block;font:500 11px/1.25 var(--f);margin-top:6px;height:28px;overflow:hidden}
+.pk em{font:400 13px/1 var(--d);font-style:normal;color:var(--ox)}
+.pk.in{opacity:.35;pointer-events:none}
+.stage{position:relative;height:440px;perspective:1100px;display:grid;place-items:center}
+.chest{position:relative;width:min(400px,86vw);height:220px;transform-style:preserve-3d;transform:rotateX(14deg);margin-top:120px}
+.chest .front{position:absolute;inset:0;background:linear-gradient(#7a4a24,#4e2c14);border-radius:6px;box-shadow:inset 0 0 0 6px #3a2010,0 30px 60px rgba(42,28,18,.4);
+  background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 2px,transparent 2px 48px),linear-gradient(#7a4a24,#4e2c14)}
+.chest .band{position:absolute;top:0;bottom:0;width:22px;background:linear-gradient(90deg,#8a6a2c,#e8c877,#8a6a2c);box-shadow:0 0 0 1px #5a4318}
+.chest .lock{position:absolute;left:50%;top:18px;width:40px;height:50px;transform:translateX(-50%);background:linear-gradient(#e8c877,#8a6a2c);border-radius:5px 5px 14px 14px;box-shadow:0 2px 0 #5a4318;z-index:3}
+.chest .lock::after{content:"";position:absolute;left:50%;top:18px;width:8px;height:14px;transform:translateX(-50%);background:#2a1c12;border-radius:4px 4px 1px 1px}
+.slots{position:absolute;left:18px;right:18px;top:-74px;height:110px;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;z-index:1}
+.slot{aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(42,28,18,.25);display:grid;place-items:center;font:400 14px var(--d);color:rgba(42,28,18,.35);overflow:hidden;background:#fff8ea;position:relative}
+.slot img{width:100%;height:100%;object-fit:cover;animation:drop .55s cubic-bezier(.3,1.5,.5,1)}
+.slot button{position:absolute;inset:0;opacity:0;background:rgba(107,30,30,.75);color:#fff;font-size:18px;transition:.2s}
+.slot:hover button{opacity:1}
+@keyframes drop{from{transform:translateY(-140px) scale(1.4) rotate(-20deg);opacity:0}}
+.lid{position:absolute;left:-6px;right:-6px;top:-118px;height:120px;transform-origin:50% 100%;transform:rotateX(-108deg);transition:transform 1s cubic-bezier(.6,0,.3,1.25);z-index:2;
+  background:linear-gradient(#8b552b,#5c3418);border-radius:200px 200px 8px 8px/70px 70px 8px 8px;box-shadow:inset 0 0 0 6px #3a2010;backface-visibility:visible}
+.lid .band{height:100%}
+.closed .lid{transform:rotateX(0)}
+.closed .slots{opacity:0;transition:opacity .2s .5s}
+.wax{position:absolute;left:50%;top:6px;width:76px;height:76px;margin-left:-38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b52a3f,#6d1424);display:grid;place-items:center;font:400 26px/1 var(--d);color:#f3cfa0;box-shadow:0 6px 18px rgba(109,20,36,.5);z-index:5;transform:scale(2.4) rotate(-30deg);opacity:0;transition:transform .5s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.closed .wax{transform:none;opacity:1;transition-delay:1s}
+.ctot{display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid var(--line);gap:16px;flex-wrap:wrap}
+.ctot .eur{font-size:34px}
+.note{width:100%;margin-top:16px;font:italic 400 17px/1.4 var(--s);padding:14px 16px;border:1px solid rgba(42,28,18,.2);background:#fff8ea;resize:none;color:var(--ink);height:72px}
+.ready{margin-top:70px}
+.ready-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px;margin-top:24px}
+
+/* visit */
+.visit{padding:clamp(70px,9vw,110px) 0;border-top:1px solid var(--line)}
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.info{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.info div{background:#fff8ea;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;font-size:15px}
+.info span{color:var(--muted)}
+.info b{font-weight:500;text-align:right}
+footer{background:var(--bg);color:#bfae8c;padding:50px 0 90px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(27,19,13,.5);z-index:80;opacity:0;pointer-events:none;transition:.3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--par);z-index:81;transform:translateX(105%);transition:transform .45s cubic-bezier(.3,.9,.3,1);display:flex;flex-direction:column;box-shadow:-30px 0 60px rgba(27,19,13,.3)}
+.open .scrim{opacity:1;pointer-events:auto}
+.open .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
+.dh h3{font:400 26px/1 var(--s)}
+.dh button{font-size:26px;padding:4px 8px}
+.db{flex:1;overflow:auto;padding:8px 22px}
+.li{display:grid;grid-template-columns:62px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.li img{width:62px;height:62px;object-fit:cover;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.li b{font:500 13.5px/1.3 var(--f);display:block}
+.li small{color:var(--muted);font-size:12px}
+.li .qty{height:34px;background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.li .qty button{width:28px;height:28px;color:var(--ox)}
+.df{padding:18px 22px 22px;border-top:1px solid var(--line);background:#fff8ea}
+.prog{height:6px;border-radius:3px;background:rgba(42,28,18,.1);overflow:hidden;margin:8px 0 6px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ox));width:0;transition:width .5s}
+.progt{font-size:13px;color:#5d4630}
+.sum{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0}
+.sum .eur{font-size:30px}
+.df .btn{width:100%}
+.dempty{text-align:center;padding:70px 10px;color:var(--muted);font:italic 400 20px/1.4 var(--s)}
+.ck h4{font:600 10px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--ox);margin:22px 0 10px}
+.opt{display:flex;gap:8px;flex-wrap:wrap}
+.opt button{padding:11px 14px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(42,28,18,.22);font:500 13.5px/1.2 var(--f);text-align:left}
+.opt button.on{background:var(--bg);color:var(--par);box-shadow:none}
+.ck input{width:100%;padding:12px 14px;border:1px solid rgba(42,28,18,.22);background:#fff8ea;font:400 15px/1 var(--f);border-radius:6px;margin-top:8px;color:var(--ink)}
+.sealed{text-align:center;padding:60px 10px}
+.sealed .wax{position:relative;left:auto;top:auto;margin:0 auto 22px;transform:none;opacity:1;width:96px;height:96px;font-size:32px;animation:stamp .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes stamp{from{transform:scale(2.6) rotate(-30deg);opacity:0}}
+.sealed h3{font:400 32px/1.1 var(--s)}
+.sealed p{color:var(--muted);margin-top:10px}
+
+/* quick view */
+.qv{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:rgba(27,19,13,.6);opacity:0;pointer-events:none;transition:.3s}
+.qv.show{opacity:1;pointer-events:auto}
+.qv-in{background:var(--par);width:min(860px,100%);max-height:calc(100svh - 32px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(20px) scale(.97);transition:.35s;position:relative}
+.qv.show .qv-in{transform:none}
+.qv-in .im{background:#fff}
+.qv-in .im img{width:100%;height:100%;object-fit:cover;aspect-ratio:1}
+.qv-in .tx{padding:34px 30px}
+.qv-in h3{font:400 30px/1.15 var(--s);margin:12px 0}
+.qv-in p{color:#5d4630;font-size:15px}
+.qv-in .eur{font-size:34px;display:block;margin:20px 0}
+.qv-x{position:absolute;right:10px;top:8px;font-size:26px;padding:6px 10px;z-index:2;background:rgba(241,230,207,.9);border-radius:50%}
+
+.fly{position:fixed;z-index:200;pointer-events:none;border-radius:50%;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .75s cubic-bezier(.5,-0.3,.7,1),opacity .75s}
+
+/* notes */
+.notes .ph{outline:1.5px dashed var(--ox);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--ox);padding:4px 8px;border-radius:5px;max-width:270px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:600 11px/1 var(--f);padding:10px 13px;border-radius:999px;background:var(--par);box-shadow:0 4px 14px rgba(0,0,0,.18);color:var(--muted)}
+.notes .notes-toggle{color:var(--ox);box-shadow:inset 0 0 0 1px var(--ox)}
+.clean .notes-toggle{display:none}
+
+@media (max-width:1000px){
+  .bar nav{display:none}
+  .hero-in{grid-template-columns:1fr;min-height:0;padding:50px 0}
+  .voyage{max-width:420px}
+  .b-grid,.c-grid,.v-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .live{display:none}
+  .grid{grid-template-columns:repeat(2,1fr);gap:18px 12px}
+  .card .fr{padding:6px}
+  .card h3{font-size:13.5px}
+  .card .eur{font-size:19px}
+  .add,.qty{height:36px}.add{width:36px}
+  .qty button{width:28px}
+  .stats{gap:20px}
+  .qv-in{grid-template-columns:1fr}
+  .stage{height:380px}
+  .info div{flex-direction:column;gap:4px}.info b{text-align:left}
+  .logo small{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("dc-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#c9a24a" stroke-width="1.2"/><path d="M20 4 L23 20 L20 36 L17 20 Z" fill="#c9a24a"/><path d="M4 20 L20 17 L36 20 L20 23 Z" fill="#e8c877" opacity=".55"/><circle cx="20" cy="20" r="2.4" fill="#1b130d" stroke="#c9a24a"/></svg>
+      <span><b>DACRISTO</b><small>DELI & MEAT</small></span>
+    </a>
+    <nav><a href="#shop">Κατάστημα</a><a href="#butcher">Κρεοπωλείο</a><a href="#chest">Gift box</a><a href="#visit">Το μαγαζί</a></nav>
+    <div class="bar-r">
+      <span class="live" id="live"><i></i><span>…</span></span>
+      <button class="cartbtn" id="cartBtn" type="button" aria-label="Καλάθι">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18l-2 13H5L3 7z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg>
+        <span class="eur" id="cartSum">0,00 €</span><span class="n" id="cartN">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- hero: the corsair's chart -->
+<section class="hero" id="top">
+  <canvas id="chart"></canvas>
+  <div class="wrap hero-in">
+    <div>
+      <span class="k">Θεσσαλονίκη · Παλαιών Πατρών Γερμανού 13</span>
+      <h1 style="margin-top:18px">Ο σύγχρονος<br><em>κουρσάρος</em><br>των γεύσεων.</h1>
+      <p class="tag">Ένας πρεσβευτής των γεύσεων που ταξίδεψε από την Πάρμα ως τη Μπιλμπάο και το Λονδίνο, και έφτασε στον προορισμό του: τη Θεσσαλονίκη.</p>
+      <div class="cta"><a class="btn" href="#shop">Μπες στο κατάστημα</a><a class="btn line" href="#chest">Φτιάξε gift box</a></div>
+      <div class="stats">
+        <div><b>9,8</b>βαθμολογία Wolt</div>
+        <div><b>40+</b>κατηγορίες</div>
+        <div><b>7</b>χώρες στο ράφι</div>
+      </div>
+    </div>
+    <div>
+      <div class="voyage" id="voyage">
+        <div class="vk"><span>Το ταξίδι του πλατό</span><span id="vNo">01 / 06</span></div>
+        <div class="img"><img id="vImg" alt="" src=""></div>
+        <h3 id="vName">…</h3>
+        <div class="route" id="vRoute">…</div>
+        <p id="vDesc">…</p>
+        <div class="vf"><span class="eur" id="vPrice">…</span><button class="btn gold" id="vAdd" type="button">Στο καλάθι</button></div>
+      </div>
+      <div class="vdots" id="vDots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div id="rib"></div></div>
+
+<!-- shop -->
+<section class="shop" id="shop">
+  <div class="wrap shop-head">
+    <div>
+      <span class="k">Το κατάστημα</span>
+      <h2>Το αμπάρι<br>του <em>κουρσάρου</em>.</h2>
+      <p class="lead">Τα προϊόντα, οι τιμές και οι φωτογραφίες είναι τα δικά σας. Εδώ τα πουλάτε χωρίς προμήθεια τρίτου, με το δικό σας όνομα.</p>
+    </div>
+    <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a7258" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" placeholder="Ψάξε: τρούφα, Iberico, γραβιέρα…" autocomplete="off"></label>
+  </div>
+  <div class="cats"><div class="wrap" id="cats"></div></div>
+  <div class="wrap">
+    <div class="orig" id="orig"><span>Προέλευση</span></div>
+    <div class="grid" id="grid"></div>
+    <p class="more ph" data-note="Όλος ο κατάλογος έρχεται από το WooCommerce που ήδη έχετε (dacristo.gr): ίδια προϊόντα, ίδιο απόθεμα">Στο demo είναι 70 από τα προϊόντα σας. Στο κανονικό site μπαίνει όλος ο κατάλογος.</p>
+  </div>
+</section>
+
+<!-- butcher -->
+<section class="butcher" id="butcher">
+  <div class="wrap">
+    <span class="k">Κρεοπωλείο premium</span>
+    <h2>Διάλεξε<br>την <em>κοπή</em>.</h2>
+    <p class="lead">Από την Ουρουγουάη, την Αυστραλία, το Greater Omaha των ΗΠΑ και από ελληνική εκτροφή. Πάτα ένα κομμάτι του χάρτη.</p>
+    <div class="b-grid">
+      <svg class="cow" id="cow" viewBox="0 0 600 340" aria-label="Χάρτης κοπών">
+        <defs><clipPath id="cowClip"><path id="silP" d="M58 108 L76 86 L98 80 L126 94 L232 80 L332 84 L430 86 L496 94 L516 104 L528 140 L524 206 L508 248 L504 312 L474 312 L470 262 L452 238 L332 252 L240 254 L206 248 L200 312 L170 312 L164 256 L142 238 L120 222 L104 190 L82 172 L50 168 L38 146 L44 122 Z"/></clipPath></defs>
+        <g clip-path="url(#cowClip)" id="regions"></g>
+        <use href="#silP" class="sil"/>
+        <path d="M76 86 L62 66 M98 80 L104 60" stroke="#e8c877" stroke-width="2" fill="none"/>
+        <path d="M516 104 C540 120 548 170 540 210" stroke="#e8c877" stroke-width="2" fill="none"/>
+        <g id="labels"></g>
+      </svg>
+      <div class="cutlist">
+        <h3 id="cutH">Rib eye</h3>
+        <div class="sub" id="cutS">…</div>
+        <div class="cl" id="cutL"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- chest -->
+<section class="chestsec" id="chest">
+  <div class="wrap">
+    <span class="k">Gift box</span>
+    <h2>Γέμισε<br>το <em>σεντούκι</em>.</h2>
+    <p class="lead">Διάλεξε έξι θησαυρούς, γράψε μια κάρτα, και το σεντούκι κλείνει με βουλοκέρι.</p>
+    <div class="c-grid">
+      <div>
+        <div class="pickers" id="pickers"></div>
+      </div>
+      <div>
+        <div class="stage">
+          <div class="chest" id="chestEl">
+            <div class="slots" id="slots"></div>
+            <div class="lid"><div class="band" style="left:22%"></div><div class="band" style="right:22%"></div></div>
+            <div class="front"><div class="band" style="left:22%"></div><div class="band" style="right:22%"></div><div class="lock"></div></div>
+            <div class="wax">DC</div>
+          </div>
+        </div>
+        <textarea class="note" id="giftNote" placeholder="Η κάρτα: «Για τον Νίκο, με αγάπη…»"></textarea>
+        <div class="ctot">
+          <div><span class="k">Το σεντούκι σου</span><div class="eur" id="chestSum">0,00 €</div><small class="ph" data-note="Κόστος συσκευασίας δώρου: να το ορίσει το μαγαζί" style="color:var(--muted)">+ συσκευασία δώρου</small></div>
+          <button class="btn" id="chestGo" type="button">Κλείσε το σεντούκι</button>
+        </div>
+      </div>
+    </div>
+    <div class="ready">
+      <span class="k">Ή έτοιμα</span>
+      <div class="ready-row" id="ready"></div>
+    </div>
+  </div>
+</section>
+
+<!-- visit -->
+<section class="visit" id="visit">
+  <div class="wrap v-grid">
+    <div>
+      <span class="k">Το μαγαζί</span>
+      <h2>Έλα να<br>το <em>δοκιμάσεις</em>.</h2>
+      <p class="lead">Ή παράγγειλε και έρχεται σπίτι σου, όπως το ξέρεις από τη Wolt, αλλά από το δικό μας site.</p>
+    </div>
+    <div class="info">
+      <div><span>Διεύθυνση</span><b><a href="https://maps.google.com/?q=Dacristo+Παλαιών+Πατρών+Γερμανού+13+Θεσσαλονίκη" target="_blank" rel="noopener">Παλαιών Πατρών Γερμανού 13, 546 22</a></b></div>
+      <div><span>Τηλέφωνο</span><b><a href="tel:+302310235900">2310 235900</a></b></div>
+      <div><span>Δευτέρα – Σάββατο</span><b class="ph" data-note="Ώρες από τη Wolt (παράδοση). Ώρες καταστήματος να επιβεβαιωθούν">08:00 – 22:00</b></div>
+      <div><span>Κυριακή</span><b>11:00 – 18:45</b></div>
+      <div><span>Instagram</span><b><a href="https://www.instagram.com/dacristodeli/" target="_blank" rel="noopener">@dacristodeli</a></b></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span class="logo"><b style="color:var(--par)">DACRISTO</b></span><span>Deli & Meat · Θεσσαλονίκη</span><span>demo από την <a href="https://opensite.gr" style="color:var(--gold2)">OpenSite</a></span></div></footer>
+
+<!-- cart drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Καλάθι">
+  <div class="dh"><h3 id="dTitle">Το καλάθι</h3><button id="dX" type="button" aria-label="Κλείσιμο">×</button></div>
+  <div class="db" id="dBody"></div>
+  <div class="df" id="dFoot">
+    <div class="progt" id="progT"></div>
+    <div class="prog"><i id="progI"></i></div>
+    <div class="sum"><span>Σύνολο</span><span class="eur" id="dSum">0,00 €</span></div>
+    <button class="btn" id="dGo" type="button">Ολοκλήρωση παραγγελίας</button>
+  </div>
+</aside>
+
+<!-- quick view -->
+<div class="qv" id="qv"><div class="qv-in"><button class="qv-x" id="qvX" type="button" aria-label="Κλείσιμο">×</button><div class="im"><img id="qvImg" alt=""></div><div class="tx"><span class="k" id="qvK"></span><h3 id="qvN"></h3><p id="qvD"></p><span class="eur" id="qvP"></span><button class="btn" id="qvAdd" type="button">Στο καλάθι</button></div></div></div>
+
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+// real products from the Dacristo Wolt store: [category, name, price €, description, photo, origin]
+const P=[["gift","Cohiba Wines Gift Box",219.0,"","https://imageproxy.wolt.com/assets/694a273eba77b0b8b3a18265?w=600",""],["gift","Dacristo Wines Gift Box",150.0,"","https://imageproxy.wolt.com/assets/694a2732ba77b0b8b3a18263?w=600",""],["gift","Dacristo Premium Gift Box",140.0,"","https://imageproxy.wolt.com/assets/69451c0088a4d8a1871796f8?w=600",""],["gift","Dacristo Spanish Gourmet Gift Box",100.0,"","https://imageproxy.wolt.com/assets/69451e602779142902e42986?w=600","es"],["gift","Dacristo Gourmet Food Gift Box",70.0,"","https://imageproxy.wolt.com/assets/6945222088a4d8a1871799ba?w=600",""],["gift","Pasta Dinner Gift Box",60.0,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/acac948e-7c90-11ed-a7c7-569b6dadc11a_55___pasta_dinner.jpeg?w=600","it"],["dinner","Vega Mancha Πρόβειο Τυρί Τρούφα Ισπανίας",36.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/3cb2d864-21f5-11ed-899d-4ea8cfc84a11________57_.jpeg?w=600","es"],["dinner","Urbani Carpaccio Τρούφας 75 g",19.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/1d52ad10-2230-11ed-87d9-0e64d64e0d65_62ea4fe90cd128a06a2cbc4f.jpeg?w=600","it"],["dinner","Valcolatte Burrata di Bufala 200 g",6.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/b5916800-38c9-11ed-9c56-5a5412a32832_product_30.jpeg?w=600","it"],["dinner","Wykefarms White Stilton Mango Ginger",29.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/52dfd7fe-21f5-11ed-89ed-dec74cfbd8da________61_.jpeg?w=600","uk"],["dinner","Καπνιστή Γραβιέρα Ίου",25.6,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/a5f61d42-21f3-11ed-9efe-a2a27aba6f2f________18_.jpeg?w=600","gr"],["dinner","Colla Parmigiano Reggiano 450 g 40 Μηνών",46.6,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/945887fe-0aa1-11ee-982e-2e57a173dff2_27.605.jpg?w=600","it"],["platters","Rome to Madrid (Premium πλατό τεσσάρων ατόμων)",54.0,"Αλλαντικά: Iberico Jamon 100%, Bresaola Wagyu, Iberico Cana De Lomo / Τυριά: Moliterno Canestrato tartufo, Igor Gorgonzo","https://imageproxy.wolt.com/menu/menu-images/632ae031bfa368b3bd69cc53/cfa5b750-40d5-11ed-8ef4-6651e19ce3b1_product_79.jpeg?w=600","it"],["platters","Bilbao to Modena (Premium πλατό τεσσάρων ατόμων)",60.0,"Αλλαντικά: Prosciutto San Daniele, Iberico Jamon 50%, Bresaola Wagyu , Black Angus affumicato, Iberico Cana De Lomo / Τυ","https://imageproxy.wolt.com/menu/menu-images/632ae031bfa368b3bd69cc53/b7eafee0-40d5-11ed-9e44-8ee9a94875bc_product_78.jpeg?w=600",""],["platters","Parma (Πλατό τεσσάρων ατόμων)",40.0,"Αλλαντικά: Prosciutto Parma, Salame Bella Festa ,Τυριά: Colla Parmigiano Reggiano ,Valcolatte Asiago, Bettine Chevre.","https://imageproxy.wolt.com/menu/menu-images/632ae031bfa368b3bd69cc53/32aa4ab4-40d6-11ed-81a0-9a2f8c19d653_product_75__1_.jpeg?w=600","it"],["platters","Bologna (Πλατό τεσσάρων ατόμων)",42.0,"Αλλαντικά: Prosciutto Parma, Mortadella, Simonini Coppa Stagionata / Τυριά:Veldhuyzen Gouda 24 μήνες παλαίωση Black Labe","https://imageproxy.wolt.com/menu/menu-images/632ae031bfa368b3bd69cc53/74dd90e4-40d6-11ed-9b2d-c2648646fabc_product_74__1_.jpeg?w=600","it"],["platters","Milano to London (Πλατό τεσσάρων ατόμων)",52.0,"Αλλαντικά: Prosciutto San Daniele, Culatelo tipico, Mortadella,Simonini Salame Milano ή Spianata piccante / Τυριά: Veldh","https://imageproxy.wolt.com/menu/menu-images/632ae031bfa368b3bd69cc53/e641a1ea-40d5-11ed-ae7f-26c2d0c014ca_product_76.jpeg?w=600","uk"],["platters","Venice (Πλατό τεσσάρων ατόμων)",52.0,"Αλλαντικά: Prosciutto Parma ,Oakey Bresaola Punta D'anca Wagyu , Salame Bella Festa, Βεντριτσίνα / Τυριά: Colla Parmigia","https://imageproxy.wolt.com/menu/menu-images/632ae031bfa368b3bd69cc53/5a60dc9e-40d6-11ed-99cc-d223c131eb72_product_77.jpeg?w=600","it"],["premium","Μοσχαρίσιο Rib Eye Ουρουγουάης Charrua Grain",62.3,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/d5b52b52-3e3d-11ed-b308-86a5836a427a_06.618.jpeg?w=600","uy"],["premium","Μοσχαρίσιο Rib Eye Black Angus Omaha USA (Lip On)",79.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/33f630d4-3e53-11ed-afbe-b600d46be9f7_03.813.jpeg?w=600","us"],["premium","Μοσχαρίσιο Rib Eye Black Angus USA Greater Omaha",86.95,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/410367a8-22d1-11ed-b23c-5e6fec3481be_dacristo_product__2_.jpeg?w=600","us"],["premium","Μοσχαρίσιο Prime Rib με κόκαλο Black Angus USA Greater Omaha Τεμάχιο",72.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/99b22812-22d1-11ed-a216-6a13eca13079_dacristo_product__10_.jpeg?w=600","us"],["premium","Μοσχαρίσιο Φιλέτο Ουρουγουάης Grain",76.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/9e0c1370-3e4f-11ed-8229-b600d46be9f7_03.864.jpeg?w=600","uy"],["premium","Μοσχαρίσιο Φιλέτο Black Angus Αυστραλίας Grain",104.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/4c34646e-22d2-11ed-80ef-8e60774b6d92_dacristo_product__21_.jpeg?w=600","au"],["premium","Μοσχαρίσιο Φιλέτο Black Angus USA Greater Omaha",129.0,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/52f6f258-22d2-11ed-a02b-c697c23e6de1_dacristo_product__22_.jpeg?w=600","us"],["premium","Μοσχαρίσιο Striploin Black Angus USA Greater Omaha",69.3,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/24cdd84c-22d2-11ed-b53e-6a96c4712a49_dacristo_product__19_.jpeg?w=600","us"],["beef","Μοσχαρίσια Σπαλομπριζόλα Ελληνικής Εκτροφής",22.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/ce25efce-22d2-11ed-b17c-567a64055765_dacristo_product__26_.jpeg?w=600","gr"],["beef","Μοσχαρίσια Σπαλομίτα Ελληνικής Εκτροφής",20.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/e1ccfee6-22d2-11ed-ba92-4aa07b7fdf98_dacristo_product__29_.jpeg?w=600","gr"],["beef","Μοσχαρίσιος Κιμάς Ελληνικής Εκτροφής",17.9,"Κιμάς Ελλ.Εκτ. από  Βόεια Ελιά","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/6cf15506-38ce-11ed-a73d-9a251badfbbb_dacristo_part_2_vasilis_product__7_.jpeg?w=600","gr"],["beef","Κιμάς Ανάμεικτος Ελληνικής Εκτροφής",16.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/9bd7d1a6-38ce-11ed-b556-ae783d2e54a3_dacristo_part_2_vasilis_product__11_.jpeg?w=600","gr"],["beef","Μοσχαρίσια Ελιά Ελληνικής Εκτροφής",20.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/c254b888-22d2-11ed-a3b4-6eb68368dc63_dacristo_product__27_.jpeg?w=600","gr"],["cured","Bernardini Γαλοπούλα Στήθος Ψητή",30.7,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/fe255498-5aa5-11ed-98aa-16f566e6082a_product_7.jpeg?w=600","it"],["cured","Bernardini Prosciutto Τρούφα",38.3,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/4161a674-22ef-11ed-a774-6edf5bbf4716_dacristo_product__121_.jpeg?w=600","it"],["cured","Bernardini Fiocotto Ψητό",34.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/2f74c766-22ef-11ed-8398-867f0975e845_dacristo_product__120_.jpeg?w=600","it"],["cured","Bernardini Mortadella Αγριογούρουνο Με Τρούφα",28.8,"","https://imageproxy.wolt.com/assets/69cf785553cefef2ab687355?w=600","it"],["cured","Bernardini Capocollo ”Cinta Senese”",69.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/7ac6ca58-3e3c-11ed-a30e-daaca6b13ae8_capo_colo.jpeg?w=600","it"],["cured","Bernardini Fesa Black Angus Μαριναρισμένο",50.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/70fe5c02-3e3c-11ed-9970-02127cd89800_black_angus______________.jpeg?w=600","it"],["cured","Bernardini Brisket Black Angus Καπνιστό",71.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/244103d2-22ef-11ed-bebc-2a20ea8e4eb0_dacristo_product__119_.jpeg?w=600","it"],["cured","Baron De Ley Iberico Jamon 100% ”Bellota” Boneless Acorn Fed",166.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/41ec0d78-ad85-11ef-8856-d6988124f6c0_centro_jamon_100_1.jpg?w=600","es"],["cheese","Vega Mancha Manchego Curado Τυρί Ισπανίας 5-6 μηνών",34.4,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/6e040a4c-21f4-11ed-a3a8-3e7c16571399________43_.jpeg?w=600","es"],["cheese","Vega Mancha Πρόβειο Τυρί Μαύρο Σκόρδο Ισπανίας",34.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/01528d0a-21f5-11ed-bb55-76ebe314f898________56_.jpeg?w=600","es"],["cheese","Vega Mancha Πρόβειο Τυρί Μανιτάρια Boletus Ισπανίας",34.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/f46586a6-21f4-11ed-9b11-4ea8cfc84a11________54_.jpeg?w=600","es"],["cheese","Vega Mancha Πρόβειο Τυρί Τρούφα Ισπανίας",36.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/3cb2d864-21f5-11ed-899d-4ea8cfc84a11________57_.jpeg?w=600","es"],["cheese","Vega Mancha Πρόβειο Τυρί Diablo Ισπανίας",34.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/b4a1904e-496f-11ed-a6bb-8e034a2bfc45_05.141.jpeg?w=600","es"],["cheese","Colla Grana Padano 18 μηνών",27.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/c029faf6-21f5-11ed-b466-aee054cdfd27________75_.jpeg?w=600","it"],["cheese","Colla Parmigiano Reggiano 24 μηνών",38.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/6dea87f6-21f5-11ed-a185-d2b71be4e390________65_.jpeg?w=600","it"],["cheese","Colla Pecorino Romano Ιταλίας",28.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/9898cd96-21f5-11ed-864a-4af48e7302fc________70_.jpeg?w=600","it"],["grcheese","Γραβιέρα Νάξου Μπαστούνι",23.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/79ed3e16-3e6c-11ed-9c8e-a6bbea733328________2_.jpeg?w=600","gr"],["grcheese","Ίου Γραβιέρα Κλασσική",22.95,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/732c1fd4-3e49-11ed-8f71-8ed8760d1727________9_.jpeg?w=600","gr"],["grcheese","Ίου Ομήρου Τριλογία Γραβιέρας",25.0,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/ae593ce0-3e49-11ed-a69d-c2748c2bb943________17_.jpeg?w=600","gr"],["grcheese","Μπάφας Γραβιέρα Με Τρούφα",31.4,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/fd5e799a-3e49-11ed-9f14-c2ef97b1b5a9________28_.jpeg?w=600","gr"],["grcheese","Γραβιέρα Νάξου ΠΟΠ",22.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/98a07b84-1e23-11ed-86e8-3e8e02b6f3a9________3_.jpeg?w=600","gr"],["truffle","Urbani Λάδι Λευκής Τρούφας 55ml",6.0,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/78ba357e-0aa1-11ee-a796-5e87858078b1_05.234.jpg?w=600","it"],["truffle","Urbani Λάδι Λευκής Τρούφας 250ml",18.2,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/78ca0a76-0aa1-11ee-9101-ea2a9a93d1f3_05.355.jpg?w=600","it"],["truffle","Urbani Λάδι Μαύρης Τρούφας 100ml",9.4,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/820f9cfe-0aa1-11ee-9e95-72aff89d5491_05.411.jpg?w=600","it"],["truffle","Urbani Σάλτσα Tartufata Βάζο 200 g",9.6,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/7d580506-5cd3-11ed-814a-6e3137acc41c_urbani_salsa_tartufata_funghi_80g_65685_scaled.jpeg?w=600","it"],["truffle","Urbani Σάλτσα Tartufata Λευκή 180 g",9.6,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/94532cbe-0aa1-11ee-bee1-e6e4e0df0bed_19.382.jpg?w=600","it"],["alipasta","Ortiz Αντζούγιες Παστές Ισπανίας",55.0,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/ad89f4be-22ea-11ed-a345-cedb1722b74b_blepe.jpeg?w=600","es"],["alipasta","Τρυφωνίδης Αντζούγια Φιλέτο Λάδι",36.7,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/7e135a18-22ea-11ed-a410-362553615af0_dacristo_product__70_.jpeg?w=600","gr"],["alipasta","Ortiz Γαύρος Μαρινάτος Ισπανίας",70.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/66bb8ac0-22ea-11ed-9a81-362553615af0_dacristo_product__69_.jpeg?w=600","es"],["alipasta","Dacristo Χταπόδι Ξιδάτο",44.8,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/006f5ef4-22ea-11ed-bf33-3e96d89b1c5c_dacristo_product__66_.jpeg?w=600","gr"],["bakery","Baguette White 280 g",1.7,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/042be49e-21fb-11ed-bff6-169504bdc80b_bakery__13_.jpeg?w=600",""],["bakery","Fitness Baguette 340 g",2.9,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/920aab84-21fa-11ed-884f-169504bdc80b_bakery__3_.jpeg?w=600",""],["bakery","Hazelnut Bread 530 g",4.4,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/991e3922-21fa-11ed-91ac-f61872a99e2f_bakery__7_.jpeg?w=600",""],["bakery","Baguette Onion 280 g",2.25,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/d0162a2a-21fa-11ed-a8bf-46d8852ec2ba_bakery__9_.jpeg?w=600",""],["bakery","Baguette Herbs & Garlic 280 g",2.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/70032aba-21fb-11ed-9a5f-7252cf963c5b_bakery__8_.jpeg?w=600",""],["chutney","Γουμένισσες Chutney Καραμελωμένο Κρεμμύδι 220 g",3.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/f008b3c8-222e-11ed-ad30-3aa0e4fe9e42_62ea4fe90cd128a06a2cb92b.jpeg?w=600","gr"],["chutney","Γουμένισσες Chutney Σύκο Τζίντζερ 220 g",3.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/f01ddafa-222e-11ed-948b-567bd5e06e69_62ea4fe90cd128a06a2cb92c.jpeg?w=600","gr"],["chutney","Γουμένισσες Chutney Κόκκινης Πιπεριάς 220 g",3.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/f276f840-222e-11ed-83e7-92e95b8df049_62ea4fe90cd128a06a2cb92d.jpeg?w=600","gr"],["chutney","Γουμένισσες Chutney Δαμάσκηνο Πετιμέζι & Balsamico 220 g",3.5,"","https://imageproxy.wolt.com/menu/menu-images/62c5568b995aed3de171b7ad/cd1afae0-42f1-11ed-b8fd-9aec3a2f9396_12.479.jpeg?w=600","gr"]];
+const CAT = { gift: "Gift boxes", dinner: "Special dinner", platters: "Πλατό", premium: "Premium κρεοπωλείο", beef: "Κρεοπωλείο", cured: "Αλλαντικά", cheese: "Τυριά εισαγωγής", grcheese: "Ελληνικά τυριά", truffle: "Τρούφα", alipasta: "Αλίπαστα", bakery: "Bakery", chutney: "Chutneys" };
+const ORIG = { it: "Ιταλία", es: "Ισπανία", gr: "Ελλάδα", us: "ΗΠΑ", uy: "Ουρουγουάη", au: "Αυστραλία", uk: "Αγγλία" };
+const $ = s => document.querySelector(s), html = document.documentElement;
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const eur = v => v.toLocaleString("el-GR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+$("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("dc-notes", on ? "on" : "off"); } catch (e) {} });
+
+/* live status: Mon–Sat 08–22, Sun 11–18:45 */
+(function () {
+  const p = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Athens", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  const wd = p.find(x => x.type === "weekday").value, m = +p.find(x => x.type === "hour").value * 60 + +p.find(x => x.type === "minute").value;
+  const open = wd === "Sun" ? m >= 660 && m < 1125 : m >= 480 && m < 1320;
+  $("#live").classList.toggle("on", open); $("#live").querySelector("span").textContent = open ? "Ανοιχτά τώρα" : "Κλειστά τώρα";
+})();
+
+/* ---------- cart ---------- */
+const cart = new Map(); // id -> qty ; custom chests use string ids
+const custom = {};
+function item(id) { return typeof id === "number" ? { n: P[id][1], p: P[id][2], img: P[id][4], c: CAT[P[id][0]] } : custom[id]; }
+function setQty(id, q) { if (q <= 0) cart.delete(id); else cart.set(id, q); renderCart(); refreshButtons(); }
+function addTo(id, fromEl) {
+  setQty(id, (cart.get(id) || 0) + 1);
+  const b = $("#cartBtn"); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+  if (fromEl && !RM) {
+    const r = fromEl.getBoundingClientRect(), t = b.getBoundingClientRect(), f = document.createElement("img");
+    f.src = item(id).img; f.className = "fly"; const s = Math.min(r.width, 120);
+    Object.assign(f.style, { left: r.left + r.width / 2 - s / 2 + "px", top: r.top + r.height / 2 - s / 2 + "px", width: s + "px", height: s + "px" });
+    document.body.appendChild(f);
+    requestAnimationFrame(() => requestAnimationFrame(() => { f.style.transform = `translate(${t.left + t.width / 2 - (r.left + r.width / 2)}px,${t.top + t.height / 2 - (r.top + r.height / 2)}px) scale(.18)`; f.style.opacity = ".4"; }));
+    setTimeout(() => f.remove(), 800);
+  }
+}
+const FREE = 35;
+let stage = "cart", ck = { how: 0, when: 0, pay: 0 };
+function total() { let s = 0; cart.forEach((q, id) => s += item(id).p * q); return s; }
+function renderCart() {
+  let n = 0; cart.forEach(q => n += q);
+  $("#cartN").textContent = n; $("#cartSum").textContent = eur(total());
+  const body = $("#dBody"), foot = $("#dFoot");
+  if (stage === "done") return;
+  if (!cart.size) { stage = "cart"; $("#dTitle").textContent = "Το καλάθι"; body.innerHTML = '<div class="dempty">Το αμπάρι είναι άδειο.<br>Ώρα για κούρσα.</div>'; foot.style.display = "none"; return; }
+  foot.style.display = "";
+  const s = total(), left = Math.max(0, FREE - s);
+  $("#progI").style.width = Math.min(100, s / FREE * 100) + "%";
+  $("#progT").innerHTML = left > 0 ? `Ακόμα <b class="eur">${eur(left)}</b> για δωρεάν παράδοση` : "Η παράδοση είναι δωρεάν ✓";
+  $("#progT").className = "progt ph"; $("#progT").dataset.note = "Όριο δωρεάν παράδοσης: να το ορίσει το μαγαζί";
+  $("#dSum").textContent = eur(s);
+  if (stage === "cart") {
+    $("#dTitle").textContent = "Το καλάθι"; $("#dGo").textContent = "Ολοκλήρωση παραγγελίας";
+    body.innerHTML = [...cart].map(([id, q]) => { const it = item(id); return `<div class="li"><img src="${esc(it.img)}" alt=""><div><b>${esc(it.n)}</b><small>${esc(it.c)} · <span class="eur">${eur(it.p)}</span></small></div><div class="qty"><button data-d="-1" data-id="${id}">−</button><span>${q}</span><button data-d="1" data-id="${id}">+</button></div></div>`; }).join("");
+  } else {
+    $("#dTitle").textContent = "Παράδοση"; $("#dGo").textContent = "Σφράγισε την παραγγελία";
+    const opt = (k, arr) => `<div class="opt">${arr.map((v, i) => `<button data-k="${k}" data-i="${i}" class="${ck[k] === i ? "on" : ""}">${v}</button>`).join("")}</div>`;
+    body.innerHTML = `<div class="ck"><h4>Τρόπος</h4>${opt("how", ["Παράδοση στο σπίτι", "Παραλαβή από το μαγαζί"])}
+      <h4>Πότε</h4>${opt("when", ["Το συντομότερο", "Σε 2 ώρες", "Αύριο το πρωί"])}
+      <h4>${ck.how ? "Παραλαβή" : "Διεύθυνση"}</h4>${ck.how ? '<p style="font-size:14px;color:#5d4630">Παλαιών Πατρών Γερμανού 13 · θα σε περιμένει έτοιμη.</p>' : '<input placeholder="Οδός, αριθμός, όροφος" autocomplete="off">'}
+      <input placeholder="Τηλέφωνο" autocomplete="off">
+      <h4>Πληρωμή</h4>${opt("pay", ["Κάρτα online", "Μετρητά / κάρτα στην παράδοση"])}
+      <p class="ph" data-note="Πληρωμή με κάρτα μέσω τράπεζας (Viva/Stripe), χωρίς προμήθεια πλατφόρμας" style="font-size:12px;color:var(--muted);margin-top:12px">Ασφαλής πληρωμή μέσω τράπεζας.</p></div>`;
+  }
+}
+$("#dBody").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.d) { const id = isNaN(b.dataset.id) ? b.dataset.id : +b.dataset.id; setQty(id, (cart.get(id) || 0) + +b.dataset.d); }
+  if (b.dataset.k) { ck[b.dataset.k] = +b.dataset.i; renderCart(); }
+});
+$("#dGo").addEventListener("click", () => {
+  if (stage === "cart") { stage = "ck"; renderCart(); return; }
+  stage = "done"; $("#dTitle").textContent = "Ευχαριστούμε";
+  const no = "DC-" + (1000 + Math.floor(Math.random() * 9000));
+  $("#dBody").innerHTML = `<div class="sealed"><div class="wax">DC</div><h3>Η παραγγελία σφραγίστηκε.</h3><p>Αριθμός <b>${no}</b> · <span class="eur">${eur(total())}</span><br>${ck.how ? "Θα είναι έτοιμη στο μαγαζί." : "Ο κουρσάρος ξεκινάει για σένα."}</p></div>`;
+  $("#dFoot").style.display = "none";
+  cart.clear(); setTimeout(() => { $("#cartN").textContent = 0; $("#cartSum").textContent = eur(0); refreshButtons(); }, 50);
+});
+const openCart = () => { if (stage === "done") stage = "cart"; renderCart(); html.classList.add("open"); };
+const closeCart = () => { html.classList.remove("open"); if (stage === "ck") stage = "cart"; };
+$("#cartBtn").addEventListener("click", openCart); $("#dX").addEventListener("click", closeCart); $("#scrim").addEventListener("click", closeCart);
+addEventListener("keydown", e => { if (e.key === "Escape") { closeCart(); $("#qv").classList.remove("show"); } });
+
+/* ---------- shop grid ---------- */
+let fCat = "all", fOrig = "", fQ = "";
+function ctrl(id) { const q = cart.get(id); return q ? `<div class="qty"><button data-d="-1" data-id="${id}">−</button><span>${q}</span><button data-d="1" data-id="${id}">+</button></div>` : `<button class="add" data-add="${id}" aria-label="Στο καλάθι">+</button>`; }
+function card(i) { const p = P[i]; return `<div class="card" data-i="${i}"><div class="fr">${p[5] ? `<span class="flag">${ORIG[p[5]]}</span>` : ""}<div class="im"><img loading="lazy" src="${esc(p[4])}" alt="${esc(p[1])}"></div></div><h3>${esc(p[1])}</h3><div class="row"><span class="eur">${eur(p[2])}</span><span class="c" data-c="${i}">${ctrl(i)}</span></div></div>`; }
+function renderGrid() {
+  const q = fQ.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const ids = P.map((_, i) => i).filter(i => (fCat === "all" || P[i][0] === fCat) && (!fOrig || P[i][5] === fOrig) &&
+    (!q || (P[i][1] + " " + P[i][3] + " " + CAT[P[i][0]]).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").includes(q)));
+  $("#grid").innerHTML = ids.length ? ids.map(card).join("") : '<div class="empty">Δεν βρέθηκε στο αμπάρι. Δοκίμασε άλλη λέξη.</div>';
+}
+function refreshButtons() { document.querySelectorAll("[data-c]").forEach(el => el.innerHTML = ctrl(+el.dataset.c)); }
+(function () {
+  const cats = $("#cats"), counts = {}; P.forEach(p => counts[p[0]] = (counts[p[0]] || 0) + 1);
+  cats.innerHTML = `<button class="cat on" data-cat="all">Όλα<sup>${P.length}</sup></button>` + Object.keys(CAT).map(k => `<button class="cat" data-cat="${k}">${CAT[k]}<sup>${counts[k] || 0}</sup></button>`).join("");
+  cats.addEventListener("click", e => { const b = e.target.closest(".cat"); if (!b) return; fCat = b.dataset.cat; cats.querySelectorAll(".cat").forEach(x => x.classList.toggle("on", x === b)); renderGrid(); });
+  const og = $("#orig"); og.insertAdjacentHTML("beforeend", Object.keys(ORIG).map(k => `<button class="og" data-o="${k}">${ORIG[k]}</button>`).join(""));
+  og.addEventListener("click", e => { const b = e.target.closest(".og"); if (!b) return; setOrig(fOrig === b.dataset.o ? "" : b.dataset.o); });
+  $("#q").addEventListener("input", e => { fQ = e.target.value; renderGrid(); });
+  document.addEventListener("click", e => {
+    const a = e.target.closest("[data-add]"); if (a) { addTo(+a.dataset.add, a.closest(".card,.ci,.pk")?.querySelector("img") || a); e.stopPropagation(); return; }
+    const d = e.target.closest(".c [data-d],.ci [data-d]"); if (d) { const id = +d.dataset.id; setQty(id, (cart.get(id) || 0) + +d.dataset.d); return; }
+    const c = e.target.closest(".card .fr"); if (c) quick(+c.closest(".card").dataset.i);
+  });
+  // 3D tilt
+  $("#grid").addEventListener("pointermove", e => { const f = e.target.closest(".fr"); if (!f || e.pointerType !== "mouse") return; const r = f.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; f.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateZ(6px)`; });
+  $("#grid").addEventListener("pointerout", e => { const f = e.target.closest(".fr"); if (f && !f.contains(e.relatedTarget)) f.style.transform = ""; });
+  renderGrid();
+})();
+function setOrig(o) { fOrig = o; document.querySelectorAll(".og").forEach(x => x.classList.toggle("on", x.dataset.o === o)); renderGrid(); }
+let qvId = 0;
+function quick(i) { qvId = i; const p = P[i]; $("#qvImg").src = p[4]; $("#qvK").textContent = CAT[p[0]] + (p[5] ? " · " + ORIG[p[5]] : ""); $("#qvN").textContent = p[1]; $("#qvD").textContent = p[3] || "Από το ράφι του Dacristo. Ρώτα μας για κοπή, βάρος και συνδυασμούς."; $("#qvP").textContent = eur(p[2]); $("#qv").classList.add("show"); }
+$("#qvX").addEventListener("click", () => $("#qv").classList.remove("show"));
+$("#qv").addEventListener("click", e => { if (e.target.id === "qv") $("#qv").classList.remove("show"); });
+$("#qvAdd").addEventListener("click", () => { addTo(qvId, $("#qvImg")); $("#qv").classList.remove("show"); });
+
+/* ribbon */
+(function () { const words = ["Prosciutto San Daniele", "Iberico Jamon Bellota", "Parmigiano Reggiano 40 μηνών", "Black Angus Greater Omaha", "Γραβιέρα Νάξου", "Urbani τρούφα", "Ortiz", "Culatello", "Manchego Curado"];
+  const s = words.map(w => `<span>${w}</span><i>✦</i>`).join(""); $("#rib").innerHTML = s + s; })();
+
+/* ---------- hero: the sea chart and the platter voyages ---------- */
+const PORTS = { "Λονδίνο": [-0.1, 51.5], "Μπιλμπάο": [-2.9, 43.3], "Μαδρίτη": [-3.7, 40.4], "Μιλάνο": [9.2, 45.5], "Πάρμα": [10.3, 44.8], "Μόντενα": [10.9, 44.6], "Μπολόνια": [11.3, 44.5], "Βενετία": [12.3, 45.4], "Ρώμη": [12.5, 41.9], "Νάξος": [25.4, 37.1], "Θεσσαλονίκη": [22.9, 40.6] };
+const PI = P.map((p, i) => i).filter(i => P[i][0] === "platters");
+const ROUTE = { "Rome to Madrid": ["Ρώμη", "Μαδρίτη"], "Bilbao to Modena": ["Μπιλμπάο", "Μόντενα"], "Parma": ["Πάρμα"], "Bologna": ["Μπολόνια"], "Milano to London": ["Μιλάνο", "Λονδίνο"], "Venice": ["Βενετία"] };
+let vi = 0, vT = 0, vAuto = true;
+const routeOf = i => { const k = Object.keys(ROUTE).find(k => P[i][1].startsWith(k)); return (ROUTE[k] || []).concat("Θεσσαλονίκη"); };
+function setVoyage(k) {
+  vi = (k + PI.length) % PI.length; vT = 0; const i = PI[vi], p = P[i];
+  $("#vImg").style.opacity = 0; setTimeout(() => { $("#vImg").src = p[4]; $("#vImg").alt = p[1]; $("#vImg").style.opacity = 1; }, 200);
+  $("#vName").textContent = p[1].replace(/\s*\(.*\)/, ""); $("#vRoute").textContent = routeOf(i).join(" → ") + " · πλατό για 4";
+  $("#vDesc").textContent = p[3].replace(/\s*\/\s*/g, " · ").slice(0, 150) + (p[3].length > 150 ? "…" : "");
+  $("#vPrice").textContent = eur(p[2]); $("#vNo").textContent = String(vi + 1).padStart(2, "0") + " / " + String(PI.length).padStart(2, "0");
+  [...$("#vDots").children].forEach((b, j) => b.classList.toggle("on", j === vi));
+}
+PI.forEach((_, j) => { const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Πλατό " + (j + 1)); b.onclick = () => { vAuto = false; setVoyage(j); }; $("#vDots").appendChild(b); });
+$("#vAdd").addEventListener("click", () => addTo(PI[vi], $("#vImg")));
+setVoyage(0);
+(function () {
+  const c = $("#chart"); let g, t = 0, vis = true, mx = .5, my = .5;
+  new IntersectionObserver(es => vis = es[0].isIntersecting).observe(c);
+  function fit() { const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); c.width = r.width * d; c.height = r.height * d; const x = c.getContext("2d"); x.setTransform(d, 0, 0, d, 0, 0); g = { x, w: r.width, h: r.height }; }
+  fit(); addEventListener("resize", fit);
+  c.parentElement.addEventListener("pointermove", e => { mx = e.clientX / innerWidth; my = e.clientY / innerHeight; });
+  // map: lon -8..28, lat 33..55 ; on narrow screens the chart is shifted so the routes sit under the text less
+  function proj(lon, lat) {
+    const { w, h } = g, wide = w > 1000;
+    const L0 = -9, L1 = 29, B0 = 33, B1 = 55;
+    const ox = wide ? w * .2 : 0, ww = wide ? w * .56 : w, hh = h;
+    const sx = ww / (L1 - L0), sy = hh / (B1 - B0) , s = Math.min(sx, sy * 1.25);
+    const cxm = ox + ww / 2, cym = hh / 2;
+    return [cxm + (lon - (L0 + L1) / 2) * s, cym - (lat - (B0 + B1) / 2) * s * 1.25];
+  }
+  function bez(a, b, k, bend) { const mxp = (a[0] + b[0]) / 2, myp = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1]; const cx = mxp - dy * bend, cy = myp + dx * bend; const u = 1 - k; return [u * u * a[0] + 2 * u * k * cx + k * k * b[0], u * u * a[1] + 2 * u * k * cy + k * k * b[1]]; }
+  function rose(x, cx, cy, R, alpha) {
+    x.save(); x.globalAlpha = alpha; x.strokeStyle = "rgba(107,30,30,.22)"; x.lineWidth = .7;
+    for (let i = 0; i < 32; i++) { const a = i / 32 * Math.PI * 2; x.beginPath(); x.moveTo(cx, cy); x.lineTo(cx + Math.cos(a) * R * 9, cy + Math.sin(a) * R * 9); x.stroke(); }
+    x.translate(cx, cy);
+    for (let i = 0; i < 8; i++) { x.rotate(Math.PI / 4); x.fillStyle = i % 2 ? "rgba(201,162,74,.75)" : "rgba(107,30,30,.75)"; x.beginPath(); x.moveTo(0, -R * (i % 2 ? .6 : 1)); x.lineTo(R * .12, 0); x.lineTo(-R * .12, 0); x.closePath(); x.fill(); }
+    x.strokeStyle = "rgba(42,28,18,.5)"; x.lineWidth = 1; x.beginPath(); x.arc(0, 0, R * .32, 0, 7); x.stroke(); x.beginPath(); x.arc(0, 0, R * 1.05, 0, 7); x.stroke();
+    x.restore();
+  }
+  function ship(x, px, py, ang, s) {
+    x.save(); x.translate(px, py); x.rotate(ang); x.scale(s, s);
+    x.fillStyle = "#2a1c12"; x.beginPath(); x.moveTo(-14, 0); x.lineTo(14, 0); x.lineTo(9, 6); x.lineTo(-10, 6); x.closePath(); x.fill();
+    x.rotate(-ang); // sails stay upright
+    x.fillStyle = "#f6ecd6"; x.strokeStyle = "#2a1c12"; x.lineWidth = 1;
+    [[-4, -20, 9], [5, -16, 7]].forEach(([sx, sy, sw]) => { x.beginPath(); x.moveTo(sx, sy); x.quadraticCurveTo(sx + sw * 1.1, sy + 8, sx, sy + 16); x.lineTo(sx, sy); x.fill(); x.stroke(); });
+    x.fillStyle = "#6b1e1e"; x.beginPath(); x.moveTo(-4, -24); x.lineTo(4, -22); x.lineTo(-4, -20); x.fill();
+    x.restore();
+  }
+  function frame() {
+    requestAnimationFrame(frame); t += .016;
+    if (vAuto) { vT += .0028; if (vT > 1.25) setVoyage(vi + 1); } else vT = Math.min(1, vT + .006);
+    if (!vis) return;
+    const { x, w, h } = g; x.clearRect(0, 0, w, h);
+    // parchment
+    const bg = x.createRadialGradient(w * .45, h * .45, 0, w * .5, h * .5, Math.max(w, h) * .8);
+    bg.addColorStop(0, "#f3e8cf"); bg.addColorStop(.7, "#e4d3ad"); bg.addColorStop(1, "#c9b083"); x.fillStyle = bg; x.fillRect(0, 0, w, h);
+    // compass roses with rhumb lines (portolan)
+    const par = [(mx - .5) * 14, (my - .5) * 10];
+    rose(x, ...proj(4, 38).map((v, i) => v + par[i]), Math.min(w, h) * .085, 1);
+    rose(x, ...proj(19, 47).map((v, i) => v + par[i] * .6), Math.min(w, h) * .05, .7);
+    // sea hatching (engraved waves)
+    x.strokeStyle = "rgba(42,28,18,.09)"; x.lineWidth = 1;
+    for (let y = 20; y < h; y += 26) { x.beginPath(); for (let xx = 0; xx <= w; xx += 12) { const yy = y + Math.sin(xx * .03 + t * .8 + y) * 2.4; xx ? x.lineTo(xx, yy) : x.moveTo(xx, yy); } x.stroke(); }
+    // all routes faint
+    const routes = PI.map(i => routeOf(i).map(n => proj(...PORTS[n])));
+    routes.forEach((r, j) => { if (j === vi) return; x.setLineDash([3, 6]); x.strokeStyle = "rgba(42,28,18,.18)"; x.lineWidth = 1; x.beginPath(); for (let s = 0; s < r.length - 1; s++) for (let k = 0; k <= 1; k += .05) { const q = bez(r[s], r[s + 1], k, .18); (s || k) ? x.lineTo(...q) : x.moveTo(...q); } x.stroke(); });
+    x.setLineDash([]);
+    // ports
+    x.textBaseline = "middle";
+    Object.entries(PORTS).forEach(([n, ll]) => {
+      const [px, py] = proj(...ll), home = n === "Θεσσαλονίκη", on = routes[vi].some(q => q[0] === px && q[1] === py);
+      x.fillStyle = home ? "#6b1e1e" : on ? "#2a1c12" : "rgba(42,28,18,.45)";
+      x.beginPath(); x.arc(px, py, home ? 6 : 3.5, 0, 7); x.fill();
+      if (home) { x.strokeStyle = "rgba(107,30,30,.5)"; x.lineWidth = 1.2; x.beginPath(); x.arc(px, py, 10 + Math.sin(t * 2) * 3, 0, 7); x.stroke(); }
+      x.font = `${home ? "italic 600 17px" : on ? "italic 500 15px" : "italic 400 13px"} "Noto Serif Display", serif`;
+      x.fillText(n, px + 9, py - (n === "Μόντενα" ? -10 : n === "Μπολόνια" ? 0 : n === "Πάρμα" ? 9 : 0));
+    });
+    // current voyage: drawn as the ship sails
+    const r = routes[vi], segs = r.length - 1, prog = Math.min(1, vT) * segs;
+    x.strokeStyle = "#6b1e1e"; x.lineWidth = 2; x.setLineDash([7, 5]); x.lineDashOffset = -t * 20; x.beginPath();
+    let sp = r[0], sa = 0;
+    for (let s = 0; s < segs; s++) { const lim = Math.min(1, prog - s); if (lim <= 0) break; for (let k = 0; k <= lim + 1e-6; k += .02) { const q = bez(r[s], r[s + 1], Math.min(k, lim), .18); (s || k) ? x.lineTo(...q) : x.moveTo(...q); const q2 = bez(r[s], r[s + 1], Math.min(1, Math.min(k, lim) + .01), .18); sa = Math.atan2(q2[1] - q[1], q2[0] - q[0]); sp = q; } }
+    x.stroke(); x.setLineDash([]);
+    ship(x, sp[0], sp[1] + Math.sin(t * 3) * 1.5, Math.max(-.5, Math.min(.5, Math.sin(sa) * .2)), Math.min(w, h) > 600 ? 1.2 : .9);
+    // edge notes for far origins
+    x.font = 'italic 400 13px "Noto Serif Display", serif'; x.fillStyle = "rgba(42,28,18,.55)";
+    x.fillText("← Greater Omaha, ΗΠΑ · Ουρουγουάη", 14, h - 22);
+    // cartouche frame
+    x.strokeStyle = "rgba(42,28,18,.35)"; x.lineWidth = 1; x.strokeRect(10, 10, w - 20, h - 20); x.strokeRect(15, 15, w - 30, h - 30);
+  }
+  frame();
+})();
+
+/* ---------- butcher's chart ---------- */
+(function () {
+  const CUTS = [
+    { id: "spala", n: "Σπάλα", pts: "100,80 232,76 236,196 150,256 92,206", lab: [160, 150], q: /Σπαλο/, s: "Σπαλομπριζόλα και σπαλομίτα, ελληνικής εκτροφής." },
+    { id: "rib", n: "Rib eye", pts: "232,76 332,80 334,180 236,196", lab: [262, 135], q: /Rib/, s: "Το πιο μαρμαρωμένο κομμάτι. Ουρουγουάη και Greater Omaha." },
+    { id: "strip", n: "Striploin", pts: "332,80 428,82 428,160 334,168", lab: [346, 125], q: /Striploin/, s: "Κόντρα φιλέτο Black Angus, Greater Omaha ΗΠΑ." },
+    { id: "fil", n: "Φιλέτο", pts: "334,168 428,160 432,198 336,204", lab: [358, 188], q: /Φιλέτο/, s: "Το πιο τρυφερό. Ουρουγουάη, Αυστραλία, ΗΠΑ." },
+    { id: "round", n: "Μπούτι", pts: "428,82 540,86 540,244 456,238 432,198 428,160", lab: [460, 160], q: null, s: "" },
+    { id: "plate", n: "Κιμάς", pts: "236,196 336,204 432,198 456,238 330,262 140,262 150,256", lab: [300, 236], q: /Κιμάς/, s: "Ελληνικής εκτροφής, μοσχαρίσιος ή ανάμεικτος." },
+    { id: "shank", n: "Ελιά", pts: "456,238 540,240 540,330 456,330", lab: [480, 290], q: /Ελιά/, s: "Μοσχαρίσια ελιά, ελληνικής εκτροφής." },
+  ];
+  const reg = $("#regions"), lab = $("#labels"), NS = "http://www.w3.org/2000/svg";
+  CUTS.forEach((c, j) => {
+    const p = document.createElementNS(NS, "polygon"); p.setAttribute("points", c.pts); p.setAttribute("class", "rg" + (c.q ? "" : " off")); p.dataset.j = j; reg.appendChild(p);
+    const t = document.createElementNS(NS, "text"); t.setAttribute("x", c.lab[0]); t.setAttribute("y", c.lab[1]); t.textContent = c.n; if (!c.q) t.setAttribute("opacity", ".45"); lab.appendChild(t);
+  });
+  function pick(j) {
+    const c = CUTS[j]; if (!c.q) return;
+    reg.querySelectorAll(".rg").forEach((p, k) => p.classList.toggle("on", k === j));
+    $("#cutH").textContent = c.n; $("#cutS").textContent = c.s;
+    const ids = P.map((_, i) => i).filter(i => (P[i][0] === "premium" || P[i][0] === "beef") && c.q.test(P[i][1]));
+    $("#cutL").innerHTML = ids.map(i => `<div class="ci"><img src="${esc(P[i][4])}" alt="" loading="lazy"><div><b>${esc(P[i][1].replace(/^Μοσχαρίσι(ο|α|ος) /, ""))}</b><small>${P[i][5] ? ORIG[P[i][5]] + " · " : ""}<span class="eur">${eur(P[i][2])}</span></small></div><span class="c" data-c="${i}">${ctrl(i)}</span></div>`).join("");
+  }
+  reg.addEventListener("click", e => { const p = e.target.closest(".rg"); if (p) pick(+p.dataset.j); });
+  reg.addEventListener("pointerover", e => { const p = e.target.closest(".rg"); if (p && matchMedia("(hover:hover)").matches) pick(+p.dataset.j); });
+  pick(1);
+})();
+
+/* ---------- the chest ---------- */
+(function () {
+  const pool = P.map((_, i) => i).filter(i => ["cheese", "grcheese", "cured", "truffle", "chutney", "alipasta", "dinner"].includes(P[i][0]) && P[i][2] < 80);
+  const picks = pool.filter((_, k) => k % 2 === 0).slice(0, 18);
+  const slots = [], el = $("#pickers"), chest = $("#chestEl");
+  el.innerHTML = picks.map(i => `<button class="pk" data-pk="${i}" type="button"><img src="${esc(P[i][4])}" alt="" loading="lazy"><span>${esc(P[i][1])}</span><em>${eur(P[i][2])}</em></button>`).join("");
+  function draw() {
+    $("#slots").innerHTML = [...Array(6)].map((_, k) => slots[k] != null ? `<div class="slot"><img src="${esc(P[slots[k]][4])}" alt=""><button data-rm="${k}" type="button" aria-label="Αφαίρεση">×</button></div>` : `<div class="slot">${k + 1}</div>`).join("");
+    el.querySelectorAll(".pk").forEach(b => b.classList.toggle("in", slots.includes(+b.dataset.pk) || slots.length >= 6));
+    $("#chestSum").textContent = eur(slots.reduce((s, i) => s + P[i][2], 0));
+    $("#chestGo").textContent = chest.classList.contains("closed") ? "Άνοιξε ξανά" : slots.length ? `Κλείσε το σεντούκι (${slots.length}/6)` : "Διάλεξε θησαυρούς";
+  }
+  el.addEventListener("click", e => { const b = e.target.closest(".pk"); if (!b) return; if (chest.classList.contains("closed")) { chest.classList.remove("closed"); slots.length = 0; } if (slots.length >= 6) return; slots.push(+b.dataset.pk); draw(); });
+  $("#slots").addEventListener("click", e => { const b = e.target.closest("[data-rm]"); if (!b) return; slots.splice(+b.dataset.rm, 1); draw(); });
+  let cid = 0;
+  $("#chestGo").addEventListener("click", () => {
+    if (chest.classList.contains("closed")) { chest.classList.remove("closed"); slots.length = 0; draw(); return; }
+    if (!slots.length) return;
+    chest.classList.add("closed");
+    const id = "chest" + (++cid), note = $("#giftNote").value.trim();
+    custom[id] = { n: "Το σεντούκι σου · " + slots.length + " θησαυροί" + (note ? " · με κάρτα" : ""), p: slots.reduce((s, i) => s + P[i][2], 0), img: P[slots[0]][4], c: "Gift box" };
+    setTimeout(() => { addTo(id, chest.querySelector(".wax")); draw(); }, 1500);
+    draw();
+  });
+  draw();
+  $("#ready").innerHTML = P.map((_, i) => i).filter(i => P[i][0] === "gift").map(card).join("");
+})();
+renderCart();
+</script>
+</body>
+</html>
