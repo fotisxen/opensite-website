@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f3e8d2">
+<title>Διάβαση 1977 · Ψητοπωλείο · Θεσσαλονίκη</title>
+<meta name="description" content="Διάβαση, ψητοπωλείο από το 1977. Παύλου Μελά 13 και Αγίας Σοφίας 31, Θεσσαλονίκη. Γύρος, σουβλάκια, delivery & take away.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800;900&family=Noto+Serif+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Διάβαση 1977 (@diavasi_1977).
+  No photos: the crossing, the gyros spit and the pita you build are drawn live (canvas/SVG).
+  Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{--cream:#f3e8d2;--paper:#fbf4e6;--brown:#3d2414;--mustard:#e2a52b;--orange:#c8541f;--green:#5f8a3a;--ink:#20140b;--muted:#7d6450;--line:rgba(32,20,11,.14);
+  --f:"Commissioner",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.k{display:inline-block;font:800 12px/1 var(--f);letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+h2{font:900 clamp(40px,6.6vw,92px)/.92 var(--f);letter-spacing:-.03em;text-transform:uppercase}
+h2 em{font:italic 600 .9em/1 var(--s);text-transform:none;color:var(--orange);letter-spacing:-.01em}
+section{position:relative;padding:110px 0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;border-radius:999px;background:var(--brown);color:var(--cream);font:800 14px/1 var(--f);letter-spacing:.06em;text-transform:uppercase;transition:transform .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn.or{background:var(--orange)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+/* the zebra crossing motif */
+.zebra{height:26px;background:repeating-linear-gradient(90deg,var(--ink) 0 46px,var(--paper) 46px 92px)}
+
+nav{position:fixed;inset:0 0 auto;z-index:50;background:rgba(243,232,210,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font:900 22px/1 var(--f);letter-spacing:-.02em}
+.logo small{font:800 11px/1 var(--f);letter-spacing:.16em;color:#fff;background:var(--orange);padding:5px 7px;border-radius:6px}
+.links{display:flex;gap:26px;font:700 13px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+@media(max-width:940px){.links{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;padding:96px 0 0;display:grid;grid-template-rows:1fr auto;overflow:hidden;background:radial-gradient(800px 500px at 80% 30%,#f7d79a,transparent 70%),var(--cream)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
+.hero h1{font:900 clamp(56px,8.6vw,136px)/.82 var(--f);letter-spacing:-.05em;text-transform:uppercase}
+.hero h1 span{display:block;font:italic 600 .34em/1 var(--s);letter-spacing:-.01em;text-transform:none;color:var(--orange);margin-top:.25em}
+.hero p{max-width:460px;margin-top:22px;font-size:18px;color:var(--muted)}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.light{display:flex;align-items:center;gap:16px;margin-top:30px}
+.signal{width:64px;padding:8px;border-radius:14px;background:#1c140e;display:grid;gap:8px;box-shadow:0 10px 20px rgba(0,0,0,.25)}
+.signal i{display:grid;place-items:center;aspect-ratio:1;border-radius:8px;background:#2c2018;font-style:normal;font-size:26px;filter:grayscale(1) brightness(.4);transition:all .3s}
+.signal i.on.r{background:#4a1410;filter:none;box-shadow:0 0 18px rgba(255,60,40,.6)}
+.signal i.on.g{background:#0f3a1c;filter:none;box-shadow:0 0 18px rgba(80,220,120,.6)}
+.light b{font:900 22px/1.1 var(--f);text-transform:uppercase}
+.light small{display:block;color:var(--muted);font-weight:500;font-size:14px}
+.crossing{position:relative;height:120px;background:#3a3633;overflow:hidden}
+.crossing .stripes{position:absolute;left:0;right:0;top:20px;bottom:20px;background:repeating-linear-gradient(90deg,#f4efe4 0 60px,transparent 60px 120px)}
+.walker{position:absolute;bottom:26px;left:-60px;font-size:44px;transition:none}
+.walker.go{animation:walk 7s linear forwards}
+@keyframes walk{to{left:calc(100% + 60px)}}
+@media(max-width:940px){.hero .wrap{grid-template-columns:1fr}}
+
+/* the spit */
+.spitbox{position:relative;aspect-ratio:3/4;max-width:420px;width:100%;margin:0 auto;border-radius:24px;background:linear-gradient(180deg,#2a1a10,#1a110a);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);touch-action:none;cursor:grab}
+.spitbox canvas{width:100%;height:100%;display:block}
+.spitbox .tag{position:absolute;left:14px;top:14px;font:800 11px/1 var(--f);letter-spacing:.16em;color:var(--mustard);text-transform:uppercase}
+.spitbox .help{position:absolute;left:0;right:0;bottom:12px;text-align:center;font:700 11px/1 var(--f);letter-spacing:.14em;color:#c9a37a;text-transform:uppercase}
+
+/* build your pita */
+.build{background:var(--paper)}
+.build .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center}
+.opts{margin-top:28px}
+.opts label{display:block;font:800 12px/1 var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:12px 16px;border-radius:999px;font:700 15px/1 var(--f);box-shadow:inset 0 0 0 2px var(--line);transition:all .2s}
+.chips button.on{background:var(--brown);color:var(--cream);box-shadow:none}
+.pita{position:relative;max-width:460px;width:100%;margin:0 auto}
+.pita svg{width:100%;height:auto;display:block;overflow:visible}
+.pita .layer{transition:transform .5s cubic-bezier(.3,1.5,.5,1),opacity .4s}
+.wrapbtn{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.order{text-align:center;margin-top:14px;font-weight:700;min-height:26px}
+@media(max-width:900px){.build .wrap{grid-template-columns:1fr}}
+
+/* since 1977 */
+.years{background:var(--brown);color:var(--cream);overflow:hidden}
+.years .k{color:var(--mustard)}
+.years h2 em{color:var(--mustard)}
+.big77{font:900 clamp(120px,24vw,340px)/.8 var(--f);letter-spacing:-.06em;color:var(--mustard)}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:50px;border-top:2px dashed rgba(243,232,210,.3)}
+.tl div{padding:24px 20px 0 0;position:relative}
+.tl div::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--mustard)}
+.tl b{display:block;font:900 28px/1 var(--f)}
+.tl p{color:#d8c6aa;font-size:15px;margin-top:8px}
+@media(max-width:800px){.tl{grid-template-columns:1fr 1fr;gap:20px}}
+
+/* the world */
+.world{text-align:center}
+.world blockquote{max-width:900px;margin:30px auto 0;font:italic 600 clamp(28px,4vw,52px)/1.2 var(--s)}
+.world .sub{color:var(--muted);margin-top:16px}
+.flags{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px;font-size:34px}
+.flags span{display:inline-block;animation:bob 3s ease-in-out infinite;animation-delay:calc(var(--i) * .2s)}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.score{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap}
+.score b{display:block;font:900 54px/1 var(--f);letter-spacing:-.03em}
+.score span{color:var(--muted);font-weight:600}
+
+/* shops */
+.shops{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
+.shop{position:relative;padding:30px;border-radius:24px;background:var(--paper);box-shadow:inset 0 0 0 2px var(--line);overflow:hidden}
+.shop .zebra{position:absolute;left:0;right:0;bottom:0;height:12px}
+.shop .n{font:800 12px/1 var(--f);letter-spacing:.16em;color:var(--orange);text-transform:uppercase}
+.shop h3{font:900 34px/1 var(--f);letter-spacing:-.02em;margin:12px 0 10px}
+.shop p{color:var(--muted)}
+.shop .acts{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}
+@media(max-width:800px){.shops{grid-template-columns:1fr}}
+footer{background:var(--ink);color:#c9b49a;padding:30px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+.callbar{position:fixed;right:14px;bottom:14px;z-index:55}
+
+/* notes */
+.notes .ph{outline:2px dashed var(--orange);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--orange);padding:4px 8px;border-radius:5px;max-width:270px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:700 11px/1 var(--f);padding:10px 13px;border-radius:999px;background:var(--paper);box-shadow:0 4px 14px rgba(0,0,0,.12);color:var(--muted)}
+.notes .notes-toggle{color:var(--orange);box-shadow:inset 0 0 0 1px var(--orange)}
+.clean .notes-toggle{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("dv-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+</head>
+<body id="top">
+
+<nav><div class="wrap">
+  <a class="logo ph" data-note="Εδώ μπαίνει το λογότυπό σας" href="#top">Διάβαση <small>1977</small></a>
+  <div class="links"><a href="#gyros">Ο γύρος</a><a href="#pita">Φτιάξε πίτα</a><a href="#since">Από το 1977</a><a href="#shops">Καταστήματα</a></div>
+  <a class="btn or" href="tel:+302310220956">📞 Delivery</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="k">Ψητοπωλείο · Θεσσαλονίκη</span>
+      <h1 style="margin-top:16px">Διάβαση<span>Αυθεντικές γεύσεις από το 1977.</span></h1>
+      <p>Από το 1977 μέχρι σήμερα, η φιλοσοφία παραμένει η ίδια. Απλά. Αυθεντικά. Όπως μας αρέσει.</p>
+      <div class="light"><div class="signal"><i class="r on" id="sr">🧍</i><i class="g" id="sg">🚶</i></div><div><b id="sigTxt">Περιμένετε…</b><small id="sigSub">Το πράσινο ανάβει σε λίγο</small></div></div>
+      <div class="cta"><a class="btn or" href="#pita">Φτιάξε την πίτα σου</a><a class="btn line" href="#shops">Πού θα μας βρείτε</a></div>
+    </div>
+    <div class="spitbox" id="gyros">
+      <canvas id="spit" width="420" height="560" aria-label="Η σούβλα του γύρου: σύρετε για να γυρίσει, πατήστε για να κόψετε"></canvas>
+      <span class="tag">Ο γύρος · ζωντανά</span>
+      <span class="help">Σύρετε για να γυρίσει · πατήστε για να κόψετε</span>
+    </div>
+  </div>
+  <div class="crossing"><div class="stripes"></div><span class="walker" id="walker">🚶</span></div>
+</header>
+
+<section class="build" id="pita">
+  <div class="wrap">
+    <div>
+      <span class="k">Η αγαπημένη σας, όπως τη θέλετε</span>
+      <h2 style="margin-top:16px">Φτιάξε<br><em>την πίτα σου.</em></h2>
+      <div class="opts">
+        <label>Κρέας</label>
+        <div class="chips" id="meat"><button type="button" class="on" data-v="pork">Γύρος χοιρινός</button><button type="button" data-v="chicken">Γύρος κοτόπουλο</button><button type="button" data-v="skewer">Καλαμάκι</button><button type="button" data-v="kebab">Κεμπάπ</button></div>
+        <label>Μέσα</label>
+        <div class="chips" id="adds"><button type="button" class="on" data-v="tomato">Ντομάτα</button><button type="button" class="on" data-v="onion">Κρεμμύδι</button><button type="button" class="on" data-v="tzatziki">Τζατζίκι</button><button type="button" class="on" data-v="fries">Πατάτες</button><button type="button" data-v="mustard">Μουστάρδα</button><button type="button" data-v="paprika">Πάπρικα</button></div>
+      </div>
+    </div>
+    <div>
+      <div class="pita"><svg viewBox="0 0 400 360" id="pitaSvg"></svg></div>
+      <div class="wrapbtn"><button class="btn or" type="button" id="wrapBtn">🌯 Τύλιξέ την</button><button class="btn line" type="button" id="unwrap">↺ Από την αρχή</button></div>
+      <p class="order ph" id="order" data-note="Σύνδεση με το delivery σας (τηλέφωνο, e-food, Wolt)"></p>
+    </div>
+  </div>
+</section>
+
+<section class="years" id="since">
+  <div class="wrap">
+    <span class="k">Η παράδοση δεν ξεχνιέται · συνεχίζεται</span>
+    <div class="big77" id="yearsN">1977</div>
+    <h2 style="margin-top:10px">χρόνια <em>στη Διάβαση.</em></h2>
+    <div class="tl ph" data-note="Βάλτε τα πραγματικά ορόσημα και χρονιές">
+      <div><b>1977</b><p>Ανοίγει η Διάβαση στην Παύλου Μελά.</p></div>
+      <div><b>…</b><p>Ο ανανεωμένος χώρος μας.</p></div>
+      <div><b>…</b><p>Delivery &amp; take away, για να μας απολαμβάνετε όπου κι αν είστε.</p></div>
+      <div><b>Σήμερα</b><p>Νέο κατάστημα στην Αγίας Σοφίας 31.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="world">
+  <div class="wrap">
+    <span class="k">Μας αγαπούν και πέρα από τη Θεσσαλονίκη</span>
+    <blockquote>«Is this the best gyros on earth?»</blockquote>
+    <p class="sub">Who knows. But if that's a claim that can ever be lived up to, Diavasi in Thessaloniki is likely first in line.</p>
+    <div class="flags"><span style="--i:0">🇬🇷</span><span style="--i:1">🇹🇷</span><span style="--i:2">🇬🇧</span><span style="--i:3">🇩🇪</span><span style="--i:4">🇺🇸</span><span style="--i:5">🇮🇹</span><span style="--i:6">🇧🇬</span></div>
+    <div class="score"><div><b>4,5★</b><span>2.527 κριτικές στο Google</span></div><div><b>10–25€</b><span>ανά άτομο</span></div><div><b id="age">49</b><span>χρόνια</span></div></div>
+  </div>
+</section>
+
+<section id="shops" style="background:var(--paper)">
+  <div class="wrap">
+    <span class="k">Σας περιμένουμε</span>
+    <h2 style="margin-top:16px">Δύο <em>διαβάσεις.</em></h2>
+    <div class="shops">
+      <div class="shop"><span class="n">Από το 1977</span><h3>Παύλου Μελά 13</h3><p>Το κατάστημα που ξεκίνησαν όλα. Κρατήσεις, delivery &amp; take away.</p><div class="acts"><a class="btn or" href="tel:+302310220956">📞 2310 220956</a><a class="btn line" href="https://maps.google.com/?q=Διάβαση+Παύλου+Μελά+13+Θεσσαλονίκη" target="_blank" rel="noopener">Χάρτης</a></div><div class="zebra"></div></div>
+      <div class="shop"><span class="n">Νέο κατάστημα</span><h3>Αγίας Σοφίας 31</h3><p>Οι ίδιες γεύσεις, λίγα βήματα πιο πάνω.</p><div class="acts"><a class="btn line ph" data-note="Τηλέφωνο του νέου καταστήματος" href="#">📞 Τηλέφωνο</a><a class="btn line" href="https://maps.google.com/?q=Αγίας+Σοφίας+31+Θεσσαλονίκη" target="_blank" rel="noopener">Χάρτης</a></div><div class="zebra"></div></div>
+    </div>
+    <p style="color:var(--muted);margin-top:18px">Και τώρα και στο <a href="https://www.instagram.com/diavasi_kokkinospiti/" target="_blank" rel="noopener" style="text-decoration:underline">@diavasi_kokkinospiti</a>.</p>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Διάβαση 1977 · Ψητοπωλείο · <a href="https://www.instagram.com/diavasi_1977/" target="_blank" rel="noopener">@diavasi_1977</a></span><span>Demo από <a href="https://opensite.gr">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const html = document.documentElement;
+$("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("dv-notes", on ? "on" : "off"); } catch (e) {} });
+const years = new Date().getFullYear() - 1977; $("#age").textContent = years;
+
+/* the crossing light: red, then green and someone walks across */
+(() => {
+  const cycle = () => {
+    $("#sr").classList.add("on"); $("#sg").classList.remove("on"); $("#sigTxt").textContent = "Περιμένετε…"; $("#sigSub").textContent = "Το πράσινο ανάβει σε λίγο";
+    setTimeout(() => {
+      $("#sr").classList.remove("on"); $("#sg").classList.add("on"); $("#sigTxt").textContent = "Περάστε!"; $("#sigSub").textContent = "Ο γύρος σας περιμένει απέναντι";
+      const w = $("#walker"); w.classList.remove("go"); void w.offsetWidth; w.classList.add("go");
+    }, 2200);
+  };
+  cycle(); setInterval(cycle, 11000);
+})();
+
+/* ---------- the gyros spit ---------- */
+(() => {
+  const cv = $("#spit"), ctx = cv.getContext("2d"), W = 420, H = 560, cx = 200;
+  let rot = 0, spin = .02, drag = null, cut = 0, shavings = [], heat = 0;
+  const top = 90, bot = 470;
+  const rw = y => { const u = (y - top) / (bot - top); return 140 - u * 62 + Math.sin(u * 9) * 4; }; // cone radius by height
+  cv.addEventListener("pointerdown", e => { drag = { x: e.clientX, t: performance.now(), moved: 0 }; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener("pointermove", e => { if (!drag) return; const dx = e.clientX - drag.x; drag.moved += Math.abs(dx); spin += dx * .0009; drag.x = e.clientX; });
+  cv.addEventListener("pointerup", e => { if (drag && drag.moved < 8) slice(e); drag = null; });
+  function slice(e) {
+    const r = cv.getBoundingClientRect(), y = (e.clientY - r.top) / r.height * H;
+    cut = 1;
+    for (let i = 0; i < 18; i++) shavings.push({ x: cx + rw(Math.max(top, Math.min(bot, y))) * (.8 + Math.random() * .3), y: Math.max(top, Math.min(bot, y)) + (Math.random() - .5) * 30, vx: 1 + Math.random() * 2.5, vy: -Math.random() * 2, r: Math.random() * 6.28, vr: (Math.random() - .5) * .3, s: 8 + Math.random() * 10 });
+  }
+  function frame(t) {
+    spin += (.02 - spin) * .01; rot += spin; heat = .6 + .4 * Math.sin(t / 400);
+    ctx.clearRect(0, 0, W, H);
+    // vertical grill behind: glowing elements
+    for (let k = 0; k < 7; k++) { const y = 110 + k * 52; const g = ctx.createLinearGradient(330, y, 420, y); g.addColorStop(0, `rgba(255,${90 + heat * 50},30,${.45 + heat * .3})`); g.addColorStop(1, "rgba(255,80,20,0)"); ctx.fillStyle = g; ctx.fillRect(320, y - 8, 100, 16); }
+    const glow = ctx.createRadialGradient(360, 280, 0, 360, 280, 260); glow.addColorStop(0, `rgba(255,120,40,${.25 * heat})`); glow.addColorStop(1, "rgba(255,80,20,0)"); ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+    // the spit rod
+    ctx.fillStyle = "#b8b0a5"; ctx.fillRect(cx - 4, 40, 8, 480);
+    ctx.fillStyle = "#8f877b"; ctx.beginPath(); ctx.ellipse(cx, bot + 14, 90, 14, 0, 0, 7); ctx.fill();
+    // the meat cone: horizontal bands whose shading moves with rotation
+    for (let y = top; y < bot; y += 3) {
+      const r = rw(y), band = Math.sin(y * .23 + rot * 6) * .5 + .5, char = Math.sin(rot * 3 + y * .05);
+      const g = ctx.createLinearGradient(cx - r, 0, cx + r, 0);
+      g.addColorStop(0, "#5a2c12"); g.addColorStop(.35, `rgb(${170 + band * 40},${95 + band * 30},${45 + band * 15})`); g.addColorStop(.75, `rgb(${200 + heat * 30},${110 + heat * 20},${50})`); g.addColorStop(1, `rgb(${120 + char * 20},${55},${20})`);
+      ctx.fillStyle = g; ctx.fillRect(cx - r, y, r * 2, 3.4);
+    }
+    // crispy edge on the hot side
+    ctx.strokeStyle = `rgba(80,30,8,.5)`; ctx.lineWidth = 6; ctx.beginPath(); for (let y = top; y < bot; y += 6) { const r = rw(y); y === top ? ctx.moveTo(cx + r - 3, y) : ctx.lineTo(cx + r - 3 + Math.sin(y + rot * 20) * 2, y); } ctx.stroke();
+    // knife flash
+    if (cut > 0) { ctx.fillStyle = `rgba(255,255,255,${cut * .8})`; ctx.fillRect(cx + 40, 60, 6, 440); cut -= .06; }
+    // shavings falling into the tray
+    shavings.forEach(s => { s.vy += .25; s.x += s.vx; s.y += s.vy; s.r += s.vr; if (s.y > 500) { s.y = 500; s.vx *= .5; s.vy = 0; } ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.r); ctx.fillStyle = "#a95a26"; ctx.fillRect(-s.s / 2, -2, s.s, 4); ctx.fillStyle = "#6a3110"; ctx.fillRect(-s.s / 2, -2, s.s, 1.5); ctx.restore(); });
+    if (shavings.length > 160) shavings.splice(0, 40);
+    ctx.fillStyle = "#6f675d"; ctx.fillRect(220, 500, 180, 12);
+    // drip
+    if (Math.random() < .2) { ctx.fillStyle = "rgba(240,190,90,.8)"; ctx.fillRect(cx + rw(bot) - 6, bot - 4 + Math.random() * 20, 2, 5); }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- build your pita ---------- */
+(() => {
+  const svg = $("#pitaSvg");
+  const MEAT = { pork: ["Γύρος χοιρινός", "#a95a26"], chicken: ["Γύρος κοτόπουλο", "#d9a25a"], skewer: ["Καλαμάκι", "#8a4a20"], kebab: ["Κεμπάπ", "#7a2e14"] };
+  let meat = "pork", adds = new Set(["tomato", "onion", "tzatziki", "fries"]), wrapped = false;
+  function draw() {
+    const m = MEAT[meat][1];
+    let layers = "";
+    // pita base
+    layers += `<ellipse cx="200" cy="230" rx="170" ry="90" fill="#f1d7a2" stroke="#c99a52" stroke-width="3"/><g fill="#d9a85c" opacity=".5">${Array.from({ length: 30 }, (_, i) => `<circle cx="${70 + (i * 53) % 260}" cy="${180 + (i * 31) % 100}" r="${3 + (i % 3)}"/>`).join("")}</g>`;
+    // meat
+    if (meat === "skewer" || meat === "kebab") layers += `<g class="layer">${[0, 1].map(k => `<rect x="${100 + k * 8}" y="${200 + k * 20}" width="200" height="${meat === "kebab" ? 26 : 22}" rx="12" fill="${m}"/>`).join("")}</g>`;
+    else layers += `<g class="layer">${Array.from({ length: 22 }, (_, i) => `<rect x="${110 + (i * 37) % 180}" y="${195 + (i * 17) % 60}" width="${24 + (i % 4) * 4}" height="7" rx="3" fill="${m}" transform="rotate(${(i * 23) % 40 - 20} ${120 + (i * 37) % 180} ${200 + (i * 17) % 60})"/>`).join("")}</g>`;
+    if (adds.has("fries")) layers += `<g class="layer">${Array.from({ length: 12 }, (_, i) => `<rect x="${120 + (i * 29) % 170}" y="${190 + (i * 13) % 60}" width="34" height="8" rx="2" fill="#f2c14b" transform="rotate(${(i * 31) % 60 - 30} ${130 + (i * 29) % 170} ${195 + (i * 13) % 60})"/>`).join("")}</g>`;
+    if (adds.has("tomato")) layers += `<g class="layer">${Array.from({ length: 6 }, (_, i) => `<circle cx="${130 + i * 28}" cy="${205 + (i % 2) * 22}" r="10" fill="#d43a2a" stroke="#b02a1c" stroke-width="2"/>`).join("")}</g>`;
+    if (adds.has("onion")) layers += `<g class="layer" fill="none" stroke="#c98abf" stroke-width="2.5">${Array.from({ length: 7 }, (_, i) => `<path d="M${125 + i * 25} ${225 - (i % 3) * 8} q8 -10 16 0"/>`).join("")}</g>`;
+    if (adds.has("tzatziki")) layers += `<path class="layer" d="M130 215 q30 -14 60 0 t60 0 t40 -4" stroke="#f7f7f0" stroke-width="12" fill="none" stroke-linecap="round"/>`;
+    if (adds.has("mustard")) layers += `<path class="layer" d="M135 240 q25 -10 50 0 t50 0 t40 0" stroke="#e8b81c" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+    if (adds.has("paprika")) layers += `<g class="layer" fill="#c8301a">${Array.from({ length: 24 }, (_, i) => `<circle cx="${130 + (i * 41) % 150}" cy="${205 + (i * 19) % 40}" r="1.6"/>`).join("")}</g>`;
+    // paper wrap (shows when wrapped)
+    const paper = `<g style="transition:transform .7s cubic-bezier(.3,1.3,.5,1),opacity .4s;transform-origin:200px 360px;transform:${wrapped ? "translateY(0)" : "translateY(160px)"};opacity:${wrapped ? 1 : 0}"><path d="M60 360 L120 120 Q200 90 280 120 L340 360Z" fill="#fbf4e6" stroke="#20140b" stroke-width="3"/><rect x="60" y="270" width="280" height="22" fill="url(#zz)"/><text x="200" y="240" text-anchor="middle" font-family="Commissioner" font-weight="900" font-size="34" fill="#20140b">ΔΙΑΒΑΣΗ</text><text x="200" y="262" text-anchor="middle" font-family="Commissioner" font-weight="800" font-size="12" letter-spacing="4" fill="#c8541f">ΑΠΟ ΤΟ 1977</text></g>`;
+    svg.innerHTML = `<defs><pattern id="zz" width="30" height="22" patternUnits="userSpaceOnUse"><rect width="15" height="22" fill="#20140b"/></pattern></defs><g style="transition:transform .6s;transform-origin:200px 230px;transform:${wrapped ? "scale(.55,1.1) translateY(-30px)" : "none"}">${layers}</g>${paper}`;
+    const list = [MEAT[meat][0], ...[...adds].map(a => ({ tomato: "ντομάτα", onion: "κρεμμύδι", tzatziki: "τζατζίκι", fries: "πατάτες", mustard: "μουστάρδα", paprika: "πάπρικα" })[a])];
+    $("#order").innerHTML = wrapped ? `Πίτα με ${list[0].toLowerCase()}${list.length > 1 ? ", " + list.slice(1).join(", ") : ""}. <a href="tel:+302310220956" style="color:var(--orange);text-decoration:underline">Παραγγείλτε τη →</a>` : "";
+  }
+  $("#meat").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; meat = b.dataset.v; $$("#meat button").forEach(x => x.classList.toggle("on", x === b)); wrapped = false; draw(); });
+  $("#adds").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; const v = b.dataset.v; adds.has(v) ? adds.delete(v) : adds.add(v); b.classList.toggle("on", adds.has(v)); wrapped = false; draw(); });
+  $("#wrapBtn").addEventListener("click", () => { wrapped = true; draw(); });
+  $("#unwrap").addEventListener("click", () => { wrapped = false; draw(); });
+  draw();
+})();
+
+/* ---------- 1977 counts up to the years ---------- */
+new IntersectionObserver((es, o) => { if (!es[0].isIntersecting) return; o.disconnect(); const el = $("#yearsN"), t0 = performance.now(); (function tick(t) { const p = Math.min(1, (t - t0) / 1800), e = 1 - Math.pow(1 - p, 3); el.textContent = p < .7 ? Math.round(1977 + (new Date().getFullYear() - 1977) * Math.min(1, e / .9)) : years; if (p < 1) requestAnimationFrame(tick); })(t0); }, { threshold: .5 }).observe($("#yearsN"));
+</script>
+</body>
+</html>
