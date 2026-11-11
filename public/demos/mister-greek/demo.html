@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#7a1f1f">
+<title>Mister Greek Meats · Butcher on the Danforth since 1972 · Toronto</title>
+<meta name="description" content="Mister Greek Meats, 801 Danforth Ave, Toronto. Lamb, veal, beef and chicken cut to order since 1972. Order online for pick-up, or open a wholesale account for your restaurant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Archivo+Narrow:wght@500;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite redesign demo for Mister Greek Meats (mistergreekmeatmarket.com).
+  History, cuts, hours, phone and photos come from mistergreekmeatmarket.com (Nov 2026).
+  Prices are placeholders (the current site says "Call for Price"). Pick-up ordering and the wholesale portal are working mock-ups: nothing is sent.
+  Everything marked .ph is placeholder (toggle "Notes", hide with ?clean).
+-->
+<style>
+:root{--bg:#f4efe7;--card:#fff;--ink:#1b1716;--muted:#6e6560;--red:#7a1f1f;--red2:#a32a2a;--blue:#1d4f91;--line:rgba(27,23,22,.12);
+  --f:"Archivo",system-ui,sans-serif;--n:"Archivo Narrow",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1220px,100% - 32px);margin-inline:auto}
+.k{font:700 12.5px/1 var(--n);letter-spacing:.2em;text-transform:uppercase;color:var(--red2)}
+h1,h2,h3{font-family:var(--n);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:.95}
+h2{font-size:clamp(40px,6vw,76px);margin-top:12px}
+.lead{color:var(--muted);max-width:600px;margin-top:14px;font-size:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 14px/1 var(--f);padding:15px 22px;border-radius:6px;background:var(--red);color:#fff;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em;transition:transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.dark{background:var(--ink)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+section{padding:clamp(60px,8vw,110px) 0}
+.ph{outline:1.5px dashed #c2410c;outline-offset:2px}
+html:not(.notes) .ph{outline:none}
+.notes-t{position:fixed;left:12px;bottom:12px;z-index:90;font:600 12px/1 var(--f);padding:10px 12px;border-radius:999px;background:#c2410c;color:#fff}
+
+.bar{background:var(--red);color:#f4dede;font-size:13px}
+.bar .wrap{display:flex;justify-content:space-between;gap:10px;padding:9px 0;flex-wrap:wrap}
+.bar b{color:#fff}
+.nav{position:sticky;top:0;z-index:50;background:rgba(27,23,22,.94);backdrop-filter:blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .cartb{background:var(--red)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo img{height:46px;width:auto}
+.nav-l{display:flex;gap:24px;font:700 14px/1 var(--n);letter-spacing:.08em;text-transform:uppercase}
+.nav-l a{opacity:.7}.nav-l a:hover{opacity:1}
+.cartb{position:relative;display:flex;align-items:center;gap:8px;padding:12px 16px;border-radius:6px;background:var(--ink);color:#fff;font:700 13px/1 var(--f);text-transform:uppercase}
+.cartb i{font-style:normal;background:var(--red2);border-radius:999px;padding:3px 7px;font-size:11px}
+@media(max-width:900px){.nav-l{display:none}}
+
+.hero{position:relative;min-height:min(78vh,720px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,23,22,.15),rgba(27,23,22,.85))}
+.hero .wrap{position:relative;z-index:1;padding-bottom:clamp(36px,6vw,70px)}
+.hero .k{color:#f2b8b8}
+.hero h1{font-size:clamp(58px,10vw,150px);margin-top:14px}
+.hero p{max-width:520px;font-size:19px;margin-top:16px;color:#eee5dc}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero .cta .line{color:#fff}
+.seal{position:absolute;right:clamp(16px,4vw,60px);top:clamp(20px,4vw,50px);z-index:1;width:132px;height:132px;border-radius:50%;background:var(--red);display:grid;place-items:center;text-align:center;font:700 13px/1.1 var(--n);letter-spacing:.1em;text-transform:uppercase;transform:rotate(-8deg);box-shadow:0 0 0 6px rgba(255,255,255,.15)}
+.seal b{display:block;font-size:40px;letter-spacing:0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+.path{border-radius:14px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px;min-height:260px}
+.path.r{background:var(--card);box-shadow:0 1px 0 var(--line)}
+.path.w{background:var(--blue);color:#fff}
+.path h3{font-size:clamp(32px,3.6vw,48px)}
+.path p{opacity:.8}
+.path ul{list-style:none;display:grid;gap:6px;margin-top:4px;font-size:15px}
+.path li::before{content:"✓  ";font-weight:700}
+.path .btn{align-self:flex-start;margin-top:auto}
+.path.w .btn{background:#fff;color:var(--blue)}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+
+.cats{display:flex;gap:6px;margin-top:30px;flex-wrap:wrap}
+.cats button{padding:11px 18px;border-radius:999px;font:700 13.5px/1 var(--n);letter-spacing:.08em;text-transform:uppercase;box-shadow:inset 0 0 0 1.5px var(--line)}
+.cats button.on{background:var(--ink);color:#fff;box-shadow:none}
+.shop{display:grid;grid-template-columns:1fr 340px;gap:16px;margin-top:20px;align-items:start}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.p{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 1px 0 var(--line);display:flex;flex-direction:column}
+.p img{height:170px;width:100%;object-fit:cover;background:#e8ddd2}
+.p .b{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.p h4{font:700 19px/1.1 var(--n);text-transform:uppercase}
+.p .pr{font-weight:700;color:var(--red)}
+.p .pr small{color:var(--muted);font-weight:400}
+.p .ctl{display:flex;gap:6px;margin-top:auto}
+.p select{flex:1;padding:9px;border-radius:6px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;font-size:13.5px;min-width:0}
+.p .add{padding:9px 12px;border-radius:6px;background:var(--ink);color:#fff;font:700 12.5px/1 var(--f);text-transform:uppercase}
+.cart{position:sticky;top:90px;background:var(--card);border-radius:14px;padding:20px;box-shadow:0 1px 0 var(--line)}
+.cart h3{font-size:28px}
+.cart .it{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.cart .it small{display:block;color:var(--muted)}
+.cart .it button{color:var(--muted);font-size:18px}
+.cart .empty{color:var(--muted);font-size:14.5px;padding:14px 0}
+.cart .sum{display:flex;justify-content:space-between;margin-top:14px;font-weight:700;font-size:18px}
+.cart .note{font-size:12.5px;color:var(--muted);margin-top:6px}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:14px}
+.pick select{padding:11px;border-radius:6px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;font-size:14px}
+@media(max-width:1000px){.shop{grid-template-columns:1fr}.cart{position:static}}
+@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.grid{grid-template-columns:1fr}}
+
+.story{background:var(--red);color:#fff}
+.story .k{color:#f2b8b8}
+.st-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.st-g img{border-radius:14px;width:100%;height:440px;object-fit:cover}
+.story p{color:#f4dede;margin-top:16px;font-size:17.5px}
+.tline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.tline div{border-top:2px solid rgba(255,255,255,.4);padding-top:10px;font-size:14px;color:#f4dede}
+.tline b{display:block;font:700 30px/1 var(--n);color:#fff}
+@media(max-width:860px){.st-g{grid-template-columns:1fr}.st-g img{height:300px}}
+
+.ws{background:#0f2440;color:#dfe7f1;display:none}
+.ws.open{display:block}
+.ws .k{color:#8fb3e6}
+.ws h2{color:#fff}
+.ws .lead{color:#a9bad0}
+.acct{display:flex;align-items:center;gap:14px;margin-top:30px;padding:16px 18px;background:#16304f;border-radius:12px;flex-wrap:wrap}
+.acct b{font:700 22px/1 var(--n);text-transform:uppercase;color:#fff}
+.acct span{color:#a9bad0;font-size:14px}
+.acct .tag{margin-left:auto;background:#2a5ea8;color:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px}
+.ws-g{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin-top:12px}
+.box{background:#16304f;border-radius:12px;padding:18px}
+.box h4{font:700 13px/1 var(--n);letter-spacing:.14em;text-transform:uppercase;color:#8fb3e6;margin-bottom:12px}
+.so{width:100%;border-collapse:collapse;font-size:14px}
+.so td{padding:9px 6px;border-top:1px solid rgba(255,255,255,.07)}
+.so td:last-child{text-align:right;white-space:nowrap}
+.so input{width:58px;padding:6px;border-radius:6px;border:0;background:#0f2440;color:#fff;text-align:right}
+.days{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.days button{padding:8px 12px;border-radius:6px;background:#0f2440;font-size:13px;color:#a9bad0}
+.days button.on{background:#2a5ea8;color:#fff}
+.inv li{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.07);font-size:14px}
+.inv .paid{color:#7fd1a5}.inv .due{color:#f2c46b}
+.route{display:grid;gap:8px}
+.route div{display:grid;grid-template-columns:70px 1fr;gap:10px;font-size:14px;padding:9px 10px;border-radius:8px;background:#0f2440}
+.route em{font-style:normal;color:#8fb3e6}
+@media(max-width:900px){.ws-g{grid-template-columns:1fr}}
+
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.info>div{background:var(--card);border-radius:12px;padding:22px;box-shadow:0 1px 0 var(--line)}
+.info h3{font-size:26px;margin-bottom:10px}
+.info li{list-style:none;display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
+.info li.today{font-weight:700;color:var(--red)}
+@media(max-width:860px){.info{grid-template-columns:1fr}}
+footer{padding:36px 0 60px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:14px 18px;border-radius:10px;font-size:14px;z-index:99;transition:transform .35s;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap"><span><b id="openNow">Open today</b> · 801 Danforth Ave, Greektown</span><span>Quick orders <a href="tel:+14164690733"><b>416-469-0733</b></a></span></div></div>
+<nav class="nav"><div class="wrap">
+  <a href="#top" class="logo"><img src="https://www.mistergreekmeatmarket.com/assets/images/logo/logo.png" alt="Mister Greek Meats"></a>
+  <div class="nav-l"><a href="#shop">Order for pick-up</a><a href="#wholesale">Wholesale</a><a href="#story">Since 1972</a><a href="#visit">Visit</a></div>
+  <a href="#shop" class="cartb">Order <i id="cc">0</i></a>
+</div></nav>
+
+<header class="hero" id="top">
+  <img src="https://images.unsplash.com/photo-1767491654834-13bf58ed9522?auto=format&fit=crop&w=2000&q=70" alt="Cuts of meat at the butcher">
+  <div class="seal">Since<b>1972</b>Danforth</div>
+  <div class="wrap">
+    <div class="k">The Danforth's butcher · 801 Danforth Ave</div>
+    <h1>Cut to order.<br>Since 1972.</h1>
+    <p>Lamb, veal, beef and chicken for Toronto's kitchens, from Greektown families to restaurants across Canada. Now you can order ahead.</p>
+    <div class="cta"><a href="#shop" class="btn">Order for pick-up</a><a href="#wholesale" class="btn line">Wholesale account</a></div>
+  </div>
+</header>
+
+<section style="padding-bottom:0"><div class="wrap">
+  <div class="split">
+    <div class="path r"><div class="k">For your table</div><h3>Order ahead, skip the line</h3><p>Pick your cuts, tell us how you want them, collect them ready at the counter.</p>
+      <ul><li>Easter lamb and holiday orders reserved early</li><li>Pick-up time you choose</li><li>Pay online or in store</li></ul><a href="#shop" class="btn">Start an order</a></div>
+    <div class="path w"><div class="k" style="color:#bcd3f5">For restaurants & stores</div><h3>Wholesale, without the phone tag</h3><p>Your account, your prices, your delivery day. Reorder last week's order in one tap.</p>
+      <ul><li>Standing weekly orders</li><li>Delivery schedule for your area</li><li>Invoices and statements online</li></ul><button class="btn" id="wsBtn">Open the wholesale portal</button></div>
+  </div>
+</div></section>
+
+<section id="shop"><div class="wrap">
+  <div class="k">Order for pick-up</div>
+  <h2>Today's counter.</h2>
+  <p class="lead">Every cut on the website, with a price and a weight. <span class="ph">Prices shown are placeholders; the current site says "Call for Price".</span></p>
+  <div class="cats" id="cats"></div>
+  <div class="shop">
+    <div class="grid" id="grid"></div>
+    <aside class="cart">
+      <h3>Your order</h3>
+      <div id="items"></div>
+      <div class="sum"><span>Estimated</span><span id="tot">$0.00</span></div>
+      <p class="note">Final price by weight at pick-up.</p>
+      <div class="pick"><select id="pday"></select><select><option>9:00–11:00</option><option>11:00–1:00</option><option>1:00–3:00</option><option>3:00–5:00</option></select></div>
+      <button class="btn" style="width:100%;margin-top:10px" id="place">Place pick-up order</button>
+    </aside>
+  </div>
+</div></section>
+
+<section class="ws" id="wholesale"><div class="wrap">
+  <div class="k">Wholesale portal · demo account</div>
+  <h2>Your kitchen's standing order.</h2>
+  <p class="lead">What a restaurant sees after logging in. Today this all happens by phone and fax.</p>
+  <div class="acct"><b>Taverna Demo Inc.</b><span>Account #10482 · Delivery: Tue & Fri · Net 15 <span class="ph">(sample customer)</span></span><span class="tag">Wholesale pricing</span></div>
+  <div class="ws-g">
+    <div class="box"><h4>This week's order</h4>
+      <table class="so" id="so"></table>
+      <div class="days" id="wdays"><button class="on">Tue Nov 17</button><button>Fri Nov 20</button><button>Tue Nov 24</button></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><b style="font-size:20px" id="wtot"></b><div style="display:flex;gap:8px"><button class="btn line" style="color:#fff" id="reord">Repeat last week</button><button class="btn" style="background:#2a5ea8" id="wsend">Confirm order</button></div></div>
+    </div>
+    <div style="display:grid;gap:12px">
+      <div class="box"><h4>Invoices</h4><ul class="inv">
+        <li><span>INV-2291 · Nov 10</span><span class="due">$1,842.60 due Nov 25</span></li>
+        <li><span>INV-2274 · Nov 6</span><span class="paid">$2,115.30 paid</span></li>
+        <li><span>INV-2250 · Nov 3</span><span class="paid">$1,690.00 paid</span></li></ul></div>
+      <div class="box"><h4>Delivery run · Tuesday</h4><div class="route">
+        <div><em>6:30</em><span>Ossington · 3 drops</span></div>
+        <div><em>8:00</em><span>Danforth & Pape · 5 drops</span></div>
+        <div><em>9:30</em><span>Scarborough · 2 drops</span></div></div></div>
+    </div>
+  </div>
+  <p class="ph" style="font-size:12.5px;color:#8fb3e6;margin-top:12px">Customer, prices, invoices and route are sample data.</p>
+</div></section>
+
+<section class="story" id="story"><div class="wrap st-g">
+  <img loading="lazy" src="https://images.unsplash.com/photo-1625643269470-5d3e7b69fa34?auto=format&fit=crop&w=1100&q=70" alt="Butcher counter">
+  <div>
+    <div class="k">Our story</div>
+    <h2>From Greece at 18 to the Danforth.</h2>
+    <p>Louis Kontos came to Toronto from Greece at eighteen and opened Mister Greek Meats on the Danforth in 1972. His children Bill and Nick grew up behind the counter. Today the shop supplies Greektown families, supermarkets and restaurants across Canada, with the same cuts and the same care.</p>
+    <div class="tline"><div><b>1972</b>Louis opens on the Danforth</div><div><b>2nd</b>generation, Bill & Nick</div><div><b>Canada</b>restaurants & stores supplied</div></div>
+  </div>
+</div></section>
+
+<section id="visit"><div class="wrap">
+  <div class="k">Visit</div>
+  <h2>801 Danforth Ave.</h2>
+  <div class="info">
+    <div><h3>Hours</h3><ul id="hrs"></ul></div>
+    <div><h3>Contact</h3><ul><li><span>Quick orders</span><a href="tel:+14164690733">416-469-0733</a></li><li><span>Fax</span><span>416-462-1564</span></li><li><span>Email</span><a href="mailto:info@mistergreekmeatmarket.com">info@…</a></li><li><span>Wholesale</span><span>Call for your area's schedule</span></li></ul></div>
+    <div><h3>Also at the counter</h3><ul><li><span>Imported products from Greece</span></li><li><span>Specialty cheeses</span></li><li><span>Variety of olives</span></li><li><span>Free parking nearby</span><span class="ph">tbc</span></li></ul></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span><b>Mister Greek Meats</b> · 801 Danforth Ave, Toronto, ON M4J 1L2 · Since 1972</span><span>redesign demo by <a href="https://opensite.gr" style="color:var(--red)">OpenSite</a></span></div></footer>
+
+<button class="notes-t" id="notesT">Notes</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+if(location.search.includes('clean')){document.documentElement.classList.remove('notes');$('#notesT').remove()}
+$('#notesT')?.addEventListener('click',()=>document.documentElement.classList.toggle('notes'));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3400)};
+const money=n=>'$'+n.toFixed(2);
+const IMG='https://www.mistergreekmeatmarket.com/assets/images/';
+
+/* hours */
+const H=[['Sunday','9:00 – 5:00'],['Monday','9:00 – 6:00'],['Tuesday','9:00 – 6:00'],['Wednesday','9:00 – 6:00'],['Thursday','9:00 – 6:00'],['Friday','9:00 – 7:00'],['Saturday','9:00 – 6:00']];
+const td=new Date().getDay();
+$('#hrs').innerHTML=[1,2,3,4,5,6,0].map(i=>`<li class="${i===td?'today':''}"><span>${H[i][0]}</span><span>${H[i][1]}</span></li>`).join('');
+$('#openNow').textContent='Open today '+H[td][1];
+
+/* products: name, cat, price/lb (placeholder), image */
+const P=[
+ ['Leg of lamb','Lamb',11.99,'foodmenu/menu3/food31.jpg'],['Lamb rib chops','Lamb',19.99,'foodmenu/menu3/food31.jpg'],['Lamb shoulder','Lamb',9.99,'foodmenu/menu3/food31.jpg'],['Whole lamb','Lamb',8.49,'foodmenu/menu3/food31.jpg'],
+ ['Tenderloin','Beef',29.99,'foodmenu/menu3/food1.jpg'],['Brisket','Beef',9.49,'foodmenu/menu3/food1.jpg'],['Lean ground beef','Beef',6.99,'foodmenu/menu3/food1.jpg'],['Beef shank, bone-in','Beef',7.49,'foodmenu/menu3/food1.jpg'],
+ ['Veal shoulder','Veal',12.99,'foodmenu/menu3/food21.jpg'],['Veal chops','Veal',21.99,'foodmenu/menu3/food21.jpg'],['Veal oxtail','Veal',10.99,'foodmenu/menu3/food21.jpg'],
+ ['Whole chicken','Chicken',4.49,'foodmenu/menu3/food11.jpg'],['Boneless breast','Chicken',8.99,'foodmenu/menu3/food11.jpg'],['Chicken wings','Chicken',5.99,'foodmenu/menu3/food11.jpg'],['Boneless legs','Chicken',6.99,'foodmenu/menu3/food11.jpg']];
+const cats=['All','Lamb','Beef','Veal','Chicken'];let cat='All';
+$('#cats').innerHTML=cats.map(c=>`<button class="${c===cat?'on':''}">${c}</button>`).join('');
+$$('#cats button').forEach(b=>b.onclick=()=>{cat=b.textContent;$$('#cats button').forEach(x=>x.classList.toggle('on',x===b));draw()});
+const cart=[];
+const draw=()=>{$('#grid').innerHTML=P.map((p,i)=>[p,i]).filter(([p])=>cat==='All'||p[1]===cat).map(([p,i])=>`<div class="p"><img loading="lazy" src="${IMG+p[3]}" alt="${p[0]}"><div class="b"><h4>${p[0]}</h4><div class="pr ph">${money(p[2])} <small>/ lb</small></div><div class="ctl"><select><option>1 lb</option><option selected>2 lb</option><option>3 lb</option><option>5 lb</option><option>10 lb</option></select><button class="add" data-i="${i}">Add</button></div></div></div>`).join('');
+ $$('.add').forEach(b=>b.onclick=()=>{const p=P[b.dataset.i];const w=parseFloat(b.previousElementSibling.value);cart.push([p[0],w,p[2]*w]);drawCart();toast(p[0]+' · '+w+' lb added')})};
+const drawCart=()=>{$('#items').innerHTML=cart.length?cart.map((c,i)=>`<div class="it"><div>${c[0]}<small>${c[1]} lb · cut as you like</small></div><div>${money(c[2])} <button data-i="${i}">×</button></div></div>`).join(''):'<div class="empty">Nothing yet. Add a cut from the counter.</div>';
+ $$('#items button').forEach(b=>b.onclick=()=>{cart.splice(b.dataset.i,1);drawCart()});
+ $('#tot').textContent=money(cart.reduce((a,c)=>a+c[2],0));$('#cc').textContent=cart.length};
+draw();drawCart();
+{const o=[];let d=new Date();for(let i=0;i<6;i++){o.push(`<option>${i===0?'Today':d.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'})}</option>`);d.setDate(d.getDate()+1)}$('#pday').innerHTML=o.join('')}
+$('#place').onclick=()=>{if(!cart.length){toast('Add a cut first');return}toast('Order #'+(4100+cart.length)+' sent to the counter. You get a text when it is ready.');cart.length=0;drawCart()};
+
+/* wholesale */
+const W=[['Leg of lamb','case 4×',138,4],['Lamb rib chops','5 kg',182,2],['Veal shoulder','10 kg',248,1],['Boneless chicken breast','10 kg',176,3],['Lean ground beef','10 kg',139,2],['Feta, barrel','4 kg',64,2]];
+const ws=$('#wholesale');
+$('#wsBtn').onclick=()=>{ws.classList.add('open');ws.scrollIntoView({behavior:'smooth'})};
+const drawW=()=>{$('#so').innerHTML=W.map((w,i)=>`<tr><td>${w[0]}<br><small style="color:#8fb3e6">${w[1]}</small></td><td><input type="number" min="0" value="${w[3]}" data-i="${i}"></td><td>${money(w[2]*w[3])}</td></tr>`).join('');
+ $$('#so input').forEach(x=>x.oninput=()=>{W[x.dataset.i][3]=Math.max(0,+x.value||0);$('#wtot').textContent='Total '+money(W.reduce((a,w)=>a+w[2]*w[3],0));x.closest('tr').lastElementChild.textContent=money(W[x.dataset.i][2]*W[x.dataset.i][3])});
+ $('#wtot').textContent='Total '+money(W.reduce((a,w)=>a+w[2]*w[3],0))};
+drawW();
+$$('#wdays button').forEach(b=>b.onclick=()=>{$$('#wdays button').forEach(x=>x.classList.toggle('on',x===b))});
+$('#reord').onclick=()=>{[4,2,1,3,2,2].forEach((q,i)=>W[i][3]=q);drawW();toast("Last week's order loaded")};
+$('#wsend').onclick=()=>toast('Order confirmed for '+$('#wdays .on').textContent+'. The cutting room and driver have it.');
+</script>
+</body>
+</html>

@@ -10,6 +10,10 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "mamakas", name: "Mamakas Food Group", kind: "Redesign + CRM · Greek restaurant group (Toronto)", created: "2026-11-11", instagram: "https://www.instagram.com/mamakastaverna/" },
+  { slug: "riverdale-wealth", name: "Riverdale Wealth Management", kind: "Redesign + booking · wealth advisor (Toronto)", created: "2026-11-11" },
+  { slug: "mister-greek", name: "Mister Greek Meats", kind: "Pick-up orders + wholesale portal · butcher (Toronto)", created: "2026-11-11" },
+  { slug: "athens-pastries", name: "Athens Pastries", kind: "New site + order ahead · Greek bakery (Toronto)", created: "2026-11-11" },
   { slug: "anama", name: "ΑΝΑΜΑ", kind: "Εστιατόριο · φωτιά & ξυλόφουρνος (Εύοσμος)", created: "2026-11-11", instagram: "https://www.instagram.com/anamathessaloniki/" },
   { slug: "knisa", name: "Κνίσα", kind: "Wood-fire steakhouse (Σιντριβάνι)", created: "2026-11-11", instagram: "https://www.instagram.com/knisa_skg/" },
   { slug: "shark", name: "SHARK Bar | Restaurant", kind: "Seaside bar-restaurant (Καλαμαριά)", created: "2026-11-11", instagram: "https://www.instagram.com/sharkbarrestaurant/" },
