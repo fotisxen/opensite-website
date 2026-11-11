@@ -10,6 +10,10 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "anama", name: "ΑΝΑΜΑ", kind: "Εστιατόριο · φωτιά & ξυλόφουρνος (Εύοσμος)", created: "2026-11-11", instagram: "https://www.instagram.com/anamathessaloniki/" },
+  { slug: "knisa", name: "Κνίσα", kind: "Wood-fire steakhouse (Σιντριβάνι)", created: "2026-11-11", instagram: "https://www.instagram.com/knisa_skg/" },
+  { slug: "shark", name: "SHARK Bar | Restaurant", kind: "Seaside bar-restaurant (Καλαμαριά)", created: "2026-11-11", instagram: "https://www.instagram.com/sharkbarrestaurant/" },
+  { slug: "ics", name: "ICS · Integrated Consulting Services", kind: "Redesign + client portal · consulting", created: "2026-11-11" },
   { slug: "palia-athina", name: "Παλιά Αθήνα", kind: "Υπόγειο εστιατόριο · κάβα 1000+ κρασιών (Τούμπα)", created: "2026-11-10", instagram: "https://www.instagram.com/palia.athina/" },
   { slug: "dacristo", name: "Dacristo Deli & Meat", kind: "E-shop · deli & premium κρεοπωλείο", created: "2026-11-10", instagram: "https://www.instagram.com/dacristodeli/" },
   { slug: "peftouloglou", name: "Φαρμακείο Πεφτούλογλου", kind: "E-shop · φαρμακείο (Άνω Τούμπα, Θεσσαλονίκη)", created: "2026-11-06" },
