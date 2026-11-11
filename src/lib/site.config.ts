@@ -32,6 +32,12 @@ export interface SiteConfig {
     callLabel: string | null;
     chatLabel: string | null;
     metaPixelId: string | null;
+    // Google Consent Mode v2. "basic": the Google tag loads only after
+    // "Accept". "advanced": it loads on every visit with all consent denied,
+    // so declined visits still send cookieless pings that Google Ads uses to
+    // model conversions. Switching to "advanced" changes what the cookie
+    // banner and privacy policy promise, so update those texts with it.
+    consentMode: "basic" | "advanced";
   };
   testimonial: {
     el: string | null; // Greek rendering, approved by Fotis
@@ -88,6 +94,7 @@ export const siteConfig: SiteConfig = {
     callLabel: "TZsuCNnjgJodEJ_B7dlE",
     chatLabel: "0-lrCNzjgJodEJ_B7dlE",
     metaPixelId: "2111724882722505",
+    consentMode: "basic",
   },
   testimonial: {
     el: "Από τον σχεδιασμό μέχρι την παράδοση, το OpenSite δημιούργησε μια ιστοσελίδα που αποτυπώνει την κομψότητα των ιστιοπλοϊκών μας εμπειριών και δίνει στους πελάτες μας μια διαδικασία κράτησης χωρίς εμπόδια.",

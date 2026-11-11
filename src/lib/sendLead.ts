@@ -66,14 +66,19 @@ export async function sendLead(payload: LeadPayload, backup?: Promise<void>): Pr
  * even if the email provider fails. Plain fetch: the Greek pages do not load
  * the Supabase client. RLS allows public inserts on `leads` and nothing else.
  */
-export async function saveLeadToCrm(lead: { name: string; phone: string; message: string }): Promise<void> {
+export async function saveLeadToCrm(lead: {
+  name: string;
+  phone: string;
+  message: string;
+  source?: string; // "site_form" (Greek pages) or "site_form_cyprus"
+}): Promise<void> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) throw new Error("crm: not configured");
   const res = await fetch(`${url}/rest/v1/leads`, {
     method: "POST",
     headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json", Prefer: "return=minimal" },
-    body: JSON.stringify({ full_name: lead.name, phone: lead.phone, source: "site_form", message: lead.message }),
+    body: JSON.stringify({ full_name: lead.name, phone: lead.phone, source: lead.source ?? "site_form", message: lead.message }),
   });
   if (!res.ok) throw new Error(`crm: ${res.status}`);
 }

@@ -11,7 +11,7 @@ const BASE_URL = "https://opensite.gr";
 export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ["", "case-studies", "insights", "book-a-call","contact", "about"].map(
+  const staticRoutes = ["", "case-studies", "insights", "book-a-call","contact", "about", "web-design-cyprus"].map(
     (route) => ({
       url: `${BASE_URL}/${route ? route + "/" : ""}`,
       lastModified: new Date(),

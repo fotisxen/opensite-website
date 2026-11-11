@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { isAdminPath, isGreekFramePath } from "@/lib/routes";
+import { hasOwnFrame, isAdminPath } from "@/lib/routes";
 import { useBannerOpen } from "@/lib/tracking";
 import Icon from "@/components/Icon";
 
@@ -29,7 +29,7 @@ export function StickyBookCall() {
     !scrolled ||
     bannerOpen ||
     EXCLUDED.includes(path) ||
-    isGreekFramePath(pathname) ||
+    hasOwnFrame(pathname) ||
     isAdminPath(pathname)
   ) {
     return null;

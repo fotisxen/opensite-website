@@ -3,9 +3,12 @@
 import { useSyncExternalStore } from "react";
 import { siteConfig } from "./site.config";
 
-// Nothing from Google or Meta loads before the visitor presses "Accept".
-// Lead source (utm_*) reaches the lead email without any cookies; click ids
-// (gclid, gbraid, wbraid) are only included after consent.
+// Nothing from Meta loads before the visitor presses "Accept". The Google tag
+// follows siteConfig.tracking.consentMode: "basic" loads it only after
+// "Accept"; "advanced" loads it on every visit with all consent denied
+// (Consent Mode v2, cookieless pings). Lead source (utm_*) reaches the lead
+// email without any cookies; click ids (gclid, gbraid, wbraid) are only
+// included after consent.
 
 declare global {
   interface Window {
@@ -145,7 +148,47 @@ export function useBannerOpen() {
 
 /* ------------------------------- tags -------------------------------- */
 
-let loaded = false;
+let loaded = false; // visitor accepted: Google (with cookies) and Meta are on
+let googleReady = false; // the Google tag is on the page, with or without consent
+
+// Loads the Google tag with every consent signal denied. With nothing granted
+// it sets no cookies and sends only cookieless pings.
+function initGoogle() {
+  const { googleAdsId, consentMode } = siteConfig.tracking;
+  if (googleReady || !googleAdsId || typeof window === "undefined") return;
+  googleReady = true;
+  window.dataLayer = window.dataLayer || [];
+  // gtag.js expects the `arguments` object, not an array.
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+  if (consentMode === "advanced") {
+    // Without consent: strip ad identifiers and carry the click id in the URL
+    // instead of a cookie.
+    window.gtag("set", "ads_data_redaction", true);
+    window.gtag("set", "url_passthrough", true);
+  }
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`;
+  document.head.appendChild(script);
+  window.gtag("js", new Date());
+  // Enhanced conversions: the lead's phone goes with the lead conversion,
+  // hashed by the tag, and only after consent (see trackLead).
+  window.gtag("config", googleAdsId, { allow_enhanced_conversions: true });
+}
+
+/** Consent Mode "advanced": the Google tag runs, cookieless, before any choice. */
+export function initCookieless() {
+  if (siteConfig.tracking.consentMode === "advanced") initGoogle();
+}
 
 export function loadTags() {
   if (loaded || typeof window === "undefined") return;
@@ -153,18 +196,7 @@ export function loadTags() {
   const { googleAdsId, metaPixelId } = siteConfig.tracking;
 
   if (googleAdsId) {
-    window.dataLayer = window.dataLayer || [];
-    // gtag.js expects the `arguments` object, not an array.
-    window.gtag = function gtag() {
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("consent", "default", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "denied",
-    });
+    initGoogle();
     // The Google tag is only used to count conversions: no personalised
     // ads and no analytics, so those two stay denied.
     window.gtag("consent", "update", {
@@ -173,12 +205,6 @@ export function loadTags() {
       ad_personalization: "denied",
       analytics_storage: "denied",
     });
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`;
-    document.head.appendChild(script);
-    window.gtag("js", new Date());
-    window.gtag("config", googleAdsId);
   }
 
   if (metaPixelId) {
@@ -216,9 +242,11 @@ export function loadTags() {
 
 /* ------------------------------ events ------------------------------- */
 
+// Sent whenever the Google tag is on the page: with consent as a normal hit,
+// without it (advanced mode only) as a cookieless ping.
 function sendConversion(label: string | null) {
   const { googleAdsId } = siteConfig.tracking;
-  if (!loaded || !googleAdsId || !label) return;
+  if (!googleReady || !googleAdsId || !label) return;
   window.gtag("event", "conversion", { send_to: `${googleAdsId}/${label}` });
 }
 
@@ -227,8 +255,26 @@ function sendMeta(event: "Lead" | "Contact") {
 }
 
 export function trackLead() {
+  // Enhanced conversions: only with consent, since ad_user_data is otherwise denied.
+  const phone = toE164(leadUser?.phone);
+  if (loaded && googleReady && phone) window.gtag("set", "user_data", { phone_number: phone });
+  leadUser = null;
   sendConversion(siteConfig.tracking.leadLabel);
   sendMeta("Lead");
+}
+
+/**
+ * Phone in E.164 for enhanced conversions, or null when unsure. Greek numbers
+ * (10 digits, 2… or 6…) get +30, Cypriot ones (8 digits, 2… or 9…) get +357.
+ */
+export function toE164(raw: string | undefined | null): string | null {
+  if (!raw) return null;
+  const s = raw.replace(/[\s().-]/g, "");
+  if (/^\+\d{8,15}$/.test(s)) return s;
+  if (/^00\d{8,15}$/.test(s)) return `+${s.slice(2)}`;
+  if (/^[26]\d{9}$/.test(s)) return `+30${s}`;
+  if (/^[29]\d{7}$/.test(s)) return `+357${s}`;
+  return null;
 }
 
 export function trackCall() {
@@ -247,9 +293,13 @@ export function trackChat() {
 // thank-you page but not a reload or a direct visit. That way a refresh
 // never counts as a second lead.
 let leadJustSubmitted = false;
+// The submitted phone, kept in memory only, for enhanced conversions on the
+// thank-you page.
+let leadUser: { phone?: string } | null = null;
 
-export function markLeadSubmitted() {
+export function markLeadSubmitted(user?: { phone?: string }) {
   leadJustSubmitted = true;
+  leadUser = user ?? null;
 }
 
 export function consumeLeadSubmitted() {

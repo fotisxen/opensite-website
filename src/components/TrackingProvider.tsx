@@ -7,6 +7,7 @@ import { isAdminPath, isGreekFramePath } from "@/lib/routes";
 import {
   captureAttribution,
   getConsent,
+  initCookieless,
   loadTags,
   openConsentBanner,
   setBannerOpen,
@@ -71,7 +72,10 @@ export default function TrackingProvider() {
     captureAttribution();
     const consent = getConsent();
     if (consent === "granted") loadTags();
-    else if (consent === null && !isAdminPath(window.location.pathname)) openConsentBanner();
+    else if (!isAdminPath(window.location.pathname)) {
+      initCookieless();
+      if (consent === null) openConsentBanner();
+    }
   }, []);
 
   useEffect(() => {

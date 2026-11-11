@@ -8,7 +8,14 @@ export const LANDING_PATHS = [
   // lib/greek.ts reads the first three by position.
   "/kataskevi-istoselidon",
   "/kataskevi-eshop",
+  // English ad landing page for Cyprus and its thank-you page. They use
+  // EnglishLandingFrame instead of the Greek frame (see ENGLISH_LANDING_PATHS).
+  "/web-design-cyprus",
+  "/thank-you",
 ] as const;
+
+// The landing paths above that are in English.
+const ENGLISH_LANDING_PATHS: readonly string[] = ["/web-design-cyprus", "/thank-you"];
 
 export const THANKS_PATH = "/efcharistoume";
 
@@ -22,6 +29,10 @@ export function isLandingPath(pathname: string | null | undefined) {
   return (LANDING_PATHS as readonly string[]).includes(p);
 }
 
+export function isEnglishLandingPath(pathname: string | null | undefined) {
+  return ENGLISH_LANDING_PATHS.includes(normalize(pathname));
+}
+
 export function isThanksPath(pathname: string | null | undefined) {
   return normalize(pathname) === THANKS_PATH;
 }
@@ -33,10 +44,20 @@ export function isGreekSitePath(pathname: string | null | undefined) {
   return p === "/el" || p.startsWith("/el/");
 }
 
-// Landing pages, thank-you page and the Greek site share the Greek copy and
-// skip the English chrome.
+// Greek landing pages, the Greek thank-you page and the Greek site share the
+// Greek copy and skip the English chrome.
 export function isGreekFramePath(pathname: string | null | undefined) {
-  return isLandingPath(pathname) || isThanksPath(pathname) || isGreekSitePath(pathname);
+  return (
+    (isLandingPath(pathname) && !isEnglishLandingPath(pathname)) ||
+    isThanksPath(pathname) ||
+    isGreekSitePath(pathname)
+  );
+}
+
+// Pages that draw their own frame (Greek frame or English landing frame), so
+// the English main chrome must not render there.
+export function hasOwnFrame(pathname: string | null | undefined) {
+  return isGreekFramePath(pathname) || isLandingPath(pathname);
 }
 
 // The same page in the other language, for the language switch. Pages with
