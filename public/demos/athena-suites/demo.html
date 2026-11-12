@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Athena Suites · 8 suites κάτω από την Ακρόπολη</title>
+<meta name="description" content="Athena Suites: 8 suites στην Πλάκα, λίγα βήματα από την Ακρόπολη. Κράτησε απευθείας στην καλύτερη τιμή.">
+<meta name="theme-color" content="#e6dccb">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e6dccb'/%3E%3Cpath d='M9 25 16 7l7 18M11.6 19h8.8' stroke='%237b6345' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Commissioner:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Athena Suites (8 suites).
+  Brand taken from the logo: carved stone relief + engraved bronze capitals.
+  Facts: 8 units, Πανδρόσου 24 Πλάκα (from listings of "24K Athena Suites", to confirm).
+  No photos: the suites are drawn as stone reliefs (SVG). Everything .ph is placeholder
+  (toggle "Σημειώσεις", hide with ?clean).
+-->
+<script>
+(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);
+ if(q.has("clean")||localStorage.getItem("as-notes")==="off")h.classList.remove("notes");
+ if(q.has("clean"))h.classList.add("clean");
+ if(q.get("lang")==="en"||localStorage.getItem("as-lang")==="en")h.dataset.lang="en";}catch(e){}})();
+</script>
+<style>
+:root{
+  --stone:#e6dccb;--stone-2:#ddd1bd;--stone-3:#d2c4ad;--paper:#f3eee5;--bronze:#7b6345;--bronze-d:#5a4630;--ink:#2a2219;--mute:#7a6d5c;--line:rgba(90,70,45,.16);
+  --ok:#4f7a4a;--no:#a5543d;
+  --disp:"Didact Gothic","Commissioner",sans-serif;--body:"Commissioner",system-ui,sans-serif;--it:"Noto Serif Display",Georgia,serif;
+  --pad:clamp(16px,4vw,56px);--ease:cubic-bezier(.2,.7,.2,1);--lx:8px;--ly:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font:400 16px/1.65 var(--body);color:var(--ink);background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.wrap{width:min(1200px,100% - 2*var(--pad));margin:0 auto}
+h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:.06em;line-height:1.1;text-transform:uppercase}
+h2{font-size:clamp(30px,4.4vw,52px)}
+.it{font-family:var(--it);font-style:italic;text-transform:none;letter-spacing:0;color:var(--bronze)}
+.kick{font:500 11.5px/1 var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--bronze);display:inline-flex;align-items:center;gap:12px}
+.kick:before{content:"";width:28px;height:1px;background:currentColor}
+.mute{color:var(--mute)}
+.engr{color:var(--bronze);text-shadow:0 1px 0 rgba(255,255,255,.7),0 -1px 0 rgba(70,52,30,.38)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:var(--ink);color:var(--paper);font:500 13px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;border-radius:2px 26px 2px 26px;transition:border-radius .35s var(--ease),background .25s,transform .25s}
+.btn:hover{border-radius:26px 2px 26px 2px;background:var(--bronze-d)}
+.btn.bronze{background:var(--bronze)}
+.btn.bronze:hover{background:var(--bronze-d)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--paper)}
+.btn.wide{width:100%}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,box-shadow .4s}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+nav.solid{background:rgba(243,238,229,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.logo{font-family:var(--disp);line-height:1;text-align:center}
+.logo b{display:block;font-weight:400;font-size:21px;letter-spacing:.2em}
+.logo small{display:block;font-size:9.5px;letter-spacing:.52em;margin-top:4px;padding-left:.52em}
+.nav-l{display:flex;gap:26px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase}
+.nav-l a{position:relative;padding:6px 0}
+.nav-l a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--bronze);transition:right .3s var(--ease)}
+.nav-l a:hover:after{right:0}
+.nav-r{display:flex;align-items:center;gap:10px}
+.lang{display:flex;box-shadow:inset 0 0 0 1px var(--line);border-radius:20px;overflow:hidden;font-size:11.5px;font-weight:600;letter-spacing:.08em}
+.lang button{padding:7px 11px;color:var(--mute)}
+html:not([data-lang=en]) .lang [data-l=el],html[data-lang=en] .lang [data-l=en]{background:var(--ink);color:var(--paper)}
+nav .btn{min-height:42px;padding:0 18px;font-size:11.5px}
+@media(max-width:900px){.nav-l{display:none}}
+@media(max-width:520px){nav .btn{display:none}.logo b{font-size:18px}}
+
+/* hero relief */
+.hero{position:relative;min-height:100svh;background:var(--stone);overflow:hidden;display:grid;place-items:center;padding:110px var(--pad) 150px;isolation:isolate}
+.relief{position:absolute;inset:-4%;z-index:-1}
+.sh{position:absolute;background:var(--stone);box-shadow:var(--lx) var(--ly) 22px -6px rgba(92,70,40,.42),calc(var(--lx)*.25) calc(var(--ly)*.25) 3px rgba(92,70,40,.16),inset 1px 1px 0 rgba(255,255,255,.55);transition:transform 1.2s var(--ease)}
+.sh.t2{background:#e9e0d0}.sh.t3{background:#e2d8c6}
+.hero-t{position:relative;text-align:center;padding:clamp(30px,5vw,60px) clamp(20px,6vw,90px);background:var(--stone);border-radius:4px 4px 34px 4px;box-shadow:var(--lx) var(--ly) 26px -8px rgba(92,70,40,.42),inset 1px 1px 0 rgba(255,255,255,.55)}
+.hero h1{font-size:clamp(50px,10vw,140px);letter-spacing:.09em;line-height:.95}
+.hero h1 span{display:block;font-size:.42em;letter-spacing:.34em;margin-top:.35em;padding-left:.34em}
+.hero p{margin:22px auto 0;max-width:520px;font-size:clamp(15px,1.4vw,18px);color:#5d4d39}
+.hero-t .grain{border-radius:inherit}
+.scroll-cue{position:absolute;bottom:126px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
+@media(max-width:720px){.scroll-cue{display:none}}
+
+/* search bar */
+.search{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:min(980px,100% - 2*var(--pad));z-index:5;display:grid;grid-template-columns:1fr 1fr .8fr auto;background:var(--paper);border-radius:4px 4px 30px 4px;box-shadow:0 30px 60px -30px rgba(60,44,22,.55);overflow:hidden}
+.field{padding:14px 20px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-width:0}
+.field label{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.field input,.field select{border:0;background:none;font-size:16px;font-weight:500;width:100%;min-width:0;outline:none;padding:0}
+.search .btn{border-radius:0;min-height:100%;padding:0 30px}
+@media(max-width:760px){.search{grid-template-columns:1fr 1fr;position:relative;left:auto;bottom:auto;transform:none;margin-top:28px;width:100%}.search .btn{grid-column:1/-1;min-height:54px}.field:nth-child(2){border-right:0}.field:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);border-right:0}.hero{padding-bottom:40px;display:flex;flex-direction:column;justify-content:center}}
+
+/* perks strip */
+.perks{background:var(--ink);color:#d9cdb9}
+.perks .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 0}
+.perks div{display:flex;gap:12px;align-items:center;font-size:13.5px}
+.perks b{color:#fff;font-weight:500;display:block}
+.perks svg{flex-shrink:0;color:#c9ad83}
+@media(max-width:860px){.perks .wrap{grid-template-columns:1fr 1fr}}
+
+/* sections */
+.sec{padding:clamp(70px,10vw,130px) 0}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.sec-h h2{margin-top:14px}
+.result{display:none;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;margin-bottom:22px;background:var(--stone);border-radius:3px 3px 20px 3px;font-size:14.5px}
+.result.on{display:flex}
+.result b{font-weight:600}
+.result button{margin-left:auto;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);border-bottom:1px solid currentColor}
+
+/* suite cards */
+.suites{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1080px){.suites{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.suites{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;background:#fbf8f2;border-radius:3px 3px 28px 3px;overflow:hidden;box-shadow:0 1px 0 var(--line),0 20px 40px -34px rgba(60,44,22,.5);transition:transform .4s var(--ease),box-shadow .4s}
+.card:hover{transform:translateY(-4px);box-shadow:0 1px 0 var(--line),0 34px 50px -34px rgba(60,44,22,.6)}
+.card .art{position:relative;aspect-ratio:4/3.4;overflow:hidden;cursor:pointer}
+.art svg{width:100%;height:100%;display:block}
+.card .no{position:absolute;left:16px;top:14px;font:400 13px var(--disp);letter-spacing:.2em}
+.tag{position:absolute;right:12px;top:12px;padding:5px 10px;font-size:11px;letter-spacing:.08em;background:rgba(243,238,229,.92);border-radius:12px}
+.card .bd{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:19px;letter-spacing:.12em}
+.card .ty{font-size:13px;color:var(--mute);margin-top:3px}
+.specs{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--mute);margin:12px 0 16px}
+.specs span{display:inline-flex;gap:5px;align-items:center}
+.card .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding-top:14px;border-top:1px solid var(--line)}
+.price{font:400 24px/1 var(--disp);letter-spacing:.02em}
+.price small{display:block;font:400 11.5px var(--body);color:var(--mute);letter-spacing:.04em;margin-top:5px}
+.card .btn{min-height:42px;padding:0 16px;font-size:11px}
+.avail{font-size:12.5px;display:flex;align-items:center;gap:7px;margin-top:-6px;margin-bottom:12px}
+.avail i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.avail.no i{background:var(--no)}
+.card.dim{opacity:.55}
+.card.dim:hover{opacity:.85}
+
+/* story */
+.story{background:var(--stone);position:relative;overflow:hidden}
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.story img{border-radius:3px 3px 60px 3px;box-shadow:0 40px 70px -40px rgba(60,44,22,.6)}
+.story p{margin-top:18px;font-size:17px;color:#4d3f2e;max-width:520px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;padding-top:26px;border-top:1px solid var(--line)}
+.facts b{display:block;font:400 34px/1 var(--disp)}
+.facts span{font-size:12.5px;color:var(--mute)}
+@media(max-width:860px){.story .wrap{grid-template-columns:1fr}}
+
+/* guide */
+.guide{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,70px);align-items:start}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tabs button{padding:10px 16px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;border-radius:20px;box-shadow:inset 0 0 0 1px var(--line);transition:all .25s}
+.tabs button.on{background:var(--ink);color:var(--paper);box-shadow:none}
+.panel{background:#fbf8f2;border-radius:3px 3px 28px 3px;padding:clamp(20px,3vw,34px);box-shadow:0 1px 0 var(--line)}
+.panel ol,.panel ul{list-style:none;display:grid;gap:14px}
+.panel li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;font-size:15px}
+.panel li i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--stone);display:grid;place-items:center;font:400 14px var(--disp);color:var(--bronze)}
+.wifi{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wifi div{padding:16px;background:var(--stone);border-radius:3px 3px 18px 3px}
+.wifi small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.wifi b{font:400 19px var(--disp);letter-spacing:.06em}
+.copy{margin-top:8px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze);border-bottom:1px solid currentColor}
+.near{display:grid;gap:0}
+.near div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.near span{color:var(--mute);font-variant-numeric:tabular-nums}
+@media(max-width:860px){.guide{grid-template-columns:1fr}}
+
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{padding:26px;background:var(--stone);border-radius:3px 3px 28px 3px}
+.rev p{font:italic 300 20px/1.45 var(--it);margin:12px 0 16px;color:#3d3022}
+.rev small{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.stars{color:var(--bronze);letter-spacing:3px}
+@media(max-width:860px){.revs{grid-template-columns:1fr}}
+
+/* location */
+.loc{display:grid;grid-template-columns:1fr 1.2fr;gap:18px}
+.loc .panel h3{font-size:24px;margin:14px 0 10px}
+.map{border-radius:3px 3px 28px 3px;overflow:hidden;min-height:400px;background:var(--stone-2)}
+.map iframe{width:100%;height:100%;min-height:400px;border:0;filter:sepia(.35) saturate(.7)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+@media(max-width:860px){.loc{grid-template-columns:1fr}}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;justify-content:space-between;gap:20px;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font:300 24px/1 var(--body);color:var(--bronze);transition:transform .3s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq p{padding:0 0 20px;color:#4d3f2e;max-width:760px}
+
+footer{background:var(--ink);color:#bfb19c;padding:60px 0 30px;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer .logo{text-align:left;color:#e6dccb}
+footer h4{font:500 11px var(--body);letter-spacing:.24em;text-transform:uppercase;color:#e6dccb;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px}
+footer .bot{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:20px;font-size:12.5px;color:#8f826f}
+@media(max-width:760px){footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}}
+
+/* modal + drawer */
+.scrim{position:fixed;inset:0;background:rgba(30,22,14,.5);z-index:80;opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.on{opacity:1;pointer-events:auto}
+.modal{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;pointer-events:none}
+.mbox{pointer-events:auto;width:min(1040px,100%);max-height:calc(100svh - 32px);overflow-y:auto;background:var(--paper);border-radius:4px 4px 36px 4px;display:grid;grid-template-columns:1fr 1fr;opacity:0;transform:translateY(30px) scale(.98);transition:opacity .35s,transform .45s var(--ease)}
+.modal.on .mbox{opacity:1;transform:none}
+.modal:not(.on){visibility:hidden;transition:visibility 0s .45s}
+.m-art{position:relative;min-height:100%;background:var(--stone) url(img/relief.jpg) center 70%/cover}
+.m-art>svg{width:100%;height:auto;aspect-ratio:300/255;display:block;position:sticky;top:0}
+.m-bd{padding:clamp(20px,3vw,36px)}
+.m-bd h2{font-size:clamp(26px,3vw,36px)}
+.x{position:absolute;right:14px;top:14px;width:42px;height:42px;border-radius:50%;background:var(--paper);display:grid;place-items:center;z-index:3;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
+.amen{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin:18px 0;font-size:14px}
+.amen span:before{content:"— ";color:var(--bronze)}
+@media(max-width:800px){.mbox{grid-template-columns:1fr}.m-art>svg{position:static}}
+
+/* calendar */
+.cal{margin:18px 0;user-select:none}
+.cal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-h b{font:400 15px var(--disp);letter-spacing:.14em;text-transform:uppercase}
+.cal-h button{width:36px;height:36px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line)}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:13px}
+.cal-g .dn{font-size:10.5px;letter-spacing:.1em;color:var(--mute);padding:4px 0}
+.cal-g button{height:38px;border-radius:6px;font-variant-numeric:tabular-nums;transition:background .15s}
+.cal-g button:hover:not([disabled]){background:var(--stone)}
+.cal-g button[disabled]{color:#c2b6a3;text-decoration:line-through;cursor:not-allowed}
+.cal-g button.past{text-decoration:none;color:#cfc5b5}
+.cal-g button.in{background:var(--stone-2);border-radius:0}
+.cal-g button.s,.cal-g button.e{background:var(--ink);color:var(--paper)}
+.cal-g button.s{border-radius:6px 0 0 6px}.cal-g button.e{border-radius:0 6px 6px 0}
+.cal-g button.s.e{border-radius:6px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--mute);margin-top:8px}
+.sum{background:var(--stone);border-radius:3px 3px 20px 3px;padding:16px 18px;font-size:14.5px}
+.sum div{display:flex;justify-content:space-between;padding:3px 0}
+.sum .tot{font-weight:600;font-size:17px;border-top:1px solid var(--line);margin-top:6px;padding-top:9px}
+.sum small{display:block;color:var(--mute);font-size:12px;margin-top:6px}
+
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--paper);z-index:95;transform:translateX(102%);transition:transform .5s var(--ease);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer:not(.on){visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
+.dr-h{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.dr-h h3{font-size:20px;letter-spacing:.14em}
+.steps{display:flex;gap:6px;padding:14px 24px 0}
+.steps i{flex:1;height:3px;border-radius:2px;background:var(--line)}
+.steps i.on{background:var(--bronze)}
+.dr-b{flex:1;overflow-y:auto;padding:22px 24px 30px}
+.dr-f{padding:16px 24px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.dr-f .tot{margin-right:auto;font:400 22px var(--disp)}
+.dr-f .tot small{display:block;font:400 11.5px var(--body);color:var(--mute)}
+.xtra{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;padding:14px;border-radius:3px 3px 18px 3px;box-shadow:inset 0 0 0 1px var(--line);margin-top:10px;cursor:pointer;font-size:14.5px}
+.xtra:has(input:checked){box-shadow:inset 0 0 0 1.5px var(--bronze);background:#f8f2e8}
+.xtra input{accent-color:var(--bronze);width:18px;height:18px}
+.xtra small{display:block;color:var(--mute);font-size:12.5px}
+.f{margin-top:14px}
+.f label{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.f input,.f select,.f textarea{width:100%;height:48px;padding:0 14px;border:1px solid var(--line);border-radius:3px 3px 14px 3px;background:#fbf8f2;font-size:15px;outline:none;transition:border-color .2s}
+.f textarea{height:80px;padding:12px 14px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--bronze)}
+.f.err input{border-color:var(--no)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two .f{margin-top:14px}
+.payopt{display:grid;gap:10px;margin-top:10px}
+.done{text-align:center;padding:20px 0}
+.done .seal{width:96px;height:96px;margin:0 auto 18px;border-radius:50%;background:var(--stone);display:grid;place-items:center;box-shadow:6px 8px 18px -6px rgba(92,70,40,.42),inset 1px 1px 0 rgba(255,255,255,.6);font:400 30px var(--disp);color:var(--bronze)}
+.done h3{font-size:28px;margin-bottom:8px}
+.code{display:inline-block;margin:14px 0;padding:10px 18px;background:var(--stone);font:400 22px var(--disp);letter-spacing:.2em;border-radius:3px 3px 16px 3px}
+
+/* notes */
+.notes .ph{outline:1.5px dashed #b0603f;outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:#b0603f;padding:4px 8px;border-radius:5px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:600 11px/1 var(--body);padding:10px 13px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.18);color:var(--mute)}
+.notes .notes-toggle{color:#b0603f;box-shadow:inset 0 0 0 1px #b0603f}
+.clean .notes-toggle{display:none}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;z-index:120;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:3px 3px 16px 3px;font-size:14px;transition:all .35s var(--ease);pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a class="logo engr" href="#top"><b>ATHENA</b><small>SUITES</small></a>
+  <div class="nav-l">
+    <a href="#suites" data-en="Suites">Suites</a>
+    <a href="#story" data-en="The house">Το σπίτι</a>
+    <a href="#guide" data-en="Guest guide">Οδηγός επισκέπτη</a>
+    <a href="#location" data-en="Location">Τοποθεσία</a>
+  </div>
+  <div class="nav-r">
+    <div class="lang"><button data-l="el">ΕΛ</button><button data-l="en">EN</button></div>
+    <a class="btn" href="#suites" data-en="Book">Κράτηση</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="relief" id="relief" aria-hidden="true"></div>
+  <div class="hero-t reveal in">
+    <div class="grain"></div>
+    <h1 class="engr">Athena<span>Suites</span></h1>
+    <p data-en="Eight suites in Plaka, a few steps below the Acropolis. Book direct, at our best price.">Οκτώ suites στην Πλάκα, λίγα βήματα κάτω από την Ακρόπολη. Κράτησε απευθείας, στην καλύτερη τιμή.</p>
+  </div>
+  <form class="search" id="search">
+    <div class="field"><label for="din" data-en="Check-in">Άφιξη</label><input type="date" id="din" required></div>
+    <div class="field"><label for="dout" data-en="Check-out">Αναχώρηση</label><input type="date" id="dout" required></div>
+    <div class="field"><label for="guests" data-en="Guests">Επισκέπτες</label><select id="guests"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></div>
+    <button class="btn bronze" type="submit" data-en="Check availability">Διαθεσιμότητα</button>
+  </form>
+</header>
+
+<div class="perks"><div class="wrap">
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.3"/></svg><span><b data-en="Best price, direct">Καλύτερη τιμή απευθείας</b><span data-en="10% lower than the platforms">10% κάτω από τις πλατφόρμες</span></span></div>
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4"/></svg><span><b data-en="Free cancellation">Δωρεάν ακύρωση</b><span data-en="up to 7 days before arrival">έως 7 μέρες πριν την άφιξη</span></span></div>
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.3"/></svg><span><b data-en="Self check-in">Self check-in</b><span data-en="code by SMS, arrive any time">κωδικός με SMS, έλα όποτε θες</span></span></div>
+  <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg><span><b data-en="5' from the Acropolis">5' από την Ακρόπολη</b><span data-en="in the heart of Plaka">στην καρδιά της Πλάκας</span></span></div>
+</div></div>
+
+<section class="sec" id="suites"><div class="wrap">
+  <div class="sec-h reveal"><div><span class="kick" data-en="8 suites">8 suites</span><h2><span data-en="Choose your">Διάλεξε τη</span> <span class="it" data-en="suite">suite σου</span></h2></div><p class="mute" style="max-width:420px" data-en="Every suite has a kitchenette, espresso machine, safe, air conditioning and fast Wi-Fi.">Κάθε suite έχει κουζινάκι, μηχανή espresso, χρηματοκιβώτιο, κλιματισμό και γρήγορο Wi-Fi.</p></div>
+  <div class="result" id="result"></div>
+  <div class="suites" id="grid"></div>
+</div></section>
+
+<section class="sec story" id="story"><div class="grain"></div><div class="wrap">
+  <div class="reveal"><img src="img/relief.jpg" alt="Το ανάγλυφο λογότυπο του Athena Suites" loading="lazy" width="1000" height="1000"></div>
+  <div class="reveal">
+    <span class="kick" data-en="The house">Το σπίτι</span>
+    <h2 style="margin-top:14px"><span data-en="Stone, light">Πέτρα, φως</span> <span class="it" data-en="and the Acropolis.">και η Ακρόπολη.</span></h2>
+    <p class="ph" data-note="Κείμενο ενδεικτικό: βάλε την ιστορία του κτιρίου από τον ιδιοκτήτη" data-en="A small house with eight suites, on one of the oldest streets of Athens. Natural materials, quiet rooms, and everything you need to live like an Athenian for a few days: the market downstairs, the Acropolis around the corner.">Ένα μικρό σπίτι με οκτώ suites, σε έναν από τους παλιότερους δρόμους της Αθήνας. Φυσικά υλικά, ήσυχα δωμάτια και ό,τι χρειάζεσαι για να ζήσεις λίγες μέρες σαν Αθηναίος: η αγορά από κάτω, η Ακρόπολη στη γωνία.</p>
+    <div class="facts"><div><b>8</b><span>suites</span></div><div><b class="ph" data-note="Επιβεβαίωσε μέγεθος">35–50</b><span>m²</span></div><div><b>24/7</b><span data-en="self check-in">self check-in</span></div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="guide"><div class="wrap guide">
+  <div class="reveal"><span class="kick" data-en="Guest guide">Οδηγός επισκέπτη</span><h2 style="margin-top:14px"><span data-en="Everything,">Όλα,</span> <span class="it" data-en="on your phone.">στο κινητό σου.</span></h2><p class="mute" style="margin-top:16px" data-en="No reception desk, no waiting. Your guests find the check-in steps, Wi-Fi and the best of the neighbourhood here, and the questions to the owner drop.">Χωρίς ρεσεψιόν και χωρίς αναμονή. Οι επισκέπτες βρίσκουν εδώ τα βήματα για check-in, το Wi-Fi και τα καλύτερα της γειτονιάς, και οι ερωτήσεις στον ιδιοκτήτη μειώνονται.</p></div>
+  <div class="reveal">
+    <div class="tabs" id="tabs"><button class="on" data-tab="in" data-en="Check-in">Check-in</button><button data-tab="wifi">Wi-Fi</button><button data-tab="near" data-en="Nearby">Κοντά</button><button data-tab="rules" data-en="House rules">Κανόνες</button></div>
+    <div class="panel" id="panel"></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="sec-h reveal"><div><span class="kick" data-en="Guests">Επισκέπτες</span><h2 style="margin-top:14px"><span data-en="What they">Τι</span> <span class="it" data-en="say">λένε</span></h2></div><span class="mute ph" data-note="Ενδεικτικές κριτικές: βάλε πραγματικές από Booking/Google" style="font-size:13px" data-en="Sample reviews">Ενδεικτικές κριτικές</span></div>
+  <div class="revs">
+    <div class="rev reveal"><div class="stars">★★★★★</div><p data-en="“Waking up and seeing the Acropolis from the balcony was unreal.”">«Να ξυπνάς και να βλέπεις την Ακρόπολη από το μπαλκόνι ήταν απίστευτο.»</p><small>Sarah · London</small></div>
+    <div class="rev reveal"><div class="stars">★★★★★</div><p data-en="“Big, quiet suite, check-in with a code was super easy.”">«Μεγάλη, ήσυχη suite, και το check-in με κωδικό ήταν πανεύκολο.»</p><small>Marco · Milano</small></div>
+    <div class="rev reveal"><div class="stars">★★★★★</div><p data-en="“Perfect location, everything within walking distance.”">«Τέλεια τοποθεσία, όλα με τα πόδια.»</p><small>Ελένη · Θεσσαλονίκη</small></div>
+  </div>
+</div></section>
+
+<section class="sec" id="location" style="padding-top:0"><div class="wrap loc">
+  <div class="panel reveal"><span class="kick" data-en="Location">Τοποθεσία</span><h3 class="ph" data-note="Διεύθυνση από τις αγγελίες του «24K Athena Suites»: επιβεβαίωσε" data-en="Pandrossou 24, Plaka">Πανδρόσου 24, Πλάκα</h3><p class="mute" data-en="105 55 Athens · between Monastiraki and the Acropolis">105 55 Αθήνα · ανάμεσα στο Μοναστηράκι και την Ακρόπολη</p>
+    <div class="near" style="margin-top:18px">
+      <div><span data-en="Monastiraki metro">Μετρό Μοναστηράκι</span><span>3'</span></div>
+      <div><span data-en="Acropolis">Ακρόπολη</span><span>5'</span></div>
+      <div><span data-en="Syntagma">Σύνταγμα</span><span>10'</span></div>
+      <div><span data-en="Airport (metro line 3)">Αεροδρόμιο (μετρό γραμμή 3)</span><span>~45'</span></div>
+    </div>
+    <div class="acts"><a class="btn" href="https://maps.google.com/?q=Pandrossou+24,+Athina+105+55" target="_blank" rel="noopener" data-en="Directions">Οδηγίες</a><a class="btn line ph" data-note="Βάλε το πραγματικό WhatsApp" href="#" data-toast="Στο τελικό site: απευθείας WhatsApp με τον ιδιοκτήτη." data-en="WhatsApp">WhatsApp</a></div>
+  </div>
+  <div class="map reveal"><iframe title="Map" loading="lazy" src="https://maps.google.com/maps?q=Pandrossou%2024%2C%20Athina%2010555&z=16&output=embed"></iframe></div>
+</div></section>
+
+<section class="sec faq" style="padding-top:0"><div class="wrap">
+  <div class="sec-h reveal"><div><span class="kick">FAQ</span><h2 style="margin-top:14px"><span data-en="Good to">Καλό να</span> <span class="it" data-en="know">ξέρεις</span></h2></div></div>
+  <div class="reveal">
+    <details><summary data-en="What time are check-in and check-out?">Τι ώρα είναι το check-in και το check-out;</summary><p class="ph" data-note="Επιβεβαίωσε ώρες" data-en="Check-in from 15:00, check-out until 11:00. Early check-in and late check-out on request, depending on availability.">Check-in από τις 15:00, check-out έως τις 11:00. Νωρίτερη άφιξη ή αργότερη αναχώρηση κατόπιν αιτήματος, ανάλογα με τη διαθεσιμότητα.</p></details>
+    <details><summary data-en="Can I leave my luggage?">Μπορώ να αφήσω τις βαλίτσες μου;</summary><p data-en="Yes, tell us your arrival time and we will arrange a place for your luggage before check-in or after check-out.">Ναι. Πες μας την ώρα που φτάνεις και κανονίζουμε χώρο για τις βαλίτσες σου πριν το check-in ή μετά το check-out.</p></details>
+    <details><summary data-en="Do you arrange airport transfers?">Κανονίζετε μεταφορά από το αεροδρόμιο;</summary><p data-en="Yes, add it to your booking and a driver will wait for you at arrivals with your name.">Ναι. Πρόσθεσέ τη στην κράτησή σου και ένας οδηγός θα σε περιμένει στις αφίξεις με το όνομά σου.</p></details>
+    <details><summary data-en="Is there a climate resilience fee?">Υπάρχει τέλος ανθεκτικότητας στην κλιματική κρίση;</summary><p data-en="Yes, it is set by law per night and paid at the property. It is not included in the room price.">Ναι. Ορίζεται από τον νόμο ανά διανυκτέρευση και πληρώνεται στο κατάλυμα. Δεν περιλαμβάνεται στην τιμή του δωματίου.</p></details>
+    <details><summary data-en="How do I cancel?">Πώς ακυρώνω;</summary><p data-en="With the link in your confirmation email. Free up to 7 days before arrival when you pay at the property.">Με το link στο email επιβεβαίωσης. Δωρεάν έως 7 μέρες πριν την άφιξη, αν πληρώνεις στο κατάλυμα.</p></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><a class="logo" href="#top"><b>ATHENA</b><small>SUITES</small></a><p style="margin-top:16px;max-width:320px" data-en="Eight suites in Plaka, Athens.">Οκτώ suites στην Πλάκα, Αθήνα.</p></div>
+  <div><h4 data-en="Stay">Διαμονή</h4><ul><li><a href="#suites">Suites</a></li><li><a href="#guide" data-en="Guest guide">Οδηγός επισκέπτη</a></li><li><a href="#location" data-en="Location">Τοποθεσία</a></li></ul></div>
+  <div><h4 data-en="Contact">Επικοινωνία</h4><ul><li class="ph" data-note="Βάλε πραγματικό email">stay@athenasuites.gr</li><li class="ph" data-note="Βάλε πραγματικό τηλέφωνο">+30 210 000 0000</li><li data-en="ΜΗΤΕ: in the final site">ΑΜΑ / ΜΗΤΕ: στο τελικό site</li></ul></div>
+  <div class="bot"><span>© Athena Suites</span><span data-en="Prices and availability are sample data for the demo.">Οι τιμές και η διαθεσιμότητα είναι ενδεικτικές για το demo.</span><span>Demo · <a href="https://opensite.gr">OpenSite</a></span></div>
+</div></footer>
+
+<div class="scrim" id="scrim"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
+<aside class="drawer" id="drawer" aria-label="Booking">
+  <div class="dr-h"><h3 data-en="Booking">Κράτηση</h3><button class="x" style="position:static" data-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="steps" id="steps"><i></i><i></i><i></i></div>
+  <div class="dr-b" id="dr-b"></div>
+  <div class="dr-f" id="dr-f"></div>
+</aside>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var html=document.documentElement;
+var EN=function(){return html.dataset.lang==="en"};
+var T=function(el,en){return EN()?en:el};
+
+/* ---------- i18n ---------- */
+$$("[data-en]").forEach(function(e){e.dataset.el=e.innerHTML});
+function lang(l){if(l==="en")html.dataset.lang="en";else delete html.dataset.lang;html.lang=l;try{localStorage.setItem("as-lang",l)}catch(e){}
+  $$("[data-en]").forEach(function(e){e.innerHTML=l==="en"?e.dataset.en:e.dataset.el});
+  $("#notesToggle").textContent=l==="en"?"Notes":"Σημειώσεις";
+  renderGrid();renderTab();if(cur)openSuite(cur.id,true);if($("#drawer").classList.contains("on"))renderStep();}
+$$(".lang button").forEach(function(b){b.addEventListener("click",function(){lang(b.dataset.l)})});
+
+/* ---------- data ---------- */
+var S=[
+ {id:"athena",no:"01",n:"Athena",ty:["Suite με θέα Ακρόπολη","Acropolis View Suite"],m2:40,g:2,bed:["King bed","King bed"],price:180,view:1,tone:0,d:["Η suite που έδωσε το όνομα στο σπίτι. Μπαλκόνι με θέα στον Ιερό Βράχο, king bed και μπάνιο με walk-in ντους.","The suite that named the house. A balcony facing the Sacred Rock, a king bed and a walk-in shower."]},
+ {id:"nike",no:"02",n:"Nike",ty:["Deluxe Suite","Deluxe Suite"],m2:38,g:2,bed:["Queen bed","Queen bed"],price:140,tone:1,d:["Φωτεινή, με μεγάλα παράθυρα στον δρόμο της αγοράς και γωνιά εργασίας.","Bright, with tall windows over the market street and a work corner."]},
+ {id:"pallas",no:"03",n:"Pallas",ty:["Οικογενειακή Suite","Family Suite"],m2:45,g:4,bed:["Διπλό + καναπές-κρεβάτι","Double + sofa bed"],price:165,tone:2,d:["Χώρος για τέσσερις, με ξεχωριστό καθιστικό και καναπέ που γίνεται κρεβάτι.","Room for four, with a separate lounge and a sofa that turns into a bed."]},
+ {id:"erechtheion",no:"04",n:"Erechtheion",ty:["Deluxe Suite","Deluxe Suite"],m2:36,g:2,bed:["Queen bed","Queen bed"],price:135,tone:0,d:["Ήσυχη, προς την εσωτερική αυλή. Ιδανική για ξεκούραστο ύπνο στο κέντρο.","Quiet, facing the inner courtyard. Made for deep sleep in the centre."]},
+ {id:"agora",no:"05",n:"Agora",ty:["Superior Studio","Superior Studio"],m2:32,g:2,bed:["Διπλό κρεβάτι","Double bed"],price:115,tone:1,d:["Compact και ζεστό studio με κουζινάκι, για όσους περνούν τη μέρα στην πόλη.","A compact, warm studio with a kitchenette, for those who spend the day in the city."]},
+ {id:"plaka",no:"06",n:"Plaka",ty:["Superior Studio","Superior Studio"],m2:32,g:2,bed:["Διπλό κρεβάτι","Double bed"],price:115,tone:2,d:["Δίδυμο της Agora, με πέτρινο τοίχο και θέα στις στέγες της Πλάκας.","Twin of Agora, with a stone wall and a view over the roofs of Plaka."]},
+ {id:"lycabettus",no:"07",n:"Lycabettus",ty:["Suite με θέα πόλη","City View Suite"],m2:36,g:3,bed:["Διπλό + μονό","Double + single"],price:130,tone:0,d:["Ψηλά, με θέα μέχρι τον Λυκαβηττό. Χωράει άνετα και τρίτο άτομο.","Up high, with a view all the way to Lycabettus. Fits a third guest comfortably."]},
+ {id:"pnyx",no:"08",n:"Pnyx",ty:["Penthouse με ταράτσα","Penthouse with terrace"],m2:50,g:2,bed:["King bed","King bed"],price:220,view:1,tone:1,d:["Το penthouse: ιδιωτική ταράτσα με ξαπλώστρες και η Ακρόπολη φωτισμένη κάθε βράδυ.","The penthouse: a private terrace with loungers and the Acropolis lit up every night."]}
+];
+var AMEN=[["Κουζινάκι","Kitchenette"],["Μηχανή espresso","Espresso machine"],["Χρηματοκιβώτιο","Safe"],["Κλιματισμός","Air conditioning"],["Wi-Fi 500 Mbps","Wi-Fi 500 Mbps"],["Smart TV","Smart TV"],["Πετσέτες & σεντόνια","Towels & linen"],["Πιστολάκι μαλλιών","Hair dryer"]];
+var EXTRAS=[{id:"tr",n:["Μεταφορά από το αεροδρόμιο","Airport transfer"],s:["Οδηγός στις αφίξεις, έως 4 άτομα","Driver at arrivals, up to 4 people"],p:45,per:"once"},{id:"bf",n:["Καλάθι πρωινού","Breakfast basket"],s:["Ελληνικό πρωινό στην πόρτα σου, κάθε πρωί","Greek breakfast at your door, every morning"],p:14,per:"pn"},{id:"lc",n:["Αργό check-out (14:00)","Late check-out (14:00)"],s:["Χωρίς βιασύνη την τελευταία μέρα","No rush on your last day"],p:25,per:"once"}];
+var by=function(id){return S.filter(function(s){return s.id===id})[0]};
+
+/* ---------- dates ---------- */
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function parse(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+function addD(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+var today=new Date();today.setHours(0,0,0,0);
+function fmtD(d){return d.toLocaleDateString(EN()?"en-GB":"el-GR",{day:"numeric",month:"short"})}
+function hash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0)/4294967295}
+function booked(sid,d){if(d<today)return true;var k=iso(d);return hash(sid+k)<.26||hash(sid+iso(addD(d,-1)))<.12}
+function free(sid,a,b){for(var d=new Date(a);d<b;d=addD(d,1))if(booked(sid,d))return false;return true}
+function nightsOf(a,b){return Math.round((b-a)/864e5)}
+function rate(s,d){var w=d.getDay();var m=d.getMonth();var k=(w===5||w===6)?1.15:1;if(m>=5&&m<=8)k*=1.2;if(m===0||m===1||m===10)k*=.85;return Math.round(s.price*k)}
+function stay(s,a,b){var t=0;for(var d=new Date(a);d<b;d=addD(d,1))t+=rate(s,d);return t}
+var eur=function(n){return "€"+n.toLocaleString("el-GR")};
+function nextFree(s,n){for(var i=1;i<120;i++){var a=addD(today,i);if(free(s.id,a,addD(a,n)))return a}return null}
+
+/* ---------- relief art ---------- */
+var TONES=[["#e6dccb","#ece3d4","#dfd4c1"],["#e3d6c0","#eadfcc","#d9cbb3"],["#e8e0d3","#efe8dc","#ddd3c4"]];
+function art(s,big){
+  var r=hash(s.id),t=TONES[s.tone],id="f"+s.id+(big?"b":""),q=[],seed=r*1000;
+  var R=function(){seed=(seed*9301+49297)%233280;return seed/233280};
+  var defs='<defs><filter id="'+id+'" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="6" dy="8" stdDeviation="7" flood-color="#5c4628" flood-opacity=".34"/><feDropShadow dx="-1" dy="-1" stdDeviation=".4" flood-color="#fff" flood-opacity=".6"/></filter><filter id="n'+id+'"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3"/><feColorMatrix values="0 0 0 0 .45 0 0 0 0 .37 0 0 0 0 .27 0 0 0 .16 0"/></filter></defs>';
+  for(var i=0;i<7;i++){
+    var x=Math.round(R()*300)-30,y=Math.round(R()*260)-30,w=60+Math.round(R()*130),h=60+Math.round(R()*140),c=t[i%3],k=Math.floor(R()*4),rr=Math.min(w,h);
+    var path;
+    if(k===0)path='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2"/>';
+    else if(k===1)path='<path d="M'+x+' '+y+'h'+w+'v'+(h-rr/2)+'a'+rr/2+' '+rr/2+' 0 0 1 -'+rr/2+' '+rr/2+'H'+x+'z"/>';
+    else if(k===2){h=Math.max(h,w/2+20);path='<path d="M'+x+' '+(y+h)+'v-'+(h-w/2)+'a'+w/2+' '+w/2+' 0 0 1 '+w+' 0v'+(h-w/2)+'z"/>'}
+    else path='<path d="M'+x+' '+y+'h'+w+'a'+w+' '+w+' 0 0 1 -'+w+' '+w+'z"/>';
+    q.push('<g fill="'+c+'" filter="url(#'+id+')">'+path+'</g>');
+  }
+  var label='<text x="150" y="'+(big?168:172)+'" text-anchor="middle" font-family="Didact Gothic,sans-serif" font-size="'+Math.min(28,(170/s.n.length-(s.n.length>8?3:7))/.62).toFixed(1)+'" letter-spacing="'+(s.n.length>8?3:7)+'" fill="#7b6345" style="paint-order:stroke" stroke="rgba(255,255,255,.35)" stroke-width=".6">'+s.n.toUpperCase()+'</text>';
+  var plate='<g filter="url(#'+id+')"><rect x="58" y="128" width="184" height="64" rx="3" fill="'+t[1]+'"/></g>';
+  return '<svg viewBox="0 0 300 255" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+defs+'<rect width="300" height="255" fill="'+t[0]+'"/>'+q.join("")+plate+label+'<rect width="300" height="255" filter="url(#n'+id+')" opacity=".9"/></svg>';
+}
+
+/* hero relief: big blocks, shadow follows the pointer like a moving sun */
+(function(){
+  var R=$("#relief"),P=[[-2,-3,22,30,"0 0 0 46%"],[22,6,26,26,"0 0 50% 50%","t2"],[52,-6,28,40,"0 0 46% 46%"],[82,8,20,46,"0 0 46% 46%","t3"],[-4,46,18,34,"46% 0 0 46%","t2"],[8,74,24,30,""],[30,64,24,40,"0 46% 0 0","t3"],[60,70,22,36,"46% 0 0 0"],[84,60,20,36,"0 0 46% 46%","t2"],[40,-10,14,18,"0 0 46% 0","t3"]];
+  R.innerHTML=P.map(function(p,i){return '<div class="sh '+(p[5]||"")+'" data-d="'+(i%3+1)+'" style="left:'+p[0]+'%;top:'+p[1]+'%;width:'+p[2]+'%;height:'+p[3]+'%;border-radius:'+(p[4]||"2px")+'"></div>'}).join("")+'<div class="grain"></div>';
+  var hero=$(".hero"),raf;
+  hero.addEventListener("pointermove",function(e){cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){var b=hero.getBoundingClientRect(),dx=(e.clientX-b.left)/b.width-.5,dy=(e.clientY-b.top)/b.height-.5;hero.style.setProperty("--lx",(-dx*22).toFixed(1)+"px");hero.style.setProperty("--ly",(-dy*22+4).toFixed(1)+"px")})});
+  window.addEventListener("scroll",function(){var y=scrollY;if(y>innerHeight)return;$$(".sh",R).forEach(function(s){s.style.transform="translateY("+(y*.06*s.dataset.d)+"px)"})},{passive:true});
+})();
+
+/* ---------- search + grid ---------- */
+var Q={a:addD(today,14),b:addD(today,17),g:2,active:false};
+$("#din").value=iso(Q.a);$("#dout").value=iso(Q.b);$("#din").min=iso(addD(today,1));$("#dout").min=iso(addD(today,2));
+$("#din").addEventListener("change",function(){var a=parse(this.value);if(parse($("#dout").value)<=a)$("#dout").value=iso(addD(a,1));$("#dout").min=iso(addD(a,1))});
+$("#search").addEventListener("submit",function(e){e.preventDefault();Q.a=parse($("#din").value);Q.b=parse($("#dout").value);Q.g=+$("#guests").value;if(Q.b<=Q.a){toast(T("Η αναχώρηση πρέπει να είναι μετά την άφιξη","Check-out must be after check-in"));return}Q.active=true;renderGrid();$("#suites").scrollIntoView({behavior:"smooth"})});
+function renderGrid(){
+  var n=nightsOf(Q.a,Q.b),list=S.slice(),cnt=0;
+  if(Q.active){list.sort(function(x,y){return (ok(y)?1:0)-(ok(x)?1:0)})}
+  function ok(s){return s.g>=Q.g&&free(s.id,Q.a,Q.b)}
+  $("#grid").innerHTML=list.map(function(s,i){
+    var av=Q.active?ok(s):null;if(av)cnt++;
+    var nf=Q.active&&!av&&s.g>=Q.g?nextFree(s,n):null;
+    return '<article class="card reveal in'+(av===false?" dim":"")+'"><div class="art" data-open="'+s.id+'">'+art(s)+'<span class="no engr">'+s.no+'</span>'+(s.view?'<span class="tag">'+T("Θέα Ακρόπολη","Acropolis view")+'</span>':'')+'</div><div class="bd"><h3>'+s.n+'</h3><span class="ty">'+T(s.ty[0],s.ty[1])+'</span><div class="specs"><span>'+s.m2+' m²</span><span>'+T("έως ","up to ")+s.g+' '+T("άτομα","guests")+'</span><span>'+T(s.bed[0],s.bed[1])+'</span></div>'+
+     (Q.active?'<div class="avail'+(av?"":" no")+'"><i></i>'+(av?T("Διαθέσιμη","Available"):s.g<Q.g?T("Μικρή για "+Q.g+" άτομα","Too small for "+Q.g):T("Κλεισμένη","Booked")+(nf?' · '+T("ελεύθερη από ","free from ")+fmtD(nf):''))+'</div>':'')+
+     '<div class="ft"><div class="price">'+(av?eur(stay(s,Q.a,Q.b)):eur(s.price))+'<small>'+(av?n+' '+T(n===1?"νύχτα":"νύχτες",n===1?"night":"nights"):T("από / νύχτα","from / night"))+'</small></div><button class="btn'+(av?" bronze":"")+'" data-open="'+s.id+'">'+(av?T("Κράτηση","Book"):T("Ημερολόγιο","Calendar"))+'</button></div></div></article>'}).join("");
+  var r=$("#result");
+  if(Q.active){r.classList.add("on");r.innerHTML='<span><b>'+cnt+' '+T("από 8","of 8")+'</b> '+T("suites διαθέσιμες","suites available")+' · '+fmtD(Q.a)+' → '+fmtD(Q.b)+' · '+n+' '+T(n===1?"νύχτα":"νύχτες",n===1?"night":"nights")+' · '+Q.g+' '+T("άτομα","guests")+'</span><button id="clear">'+T("Όλες οι suites","All suites")+'</button>'}
+  else r.classList.remove("on");
+}
+
+/* ---------- suite modal + calendar ---------- */
+var cur=null,sel={a:null,b:null},calM;
+function openSuite(id,keep){
+  var s=by(id);cur=s;
+  if(!keep){sel=Q.active&&free(s.id,Q.a,Q.b)?{a:Q.a,b:Q.b}:{a:null,b:null};calM=new Date((sel.a||addD(today,1)).getFullYear(),(sel.a||addD(today,1)).getMonth(),1)}
+  $("#mbox").innerHTML='<div class="m-art"><button class="x" data-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>'+art(s,1)+'</div><div class="m-bd"><span class="kick">Suite '+s.no+'</span><h2 style="margin-top:12px">'+s.n+'</h2><p class="mute" style="margin-top:4px">'+T(s.ty[0],s.ty[1])+' · '+s.m2+' m² · '+T("έως ","up to ")+s.g+' '+T("άτομα","guests")+' · '+T(s.bed[0],s.bed[1])+'</p><p style="margin-top:14px">'+T(s.d[0],s.d[1])+'</p><div class="amen">'+AMEN.map(function(a){return '<span>'+T(a[0],a[1])+'</span>'}).join("")+(s.view?'<span>'+T("Θέα Ακρόπολη","Acropolis view")+'</span>':'')+'</div><div class="cal" id="cal"></div><div id="msum"></div></div>';
+  renderCal();
+  $("#modal").classList.add("on");$("#scrim").classList.add("on");document.body.style.overflow="hidden";
+}
+function renderCal(){
+  var s=cur,m=calM,first=(m.getDay()+6)%7,days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate(),g="";
+  var DN=EN()?["Mo","Tu","We","Th","Fr","Sa","Su"]:["Δε","Τρ","Τε","Πε","Πα","Σα","Κυ"];
+  g+=DN.map(function(d){return '<span class="dn">'+d+'</span>'}).join("");
+  for(var i=0;i<first;i++)g+="<span></span>";
+  for(var d=1;d<=days;d++){var dt=new Date(m.getFullYear(),m.getMonth(),d),k=iso(dt),past=dt<=today,bk=booked(s.id,dt),cls=[];
+    if(sel.a&&k===iso(sel.a))cls.push("s");if(sel.b&&k===iso(sel.b))cls.push("e");if(sel.a&&sel.b&&dt>sel.a&&dt<sel.b)cls.push("in");if(past)cls.push("past");
+    var dis=past||(bk&&!(sel.a&&!sel.b&&dt>sel.a&&free(s.id,sel.a,dt)));
+    g+='<button data-day="'+k+'" class="'+cls.join(" ")+'"'+(dis?" disabled":"")+'>'+d+'</button>'}
+  $("#cal").innerHTML='<div class="cal-h"><button data-mv="-1" aria-label="Prev">‹</button><b>'+m.toLocaleDateString(EN()?"en-GB":"el-GR",{month:"long",year:"numeric"})+'</b><button data-mv="1" aria-label="Next">›</button></div><div class="cal-g">'+g+'</div><div class="legend"><span>'+T("Διάλεξε άφιξη και αναχώρηση","Pick check-in and check-out")+'</span><span><s>12</s> '+T("κλεισμένη","booked")+'</span></div>';
+  var box=$("#msum");
+  if(sel.a&&sel.b){var n=nightsOf(sel.a,sel.b),t=stay(s,sel.a,sel.b);box.innerHTML='<div class="sum"><div><span>'+fmtD(sel.a)+' → '+fmtD(sel.b)+'</span><span>'+n+' '+T(n===1?"νύχτα":"νύχτες",n===1?"night":"nights")+'</span></div><div class="tot"><span>'+T("Σύνολο","Total")+'</span><span>'+eur(t)+'</span></div><small>'+T("Μέσος όρος ","Average ")+eur(Math.round(t/n))+T(" / νύχτα · χωρίς χρέωση κράτησης"," / night · no booking fees")+'</small></div><button class="btn bronze wide" style="margin-top:14px" id="go-book">'+T("Συνέχεια στην κράτηση","Continue to booking")+'</button>'}
+  else box.innerHTML='<div class="sum"><div><span>'+T("Από","From")+'</span><span>'+eur(s.price)+' / '+T("νύχτα","night")+'</span></div><small>'+(sel.a?T("Τώρα διάλεξε ημερομηνία αναχώρησης","Now pick your check-out date"):T("Οι τιμές αλλάζουν ανά εποχή και Σαββατοκύριακο","Rates vary by season and weekend"))+'</small></div>';
+}
+function closeAll(){$("#modal").classList.remove("on");$("#drawer").classList.remove("on");$("#scrim").classList.remove("on");document.body.style.overflow=""}
+
+/* ---------- booking drawer ---------- */
+var B={step:0,x:{},guest:{},pay:"later",code:""};
+function startBook(){B={step:0,x:{},guest:{},pay:"later",code:"",s:cur,a:sel.a,b:sel.b,g:Math.min(Q.g,cur.g)};$("#modal").classList.remove("on");$("#drawer").classList.add("on");$("#scrim").classList.add("on");renderStep()}
+function totals(){var n=nightsOf(B.a,B.b),room=stay(B.s,B.a,B.b),ex=0;EXTRAS.forEach(function(e){if(B.x[e.id])ex+=e.per==="pn"?e.p*n*B.g:e.p});var sub=room+ex,disc=B.pay==="now"?Math.round(sub*.05):0;return {n:n,room:room,ex:ex,disc:disc,tot:sub-disc}}
+function renderStep(){
+  var t=totals(),s=B.s,b=$("#dr-b"),f=$("#dr-f");
+  $$("#steps i").forEach(function(i,k){i.classList.toggle("on",k<=B.step)});
+  $("#steps").style.display=B.step>2?"none":"";
+  if(B.step===0){
+    b.innerHTML='<div class="sum"><div><b>'+s.n+'</b><span>'+T(s.ty[0],s.ty[1])+'</span></div><div><span>'+fmtD(B.a)+' → '+fmtD(B.b)+'</span><span>'+t.n+' '+T(t.n===1?"νύχτα":"νύχτες",t.n===1?"night":"nights")+'</span></div><div><span>'+T("Δωμάτιο","Room")+'</span><span>'+eur(t.room)+'</span></div></div>'+
+     '<div class="f"><label>'+T("Επισκέπτες","Guests")+'</label><select id="bg">'+[1,2,3,4].filter(function(x){return x<=s.g}).map(function(x){return '<option'+(x===B.g?" selected":"")+'>'+x+'</option>'}).join("")+'</select></div>'+
+     '<h4 style="margin-top:24px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--mute)">'+T("Πρόσθεσε στη διαμονή σου","Add to your stay")+'</h4>'+
+     EXTRAS.map(function(e){return '<label class="xtra ph" data-note="Ενδεικτικές τιμές"><input type="checkbox" data-x="'+e.id+'"'+(B.x[e.id]?" checked":"")+'><span>'+T(e.n[0],e.n[1])+'<small>'+T(e.s[0],e.s[1])+'</small></span><b>'+eur(e.p)+(e.per==="pn"?'<small style="font-weight:400">'+T("/άτομο/νύχτα","/person/night")+'</small>':'')+'</b></label>'}).join("");
+    f.innerHTML='<div class="tot">'+eur(t.tot)+'<small>'+T("σύνολο","total")+'</small></div><button class="btn bronze" data-next>'+T("Συνέχεια","Continue")+'</button>';
+  }else if(B.step===1){
+    var G=B.guest;
+    b.innerHTML='<div class="two"><div class="f"><label>'+T("Όνομα","First name")+'</label><input name="fn" value="'+(G.fn||"")+'" autocomplete="given-name"></div><div class="f"><label>'+T("Επώνυμο","Last name")+'</label><input name="ln" value="'+(G.ln||"")+'" autocomplete="family-name"></div></div><div class="f"><label>Email</label><input name="em" type="email" value="'+(G.em||"")+'" autocomplete="email"></div><div class="f"><label>'+T("Κινητό (για τον κωδικό εισόδου)","Mobile (for your door code)")+'</label><input name="ph" type="tel" value="'+(G.ph||"")+'" autocomplete="tel" placeholder="+30 69…"></div><div class="f"><label>'+T("Ώρα άφιξης","Arrival time")+'</label><select name="eta"><option>'+T("Δεν ξέρω ακόμα","Not sure yet")+'</option><option>12:00–15:00</option><option>15:00–18:00</option><option>18:00–22:00</option><option>'+T("Μετά τις 22:00","After 22:00")+'</option></select></div><div class="f"><label>'+T("Κάτι που πρέπει να ξέρουμε;","Anything we should know?")+'</label><textarea name="nt">'+(G.nt||"")+'</textarea></div>';
+    f.innerHTML='<button class="btn line" data-back>'+T("Πίσω","Back")+'</button><div class="tot" style="text-align:right">'+eur(t.tot)+'</div><button class="btn bronze" data-next>'+T("Συνέχεια","Continue")+'</button>';
+  }else if(B.step===2){
+    b.innerHTML='<div class="payopt"><label class="xtra"><input type="radio" name="pay" value="later"'+(B.pay==="later"?" checked":"")+'><span>'+T("Πληρωμή στο κατάλυμα","Pay at the property")+'<small>'+T("Δωρεάν ακύρωση έως 7 μέρες πριν. Η κάρτα κρατείται μόνο ως εγγύηση.","Free cancellation up to 7 days before. Card held as a guarantee only.")+'</small></span><b>'+eur(t.tot+(B.pay==="now"?t.disc:0))+'</b></label><label class="xtra"><input type="radio" name="pay" value="now"'+(B.pay==="now"?" checked":"")+'><span>'+T("Πληρωμή τώρα, −5%","Pay now, −5%")+'<small>'+T("Χωρίς δυνατότητα επιστροφής χρημάτων","Non-refundable")+'</small></span><b>'+eur(Math.round((t.tot+(B.pay==="now"?t.disc:0))*.95))+'</b></label></div>'+
+     '<div class="f"><label>'+T("Αριθμός κάρτας","Card number")+'</label><input name="cc" inputmode="numeric" placeholder="4242 4242 4242 4242" autocomplete="cc-number"></div><div class="two"><div class="f"><label>'+T("Λήξη","Expiry")+'</label><input name="exp" placeholder="MM/YY" autocomplete="cc-exp"></div><div class="f"><label>CVC</label><input name="cvc" inputmode="numeric" placeholder="123" autocomplete="cc-csc"></div></div>'+
+     '<div class="sum" style="margin-top:20px"><div><span>'+s.n+' · '+t.n+' '+T(t.n===1?"νύχτα":"νύχτες",t.n===1?"night":"nights")+'</span><span>'+eur(t.room)+'</span></div>'+(t.ex?'<div><span>'+T("Έξτρα","Extras")+'</span><span>'+eur(t.ex)+'</span></div>':'')+(t.disc?'<div><span>'+T("Έκπτωση προπληρωμής","Prepay discount")+'</span><span>−'+eur(t.disc)+'</span></div>':'')+'<div class="tot"><span>'+T("Σύνολο","Total")+'</span><span>'+eur(t.tot)+'</span></div><small>'+T("Το τέλος ανθεκτικότητας στην κλιματική κρίση πληρώνεται στο κατάλυμα. Demo: καμία χρέωση.","The climate resilience fee is paid at the property. Demo: no charge.")+'</small></div>';
+    f.innerHTML='<button class="btn line" data-back>'+T("Πίσω","Back")+'</button><button class="btn bronze" style="flex:1" data-confirm>'+T("Επιβεβαίωση κράτησης","Confirm booking")+'</button>';
+  }else{
+    b.innerHTML='<div class="done"><div class="seal">A</div><h3>'+T("Ευχαριστούμε, ","Thank you, ")+(B.guest.fn||"")+'!</h3><p class="mute">'+T("Η κράτησή σου στη suite ","Your booking for suite ")+s.n+T(" επιβεβαιώθηκε."," is confirmed.")+'</p><div class="code">'+B.code+'</div><div class="sum" style="text-align:left"><div><span>'+T("Άφιξη","Check-in")+'</span><span>'+fmtD(B.a)+' · 15:00</span></div><div><span>'+T("Αναχώρηση","Check-out")+'</span><span>'+fmtD(B.b)+' · '+(B.x.lc?"14:00":"11:00")+'</span></div><div class="tot"><span>'+T("Σύνολο","Total")+'</span><span>'+eur(t.tot)+'</span></div><small>'+T("Ο κωδικός της πόρτας έρχεται με SMS 24 ώρες πριν την άφιξη.","Your door code arrives by SMS 24 hours before check-in.")+'</small></div><button class="btn line wide" style="margin-top:16px" id="ics">'+T("Προσθήκη στο ημερολόγιο","Add to calendar")+'</button><a class="btn wide" style="margin-top:10px" href="#guide" data-close>'+T("Δες τον οδηγό επισκέπτη","Open the guest guide")+'</a></div>';
+    f.innerHTML='';
+  }
+}
+function readGuest(){$$("#dr-b [name]").forEach(function(i){B.guest[i.name]=i.value})}
+function validGuest(){var bad=0;[["fn",function(v){return v.trim()}],["ln",function(v){return v.trim()}],["em",function(v){return /^\S+@\S+\.\S+$/.test(v)}],["ph",function(v){return v.replace(/\D/g,"").length>=8}]].forEach(function(r){var i=$('#dr-b [name="'+r[0]+'"]'),ok=r[1](i.value);i.parentNode.classList.toggle("err",!ok);if(!ok)bad++});return !bad}
+function ics(){var f=function(d){return iso(d).replace(/-/g,"")};var body=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Athena Suites//EN","BEGIN:VEVENT","UID:"+B.code+"@athenasuites","DTSTAMP:"+f(new Date())+"T000000Z","DTSTART;VALUE=DATE:"+f(B.a),"DTEND;VALUE=DATE:"+f(B.b),"SUMMARY:Athena Suites · "+B.s.n,"LOCATION:Pandrossou 24\\, Athens","DESCRIPTION:Booking "+B.code+". Check-in 15:00.","END:VEVENT","END:VCALENDAR"].join("\r\n");var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([body],{type:"text/calendar"}));a.download="athena-suites-"+B.code+".ics";document.body.appendChild(a);a.click();a.remove()}
+
+/* ---------- guest guide ---------- */
+var tab="in";
+function renderTab(){
+  var p=$("#panel");
+  $$("#tabs button").forEach(function(b){b.classList.toggle("on",b.dataset.tab===tab)});
+  if(tab==="in")p.innerHTML='<ol>'+[[T("24 ώρες πριν σου στέλνουμε SMS με τον κωδικό της εισόδου και της suite σου.","24 hours before, we text you the code for the entrance and your suite.")],[T("Φτάνεις στην Πανδρόσου 24. Η είσοδος είναι η ξύλινη πόρτα δίπλα στο κατάστημα.","Arrive at Pandrossou 24. The entrance is the wooden door next to the shop.")],[T("Βάζεις τον κωδικό στο πληκτρολόγιο και ανεβαίνεις στη suite σου.","Enter the code on the keypad and go up to your suite.")],[T("Check-out έως τις 11:00. Αφήνεις απλώς την πόρτα κλειστή.","Check-out by 11:00. Just close the door behind you.")]].map(function(x,i){return '<li><i>'+(i+1)+'</i><span>'+x[0]+'</span></li>'}).join("")+'</ol>';
+  else if(tab==="wifi")p.innerHTML='<div class="wifi"><div><small>'+T("Δίκτυο","Network")+'</small><b>AthenaSuites</b></div><div><small>'+T("Κωδικός","Password")+'</small><b class="ph" data-note="Ενδεικτικός κωδικός">plaka2026</b><br><button class="copy" data-copy="plaka2026">'+T("Αντιγραφή","Copy")+'</button></div></div><p class="mute" style="margin-top:14px;font-size:14px">'+T("Fiber 500 Mbps σε όλες τις suites. Αν κάτι δεν δουλεύει, στείλε μας WhatsApp.","500 Mbps fiber in every suite. If something is off, send us a WhatsApp.")+'</p>';
+  else if(tab==="near")p.innerHTML='<div class="near">'+[[T("Μετρό Μοναστηράκι","Monastiraki metro"),"3'"],[T("Ακρόπολη & Μουσείο Ακρόπολης","Acropolis & Acropolis Museum"),"5–10'"],[T("Αρχαία Αγορά","Ancient Agora"),"5'"],[T("Αναφιώτικα","Anafiotika"),"8'"],[T("Σύνταγμα","Syntagma"),"10'"],[T("Βαρβάκειος Αγορά","Central Market"),"10'"]].map(function(x){return '<div><span>'+x[0]+'</span><span>'+T("με τα πόδια ","walk ")+x[1]+'</span></div>'}).join("")+'</div><p class="mute" style="margin-top:14px;font-size:14px">'+T("Ρώτα μας για τις αγαπημένες μας ταβέρνες της γειτονιάς.","Ask us for our favourite tavernas in the neighbourhood.")+'</p>';
+  else p.innerHTML='<ol>'+[T("Ησυχία μετά τις 23:00. Έχουμε γείτονες.","Quiet after 23:00. We have neighbours."),T("Απαγορεύεται το κάπνισμα μέσα στις suites.","No smoking inside the suites."),T("Δεν δεχόμαστε κατοικίδια.","No pets, sorry."),T("Κλείσε το κλιματιστικό όταν φεύγεις. Ευχαριστούμε!","Switch off the AC when you leave. Thank you!")].map(function(x,i){return '<li><i>'+(i+1)+'</i><span>'+x+'</span></li>'}).join("")+'</ol>';
+}
+$("#tabs").addEventListener("click",function(e){var b=e.target.closest("[data-tab]");if(b){tab=b.dataset.tab;renderTab()}});
+
+/* ---------- events ---------- */
+var tt;function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},2600)}
+document.addEventListener("click",function(e){
+  var t=e.target.closest("[data-open],[data-close],[data-day],[data-mv],[data-next],[data-back],[data-confirm],[data-copy],[data-toast],#go-book,#clear,#ics");if(!t)return;
+  if(t.dataset.open){openSuite(t.dataset.open);return}
+  if(t.dataset.close!==undefined){closeAll();return}
+  if(t.dataset.mv){var m=new Date(calM);m.setMonth(m.getMonth()+ +t.dataset.mv);if(m<new Date(today.getFullYear(),today.getMonth(),1))return;calM=m;renderCal();return}
+  if(t.dataset.day){var d=parse(t.dataset.day);if(!sel.a||sel.b||d<=sel.a){sel={a:d,b:null}}else{sel.b=d}renderCal();return}
+  if(t.id==="go-book"){startBook();return}
+  if(t.id==="clear"){Q.active=false;renderGrid();return}
+  if(t.id==="ics"){ics();return}
+  if(t.dataset.copy){try{navigator.clipboard.writeText(t.dataset.copy)}catch(x){}toast(T("Αντιγράφηκε","Copied"));return}
+  if(t.dataset.toast){e.preventDefault();toast(t.dataset.toast);return}
+  if(t.dataset.next!==undefined){if(B.step===1){readGuest();if(!validGuest()){toast(T("Συμπλήρωσε τα πεδία με κόκκινο","Please fill in the fields in red"));return}}B.step++;renderStep();$("#dr-b").scrollTop=0;return}
+  if(t.dataset.back!==undefined){if(B.step===1)readGuest();B.step--;renderStep();return}
+  if(t.dataset.confirm!==undefined){var cc=$('#dr-b [name="cc"]');if(cc.value.replace(/\D/g,"").length<12){cc.parentNode.classList.add("err");toast(T("Δοκίμασε την κάρτα 4242 4242 4242 4242","Try card 4242 4242 4242 4242"));return}B.code="ATH-"+String(Math.floor(hash(String(Date.now()))*900000+100000));B.step=3;renderStep();return}
+});
+document.addEventListener("change",function(e){var t=e.target;
+  if(t.dataset.x){B.x[t.dataset.x]=t.checked;renderStep();return}
+  if(t.id==="bg"){B.g=+t.value;renderStep();return}
+  if(t.name==="pay"){B.pay=t.value;renderStep();return}
+});
+document.addEventListener("input",function(e){var t=e.target;if(t.name==="cc"){t.value=t.value.replace(/\D/g,"").slice(0,16).replace(/(\d{4})(?=\d)/g,"$1 ")}if(t.name==="exp"){var v=t.value.replace(/\D/g,"").slice(0,4);t.value=v.length>2?v.slice(0,2)+"/"+v.slice(2):v}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll()});
+$("#scrim").addEventListener("click",closeAll);
+$("#notesToggle").addEventListener("click",function(){var on=html.classList.toggle("notes");try{localStorage.setItem("as-notes",on?"on":"off")}catch(e){}});
+var nav=$("#nav");window.addEventListener("scroll",function(){nav.classList.toggle("solid",scrollY>40)},{passive:true});
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{rootMargin:"0px 0px -8% 0px"});$$(".reveal:not(.in)").forEach(function(x){io.observe(x)})}else $$(".reveal").forEach(function(x){x.classList.add("in")});
+
+lang(html.dataset.lang==="en"?"en":"el");
+})();
+</script>
+</body>
+</html>
