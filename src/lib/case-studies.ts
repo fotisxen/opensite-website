@@ -68,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
         iconWrap: "bg-primary/10",
         iconColor: "text-primary",
         value: "6 services",
-        text: "Homes, offices, shops, building common areas, windows and after renovation.",
+        text: "Offices, shops, building common areas, windows, new homes and after renovation.",
       },
       {
         icon: "mail",
