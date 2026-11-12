@@ -49,7 +49,7 @@ function CheckIcon() {
 }
 
 // Only cards with a real screenshot of the delivered site are shown.
-const WEBSITE_PROJECTS = ["platterie-box", "akinita-fotiadis", "df-real-estate", "adonis-sail-yachts", "one-menoo"];
+const WEBSITE_PROJECTS = ["platterie-box", "chalkidis-katharismoi", "akinita-fotiadis", "df-real-estate", "adonis-sail-yachts", "one-menoo"];
 
 function getWorkCards() {
   const list =

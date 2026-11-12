@@ -28,6 +28,65 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "chalkidis-katharismoi",
+    industry: "Local Services",
+    duration: "Custom Build",
+    title: "Chalkidis Cleaning",
+    subtitle:
+      "A site for a family cleaning crew in Thessaloniki: the visitor wipes a dirty window clean with a squeegee, sees the difference, and asks for a quote in one step.",
+    liveUrl: "https://chalkidis-katharismoi.gr/",
+    platform: "HTML / JS",
+    image: "/work/chalkidis-katharismoi.webp",
+    heroMetrics: [
+      { value: "30+", label: "Years in Business" },
+      { value: "6", label: "Cleaning Services" },
+      { value: "1 step", label: "Quote Request" },
+      { value: "100%", label: "Custom Build" },
+    ],
+    problem: {
+      description:
+        "Chalkidis is a family cleaning company in Thessaloniki with more than 30 years of work, but no website. New customers could only find it by word of mouth.",
+      bullets: [
+        "Be found on Google for cleaning crews in Thessaloniki",
+        "Show the quality of the work without stock photos",
+        "Make asking for a quote as easy as a phone call",
+      ],
+    },
+    solution: {
+      description:
+        "We built a fast single-page site with its own logo and domain. Instead of photos, the visitor cleans: a dirty window to wipe, a before and after slider, and a checklist for every room. Quote requests go straight to the owner's email.",
+      highlights: [
+        { title: "Wipe the Window", desc: "A grimy window that the visitor cleans with a squeegee, by mouse or finger." },
+        { title: "Before and After", desc: "Drag the slider and see a room go from dirty to spotless." },
+        { title: "What Do You Need?", desc: "Pick a space and see exactly what is cleaned, then ask for a quote." },
+        { title: "Local SEO", desc: "LocalBusiness data, areas served and a clean structure for Google." },
+      ],
+    },
+    impact: [
+      {
+        icon: "home",
+        iconWrap: "bg-primary/10",
+        iconColor: "text-primary",
+        value: "6 services",
+        text: "Homes, offices, shops, building common areas, windows and after renovation.",
+      },
+      {
+        icon: "mail",
+        iconWrap: "bg-secondary/10",
+        iconColor: "text-secondary",
+        value: "Direct",
+        text: "Every quote request lands in the owner's inbox, no platform in between.",
+      },
+      {
+        icon: "smartphone",
+        iconWrap: "bg-tertiary/10",
+        iconColor: "text-tertiary",
+        value: "Mobile first",
+        text: "One tap to call from the sticky bar on the phone.",
+      },
+    ],
+  },
+  {
     slug: "platterie-box",
     industry: "Storytelling Website",
     duration: "Custom Build",

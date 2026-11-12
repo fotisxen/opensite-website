@@ -427,11 +427,22 @@ addEventListener("scroll", () => $("#nav").classList.toggle("solid", scrollY > 3
     for (let i = 3; i < d.length; i += 4 * 53) { t++; if (d[i] < 70) c++; }
     const p = Math.min(100, Math.round(c / t * 100 / .6));
     $("#cleanBar").style.width = p + "%"; $("#cleanPct").textContent = p + "%";
-    if (p >= 80) { done = true; $("#cleanBar").style.width = "100%"; $("#cleanPct").textContent = "100%"; cv.style.transition = "opacity 1s"; cv.style.opacity = 0; pane.classList.add("clean"); sparkle(); setTimeout(() => cv.remove(), 1000); }
+    if (p >= 80) { done = true; $("#cleanBar").style.width = "100%"; $("#cleanPct").textContent = "100%"; cv.style.transition = "opacity 1s"; cv.style.opacity = 0; pane.classList.add("clean"); sparkle(); park(); setTimeout(() => cv.remove(), 1000); }
   }
   function sparkle() { const r = pane.getBoundingClientRect(); for (let i = 0; i < 26; i++) { const s = document.createElement("span"); s.textContent = ["✨", "✦", "🫧"][i % 3]; s.style.cssText = `position:fixed;left:${r.left + Math.random() * r.width}px;top:${r.top + Math.random() * r.height}px;z-index:70;font-size:${14 + Math.random() * 18}px;pointer-events:none;transition:all 1.4s ease-out`; document.body.appendChild(s); requestAnimationFrame(() => { s.style.transform = `translateY(-${40 + Math.random() * 80}px) scale(1.3)`; s.style.opacity = 0; }); setTimeout(() => s.remove(), 1500); } }
-  cv.addEventListener("pointerdown", e => { down = true; last = null; cv.setPointerCapture(e.pointerId); wipe(...pos(e)); });
-  cv.addEventListener("pointermove", e => { if (fine) { sq.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; sq.classList.add("on"); } if (down || (fine && e.pointerType === "mouse")) wipe(...pos(e)); });
+  cv.addEventListener("pointerdown", e => { at = [e.clientX, e.clientY]; down = true; last = null; cv.setPointerCapture(e.pointerId); wipe(...pos(e)); });
+  // Leave the squeegee resting in the pane, where it finished, so it moves with the page.
+  let at = null;
+  function park() {
+    const r = pane.getBoundingClientRect();
+    const x = at ? Math.min(Math.max(at[0] - r.left, 46), r.width - 46) : r.width / 2;
+    const y = at ? Math.min(Math.max(at[1] - r.top, 12), r.height - 40) : r.height * .72;
+    sq.style.transition = "none"; sq.style.position = "absolute"; sq.style.zIndex = 2;
+    sq.style.transform = `translate(${x}px,${y}px)`; pane.appendChild(sq);
+    requestAnimationFrame(() => { sq.style.transition = "transform .6s cubic-bezier(.3,1.4,.5,1), opacity .3s"; sq.classList.add("on"); sq.style.transform = `translate(${x}px,${y}px) rotate(-8deg)`; });
+  }
+  addEventListener("scroll", () => { if (!done) sq.classList.remove("on"); }, { passive: true });
+  cv.addEventListener("pointermove", e => { at = [e.clientX, e.clientY]; if (fine) { sq.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; sq.classList.add("on"); } if (down || (fine && e.pointerType === "mouse")) wipe(...pos(e)); });
   cv.addEventListener("pointerleave", () => { sq.classList.remove("on"); last = null; });
   ["pointerup", "pointercancel"].forEach(ev => cv.addEventListener(ev, () => { down = false; last = null; check(); }));
 })();

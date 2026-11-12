@@ -11,6 +11,7 @@ import Icon from "@/components/Icon";
 const filters = [
   "All Industries",
   "Storytelling Website",
+  "Local Services",
   "Real Estate",
   "Hospitality Tech",
   "Yacht & Marine Tourism",
@@ -20,6 +21,22 @@ const filters = [
 ];
 
 const cases = [
+  {
+    slug: "chalkidis-katharismoi",
+    image: "/work/chalkidis-katharismoi.webp",
+    industry: "Local Services",
+    tag: "Local Services",
+    tagClass: "bg-primary-container text-white",
+    title: "Chalkidis Cleaning: Wipe the Window",
+    problem:
+      "A family cleaning crew with 30+ years of work in Thessaloniki had no website, so new customers could only find it by word of mouth.",
+    solution:
+      "A fast site where the visitor wipes a dirty window clean, compares before and after, and asks for a quote that goes straight to the owner.",
+    result: "Local business website",
+    stat1: { value: "30+", label: "Years in Business" },
+    stat2: { value: "6", label: "Cleaning Services" },
+    statColor: "text-primary",
+  },
   {
     slug: "platterie-box",
     image: "/work/platterie-box.webp",
