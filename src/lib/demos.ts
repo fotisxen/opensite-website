@@ -10,6 +10,8 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "kings-court", name: "King's Court", kind: "Personal training studio · δοκιμαστική κράτηση (Θεσσαλονίκη)", created: "2026-11-12", instagram: "https://www.instagram.com/ki.ng.s_court/" },
+  { slug: "catherines-studios", name: "Catherine's Studios Sivota", kind: "Studios · απευθείας κρατήσεις (Σύβοτα)", created: "2026-11-12", instagram: "https://www.instagram.com/catherines.studios.sivota/" },
   { slug: "mezes", name: "Mezes", kind: "Redesign + live waitlist · Greek shared plates (Toronto)", created: "2026-11-12", instagram: "https://www.instagram.com/mezesdanforth/" },
   { slug: "athens-restaurant", name: "Athens Restaurant", kind: "Redesign + bookings · Greek taverna (Toronto)", created: "2026-11-12", instagram: "https://instagram.com/athensrestaurantdanforth" },
   { slug: "horio", name: "Horio Taverna", kind: "Redesign over Toast · Greek taverna (Toronto)", created: "2026-11-12" },

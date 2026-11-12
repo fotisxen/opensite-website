@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Catherine's Studios · Σύβοτα</title>
+<meta name="description" content="Catherine's Studios Sivota: οικογενειακά studios με αυλή και θέα στη θάλασσα, 1 χλμ από τον Γαλλικό Μώλο.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Catherine's Studios Sivota (ενοικιαζόμενα studios, Σύβοτα Θεσπρωτίας).
+  Facts from Instagram, Booking.com (9,8 / 22 σχόλια) and Google (5,0 / 33).
+  No photos: the sea, the sunset and the coast are drawn with SVG.
+  Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<script>
+(function(){ var h=document.documentElement; try{ var q=new URLSearchParams(location.search);
+  if(q.has("clean")||localStorage.getItem("cs-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean"); }catch(e){} })();
+</script>
+<style>
+:root{--ink:#10293a;--sea:#0f6e8c;--sea2:#1aa3b8;--sand:#f6eee1;--paper:#fffaf2;--coral:#ef7a5a;--gold:#f2b54a;--olive:#6f8a4a;--muted:#5f7180;--f:"Manrope",system-ui,sans-serif;--s:"Fraunces",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 16px/1.65 var(--f);color:var(--ink);background:var(--paper);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{width:min(1140px,100% - 32px);margin:0 auto}
+h1,h2,h3{font-family:var(--s);font-weight:600;letter-spacing:-.01em;line-height:1.08}
+h2{font-size:clamp(32px,5vw,54px)}
+.kicker{font:700 12px/1 var(--f);letter-spacing:.22em;text-transform:uppercase;color:var(--sea)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(16,41,58,.6)}
+.btn.coral{background:var(--coral)}
+.btn.ghost{background:rgba(255,255,255,.14);backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,box-shadow .4s}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+nav.solid{background:rgba(255,250,242,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(16,41,58,.08)}
+.logo{font:600 22px/1 var(--s);color:#fff;display:flex;align-items:baseline;gap:8px;transition:color .4s}
+.logo small{font:700 10px/1 var(--f);letter-spacing:.25em;text-transform:uppercase;opacity:.75}
+nav.solid .logo{color:var(--ink)}
+.nav-r{display:flex;align-items:center;gap:10px}
+.nav-r a.link{color:#fff;font-weight:600;font-size:14px;padding:8px 10px;transition:color .4s}
+nav.solid .nav-r a.link{color:var(--ink)}
+.lang{display:flex;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);overflow:hidden}
+nav.solid .lang{box-shadow:inset 0 0 0 1px rgba(16,41,58,.25)}
+.lang button{padding:7px 11px;font-size:12px;font-weight:700;color:#fff}
+nav.solid .lang button{color:var(--ink)}
+.lang button.on{background:#fff;color:var(--ink)}
+nav.solid .lang button.on{background:var(--ink);color:#fff}
+.nav-r .btn{padding:10px 18px;font-size:14px}
+@media (max-width:760px){.nav-r a.link{display:none}}
+@media (max-width:480px){.logo small{display:none}.nav-r{gap:6px}.nav-r .btn{padding:9px 13px;font-size:13px}.lang button{padding:6px 9px}.clock{top:80px}}
+
+/* hero: the day goes by while you scroll */
+.hero{height:320vh;position:relative}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.stage svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;padding:0 16px;pointer-events:none}
+.hero-copy .line{position:absolute;font:600 clamp(54px,11vw,150px)/1 var(--s);letter-spacing:-.03em;opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s;text-shadow:0 10px 40px rgba(0,0,0,.18)}
+.hero-copy .line.on{opacity:1;transform:none}
+.hero-copy .line i{font-style:italic;font-weight:400}
+.hero-sub{position:absolute;left:0;right:0;bottom:12vh;text-align:center;color:#fff;pointer-events:auto;padding:0 16px;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.hero-sub p{font-size:clamp(16px,2vw,19px);max-width:560px;margin:0 auto 22px;opacity:.95}
+.hero-sub .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.clock{position:absolute;top:92px;right:max(16px,calc((100% - 1140px)/2));color:#fff;font:600 13px/1 var(--f);letter-spacing:.12em;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);padding:9px 14px;border-radius:999px}
+.scroll-hint{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);color:#fff;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translate(-50%,6px)}}
+
+/* score strip */
+.scores{background:var(--ink);color:#fff}
+.scores .wrap{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:center;padding:22px 0;font-weight:600}
+.scores b{font:600 26px/1 var(--s);color:var(--gold);margin-right:6px}
+.scores span{display:flex;align-items:baseline;gap:4px;opacity:.95}
+
+section.block{padding:110px 0}
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.intro p.big{font:400 clamp(20px,2.4vw,26px)/1.5 var(--s);margin-top:18px}
+.intro p{color:var(--muted);margin-top:16px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fact{background:#fff;border-radius:20px;padding:22px;box-shadow:0 1px 0 rgba(16,41,58,.06),0 20px 40px -30px rgba(16,41,58,.35)}
+.fact b{display:block;font:600 34px/1 var(--s);color:var(--sea)}
+.fact span{font-size:14px;color:var(--muted)}
+@media (max-width:860px){.intro{grid-template-columns:1fr}}
+
+/* rooms */
+.rooms{background:var(--sand)}
+.rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:44px}
+.room{background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(16,41,58,.45)}
+.room .pic{height:260px;position:relative;overflow:hidden}
+.room .pic svg{width:100%;height:100%;display:block}
+.room .body{padding:26px}
+.room h3{font-size:28px}
+.room .meta{display:flex;gap:16px;color:var(--muted);font-size:14px;margin-top:6px}
+.room ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.room li{font-size:13px;font-weight:600;background:var(--sand);padding:7px 12px;border-radius:999px}
+.room .foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.room .price b{font:600 26px/1 var(--s)}
+.room .price small{color:var(--muted)}
+.swatch{position:absolute;left:16px;bottom:16px;font:700 11px/1 var(--f);letter-spacing:.15em;text-transform:uppercase;background:rgba(255,255,255,.9);padding:8px 12px;border-radius:999px}
+@media (max-width:860px){.rooms-grid{grid-template-columns:1fr}}
+
+/* the yard: hold to feel the breeze */
+.yard{position:relative;color:#fff;background:#204a3a;overflow:hidden}
+.yard svg.garden{position:absolute;inset:0;width:100%;height:100%}
+.yard .wrap{position:relative;padding:130px 0;max-width:620px;margin-left:max(16px,calc((100% - 1140px)/2))}
+.yard p{opacity:.92;margin-top:16px;font-size:18px}
+.yard .kicker{color:#bfe3b0}
+.breeze{margin-top:26px}
+.quote-chip{display:inline-block;margin-top:24px;background:rgba(255,255,255,.12);padding:14px 18px;border-radius:16px;font:italic 400 17px/1.5 var(--s);max-width:520px}
+.quote-chip small{display:block;font:600 12px/1 var(--f);font-style:normal;opacity:.7;margin-top:8px;letter-spacing:.08em}
+
+/* beaches map */
+.beaches .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.map-wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:26px;margin-top:40px}
+.map{background:#d7eef2;border-radius:28px;overflow:hidden;position:relative;aspect-ratio:4/3.1}
+.map svg{width:100%;height:100%;display:block}
+.pin{cursor:pointer}
+.pin circle.dot{transition:r .2s}
+.pin:hover circle.dot,.pin.on circle.dot{r:11}
+.pin.on circle.halo{animation:halo 1.4s infinite}
+@keyframes halo{from{r:10;opacity:.6}to{r:28;opacity:0}}
+.route{stroke-dasharray:6 7;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.beach-card{background:#fff;border-radius:28px;padding:30px;box-shadow:0 30px 60px -40px rgba(16,41,58,.45);display:flex;flex-direction:column}
+.beach-card h3{font-size:32px;margin-top:8px}
+.beach-card .dist{display:flex;gap:18px;margin:16px 0;font-weight:700;color:var(--sea)}
+.beach-card p{color:var(--muted)}
+.beach-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:22px}
+.beach-list button{font-size:13px;font-weight:700;padding:8px 13px;border-radius:999px;background:var(--sand)}
+.beach-list button.on{background:var(--sea);color:#fff}
+@media (max-width:860px){.map-wrap{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{background:var(--ink);color:#fff}
+.reviews .kicker{color:var(--gold)}
+.rev-track{display:flex;gap:18px;margin-top:40px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin}
+.rev{flex:0 0 min(360px,85%);scroll-snap-align:start;background:rgba(255,255,255,.06);border-radius:22px;padding:26px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.rev p{font:400 18px/1.55 var(--s)}
+.rev small{display:block;margin-top:14px;opacity:.6;font-weight:600;letter-spacing:.06em;font-size:12px}
+.stars{color:var(--gold);letter-spacing:3px;margin-bottom:10px}
+
+/* booking */
+.book{background:linear-gradient(180deg,var(--paper),var(--sand))}
+.book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start;margin-top:10px}
+.why{list-style:none;margin-top:24px;display:grid;gap:14px}
+.why li{display:flex;gap:12px;align-items:flex-start}
+.why li i{flex:0 0 32px;height:32px;border-radius:10px;background:#fff;display:grid;place-items:center;font-style:normal;box-shadow:0 6px 16px -10px rgba(16,41,58,.5)}
+.form{background:#fff;border-radius:28px;padding:30px;box-shadow:0 40px 80px -50px rgba(16,41,58,.6)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+input,select,textarea{width:100%;font:inherit;padding:13px 14px;border-radius:14px;border:1.5px solid #e4dccd;background:var(--paper);color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sea)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg button{padding:13px;border-radius:14px;border:1.5px solid #e4dccd;font-weight:700;text-align:left;font-size:14px}
+.seg button small{display:block;font-weight:500;color:var(--muted)}
+.seg button.on{border-color:var(--sea);background:#eaf6f8}
+.summary{margin-top:18px;background:var(--sand);border-radius:16px;padding:16px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.summary b{font:600 24px/1 var(--s)}
+.summary small{color:var(--muted)}
+.form .btn{width:100%;justify-content:center;margin-top:16px;padding:16px}
+.done{display:none;text-align:center;padding:30px 10px}
+.done.on{display:block}
+.done .sun{width:74px;height:74px;border-radius:50%;margin:0 auto 16px;background:radial-gradient(circle at 40% 40%,#ffd88a,var(--coral));box-shadow:0 0 50px var(--gold)}
+@media (max-width:860px){.book-grid{grid-template-columns:1fr}}
+.book-grid>*,.row2>*{min-width:0}input{min-width:0}
+@media (max-width:420px){.form{padding:22px}.row2{grid-template-columns:1fr}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.card{background:#fff;border-radius:24px;padding:28px;box-shadow:0 1px 0 rgba(16,41,58,.06),0 20px 40px -30px rgba(16,41,58,.35)}
+.card h3{font-size:24px;margin-bottom:12px}
+.card p{color:var(--muted);margin-top:6px}
+.card a.u{text-decoration:underline;color:var(--sea);font-weight:600}
+.trip{display:grid;gap:10px;margin-top:10px}
+.trip div{display:flex;justify-content:space-between;border-bottom:1px dashed #e4dccd;padding-bottom:8px}
+.trip b{color:var(--sea)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+footer{padding:40px 0 100px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* demo notes */
+.notes .ph{outline:1.5px dashed var(--coral);outline-offset:5px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 9px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--coral);padding:4px 8px;border-radius:5px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.notes-toggle{position:fixed;left:12px;bottom:14px;z-index:60;font:700 11px/1 var(--f);padding:10px 13px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.18);color:var(--muted)}
+.notes .notes-toggle{color:var(--coral);box-shadow:inset 0 0 0 1px var(--coral)}
+.clean .notes-toggle{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a class="logo" href="#top">Catherine's <small>Studios · Sivota</small></a>
+  <div class="nav-r">
+    <a class="link" href="#rooms" data-en="Rooms">Δωμάτια</a>
+    <a class="link" href="#beaches" data-en="Beaches">Παραλίες</a>
+    <a class="link" href="#reviews" data-en="Reviews">Κριτικές</a>
+    <div class="lang"><button type="button" data-l="el" class="on">ΕΛ</button><button type="button" data-l="en">EN</button></div>
+    <a class="btn coral" href="#book" data-en="Book">Κράτηση</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="stage">
+    <svg class="scene" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop id="sk0" offset="0" stop-color="#5fb7e0"/>
+          <stop id="sk1" offset=".6" stop-color="#a9dcef"/>
+          <stop id="sk2" offset="1" stop-color="#e9f6f8"/>
+        </linearGradient>
+        <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
+          <stop id="se0" offset="0" stop-color="#1aa3b8"/>
+          <stop id="se1" offset="1" stop-color="#0b4f68"/>
+        </linearGradient>
+        <radialGradient id="sunG"><stop offset="0" stop-color="#fffbe8"/><stop id="sunEdge" offset="1" stop-color="#ffe08a"/></radialGradient>
+        <radialGradient id="glowG"><stop id="glow0" offset="0" stop-color="#fff2c4" stop-opacity=".8"/><stop offset="1" stop-color="#fff2c4" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1600" height="1000" fill="url(#sky)"/>
+      <g id="stars" opacity="0"></g>
+      <circle id="glow" cx="1000" cy="300" r="380" fill="url(#glowG)"/>
+      <circle id="sun" cx="1000" cy="300" r="70" fill="url(#sunG)"/>
+      <circle id="moon" cx="380" cy="1100" r="40" fill="#f4f1e6" opacity="0"/>
+      <!-- islands: Mavro Oros and the Sivota islets -->
+      <path id="isl1" d="M0 640 C120 600 210 560 330 585 C430 605 520 630 600 640 Z" fill="#6f9fb0"/>
+      <path id="isl2" d="M980 640 C1050 612 1120 598 1190 610 C1250 620 1290 632 1320 640 Z" fill="#7aaabb"/>
+      <rect y="638" width="1600" height="362" fill="url(#seaG)"/>
+      <rect id="path" x="940" y="640" width="120" height="360" fill="#fff6d0" opacity=".35"/>
+      <g id="waves" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none"></g>
+      <!-- the yard in the foreground -->
+      <path id="hill" d="M0 1000 L0 820 C180 760 360 790 520 830 C640 860 700 900 760 1000 Z" fill="#2d5a3c"/>
+      <path id="hill2" d="M1600 1000 L1600 800 C1460 770 1330 820 1250 870 C1190 910 1170 950 1160 1000 Z" fill="#335f41"/>
+      <g id="olive" transform="translate(150 640)">
+        <path d="M60 200 C62 150 58 110 70 70" stroke="#4a3a2a" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <g id="leaves" fill="#5d7f45">
+          <ellipse cx="70" cy="60" rx="90" ry="48"/><ellipse cx="20" cy="80" rx="50" ry="30"/><ellipse cx="120" cy="84" rx="54" ry="30"/>
+        </g>
+      </g>
+      <!-- the terrace light that switches on at night -->
+      <g id="lamp" transform="translate(1380 760)">
+        <rect x="-4" y="0" width="8" height="90" fill="#1f2d24"/>
+        <circle cy="-6" r="13" fill="#ffd77a" id="bulb" opacity=".25"/>
+        <circle cy="-6" r="70" fill="#ffd77a" id="lampGlow" opacity="0"/>
+      </g>
+    </svg>
+    <div class="clock" id="clock">11:00 · 28°</div>
+    <div class="hero-copy">
+      <div class="line on" data-i="0">Relax.</div>
+      <div class="line" data-i="1"><i>Unwind.</i></div>
+      <div class="line" data-i="2">Discover…</div>
+    </div>
+    <div class="hero-sub">
+      <p data-en="Family-friendly studios with a garden and a sea view, at the entrance of Sivota. 1 km from Galikos Molos beach.">Οικογενειακά studios με αυλή και θέα στη θάλασσα, στην είσοδο των Συβότων. 1 χλμ από την παραλία Γαλλικός Μώλος.</p>
+      <div class="cta"><a class="btn coral" href="#book" data-en="Check availability">Δείτε διαθεσιμότητα</a><a class="btn ghost" href="#rooms" data-en="See the rooms">Τα δωμάτια</a></div>
+    </div>
+    <div class="scroll-hint" id="hint" data-en="scroll · the day goes by">scroll · περνάει η μέρα</div>
+  </div>
+</header>
+
+<div class="scores"><div class="wrap">
+  <span><b>9,8</b> Booking.com · <span data-en="22 reviews">22 σχόλια</span></span>
+  <span><b>5,0</b> Google · <span data-en="33 reviews">33 κριτικές</span></span>
+  <span><b>9</b> <span data-en="for location">για την τοποθεσία</span></span>
+</div></div>
+
+<section class="block"><div class="wrap intro">
+  <div class="reveal">
+    <div class="kicker" data-en="Welcome">Καλώς ήρθατε</div>
+    <h2 data-en="Home for the holidays.">Το σπίτι σας για τις διακοπές.</h2>
+    <p class="big" data-en="A new, quiet place with a green yard that looks at the sea. Minutes from the beaches, with enough room to park and to breathe.">Ένα καινούργιο, ήσυχο κατάλυμα με καταπράσινη αυλή που κοιτάζει τη θάλασσα. Λίγα λεπτά από τις παραλίες, με χώρο να παρκάρετε και να ανασάνετε.</p>
+    <p data-en="Ideal if you explore by car: we are on the main road at the northern entrance of Sivota, so every beach of the area is a short drive away.">Ιδανικό αν γυρίζετε με αυτοκίνητο: είμαστε στον κεντρικό δρόμο, στη βόρεια είσοδο των Συβότων, οπότε κάθε παραλία της περιοχής είναι λίγα λεπτά μακριά.</p>
+  </div>
+  <div class="facts reveal">
+    <div class="fact"><b>1 km</b><span data-en="to Galikos Molos beach · 11' walk">από τον Γαλλικό Μώλο · 11' με τα πόδια</span></div>
+    <div class="fact"><b>28 m²</b><span data-en="every studio, with a kitchenette">κάθε studio, με κουζινάκι</span></div>
+    <div class="fact"><b>P</b><span data-en="free private parking in the yard">δωρεάν ιδιωτικό πάρκινγκ στην αυλή</span></div>
+    <div class="fact"><b>Wi-Fi</b><span data-en="free, everywhere">δωρεάν, παντού</span></div>
+  </div>
+</div></section>
+
+<section class="block rooms" id="rooms"><div class="wrap">
+  <div class="kicker" data-en="The studios">Τα studios</div>
+  <h2 data-en="Clean, new, everything you need.">Πεντακάθαρα, καινούργια, με ό,τι χρειάζεστε.</h2>
+  <div class="rooms-grid">
+    <article class="room reveal">
+      <div class="pic"><svg viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="260" fill="#f3e6d2"/><rect x="330" y="30" width="200" height="140" rx="6" fill="#bfe3ee"/><rect x="330" y="118" width="200" height="52" fill="#1aa3b8"/><circle cx="470" cy="80" r="18" fill="#ffd77a"/><path d="M330 100h200M430 30v140" stroke="#fff" stroke-width="6"/><rect x="40" y="150" width="270" height="70" rx="12" fill="#fff"/><rect x="40" y="128" width="80" height="34" rx="10" fill="#e8dccb"/><rect x="230" y="128" width="80" height="34" rx="10" fill="#e8dccb"/><rect x="40" y="200" width="270" height="22" rx="6" fill="#0f6e8c" opacity=".85"/><rect x="0" y="222" width="600" height="38" fill="#e3d4bd"/></svg><span class="swatch" data-en="Double · 2 guests">Δίκλινο · 2 άτομα</span></div>
+      <div class="body">
+        <h3 data-en="Standard Double">Standard Δίκλινο</h3>
+        <div class="meta"><span>28 m²</span><span data-en="1 double bed">1 διπλό κρεβάτι</span></div>
+        <ul>
+          <li data-en="Kitchenette: fridge, oven, hobs">Κουζινάκι: ψυγείο, φούρνος, εστίες</li>
+          <li data-en="Garden & terrace">Κήπος & βεράντα</li>
+          <li>Wi-Fi</li><li data-en="Hair dryer">Σεσουάρ</li><li data-en="Non-smoking">Μη καπνιστών</li>
+        </ul>
+        <div class="foot"><div class="price ph" data-note="Τιμή ανά νύχτα: τη βάζει ο ιδιοκτήτης ανά περίοδο"><small data-en="from">από</small> <b>65 €</b> <small data-en="/ night">/ νύχτα</small></div><a class="btn" href="#book" data-room="double" data-en="Book">Κράτηση</a></div>
+      </div>
+    </article>
+    <article class="room reveal">
+      <div class="pic"><svg viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="260" fill="#eadfcd"/><rect x="60" y="30" width="180" height="130" rx="6" fill="#bfe3ee"/><rect x="60" y="110" width="180" height="50" fill="#1aa3b8"/><path d="M60 95h180M150 30v130" stroke="#fff" stroke-width="6"/><rect x="290" y="150" width="230" height="70" rx="12" fill="#fff"/><rect x="290" y="128" width="70" height="32" rx="10" fill="#e8dccb"/><rect x="450" y="128" width="70" height="32" rx="10" fill="#e8dccb"/><rect x="290" y="200" width="230" height="22" rx="6" fill="#ef7a5a" opacity=".85"/><rect x="60" y="175" width="160" height="45" rx="10" fill="#fff"/><rect x="60" y="205" width="160" height="17" rx="5" fill="#6f8a4a" opacity=".8"/><rect x="0" y="222" width="600" height="38" fill="#ddcbb0"/></svg><span class="swatch" data-en="Triple · 3 guests">Τρίκλινο · 3 άτομα</span></div>
+      <div class="body">
+        <h3 data-en="Standard Triple">Standard Τρίκλινο</h3>
+        <div class="meta"><span>28 m²</span><span data-en="1 single + 1 double bed">1 μονό + 1 διπλό κρεβάτι</span></div>
+        <ul>
+          <li data-en="Family-friendly">Ιδανικό για οικογένειες</li>
+          <li data-en="Kitchenette: fridge, oven, hobs">Κουζινάκι: ψυγείο, φούρνος, εστίες</li>
+          <li data-en="Garden & terrace">Κήπος & βεράντα</li><li>Wi-Fi</li>
+        </ul>
+        <div class="foot"><div class="price ph" data-note="Τιμή ανά νύχτα: τη βάζει ο ιδιοκτήτης ανά περίοδο"><small data-en="from">από</small> <b>80 €</b> <small data-en="/ night">/ νύχτα</small></div><a class="btn" href="#book" data-room="triple" data-en="Book">Κράτηση</a></div>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="yard" id="yard">
+  <svg class="garden" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="1600" height="700" fill="#244f3d"/>
+    <g id="sway" fill="#2f6449"></g>
+    <rect x="0" y="560" width="1600" height="140" fill="#1b3d2f"/>
+  </svg>
+  <div class="wrap reveal">
+    <div class="kicker" data-en="The yard">Η αυλή</div>
+    <h2 data-en="A green yard with a view of the sea.">Μια καταπράσινη αυλή με θέα τη θάλασσα.</h2>
+    <p data-en="The heart of the place. Morning coffee under the trees, the children playing, the car parked in the shade, and the sea in front of you.">Η καρδιά του καταλύματος. Πρωινός καφές κάτω από τα δέντρα, τα παιδιά να παίζουν, το αυτοκίνητο στη σκιά, και μπροστά σας η θάλασσα.</p>
+    <div class="quote-chip">“It has a wonderful yard with greenery and a view of the sea, and the hosts are friendly.”<small data-en="GUEST REVIEW · BOOKING.COM">ΚΡΙΤΙΚΗ ΕΠΙΣΚΕΠΤΗ · BOOKING.COM</small></div>
+  </div>
+</section>
+
+<section class="block beaches" id="beaches"><div class="wrap">
+  <div class="head">
+    <div><div class="kicker" data-en="Around you">Γύρω σας</div><h2 data-en="One beach a day.">Μία παραλία τη μέρα.</h2></div>
+    <p style="max-width:380px;color:var(--muted)" data-en="Tap a beach on the map. We'll tell you how far it is from your door.">Πατήστε μια παραλία στον χάρτη. Θα σας πούμε πόσο μακριά είναι από την πόρτα σας.</p>
+  </div>
+  <div class="map-wrap">
+    <div class="map reveal">
+      <svg viewBox="0 0 800 620" aria-label="Χάρτης παραλιών Συβότων">
+        <rect width="800" height="620" fill="#cfeaf0"/>
+        <g stroke="#b5dde6" stroke-width="1.5" fill="none">
+          <path d="M0 120 C200 100 400 150 800 110"/><path d="M0 300 C220 280 450 330 800 290"/><path d="M0 480 C240 460 480 520 800 470"/>
+        </g>
+        <!-- mainland -->
+        <path d="M0 0 H800 V200 C740 210 700 250 640 250 C590 250 560 220 520 230 C470 245 470 300 420 310 C370 320 350 280 300 290 C250 300 240 360 190 360 C150 360 120 330 80 340 C40 350 20 380 0 390 Z" fill="#e9dfc6"/>
+        <path d="M0 0 H800 V200 C740 210 700 250 640 250 C590 250 560 220 520 230 C470 245 470 300 420 310 C370 320 350 280 300 290 C250 300 240 360 190 360 C150 360 120 330 80 340 C40 350 20 380 0 390 Z" fill="none" stroke="#d4c6a3" stroke-width="3"/>
+        <!-- islets -->
+        <path d="M330 420 C370 395 430 400 450 430 C470 465 420 495 380 488 C340 480 300 450 330 420Z" fill="#dfd3b4"/>
+        <path d="M520 400 C555 385 600 395 605 425 C610 455 570 470 540 460 C505 450 495 415 520 400Z" fill="#dfd3b4"/>
+        <!-- main road -->
+        <path d="M640 0 C630 80 600 140 560 180 C520 220 470 240 420 260" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path id="route" class="route" d="" stroke="#ef7a5a" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <g id="pins"></g>
+        <!-- home -->
+        <g transform="translate(600 150)">
+          <circle r="26" fill="#ef7a5a" opacity=".2"/><circle r="15" fill="#ef7a5a"/>
+          <path d="M-7 3 V-3 L0 -9 L7 -3 V3 Z" fill="#fff"/>
+          <text x="24" y="20" font-family="Manrope" font-weight="800" font-size="15" fill="#10293a">Catherine&#39;s</text>
+        </g>
+        <text x="620" y="600" font-family="Fraunces" font-style="italic" font-size="22" fill="#5f8ea0">Ιόνιο</text>
+        <text x="40" y="60" font-family="Manrope" font-weight="800" font-size="13" letter-spacing="3" fill="#a69872">ΣΥΒΟΤΑ</text>
+      </svg>
+    </div>
+    <div class="beach-card reveal">
+      <div class="kicker" id="bKind">—</div>
+      <h3 id="bName">—</h3>
+      <div class="dist"><span id="bKm">—</span><span id="bTime">—</span></div>
+      <p id="bText">—</p>
+      <div class="beach-list" id="bList"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block reviews" id="reviews"><div class="wrap">
+  <div class="kicker" data-en="What guests say">Τι λένε οι επισκέπτες</div>
+  <h2 data-en="9.8 out of 10. Spotless.">9,8 στα 10. Πεντακάθαρα.</h2>
+  <div class="rev-track">
+    <div class="rev"><div class="stars">★★★★★</div><p>«Ήταν όλα πεντακάθαρα, η τοποθεσία ήταν πολύ βολική, ο οικοδεσπότης πολύ ευγενικός και φιλικός. Σίγουρα θα το επέλεγα ξανά.»</p><small>BOOKING.COM</small></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>“Everything looks new and sparkling clean. The owner is very discreet and willing to help.”</p><small>BOOKING.COM</small></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>“The hosts were very kind and welcoming, and the location was peaceful while still being close to the center and the beaches.”</p><small>BOOKING.COM</small></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>“Very clean property, owners were polite and the yard is amazing.”</p><small>BOOKING.COM</small></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>“Very welcoming host. Clean and well equipped. New building, many beaches in the area. I recommend it.”</p><small>BOOKING.COM · <span data-en="translated from Romanian">μετάφραση από ρουμανικά</span></small></div>
+  </div>
+</div></section>
+
+<section class="block book" id="book"><div class="wrap book-grid">
+  <div class="reveal">
+    <div class="kicker" data-en="Book direct">Απευθείας κράτηση</div>
+    <h2 data-en="Book with us, not with a platform.">Κλείστε απευθείας με εμάς.</h2>
+    <ul class="why">
+      <li><i>☀️</i><div><b data-en="Best price, guaranteed">Η καλύτερη τιμή</b><br><span style="color:var(--muted)" data-en="No platform commission, so the saving stays with you.">Χωρίς προμήθεια πλατφόρμας, οπότε η διαφορά μένει σε εσάς.</span></div></li>
+      <li><i>💬</i><div><b data-en="You talk to us">Μιλάτε με εμάς</b><br><span style="color:var(--muted)" data-en="Questions about cots, early check-in or the beaches? We answer ourselves.">Κούνια, νωρίτερο check-in, ποια παραλία; Απαντάμε εμείς οι ίδιοι.</span></div></li>
+      <li><i>🌿</i><div><b data-en="Request in a minute">Αίτημα σε ένα λεπτό</b><br><span style="color:var(--muted)" data-en="Send your dates and we confirm availability the same day.">Στέλνετε ημερομηνίες και επιβεβαιώνουμε τη διαθεσιμότητα αυθημερόν.</span></div></li>
+    </ul>
+  </div>
+  <div class="form reveal" id="form">
+    <div id="fbody">
+      <div class="row2">
+        <div><label for="din" data-en="Check-in">Άφιξη</label><input type="date" id="din"></div>
+        <div><label for="dout" data-en="Check-out">Αναχώρηση</label><input type="date" id="dout"></div>
+      </div>
+      <label data-en="Studio">Studio</label>
+      <div class="seg" id="seg">
+        <button type="button" class="on" data-r="double"><span data-en="Double">Δίκλινο</span><small data-en="up to 2 guests">έως 2 άτομα</small></button>
+        <button type="button" data-r="triple"><span data-en="Triple">Τρίκλινο</span><small data-en="up to 3 guests">έως 3 άτομα</small></button>
+      </div>
+      <div class="row2">
+        <div><label for="fname" data-en="Name">Όνομα</label><input id="fname" autocomplete="name"></div>
+        <div><label for="fmail">Email</label><input id="fmail" type="email" autocomplete="email"></div>
+      </div>
+      <div class="summary"><div><small id="sNights">—</small><br><b id="sTotal">—</b></div><small class="ph" data-note="Ενδεικτικός υπολογισμός με τις τιμές-placeholder" data-en="estimate · no payment now">ενδεικτικά · καμία πληρωμή τώρα</small></div>
+      <button class="btn coral" id="send" type="button" data-en="Send request">Αποστολή αιτήματος</button>
+    </div>
+    <div class="done" id="done"><div class="sun"></div><h3 style="font-size:28px" data-en="See you in Sivota!">Τα λέμε στα Σύβοτα!</h3><p style="color:var(--muted);margin-top:8px" data-en="This is a demo, so nothing was sent. On the real site your request arrives straight to Catherine's by email.">Αυτό είναι demo, οπότε δεν στάλθηκε. Στο κανονικό site το αίτημα έρχεται κατευθείαν στο Catherine's με email.</p></div>
+  </div>
+</div></section>
+
+<section class="block" style="padding-top:40px"><div class="wrap contact">
+  <div class="card reveal">
+    <h3 data-en="Find us">Πού θα μας βρείτε</h3>
+    <p>Θέση Πώληση, Σύβοτα 461 00, Θεσπρωτία</p>
+    <p data-en="On the main road, at the northern entrance of Sivota.">Στον κεντρικό δρόμο, στη βόρεια είσοδο των Συβότων.</p>
+    <p class="ph" data-note="Τηλέφωνο και email του καταλύματος">📞 +30 69X XXX XXXX · ✉️ info@catherinesstudios.gr</p>
+    <p>Instagram: <a class="u" href="https://www.instagram.com/catherines.studios.sivota/" target="_blank" rel="noopener">@catherines.studios.sivota</a></p>
+  </div>
+  <div class="card reveal">
+    <h3 data-en="Getting here">Πώς θα έρθετε</h3>
+    <div class="trip">
+      <div><span data-en="Galikos Molos beach">Παραλία Γαλλικός Μώλος</span><b>1 km</b></div>
+      <div><span>Elina</span><b>13 km</b></div>
+      <div class="ph" data-note="Απόσταση κατά προσέγγιση: να επιβεβαιωθεί"><span data-en="Igoumenitsa port">Λιμάνι Ηγουμενίτσας</span><b>~24 km</b></div>
+      <div><span data-en="Parga castle">Κάστρο Πάργας</span><b>28 km</b></div>
+      <div><span data-en="Corfu airport">Αεροδρόμιο Κέρκυρας</span><b>63 km</b></div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© Catherine's Studios Sivota</span><span>Demo από <a href="https://opensite.gr">OpenSite</a></span></div></footer>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const html = document.documentElement;
+$("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("cs-notes", on ? "on" : "off"); } catch (e) {} });
+
+/* ---------- language ---------- */
+let lang = "el";
+$$("[data-en]").forEach(el => el.dataset.el = el.innerHTML);
+function setLang(l) {
+  lang = l; html.lang = l;
+  $$("[data-en]").forEach(el => el.innerHTML = l === "en" ? el.dataset.en : el.dataset.el);
+  $$(".lang button").forEach(b => b.classList.toggle("on", b.dataset.l === l));
+  renderBeach(current); updateSummary();
+}
+$$(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+
+/* ---------- nav ---------- */
+const nav = $("#nav");
+/* ---------- hero: morning to night ---------- */
+const keys = [ // p, sky top, sky mid, horizon, sea top, sea bottom, sun edge, glow
+  [0,   "#5fb7e0", "#a9dcef", "#e9f6f8", "#1aa3b8", "#0b4f68", "#ffe08a", "#fff2c4"],
+  [.45, "#6aa6d6", "#f3c58e", "#ffd9a0", "#2a8fa6", "#0d4a63", "#ffb347", "#ffd27a"],
+  [.7,  "#3b4e8c", "#d9706a", "#ffad6b", "#3a6f8f", "#14324f", "#ff7a3c", "#ff9a5a"],
+  [1,   "#07122b", "#142a52", "#2c4a7a", "#0f2a44", "#050f20", "#ff7a3c", "#9fb8ff"]
+];
+const hex = h => [1,3,5].map(i => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, t) => { const A = hex(a), B = hex(b); return "rgb(" + A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(",") + ")"; };
+function frame(p) {
+  let i = 0; while (i < keys.length - 2 && p > keys[i + 1][0]) i++;
+  const a = keys[i], b = keys[i + 1], t = Math.min(1, Math.max(0, (p - a[0]) / (b[0] - a[0])));
+  ["sk0","sk1","sk2","se0","se1","sunEdge","glow0"].forEach((id, k) => document.getElementById(id).setAttribute("stop-color", mix(a[k + 1], b[k + 1], t)));
+  const sunY = 300 + Math.pow(Math.min(p / .78, 1), 1.4) * 400;
+  $("#sun").setAttribute("cy", sunY); $("#glow").setAttribute("cy", sunY);
+  $("#sun").setAttribute("opacity", p > .8 ? Math.max(0, 1 - (p - .8) * 8) : 1);
+  $("#glow").setAttribute("opacity", p > .8 ? Math.max(0, 1 - (p - .8) * 6) : 1);
+  $("#path").setAttribute("opacity", p < .8 ? .2 + p * .4 : Math.max(0, .5 - (p - .8) * 3));
+  const night = Math.max(0, (p - .72) / .28);
+  $("#stars").setAttribute("opacity", night);
+  $("#moon").setAttribute("opacity", night); $("#moon").setAttribute("cy", 380 - night * 160);
+  $("#bulb").setAttribute("opacity", .25 + night * .75); $("#lampGlow").setAttribute("opacity", night * .28);
+  const dark = Math.min(1, p * 1.1);
+  ["isl1","isl2"].forEach(id => document.getElementById(id).setAttribute("fill", mix("#6f9fb0", "#1a2c46", dark)));
+  $("#hill").setAttribute("fill", mix("#2d5a3c", "#0c1d1a", dark)); $("#hill2").setAttribute("fill", mix("#335f41", "#0e211c", dark));
+  $("#leaves").setAttribute("fill", mix("#5d7f45", "#132a1e", dark));
+  const mins = 11 * 60 + p * 11 * 60, hh = Math.floor(mins / 60) % 24, mm = Math.floor(mins % 60 / 15) * 15;
+  $("#clock").textContent = String(hh).padStart(2, "0") + ":" + String(mm).padStart(2, "0") + " · " + Math.round(28 - p * 6) + "°";
+  const line = p < .3 ? 0 : p < .62 ? 1 : 2;
+  $$(".hero-copy .line").forEach(l => l.classList.toggle("on", +l.dataset.i === line));
+  $("#hint").style.opacity = p > .05 ? 0 : .8;
+}
+// stars and waves
+(() => {
+  const g = $("#stars"); let s = "";
+  for (let i = 0; i < 140; i++) s += `<circle cx="${Math.random() * 1600}" cy="${Math.random() * 560}" r="${Math.random() * 1.6 + .3}" fill="#fff" opacity="${Math.random() * .7 + .3}"/>`;
+  g.innerHTML = s;
+  const w = $("#waves"); let d = "";
+  for (let i = 0; i < 14; i++) { const y = 670 + i * 24, x = (i * 137) % 1300; d += `<path d="M${x} ${y} q 30 -8 60 0 t 60 0"/>`; }
+  w.innerHTML = d;
+  const sway = $("#sway"); let t = "";
+  for (let i = 0; i < 18; i++) { const x = i * 95 + (i % 2) * 30, h = 260 + (i * 53) % 180; t += `<g class="tree" style="transform-origin:${x}px 600px"><rect x="${x - 6}" y="${600 - h * .45}" width="12" height="${h * .45}" fill="#1b3d2f"/><ellipse cx="${x}" cy="${600 - h * .55}" rx="${60 + (i * 17) % 40}" ry="${h * .28}"/></g>`; }
+  sway.innerHTML = t;
+})();
+let ticking = false;
+function onScroll() {
+  if (ticking) return; ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    const hero = $(".hero"), r = hero.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, -r.top / (hero.offsetHeight - innerHeight)));
+    frame(p);
+    nav.classList.toggle("solid", r.bottom < 80);
+  });
+}
+addEventListener("scroll", onScroll, { passive: true }); frame(0);
+
+// gentle breeze in the yard
+(() => {
+  const trees = $$("#sway .tree"); let t0 = performance.now();
+  function loop(t) {
+    const k = (t - t0) / 1000;
+    trees.forEach((tr, i) => tr.style.transform = `rotate(${Math.sin(k * 1.1 + i) * 1.6}deg)`);
+    requestAnimationFrame(loop);
+  }
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(loop);
+})();
+
+/* ---------- beaches ---------- */
+const BEACHES = [
+  { id: "galikos", x: 470, y: 270, el: "Γαλλικός Μώλος", en: "Galikos Molos", km: "1 km", t: { el: "11' με τα πόδια", en: "11' on foot" }, kind: { el: "Η πιο κοντινή", en: "The closest one" }, txt: { el: "Η παραλία δίπλα σας. Βολτάρετε ως εκεί με τα πόδια το πρωί, πριν έρθει ο κόσμος.", en: "Your beach next door. Walk there in the morning, before everyone else arrives." }, real: true },
+  { id: "mega", x: 330, y: 300, el: "Μέγα Άμμος", en: "Mega Ammos", km: "~3 km", t: { el: "~6' με το αυτοκίνητο", en: "~6' by car" }, kind: { el: "Οργανωμένη", en: "Organised" }, txt: { el: "Μεγάλη αμμουδιά με ξαπλώστρες και ρηχά νερά, καλή για οικογένειες.", en: "A long sandy beach with sunbeds and shallow water, good for families." } },
+  { id: "zavia", x: 250, y: 330, el: "Ζάβια", en: "Zavia", km: "~4 km", t: { el: "~8' με το αυτοκίνητο", en: "~8' by car" }, kind: { el: "Ήσυχη", en: "Quiet" }, txt: { el: "Μικρός κόλπος με πεύκα ως το νερό.", en: "A small cove with pines down to the water." } },
+  { id: "bella", x: 400, y: 410, el: "Μπέλλα Βράκα", en: "Bella Vraka", km: "~4 km", t: { el: "~10' με το αυτοκίνητο", en: "~10' by car" }, kind: { el: "Η διάσημη", en: "The famous one" }, txt: { el: "Η λωρίδα άμμου που ενώνει την ακτή με το νησάκι. Τιρκουάζ νερά, όπως στις καρτ-ποστάλ.", en: "The strip of sand joining the coast to the islet. Turquoise water, just like the postcards." } },
+  { id: "pisina", x: 560, y: 430, el: "Πισίνα", en: "Pisina", km: "~5 km", t: { el: "~12' με το αυτοκίνητο", en: "~12' by car" }, kind: { el: "Σαν πισίνα", en: "Like a pool" }, txt: { el: "Πράσινα, ήρεμα νερά ανάμεσα στα νησάκια. Ιδανική με βάρκα.", en: "Calm green water between the islets. Best reached by boat." } },
+  { id: "karavostasi", x: 120, y: 360, el: "Καραβοστάσι", en: "Karavostasi", km: "~13 km", t: { el: "~18' με το αυτοκίνητο", en: "~18' by car" }, kind: { el: "Για εκδρομή", en: "Day trip" }, txt: { el: "Μεγάλη, ανοιχτή παραλία με αμμόλοφους, προς την Πέρδικα.", en: "A big open beach with dunes, towards Perdika." } }
+];
+let current = "galikos";
+(() => {
+  $("#pins").innerHTML = BEACHES.map(b => `<g class="pin" data-b="${b.id}" transform="translate(${b.x} ${b.y})" tabindex="0" role="button" aria-label="${b.el}"><circle class="halo" r="10" fill="#0f6e8c" opacity="0"/><circle class="dot" r="8" fill="#0f6e8c" stroke="#fff" stroke-width="3"/></g>`).join("");
+  $("#bList").innerHTML = BEACHES.map(b => `<button type="button" data-b="${b.id}"></button>`).join("");
+  $$("[data-b]").forEach(el => { el.addEventListener("click", () => renderBeach(el.dataset.b)); el.addEventListener("keydown", e => { if (e.key === "Enter") renderBeach(el.dataset.b); }); });
+})();
+function renderBeach(id) {
+  current = id; const b = BEACHES.find(x => x.id === id);
+  $("#bKind").textContent = b.kind[lang]; $("#bName").textContent = b[lang];
+  $("#bKm").textContent = b.km; $("#bTime").textContent = b.t[lang]; $("#bText").textContent = b.txt[lang];
+  const card = $(".beach-card"); card.classList.toggle("ph", !b.real);
+  card.dataset.note = b.real ? "" : "Απόσταση κατά προσέγγιση: τη συμπληρώνει ο ιδιοκτήτης";
+  $$("#bList button").forEach(x => { const bb = BEACHES.find(y => y.id === x.dataset.b); x.textContent = bb[lang]; x.classList.toggle("on", x.dataset.b === id); });
+  $$(".pin").forEach(p => p.classList.toggle("on", p.dataset.b === id));
+  const hx = 600, hy = 150, mx = (hx + b.x) / 2 - 40, my = Math.min(hy, b.y) + 30;
+  $("#route").setAttribute("d", `M${hx} ${hy} Q ${mx} ${my} ${b.x} ${b.y}`);
+}
+renderBeach("galikos");
+
+/* ---------- booking ---------- */
+const PRICE = { double: 65, triple: 80 };
+let room = "double";
+const iso = d => d.toISOString().slice(0, 10);
+const today = new Date(); const a = new Date(today.getFullYear() + (today.getMonth() > 6 ? 1 : 0), 6, 10), b = new Date(a); b.setDate(a.getDate() + 5);
+$("#din").value = iso(a); $("#dout").value = iso(b); $("#din").min = iso(today);
+function nights() { const d = (new Date($("#dout").value) - new Date($("#din").value)) / 864e5; return isFinite(d) && d > 0 ? d : 0; }
+function updateSummary() {
+  const n = nights();
+  $("#sNights").textContent = n ? (lang === "en" ? `${n} night${n > 1 ? "s" : ""} · ${room === "double" ? "Double" : "Triple"}` : `${n} ${n > 1 ? "νύχτες" : "νύχτα"} · ${room === "double" ? "Δίκλινο" : "Τρίκλινο"}`) : (lang === "en" ? "Choose your dates" : "Διαλέξτε ημερομηνίες");
+  $("#sTotal").textContent = n ? (n * PRICE[room]).toLocaleString("el-GR") + " €" : "—";
+}
+["#din","#dout"].forEach(s => $(s).addEventListener("change", () => { if (nights() <= 0) { const d = new Date($("#din").value); d.setDate(d.getDate() + 1); $("#dout").value = iso(d); } updateSummary(); }));
+$$("#seg button").forEach(btn => btn.addEventListener("click", () => { room = btn.dataset.r; $$("#seg button").forEach(x => x.classList.toggle("on", x === btn)); updateSummary(); }));
+$$("[data-room]").forEach(l => l.addEventListener("click", () => { room = l.dataset.room; $$("#seg button").forEach(x => x.classList.toggle("on", x.dataset.r === room)); updateSummary(); }));
+$("#send").addEventListener("click", () => {
+  if ($("#fname").value.trim().length < 2) { $("#fname").focus(); $("#fname").style.borderColor = "var(--coral)"; return; }
+  if (!/\S+@\S+\.\S+/.test($("#fmail").value)) { $("#fmail").focus(); $("#fmail").style.borderColor = "var(--coral)"; return; }
+  $("#fbody").style.display = "none"; $("#done").classList.add("on");
+});
+updateSummary();
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+$$(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
