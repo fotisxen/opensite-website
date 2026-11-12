@@ -10,6 +10,10 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "mezes", name: "Mezes", kind: "Redesign + live waitlist · Greek shared plates (Toronto)", created: "2026-11-12", instagram: "https://www.instagram.com/mezesdanforth/" },
+  { slug: "athens-restaurant", name: "Athens Restaurant", kind: "Redesign + bookings · Greek taverna (Toronto)", created: "2026-11-12", instagram: "https://instagram.com/athensrestaurantdanforth" },
+  { slug: "horio", name: "Horio Taverna", kind: "Redesign over Toast · Greek taverna (Toronto)", created: "2026-11-12" },
+  { slug: "souvlike", name: "SouvLike", kind: "Direct ordering + catering · gyros, 2 locations (Toronto)", created: "2026-11-12", instagram: "https://www.instagram.com/souvlikepape/" },
   { slug: "mamakas", name: "Mamakas Food Group", kind: "Redesign + CRM · Greek restaurant group (Toronto)", created: "2026-11-11", instagram: "https://www.instagram.com/mamakastaverna/" },
   { slug: "riverdale-wealth", name: "Riverdale Wealth Management", kind: "Redesign + booking · wealth advisor (Toronto)", created: "2026-11-11" },
   { slug: "mister-greek", name: "Mister Greek Meats", kind: "Pick-up orders + wholesale portal · butcher (Toronto)", created: "2026-11-11" },

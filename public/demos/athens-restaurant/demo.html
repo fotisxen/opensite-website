@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b3a6e">
+<title>Athens Restaurant · Greek home cooking on the Danforth · Toronto</title>
+<meta name="description" content="Athens Restaurant, 707 Danforth Ave, Toronto. Greek home cooking for 40 years: kokkinisto, roast lamb, mousaka, gemista. Book a table, plan a private event or order family meals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite redesign demo for Athens Restaurant (athensdanforth.ca).
+  Dishes, photos, hours, address and phone come from athensdanforth.ca (Nov 2026). Prices come from the Uber Eats listing and are placeholders until we have the in-house menu.
+  Table booking, events form and family meals are working mock-ups: nothing is sent.
+  Everything marked .ph is placeholder (toggle "Notes", hide with ?clean).
+-->
+<style>
+:root{--bg:#fbfaf6;--card:#fff;--ink:#0f1f33;--muted:#5d6878;--blue:#0b3a6e;--sky:#e8f0f9;--gold:#c99a3b;--line:rgba(15,31,51,.12);
+  --f:"Source Sans 3",system-ui,sans-serif;--s:"Playfair Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.k{font:700 12.5px/1 var(--f);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--s);font-weight:600;letter-spacing:-.01em}
+h2{font-size:clamp(36px,5vw,60px);line-height:1.05;margin-top:12px}
+h2 em,h1 em{font-weight:500;color:var(--blue)}
+.lead{color:var(--muted);max-width:600px;margin-top:14px;font-size:18.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 15px/1 var(--f);padding:15px 22px;border-radius:8px;background:var(--blue);color:#fff;white-space:nowrap;transition:transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{background:var(--gold);color:#1d1404}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+section{padding:clamp(60px,8vw,110px) 0}
+.ph{outline:1.5px dashed #c2410c;outline-offset:2px}
+html:not(.notes) .ph{outline:none}
+.notes-t{position:fixed;left:12px;bottom:12px;z-index:90;font:600 12px/1 var(--f);padding:10px 12px;border-radius:999px;background:#c2410c;color:#fff}
+
+.top{background:var(--blue);color:#cfe0f3;font-size:14px}
+.top .wrap{display:flex;justify-content:space-between;gap:10px;padding:8px 0;flex-wrap:wrap}
+.top b{color:#fff}
+.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,246,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
+.logo img{height:52px;width:auto}
+.nav-l{display:flex;gap:26px;font:600 15px/1 var(--f)}
+.nav-l a{opacity:.7}.nav-l a:hover{opacity:1}
+@media(max-width:900px){.nav-l{display:none}}
+
+.hero{padding:clamp(30px,5vw,64px) 0}
+.hero-g{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.hero h1{font-size:clamp(48px,6.8vw,94px);line-height:1}
+.hero p{font-size:19.5px;color:var(--muted);margin-top:18px;max-width:480px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.facts{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.facts div{font-size:14.5px;color:var(--muted)}
+.facts b{display:block;font:600 34px/1 var(--s);color:var(--ink)}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:230px 230px;gap:10px}
+.mosaic img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.mosaic img:nth-child(1){grid-row:span 2}
+@media(max-width:860px){.hero-g{grid-template-columns:1fr}.mosaic{grid-template-rows:170px 170px}}
+
+.book{background:var(--sky)}
+.bk{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:start;margin-top:36px}
+.card{background:var(--card);border-radius:16px;padding:clamp(18px,3vw,28px);box-shadow:0 1px 0 var(--line),0 24px 50px -36px rgba(15,31,51,.45)}
+.lbl{font:700 12px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 10px}
+.lbl:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:10px 14px;border-radius:8px;box-shadow:inset 0 0 0 1px var(--line);font-size:15px;background:#fff}
+.chips button.on{background:var(--blue);color:#fff;box-shadow:none}
+.chips button:disabled{opacity:.35;cursor:default}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.days button{padding:9px 2px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);font-size:12px;line-height:1.15;color:var(--muted);background:#fff}
+.days button b{display:block;font:600 20px/1.1 var(--s);color:var(--ink)}
+.days button.on{background:var(--blue);color:#cfe0f3;box-shadow:none}.days button.on b{color:#fff}
+.days button:disabled{opacity:.4;cursor:default}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fields input,.fields select,.fields textarea{padding:12px 14px;border-radius:8px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;min-width:0;font-size:15.5px}
+.ok{text-align:center;padding:24px 0}
+.ok .t{width:60px;height:60px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:28px;margin:0 auto 12px}
+.why{display:grid;gap:14px}
+.why div{display:flex;gap:14px}
+.why b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:14px}
+@media(max-width:860px){.bk{grid-template-columns:1fr}}
+@media(max-width:480px){.fields{grid-template-columns:1fr}}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.filters button{padding:10px 16px;border-radius:999px;font:600 14.5px/1 var(--f);box-shadow:inset 0 0 0 1.5px var(--line)}
+.filters button.on{background:var(--ink);color:#fff;box-shadow:none}
+.menu-g{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;margin-top:20px}
+.dish{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.dish img{width:64px;height:64px;border-radius:10px;object-fit:cover;background:var(--sky)}
+.dish .noimg{width:64px;height:64px;border-radius:10px;background:var(--sky);display:grid;place-items:center;font:600 22px var(--s);color:var(--blue)}
+.dish b{font:600 19px/1.2 var(--s)}
+.dish small{display:block;color:var(--muted);font-size:14.5px}
+.dish i{font-style:normal;font:700 10.5px/1 var(--f);padding:3px 6px;border-radius:4px;background:var(--sky);color:var(--blue);margin-left:6px;vertical-align:middle}
+.dish em{font-style:normal;font:600 18px/1 var(--s)}
+.mnote{font-size:14px;color:var(--muted);margin-top:16px}
+@media(max-width:860px){.menu-g{grid-template-columns:1fr}}
+
+.events{background:var(--blue);color:#fff}
+.events .k{color:#f1cf86}
+.events .lead{color:#c3d6ec}
+.ev-g{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:36px;align-items:start}
+.ev-g img{width:100%;height:440px;object-fit:cover;border-radius:16px}
+.ev-g .card{color:var(--ink)}
+@media(max-width:860px){.ev-g{grid-template-columns:1fr}.ev-g img{height:260px}}
+
+.fam{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+.fam .card{display:flex;flex-direction:column;gap:10px}
+.fam h3{font-size:26px}
+.fam p{color:var(--muted)}
+.fam .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+.fam .row b{font:600 30px/1 var(--s)}
+.apps{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;font-size:14.5px;color:var(--muted)}
+@media(max-width:760px){.fam{grid-template-columns:1fr}}
+
+.visit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+.visit h3{font-size:24px;margin-bottom:10px}
+.visit li{list-style:none;display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.visit li.today{color:var(--blue);font-weight:700}
+@media(max-width:860px){.visit{grid-template-columns:1fr}}
+footer{padding:36px 0 70px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);background:var(--ink);color:#fff;padding:14px 18px;border-radius:10px;font-size:14.5px;z-index:99;transition:transform .35s;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap"><span><b id="openT">Open today</b> · 707 Danforth Ave</span><span><a href="tel:+14164654441"><b>416-465-4441</b></a></span></div></div>
+<nav class="nav"><div class="wrap">
+  <a href="#top" class="logo"><img src="https://uploads.bettysuite.com/athensdanforth/logo-large.png" alt="Athens Restaurant"></a>
+  <div class="nav-l"><a href="#menu">Menu</a><a href="#book">Book a table</a><a href="#events">Private events</a><a href="#family">Family meals</a><a href="#visit">Visit</a></div>
+  <a href="#book" class="btn" style="padding:13px 18px">Book a table</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap hero-g">
+  <div>
+    <div class="k">On the Danforth · 40 years of Greek cooking</div>
+    <h1>Like dinner at <em>yiayia's.</em></h1>
+    <p>Kokkinisto, roast lamb, gemista and fish soup, cooked the slow way with ingredients from local farmers' markets.</p>
+    <div class="cta"><a href="#book" class="btn">Book a table</a><a href="#menu" class="btn line">See the menu</a></div>
+    <div class="facts"><div><b>40</b>years cooking for our guests</div><div><b>GF · V · VE</b>dishes for every table</div></div>
+  </div>
+  <div class="mosaic">
+    <img src="https://uploads.bettysuite.com/athensdanforth/gallery/16.webp" alt="Roasted lamb">
+    <img src="https://uploads.bettysuite.com/athensdanforth/gallery/9.webp" alt="Kokkinisto">
+    <img src="https://uploads.bettysuite.com/athensdanforth/gallery/23.webp" alt="Gemista">
+  </div>
+</div></header>
+
+<section id="menu" style="padding-top:20px"><div class="wrap">
+  <div class="k">Menu</div>
+  <h2>The menu, <em>right here.</em></h2>
+  <p class="lead">No PDFs to download. Filter for what you can eat, read it on your phone, and Google can read it too.</p>
+  <div class="filters" id="flt"><button class="on" data-f="">Everything</button><button data-f="GF">Gluten free</button><button data-f="V">Vegetarian</button><button data-f="VE">Vegan</button></div>
+  <div class="menu-g" id="mg"></div>
+  <p class="mnote"><span class="ph">Prices are taken from the Uber Eats listing and will be replaced with the dining-room menu.</span> Dietary tags as marked by the kitchen.</p>
+</div></section>
+
+<section class="book" id="book"><div class="wrap">
+  <div class="k">Book a table</div>
+  <h2>Pick a night. <em>We'll set the table.</em></h2>
+  <div class="bk">
+    <div class="why">
+      <div><b>1</b><span>Choose the day, time and how many of you. Mondays we're closed.</span></div>
+      <div><b>2</b><span>You get a confirmation by email and a reminder the day before.</span></div>
+      <div><b>3</b><span>Birthday, high chair or allergy? Tell us and we'll have it ready.</span></div>
+    </div>
+    <div class="card" id="bkc"></div>
+  </div>
+</div></section>
+
+<section class="events" id="events"><div class="wrap">
+  <div class="k">Private events</div>
+  <h2 style="color:#fff">Family celebrations, business lunches, christenings.</h2>
+  <p class="lead">Tell us the occasion and the headcount. We'll come back with a menu and a price within a day.</p>
+  <div class="ev-g">
+    <img loading="lazy" src="https://uploads.bettysuite.com/athensdanforth/gallery/4.webp" alt="Inside Athens Restaurant">
+    <form class="card" id="evf">
+      <div class="lbl">Occasion</div>
+      <div class="chips" id="occ"><button type="button" class="on">Birthday</button><button type="button">Christening</button><button type="button">Business lunch</button><button type="button">Memorial lunch</button><button type="button">Catering</button></div>
+      <div class="lbl">Details</div>
+      <div class="fields"><input type="number" min="10" value="25" aria-label="Guests"><input type="date" id="ed"><input placeholder="Name" required><input type="tel" placeholder="Phone" required></div>
+      <div class="fields" style="margin-top:8px;grid-template-columns:1fr"><textarea rows="3" placeholder="Anything we should know? Set menu, budget, dietary needs..."></textarea></div>
+      <button class="btn gold" style="width:100%;margin-top:14px">Send inquiry</button>
+    </form>
+  </div>
+</div></section>
+
+<section id="family"><div class="wrap">
+  <div class="k">Take-out & family meals</div>
+  <h2>Dinner for the whole house.</h2>
+  <p class="lead">Order for pick-up directly from us. Or, if you prefer, through the delivery apps.</p>
+  <div class="fam">
+    <div class="card"><h3>Meal for Four</h3><p>4 chicken + 4 pork skewers, large Greek salad, rice & potatoes, tzatziki, bread & pita.</p><div class="row"><b class="ph">$115</b><button class="btn" data-o="Meal for Four">Order for pick-up</button></div></div>
+    <div class="card"><h3>Athens Specialties for Two+</h3><p>Choose two of our specialties and a large salad.</p><div class="row"><b class="ph">$99</b><button class="btn" data-o="Specialties for Two">Order for pick-up</button></div></div>
+  </div>
+  <div class="apps">Delivery: <a href="https://www.ubereats.com/ca/toronto/food-delivery/athens-restaurant/6_ldGGIkSyCGi8vwXelrFQ" style="color:var(--blue)">Uber Eats</a> · <a href="https://www.skipthedishes.com/athens-restaurant-and-tavern" style="color:var(--blue)">SkipTheDishes</a></div>
+</div></section>
+
+<section id="visit" style="padding-top:0"><div class="wrap">
+  <div class="k">Visit</div>
+  <h2>707 Danforth Ave.</h2>
+  <div class="visit">
+    <div class="card"><h3>Hours</h3><ul id="hrs"></ul></div>
+    <div class="card"><h3>Find us</h3><ul><li><span>Address</span><span>707 Danforth Ave</span></li><li><span>Postal code</span><span class="ph">M4J 1L2</span></li><li><span>Subway</span><span>Pape · Donlands</span></li><li><span>Directions</span><a href="https://maps.google.com/?q=707+Danforth+Ave+Toronto" style="color:var(--blue)">Open map →</a></li></ul></div>
+    <div class="card"><h3>Contact</h3><ul><li><span>Phone</span><a href="tel:+14164654441">416-465-4441</a></li><li><span>Email</span><span class="ph">info@…</span></li><li><span>Instagram</span><a href="https://instagram.com/athensrestaurantdanforth" style="color:var(--blue)">@athensrestaurantdanforth</a></li></ul></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span><b>Athens Restaurant</b> · 707 Danforth Ave, Toronto, ON M4J 1L2 · 416-465-4441</span><span>redesign demo by <a href="https://opensite.gr" style="color:var(--blue)">OpenSite</a></span></div></footer>
+
+<button class="notes-t" id="notesT">Notes</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+if(location.search.includes('clean')){document.documentElement.classList.remove('notes');$('#notesT').remove()}
+$('#notesT')?.addEventListener('click',()=>document.documentElement.classList.toggle('notes'));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3400)};
+const G='https://uploads.bettysuite.com/athensdanforth/gallery/';
+
+/* hours from athensdanforth.ca */
+const H=[['Sunday','11 am – 11 pm'],['Monday','Closed'],['Tuesday','11 am – 11 pm'],['Wednesday','11 am – 11 pm'],['Thursday','11 am – midnight'],['Friday','11 am – midnight'],['Saturday','11 am – midnight']];
+const td=new Date().getDay();
+$('#hrs').innerHTML=[1,2,3,4,5,6,0].map(i=>`<li class="${i===td?'today':''}"><span>${H[i][0]}</span><span>${H[i][1]}</span></li>`).join('');
+$('#openT').textContent=td===1?'Closed today (Monday)':'Open today '+H[td][1];
+
+/* menu */
+const M=[
+ ['Spread Sampler','Choice of 3 dips with pita',22,'V',''],
+ ['Spanakopita','Spinach and feta in phyllo','—','V','19.webp'],
+ ['Horiatiki','Village salad, feta, olives',16.5,'GF V',''],
+ ['Avgolemono','Chicken, rice, egg-lemon soup',16,'GF',''],
+ ['Psarosoupa','Traditional fish soup','—','GF','24.webp'],
+ ['Kokkinisto','Veal braised in tomato sauce',37,'GF','9.webp'],
+ ['Mousaka','Eggplant, potato, beef, béchamel',35,'GF',''],
+ ['Pastitsio','Baked pasta, beef, béchamel · gluten-free version','—','GF','17.webp'],
+ ['Gemista','Peppers and tomatoes stuffed with rice and herbs','—','V VE','23.webp'],
+ ['Oven-baked Cod','With potatoes, lemon and oregano','—','GF','14.webp'],
+ ['Paidakia','Grilled lamb chops',59.95,'GF','16.webp'],
+ ['Chicken Souvlaki Dinner','Two skewers, potatoes, rice, salad',39,'GF','']];
+let f='';
+const drawM=()=>{$('#mg').innerHTML=M.filter(m=>!f||m[3].split(' ').includes(f)).map(m=>`<div class="dish">${m[4]?`<img loading="lazy" src="${G+m[4]}" alt="${m[0]}">`:`<span class="noimg">${m[0][0]}</span>`}<div><b>${m[0]}${m[3]?m[3].split(' ').map(t=>`<i>${t}</i>`).join(''):''}</b><small>${m[1]}</small></div><em class="ph">${typeof m[2]==='number'?(Number.isInteger(m[2])?m[2]:m[2].toFixed(2)):'—'}</em></div>`).join('')};
+$$('#flt button').forEach(b=>b.onclick=()=>{f=b.dataset.f;$$('#flt button').forEach(x=>x.classList.toggle('on',x===b));drawM()});
+drawM();
+
+/* booking */
+const B={d:-1,t:'',n:2,done:false};
+const days=[];{const d=new Date();for(let i=0;i<7;i++){days.push(new Date(d));d.setDate(d.getDate()+1)}}
+const times=['5:00','5:30','6:00','6:30','7:00','7:30','8:00','8:30','9:00'];
+const full=(d,t)=>((d*3+t.length+parseInt(t)*2)%5===0);
+const bk=()=>{const el=$('#bkc');
+ if(B.done){el.innerHTML=`<div class="ok"><div class="t">✓</div><h3 style="font-size:28px">See you soon.</h3><p style="color:var(--muted);margin-top:8px">Table for ${B.n} · ${days[B.d].toLocaleDateString('en-CA',{weekday:'long',month:'long',day:'numeric'})} at ${B.t} pm<br>A confirmation is on its way. Reminder the day before.</p><button class="btn line" style="margin-top:16px" id="again">Book another</button></div>`;$('#again').onclick=()=>{Object.assign(B,{d:-1,t:'',done:false});bk()};return}
+ el.innerHTML=`<div class="lbl">Guests</div><div class="chips" id="bn">${[1,2,3,4,5,6,'7+'].map(n=>`<button class="${B.n==n?'on':''}">${n}</button>`).join('')}</div>
+ <div class="lbl">Day</div><div class="days" id="bd">${days.map((d,i)=>`<button ${d.getDay()===1?'disabled':''} class="${B.d===i?'on':''}">${d.toLocaleDateString('en-CA',{weekday:'short'})}<b>${d.getDate()}</b></button>`).join('')}</div>
+ ${B.d>=0?`<div class="lbl">Time (pm)</div><div class="chips" id="bt">${times.map(t=>`<button ${full(B.d,t)?'disabled':''} class="${B.t===t?'on':''}">${t}</button>`).join('')}</div>`:''}
+ ${B.t?`<div class="lbl">Your details</div><div class="fields"><input placeholder="Name"><input type="tel" placeholder="Phone"><input type="email" placeholder="Email" style="grid-column:span 2"></div><button class="btn" style="width:100%;margin-top:14px" id="bgo">Confirm table</button>`:''}`;
+ $$('#bn button').forEach(b=>b.onclick=()=>{B.n=b.textContent;bk()});
+ $$('#bd button').forEach((b,i)=>b.onclick=()=>{B.d=i;B.t='';bk()});
+ $$('#bt button').forEach(b=>b.onclick=()=>{B.t=b.textContent;bk()});
+ $('#bgo')&&($('#bgo').onclick=()=>{B.done=true;bk();toast('Table booked. The restaurant sees it in its booking list.')});};
+bk();
+
+/* events */
+$$('#occ button').forEach(b=>b.onclick=()=>$$('#occ button').forEach(x=>x.classList.toggle('on',x===b)));
+{const d=new Date();d.setDate(d.getDate()+14);$('#ed').value=d.toISOString().slice(0,10)}
+$('#evf').onsubmit=e=>{e.preventDefault();toast('Inquiry sent: '+$('#occ .on').textContent+'. We reply within one business day.');e.target.reset()};
+$$('[data-o]').forEach(b=>b.onclick=()=>toast(b.dataset.o+': pick-up order sent to the kitchen. No app fees.'));
+</script>
+</body>
+</html>

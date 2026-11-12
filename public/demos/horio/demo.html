@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f3c88">
+<title>Horio Taverna · Greek village cooking on the Danforth · Toronto</title>
+<meta name="description" content="Horio Taverna, 516 Danforth Ave, Toronto. A family-run Greek taverna: Maria's housemade mousaka and pastitsio, dips, grilled octopus, Greek wines. Reserve, order pick-up or plan an event.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite redesign demo for Horio Taverna (horiotaverna.com, a Toast website template).
+  Story, dishes, prices, photos, address and phone come from horiotaverna.com and its Toast ordering page (Nov 2026).
+  Reservations go to their real OpenTable page and pick-up to their real Toast ordering. The event planner is a mock-up: nothing is sent.
+  Everything marked .ph is placeholder (toggle "Notes", hide with ?clean).
+-->
+<style>
+:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#1c2233;--muted:#626877;--blue:#1f3c88;--olive:#6b7a3a;--whit:#fff;--line:rgba(28,34,51,.12);
+  --f:"Karla",system-ui,sans-serif;--s:"Cormorant",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.k{font:700 12px/1 var(--f);letter-spacing:.2em;text-transform:uppercase;color:var(--olive)}
+h1,h2,h3{font-family:var(--s);font-weight:600;letter-spacing:-.01em}
+h2{font-size:clamp(42px,5.6vw,72px);line-height:1;margin-top:12px}
+h2 em,h1 em{font-weight:500;color:var(--blue)}
+.lead{color:var(--muted);max-width:600px;margin-top:14px;font-size:18.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 14.5px/1 var(--f);padding:15px 22px;border-radius:999px;background:var(--blue);color:#fff;white-space:nowrap;transition:transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.olive{background:var(--olive)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+section{padding:clamp(60px,8vw,110px) 0}
+.ph{outline:1.5px dashed #c2410c;outline-offset:2px}
+html:not(.notes) .ph{outline:none}
+.notes-t{position:fixed;left:12px;bottom:12px;z-index:90;font:600 12px/1 var(--f);padding:10px 12px;border-radius:999px;background:#c2410c;color:#fff}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.logo img{height:52px;width:auto}
+.nav-l{display:flex;gap:26px;font:600 14.5px/1 var(--f)}
+.nav-l a{opacity:.7}.nav-l a:hover{opacity:1}
+.nav-r{display:flex;gap:8px}
+@media(max-width:900px){.nav-l{display:none}.nav-r .line{display:none}}
+
+.hero{padding:clamp(30px,5vw,70px) 0 clamp(50px,7vw,90px)}
+.hero-g{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.hero h1{font-size:clamp(56px,8vw,118px);line-height:.92}
+.hero p{font-size:20px;color:var(--muted);margin-top:20px;max-width:470px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14.5px;color:var(--muted)}
+.status i{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+.status.closed i{background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.15)}
+.arch{position:relative}
+.arch img{width:100%;height:min(600px,72vh);object-fit:cover;border-radius:300px 300px 18px 18px}
+.arch .tag{position:absolute;right:-10px;bottom:34px;background:var(--card);border-radius:14px;padding:14px 16px;box-shadow:0 20px 40px -20px rgba(28,34,51,.4);max-width:240px;font-size:14.5px}
+.arch .tag b{display:block;font:600 24px/1.1 var(--s)}
+@media(max-width:860px){.hero-g{grid-template-columns:1fr}.arch .tag{right:12px}}
+
+.story{background:var(--blue);color:#eef1fa}
+.story .k{color:#c7d48f}
+.st-g{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.st-g img{width:100%;height:520px;object-fit:cover;border-radius:18px}
+.story h2{color:#fff}
+.story p{color:#c9d2ec;margin-top:16px;font-size:18px}
+.story blockquote{margin-top:22px;padding-left:18px;border-left:2px solid #c7d48f;font:italic 500 26px/1.3 var(--s);color:#fff}
+@media(max-width:860px){.st-g{grid-template-columns:1fr}.st-g img{height:320px}}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px;position:sticky;top:76px;background:var(--bg);padding:10px 0;z-index:5}
+.tabs button{padding:10px 16px;border-radius:999px;font:600 14px/1 var(--f);box-shadow:inset 0 0 0 1.5px var(--line)}
+.tabs button.on{background:var(--ink);color:#fff;box-shadow:none}
+.mg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.it{display:grid;grid-template-columns:1fr 110px;gap:14px;background:var(--card);border-radius:16px;padding:14px;box-shadow:0 1px 0 var(--line);align-items:center}
+.it img,.it .ni{width:110px;height:110px;border-radius:12px;object-fit:cover}
+.it .ni{background:#e7e2d5;display:grid;place-items:center;font:600 34px var(--s);color:var(--olive)}
+.it b{font:600 22px/1.15 var(--s)}
+.it small{display:block;color:var(--muted);font-size:14.5px;margin:4px 0 8px;line-height:1.45}
+.it em{font-style:normal;font-weight:700}
+.mfoot{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:20px;font-size:14.5px;color:var(--muted)}
+@media(max-width:760px){.mg{grid-template-columns:1fr}.it{grid-template-columns:1fr 90px}.it img,.it .ni{width:90px;height:90px}}
+
+.ev{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);margin-top:36px;align-items:start}
+.ev ul{list-style:none;display:grid;gap:12px;margin-top:6px}
+.ev li{display:flex;gap:12px;align-items:flex-start}
+.ev li b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--olive);color:#fff;display:grid;place-items:center;font-size:13px}
+.card{background:var(--card);border-radius:18px;padding:clamp(18px,3vw,28px);box-shadow:0 1px 0 var(--line),0 24px 50px -36px rgba(28,34,51,.45)}
+.lbl{font:700 12px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 10px}
+.lbl:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:10px 14px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);font-size:15px;background:#fff}
+.chips button.on{background:var(--blue);color:#fff;box-shadow:none}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fields input,.fields select,.fields textarea{padding:12px 14px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;min-width:0;font-size:15.5px}
+.gu{display:flex;align-items:center;gap:14px}
+.gu b{font:600 44px/1 var(--s);min-width:56px}
+.gu input{flex:1;accent-color:var(--blue)}
+.sug{margin-top:12px;padding:14px;border-radius:12px;background:#eef1e2;font-size:15px}
+@media(max-width:860px){.ev{grid-template-columns:1fr}}
+@media(max-width:480px){.fields{grid-template-columns:1fr}}
+
+.strip{background:#ebe5d6}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.three .card h3{font-size:28px}
+.three .card p{color:var(--muted);margin-top:6px;font-size:15.5px}
+.three .card .btn{margin-top:14px}
+.hrs li{list-style:none;display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--line);font-size:15px}
+.hrs li.today{color:var(--blue);font-weight:700}
+@media(max-width:860px){.three{grid-template-columns:1fr}}
+footer{padding:36px 0 70px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);background:var(--ink);color:#fff;padding:14px 18px;border-radius:12px;font-size:14.5px;z-index:99;transition:transform .35s;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a href="#top" class="logo"><img src="https://d28f3w0x9i80nq.cloudfront.net/restaurantImages/9da16831-cdb1-4aef-91dd-c69fc7dbda79/Logoclearback.png" alt="Horio Taverna"></a>
+  <div class="nav-l"><a href="#menu">Menu</a><a href="#story">Our story</a><a href="#events">Events & catering</a><a href="#visit">Visit</a></div>
+  <div class="nav-r"><a class="btn line" href="https://horiotaverna.com/order/horio-taverna-516-danforth-avenue" style="padding:12px 16px">Order pick-up</a><a class="btn" href="https://www.opentable.ca/r/horio-taverna-reservations-toronto?restref=1530580&lang=en-CA" style="padding:12px 16px">Reserve</a></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap hero-g">
+  <div>
+    <div class="k">516 Danforth · family-run taverna</div>
+    <h1>The village, <em>on the Danforth.</em></h1>
+    <p>Horio means "village". Maria cooks the way she always has: fresh ingredients, patience and time. We pour Greek wine with it.</p>
+    <div class="cta"><a class="btn" href="https://www.opentable.ca/r/horio-taverna-reservations-toronto?restref=1530580&lang=en-CA">Reserve a table</a><a class="btn line" href="#menu">See the menu</a></div>
+    <div class="status ph" id="st"><i></i><span></span></div>
+  </div>
+  <div class="arch">
+    <img src="https://d1w7312wesee68.cloudfront.net/o2H5HZbX3zuDKQ68t_m1ym4MDbbRRCa-PUMAk_XvvrY/ext:webp/quality:85/preset:xl/plain/s3://toast-sites-resources-prod/restaurantImages/9da16831-cdb1-4aef-91dd-c69fc7dbda79/20231021_122326.jpg" alt="Horio Taverna">
+    <div class="tag"><b>Lunch for Two</b>Four chicken sticks, lemon potatoes, Greek salad, tzatziki & pita · $35</div>
+  </div>
+</div></header>
+
+<section id="menu" style="padding-top:0"><div class="wrap">
+  <div class="k">Menu</div>
+  <h2>Everything Maria makes, <em>on one page.</em></h2>
+  <p class="lead">With photos and prices, readable on a phone and findable on Google. Tap "Order" and it goes straight to Horio's Toast ordering.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="mg" id="mg"></div>
+  <div class="mfoot">Prices from Horio's online ordering · Pick-up at 516 Danforth <a class="btn olive" href="https://horiotaverna.com/order/horio-taverna-516-danforth-avenue" style="padding:11px 16px">Start an order</a></div>
+</div></section>
+
+<section class="story" id="story"><div class="wrap st-g">
+  <img loading="lazy" src="https://d1w7312wesee68.cloudfront.net/ybXSu6ei8bISBF3JjOkZ14yzqNJTEhT-GMRbQ8vG2Gc/ext:webp/quality:85/preset:xl/plain/s3://toast-sites-resources-prod/restaurantImages/9da16831-cdb1-4aef-91dd-c69fc7dbda79/GreekDinnerParty3.png" alt="A Greek table at Horio">
+  <div>
+    <div class="k">Our village story</div>
+    <h2>It started at my parents' taverna.</h2>
+    <p>I first stepped into hospitality as a child, helping at my parents' taverna in our village in Greece. I've spent my life in restaurants since. Horio is that village taverna, here on the Danforth.</p>
+    <p>The food begins with my mom. Every recipe carries a lifetime in the kitchen, and we don't believe in shortcuts. With it: cocktails built on Greek herbs and spirits, and Greek wines chosen to sit next to the food.</p>
+    <blockquote>"Greek food is not about perfection. Greek food is a celebration of life."</blockquote>
+  </div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <div class="k">Events & catering</div>
+  <h2>Showers, birthdays, <em>office lunches.</em></h2>
+  <p class="lead">Custom menus, off-menu dishes, clear pricing. Tell us about it here and we'll come back with a menu.</p>
+  <div class="ev">
+    <ul>
+      <li><b>1</b><span>Pick the occasion and how many guests.</span></li>
+      <li><b>2</b><span>We suggest a menu right away. Change anything, add Maria's off-menu dishes.</span></li>
+      <li><b>3</b><span>You get a written quote by email within a day.</span></li>
+    </ul>
+    <div class="card">
+      <div class="lbl">Occasion</div>
+      <div class="chips" id="occ"><button class="on">Birthday</button><button>Baby / bridal shower</button><button>Corporate</button><button>Name day</button><button>Other</button></div>
+      <div class="lbl">Guests</div>
+      <div class="gu"><b id="gN">25</b><input type="range" min="8" max="150" value="25" id="gR"></div>
+      <div class="sug" id="sug"></div>
+      <div class="lbl">Where & when</div>
+      <div class="fields"><select><option>At your home</option><option>At your office</option><option>At an event venue</option></select><input type="date" id="ed"><input placeholder="Name"><input type="email" placeholder="Email"></div>
+      <button class="btn" style="width:100%;margin-top:14px" id="evgo">Request a quote</button>
+    </div>
+  </div>
+</div></section>
+
+<section class="strip" id="visit"><div class="wrap three">
+  <div class="card"><h3>Visit</h3><p>516 Danforth Avenue<br>Toronto M4K 1P6</p><p><a href="tel:+14164619000" style="color:var(--blue);font-weight:700">416-461-9000</a></p><a class="btn line" href="https://google.com/maps/place?q=Horio+Taverna%2C+516+Danforth+Avenue%2C+Toronto+M4K+1P6">Directions</a></div>
+  <div class="card"><h3>Hours</h3><ul class="hrs ph" id="hrs"></ul></div>
+  <div class="card"><h3>Gift cards & news</h3><p>Send someone a taverna dinner, or join Friends of Horio for events and seasonal dishes.</p><button class="btn olive" id="gift">Buy an eGift card</button><form id="nl" style="display:flex;gap:8px;margin-top:10px"><input type="email" required placeholder="Email" style="flex:1;min-width:0;padding:12px 14px;border-radius:999px;border:0;box-shadow:inset 0 0 0 1px var(--line)"><button class="btn" style="padding:12px 16px">Join</button></form></div>
+</div></section>
+
+<footer><div class="wrap"><span><b>Horio Taverna</b> · 516 Danforth Ave, Toronto · 416-461-9000</span><span>redesign demo by <a href="https://opensite.gr" style="color:var(--blue)">OpenSite</a></span></div></footer>
+
+<button class="notes-t" id="notesT">Notes</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+if(location.search.includes('clean')){document.documentElement.classList.remove('notes');$('#notesT').remove()}
+$('#notesT')?.addEventListener('click',()=>document.documentElement.classList.toggle('notes'));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3400)};
+const T='https://d1w7312wesee68.cloudfront.net/';
+const IM={pita:'A4uPlAdjwKDYFgh5MfaZuyqC_0h5oAOZRsdPDyvDTFs/resize:fit:360:360/plain/s3://toasttab/menu_service/restaurants/343009a9-0634-4ccc-b9ab-005de9f837b8/MenuItem/a6629e69-3ef9-46e3-9b5b-4a81ff4db5d8.png',
+ lunch:'WKqMP88aheBFu5W1V6oiuZmQfrOFFuI7X9FWL6Ef9f8/resize:fit:360:360/plain/s3://toasttab/menu_service/restaurants/343009a9-0634-4ccc-b9ab-005de9f837b8/MenuItem/abb94fdc-c25b-4ad7-a861-dd4f35fd5da3.jpg',
+ tz:'7RWi-uo08jW5_zO4MSE2naehbhvubRcJq6dNGGgrZQ8/resize:fit:360:360/plain/s3://toasttab/menu_service/restaurants/343009a9-0634-4ccc-b9ab-005de9f837b8/MenuItem/d87e5e15-6fa2-4c25-b7b7-6fbd657f3ff6.jpg',
+ tk:'NMzdmcSQwM0RujAmPSKGsBLKGu5bF3jWD1SgC0fmqgw/resize:fit:360:360/plain/s3://toasttab/menu_service/restaurants/343009a9-0634-4ccc-b9ab-005de9f837b8/MenuItem/799d1d4a-bcdf-45fe-8173-b1fd4b588471.jpg'};
+
+/* status + hours (placeholder hours; Toast showed "Opens Friday at 11AM") */
+const H=[['Sunday','11 am – 10 pm'],['Monday','Closed'],['Tuesday','Closed'],['Wednesday','Closed'],['Thursday','Closed'],['Friday','11 am – 10 pm'],['Saturday','11 am – 10 pm']];
+const td=new Date().getDay();
+$('#hrs').innerHTML=[1,2,3,4,5,6,0].map(i=>`<li class="${i===td?'today':''}"><span>${H[i][0]}</span><span>${H[i][1]}</span></li>`).join('');
+if(H[td][1]==='Closed'){$('#st').classList.add('closed');$('#st span').textContent='Closed today · opens Friday at 11 am'}else $('#st span').textContent='Open today '+H[td][1];
+
+/* menu from Toast ordering page */
+const M={
+ 'Dips':[['Tzatziki','Thick Greek yogurt, garlic, cucumber, dill, olive oil. With pita.',12,'tz'],['Tirokafteri','Whipped feta with roasted red peppers & chili. With pita.',12,'tk'],['Melitzanosalata','Charred eggplant, garlic, roasted red peppers, parsley.',12],['Taramosalata','Cured roe, lemon, olive oil. With pita.',12],['3 Dip Platter','Choice of 3 dips with 2 pieces of pita.',22]],
+ 'Appetizers':[['Saganaki','Pan-fried kefalotyri cheese.',19],['Grilled Octopus','Over roasted red peppers.',29],['Grilled Calamari','Two char-grilled calamari over roasted red peppers.',28],['Dolmades','Grape leaves, rice, beef & herbs, avgolemono sauce. 4 pcs.',16],['Gigantes','Slow-baked giant beans in tomato sauce.',12],['Spanakotiropita','2 pieces of spinach & feta pie in crispy phyllo.',12]],
+ 'Salads':[['Village Salad','Tomatoes, cucumber, peppers, onions, olives, feta, oregano.',24],['Greek Salad','Lettuce, tomatoes, cucumber, peppers, feta, house dressing.',18]],
+ "Maria's specialties":[['Mousaka','Potato, eggplant, ground beef & béchamel. With side Greek salad.',29],['Pastitsio','Pasta, ground beef & béchamel. With side Greek salad.','—']],
+ 'Online specials':[['Chicken on a Pita','Chicken stick on a pita with tzatziki, tomato, onions, fries.',13.5,'pita'],['Lunch for Two','Four chicken sticks, lemon potatoes, Greek salad, tzatziki & pita.',35,'lunch']]};
+const keys=Object.keys(M);
+$('#tabs').innerHTML=keys.map((k,i)=>`<button class="${i?'':'on'}">${k}</button>`).join('');
+const draw=k=>$('#mg').innerHTML=M[k].map(d=>`<div class="it"><div><b>${d[0]}</b><small>${d[1]}</small><em class="${d[2]==='—'?'ph':''}">${typeof d[2]==='number'?'$'+d[2].toFixed(2):'$ —'}</em></div>${d[3]?`<img loading="lazy" src="${T+IM[d[3]]}" alt="${d[0]}">`:`<span class="ni">${d[0][0]}</span>`}</div>`).join('');
+$$('#tabs button').forEach((b,i)=>b.onclick=()=>{$$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));draw(keys[i])});
+draw(keys[0]);
+
+/* events */
+const sug=g=>g<=20?'Family-style table: 3 dips, village salad, Maria\'s mousaka and pastitsio, lemon potatoes, baklava.':g<=60?'Buffet: dips & pita, salads, chicken and pork souvlaki, mousaka, lemon potatoes, gigantes, dessert.':'Full catering: two stations (grill + Maria\'s oven dishes), salads, dips, dessert table. Staff available.';
+const upd=()=>{const g=+$('#gR').value;$('#gN').textContent=g;$('#sug').innerHTML='<b>Suggested:</b> '+sug(g)};
+$('#gR').oninput=upd;upd();
+$$('#occ button').forEach(b=>b.onclick=()=>$$('#occ button').forEach(x=>x.classList.toggle('on',x===b)));
+{const d=new Date();d.setDate(d.getDate()+21);$('#ed').value=d.toISOString().slice(0,10)}
+$('#evgo').onclick=()=>toast('Quote request sent: '+$('#occ .on').textContent+', '+$('#gR').value+' guests. Reply within a day.');
+$('#gift').onclick=()=>toast('Opens Horio\'s Toast eGift card page.');
+$('#nl').onsubmit=e=>{e.preventDefault();e.target.reset();toast('Welcome to Friends of Horio!')};
+</script>
+</body>
+</html>

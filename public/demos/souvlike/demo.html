@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d47a1">
+<title>SouvLike · Gyros & souvlaki on Pape and Roncesvalles · Toronto</title>
+<meta name="description" content="SouvLike, 708 Pape Ave and 217 Roncesvalles Ave, Toronto. Gyros, souvlaki and kontosouvli, open late on Pape. Order pick-up direct, or book catering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite redesign demo for SouvLike (souvlike.ca).
+  Locations, hours, phones, menu items, prices and photos come from souvlike.ca (Nov 2026).
+  Direct ordering and the catering builder are working mock-ups: nothing is sent.
+  Everything marked .ph is placeholder (toggle "Notes", hide with ?clean).
+-->
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#0b1630;--muted:#5b6578;--blue:#0d47a1;--sun:#ffc531;--line:rgba(11,22,48,.1);
+  --f:"Inter",system-ui,sans-serif;--d:"Bricolage Grotesque",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.k{font:700 12px/1 var(--f);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+h1,h2,h3{font-family:var(--d);font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(38px,5.4vw,68px);line-height:1;margin-top:12px}
+.lead{color:var(--muted);max-width:600px;margin-top:14px;font-size:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 14.5px/1 var(--f);padding:15px 22px;border-radius:14px;background:var(--blue);color:#fff;white-space:nowrap;transition:transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.sun{background:var(--sun);color:var(--ink)}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+section{padding:clamp(60px,8vw,104px) 0}
+.ph{outline:1.5px dashed #c2410c;outline-offset:2px}
+html:not(.notes) .ph{outline:none}
+.notes-t{position:fixed;left:12px;bottom:12px;z-index:90;font:600 12px/1 var(--f);padding:10px 12px;border-radius:999px;background:#c2410c;color:#fff}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(246,248,251,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px}
+.logo img{height:46px;width:auto}
+.sw{display:flex;background:#e4e9f2;border-radius:12px;padding:4px}
+.sw button{padding:10px 14px;border-radius:9px;font:700 13.5px/1 var(--f);color:var(--muted)}
+.sw button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.cartb{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;background:var(--ink);color:#fff;font:700 13.5px/1 var(--f)}
+.cartb i{font-style:normal;background:var(--sun);color:var(--ink);border-radius:999px;padding:3px 7px;font-size:11px}
+@media(max-width:600px){.logo img{height:36px}.sw button{padding:9px 10px;font-size:12.5px}.cartb span{display:none}}
+
+.hero{padding:clamp(28px,4vw,56px) 0}
+.hero-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(54px,8vw,116px);line-height:.9}
+.hero h1 span{color:var(--blue)}
+.hero p{font-size:19px;color:var(--muted);margin-top:18px;max-width:470px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.now{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.now div{background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 1px 0 var(--line);font-size:13.5px;color:var(--muted)}
+.now b{display:block;font:800 22px/1.1 var(--d);color:var(--ink)}
+.now .open b{color:#15803d}
+.hero-img{position:relative}
+.hero-img img{width:100%;height:min(560px,68vh);object-fit:cover;border-radius:28px}
+.stars{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:14px;padding:12px 14px;font-size:13.5px;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+.stars b{font:800 24px/1 var(--d)}
+.late{position:absolute;right:16px;top:16px;background:var(--sun);border-radius:999px;padding:10px 14px;font:800 14px/1 var(--d)}
+@media(max-width:860px){.hero-g{grid-template-columns:1fr}}
+
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:26px}
+.cats button{padding:10px 16px;border-radius:999px;font:700 14px/1 var(--f);box-shadow:inset 0 0 0 1.5px var(--line);background:#fff}
+.cats button.on{background:var(--ink);color:#fff;box-shadow:none}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.p{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 1px 0 var(--line);display:flex;flex-direction:column}
+.p img{height:180px;width:100%;object-fit:cover}
+.p .b{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.p h4{font:800 20px/1.1 var(--d)}
+.p .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
+.p .row b{font-size:17px}
+.p .add{width:38px;height:38px;border-radius:12px;background:var(--blue);color:#fff;font-size:20px}
+.note{margin-top:14px;font-size:14px;color:var(--muted)}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+
+.fees{background:var(--ink);color:#fff}
+.fees .k{color:var(--sun)}
+.fees .lead{color:#b4bfd4}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.calc>div{background:#16244a;border-radius:20px;padding:24px}
+.calc input{width:100%;accent-color:var(--sun);margin:14px 0}
+.calc b{font:800 48px/1 var(--d)}
+.calc small{color:#b4bfd4}
+.calc .save b{color:var(--sun)}
+@media(max-width:760px){.calc{grid-template-columns:1fr}}
+
+.cat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);margin-top:36px;align-items:start}
+.cat img{width:100%;height:460px;object-fit:cover;border-radius:22px}
+.cform{background:var(--card);border-radius:22px;padding:24px;box-shadow:0 1px 0 var(--line)}
+.lbl{font:700 12px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 10px}
+.lbl:first-child{margin-top:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{padding:11px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line);font-size:14.5px;background:#fff}
+.chips button.on{background:var(--blue);color:#fff;box-shadow:none}
+.gu{display:flex;align-items:center;gap:14px}
+.gu b{font:800 42px/1 var(--d);min-width:60px}
+.gu input{flex:1;accent-color:var(--blue)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fields input,.fields select{padding:12px 14px;border-radius:12px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;min-width:0}
+.sum{margin-top:16px;padding:16px;border-radius:14px;background:#eef3fb;display:grid;gap:4px;font-size:14.5px}
+.sum div{display:flex;justify-content:space-between}
+.sum .t{font-weight:800;font-size:18px;padding-top:6px;border-top:1px solid var(--line);margin-top:4px}
+@media(max-width:860px){.cat{grid-template-columns:1fr}.cat img{height:280px}}
+@media(max-width:480px){.fields{grid-template-columns:1fr}}
+
+.locs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.loc{background:var(--card);border-radius:20px;padding:24px;box-shadow:0 1px 0 var(--line)}
+.loc.on{box-shadow:inset 0 0 0 2px var(--blue)}
+.loc h3{font-size:30px}
+.loc li{list-style:none;display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.loc li.today{color:var(--blue);font-weight:700}
+.loc .acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+@media(max-width:760px){.locs{grid-template-columns:1fr}}
+footer{padding:36px 0 70px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);background:var(--ink);color:#fff;padding:14px 18px;border-radius:12px;font-size:14px;z-index:99;transition:transform .35s;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a href="#top" class="logo"><img src="https://souvlike.ca/wp-content/uploads/2026/11/souvlike_logo_web3.1.png" alt="SouvLike"></a>
+  <div class="sw" id="sw"><button class="on" data-l="pape">Pape</button><button data-l="ron">Roncesvalles</button></div>
+  <a href="#order" class="cartb"><span>Order</span><i id="cc">0</i></a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap hero-g">
+  <div>
+    <div class="k" id="hk">708 Pape · across from Pape Station</div>
+    <h1>Gyros.<br>Souvlaki.<br><span id="hl">Till 4 am.</span></h1>
+    <p>Traditional gyros, souvlaki and kontosouvli off the rotisserie. Order pick-up straight from us. No app, no markup.</p>
+    <div class="cta"><a href="#order" class="btn">Order pick-up</a><a href="#catering" class="btn line">Catering</a></div>
+    <div class="now"><div class="open"><b id="nowT">Hours today</b><span id="nowH"></span></div><div><b id="nowP"></b>tap to call</div></div>
+  </div>
+  <div class="hero-img">
+    <img src="https://souvlike.ca/wp-content/uploads/2026/11/souvlike_menuitem1.jpg" alt="Traditional gyro wrap">
+    <div class="late" id="late">Open late on Pape</div>
+    <div class="stars"><b>4.5 ★</b> · 1,915 Google reviews</div>
+  </div>
+</div></header>
+
+<section id="order" style="padding-top:20px"><div class="wrap">
+  <div class="k">Order pick-up · <span id="ol">Pape</span></div>
+  <h2>Pick it. Pay. Grab it.</h2>
+  <p class="lead">The menu and prices switch with the location, so nobody sees the wrong one.</p>
+  <div class="cats" id="cats"></div>
+  <div class="grid" id="grid"></div>
+  <p class="note" id="taxn"></p>
+</div></section>
+
+<section class="fees"><div class="wrap">
+  <div class="k">Why order direct</div>
+  <h2 style="color:#fff">Keep what the apps take.</h2>
+  <p class="lead">Delivery apps commonly charge restaurants around 15–30% per order. Pick-up orders through your own site pay only card processing.</p>
+  <div class="calc">
+    <div><small>Pick-up orders moved off the apps, per week</small><b id="on">120</b><input type="range" min="20" max="600" step="10" value="120" id="or"><small>Average order $<span id="ao">28</span></small></div>
+    <div class="save"><small>Kept by SouvLike, per year</small><b id="sv">$0</b><small class="ph">Rough estimate: 25% commission vs about 3% card fees. Your real rates will differ.</small></div>
+  </div>
+</div></section>
+
+<section id="catering"><div class="wrap">
+  <div class="k">Catering · from Roncesvalles</div>
+  <h2>Souvlaki party for the office.</h2>
+  <p class="lead">Choose a package and the headcount, and you see the full price, delivery included, before you send it. Deposit by card, right here.</p>
+  <div class="cat">
+    <img loading="lazy" src="https://souvlike.ca/wp-content/uploads/2026/11/souvlike_catering_souvlakiparty-1.jpg" alt="Souvlaki party catering">
+    <div class="cform">
+      <div class="lbl">Package</div>
+      <div class="chips" id="pk"></div>
+      <div class="lbl">Guests</div>
+      <div class="gu"><b id="gN">25</b><input type="range" min="10" max="150" value="25" id="gR"></div>
+      <div class="lbl">Delivery</div>
+      <div class="fields"><input type="date" id="cd"><select id="slot"><option>11:00 – 12:00</option><option selected>12:00 – 1:00</option><option>1:00 – 2:00</option><option>4:00 – 5:00</option><option>5:00 – 6:00</option></select><input placeholder="Allergies / dietary notes" style="grid-column:span 2"></div>
+      <div class="sum"><div><span>Food</span><span id="sf"></span></div><div><span>Delivery</span><span id="sd"></span></div><div><span>HST 13%</span><span id="st"></span></div><div class="t"><span>Total</span><span id="stt"></span></div><div><span>Deposit today (35%)</span><span id="sdp"></span></div></div>
+      <button class="btn" style="width:100%;margin-top:14px" id="cgo">Pay deposit & book</button>
+      <p class="ph" style="font-size:12.5px;color:var(--muted);margin-top:8px">Package prices and the delivery fee below $400 are placeholders.</p>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="k">Locations</div>
+  <h2>Two spots. Right hours.</h2>
+  <div class="locs" id="locs"></div>
+</div></section>
+
+<footer><div class="wrap"><span><b>SouvLike</b> · <a href="mailto:info@souvlike.ca">info@souvlike.ca</a> · <a href="https://www.instagram.com/souvlikepape/">@souvlikepape</a> · <a href="https://www.instagram.com/souvliker">@souvliker</a></span><span>redesign demo by <a href="https://opensite.gr" style="color:var(--blue)">OpenSite</a></span></div></footer>
+
+<button class="notes-t" id="notesT">Notes</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+if(location.search.includes('clean')){document.documentElement.classList.remove('notes');$('#notesT').remove()}
+$('#notesT')?.addEventListener('click',()=>document.documentElement.classList.toggle('notes'));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3400)};
+const money=n=>'$'+n.toFixed(2);
+const U='https://souvlike.ca/wp-content/uploads/';
+
+/* locations from souvlike.ca (Wed fixed to 10 am) */
+const L={
+ pape:{name:'Pape',addr:'708 Pape Ave, Toronto M4K 3S7',phone:'647-349-9420',tel:'+16473499420',k:'708 Pape · across from Pape Station',hl:'Till 4 am.',
+  hrs:[['Sunday','11 am – 1 am'],['Monday','11 am – midnight'],['Tuesday','11 am – 1 am'],['Wednesday','11 am – 1 am'],['Thursday','11 am – 1 am'],['Friday','11 am – 4 am'],['Saturday','11 am – 4 am']],tax:'Prices before HST.'},
+ ron:{name:'Roncesvalles',addr:'217 Roncesvalles Ave, Toronto M6R 2L6',phone:'416-530-1112',tel:'+14165301112',k:'217 Roncesvalles · catering kitchen',hl:'Catering too.',
+  hrs:[['Sunday','10 am – 10 pm'],['Monday','10 am – 10 pm'],['Tuesday','10 am – 10 pm'],['Wednesday','10 am – 10 pm'],['Thursday','10 am – 10 pm'],['Friday','10 am – 10 pm'],['Saturday','10 am – 10 pm']],tax:'Prices before HST.'}};
+/* menu: [name, cat, pape price, ronces price, img] */
+const M=[
+ ['Gyro Wrap','Wraps',10.69,null,'2026/11/souvlike_gallery1.jpg'],['Kontosouvli Wrap','Wraps',11.68,null,'2026/11/souvlike_menuitem1.jpg'],
+ ['Gyro Dinner','Dinners',22.88,null,'2026/11/souvlike_dinnermenu1.jpg'],['Fried Calamari Dinner','Dinners',null,26.74,'2026/11/souvlike_homegallery1.jpg'],
+ ['Gyro Box (small)','Boxes',16.8,null,'2026/11/souvlike_homegallery3.jpg'],['Gyro Box (large)','Boxes',28.76,null,'2026/11/souvlike_homegallery3.jpg'],
+ ['Gyro Poutine','Sides',12.38,null,'2026/11/SOUVLIKE_POUTINE.jpg'],['Plain Fries','Sides',6.55,null,'2026/11/SOUVLIKE_POUTINE.jpg'],
+ ['Pork Souvlaki (1 pc)','Wraps',5.3,null,'2026/11/souvlike_souvlaki_homemenu.jpg'],
+ ['Greek Salad','Salads',9.45,9.31,'2026/11/souvlike_greeksalad.jpg'],['Village Salad','Salads',13.9,15.94,'2026/11/souvlike_greeksalad.jpg'],['Greek Salad + Gyro','Salads',14.25,16.54,'2026/11/souvlike_greeksalad.jpg']];
+let loc='pape',cat='All';const cart=[];
+const price=m=>loc==='pape'?(m[2]??m[3]):(m[3]??m[2]);
+const avail=m=>loc==='pape'?m[2]!=null:true;
+const drawGrid=()=>{const cats=['All',...new Set(M.filter(avail).map(m=>m[1]))];if(!cats.includes(cat))cat='All';
+ $('#cats').innerHTML=cats.map(c=>`<button class="${c===cat?'on':''}">${c}</button>`).join('');$$('#cats button').forEach(b=>b.onclick=()=>{cat=b.textContent;drawGrid()});
+ $('#grid').innerHTML=M.map((m,i)=>[m,i]).filter(([m])=>avail(m)&&(cat==='All'||m[1]===cat)).map(([m,i])=>`<div class="p"><img loading="lazy" src="${U+m[4]}" alt="${m[0]}"><div class="b"><h4>${m[0]}</h4><div class="row"><b>${money(price(m))}</b><button class="add" data-i="${i}" aria-label="Add">+</button></div></div></div>`).join('');
+ $$('.add').forEach(b=>b.onclick=()=>{cart.push(M[b.dataset.i]);$('#cc').textContent=cart.length;toast(M[b.dataset.i][0]+' added · pick-up at '+L[loc].name)})};
+const td=new Date().getDay();
+const setLoc=l=>{loc=l;const d=L[l];$$('#sw button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+ $('#hk').textContent=d.k;$('#hl').textContent=d.hl;$('#ol').textContent=d.name;$('#nowH').textContent=d.hrs[td][1];$('#nowP').textContent=d.phone;$('#nowP').parentElement.onclick=()=>location.href='tel:'+d.tel;
+ $('#late').style.display=l==='pape'?'':'none';$('#taxn').textContent=d.tax+' One set of prices per location, from one place.';
+ drawGrid();drawLocs()};
+const drawLocs=()=>$('#locs').innerHTML=Object.entries(L).map(([k,d])=>`<div class="loc ${k===loc?'on':''}"><h3>${d.name}</h3><p style="color:var(--muted);margin:4px 0 12px">${d.addr}</p><ul>${[1,2,3,4,5,6,0].map(i=>`<li class="${i===td?'today':''}"><span>${d.hrs[i][0]}</span><span>${d.hrs[i][1]}</span></li>`).join('')}</ul><div class="acts"><a class="btn" href="tel:${d.tel}">${d.phone}</a><a class="btn line" href="https://maps.google.com/?q=${encodeURIComponent(d.addr)}">Directions</a></div></div>`).join('');
+$$('#sw button').forEach(b=>b.onclick=()=>setLoc(b.dataset.l));
+setLoc('pape');
+
+/* fee calculator */
+const calc=()=>{const n=+$('#or').value,a=28;$('#on').textContent=n;$('#sv').textContent='$'+Math.round(n*a*.22*52).toLocaleString()};
+$('#or').oninput=calc;calc();
+
+/* catering */
+const P=[['Souvlaki Party',22],['Gyro Party',20],['Mixed Grill',28]];let pi=0;
+$('#pk').innerHTML=P.map((p,i)=>`<button class="${i?'':'on'}">${p[0]}</button>`).join('');
+$$('#pk button').forEach((b,i)=>b.onclick=()=>{pi=i;$$('#pk button').forEach(x=>x.classList.toggle('on',x===b));cs()});
+const cs=()=>{const g=+$('#gR').value;$('#gN').textContent=g;const food=g*P[pi][1],del=food>=400?0:35,tax=(food+del)*.13,tot=food+del+tax;
+ $('#sf').textContent=money(food);$('#sd').textContent=del?money(del):'Free ($400+)';$('#st').textContent=money(tax);$('#stt').textContent=money(tot);$('#sdp').textContent=money(tot*.35)};
+$('#gR').oninput=cs;cs();
+{const d=new Date();d.setDate(d.getDate()+3);$('#cd').value=d.toISOString().slice(0,10)}
+$('#cgo').onclick=()=>toast('Deposit paid by card. Catering booked for '+$('#cd').value+', '+$('#slot').value+'.');
+</script>
+</body>
+</html>
