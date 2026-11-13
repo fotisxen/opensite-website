@@ -26,6 +26,13 @@
   --pad:clamp(20px,5vw,72px);--ease:cubic-bezier(.2,.7,.1,1);
 }
 html[data-season="summer"]{--accent:#d9a441;--accent2:#f0cd7a;--coal2:#16130e}
+/* dark walnut planks, like the wood inside the restaurant: noise stretched into grain, plus the seams between planks */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0035 0.11' numOctaves='4' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.05 0 0 0 0 0.03 0 0 0 1.5 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23382317'/%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --wood-dark:repeating-linear-gradient(180deg,transparent 0 98px,rgba(0,0,0,.55) 98px 100px,rgba(255,220,180,.05) 100px 101px),var(--grain);
+}
+.woodbg{background:linear-gradient(rgba(12,10,8,.35),rgba(12,10,8,.55)),var(--wood-dark);background-size:auto,auto,900px 300px}
+.woodtrim{height:14px;background:linear-gradient(rgba(255,210,160,.08),rgba(0,0,0,.4)),var(--grain);background-size:auto,900px 300px;box-shadow:inset 0 1px 0 rgba(255,220,180,.12),0 6px 14px -6px #000}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;background:var(--coal)}
 html,body{overflow-x:clip}
@@ -67,7 +74,7 @@ html.seen .overture{display:none}
 
 /* nav */
 .nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px var(--pad);transition:background .5s,padding .5s}
-.nav.solid{background:rgba(12,10,8,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:12px;padding-bottom:12px}
+.nav.solid{background:linear-gradient(rgba(12,10,8,.72),rgba(12,10,8,.72)),var(--grain);background-size:auto,900px 300px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:12px;padding-bottom:12px}
 .brand{display:flex;align-items:center;gap:12px;font:400 20px/1 var(--display);letter-spacing:.12em;white-space:nowrap}
 .brand .mono{width:38px;height:38px;border:1px solid var(--accent);display:grid;place-items:center;font-size:18px;color:var(--accent2);transform:rotate(45deg)}
 .brand .mono span{transform:rotate(-45deg)}
@@ -87,6 +94,11 @@ html.seen .overture{display:none}
 .hero .bg{position:absolute;inset:0;transform:scale(1.1);animation:settle 3.4s var(--ease) .3s forwards}
 html.seen .hero .bg{animation-delay:0s}
 @keyframes settle{to{transform:scale(1)}}
+/* the hero photos change on their own, with a slow drift */
+.hero .bg .sl{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease}
+.hero .bg .sl.on{opacity:1}
+.hero .bg .sl img{transform:scale(1.08);transition:transform 8s linear}
+.hero .bg .sl.on img{transform:scale(1)}
 .hero .warm{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--x,62%) var(--y,52%),rgba(12,10,8,0) 0,rgba(12,10,8,.35) 20vmax,rgba(12,10,8,.92) 60vmax);transition:background .1s}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(transparent,var(--coal));pointer-events:none}
 #embers{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
@@ -101,7 +113,7 @@ html.seen .hero .bg{animation-delay:0s}
 @media(max-width:860px){.season-sw{position:relative;right:auto;top:auto;transform:none;justify-items:start;grid-template-columns:auto auto;margin-bottom:18px;z-index:3}.season-sw small{display:none}}
 
 /* four words */
-.words{padding:clamp(110px,16vw,200px) var(--pad);text-align:center;background:var(--coal)}
+.words{padding:clamp(110px,16vw,200px) var(--pad);text-align:center}
 .words .q{font:300 clamp(34px,6.2vw,92px)/1.15 var(--display);max-width:1200px;margin:28px auto 0}
 .w{position:relative;z-index:0;display:inline-block;cursor:default;transition:color .5s}
 .w::before{content:"";position:absolute;inset:-.06em -.12em;z-index:-1;opacity:0;transform:scale(.92);transition:opacity .5s,transform .6s var(--ease);background:var(--tex);background-size:cover;border-radius:2px}
@@ -227,11 +239,14 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
 @media(max-width:900px){.houses .head,.house-grid{grid-template-columns:1fr}.house{min-height:360px}}
 
 /* reserve */
-.reserve{padding:clamp(90px,12vw,150px) 0;background:linear-gradient(180deg,var(--coal),#1a110b)}
-.reserve .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:clamp(30px,5vw,80px);align-items:start}
+.reserve{padding:clamp(90px,12vw,150px) 0}
+.reserve .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);grid-template-areas:"text text" "picker form";column-gap:clamp(30px,4vw,60px);row-gap:10px;align-items:start}
+.reserve .wrap>div:first-child{grid-area:text;max-width:760px}
+.reserve .picker{grid-area:picker;margin-top:0}
+.reserve .form{grid-area:form}
 .reserve h2{font-size:clamp(44px,6.4vw,96px);margin:16px 0 22px}
 .reserve p.lead{color:var(--bone2)}
-.form{background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,3vw,34px)}
+.form{background:rgba(12,10,8,.72);backdrop-filter:blur(4px);box-shadow:inset 0 0 0 1px var(--line);padding:clamp(22px,3vw,34px)}
 .form label{display:block;font:500 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px}
 .form label:first-child{margin-top:0}
 .form input{width:100%;font:300 17px/1.2 var(--sans);color:var(--bone);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0;color-scheme:dark}
@@ -254,7 +269,36 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
 .done.on{display:block;animation:fade .6s ease}
 .done b{display:block;font:300 40px/1.1 var(--display);margin:14px 0}
 .done p{color:var(--bone2)}
-@media(max-width:900px){.reserve .wrap{grid-template-columns:1fr}}
+@media(max-width:1000px){.reserve .wrap{grid-template-columns:1fr;grid-template-areas:"text" "picker" "form";row-gap:30px}}
+.reserve .form{position:sticky;top:90px}
+@media(max-width:1000px){.reserve .form{position:static}}
+
+/* meat pre-order: pick cuts and quantities, they land on the board and on the scale */
+.picker{margin-top:38px}
+.pk-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pk-head small{font:500 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pk-stage{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;margin-top:16px;align-items:stretch}
+.pk-board{position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(rgba(255,220,180,.06),rgba(0,0,0,.25)),repeating-linear-gradient(90deg,#4d321e 0 6px,#5a3c25 6px 13px,#45301c 13px 16px,#62422a 16px 24px);box-shadow:inset 0 0 50px rgba(0,0,0,.65),0 24px 40px -24px #000}
+.pk-board canvas{display:block;width:100%;height:auto}
+.pk-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;font:400 clamp(18px,2vw,24px)/1.2 var(--display);font-style:italic;color:rgba(239,230,216,.55);transition:opacity .4s;pointer-events:none}
+.pk-empty.off{opacity:0}
+.pk-scale{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 10px;background:rgba(12,10,8,.6);box-shadow:inset 0 0 0 1px var(--line);border-radius:10px;text-align:center}
+.pk-scale svg{width:100%;height:auto}
+.pk-scale b{font:300 30px/1 var(--display);color:var(--accent2)}
+.pk-scale small{font:500 10px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(116px,1fr));gap:8px;margin-top:14px}
+.pk{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 8px 10px;background:rgba(12,10,8,.62);box-shadow:inset 0 0 0 1px var(--line);border-radius:8px;transition:box-shadow .3s,background .3s,transform .2s}
+.pk.on{box-shadow:inset 0 0 0 1px var(--accent);background:rgba(224,102,42,.1)}
+.pk canvas{width:100%;height:auto;aspect-ratio:220/140;filter:drop-shadow(0 6px 6px rgba(0,0,0,.5))}
+.pk b{font:400 15px/1.15 var(--display);margin-top:6px;min-height:2.3em;display:flex;align-items:center}
+.pk small{font:500 10px/1.3 var(--sans);letter-spacing:.06em;color:var(--muted)}
+.pk-q{display:flex;align-items:center;gap:8px;margin-top:8px}
+.pk-q button{width:30px;height:30px;box-shadow:inset 0 0 0 1px var(--line);font-size:16px;line-height:1;border-radius:50%;transition:background .2s}
+.pk-q button:hover{background:rgba(255,255,255,.06)}
+.pk-q output{font:300 22px/1 var(--display);min-width:20px}
+.pk.on .pk-q output{color:var(--accent2)}
+.pk.bump{transform:scale(1.04)}
+@media(max-width:560px){.pk-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.pk{padding:8px 4px}.pk b{font-size:13px}.pk small{font-size:9px}.pk-q{gap:4px}.pk-q button{width:26px;height:26px}.pk-q output{font-size:18px}.pk-stage{grid-template-columns:1fr}.pk-scale{flex-direction:row;justify-content:space-between}.pk-scale svg{width:120px}}
 
 footer{padding:50px var(--pad) 36px;border-top:1px solid var(--line);font-size:.88em;color:var(--muted)}
 footer .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
@@ -298,7 +342,11 @@ footer a{text-decoration:underline}
 </header>
 
 <section class="hero" id="top">
-  <div class="bg"><img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=1600&q=70" srcset="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=750&h=1300&q=70 750w, https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=2400&q=70 2400w" sizes="100vw" alt="Μπριζόλα σε μαντεμένιο σκεύος"></div>
+  <div class="bg" id="slides">
+    <div class="sl on"><img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=1600&q=70" srcset="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=750&h=1300&q=70 750w, https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=1600&q=70 1600w, https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=2400&q=70 2400w" sizes="100vw" alt="Μπριζόλα σε μαντεμένιο σκεύος"></div>
+    <div class="sl"><img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=70" srcset="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=750&h=1300&q=70 750w, https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=70 1600w" sizes="100vw" alt="Κοπές κρέατος στη φωτιά"></div>
+    <div class="sl"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=70" srcset="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=750&h=1300&q=70 750w, https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=70 1600w" sizes="100vw" alt="Τραπέζι στο εστιατόριο"></div>
+  </div>
   <div class="warm" id="warm"></div>
   <canvas id="embers"></canvas>
   <div class="season-sw" id="seasonSw">
@@ -314,7 +362,8 @@ footer a{text-decoration:underline}
   </div>
 </section>
 
-<section class="words" id="words">
+<div class="woodtrim" aria-hidden="true"></div>
+<section class="words woodbg" id="words">
   <span class="label">Η φιλοσοφία μας</span>
   <p class="q"><span class="w wood">Ξύλο</span> και <span class="w stone">πέτρα</span> στηρίζουν τον χώρο.<br><span class="w meat">Κρέας</span> και <span class="w wine">κρασί</span> στηρίζουν τη στιγμή.</p>
   <p class="hint">Πέρασε πάνω από τις λέξεις</p>
@@ -404,13 +453,22 @@ footer a{text-decoration:underline}
   </div>
 </section>
 
-<section class="reserve" id="kratisi">
+<div class="woodtrim" aria-hidden="true"></div>
+<section class="reserve woodbg" id="kratisi">
   <div class="wrap">
     <div>
       <span class="label">Κράτηση</span>
       <h2 class="display lines"><span class="ln"><span>Το τραπέζι</span></span><span class="ln"><span><em>σας περιμένει.</em></span></span></h2>
-      <p class="lead">Διαλέξτε ημερομηνία και θα σας πούμε σε ποιο Αρχοντικό θα βρεθούμε. Ό,τι κρατήσατε από τη βιτρίνα θα σας περιμένει έτοιμο.</p>
+      <p class="lead">Διαλέξτε ημερομηνία και θα σας πούμε σε ποιο Αρχοντικό θα βρεθούμε. Αν θέλετε, κρατήστε από τώρα και τις κοπές σας: θα σας περιμένουν έτοιμες.</p>
     </div>
+      <div class="picker">
+        <div class="pk-head"><span class="label">Προπαραγγελία κρέατος</span><small>προαιρετικά · στέλνεται μαζί με την κράτηση</small></div>
+        <div class="pk-stage">
+          <div class="pk-board"><canvas id="boardCv" width="900" height="440"></canvas><span class="pk-empty" id="pkEmpty">Διαλέξτε κοπές και θα έρθουν εδώ, στο ξύλο</span></div>
+          <div class="pk-scale"><svg viewBox="0 0 200 116" id="scaleSvg" aria-hidden="true"></svg><div><b id="pkKg">0 g</b><br><small id="pkFor">Η ζυγαριά σας</small></div></div>
+        </div>
+        <div class="pk-grid ph" id="pkGrid" data-note="Ενδεικτικές κοπές και βάρη: μπαίνει ο δικός σας κατάλογος"></div>
+      </div>
     <form class="form" id="form" onsubmit="return false">
       <div id="formBody">
         <div class="row2">
@@ -432,7 +490,8 @@ footer a{text-decoration:underline}
   </div>
 </section>
 
-<footer>
+<div class="woodtrim" aria-hidden="true"></div>
+<footer class="woodbg">
   <div class="grid">
     <div><b>Archontiko Thessaloniki</b>Καραολή &amp; Δημητρίου 23, Θέρμη<br>Χειμερινή σεζόν · από 23 Οκτωβρίου<br><span class="ph" data-note="Τηλέφωνο, ωράριο">Τηλέφωνο · Ωράριο</span></div>
     <div><b>Archontiko Agia Paraskevi</b>Αγία Παρασκευή, Χαλκιδική<br>Καλοκαιρινή σεζόν · έως 27 Σεπτεμβρίου<br><span class="ph" data-note="Τηλέφωνο, ακριβής διεύθυνση, ημερομηνία που ανοίγει">Τηλέφωνο · Διεύθυνση</span></div>
@@ -520,6 +579,13 @@ setSeason(curH || nextOpen(tn).h);
   ring.addEventListener("pointerup", e => { if (e.pointerType !== "mouse") setTimeout(() => show(tn, true), 1600); });
 })();
 
+/* ---------- hero: photos that change by themselves ---------- */
+(() => {
+  const sl = $$("#slides .sl"); let i = 0;
+  if (sl.length < 2 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  setInterval(() => { if (document.hidden) return; sl[i].classList.remove("on"); i = (i + 1) % sl.length; sl[i].classList.add("on"); }, 5500);
+})();
+
 /* ---------- hero: warm light + embers ---------- */
 const hero = $(".hero");
 hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect(); $("#warm").style.setProperty("--x", (e.clientX - r.left) / r.width * 100 + "%"); $("#warm").style.setProperty("--y", (e.clientY - r.top) / r.height * 100 + "%"); });
@@ -590,7 +656,10 @@ const CUTS = [
   { id: "tbone", name: "T-bone", sub: "Φιλέτο & κόντρα στο ίδιο κόκαλο", bms: 3, tbone: true, w: "800 g", age: "28 ημ.", for: "2", origin: "Ευρώπη", txt: "Δύο κοπές σε μία: τρυφερό φιλέτο από τη μία πλευρά, κόντρα από την άλλη." },
   { id: "tart", name: "Φιλέτο για tartare", sub: "Κομμένο στο χέρι, στο τραπέζι", bms: 2, w: "250 g", age: "φρέσκο", for: "2", origin: "Μοσχάρι", real: true, txt: "Tableside beef tartare: κομμένο στο χέρι, με ακρίβεια, σερβιρισμένο όπως πρέπει." }
 ];
-const pre = new Set();
+// Pre-ordered cuts and how many of each. The fridge and the Tomahawk button add one; the picker sets any number.
+const qty = new Map();
+const pre = { has: id => (qty.get(id) || 0) > 0, add: id => { if (!pre.has(id)) qty.set(id, 1); }, delete: id => qty.delete(id) };
+let partySize = 2;
 let renderPreImpl = () => {};
 const renderPre = () => renderPreImpl();
 (() => {
@@ -751,8 +820,8 @@ function showCut(id) {
   const TIMES = ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30"];
   $("#times").innerHTML = TIMES.map(t => `<button type="button" class="${t === time ? "on" : ""}">${t}</button>`).join("");
   $("#times").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; time = b.textContent; $$("#times button").forEach(x => x.classList.toggle("on", x === b)); });
-  $("#pm").addEventListener("click", () => { people = Math.max(1, people - 1); $("#pp").value = people; });
-  $("#pp2").addEventListener("click", () => { people = Math.min(20, people + 1); $("#pp").value = people; });
+  $("#pm").addEventListener("click", () => { people = partySize = Math.max(1, people - 1); $("#pp").value = people; renderPre(); });
+  $("#pp2").addEventListener("click", () => { people = partySize = Math.min(20, people + 1); $("#pp").value = people; renderPre(); });
   function where() {
     const dt = new Date(d.value + "T12:00"), n = doy(dt), h = houseFor(n), w = $("#where");
     w.classList.toggle("bad", !h); $("#send").disabled = !h;
@@ -760,13 +829,122 @@ function showCut(id) {
     return h;
   }
   d.addEventListener("input", where); where();
-  renderPreImpl = () => { const list = CUTS.filter(c => pre.has(c.id)).map(c => c.name); $("#preorder").innerHTML = list.length ? `🥩 Θα σας περιμένει: <b>${list.join(", ")}</b>` : ""; };
   $("#send").addEventListener("click", () => {
     const h = where(); if (!h) return;
     const nm = $("#rName").value.trim();
     $("#formBody").style.display = "none"; $("#done").classList.add("on");
     $("#doneTxt2").innerHTML = `${nm ? nm + ", τ" : "Τ"}ο τραπέζι για ${people} ${people === 1 ? "άτομο" : "άτομα"}, ${new Date(d.value + "T12:00").toLocaleDateString("el-GR", { weekday: "long", day: "numeric", month: "long" })} στις ${time}.<br>${$("#preorder").textContent ? $("#preorder").innerHTML + "<br>" : ""}<small style="color:var(--muted)">Αυτό είναι demo: η κράτηση δεν στάλθηκε.</small>`;
   });
+})();
+
+/* ---------- meat pre-order: cuts, quantities, the board and the scale ---------- */
+(() => {
+  const MEATS = [
+    { id: "toma", name: "Tomahawk", g: 2000, unit: "τεμ. · ~2 kg", kind: "steak", bms: 4, bone: true },
+    { id: "wtoma", name: "Wagyu Tomahawk", g: 1600, unit: "τεμ. · ~1,6 kg", kind: "steak", bms: 10, bone: true },
+    { id: "wrib", name: "Wagyu ribeye", g: 900, unit: "τεμ. · ~900 g", kind: "steak", bms: 9 },
+    { id: "rib", name: "Ribeye dry aged", g: 450, unit: "τεμ. · ~450 g", kind: "steak", bms: 5 },
+    { id: "tbone", name: "T-bone", g: 800, unit: "τεμ. · ~800 g", kind: "steak", bms: 3, tbone: true },
+    { id: "tart", name: "Φιλέτο tartare", g: 250, unit: "μερίδα · 250 g", kind: "steak", bms: 2 },
+    { id: "pican", name: "Πικάνια", g: 400, unit: "τεμ. · ~400 g", kind: "picanha", bms: 4 },
+    { id: "chops", name: "Αρνίσια παϊδάκια", g: 400, unit: "μερίδα · 400 g", kind: "chops" },
+    { id: "belly", name: "Χοιρινή πανσέτα", g: 350, unit: "μερίδα · 350 g", kind: "belly" },
+    { id: "sausage", name: "Λουκάνικο χωριάτικο", g: 300, unit: "μερίδα · 300 g", kind: "sausage" }
+  ];
+  const MAX = 6, fmtG = g => g >= 1000 ? (g / 1000).toFixed(1).replace(".", ",") + " kg" : g + " g";
+
+  // one drawing per kind of meat, sized by s around (cx, cy)
+  function drawMeat(ctx, m, cx, cy, s, seed) {
+    if (m.kind === "steak") {
+      if (m.bone) drawSteak(ctx, { cx: cx - s * .38, cy, rx: s * .55, ry: s * .42, bms: m.bms, seed, bone: true });
+      else drawSteak(ctx, { cx, cy, rx: s * .7, ry: s * .5, bms: m.bms, seed, tbone: m.tbone });
+    } else if (m.kind === "picanha") {
+      drawSteak(ctx, { cx, cy, rx: s * .66, ry: s * .44, bms: m.bms, seed });
+      ctx.save(); ctx.strokeStyle = "#f3e4d6"; ctx.lineCap = "round"; ctx.lineWidth = s * .16; ctx.beginPath(); ctx.ellipse(cx, cy + s * .02, s * .62, s * .42, 0, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke(); ctx.restore();
+    } else if (m.kind === "chops") {
+      [[-.42, .1, -.5], [0, -.08, -.15], [.42, .1, .2]].forEach(([dx, dy, a], i) => {
+        ctx.save(); ctx.translate(cx + dx * s, cy + dy * s); ctx.rotate(a);
+        ctx.fillStyle = "#efe6d6"; ctx.strokeStyle = "#cfc4b0"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.roundRect(-s * .04, -s * .62, s * .08, s * .5, s * .04); ctx.fill(); ctx.stroke();
+        drawSteak(ctx, { cx: 0, cy: s * .08, rx: s * .22, ry: s * .2, bms: 3, seed: seed + i * 5 });
+        ctx.restore();
+      });
+    } else if (m.kind === "belly") {
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(-.06);
+      const w = s * 1.3, h = s * .66, layers = [["#e2c08e", .12], ["#f2e2d4", .2], ["#c9605f", .22], ["#f2e2d4", .14], ["#b84d4f", .32]];
+      ctx.beginPath(); ctx.roundRect(-w / 2, -h / 2, w, h, s * .08); ctx.clip();
+      let y = -h / 2; layers.forEach(([c, f]) => { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(-w / 2, y); for (let x = -w / 2; x <= w / 2; x += 8) ctx.lineTo(x, y + Math.sin(x * .05 + seed) * 2.5); ctx.lineTo(w / 2, y + h * f + 3); ctx.lineTo(-w / 2, y + h * f + 3); ctx.closePath(); ctx.fill(); y += h * f; });
+      ctx.fillStyle = "rgba(255,255,255,.12)"; ctx.fillRect(-w / 2, -h / 2, w, h * .3);
+      ctx.restore();
+    } else if (m.kind === "sausage") {
+      ctx.save(); ctx.lineCap = "round";
+      const path = () => { ctx.beginPath(); for (let t = 0; t <= 1; t += .01) { const a = t * Math.PI * 3.4, r = s * (.1 + .42 * t); const x = cx + Math.cos(a) * r, y = cy + Math.sin(a) * r * .78; t ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } };
+      path(); ctx.strokeStyle = "#6e2f1b"; ctx.lineWidth = s * .2; ctx.stroke();
+      path(); ctx.strokeStyle = "#9c4a2a"; ctx.lineWidth = s * .15; ctx.stroke();
+      path(); ctx.strokeStyle = "rgba(255,220,190,.22)"; ctx.lineWidth = s * .04; ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // cards
+  $("#pkGrid").innerHTML = MEATS.map(m => `<div class="pk" data-id="${m.id}"><canvas width="220" height="140"></canvas><b>${m.name}</b><small>${m.unit}</small><div class="pk-q"><button type="button" data-d="-1" aria-label="Λιγότερο">−</button><output>0</output><button type="button" data-d="1" aria-label="Περισσότερο">+</button></div></div>`).join("");
+  $$(".pk").forEach((el, i) => drawMeat(el.querySelector("canvas").getContext("2d"), MEATS[i], 110, 74, 92, 21 + i * 17));
+  $("#pkGrid").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const card = b.closest(".pk"), id = card.dataset.id, n = Math.max(0, Math.min(MAX, (qty.get(id) || 0) + +b.dataset.d));
+    n ? qty.set(id, n) : qty.delete(id);
+    card.classList.add("bump"); setTimeout(() => card.classList.remove("bump"), 180);
+    renderPre();
+  });
+
+  // the scale: a dial from 0 to 6 kg
+  (() => {
+    let s = `<path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="rgba(239,230,216,.15)" stroke-width="10" stroke-linecap="round"/>`;
+    for (let k = 0; k <= 6; k++) { const a = Math.PI * (1 - k / 6), x0 = 100 + Math.cos(a) * 66, y0 = 100 - Math.sin(a) * 66, x1 = 100 + Math.cos(a) * 58, y1 = 100 - Math.sin(a) * 58, xt = 100 + Math.cos(a) * 46, yt = 100 - Math.sin(a) * 46; s += `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="#8d8273" stroke-width="2"/><text x="${xt}" y="${yt + 4}" fill="#8d8273" font-size="11" font-family="JetBrains Mono" text-anchor="middle">${k}</text>`; }
+    s += `<path id="scaleArc" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#e0662a" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100" style="transition:stroke-dasharray .9s cubic-bezier(.3,1.4,.5,1)"/>`;
+    s += `<g id="scaleNeedle" style="transform-origin:100px 100px;transform:rotate(-90deg);transition:transform .9s cubic-bezier(.3,1.6,.5,1)"><line x1="100" y1="100" x2="100" y2="34" stroke="#efe6d6" stroke-width="2.5" stroke-linecap="round"/><circle cx="100" cy="100" r="6" fill="#efe6d6"/></g>`;
+    $("#scaleSvg").innerHTML = s;
+  })();
+
+  // the board: every piece lands with a little drop
+  const cv = $("#boardCv"), ctx = cv.getContext("2d"), born = new Map();
+  let animating = false;
+  function pieces() {
+    const out = [];
+    MEATS.forEach(m => { const n = Math.min(4, qty.get(m.id) || 0); for (let k = 0; k < n; k++) out.push({ m, key: m.id + "#" + k }); });
+    return out.slice(0, 12);
+  }
+  function drawBoard(now) {
+    const list = pieces(), cols = 4, cw = cv.width / cols, ch = cv.height / 3;
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    let busy = false;
+    list.forEach((p, i) => {
+      if (!born.has(p.key)) born.set(p.key, now);
+      const t = Math.min(1, (now - born.get(p.key)) / 480), e = 1 - Math.pow(1 - t, 3); if (t < 1) busy = true;
+      const r = rng(p.key.length * 31 + i * 7 + p.key.charCodeAt(0));
+      const cx = (i % cols + .5) * cw + (r() - .5) * 18, cy = (Math.floor(i / cols) + .5) * ch + (r() - .5) * 10 - (1 - e) * 70;
+      ctx.save(); ctx.globalAlpha = e; ctx.translate(cx, cy); ctx.rotate((r() - .5) * .5 * e);
+      const sh = ctx.createRadialGradient(0, 14, 0, 0, 14, 90); sh.addColorStop(0, `rgba(0,0,0,${.45 * e})`); sh.addColorStop(1, "rgba(0,0,0,0)"); ctx.fillStyle = sh; ctx.beginPath(); ctx.ellipse(0, 14, 90, 58, 0, 0, 7); ctx.fill();
+      drawMeat(ctx, p.m, 0, 0, 98, 5 + i * 13); ctx.restore();
+    });
+    [...born.keys()].forEach(k => { if (!list.some(p => p.key === k)) born.delete(k); });
+    $("#pkEmpty").classList.toggle("off", list.length > 0);
+    return busy;
+  }
+  function tick(now) { animating = drawBoard(now); if (animating) requestAnimationFrame(tick); }
+
+  renderPreImpl = () => {
+    $$(".pk").forEach(el => { const n = qty.get(el.dataset.id) || 0; el.classList.toggle("on", n > 0); el.querySelector("output").value = n; });
+    $$(".cut").forEach(el => el.classList.toggle("pre", pre.has(el.dataset.id)));
+    const chosen = MEATS.filter(m => qty.get(m.id)), grams = chosen.reduce((s, m) => s + m.g * qty.get(m.id), 0), kg = grams / 1000;
+    $("#pkKg").textContent = fmtG(grams);
+    const feeds = Math.round(grams / 400);
+    $("#pkFor").textContent = grams ? `αρκεί για ~${Math.max(1, feeds)} άτ. · είστε ${partySize}` : "Η ζυγαριά σας";
+    $("#scaleNeedle").style.transform = `rotate(${-90 + Math.min(kg / 6, 1) * 180}deg)`;
+    $("#scaleArc").setAttribute("stroke-dasharray", `${Math.min(kg / 6, 1) * 100} 100`);
+    $("#preorder").innerHTML = chosen.length ? `🥩 Θα σας περιμένει: <b>${chosen.map(m => `${m.name} ×${qty.get(m.id)}`).join(", ")}</b> · σύνολο ${fmtG(grams)}` : "";
+    if (!animating) requestAnimationFrame(tick);
+  };
+  renderPre();
 })();
 
 </script>
