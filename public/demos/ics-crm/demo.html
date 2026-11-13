@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f1512">
+<title>ICS Workspace · clients, cases & tasks</title>
+<meta name="description" content="CRM demo for Integrated Consulting Services: client cards, cases with documents and properties, and tasks between the Toronto, Montreal, New York, Athens, Thessaloniki and Nicosia offices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite CRM demo for Integrated Consulting Services (icsgr.com).
+  Offices, phones, services and team names come from icsgr.com (Nov 2026). Clients, cases, documents and tasks are made up.
+  Flow follows how the team works today: client card → case (project) with clients, documents, properties → tasks between offices.
+  Everything runs in the browser and resets on reload. EN / ΕΛ with one tap. Switch user (top right) to see a task arrive in another office.
+-->
+<style>
+:root{--bg:#f4f3ee;--card:#fff;--ink:#0f1512;--muted:#67716b;--lime:#9eaf00;--lime2:#eef3c4;--deep:#0f1512;--line:rgba(15,21,18,.1);
+  --red:#c2410c;--amber:#b7791f;--green:#2f7d4f;--blue:#2459a8;--f:"Inter Tight",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:400 14.5px/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.app{display:grid;grid-template-columns:232px 1fr;height:100vh;height:100dvh}
+
+/* sidebar */
+.side{background:var(--deep);color:#d9dfda;display:flex;flex-direction:column;padding:16px 12px;gap:4px;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 16px;font:700 18px/1 var(--f);color:#fff}
+.brand i{width:30px;height:24px;border-radius:6px 6px 6px 0;background:var(--lime);display:grid;place-items:center;font-style:normal;font-size:12px;color:#fff;letter-spacing:1px}
+.brand small{display:block;font:500 11px/1.2 var(--f);color:#8e9a92;margin-top:3px}
+.nv{display:flex;align-items:center;gap:10px;padding:10px 10px;border-radius:10px;font-weight:500;color:#c4ccc6;text-align:left;width:100%}
+.nv:hover{background:#1c2520}
+.nv.on{background:#232e28;color:#fff}
+.nv span{flex:1}
+.nv em{font-style:normal;font-size:11.5px;font-weight:700;background:var(--lime);color:#10140a;border-radius:999px;padding:2px 7px}
+.nv em.z{display:none}
+.sh{font:600 11px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;color:#6f7b73;padding:16px 10px 6px}
+.offs{display:grid;gap:2px}
+.offs div{display:flex;justify-content:space-between;padding:6px 10px;font-size:12.5px;color:#9aa69f}
+.offs b{color:#dfe5e0;font-weight:500}
+.offs i{font-style:normal}
+.offs .op::before{content:"● ";color:#7ccf8f}
+.offs .cl::before{content:"● ";color:#59645d}
+.sfoot{margin-top:auto;padding:12px 10px 0;font-size:11.5px;color:#6f7b73}
+.sfoot a{color:var(--lime)}
+
+/* main */
+.main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.top{display:flex;align-items:center;gap:10px;padding:12px 20px;border-bottom:1px solid var(--line);background:rgba(244,243,238,.9);backdrop-filter:blur(10px)}
+.burger{display:none;font-size:20px;padding:6px}
+.search{flex:1;max-width:520px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:9px 12px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted);cursor:text}
+.search kbd{margin-left:auto;font:600 11px/1 var(--f);padding:3px 6px;border-radius:5px;background:#eeede7}
+.lang{display:flex;background:#e6e5de;border-radius:9px;padding:3px}
+.lang button{font:600 12px/1 var(--f);padding:7px 9px;border-radius:7px;color:var(--muted)}
+.lang button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.me{display:flex;align-items:center;gap:8px;padding:5px 10px 5px 5px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.me select{border:0;background:none;font-weight:600;max-width:190px;cursor:pointer}
+.av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--f);color:#fff;background:#38463e;flex:none}
+.new{padding:10px 14px;border-radius:10px;background:var(--ink);color:#fff;font-weight:600;white-space:nowrap}
+.view{flex:1;overflow:auto;padding:22px 20px 60px}
+.h1{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.h1 h1{font:600 26px/1.1 var(--f);letter-spacing:-.02em}
+.h1 p{color:var(--muted);margin-top:4px}
+.card{background:var(--card);border-radius:14px;box-shadow:0 1px 0 var(--line),0 10px 30px -24px rgba(15,21,18,.35)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 13px;border-radius:9px;font-weight:600;background:var(--ink);color:#fff;white-space:nowrap}
+.btn.l{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.g{background:var(--lime);color:#10140a}
+.btn.s{padding:6px 10px;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:5px;font:600 11.5px/1 var(--f);padding:5px 8px;border-radius:999px;background:#eeede7;color:#47524b;white-space:nowrap}
+.pill.lime{background:var(--lime2);color:#4f5a00}
+.pill.red{background:#fde7dc;color:var(--red)}
+.pill.amber{background:#fbefd5;color:var(--amber)}
+.pill.green{background:#dff1e5;color:var(--green)}
+.pill.blue{background:#e2ebf8;color:var(--blue)}
+.muted{color:var(--muted)}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+
+/* dashboard */
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.kp .card{padding:14px 16px}
+.kp b{display:block;font:600 28px/1.1 var(--f);letter-spacing:-.02em}
+.kp small{color:var(--muted)}
+.dg{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.box{padding:16px}
+.box h3{font:600 15px/1.2 var(--f);display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+@media(max-width:1100px){.dg{grid-template-columns:1fr}}
+@media(max-width:700px){.kp{grid-template-columns:1fr 1fr}}
+
+/* task rows */
+.tr{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:11px 4px;border-top:1px solid var(--line);cursor:pointer}
+.tr:first-of-type{border-top:0}
+.tr:hover{background:#fafaf6}
+.ck{width:20px;height:20px;border-radius:6px;box-shadow:inset 0 0 0 1.5px #b9bfb9;display:grid;place-items:center;color:#fff;font-size:12px;margin-top:1px}
+.ck.on{background:var(--green);box-shadow:none}
+.tr b{font-weight:600}
+.tr .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px;align-items:center;font-size:12.5px;color:var(--muted)}
+.tr.done b{text-decoration:line-through;color:var(--muted)}
+.tr.fresh{animation:fr 2s}
+@keyframes fr{0%{background:var(--lime2)}}
+.due{font-size:12.5px;font-weight:600;white-space:nowrap}
+.due.late{color:var(--red)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{padding:8px 12px;border-radius:9px;font-weight:600;color:var(--muted)}
+.tabs button.on{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.tabs button em{font-style:normal;margin-left:4px;font-size:12px;color:var(--muted)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font:600 11.5px/1 var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 14px;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr.row{cursor:pointer}
+.tbl tr.row:hover td{background:#fafaf6}
+.who{display:flex;align-items:center;gap:10px}
+.who small{display:block;color:var(--muted);font-size:12.5px}
+.scroll{overflow:auto}
+.flt{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.flt input,.flt select{padding:9px 12px;border-radius:9px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff}
+
+/* detail pages */
+.back{display:inline-flex;gap:6px;color:var(--muted);font-weight:600;margin-bottom:10px}
+.dh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}
+.dh h1{font:600 24px/1.15 var(--f);letter-spacing:-.02em}
+.dh .sub{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;align-items:start}
+@media(max-width:1100px){.cols{grid-template-columns:1fr}}
+.steps{display:flex;gap:4px;margin:4px 0 2px}
+.steps button{flex:1;text-align:left;padding:9px 8px 7px;border-top:4px solid #dddcd4;font-size:12px;color:var(--muted);font-weight:600;line-height:1.25}
+.steps button.done{border-color:var(--lime);color:var(--ink)}
+.steps button.cur{border-color:var(--ink);color:var(--ink)}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:8px 12px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{font-weight:500;word-break:break-word}
+.kv dd a{color:var(--blue)}
+.chip{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line);background:#fff;cursor:pointer}
+.chip:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.chip small{display:block;color:var(--muted);font-size:12.5px}
+.chip .x{margin-left:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.doc{display:grid;grid-template-columns:30px 1fr auto auto;gap:10px;align-items:center;padding:10px 4px;border-top:1px solid var(--line)}
+.doc:first-of-type{border-top:0}
+.doc .ic{width:30px;height:36px;border-radius:5px;background:#eeede7;display:grid;place-items:center;font:700 9px/1 var(--f);color:#6b736d}
+.doc .ic.pdf{background:#fde7dc;color:var(--red)}
+.doc select{border:0;background:#f4f3ee;border-radius:7px;padding:5px 6px;font-size:12.5px;font-weight:600}
+.drop{margin-top:10px;padding:16px;border-radius:12px;border:1.5px dashed #c6cbc4;text-align:center;color:var(--muted);cursor:pointer;transition:all .2s}
+.drop:hover,.drop.ov{border-color:var(--lime);background:var(--lime2);color:var(--ink)}
+.prop{padding:12px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line);margin-top:8px;font-size:13.5px}
+.prop b{font-size:14.5px}
+.act{display:grid;gap:10px;font-size:13.5px}
+.act div{display:grid;grid-template-columns:28px 1fr;gap:10px}
+.act small{color:var(--muted)}
+.note{width:100%;min-height:70px;padding:10px 12px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1px var(--line);resize:vertical}
+
+/* modal + drawer */
+.ov{position:fixed;inset:0;background:rgba(15,21,18,.35);z-index:80;display:none}
+.ov.on{display:block}
+.modal{position:fixed;left:50%;top:8vh;transform:translateX(-50%);width:min(560px,calc(100% - 24px));max-height:84vh;overflow:auto;z-index:81;display:none;padding:20px}
+.modal.on{display:block}
+.modal h2{font:600 19px/1.2 var(--f);margin-bottom:14px;display:flex;justify-content:space-between}
+.fm{display:grid;gap:10px}
+.fm label{display:grid;gap:5px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.fm input,.fm select,.fm textarea{padding:10px 12px;border-radius:9px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;color:var(--ink);font-weight:400;font-size:14.5px;min-width:0}
+.fm .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fm .acts{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{padding:8px 11px;border-radius:9px;box-shadow:inset 0 0 0 1px var(--line);font-weight:600;font-size:13px;background:#fff}
+.seg button.on{background:var(--ink);color:#fff;box-shadow:none}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(460px,100%);background:#fff;z-index:81;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-20px 0 40px -20px rgba(0,0,0,.3)}
+.drawer.on{transform:none}
+.drawer .dhd{padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer .dbd{padding:16px 20px;overflow:auto;flex:1}
+.drawer .dft{padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:8px}
+.drawer .dft input{flex:1;min-width:0;padding:10px 12px;border-radius:9px;border:0;box-shadow:inset 0 0 0 1px var(--line)}
+.cm{display:grid;grid-template-columns:28px 1fr;gap:10px;margin-top:12px;font-size:13.5px}
+.cm .bub{background:#f4f3ee;border-radius:4px 12px 12px 12px;padding:9px 11px}
+.cm small{color:var(--muted)}
+.palette{top:12vh;padding:0;overflow:hidden}
+.palette input{width:100%;padding:16px 18px;border:0;border-bottom:1px solid var(--line);font-size:16px;outline:none}
+.pres{max-height:55vh;overflow:auto;padding:6px}
+.pres button{display:flex;width:100%;gap:10px;align-items:center;padding:10px 12px;border-radius:9px;text-align:left}
+.pres button:hover,.pres button.sel{background:#f4f3ee}
+.pres small{color:var(--muted);margin-left:auto;font-size:12px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,150%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;z-index:99;transition:transform .3s;max-width:calc(100% - 32px);font-size:14px}
+.toast.on{transform:translate(-50%,0)}
+.tip{position:fixed;right:16px;bottom:16px;z-index:70;max-width:300px;background:var(--lime2);color:#2d3300;border-radius:14px;padding:12px 14px;font-size:13px;box-shadow:0 10px 30px -10px rgba(0,0,0,.25)}
+.tip b{display:block;margin-bottom:2px}
+.tip button{position:absolute;top:6px;right:10px;font-size:16px;color:#5d6620}
+html:not(.notes) .tip{display:none}
+
+@media(max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;inset:0 auto 0 0;width:250px;z-index:85;transform:translateX(-100%);transition:transform .25s}
+  .side.on{transform:none}
+  .burger{display:block}
+  .search kbd,.me select{display:none}
+  .top{padding:10px 12px;gap:8px}
+  .view{padding:16px 12px 60px}
+  .tbl .hm{display:none}
+  .fm .r2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="side">
+    <div class="brand"><i>ICS</i><div>Workspace<small>Integrated Consulting Services</small></div></div>
+    <button class="nv" data-v="home"><span data-t="My day|Η μέρα μου">My day</span></button>
+    <button class="nv" data-v="tasks"><span data-t="Tasks|Εργασίες">Tasks</span><em id="nTasks"></em></button>
+    <button class="nv" data-v="cases"><span data-t="Cases|Υποθέσεις">Cases</span><em id="nCases" class="z"></em></button>
+    <button class="nv" data-v="clients"><span data-t="Clients|Πελάτες">Clients</span></button>
+    <div class="sh" data-t="Offices · now|Γραφεία · τώρα">Offices · now</div>
+    <div class="offs" id="offs"></div>
+    <div class="sfoot">CRM demo by <a href="https://opensite.gr">OpenSite</a> · <button id="reset" style="color:var(--lime)" data-t="reset data|επαναφορά">reset data</button></div>
+  </aside>
+  <div class="main">
+    <div class="top">
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+      <div class="search" id="searchBtn">⌕ <span data-t="Search clients, cases, tasks…|Αναζήτηση πελατών, υποθέσεων, εργασιών…">Search clients, cases, tasks…</span><kbd>Ctrl K</kbd></div>
+      <div class="lang"><button data-l="en" class="on">EN</button><button data-l="el">ΕΛ</button></div>
+      <div class="me"><span class="av" id="meAv"></span><select id="meSel" aria-label="Current user"></select></div>
+      <button class="new" id="newBtn">+ <span data-t="New|Νέο">New</span></button>
+    </div>
+    <div class="view" id="view"></div>
+  </div>
+</div>
+
+<div class="ov" id="ov"></div>
+<div class="card modal" id="modal"></div>
+<div class="card modal palette" id="pal"><input id="palIn" autocomplete="off"><div class="pres" id="palRes"></div></div>
+<aside class="drawer" id="drawer"></aside>
+<div class="toast" id="toast"></div>
+<div class="tip" id="tip"><button id="tipX">×</button><b data-t="Try this|Δοκιμάστε">Try this</b><span data-t="Open a case → “+ Task” → send it to Athens. Then switch the user (top right) to Maria Korda: the task is waiting in her “My day”.|Ανοίξτε μια υπόθεση → «+ Εργασία» → στείλτε τη στην Αθήνα. Μετά αλλάξτε χρήστη (πάνω δεξιά) σε Maria Korda: η εργασία την περιμένει στη «Μέρα μου».">Open a case → “+ Task” → send it to Athens. Then switch the user (top right) to Maria Korda: the task is waiting in her “My day”.</span></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+if(location.search.includes('clean'))document.documentElement.classList.remove('notes');
+let L='en';const T=(en,el)=>L==='el'?el:en;
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3000)};
+
+/* ---------- reference data (offices & team from icsgr.com) ---------- */
+const OFF={Toronto:{tz:'America/Toronto',el:'Τορόντο'},Montreal:{tz:'America/Toronto',el:'Μόντρεαλ'},'New York':{tz:'America/New_York',el:'Νέα Υόρκη'},Athens:{tz:'Europe/Athens',el:'Αθήνα'},Thessaloniki:{tz:'Europe/Athens',el:'Θεσσαλονίκη'},Nicosia:{tz:'Asia/Nicosia',el:'Λευκωσία'}};
+const offN=o=>L==='el'?OFF[o].el:o;
+const U={
+ am:{n:'Anastasios Moussas',r:['President','Πρόεδρος'],off:'Toronto',c:'#0f1512'},
+ mm:{n:'Marianna Michalitsianou',r:['Senior Consultant','Senior Consultant'],off:'Toronto',c:'#5b6b16'},
+ md:{n:'Marie-Eve Duclos-Haskis',r:['Senior Consultant','Senior Consultant'],off:'Montreal',c:'#7a4b9b'},
+ mk:{n:'Maria Korda',r:['Senior Consultant','Senior Consultant'],off:'Athens',c:'#2459a8'},
+ ag:{n:'Anastasia Gianniloi',r:['Managing Lawyer','Δικηγόρος'],off:'Athens',c:'#a0522d'},
+ sr:{n:'Stavroula Rigopoulou',r:['Accounting','Λογιστήριο'],off:'Athens',c:'#2f7d4f'},
+ el:{n:'Eleonora Lekka',r:['Real Estate','Ακίνητα'],off:'Athens',c:'#b7791f'},
+ gt:{n:'Georgios Tachtsidis',r:['Senior Consultant','Senior Consultant'],off:'Thessaloniki',c:'#c2410c'}};
+const ini=n=>n.split(/[\s-]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const av=(id,sz)=>{const u=U[id];return `<span class="av" style="background:${u?.c||'#38463e'}${sz?`;width:${sz}px;height:${sz}px`:''}" title="${esc(u?.n)}">${ini(u?.n||'?')}</span>`};
+const TYPES={
+ inh:{en:'Inheritance',el:'Κληρονομιά',c:'blue',steps:[['Consultation','Συζήτηση'],['Power of attorney','Πληρεξούσιο'],['Translations','Μεταφράσεις'],['Acceptance','Αποδοχή'],['Tax','Φόρος'],['Registration','Μεταγραφή']]},
+ tax:{en:'Tax declaration',el:'Φορολογική',c:'green',steps:[['Documents','Έγγραφα'],['Preparation','Προετοιμασία'],['Review','Έλεγχος'],['Filed','Υποβλήθηκε']]},
+ re:{en:'Real estate',el:'Ακίνητα',c:'amber',steps:[['Valuation','Εκτίμηση'],['Title check','Έλεγχος τίτλων'],['Buyer / tenant','Αγοραστής / ενοικιαστής'],['Contract','Συμβόλαιο'],['Closed','Ολοκληρώθηκε']]},
+ tr:{en:'Translation',el:'Μετάφραση',c:'lime',steps:[['Received','Παραλαβή'],['Translating','Μετάφραση'],['Certified','Πιστοποίηση'],['Delivered','Παράδοση']]},
+ bank:{en:'AFM & banking',el:'ΑΦΜ & τράπεζα',c:'',steps:[['Documents','Έγγραφα'],['AFM','ΑΦΜ'],['Bank account','Λογαριασμός'],['Done','Ολοκληρώθηκε']]},
+ imm:{en:'Immigration',el:'Μετανάστευση',c:'red',steps:[['Eligibility','Καταλληλότητα'],['Application','Αίτηση'],['Decision','Απόφαση'],['Arrival','Άφιξη']]}};
+const tName=k=>L==='el'?TYPES[k].el:TYPES[k].en;
+const DOCST={req:['Requested','Ζητήθηκε','amber'],rec:['Received','Παραλήφθηκε','blue'],trn:['Translated','Μεταφράστηκε','lime'],cert:['Certified','Πιστοποιήθηκε','green']};
+const KINDS={doc:['Document request','Αίτημα εγγράφου'],upd:['Update needed','Χρειάζεται ενημέρωση'],act:['Action','Ενέργεια'],call:['Call client','Κλήση πελάτη']};
+const ROLES=[['Heir','Κληρονόμος'],['Co-heir','Συγκληρονόμος'],['Seller','Πωλητής'],['Buyer','Αγοραστής'],['Owner','Ιδιοκτήτης'],['Applicant','Αιτών'],['Spouse','Σύζυγος'],['Attorney-in-fact','Πληρεξούσιος']];
+const roleN=r=>{const x=ROLES.find(a=>a[0]===r);return x?T(x[0],x[1]):r};
+
+/* ---------- demo data ---------- */
+const day=n=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const ago=h=>Date.now()-h*3600e3;
+const SEED=()=>({
+ me:'mm',
+ clients:[
+  {id:'c1',n:'Eleni Papas',ph:['+1 416 555 0142'],em:['eleni.papas@example.com'],addr:'Scarborough, ON',afm:'148 223 901',dob:'1961-04-12',off:'Toronto',lang:'EN/ΕΛ',note:'Prefers calls after 4pm Toronto time.'},
+  {id:'c2',n:'Nikos Papas',ph:['+1 647 555 0198'],em:['n.papas@example.com'],addr:'Mississauga, ON',afm:'',dob:'1958-09-30',off:'Toronto',lang:'ΕΛ',note:'Brother of Eleni. Co-heir.'},
+  {id:'c3',n:'Sophia Dimas',ph:['+1 514 555 0110'],em:['sdimas@example.com'],addr:'Laval, QC',afm:'',dob:'1990-02-03',off:'Montreal',lang:'EN/FR',note:''},
+  {id:'c4',n:'Kostas Laskaris',ph:['+30 694 555 0177','+1 416 555 0133'],em:['k.laskaris@example.com'],addr:'Toronto, ON · Kalamaria (GR)',afm:'077 412 556',dob:'1972-11-21',off:'Toronto',lang:'ΕΛ',note:'Owns the Kalamaria apartment with his sister.'},
+  {id:'c5',n:'Andreas Mavros',ph:['+1 718 555 0120'],em:['amavros@example.com'],addr:'Astoria, NY',afm:'',dob:'1985-06-14',off:'New York',lang:'EN',note:''},
+  {id:'c6',n:'Ioanna Kosta',ph:['+30 697 555 0101'],em:['ioanna.k@example.com'],addr:'Athens',afm:'132 555 789',dob:'1999-08-08',off:'Athens',lang:'ΕΛ',note:'Work permit 18–35, wants Toronto.'},
+  {id:'c7',n:'Maria Laskari',ph:['+30 231 555 0160'],em:[],addr:'Thessaloniki',afm:'066 120 334',dob:'1969-01-02',off:'Thessaloniki',lang:'ΕΛ',note:'Sister of Kostas. 50% owner.'}],
+ cases:[
+  {id:'ICS-2418',t:'Acceptance of inheritance · Kalamata',type:'inh',off:'Toronto',own:'mm',st:3,cl:[['c1','Heir'],['c2','Co-heir']],
+   props:[{a:'2-storey house, Kalamata (Messinia)',k:'KAEK 340123456789',sh:'50% / 50%'},{a:'Olive grove, 4.2 str., Kalamata',k:'KAEK 340129900112',sh:'50% / 50%'}],
+   docs:[{n:'Death certificate.pdf',s:'cert',by:'mk',d:ago(400)},{n:'Will (notarised).pdf',s:'trn',by:'mk',d:ago(200)},{n:'Family status certificate',s:'req',by:'mm',d:ago(30)},{n:'Power of attorney · Eleni.pdf',s:'cert',by:'mm',d:ago(900)}],
+   info:'Father passed away in Kalamata, 2025. Two heirs in Ontario. Acceptance to be signed in Athens by attorney-in-fact.',
+   log:[['mk',ago(5),'Translations of the will certified.'],['mm',ago(30),'Requested family status certificate from Athens.'],['mm',ago(900),'Case opened.']]},
+  {id:'ICS-2422',t:'Greek tax declaration 2026',type:'tax',off:'Toronto',own:'mm',st:0,cl:[['c4','Owner']],props:[],docs:[{n:'E1 2025.pdf',s:'rec',by:'mm',d:ago(50)},{n:'T4 / Canadian income',s:'req',by:'mm',d:ago(48)}],info:'Rental income from Kalamaria apartment.',log:[['mm',ago(50),'Case opened.']]},
+  {id:'ICS-2425',t:'Certified translation · 4 pages',type:'tr',off:'Montreal',own:'md',st:1,cl:[['c3','Applicant']],props:[],docs:[{n:'Birth certificate (GR).pdf',s:'rec',by:'md',d:ago(20)}],info:'Greek → French, for Québec civil registry.',log:[['md',ago(20),'Case opened.']]},
+  {id:'ICS-2427',t:'Sale of apartment · Kalamaria',type:'re',off:'Thessaloniki',own:'gt',st:2,cl:[['c4','Seller'],['c7','Seller']],props:[{a:'Apartment 92 m², 3rd floor, Kalamaria',k:'KAEK 190876543210',sh:'50% Kostas / 50% Maria'}],docs:[{n:'Title deed.pdf',s:'rec',by:'gt',d:ago(300)},{n:'Energy certificate (PEA)',s:'req',by:'el',d:ago(10)}],info:'Asking €185k. Two viewings this week.',log:[['el',ago(10),'Requested energy certificate.'],['gt',ago(300),'Case opened.']]},
+  {id:'ICS-2430',t:'AFM & bank account',type:'bank',off:'New York',own:'mm',st:1,cl:[['c5','Applicant']],props:[],docs:[{n:'Passport.pdf',s:'rec',by:'mm',d:ago(70)}],info:'',log:[['mm',ago(70),'Case opened.']]},
+  {id:'ICS-2436',t:'Work permit 18–35',type:'imm',off:'Toronto',own:'am',st:1,cl:[['c6','Applicant']],props:[],docs:[{n:'Degree (translated).pdf',s:'trn',by:'mk',d:ago(100)},{n:'CV.pdf',s:'rec',by:'am',d:ago(120)}],info:'IEC application. Arrival planned spring 2027.',log:[['am',ago(120),'Case opened.']]}],
+ tasks:[
+  {id:1,t:'Send family status certificate',k:'doc',c:'ICS-2418',from:'mm',to:'mk',due:day(1),done:false,at:ago(30),cm:[['mm',ago(30),'Needed for the acceptance. Can you get it from the municipality this week?'],['mk',ago(4),'Appointment at the municipality on Monday.']]},
+  {id:2,t:'Update Eleni on translation status',k:'call',c:'ICS-2418',from:'mk',to:'mm',due:day(0),done:false,at:ago(5),cm:[['mk',ago(5),'Translations are certified. Please let her know.']]},
+  {id:3,t:'Get T4 slips from client',k:'doc',c:'ICS-2422',from:'sr',to:'mm',due:day(-1),done:false,at:ago(48),cm:[]},
+  {id:4,t:'Energy certificate (PEA) for Kalamaria',k:'doc',c:'ICS-2427',from:'el',to:'gt',due:day(3),done:false,at:ago(10),cm:[]},
+  {id:5,t:'Translate birth certificate GR → FR',k:'act',c:'ICS-2425',from:'md',to:'mk',due:day(2),done:false,at:ago(20),cm:[]},
+  {id:6,t:'Book bank appointment (Eurobank)',k:'act',c:'ICS-2430',from:'mm',to:'sr',due:day(4),done:false,at:ago(60),cm:[]},
+  {id:7,t:'Check IEC pool invitations',k:'upd',c:'ICS-2436',from:'am',to:'mm',due:day(6),done:false,at:ago(100),cm:[]},
+  {id:8,t:'Power of attorney signed at consulate',k:'act',c:'ICS-2418',from:'mm',to:'mm',due:day(-20),done:true,at:ago(900),cm:[]}],
+ nid:9});
+let S;
+const load=()=>{try{const j=localStorage.getItem('ics-crm-v1');S=j?JSON.parse(j):SEED()}catch(e){S=SEED()}};
+const save=()=>{try{localStorage.setItem('ics-crm-v1',JSON.stringify(S))}catch(e){}};
+load();
+const C=id=>S.clients.find(c=>c.id===id),K=id=>S.cases.find(c=>c.id===id);
+
+/* ---------- helpers ---------- */
+const fmtD=iso=>{const d=new Date(iso+'T12:00');return d.toLocaleDateString(L==='el'?'el-GR':'en-CA',{day:'numeric',month:'short'})};
+const dueTxt=t=>{const n=Math.round((new Date(t.due+'T12:00')-new Date(day(0)+'T12:00'))/864e5);if(t.done)return['✓','muted'];if(n<0)return[T(`${-n}d overdue`,`${-n} μέρ. καθυστέρηση`),'late'];if(n===0)return[T('Today','Σήμερα'),'late'];if(n===1)return[T('Tomorrow','Αύριο'),''];return[fmtD(t.due),'']};
+const rel=ts=>{const h=(Date.now()-ts)/3600e3;if(h<1)return T('just now','μόλις τώρα');if(h<24)return T(`${Math.round(h)}h ago`,`πριν ${Math.round(h)} ώρ.`);return T(`${Math.round(h/24)}d ago`,`πριν ${Math.round(h/24)} μέρ.`)};
+const tzNow=tz=>{const d=new Date(),s=d.toLocaleTimeString('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit'}),h=+s.slice(0,2),wd=d.toLocaleDateString('en-US',{timeZone:tz,weekday:'short'});return{s,open:h>=9&&h<18&&!['Sat','Sun'].includes(wd)}};
+const typeP=k=>`<span class="pill ${TYPES[k].c}">${tName(k)}</span>`;
+
+/* ---------- router ---------- */
+let R={v:'home'};
+const go=(v,id)=>{R={v,id};render();$('#view').scrollTop=0;$('#side').classList.remove('on')};
+const render=()=>{
+ $$('[data-t]').forEach(e=>{const [en,el]=e.dataset.t.split('|');e.textContent=T(en,el)});
+ $$('.nv').forEach(b=>b.classList.toggle('on',b.dataset.v===R.v||(R.v==='case'&&b.dataset.v==='cases')||(R.v==='client'&&b.dataset.v==='clients')));
+ const mine=S.tasks.filter(t=>t.to===S.me&&!t.done).length;$('#nTasks').textContent=mine||'';$('#nTasks').classList.toggle('z',!mine);
+ $('#offs').innerHTML=Object.keys(OFF).map(o=>{const t=tzNow(OFF[o].tz);return `<div class="${t.open?'op':'cl'}"><b>${offN(o)}</b><i>${t.s}</i></div>`}).join('');
+ $('#meSel').innerHTML=Object.entries(U).map(([id,u])=>`<option value="${id}" ${id===S.me?'selected':''}>${u.n} · ${offN(u.off)}</option>`).join('');
+ $('#meAv').outerHTML=av(S.me).replace('class="av"','class="av" id="meAv"');
+ ({home:vHome,tasks:vTasks,cases:vCases,case:vCase,clients:vClients,client:vClient})[R.v]();
+};
+
+/* ---------- task row ---------- */
+const taskRow=(t,showCase=true)=>{const [dt,dc]=dueTxt(t),k=K(t.c);
+ return `<div class="tr ${t.done?'done':''} ${t.fresh?'fresh':''}" data-task="${t.id}"><button class="ck ${t.done?'on':''}" data-tg="${t.id}" aria-label="done">${t.done?'✓':''}</button>
+ <div><b>${esc(t.t)}</b><div class="meta"><span class="pill ${t.k==='doc'?'amber':t.k==='upd'?'blue':t.k==='call'?'lime':''}">${T(...KINDS[t.k])}</span>${av(t.from,20)} → ${av(t.to,20)} <span>${offN(U[t.from].off)} → ${offN(U[t.to].off)}</span>${showCase&&k?`<span>· ${k.id} ${esc(k.t.split('·')[0])}</span>`:''}${t.cm.length?`<span>· 💬 ${t.cm.length}</span>`:''}</div></div>
+ <span class="due ${dc}">${dt}</span></div>`};
+const bindTasks=root=>{root.querySelectorAll('[data-tg]').forEach(b=>b.onclick=e=>{e.stopPropagation();const t=S.tasks.find(x=>x.id==b.dataset.tg);t.done=!t.done;if(t.done){const k=K(t.c);k&&k.log.unshift([S.me,Date.now(),T('Completed: ','Ολοκληρώθηκε: ')+t.t])}save();render();toast(t.done?T('Done. '+U[t.from].n.split(' ')[0]+' gets notified.','Έγινε. Ενημερώνεται ο/η '+U[t.from].n.split(' ')[0]+'.'):T('Reopened','Άνοιξε ξανά'))});
+ root.querySelectorAll('[data-task]').forEach(r=>r.onclick=()=>openTask(+r.dataset.task))};
+
+/* ---------- views ---------- */
+function vHome(){const me=U[S.me],mine=S.tasks.filter(t=>t.to===S.me&&!t.done).sort((a,b)=>a.due.localeCompare(b.due)),sent=S.tasks.filter(t=>t.from===S.me&&t.to!==S.me&&!t.done),late=mine.filter(t=>t.due<day(0)).length;
+ const myCases=S.cases.filter(c=>c.own===S.me||c.cl&&S.tasks.some(t=>t.c===c.id&&(t.to===S.me||t.from===S.me)));
+ const waiting=S.cases.flatMap(c=>c.docs.filter(d=>d.s==='req').map(d=>[c,d]));
+ const h=new Date().getHours();
+ $('#view').innerHTML=`<div class="h1"><div><h1>${T(h<12?'Good morning':h<18?'Good afternoon':'Good evening',h<12?'Καλημέρα':'Καλησπέρα')}, ${me.n.split(' ')[0]}</h1><p>${offN(me.off)} · ${tzNow(OFF[me.off].tz).s} · ${T(me.r[0],me.r[1])}</p></div><button class="btn g" id="qTask">+ ${T('Task','Εργασία')}</button></div>
+ <div class="kp"><div class="card"><b>${mine.length}</b><small>${T('tasks for me','εργασίες για μένα')}</small></div><div class="card"><b style="color:${late?'var(--red)':''}">${late}</b><small>${T('overdue','εκπρόθεσμες')}</small></div><div class="card"><b>${sent.length}</b><small>${T('waiting on colleagues','περιμένω από συναδέλφους')}</small></div><div class="card"><b>${waiting.length}</b><small>${T('documents requested','έγγραφα σε αναμονή')}</small></div></div>
+ <div class="dg"><div class="card box"><h3>${T('For me','Για μένα')}<button class="btn l s" data-go="tasks">${T('All tasks','Όλες')}</button></h3><div id="lMine">${mine.map(t=>taskRow(t)).join('')||`<div class="empty">${T('Nothing for you. Nice.','Τίποτα για εσάς.')}</div>`}</div></div>
+ <div style="display:grid;gap:14px;align-content:start"><div class="card box"><h3>${T('Waiting on others','Περιμένω από άλλους')}</h3><div id="lSent">${sent.map(t=>taskRow(t)).join('')||`<div class="empty">—</div>`}</div></div>
+ <div class="card box"><h3>${T('My cases','Οι υποθέσεις μου')}</h3>${myCases.map(c=>`<div class="tr" data-case="${c.id}" style="grid-template-columns:1fr auto"><div><b>${c.id} · ${esc(c.t)}</b><div class="meta">${typeP(c.type)} <span>${T(...TYPES[c.type].steps[c.st])}</span></div></div><span class="muted" style="font-size:12.5px">${offN(c.off)}</span></div>`).join('')}</div></div></div>`;
+ bindTasks($('#view'));$$('[data-case]').forEach(r=>r.onclick=()=>go('case',r.dataset.case));$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));$('#qTask').onclick=()=>newTask()}
+
+let TF='mine';
+function vTasks(){const f={mine:t=>t.to===S.me&&!t.done,sent:t=>t.from===S.me&&t.to!==S.me&&!t.done,office:t=>U[t.to].off===U[S.me].off&&!t.done,all:t=>!t.done,done:t=>t.done};
+ const cnt=k=>S.tasks.filter(f[k]).length;const list=S.tasks.filter(f[TF]).sort((a,b)=>a.due.localeCompare(b.due));
+ $('#view').innerHTML=`<div class="h1"><div><h1>${T('Tasks','Εργασίες')}</h1><p>${T('Requests between offices: documents, updates, calls.','Αιτήματα μεταξύ γραφείων: έγγραφα, ενημερώσεις, κλήσεις.')}</p></div><button class="btn g" id="qTask">+ ${T('Task','Εργασία')}</button></div>
+ <div class="tabs">${[['mine','For me','Για μένα'],['sent','I asked for','Ζήτησα'],['office',`${offN(U[S.me].off)} office`,`Γραφείο ${offN(U[S.me].off)}`],['all','All open','Όλες ανοιχτές'],['done','Done','Ολοκληρωμένες']].map(([k,en,el])=>`<button class="${TF===k?'on':''}" data-tf="${k}">${T(en,el)}<em>${cnt(k)}</em></button>`).join('')}</div>
+ <div class="card box">${list.map(t=>taskRow(t)).join('')||`<div class="empty">${T('No tasks here.','Καμία εργασία.')}</div>`}</div>`;
+ $$('[data-tf]').forEach(b=>b.onclick=()=>{TF=b.dataset.tf;vTasks()});bindTasks($('#view'));$('#qTask').onclick=()=>newTask()}
+
+let CF={q:'',o:'',t:''};
+function vCases(){const list=S.cases.filter(c=>(!CF.o||c.off===CF.o)&&(!CF.t||c.type===CF.t)&&(!CF.q||(c.id+c.t+c.cl.map(x=>C(x[0])?.n).join(' ')).toLowerCase().includes(CF.q.toLowerCase())));
+ $('#view').innerHTML=`<div class="h1"><div><h1>${T('Cases','Υποθέσεις')}</h1><p>${T('Every case with its clients, documents, properties and tasks.','Κάθε υπόθεση με πελάτες, έγγραφα, ακίνητα και εργασίες.')}</p></div><button class="btn g" id="qCase">+ ${T('Case','Υπόθεση')}</button></div>
+ <div class="flt"><input id="cq" placeholder="${T('Filter…','Φίλτρο…')}" value="${esc(CF.q)}"><select id="co"><option value="">${T('All offices','Όλα τα γραφεία')}</option>${Object.keys(OFF).map(o=>`<option value="${o}" ${CF.o===o?'selected':''}>${offN(o)}</option>`).join('')}</select><select id="ct"><option value="">${T('All types','Όλοι οι τύποι')}</option>${Object.keys(TYPES).map(k=>`<option value="${k}" ${CF.t===k?'selected':''}>${tName(k)}</option>`).join('')}</select></div>
+ <div class="card scroll"><table class="tbl"><thead><tr><th>${T('Case','Υπόθεση')}</th><th>${T('Clients','Πελάτες')}</th><th class="hm">${T('Stage','Στάδιο')}</th><th class="hm">${T('Office','Γραφείο')}</th><th class="hm">${T('Open tasks','Εργασίες')}</th></tr></thead><tbody>
+ ${list.map(c=>`<tr class="row" data-case="${c.id}"><td><b>${c.id}</b> · ${esc(c.t)}<div style="margin-top:5px">${typeP(c.type)}</div></td><td>${c.cl.map(x=>esc(C(x[0])?.n)).join(', ')}</td><td class="hm">${T(...TYPES[c.type].steps[c.st])}<div class="muted" style="font-size:12px">${c.st+1} / ${TYPES[c.type].steps.length}</div></td><td class="hm"><div class="who">${av(c.own,24)} ${offN(c.off)}</div></td><td class="hm">${S.tasks.filter(t=>t.c===c.id&&!t.done).length}</td></tr>`).join('')}</tbody></table>${list.length?'':`<div class="empty">${T('No cases match.','Δεν βρέθηκαν.')}</div>`}</div>`;
+ $('#cq').oninput=e=>{CF.q=e.target.value;const p=e.target.selectionStart;vCases();$('#cq').focus();$('#cq').setSelectionRange(p,p)};$('#co').onchange=e=>{CF.o=e.target.value;vCases()};$('#ct').onchange=e=>{CF.t=e.target.value;vCases()};
+ $$('[data-case]').forEach(r=>r.onclick=()=>go('case',r.dataset.case));$('#qCase').onclick=()=>newCase()}
+
+let CT='overview';
+function vCase(){const c=K(R.id);if(!c)return go('cases');const ty=TYPES[c.type],tasks=S.tasks.filter(t=>t.c===c.id).sort((a,b)=>a.done-b.done||a.due.localeCompare(b.due));
+ $('#view').innerHTML=`<button class="back" data-go="cases">← ${T('Cases','Υποθέσεις')}</button>
+ <div class="dh"><div><h1>${c.id} · ${esc(c.t)}</h1><div class="sub">${typeP(c.type)}<span class="pill">${offN(c.off)}</span><span class="who" style="font-size:13px">${av(c.own,22)} ${U[c.own].n}</span></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn l" id="addDoc">+ ${T('Document','Έγγραφο')}</button><button class="btn g" id="addTask">+ ${T('Task','Εργασία')}</button></div></div>
+ <div class="card box" style="margin-bottom:14px"><div class="steps">${ty.steps.map((s,i)=>`<button data-st="${i}" class="${i<c.st?'done':i===c.st?'cur':''}">${T(s[0],s[1])}</button>`).join('')}</div><div class="muted" style="font-size:12px;margin-top:4px">${T('Click a step to move the case. Everyone on the case sees it.','Πατήστε ένα βήμα για να προχωρήσει η υπόθεση.')}</div></div>
+ <div class="cols"><div style="display:grid;gap:14px">
+  <div class="card box"><h3>${T('Tasks','Εργασίες')} <span class="muted" style="font-weight:500">${tasks.filter(t=>!t.done).length} ${T('open','ανοιχτές')}</span></h3><div id="cTasks">${tasks.map(t=>taskRow(t,false)).join('')||`<div class="empty">${T('No tasks yet.','Καμία εργασία.')}</div>`}</div></div>
+  <div class="card box"><h3>${T('Documents','Έγγραφα')}</h3><div id="docs">${c.docs.map((d,i)=>`<div class="doc"><span class="ic ${/\.pdf$/i.test(d.n)?'pdf':''}">${/\.pdf$/i.test(d.n)?'PDF':'—'}</span><div><b style="font-weight:600">${esc(d.n)}</b><div class="muted" style="font-size:12.5px">${U[d.by].n.split(' ')[0]} · ${rel(d.d)}</div></div><select data-ds="${i}">${Object.entries(DOCST).map(([k,v])=>`<option value="${k}" ${d.s===k?'selected':''}>${T(v[0],v[1])}</option>`).join('')}</select><span class="pill ${DOCST[d.s][2]}">${d.s==='req'?'⏳':'✓'}</span></div>`).join('')}</div>
+   <div class="drop" id="drop">${T('Drop files here or click to upload','Σύρετε αρχεία εδώ ή πατήστε για ανέβασμα')}</div><input type="file" id="file" multiple hidden></div>
+  <div class="card box"><h3>${T('Activity','Δραστηριότητα')}</h3><textarea class="note" id="noteIn" placeholder="${T('Write an update for the team…','Γράψτε μια ενημέρωση για την ομάδα…')}"></textarea><div style="display:flex;justify-content:flex-end;margin:8px 0 12px"><button class="btn s" id="noteGo">${T('Post update','Δημοσίευση')}</button></div>
+   <div class="act">${c.log.map(l=>`<div>${av(l[0],28)}<span><b>${U[l[0]].n}</b> <small>· ${offN(U[l[0]].off)} · ${rel(l[1])}</small><br>${esc(l[2])}</span></div>`).join('')}</div></div>
+ </div><div style="display:grid;gap:14px">
+  <div class="card box"><h3>${T('Clients on this case','Πελάτες της υπόθεσης')}<button class="btn l s" id="plug">+ ${T('Add client','Προσθήκη')}</button></h3><div style="display:grid;gap:8px">${c.cl.map(([id,r],i)=>{const p=C(id);return `<div class="chip" data-cl="${id}"><span class="av" style="background:#5b6b16">${ini(p.n)}</span><span><b>${esc(p.n)}</b><small>${roleN(r)} · ${esc(p.ph[0]||'')}</small></span><button class="x muted" data-rm="${i}" title="${T('Remove','Αφαίρεση')}">×</button></div>`}).join('')}</div></div>
+  <div class="card box"><h3>${T('Case information','Στοιχεία υπόθεσης')}</h3><textarea class="note" id="info">${esc(c.info)}</textarea></div>
+  <div class="card box"><h3>${T('Properties','Ακίνητα')}<button class="btn l s" id="addProp">+</button></h3>${c.props.map(p=>`<div class="prop"><b>🏠 ${esc(p.a)}</b><div class="muted">${esc(p.k)}</div><div>${T('Shares','Ποσοστά')}: ${esc(p.sh)}</div></div>`).join('')||`<div class="muted">${T('No properties on this case.','Κανένα ακίνητο.')}</div>`}</div>
+ </div></div>`;
+ $('[data-go]').onclick=()=>go('cases');
+ $$('[data-st]').forEach(b=>b.onclick=()=>{c.st=+b.dataset.st;c.log.unshift([S.me,Date.now(),T('Moved to ','Πέρασε στο ')+T(...ty.steps[c.st])]);save();vCase();toast(T('Stage updated','Το στάδιο άλλαξε'))});
+ bindTasks($('#view'));$('#addTask').onclick=()=>newTask(c.id);
+ $$('[data-ds]').forEach(s=>s.onchange=()=>{const d=c.docs[s.dataset.ds];d.s=s.value;c.log.unshift([S.me,Date.now(),`${d.n}: ${T(...DOCST[d.s].slice(0,2))}`]);save();vCase()});
+ const addFiles=fs=>{[...fs].forEach(f=>{c.docs.push({n:f.name,s:'rec',by:S.me,d:Date.now()});c.log.unshift([S.me,Date.now(),T('Uploaded ','Ανέβηκε ')+f.name])});save();vCase();toast(T('Uploaded to the case','Ανέβηκε στην υπόθεση'))};
+ const dr=$('#drop');dr.onclick=()=>$('#file').click();$('#file').onchange=e=>addFiles(e.target.files);
+ dr.ondragover=e=>{e.preventDefault();dr.classList.add('ov')};dr.ondragleave=()=>dr.classList.remove('ov');dr.ondrop=e=>{e.preventDefault();addFiles(e.dataTransfer.files)};
+ $('#addDoc').onclick=()=>{const n=prompt(T('Document name (e.g. "Birth certificate")','Όνομα εγγράφου'));if(n){c.docs.push({n,s:'req',by:S.me,d:Date.now()});save();vCase()}};
+ $('#noteGo').onclick=()=>{const v=$('#noteIn').value.trim();if(!v)return;c.log.unshift([S.me,Date.now(),v]);save();vCase();toast(T('Update posted','Δημοσιεύτηκε'))};
+ $('#info').onchange=e=>{c.info=e.target.value;save();toast(T('Saved','Αποθηκεύτηκε'))};
+ $$('[data-cl]').forEach(ch=>ch.onclick=e=>{if(e.target.dataset.rm!==undefined){c.cl.splice(+e.target.dataset.rm,1);save();vCase();return}go('client',ch.dataset.cl)});
+ $('#plug').onclick=()=>plugClient(c);$('#addProp').onclick=()=>addProp(c)}
+
+let QF='';
+function vClients(){const list=S.clients.filter(c=>!QF||(c.n+c.ph.join()+c.em.join()+c.afm).toLowerCase().includes(QF.toLowerCase()));
+ $('#view').innerHTML=`<div class="h1"><div><h1>${T('Clients','Πελάτες')}</h1><p>${S.clients.length} ${T('client cards','καρτέλες πελατών')}</p></div><button class="btn g" id="qCl">+ ${T('Client','Πελάτης')}</button></div>
+ <div class="flt"><input id="qf" placeholder="${T('Name, phone, email, AFM…','Όνομα, τηλέφωνο, email, ΑΦΜ…')}" value="${esc(QF)}" style="flex:1;max-width:420px"></div>
+ <div class="card scroll"><table class="tbl"><thead><tr><th>${T('Client','Πελάτης')}</th><th class="hm">${T('Phone','Τηλέφωνο')}</th><th class="hm">Email</th><th>${T('Cases','Υποθέσεις')}</th></tr></thead><tbody>
+ ${list.map(c=>{const cs=S.cases.filter(k=>k.cl.some(x=>x[0]===c.id));return `<tr class="row" data-cl="${c.id}"><td><div class="who"><span class="av" style="background:#5b6b16">${ini(c.n)}</span><span><b>${esc(c.n)}</b><small>${esc(c.addr)}</small></span></div></td><td class="hm">${esc(c.ph[0]||'')}</td><td class="hm">${esc(c.em[0]||'')}</td><td>${cs.map(k=>`<span class="pill" style="margin:2px">${k.id}</span>`).join('')||'—'}</td></tr>`}).join('')}</tbody></table></div>`;
+ $('#qf').oninput=e=>{QF=e.target.value;const p=e.target.selectionStart;vClients();$('#qf').focus();$('#qf').setSelectionRange(p,p)};
+ $$('[data-cl]').forEach(r=>r.onclick=()=>go('client',r.dataset.cl));$('#qCl').onclick=()=>newClient()}
+
+function vClient(){const c=C(R.id);if(!c)return go('clients');const cs=S.cases.filter(k=>k.cl.some(x=>x[0]===c.id));
+ const F=(k,lab,v)=>`<dt>${lab}</dt><dd><input data-f="${k}" value="${esc(v)}" style="width:100%;border:0;padding:4px 6px;margin:-4px -6px;border-radius:6px;background:transparent;font-weight:500" onfocus="this.style.background='#f4f3ee'" onblur="this.style.background='transparent'"></dd>`;
+ $('#view').innerHTML=`<button class="back" data-go="clients">← ${T('Clients','Πελάτες')}</button>
+ <div class="dh"><div class="who"><span class="av" style="background:#5b6b16;width:52px;height:52px;font-size:17px">${ini(c.n)}</span><div><h1>${esc(c.n)}</h1><div class="sub"><span class="pill">${offN(c.off)}</span><span class="pill">${esc(c.lang)}</span></div></div></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">${c.ph[0]?`<a class="btn l" href="tel:${c.ph[0].replace(/\s/g,'')}">📞 ${T('Call','Κλήση')}</a>`:''}${c.em[0]?`<a class="btn l" href="mailto:${c.em[0]}">✉ Email</a>`:''}<button class="btn g" id="nc">+ ${T('New case','Νέα υπόθεση')}</button></div></div>
+ <div class="cols"><div class="card box"><h3>${T('Client card','Καρτέλα πελάτη')}<span class="muted" style="font-weight:500;font-size:12.5px">${T('click any field to edit','πατήστε για αλλαγή')}</span></h3>
+  <dl class="kv">${F('n',T('Full name','Ονοματεπώνυμο'),c.n)}${c.ph.map((p,i)=>F('ph.'+i,T('Phone','Τηλέφωνο')+(c.ph.length>1?' '+(i+1):''),p)).join('')}${(c.em.length?c.em:['']).map((p,i)=>F('em.'+i,'Email',p)).join('')}${F('addr',T('Address','Διεύθυνση'),c.addr)}${F('afm',T('Greek AFM','ΑΦΜ'),c.afm)}${F('dob',T('Date of birth','Ημ. γέννησης'),c.dob)}${F('lang',T('Language','Γλώσσα'),c.lang)}</dl>
+  <div style="margin-top:14px"><div class="muted" style="font-size:12.5px;font-weight:600;margin-bottom:6px">${T('Notes','Σημειώσεις')}</div><textarea class="note" data-f="note">${esc(c.note)}</textarea></div></div>
+ <div class="card box"><h3>${T('Cases','Υποθέσεις')}</h3><div style="display:grid;gap:8px">${cs.map(k=>`<div class="chip" data-case="${k.id}"><span><b>${k.id} · ${esc(k.t)}</b><small>${roleN(k.cl.find(x=>x[0]===c.id)[1])} · ${T(...TYPES[k.type].steps[k.st])}</small></span>${typeP(k.type)}</div>`).join('')||`<div class="muted">${T('Not on any case yet.','Σε καμία υπόθεση.')}</div>`}</div></div></div>`;
+ $('[data-go]').onclick=()=>go('clients');
+ $$('[data-f]').forEach(i=>i.onchange=()=>{const [k,j]=i.dataset.f.split('.');if(j!==undefined)c[k][+j]=i.value;else c[k]=i.value;save();toast(T('Saved','Αποθηκεύτηκε'))});
+ $$('[data-case]').forEach(r=>r.onclick=()=>go('case',r.dataset.case));$('#nc').onclick=()=>newCase(c.id)}
+
+/* ---------- modals ---------- */
+const openM=html=>{$('#modal').innerHTML=html;$('#modal').classList.add('on');$('#ov').classList.add('on');setTimeout(()=>$('#modal input,#modal select')?.focus(),50)};
+const closeAll=()=>{['#modal','#ov','#drawer','#pal'].forEach(s=>$(s).classList.remove('on'))};
+$('#ov').onclick=closeAll;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPal()}});
+
+function newTask(caseId){let kind='doc',to=S.me==='mk'?'mm':'mk';
+ openM(`<h2>${T('New task','Νέα εργασία')}<button onclick="closeAll()">×</button></h2><form class="fm" id="tf">
+ <label>${T('What do you need?','Τι χρειάζεστε;')}<input name="t" required placeholder="${T('e.g. Send the family status certificate','π.χ. Στείλτε το πιστοποιητικό οικογενειακής κατάστασης')}"></label>
+ <label>${T('Type','Είδος')}<div class="seg" id="kseg">${Object.entries(KINDS).map(([k,v])=>`<button type="button" data-k="${k}" class="${k===kind?'on':''}">${T(v[0],v[1])}</button>`).join('')}</div></label>
+ <div class="r2"><label>${T('For','Προς')}<select name="to">${Object.keys(OFF).map(o=>{const us=Object.entries(U).filter(([,u])=>u.off===o);return us.length?`<optgroup label="${offN(o)}">${us.map(([id,u])=>`<option value="${id}" ${id===to?'selected':''}>${u.n}${id===S.me?' ('+T('me','εγώ')+')':''}</option>`).join('')}</optgroup>`:''}).join('')}</select></label>
+ <label>${T('Due','Προθεσμία')}<input type="date" name="due" value="${day(2)}"></label></div>
+ <label>${T('Case','Υπόθεση')}<select name="c">${S.cases.map(c=>`<option value="${c.id}" ${c.id===caseId?'selected':''}>${c.id} · ${esc(c.t)}</option>`).join('')}</select></label>
+ <label>${T('Message (optional)','Μήνυμα (προαιρετικό)')}<textarea name="m" rows="2"></textarea></label>
+ <div class="acts"><button type="button" class="btn l" onclick="closeAll()">${T('Cancel','Άκυρο')}</button><button class="btn g">${T('Send task','Αποστολή')}</button></div></form>`);
+ $$('#kseg button').forEach(b=>b.onclick=()=>{kind=b.dataset.k;$$('#kseg button').forEach(x=>x.classList.toggle('on',x===b))});
+ $('#tf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),t={id:S.nid++,t:f.get('t'),k:kind,c:f.get('c'),from:S.me,to:f.get('to'),due:f.get('due'),done:false,at:Date.now(),cm:f.get('m')?[[S.me,Date.now(),f.get('m')]]:[],fresh:true};
+  S.tasks.push(t);const k=K(t.c);k.log.unshift([S.me,Date.now(),T('Task for ','Εργασία για ')+U[t.to].n+': '+t.t]);if(kind==='doc'&&!k.docs.some(d=>d.n===t.t))k.docs.push({n:t.t.replace(/^(Send|Get|Στείλτε)\s+(the\s+)?/i,''),s:'req',by:S.me,d:Date.now()});
+  save();closeAll();render();toast(T(`Sent to ${U[t.to].n} (${offN(U[t.to].off)})`,`Στάλθηκε στον/στην ${U[t.to].n} (${offN(U[t.to].off)})`));setTimeout(()=>{t.fresh=false;save()},2500)}}
+
+function openTask(id){const t=S.tasks.find(x=>x.id===id),k=K(t.c),[dt,dc]=dueTxt(t);
+ $('#drawer').innerHTML=`<div class="dhd"><div style="display:flex;justify-content:space-between;gap:10px"><span class="pill ${t.k==='doc'?'amber':''}">${T(...KINDS[t.k])}</span><button onclick="closeAll()" style="font-size:20px">×</button></div><h2 style="font:600 19px/1.25 var(--f);margin-top:10px">${esc(t.t)}</h2>
+ <div class="kv" style="margin-top:12px;grid-template-columns:90px 1fr"><dt>${T('From','Από')}</dt><dd class="who">${av(t.from,22)} ${U[t.from].n} · ${offN(U[t.from].off)}</dd><dt>${T('For','Προς')}</dt><dd class="who">${av(t.to,22)} ${U[t.to].n} · ${offN(U[t.to].off)}</dd><dt>${T('Due','Προθεσμία')}</dt><dd class="due ${dc}">${dt}</dd><dt>${T('Case','Υπόθεση')}</dt><dd><a href="#" id="toCase" style="color:var(--blue)">${k.id} · ${esc(k.t)}</a></dd></div></div>
+ <div class="dbd"><div class="muted" style="font-size:12.5px;font-weight:600">${T('Conversation','Συζήτηση')}</div>${t.cm.map(m=>`<div class="cm">${av(m[0],28)}<div><small><b style="color:var(--ink)">${U[m[0]].n.split(' ')[0]}</b> · ${offN(U[m[0]].off)} · ${rel(m[1])}</small><div class="bub">${esc(m[2])}</div></div></div>`).join('')||`<div class="muted" style="margin-top:10px">${T('No messages yet.','Κανένα μήνυμα.')}</div>`}</div>
+ <div class="dft"><input id="cmIn" placeholder="${T('Reply…','Απάντηση…')}"><button class="btn s" id="cmGo">${T('Send','Αποστολή')}</button><button class="btn g s" id="tDone">${t.done?T('Reopen','Άνοιγμα'):T('Mark done','Ολοκλήρωση')}</button></div>`;
+ $('#drawer').classList.add('on');$('#ov').classList.add('on');
+ $('#toCase').onclick=e=>{e.preventDefault();closeAll();go('case',k.id)};
+ const send=()=>{const v=$('#cmIn').value.trim();if(!v)return;t.cm.push([S.me,Date.now(),v]);save();openTask(id);render()};
+ $('#cmGo').onclick=send;$('#cmIn').onkeydown=e=>{if(e.key==='Enter')send()};
+ $('#tDone').onclick=()=>{t.done=!t.done;if(t.done)k.log.unshift([S.me,Date.now(),T('Completed: ','Ολοκληρώθηκε: ')+t.t]);save();closeAll();render();toast(t.done?T('Done','Έγινε'):T('Reopened','Άνοιξε ξανά'))}}
+
+function newClient(after){openM(`<h2>${T('New client','Νέος πελάτης')}<button onclick="closeAll()">×</button></h2><form class="fm" id="cf">
+ <label>${T('Full name','Ονοματεπώνυμο')}<input name="n" required></label>
+ <div class="r2"><label>${T('Phone','Τηλέφωνο')}<input name="ph" type="tel"></label><label>Email<input name="em" type="email"></label></div>
+ <div class="r2"><label>${T('Address','Διεύθυνση')}<input name="addr"></label><label>${T('Greek AFM','ΑΦΜ')}<input name="afm"></label></div>
+ <div class="r2"><label>${T('Office','Γραφείο')}<select name="off">${Object.keys(OFF).map(o=>`<option value="${o}" ${o===U[S.me].off?'selected':''}>${offN(o)}</option>`).join('')}</select></label><label>${T('Language','Γλώσσα')}<select name="lang"><option>EN</option><option>ΕΛ</option><option>EN/ΕΛ</option><option>EN/FR</option></select></label></div>
+ <div class="acts"><button type="button" class="btn l" onclick="closeAll()">${T('Cancel','Άκυρο')}</button><button class="btn g">${T('Save client','Αποθήκευση')}</button></div></form>`);
+ $('#cf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),c={id:'c'+Date.now(),n:f.get('n'),ph:f.get('ph')?[f.get('ph')]:[],em:f.get('em')?[f.get('em')]:[],addr:f.get('addr'),afm:f.get('afm'),dob:'',off:f.get('off'),lang:f.get('lang'),note:''};S.clients.push(c);save();closeAll();if(after)after(c);else go('client',c.id);toast(T('Client saved','Ο πελάτης αποθηκεύτηκε'))}}
+
+function newCase(clientId){let type='inh';
+ openM(`<h2>${T('New case','Νέα υπόθεση')}<button onclick="closeAll()">×</button></h2><form class="fm" id="kf">
+ <label>${T('Type','Τύπος')}<div class="seg" id="tseg">${Object.keys(TYPES).map(k=>`<button type="button" data-ty="${k}" class="${k===type?'on':''}">${tName(k)}</button>`).join('')}</div></label>
+ <label>${T('Title','Τίτλος')}<input name="t" required placeholder="${T('e.g. Inheritance · Tripoli','π.χ. Κληρονομιά · Τρίπολη')}"></label>
+ <div class="r2"><label>${T('Client','Πελάτης')}<select name="cl">${S.clients.map(c=>`<option value="${c.id}" ${c.id===clientId?'selected':''}>${esc(c.n)}</option>`).join('')}</select></label><label>${T('Role','Ρόλος')}<select name="r">${ROLES.map(r=>`<option value="${r[0]}">${T(r[0],r[1])}</option>`).join('')}</select></label></div>
+ <div class="r2"><label>${T('Office','Γραφείο')}<select name="off">${Object.keys(OFF).map(o=>`<option value="${o}" ${o===U[S.me].off?'selected':''}>${offN(o)}</option>`).join('')}</select></label><label>${T('Responsible','Υπεύθυνος')}<select name="own">${Object.entries(U).map(([id,u])=>`<option value="${id}" ${id===S.me?'selected':''}>${u.n}</option>`).join('')}</select></label></div>
+ <div class="acts"><button type="button" class="btn l" onclick="closeAll()">${T('Cancel','Άκυρο')}</button><button class="btn g">${T('Create case','Δημιουργία')}</button></div></form>`);
+ $$('#tseg button').forEach(b=>b.onclick=()=>{type=b.dataset.ty;$$('#tseg button').forEach(x=>x.classList.toggle('on',x===b))});
+ $('#kf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),n=Math.max(...S.cases.map(c=>+c.id.split('-')[1]))+3,c={id:'ICS-'+n,t:f.get('t'),type,off:f.get('off'),own:f.get('own'),st:0,cl:[[f.get('cl'),f.get('r')]],props:[],docs:[],info:'',log:[[S.me,Date.now(),T('Case opened.','Η υπόθεση άνοιξε.')]]};S.cases.unshift(c);save();closeAll();go('case',c.id);toast(c.id+T(' created',' δημιουργήθηκε'))}}
+
+function plugClient(k){openM(`<h2>${T('Add client to ','Προσθήκη πελάτη στο ')}${k.id}<button onclick="closeAll()">×</button></h2><div class="fm">
+ <label>${T('Search client cards','Αναζήτηση καρτέλας')}<input id="pq" placeholder="${T('Name, phone or email','Όνομα, τηλέφωνο ή email')}"></label>
+ <label>${T('Role on this case','Ρόλος στην υπόθεση')}<select id="pr">${ROLES.map(r=>`<option value="${r[0]}">${T(r[0],r[1])}</option>`).join('')}</select></label>
+ <div id="pres" style="display:grid;gap:6px;max-height:260px;overflow:auto"></div>
+ <button class="btn l" id="pnew">+ ${T('New client card','Νέα καρτέλα πελάτη')}</button></div>`);
+ const draw=()=>{const q=$('#pq').value.toLowerCase();$('#pres').innerHTML=S.clients.filter(c=>!k.cl.some(x=>x[0]===c.id)&&(c.n+c.ph.join()+c.em.join()).toLowerCase().includes(q)).map(c=>`<div class="chip" data-pick="${c.id}"><span class="av" style="background:#5b6b16">${ini(c.n)}</span><span><b>${esc(c.n)}</b><small>${esc(c.ph[0]||c.em[0]||c.addr)}</small></span></div>`).join('');
+  $$('[data-pick]').forEach(p=>p.onclick=()=>add(p.dataset.pick))};
+ const add=id=>{k.cl.push([id,$('#pr').value]);k.log.unshift([S.me,Date.now(),T('Added client ','Προστέθηκε ')+C(id).n]);save();closeAll();vCase();toast(T('Client added to the case','Ο πελάτης προστέθηκε'))};
+ $('#pq').oninput=draw;draw();$('#pnew').onclick=()=>{const r=$('#pr').value;newClient(c=>{k.cl.push([c.id,r]);save();vCase()})}}
+
+function addProp(k){openM(`<h2>${T('Add property','Προσθήκη ακινήτου')}<button onclick="closeAll()">×</button></h2><form class="fm" id="pf">
+ <label>${T('Description & location','Περιγραφή & τοποθεσία')}<input name="a" required placeholder="${T('e.g. Apartment 80 m², Patras','π.χ. Διαμέρισμα 80 τ.μ., Πάτρα')}"></label>
+ <div class="r2"><label>KAEK<input name="k"></label><label>${T('Shares','Ποσοστά')}<input name="sh" placeholder="50% / 50%"></label></div>
+ <div class="acts"><button type="button" class="btn l" onclick="closeAll()">${T('Cancel','Άκυρο')}</button><button class="btn g">${T('Add','Προσθήκη')}</button></div></form>`);
+ $('#pf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);k.props.push({a:f.get('a'),k:f.get('k')?'KAEK '+f.get('k'):'',sh:f.get('sh')});save();closeAll();vCase()}}
+
+$('#newBtn').onclick=()=>{openM(`<h2>${T('Create','Δημιουργία')}<button onclick="closeAll()">×</button></h2><div style="display:grid;gap:8px">
+ <button class="chip" id="n1"><span class="av" style="background:#9eaf00">✓</span><span><b>${T('Task','Εργασία')}</b><small>${T('Ask a colleague for a document or an update','Ζητήστε έγγραφο ή ενημέρωση από συνάδελφο')}</small></span></button>
+ <button class="chip" id="n2"><span class="av" style="background:#2459a8">▣</span><span><b>${T('Case','Υπόθεση')}</b><small>${T('A new project for one or more clients','Νέο project για έναν ή περισσότερους πελάτες')}</small></span></button>
+ <button class="chip" id="n3"><span class="av" style="background:#5b6b16">☺</span><span><b>${T('Client','Πελάτης')}</b><small>${T('A new client card','Νέα καρτέλα πελάτη')}</small></span></button></div>`);
+ $('#n1').onclick=()=>newTask(R.v==='case'?R.id:undefined);$('#n2').onclick=()=>newCase();$('#n3').onclick=()=>newClient()};
+
+/* ---------- command palette ---------- */
+function openPal(){const p=$('#pal');p.classList.add('on');$('#ov').classList.add('on');const i=$('#palIn');i.value='';i.placeholder=T('Search clients, cases, tasks…','Αναζήτηση πελατών, υποθέσεων, εργασιών…');drawPal();setTimeout(()=>i.focus(),30)}
+let PS=0,PR=[];
+function drawPal(){const q=$('#palIn').value.toLowerCase();
+ PR=[...S.clients.filter(c=>(c.n+c.ph.join()+c.em.join()+c.afm).toLowerCase().includes(q)).map(c=>['☺',c.n,T('Client','Πελάτης'),()=>go('client',c.id)]),
+  ...S.cases.filter(c=>(c.id+c.t).toLowerCase().includes(q)).map(c=>['▣',c.id+' · '+c.t,tName(c.type),()=>go('case',c.id)]),
+  ...S.tasks.filter(t=>!t.done&&t.t.toLowerCase().includes(q)).map(t=>['✓',t.t,U[t.to].n,()=>openTask(t.id)])].slice(0,12);PS=0;paintPal()}
+function paintPal(){$('#palRes').innerHTML=PR.map((r,i)=>`<button class="${i===PS?'sel':''}" data-i="${i}"><span>${r[0]}</span><span>${esc(r[1])}</span><small>${esc(r[2])}</small></button>`).join('')||`<div class="empty">${T('Nothing found','Δεν βρέθηκε')}</div>`;
+ $$('#palRes button').forEach(b=>b.onclick=()=>pick(+b.dataset.i))}
+function pick(i){const r=PR[i];if(!r)return;closeAll();r[3]()}
+$('#palIn').oninput=drawPal;$('#palIn').onkeydown=e=>{if(e.key==='ArrowDown'){PS=Math.min(PS+1,PR.length-1);paintPal();e.preventDefault()}if(e.key==='ArrowUp'){PS=Math.max(PS-1,0);paintPal();e.preventDefault()}if(e.key==='Enter')pick(PS)};
+$('#searchBtn').onclick=openPal;
+
+/* ---------- chrome ---------- */
+$$('.nv').forEach(b=>b.onclick=()=>go(b.dataset.v));
+$$('.lang button').forEach(b=>b.onclick=()=>{L=b.dataset.l;$$('.lang button').forEach(x=>x.classList.toggle('on',x===b));document.documentElement.lang=L==='el'?'el':'en';render()});
+$('#meSel').onchange=e=>{S.me=e.target.value;save();go('home');toast(T('You are now ','Είστε τώρα ')+U[S.me].n+' · '+offN(U[S.me].off))};
+$('#burger').onclick=()=>$('#side').classList.toggle('on');
+$('#reset').onclick=()=>{S=SEED();save();go('home');toast(T('Demo data reset','Τα δεδομένα επανήλθαν'))};
+$('#tipX').onclick=()=>$('#tip').remove();
+setInterval(()=>{$('#offs').innerHTML=Object.keys(OFF).map(o=>{const t=tzNow(OFF[o].tz);return `<div class="${t.open?'op':'cl'}"><b>${offN(o)}</b><i>${t.s}</i></div>`}).join('')},30000);
+render();
+</script>
+</body>
+</html>
