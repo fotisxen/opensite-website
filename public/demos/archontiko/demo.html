@@ -72,6 +72,21 @@ html.seen .overture{display:none}
 @keyframes lift{to{opacity:0;visibility:hidden}}
 @keyframes breathe{50%{transform:scale(1.4);box-shadow:0 0 30px 10px rgba(243,154,74,.8),0 0 90px 30px rgba(224,102,42,.35)}}
 
+/* real logo, language switch, social icons */
+.brand img{height:46px;width:auto;display:block}
+.nav.solid .brand img{height:40px}
+.overture .logo{width:min(420px,70vw);height:auto;opacity:0;filter:blur(10px);animation:glow 1.2s var(--ease) .2s forwards}
+.lang{display:inline-flex;box-shadow:inset 0 0 0 1px var(--line)}
+.lang button{padding:9px 10px;font:500 11px/1 var(--sans);letter-spacing:.14em;color:var(--bone2)}
+.lang button.on{background:var(--bone);color:#170c05}
+.social{display:inline-flex;gap:8px}
+.social a{width:38px;height:38px;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line);color:var(--bone2);transition:color .3s,box-shadow .3s}
+.social a:hover{color:var(--accent2);box-shadow:inset 0 0 0 1px var(--accent)}
+footer .social{margin-top:14px}
+footer .contact a{text-decoration:none;border-bottom:1px solid var(--line)}
+.nav .links .social a:not(.btn){display:grid}
+@media(max-width:560px){.nav .social{display:none}.brand img{height:38px}}
+
 /* nav */
 .nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px var(--pad);transition:background .5s,padding .5s}
 .nav.solid{background:linear-gradient(rgba(12,10,8,.72),rgba(12,10,8,.72)),var(--grain);background-size:auto,900px 300px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:12px;padding-bottom:12px}
@@ -328,16 +343,18 @@ footer a{text-decoration:underline}
 
 <div class="overture" id="overture" aria-hidden="true">
   <div class="ember"></div>
-  <div class="name" id="ovName"></div>
-  <div class="sub">Ξύλο · Πέτρα · Φωτιά</div>
+  <img class="logo" src="logo.png" alt="Archontiko">
+  <div class="sub" data-en="Wood · Stone · Fire">Ξύλο · Πέτρα · Φωτιά</div>
 </div>
 
 <header class="nav" id="nav">
-  <a href="#top" class="brand ph" data-note="Εδώ μπαίνει το λογότυπό σας"><span class="mono"><span>Α</span></span><span>ΑΡΧΟΝΤΙΚΟ<small>MEAT RESTAURANT</small></span></a>
+  <a href="#top" class="brand" aria-label="Archontiko"><img src="logo.png" alt="Archontiko"></a>
   <nav class="links">
-    <a href="#vitrina">Βιτρίνα</a><a href="#wagyu">Wagyu</a><a href="#psisimo">Ψήσιμο</a><a href="#spitia">Τα δύο σπίτια</a>
+    <a href="#vitrina" data-en="Dry-age">Βιτρίνα</a><a href="#wagyu">Wagyu</a><a href="#psisimo" data-en="The grill">Ψήσιμο</a><a href="#spitia" data-en="Two houses">Τα δύο σπίτια</a>
     <span class="status" id="navStatus"><i></i><span>…</span></span>
-    <a class="btn" href="#kratisi">Κράτηση</a>
+    <span class="social"><a href="https://www.instagram.com/archontiko_meat_restaurant/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a><a href="https://www.facebook.com/profile.php?id=100063302794557" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M13.5 21.9v-8.1h2.7l.4-3.2h-3.1V8.6c0-.9.3-1.5 1.6-1.5h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8v8.1a10 10 0 1 1 3.4 0z"/></svg></a></span>
+    <span class="lang" id="lang"><button type="button" data-l="el" class="on">ΕΛ</button><button type="button" data-l="en">EN</button></span>
+    <a class="btn" href="#kratisi" data-en="Book">Κράτηση</a>
   </nav>
 </header>
 
@@ -350,23 +367,23 @@ footer a{text-decoration:underline}
   <div class="warm" id="warm"></div>
   <canvas id="embers"></canvas>
   <div class="season-sw" id="seasonSw">
-    <button type="button" data-s="winter">❄ Χειμώνας · Θέρμη</button>
-    <button type="button" data-s="summer">☀ Καλοκαίρι · Χαλκιδική</button>
+    <button type="button" data-s="winter" data-en="❄ Winter · Thermi">❄ Χειμώνας · Θέρμη</button>
+    <button type="button" data-s="summer" data-en="☀ Summer · Chalkidiki">☀ Καλοκαίρι · Χαλκιδική</button>
     <small id="seasonNote"></small>
   </div>
   <div class="copy">
     <span class="label" id="heroLabel">Archontiko Thessaloniki · Θέρμη</span>
-    <h1 class="display lines" id="h1"><span class="ln"><span>Κρέας &amp; κρασί.</span></span><span class="ln"><span><em>Ξύλο &amp; πέτρα.</em></span></span></h1>
-    <p class="reveal">Εκλεκτές κοπές στη φωτιά, γεμάτα ψυγεία ωρίμανσης, κρασιά με χαρακτήρα και φιλοξενία όπως μόνο το Αρχοντικό ξέρει.</p>
-    <div class="actions reveal"><a class="btn" href="#kratisi">Κράτηση τραπεζιού</a><a class="btn line" href="#vitrina">Άνοιξε τη βιτρίνα</a></div>
+    <h1 class="display lines" id="h1"><span class="ln"><span data-en="Meat &amp; wine.">Κρέας &amp; κρασί.</span></span><span class="ln"><span data-en="<em>Wood &amp; stone.</em>"><em>Ξύλο &amp; πέτρα.</em></span></span></h1>
+    <p class="reveal" data-en="Prime cuts over the fire, dry-age cabinets always full, wines with character and hospitality the way only Archontiko knows.">Εκλεκτές κοπές στη φωτιά, γεμάτα ψυγεία ωρίμανσης, κρασιά με χαρακτήρα και φιλοξενία όπως μόνο το Αρχοντικό ξέρει.</p>
+    <div class="actions reveal"><a class="btn" href="#kratisi" data-en="Book a table">Κράτηση τραπεζιού</a><a class="btn line" href="#vitrina" data-en="Open the cabinet">Άνοιξε τη βιτρίνα</a></div>
   </div>
 </section>
 
 <div class="woodtrim" aria-hidden="true"></div>
 <section class="words woodbg" id="words">
-  <span class="label">Η φιλοσοφία μας</span>
-  <p class="q"><span class="w wood">Ξύλο</span> και <span class="w stone">πέτρα</span> στηρίζουν τον χώρο.<br><span class="w meat">Κρέας</span> και <span class="w wine">κρασί</span> στηρίζουν τη στιγμή.</p>
-  <p class="hint">Πέρασε πάνω από τις λέξεις</p>
+  <span class="label" data-en="Our philosophy">Η φιλοσοφία μας</span>
+  <p class="q" data-en='<span class="w wood">Wood</span> and <span class="w stone">stone</span> hold up the room.<br><span class="w meat">Meat</span> and <span class="w wine">wine</span> hold up the moment.'><span class="w wood">Ξύλο</span> και <span class="w stone">πέτρα</span> στηρίζουν τον χώρο.<br><span class="w meat">Κρέας</span> και <span class="w wine">κρασί</span> στηρίζουν τη στιγμή.</p>
+  <p class="hint" data-en="Move over the words">Πέρασε πάνω από τις λέξεις</p>
 </section>
 
 <section class="fridge-sec" id="vitrina">
@@ -380,9 +397,9 @@ footer a{text-decoration:underline}
       <div class="fridge-ctl"><button class="btn" type="button" id="doorBtn">Άνοιξε την πόρτα</button><small id="fogHint">ή σκούπισε το θολό τζάμι με το δάχτυλο</small></div>
     </div>
     <div class="detail">
-      <span class="label">Η βιτρίνα ωρίμανσης</span>
-      <h2 class="display lines"><span class="ln"><span>Διάλεξε</span></span><span class="ln"><span><em>την κοπή σου.</em></span></span></h2>
-      <div id="cutCard"><p>Τα ψυγεία μας είναι πάντα γεμάτα. Άνοιξε την πόρτα και πάτα μια κοπή για να δεις από πού έρχεται, πόσο ζυγίζει και πόσες μέρες ωριμάζει. Αν σου αρέσει, κράτησέ την για το τραπέζι σου.</p></div>
+      <span class="label" data-en="The dry-age cabinet">Η βιτρίνα ωρίμανσης</span>
+      <h2 class="display lines"><span class="ln"><span data-en="Choose">Διάλεξε</span></span><span class="ln"><span data-en="<em>your cut.</em>"><em>την κοπή σου.</em></span></span></h2>
+      <div id="cutCard"><p data-en="Our cabinets are always full. Open the door and tap a cut to see where it comes from, how much it weighs and how many days it ages. If you like it, keep it for your table.">Τα ψυγεία μας είναι πάντα γεμάτα. Άνοιξε την πόρτα και πάτα μια κοπή για να δεις από πού έρχεται, πόσο ζυγίζει και πόσες μέρες ωριμάζει. Αν σου αρέσει, κράτησέ την για το τραπέζι σου.</p></div>
     </div>
   </div>
 </section>
@@ -391,13 +408,13 @@ footer a{text-decoration:underline}
   <div class="wrap">
     <div>
       <span class="label">Wagyu · 2GR 9+</span>
-      <h2 class="display lines"><span class="ln"><span>Η γεύση είναι</span></span><span class="ln"><span><em>στις φλέβες.</em></span></span></h2>
-      <p>Το marbling, οι λεπτές φλέβες λίπους μέσα στο κρέας, μετριέται σε κλίμακα από 1 έως 12. Όσο ανεβαίνει, τόσο πιο βουτυράτη η υφή και πιο έντονο το άρωμα. Ανέβασε την κλίμακα και δες τι αλλάζει.</p>
+      <h2 class="display lines"><span class="ln"><span data-en="The flavour is">Η γεύση είναι</span></span><span class="ln"><span data-en="<em>in the veins.</em>"><em>στις φλέβες.</em></span></span></h2>
+      <p data-en="Marbling, the fine veins of fat inside the meat, is graded from 1 to 12. The higher it goes, the more buttery the texture and the deeper the flavour. Move the scale up and see what changes.">Το marbling, οι λεπτές φλέβες λίπους μέσα στο κρέας, μετριέται σε κλίμακα από 1 έως 12. Όσο ανεβαίνει, τόσο πιο βουτυράτη η υφή και πιο έντονο το άρωμα. Ανέβασε την κλίμακα και δες τι αλλάζει.</p>
       <div class="bms">
         <div class="now"><b id="bmsNum">3</b><span id="bmsTxt">Καλό μοσχάρι<br>λίγες φλέβες</span></div>
         <input type="range" id="bms" min="1" max="12" step="1" value="3" aria-label="Κλίμακα marbling">
         <div class="scale"><span>1</span><span>3</span><span>6</span><span>9+</span><span>12</span></div>
-        <span class="ours" id="ours">✦ Εδώ είναι το δικό μας Australian Wagyu 2GR 9+</span>
+        <span class="ours" id="ours" data-en="✦ This is our Australian Wagyu 2GR 9+">✦ Εδώ είναι το δικό μας Australian Wagyu 2GR 9+</span>
       </div>
     </div>
     <div class="board"><canvas id="marbCv" width="520" height="400"></canvas></div>
@@ -408,13 +425,13 @@ footer a{text-decoration:underline}
   <div class="wrap">
     <div class="pan"><canvas id="grillCv"></canvas><span class="temp" id="tempOut">55°C</span></div>
     <div>
-      <span class="label">Στη φωτιά</span>
-      <h2 class="display lines"><span class="ln"><span>Πώς</span></span><span class="ln"><span><em>το θέλεις;</em></span></span></h2>
+      <span class="label" data-en="On the fire">Στη φωτιά</span>
+      <h2 class="display lines"><span class="ln"><span data-en="How do you">Πώς</span></span><span class="ln"><span data-en="<em>like it?</em>"><em>το θέλεις;</em></span></span></h2>
       <input type="range" id="done" min="0" max="5" step="1" value="2" aria-label="Βαθμός ψησίματος">
       <div class="donenames" id="doneNames"></div>
       <p id="doneTxt" style="margin-top:18px;color:var(--bone2)"></p>
       <button class="sound" id="soundBtn" type="button">🔊 Άκου το τσιτσίρισμα</button>
-      <div class="chef-tip">«Πού βρίσκεται όλη η γεύση στο κρέας;» Ο <b>Γιώργος Τσακνής</b> από το Αρχοντικό υποστηρίζει πως <b>το κόκαλο κάνει όλη τη διαφορά</b> στο ψήσιμο.</div>
+      <div class="chef-tip" data-en="“Where is all the flavour in meat?” <b>Giorgos Tsaknis</b> of Archontiko says that <b>the bone makes all the difference</b> on the grill.">«Πού βρίσκεται όλη η γεύση στο κρέας;» Ο <b>Γιώργος Τσακνής</b> από το Αρχοντικό υποστηρίζει πως <b>το κόκαλο κάνει όλη τη διαφορά</b> στο ψήσιμο.</div>
     </div>
   </div>
 </section>
@@ -422,13 +439,13 @@ footer a{text-decoration:underline}
 <section class="sigs" id="signatures">
   <div class="wrap">
     <span class="label">Signatures</span>
-    <h2 class="display lines"><span class="ln"><span>Δεν χρειάζονται</span></span><span class="ln"><span><em>περιγραφή.</em></span></span></h2>
+    <h2 class="display lines"><span class="ln"><span data-en="They need no">Δεν χρειάζονται</span></span><span class="ln"><span data-en="<em>description.</em>"><em>περιγραφή.</em></span></span></h2>
     <div class="sig-grid">
-      <article class="sig tall"><img loading="lazy" src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=1100&q=70" alt="Tomahawk"><div class="cap"><i>2 kg · με το κόκαλο</i><b>Tomahawk</b><span>Can you handle this 2kg Tomahawk?</span><div class="chal"><button type="button" id="tomaBtn">Ναι, το αντέχω</button><small id="tomaCount"></small></div></div></article>
-      <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=70" alt="Wagyu"><div class="cap"><i>2GR 9+</i><b>Wagyu Tomahawk</b><span>Ένα τελετουργικό γεύσης για όσους ξέρουν.</span></div></article>
-      <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=70" alt="Tartare"><div class="cap"><i>Στο τραπέζι</i><b>Beef tartare</b><span>Κομμένο στο χέρι, μπροστά σου.</span></div></article>
+      <article class="sig tall"><img loading="lazy" src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=1100&q=70" alt="Tomahawk"><div class="cap"><i data-en="2 kg · on the bone">2 kg · με το κόκαλο</i><b>Tomahawk</b><span>Can you handle this 2kg Tomahawk?</span><div class="chal"><button type="button" id="tomaBtn">Ναι, το αντέχω</button><small id="tomaCount"></small></div></div></article>
+      <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=70" alt="Wagyu"><div class="cap"><i>2GR 9+</i><b>Wagyu Tomahawk</b><span data-en="A ritual of flavour for those who know.">Ένα τελετουργικό γεύσης για όσους ξέρουν.</span></div></article>
+      <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=70" alt="Tartare"><div class="cap"><i data-en="At the table">Στο τραπέζι</i><b>Beef tartare</b><span data-en="Cut by hand, right in front of you.">Κομμένο στο χέρι, μπροστά σου.</span></div></article>
       <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=900&q=70" alt="Ribeye"><div class="cap"><i>Australian Wagyu</i><b>Bone-in ribeye 9+</b><span>No need for description.</span></div></article>
-      <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=70" alt="Κρασί"><div class="cap"><i>Η κάβα</i><b>Κρασιά με χαρακτήρα</b><span class="ph" data-note="Εδώ μπαίνουν οι ετικέτες και οι οινοποιοί σας">Επιλεγμένες ετικέτες για κάθε κοπή.</span></div></article>
+      <article class="sig"><img loading="lazy" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=70" alt="Κρασί"><div class="cap"><i data-en="The cellar">Η κάβα</i><b data-en="Wines with character">Κρασιά με χαρακτήρα</b><span class="ph" data-note="Εδώ μπαίνουν οι ετικέτες και οι οινοποιοί σας" data-en="Selected labels for every cut.">Επιλεγμένες ετικέτες για κάθε κοπή.</span></div></article>
     </div>
   </div>
 </section>
@@ -437,9 +454,9 @@ footer a{text-decoration:underline}
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="label">Δύο σπίτια · δύο εποχές</span>
-        <h2 class="display lines"><span class="ln"><span>Καλοκαίρι στη Χαλκιδική.</span></span><span class="ln"><span><em>Χειμώνας στη Θέρμη.</em></span></span></h2>
-        <p class="lead">Το Αρχοντικό ακολουθεί τις εποχές. Πέρασε το δάχτυλο γύρω από τον κύκλο για να δεις ποιο σπίτι είναι ανοιχτό κάθε μήνα.</p>
+        <span class="label" data-en="Two houses · two seasons">Δύο σπίτια · δύο εποχές</span>
+        <h2 class="display lines"><span class="ln"><span data-en="Summer in Chalkidiki.">Καλοκαίρι στη Χαλκιδική.</span></span><span class="ln"><span data-en="<em>Winter in Thermi.</em>"><em>Χειμώνας στη Θέρμη.</em></span></span></h2>
+        <p class="lead" data-en="Archontiko follows the seasons. Run your finger around the circle to see which house is open each month.">Το Αρχοντικό ακολουθεί τις εποχές. Πέρασε το δάχτυλο γύρω από τον κύκλο για να δεις ποιο σπίτι είναι ανοιχτό κάθε μήνα.</p>
       </div>
       <div class="ring ph" id="ring" data-note="Η ημερομηνία που ανοίγει η Χαλκιδική είναι ενδεικτική (1/6). Οι υπόλοιπες είναι από τα posts σας">
         <svg viewBox="0 0 300 300" id="ringSvg"></svg>
@@ -447,8 +464,8 @@ footer a{text-decoration:underline}
       </div>
     </div>
     <div class="house-grid">
-      <article class="house" id="houseS"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=70" alt=""><span class="when">Καλοκαίρι</span><h3>Archontiko<br>Agia Paraskevi</h3><p>Αγία Παρασκευή, Χαλκιδική. Καλοκαιρινές βραδιές, το Wagyu Tomahawk και η φωτιά κάτω από τον ουρανό.</p><span class="st"><i></i><span>…</span></span></article>
-      <article class="house" id="houseW"><img loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=70" alt=""><span class="when">Χειμώνας</span><h3>Archontiko<br>Thessaloniki</h3><p>Καραολή &amp; Δημητρίου 23, Θέρμη. Ξύλο, πέτρα, γεμάτα ψυγεία και ζεστές χειμωνιάτικες βραδιές.</p><span class="st"><i></i><span>…</span></span></article>
+      <article class="house" id="houseS"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=70" alt=""><span class="when" data-en="Summer">Καλοκαίρι</span><h3>Archontiko<br>Agia Paraskevi</h3><p data-en="Agia Paraskevi, Chalkidiki. Summer nights, the Wagyu Tomahawk and the fire under the open sky.">Αγία Παρασκευή, Χαλκιδική. Καλοκαιρινές βραδιές, το Wagyu Tomahawk και η φωτιά κάτω από τον ουρανό.</p><span class="st"><i></i><span>…</span></span></article>
+      <article class="house" id="houseW"><img loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=70" alt=""><span class="when" data-en="Winter">Χειμώνας</span><h3>Archontiko<br>Thessaloniki</h3><p data-en="Karaoli &amp; Dimitriou 23, Thermi. Wood, stone, full cabinets and warm winter nights.">Καραολή &amp; Δημητρίου 23, Θέρμη. Ξύλο, πέτρα, γεμάτα ψυγεία και ζεστές χειμωνιάτικες βραδιές.</p><span class="st"><i></i><span>…</span></span></article>
     </div>
   </div>
 </section>
@@ -457,14 +474,14 @@ footer a{text-decoration:underline}
 <section class="reserve woodbg" id="kratisi">
   <div class="wrap">
     <div>
-      <span class="label">Κράτηση</span>
-      <h2 class="display lines"><span class="ln"><span>Το τραπέζι</span></span><span class="ln"><span><em>σας περιμένει.</em></span></span></h2>
-      <p class="lead">Διαλέξτε ημερομηνία και θα σας πούμε σε ποιο Αρχοντικό θα βρεθούμε. Αν θέλετε, κρατήστε από τώρα και τις κοπές σας: θα σας περιμένουν έτοιμες.</p>
+      <span class="label" data-en="Reservations">Κράτηση</span>
+      <h2 class="display lines"><span class="ln"><span data-en="Your table">Το τραπέζι</span></span><span class="ln"><span data-en="<em>is waiting.</em>"><em>σας περιμένει.</em></span></span></h2>
+      <p class="lead" data-en="Pick a date and we will tell you which Archontiko we meet at. If you like, reserve your cuts now too: they will be waiting for you.">Διαλέξτε ημερομηνία και θα σας πούμε σε ποιο Αρχοντικό θα βρεθούμε. Αν θέλετε, κρατήστε από τώρα και τις κοπές σας: θα σας περιμένουν έτοιμες.</p>
     </div>
       <div class="picker">
-        <div class="pk-head"><span class="label">Προπαραγγελία κρέατος</span><small>προαιρετικά · στέλνεται μαζί με την κράτηση</small></div>
+        <div class="pk-head"><span class="label" data-en="Pre-order your meat">Προπαραγγελία κρέατος</span><small data-en="optional · sent with your booking">προαιρετικά · στέλνεται μαζί με την κράτηση</small></div>
         <div class="pk-stage">
-          <div class="pk-board"><canvas id="boardCv" width="900" height="440"></canvas><span class="pk-empty" id="pkEmpty">Διαλέξτε κοπές και θα έρθουν εδώ, στο ξύλο</span></div>
+          <div class="pk-board"><canvas id="boardCv" width="900" height="440"></canvas><span class="pk-empty" id="pkEmpty" data-en="Pick your cuts and they will land here, on the wood">Διαλέξτε κοπές και θα έρθουν εδώ, στο ξύλο</span></div>
           <div class="pk-scale"><svg viewBox="0 0 200 116" id="scaleSvg" aria-hidden="true"></svg><div><b id="pkKg">0 g</b><br><small id="pkFor">Η ζυγαριά σας</small></div></div>
         </div>
         <div class="pk-grid ph" id="pkGrid" data-note="Ενδεικτικές κοπές και βάρη: μπαίνει ο δικός σας κατάλογος"></div>
@@ -472,20 +489,20 @@ footer a{text-decoration:underline}
     <form class="form" id="form" onsubmit="return false">
       <div id="formBody">
         <div class="row2">
-          <div><label for="rDate">Ημερομηνία</label><input type="date" id="rDate"></div>
-          <div><label>Άτομα</label><div class="stepper"><button type="button" id="pm">−</button><output id="pp">2</output><button type="button" id="pp2">+</button></div></div>
+          <div><label for="rDate" data-en="Date">Ημερομηνία</label><input type="date" id="rDate"></div>
+          <div><label data-en="Guests">Άτομα</label><div class="stepper"><button type="button" id="pm">−</button><output id="pp">2</output><button type="button" id="pp2">+</button></div></div>
         </div>
-        <label>Ώρα</label>
+        <label data-en="Time">Ώρα</label>
         <div class="times ph" id="times" data-note="Ώρες κρατήσεων όπως τις ορίζετε εσείς"></div>
         <div class="where" id="where"></div>
         <p class="preorder" id="preorder"></p>
         <div class="row2">
-          <div><label for="rName">Όνομα</label><input id="rName" autocomplete="name"></div>
-          <div><label for="rTel">Τηλέφωνο</label><input id="rTel" inputmode="tel" autocomplete="tel"></div>
+          <div><label for="rName" data-en="Name">Όνομα</label><input id="rName" autocomplete="name"></div>
+          <div><label for="rTel" data-en="Phone">Τηλέφωνο</label><input id="rTel" inputmode="tel" autocomplete="tel"></div>
         </div>
-        <button class="btn" type="button" id="send">Κλείστε το τραπέζι</button>
+        <button class="btn" type="button" id="send" data-en="Book the table">Κλείστε το τραπέζι</button>
       </div>
-      <div class="done" id="done"><span class="label">Demo</span><b>Σας περιμένουμε.</b><p id="doneTxt2"></p></div>
+      <div class="done" id="done"><span class="label">Demo</span><b data-en="See you soon.">Σας περιμένουμε.</b><p id="doneTxt2"></p></div>
     </form>
   </div>
 </section>
@@ -493,11 +510,11 @@ footer a{text-decoration:underline}
 <div class="woodtrim" aria-hidden="true"></div>
 <footer class="woodbg">
   <div class="grid">
-    <div><b>Archontiko Thessaloniki</b>Καραολή &amp; Δημητρίου 23, Θέρμη<br>Χειμερινή σεζόν · από 23 Οκτωβρίου<br><span class="ph" data-note="Τηλέφωνο, ωράριο">Τηλέφωνο · Ωράριο</span></div>
-    <div><b>Archontiko Agia Paraskevi</b>Αγία Παρασκευή, Χαλκιδική<br>Καλοκαιρινή σεζόν · έως 27 Σεπτεμβρίου<br><span class="ph" data-note="Τηλέφωνο, ακριβής διεύθυνση, ημερομηνία που ανοίγει">Τηλέφωνο · Διεύθυνση</span></div>
-    <div><b>Ακολουθήστε μας</b><a href="https://www.instagram.com/archontiko_meat_restaurant/" target="_blank" rel="noopener">@archontiko_meat_restaurant</a><br>Ξύλο και πέτρα στηρίζουν τον χώρο.<br>Κρέας και κρασί στηρίζουν τη στιγμή.</div>
+    <div class="contact"><b>Archontiko Thessaloniki</b><span data-en="Karaoli &amp; Dimitriou 23, Thermi<br>Winter season · from 23 October">Καραολή &amp; Δημητρίου 23, Θέρμη<br>Χειμερινή σεζόν · από 23 Οκτωβρίου</span><br><a href="tel:+302310462626">📞 2310 462626</a><br><a href="mailto:arxontikothermi@gmail.com">✉ arxontikothermi@gmail.com</a><br><span class="ph" data-note="Ωράριο" data-en="Opening hours">Ωράριο</span></div>
+    <div><b>Archontiko Agia Paraskevi</b><span data-en="Agia Paraskevi, Chalkidiki<br>Summer season · until 27 September">Αγία Παρασκευή, Χαλκιδική<br>Καλοκαιρινή σεζόν · έως 27 Σεπτεμβρίου</span><br><span class="ph" data-note="Τηλέφωνο, ακριβής διεύθυνση, ημερομηνία που ανοίγει" data-en="Phone · Address">Τηλέφωνο · Διεύθυνση</span></div>
+    <div><b data-en="Follow us">Ακολουθήστε μας</b><span data-en="Wood and stone hold up the room.<br>Meat and wine hold up the moment.">Ξύλο και πέτρα στηρίζουν τον χώρο.<br>Κρέας και κρασί στηρίζουν τη στιγμή.</span><div class="social"><a href="https://www.instagram.com/archontiko_meat_restaurant/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.7a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a><a href="https://www.facebook.com/profile.php?id=100063302794557" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M13.5 21.9v-8.1h2.7l.4-3.2h-3.1V8.6c0-.9.3-1.5 1.6-1.5h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8v8.1a10 10 0 1 1 3.4 0z"/></svg></a></div></div>
   </div>
-  <div class="bottom"><span>© Αρχοντικό Meat Restaurant</span><span>Demo από <a href="https://opensite.gr">OpenSite</a> · Φωτογραφίες: Unsplash (ενδεικτικές)</span></div>
+  <div class="bottom"><span>© Αρχοντικό Meat Restaurant</span><span data-en='Demo by <a href="https://opensite.gr">OpenSite</a> · Photos: Unsplash (placeholders)'>Demo από <a href="https://opensite.gr">OpenSite</a> · Φωτογραφίες: Unsplash (ενδεικτικές)</span></div>
 </footer>
 
 <button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
@@ -506,10 +523,13 @@ footer a{text-decoration:underline}
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const html = document.documentElement;
 const fine = matchMedia("(pointer:fine)").matches;
+// Language: static text swaps through data-en, dynamic text asks L(); every block that builds text registers a redraw.
+let LANG = "el";
+const L = (el, en) => LANG === "en" ? en : el;
+const langHooks = [];
 $("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("ar-notes", on ? "on" : "off"); } catch (e) {} });
 
 /* overture */
-$("#ovName").innerHTML = [..."ΑΡΧΟΝΤΙΚΟ"].map((c, i) => `<span style="animation-delay:${.15 + i * .08}s">${c}</span>`).join("");
 $("#overture").addEventListener("click", () => $("#overture").style.display = "none");
 addEventListener("scroll", () => $("#nav").classList.toggle("solid", scrollY > 60), { passive: true });
 
@@ -524,53 +544,60 @@ const md = (m, dd) => doy(new Date(2026, m - 1, dd));
 const W0 = md(10, 23), W1 = md(4, 13), S0 = md(6, 1), S1 = md(9, 27);
 const inWinter = n => n >= W0 || n <= W1, inSummer = n => n >= S0 && n <= S1;
 const today = new Date(), tn = doy(today);
-const MONTHS = ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαΐ", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ"];
-const fmtDay = n => { const d = new Date(2026, 0, n); return d.getDate() + " " + MONTHS[d.getMonth()]; };
+const MONTHS_EL = ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαΐ", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ"], MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const months = () => L(MONTHS_EL, MONTHS_EN);
+const fmtDay = n => { const d = new Date(2026, 0, n); return d.getDate() + " " + months()[d.getMonth()]; };
 function houseFor(n) { return inWinter(n) ? "winter" : inSummer(n) ? "summer" : null; }
 function nextOpen(n) { for (let i = 1; i < 366; i++) { const k = (n + i - 1) % 365 + 1; if (houseFor(k)) return { k, h: houseFor(k) }; } }
-const HOUSE = { winter: { short: "Θέρμη", label: "Archontiko Thessaloniki · Θέρμη" }, summer: { short: "Αγία Παρασκευή", label: "Archontiko Agia Paraskevi · Χαλκιδική" } };
+const HOUSE = { winter: { get short() { return L("Θέρμη", "Thermi"); }, get label() { return L("Archontiko Thessaloniki · Θέρμη", "Archontiko Thessaloniki · Thermi"); } }, summer: { get short() { return L("Αγία Παρασκευή", "Agia Paraskevi"); }, get label() { return L("Archontiko Agia Paraskevi · Χαλκιδική", "Archontiko Agia Paraskevi · Chalkidiki"); } } };
 function setSeason(s) {
   html.dataset.season = s;
   $$("#seasonSw button").forEach(b => b.classList.toggle("on", b.dataset.s === s));
   $("#heroLabel").textContent = HOUSE[s].label;
   const open = houseFor(tn) === s;
-  $("#seasonNote").textContent = open ? "● Ανοιχτό αυτή την εποχή" : s === "winter" ? "Ανοίγει 23 Οκτωβρίου" : "Ανοίγει το καλοκαίρι";
+  $("#seasonNote").textContent = open ? L("● Ανοιχτό αυτή την εποχή", "● Open this season") : s === "winter" ? L("Ανοίγει 23 Οκτωβρίου", "Opens 23 October") : L("Ανοίγει το καλοκαίρι", "Opens in summer");
 }
 $("#seasonSw").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setSeason(b.dataset.s); });
 const curH = houseFor(tn);
 setSeason(curH || nextOpen(tn).h);
-(() => {
+langHooks.push(() => setSeason(html.dataset.season));
+langHooks.push(() => {
   const st = $("#navStatus");
-  if (curH) st.lastElementChild.textContent = "Ανοιχτά · " + HOUSE[curH].short;
-  else { st.classList.add("closed"); const n = nextOpen(tn); st.lastElementChild.textContent = "Ξανά " + fmtDay(n.k); }
+  if (curH) st.lastElementChild.textContent = L("Ανοιχτά · ", "Open · ") + HOUSE[curH].short;
+  else { st.classList.add("closed"); const n = nextOpen(tn); st.lastElementChild.textContent = L("Ξανά ", "Back on ") + fmtDay(n.k); }
   [["#houseS", "summer"], ["#houseW", "winter"]].forEach(([id, h]) => {
     const el = $(id), open = curH === h;
     el.classList.toggle("open", open); el.classList.toggle("dim", !open);
-    el.querySelector(".st span").textContent = open ? "Ανοιχτό τώρα" : h === "winter" ? "Ανοίγει 23 Οκτωβρίου" : "Κλειστό · καλοκαιρινή σεζόν";
+    el.querySelector(".st span").textContent = open ? L("Ανοιχτό τώρα", "Open now") : h === "winter" ? L("Ανοίγει 23 Οκτωβρίου", "Opens 23 October") : L("Κλειστό · καλοκαιρινή σεζόν", "Closed · summer season");
   });
-})();
+});
+langHooks[langHooks.length - 1]();
 
 /* season ring */
 (() => {
   const svg = $("#ringSvg"), R = 128, C = 150;
   const pt = (n, r) => { const a = (n / 365) * Math.PI * 2 - Math.PI / 2; return [C + r * Math.cos(a), C + r * Math.sin(a)]; };
   const arc = (a, b, r) => { const [x0, y0] = pt(a, r), [x1, y1] = pt(b, r); const span = ((b - a) + 365) % 365; return `M${x0} ${y0} A${r} ${r} 0 ${span > 182 ? 1 : 0} 1 ${x1} ${y1}`; };
+  const build = () => {
   let s = `<circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="rgba(239,230,216,.1)" stroke-width="14"/>`;
   s += `<path d="${arc(W0, W1, R)}" fill="none" stroke="#e0662a" stroke-width="14"/>`;
   s += `<path d="${arc(S0, S1, R)}" fill="none" stroke="#d9a441" stroke-width="14"/>`;
-  MONTHS.forEach((m, i) => { const n = md(i + 1, 15), [x, y] = pt(n, R + 20); const [tx, ty] = pt(md(i + 1, 1), R - 11), [tx2, ty2] = pt(md(i + 1, 1), R + 7); s += `<line x1="${tx}" y1="${ty}" x2="${tx2}" y2="${ty2}" stroke="rgba(12,10,8,.9)" stroke-width="2"/><text x="${x}" y="${y}" fill="#8d8273" font-size="10" font-family="Commissioner" text-anchor="middle" dominant-baseline="middle">${m}</text>`; });
-  s += `<text x="${pt(md(1, 10), R - 30)[0]}" y="${pt(md(1, 10), R - 30)[1]}" fill="#e0662a" font-size="9" font-family="Commissioner" text-anchor="middle">ΘΕΡΜΗ</text>`;
-  s += `<text x="${pt(md(7, 25), R - 30)[0]}" y="${pt(md(7, 25), R - 30)[1]}" fill="#d9a441" font-size="9" font-family="Commissioner" text-anchor="middle">ΧΑΛΚΙΔΙΚΗ</text>`;
+  months().forEach((m, i) => { const n = md(i + 1, 15), [x, y] = pt(n, R + 20); const [tx, ty] = pt(md(i + 1, 1), R - 11), [tx2, ty2] = pt(md(i + 1, 1), R + 7); s += `<line x1="${tx}" y1="${ty}" x2="${tx2}" y2="${ty2}" stroke="rgba(12,10,8,.9)" stroke-width="2"/><text x="${x}" y="${y}" fill="#8d8273" font-size="10" font-family="Commissioner" text-anchor="middle" dominant-baseline="middle">${m}</text>`; });
+  s += `<text x="${pt(md(1, 10), R - 30)[0]}" y="${pt(md(1, 10), R - 30)[1]}" fill="#e0662a" font-size="9" font-family="Commissioner" text-anchor="middle">${L("ΘΕΡΜΗ", "THERMI")}</text>`;
+  s += `<text x="${pt(md(7, 25), R - 30)[0]}" y="${pt(md(7, 25), R - 30)[1]}" fill="#d9a441" font-size="9" font-family="Commissioner" text-anchor="middle">${L("ΧΑΛΚΙΔΙΚΗ", "CHALKIDIKI")}</text>`;
   s += `<g id="needle"><line x1="${C}" y1="${C}" x2="${C}" y2="${C - R + 18}" stroke="#efe6d8" stroke-width="1.5"/><circle cx="${C}" cy="${C - R}" r="9" fill="#efe6d8"/><circle cx="${C}" cy="${C}" r="3" fill="#efe6d8"/></g>`;
   svg.innerHTML = s;
-  const needle = $("#needle");
+  };
+  build();
   function show(n, isToday) {
+    const needle = $("#needle");
     needle.setAttribute("transform", `rotate(${n / 365 * 360} ${C} ${C})`);
     const h = houseFor(n);
-    $("#ringDate").textContent = isToday ? "Σήμερα" : fmtDay(n);
-    $("#ringTxt").innerHTML = h ? `Ανοιχτό: <em>${HOUSE[h].short}</em>` : `Ανάμεσα στις σεζόν<br>ξανά ${fmtDay(nextOpen(n).k)}`;
+    $("#ringDate").textContent = isToday ? L("Σήμερα", "Today") : fmtDay(n);
+    $("#ringTxt").innerHTML = h ? `${L("Ανοιχτό", "Open")}: <em>${HOUSE[h].short}</em>` : `${L("Ανάμεσα στις σεζόν<br>ξανά", "Between seasons<br>back on")} ${fmtDay(nextOpen(n).k)}`;
   }
   show(tn, true);
+  langHooks.push(() => { build(); show(tn, true); });
   const ring = $("#ring");
   const probe = e => { const r = ring.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2; let a = Math.atan2(y, x) + Math.PI / 2; if (a < 0) a += Math.PI * 2; show(Math.max(1, Math.round(a / (Math.PI * 2) * 365)), false); };
   ring.addEventListener("pointermove", probe);
@@ -612,7 +639,7 @@ hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect
 })();
 
 /* ---------- four words: touch support ---------- */
-$$(".w").forEach(w => w.addEventListener("click", () => { $$(".w").forEach(x => x !== w && x.classList.remove("on")); w.classList.toggle("on"); }));
+$("#words").addEventListener("click", e => { const w = e.target.closest(".w"); if (!w) return; $$(".w").forEach(x => x !== w && x.classList.remove("on")); w.classList.toggle("on"); });
 
 /* ---------- steak drawing (shared) ---------- */
 function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -649,13 +676,14 @@ function drawSteak(ctx, o) {
 
 /* ---------- dry-age fridge ---------- */
 const CUTS = [
-  { id: "toma", name: "Tomahawk", sub: "2 kg · με το κόκαλο", bms: 4, bone: true, w: "2 kg", age: "28 ημ.", for: "3–4", origin: "Μοσχάρι", real: true, txt: "Η κοπή που κάνει όλο το τραπέζι να γυρίσει. Can you handle it?" },
-  { id: "wtoma", name: "Wagyu Tomahawk", sub: "2GR · 9+", bms: 10, bone: true, w: "1,6 kg", age: "21 ημ.", for: "2–3", origin: "Αυστραλία", real: true, txt: "Ασύγκριτο marbling, βουτυράτη υφή, αρώματα που σε ταξιδεύουν. Περισσότερο τελετουργικό παρά πιάτο." },
-  { id: "wrib", name: "Wagyu bone-in ribeye", sub: "Australian · 9+ · @2grwagyu", bms: 9, bone: false, w: "900 g", age: "21 ημ.", for: "2", origin: "Αυστραλία", real: true, txt: "No need for description." },
-  { id: "rib", name: "Ribeye dry aged", sub: "Ωρίμανση στο ψυγείο μας", bms: 5, bone: false, w: "450 g", age: "35 ημ.", for: "1", origin: "Ιρλανδία", txt: "Η κλασική επιλογή, με την ένταση που δίνει η ξηρή ωρίμανση." },
-  { id: "tbone", name: "T-bone", sub: "Φιλέτο & κόντρα στο ίδιο κόκαλο", bms: 3, tbone: true, w: "800 g", age: "28 ημ.", for: "2", origin: "Ευρώπη", txt: "Δύο κοπές σε μία: τρυφερό φιλέτο από τη μία πλευρά, κόντρα από την άλλη." },
-  { id: "tart", name: "Φιλέτο για tartare", sub: "Κομμένο στο χέρι, στο τραπέζι", bms: 2, w: "250 g", age: "φρέσκο", for: "2", origin: "Μοσχάρι", real: true, txt: "Tableside beef tartare: κομμένο στο χέρι, με ακρίβεια, σερβιρισμένο όπως πρέπει." }
+  { id: "toma", name: "Tomahawk", sub: "2 kg · με το κόκαλο", sub_en: "2 kg · on the bone", bms: 4, bone: true, w: "2 kg", age: 28, for: "3–4", real: true, txt: "Η κοπή που κάνει όλο το τραπέζι να γυρίσει. Can you handle it?", txt_en: "The cut that turns every head at the table. Can you handle it?" },
+  { id: "wtoma", name: "Wagyu Tomahawk", sub: "2GR · 9+", bms: 10, bone: true, w: "1,6 kg", age: 21, for: "2–3", real: true, txt: "Ασύγκριτο marbling, βουτυράτη υφή, αρώματα που σε ταξιδεύουν. Περισσότερο τελετουργικό παρά πιάτο.", txt_en: "Unmatched marbling, a buttery texture, aromas that take you places. More a ritual than a dish." },
+  { id: "wrib", name: "Wagyu bone-in ribeye", sub: "Australian · 9+ · @2grwagyu", bms: 9, bone: false, w: "900 g", age: 21, for: "2", real: true, txt: "No need for description." },
+  { id: "rib", name: "Ribeye dry aged", sub: "Ωρίμανση στο ψυγείο μας", sub_en: "Aged in our own cabinet", bms: 5, bone: false, w: "450 g", age: 35, for: "1", txt: "Η κλασική επιλογή, με την ένταση που δίνει η ξηρή ωρίμανση.", txt_en: "The classic choice, with the depth that dry ageing brings." },
+  { id: "tbone", name: "T-bone", sub: "Φιλέτο & κόντρα στο ίδιο κόκαλο", sub_en: "Fillet & sirloin on one bone", bms: 3, tbone: true, w: "800 g", age: 28, for: "2", txt: "Δύο κοπές σε μία: τρυφερό φιλέτο από τη μία πλευρά, κόντρα από την άλλη.", txt_en: "Two cuts in one: tender fillet on one side, sirloin on the other." },
+  { id: "tart", name: "Φιλέτο για tartare", name_en: "Fillet for tartare", sub: "Κομμένο στο χέρι, στο τραπέζι", sub_en: "Cut by hand, at the table", bms: 2, w: "250 g", age: 0, for: "2", real: true, txt: "Tableside beef tartare: κομμένο στο χέρι, με ακρίβεια, σερβιρισμένο όπως πρέπει.", txt_en: "Tableside beef tartare: cut by hand, with precision, served the way it should be." }
 ];
+const tr = (o, k) => (LANG === "en" && o[k + "_en"]) || o[k];
 // Pre-ordered cuts and how many of each. The fridge and the Tomahawk button add one; the picker sets any number.
 const qty = new Map();
 const pre = { has: id => (qty.get(id) || 0) > 0, add: id => { if (!pre.has(id)) qty.set(id, 1); }, delete: id => qty.delete(id) };
@@ -664,7 +692,7 @@ let renderPreImpl = () => {};
 const renderPre = () => renderPreImpl();
 (() => {
   const inside = $("#inside");
-  inside.innerHTML = [0, 1, 2].map(r => `<div class="shelf">${CUTS.slice(r * 2, r * 2 + 2).map(c => `<div class="cut" data-id="${c.id}"><span class="tag">${c.name}</span><canvas width="300" height="170"></canvas></div>`).join("")}</div>`).join("");
+  inside.innerHTML = [0, 1, 2].map(r => `<div class="shelf">${CUTS.slice(r * 2, r * 2 + 2).map(c => `<div class="cut" data-id="${c.id}"><span class="tag">${tr(c, "name")}</span><canvas width="300" height="170"></canvas></div>`).join("")}</div>`).join("");
   $$(".cut").forEach((el, i) => {
     const c = CUTS[i], cv = el.querySelector("canvas"), ctx = cv.getContext("2d");
     drawSteak(ctx, { cx: c.bone ? 105 : 150, cy: 92, rx: c.bone ? 82 : 108, ry: 62, bms: c.bms, seed: 11 + i * 13, bone: c.bone, tbone: c.tbone });
@@ -674,9 +702,10 @@ const renderPre = () => renderPreImpl();
 function showCut(id) {
   const c = CUTS.find(x => x.id === id);
   $$(".cut").forEach(el => el.classList.toggle("sel", el.dataset.id === id));
-  $("#cutCard").innerHTML = `<div class="card ${c.real ? "" : "ph"}" ${c.real ? "" : 'data-note="Παράδειγμα κοπής: μπαίνουν οι δικές σας"'}><h3>${c.name}</h3><div class="sub">${c.sub}</div><p>${c.txt}</p>
-    <dl class="ph" data-note="Βάρος, ωρίμανση, άτομα και προέλευση: ενδεικτικά"><div><dt>Βάρος</dt><dd>${c.w}</dd></div><div><dt>Ωρίμανση</dt><dd>${c.age}</dd></div><div><dt>Για</dt><dd>${c.for} άτ.</dd></div></dl>
-    <button class="btn ${pre.has(id) ? "line" : ""}" type="button" id="preBtn">${pre.has(id) ? "✓ Κρατήθηκε για το τραπέζι σας" : "Κράτα το για το τραπέζι μου"}</button></div>`;
+  const age = c.age ? c.age + L(" ημ.", " days") : L("φρέσκο", "fresh");
+  $("#cutCard").innerHTML = `<div class="card ${c.real ? "" : "ph"}" ${c.real ? "" : 'data-note="Παράδειγμα κοπής: μπαίνουν οι δικές σας"'}><h3>${tr(c, "name")}</h3><div class="sub">${tr(c, "sub")}</div><p>${tr(c, "txt")}</p>
+    <dl class="ph" data-note="Βάρος, ωρίμανση, άτομα και προέλευση: ενδεικτικά"><div><dt>${L("Βάρος", "Weight")}</dt><dd>${c.w}</dd></div><div><dt>${L("Ωρίμανση", "Aged")}</dt><dd>${age}</dd></div><div><dt>${L("Για", "Serves")}</dt><dd>${c.for}${L(" άτ.", "")}</dd></div></dl>
+    <button class="btn ${pre.has(id) ? "line" : ""}" type="button" id="preBtn">${pre.has(id) ? L("✓ Κρατήθηκε για το τραπέζι σας", "✓ Kept for your table") : L("Κράτα το για το τραπέζι μου", "Keep it for my table")}</button></div>`;
   $("#preBtn").addEventListener("click", () => { pre.has(id) ? pre.delete(id) : pre.add(id); $$(".cut").forEach(el => el.classList.toggle("pre", pre.has(el.dataset.id))); showCut(id); renderPre(); });
 }
 // fog on the glass: wipe it with a finger, it slowly fogs up again
@@ -693,14 +722,17 @@ function showCut(id) {
   }
   function render() { ctx.globalCompositeOperation = "source-over"; ctx.clearRect(0, 0, W, H); ctx.drawImage(tex, 0, 0); ctx.globalCompositeOperation = "destination-out"; ctx.drawImage(mask, 0, 0); }
   new ResizeObserver(size).observe(cv);
-  let down = false, last = null;
+  let down = false, last = null, wiped = false;
+  const fogText = () => { $("#fogHint").textContent = wiped ? L("Ωραία! Τώρα άνοιξε την πόρτα για να διαλέξεις", "Nice! Now open the door and choose") : L("ή σκούπισε το θολό τζάμι με το δάχτυλο", "or wipe the misty glass with your finger"); };
+  const doorText = () => { $("#doorBtn").textContent = fridge.classList.contains("open") ? L("Κλείσε την πόρτα", "Close the door") : L("Άνοιξε την πόρτα", "Open the door"); };
+  langHooks.push(() => { fogText(); doorText(); $$(".cut").forEach((el, i) => el.querySelector(".tag").textContent = tr(CUTS[i], "name")); const sel = $(".cut.sel"); if (sel) showCut(sel.dataset.id); });
   const pos = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
   function wipe(x, y) {
     const pts = last ? Math.ceil(Math.hypot(x - last[0], y - last[1]) / 6) : 1;
     for (let i = 1; i <= pts; i++) { const px = last ? last[0] + (x - last[0]) * i / pts : x, py = last ? last[1] + (y - last[1]) * i / pts : y; const g = mctx.createRadialGradient(px, py, 0, px, py, 30); g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)"); mctx.fillStyle = g; mctx.beginPath(); mctx.arc(px, py, 30, 0, 7); mctx.fill(); }
     last = [x, y]; render();
   }
-  cv.addEventListener("pointerdown", e => { down = true; last = null; cv.setPointerCapture(e.pointerId); wipe(...pos(e)); $("#fogHint").textContent = "Ωραία! Τώρα άνοιξε την πόρτα για να διαλέξεις"; });
+  cv.addEventListener("pointerdown", e => { down = true; last = null; cv.setPointerCapture(e.pointerId); wipe(...pos(e)); wiped = true; fogText(); });
   cv.addEventListener("pointermove", e => { if (down || (fine && e.pointerType === "mouse")) wipe(...pos(e)); });
   ["pointerup", "pointercancel", "pointerleave"].forEach(ev => cv.addEventListener(ev, () => { down = false; last = null; }));
   // the glass fogs up again, slowly
@@ -708,7 +740,7 @@ function showCut(id) {
   const paint = () => { mctx.clearRect(0, 0, W, H); render(); };
   $("#doorBtn").addEventListener("click", () => {
     const open = fridge.classList.toggle("open");
-    $("#doorBtn").textContent = open ? "Κλείσε την πόρτα" : "Άνοιξε την πόρτα";
+    doorText();
     if (open && !$(".cut.sel")) showCut("toma");
     if (!open) setTimeout(paint, 900);
   });
@@ -719,16 +751,16 @@ function showCut(id) {
 /* ---------- marbling ---------- */
 (() => {
   const cv = $("#marbCv"), ctx = cv.getContext("2d"), inp = $("#bms");
-  const TXT = [[1, 2, "Άπαχο<br>σχεδόν καθόλου φλέβες"], [3, 4, "Καλό μοσχάρι<br>λίγες φλέβες"], [5, 6, "Prime<br>πλούσιο marbling"], [7, 8, "Wagyu<br>έντονο marbling"], [9, 10, "Wagyu 9+<br>βουτυράτη υφή"], [11, 12, "Σπάνιο<br>λιώνει στο στόμα"]];
+  const TXT = [[1, 2, "Άπαχο<br>σχεδόν καθόλου φλέβες", "Lean<br>hardly any veins"], [3, 4, "Καλό μοσχάρι<br>λίγες φλέβες", "Good beef<br>a few veins"], [5, 6, "Prime<br>πλούσιο marbling", "Prime<br>rich marbling"], [7, 8, "Wagyu<br>έντονο marbling", "Wagyu<br>intense marbling"], [9, 10, "Wagyu 9+<br>βουτυράτη υφή", "Wagyu 9+<br>buttery texture"], [11, 12, "Σπάνιο<br>λιώνει στο στόμα", "Rare find<br>melts in the mouth"]];
   function draw() {
     const b = +inp.value; inp.style.setProperty("--p", (b - 1) / 11 * 100 + "%");
     ctx.clearRect(0, 0, cv.width, cv.height);
     drawSteak(ctx, { cx: 250, cy: 200, rx: 205, ry: 150, bms: b, seed: 42 });
     $("#bmsNum").textContent = b >= 9 && b < 12 ? b + (b === 9 ? "+" : "") : b;
-    $("#bmsTxt").innerHTML = TXT.find(t => b >= t[0] && b <= t[1])[2];
+    const t = TXT.find(t => b >= t[0] && b <= t[1]); $("#bmsTxt").innerHTML = L(t[2], t[3]);
     $("#ours").classList.toggle("on", b >= 9 && b <= 10);
   }
-  inp.addEventListener("input", draw); draw();
+  inp.addEventListener("input", draw); draw(); langHooks.push(draw);
   // nudge it once when it comes into view so people see that it moves
   new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); let v = 3; const t = setInterval(() => { v++; inp.value = v; draw(); if (v >= 9) clearInterval(t); }, 220); } }, { threshold: .5 }).observe(cv);
 })();
@@ -736,12 +768,12 @@ function showCut(id) {
 /* ---------- grill: doneness + sizzle ---------- */
 (() => {
   const DONE = [
-    { n: "Blue", t: 46, core: "#6e1230", band: .04, txt: "Σχεδόν ωμό στο κέντρο, μόνο μια κρούστα απ' έξω." },
-    { n: "Rare", t: 50, core: "#a81e33", band: .08, txt: "Κόκκινο, δροσερό κέντρο. Για όσους θέλουν την καθαρή γεύση του κρέατος." },
-    { n: "Medium rare", t: 55, core: "#cc4a55", band: .14, txt: "Ζεστό, ροδαλό κέντρο. Αυτό προτείνουμε για Wagyu και ribeye: το λίπος λιώνει και δίνει όλη τη γεύση." },
-    { n: "Medium", t: 60, core: "#d9827f", band: .22, txt: "Ροζ κέντρο, πιο σφιχτή υφή." },
-    { n: "Medium well", t: 65, core: "#c4a196", band: .32, txt: "Ελάχιστο ροζ στη μέση." },
-    { n: "Well done", t: 71, core: "#8c6c5c", band: .5, txt: "Ψημένο σε όλο το πάχος. Το κάνουμε, αλλά… ας το συζητήσουμε 😉" }
+    { n: "Blue", t: 46, core: "#6e1230", band: .04, txt: "Σχεδόν ωμό στο κέντρο, μόνο μια κρούστα απ' έξω.", txt_en: "Almost raw in the centre, just a crust on the outside." },
+    { n: "Rare", t: 50, core: "#a81e33", band: .08, txt: "Κόκκινο, δροσερό κέντρο. Για όσους θέλουν την καθαρή γεύση του κρέατος.", txt_en: "A red, cool centre. For those who want the pure taste of the meat." },
+    { n: "Medium rare", t: 55, core: "#cc4a55", band: .14, txt: "Ζεστό, ροδαλό κέντρο. Αυτό προτείνουμε για Wagyu και ribeye: το λίπος λιώνει και δίνει όλη τη γεύση.", txt_en: "A warm, pink centre. Our pick for Wagyu and ribeye: the fat melts and gives all the flavour." },
+    { n: "Medium", t: 60, core: "#d9827f", band: .22, txt: "Ροζ κέντρο, πιο σφιχτή υφή.", txt_en: "A pink centre, a firmer bite." },
+    { n: "Medium well", t: 65, core: "#c4a196", band: .32, txt: "Ελάχιστο ροζ στη μέση.", txt_en: "Just a hint of pink in the middle." },
+    { n: "Well done", t: 71, core: "#8c6c5c", band: .5, txt: "Ψημένο σε όλο το πάχος. Το κάνουμε, αλλά… ας το συζητήσουμε 😉", txt_en: "Cooked all the way through. We will do it, but… let's talk about it 😉" }
   ];
   $("#doneNames").innerHTML = DONE.map((d, i) => `<button type="button" data-i="${i}">${d.n}</button>`).join("");
   const inp = $("#done"), cv = $("#grillCv"), ctx = cv.getContext("2d");
@@ -753,11 +785,12 @@ function showCut(id) {
     cur = DONE[i]; inp.value = i; inp.style.setProperty("--p", i / 5 * 100 + "%");
     targetRGB = hex(cur.core); targetBand = cur.band;
     $$("#doneNames button").forEach((b, j) => b.classList.toggle("on", j === i));
-    $("#doneTxt").textContent = cur.txt; $("#tempOut").textContent = cur.t + "°C";
+    $("#doneTxt").textContent = tr(cur, "txt"); $("#tempOut").textContent = cur.t + "°C";
   }
   inp.addEventListener("input", () => set(+inp.value));
   $("#doneNames").addEventListener("click", e => { const b = e.target.closest("button"); if (b) set(+b.dataset.i); });
   set(2);
+  langHooks.push(() => { set(+inp.value); soundText(); });
   const drops = [], smoke = [];
   let heat = 0;
   (function loop() {
@@ -788,6 +821,7 @@ function showCut(id) {
   })();
   // sizzle sound from filtered noise (off by default)
   let ac = null, gain = null;
+  function soundText() { const on = $("#soundBtn").classList.contains("on"); $("#soundBtn").textContent = on ? L("🔇 Σίγαση", "🔇 Mute") : L("🔊 Άκου το τσιτσίρισμα", "🔊 Hear the sizzle"); }
   $("#soundBtn").addEventListener("click", () => {
     const btn = $("#soundBtn");
     if (!ac) {
@@ -800,16 +834,17 @@ function showCut(id) {
       src.connect(hp).connect(gain).connect(ac.destination); src.start();
     }
     const on = !btn.classList.contains("on");
-    btn.classList.toggle("on", on); btn.textContent = on ? "🔇 Σίγαση" : "🔊 Άκου το τσιτσίρισμα";
+    btn.classList.toggle("on", on); soundText();
     ac.resume(); gain.gain.setTargetAtTime(on ? .12 : 0, ac.currentTime, .3);
   });
 })();
 
 /* ---------- signatures ---------- */
 (() => {
-  let n = 37; // placeholder counter
-  $("#tomaCount").textContent = `${n} το αντέχουν αυτή την εβδομάδα`;
-  $("#tomaBtn").addEventListener("click", () => { n++; $("#tomaBtn").textContent = "Κράτησέ το ✓"; $("#tomaCount").textContent = `${n} το αντέχουν, μαζί κι εσύ!`; pre.add("toma"); $$(".cut").forEach(el => el.classList.toggle("pre", pre.has(el.dataset.id))); renderPre(); });
+  let n = 37, mine = false; // placeholder counter
+  const text = () => { $("#tomaBtn").textContent = mine ? L("Κράτησέ το ✓", "Kept for you ✓") : L("Ναι, το αντέχω", "Yes, I can"); $("#tomaCount").textContent = mine ? L(`${n} το αντέχουν, μαζί κι εσύ!`, `${n} can handle it, you too!`) : L(`${n} το αντέχουν αυτή την εβδομάδα`, `${n} handled it this week`); };
+  text(); langHooks.push(text);
+  $("#tomaBtn").addEventListener("click", () => { if (!mine) n++; mine = true; text(); pre.add("toma"); $$(".cut").forEach(el => el.classList.toggle("pre", pre.has(el.dataset.id))); renderPre(); });
 })();
 
 /* ---------- reservation ---------- */
@@ -825,31 +860,33 @@ function showCut(id) {
   function where() {
     const dt = new Date(d.value + "T12:00"), n = doy(dt), h = houseFor(n), w = $("#where");
     w.classList.toggle("bad", !h); $("#send").disabled = !h;
-    w.innerHTML = h ? `📍 Θα βρεθούμε στο <b>${h === "winter" ? "Archontiko Thessaloniki, Καραολή & Δημητρίου 23, Θέρμη" : "Archontiko Agia Paraskevi, Χαλκιδική"}</b>.` : `Εκείνη την ημερομηνία είμαστε ανάμεσα στις σεζόν. Ανοίγουμε ξανά <b>${fmtDay(nextOpen(n).k)}</b>.`;
+    w.innerHTML = h ? `📍 ${L("Θα βρεθούμε στο", "We meet at")} <b>${h === "winter" ? L("Archontiko Thessaloniki, Καραολή & Δημητρίου 23, Θέρμη", "Archontiko Thessaloniki, Karaoli & Dimitriou 23, Thermi") : L("Archontiko Agia Paraskevi, Χαλκιδική", "Archontiko Agia Paraskevi, Chalkidiki")}</b>.` : L(`Εκείνη την ημερομηνία είμαστε ανάμεσα στις σεζόν. Ανοίγουμε ξανά <b>${fmtDay(nextOpen(n).k)}</b>.`, `On that date we are between seasons. We open again on <b>${fmtDay(nextOpen(n).k)}</b>.`);
     return h;
   }
-  d.addEventListener("input", where); where();
+  d.addEventListener("input", where); where(); langHooks.push(where);
   $("#send").addEventListener("click", () => {
     const h = where(); if (!h) return;
     const nm = $("#rName").value.trim();
     $("#formBody").style.display = "none"; $("#done").classList.add("on");
-    $("#doneTxt2").innerHTML = `${nm ? nm + ", τ" : "Τ"}ο τραπέζι για ${people} ${people === 1 ? "άτομο" : "άτομα"}, ${new Date(d.value + "T12:00").toLocaleDateString("el-GR", { weekday: "long", day: "numeric", month: "long" })} στις ${time}.<br>${$("#preorder").textContent ? $("#preorder").innerHTML + "<br>" : ""}<small style="color:var(--muted)">Αυτό είναι demo: η κράτηση δεν στάλθηκε.</small>`;
+    const day = new Date(d.value + "T12:00").toLocaleDateString(L("el-GR", "en-GB"), { weekday: "long", day: "numeric", month: "long" });
+    const line = L(`${nm ? nm + ", τ" : "Τ"}ο τραπέζι για ${people} ${people === 1 ? "άτομο" : "άτομα"}, ${day} στις ${time}.`, `${nm ? nm + ", y" : "Y"}our table for ${people}, ${day} at ${time}.`);
+    $("#doneTxt2").innerHTML = `${line}<br>${$("#preorder").textContent ? $("#preorder").innerHTML + "<br>" : ""}<small style="color:var(--muted)">${L("Αυτό είναι demo: η κράτηση δεν στάλθηκε.", "This is a demo: the booking was not sent.")}</small>`;
   });
 })();
 
 /* ---------- meat pre-order: cuts, quantities, the board and the scale ---------- */
 (() => {
   const MEATS = [
-    { id: "toma", name: "Tomahawk", g: 2000, unit: "τεμ. · ~2 kg", kind: "steak", bms: 4, bone: true },
-    { id: "wtoma", name: "Wagyu Tomahawk", g: 1600, unit: "τεμ. · ~1,6 kg", kind: "steak", bms: 10, bone: true },
-    { id: "wrib", name: "Wagyu ribeye", g: 900, unit: "τεμ. · ~900 g", kind: "steak", bms: 9 },
-    { id: "rib", name: "Ribeye dry aged", g: 450, unit: "τεμ. · ~450 g", kind: "steak", bms: 5 },
-    { id: "tbone", name: "T-bone", g: 800, unit: "τεμ. · ~800 g", kind: "steak", bms: 3, tbone: true },
-    { id: "tart", name: "Φιλέτο tartare", g: 250, unit: "μερίδα · 250 g", kind: "steak", bms: 2 },
-    { id: "pican", name: "Πικάνια", g: 400, unit: "τεμ. · ~400 g", kind: "picanha", bms: 4 },
-    { id: "chops", name: "Αρνίσια παϊδάκια", g: 400, unit: "μερίδα · 400 g", kind: "chops" },
-    { id: "belly", name: "Χοιρινή πανσέτα", g: 350, unit: "μερίδα · 350 g", kind: "belly" },
-    { id: "sausage", name: "Λουκάνικο χωριάτικο", g: 300, unit: "μερίδα · 300 g", kind: "sausage" }
+    { id: "toma", name: "Tomahawk", g: 2000, unit: "τεμ. · ~2 kg", unit_en: "piece · ~2 kg", kind: "steak", bms: 4, bone: true },
+    { id: "wtoma", name: "Wagyu Tomahawk", g: 1600, unit: "τεμ. · ~1,6 kg", unit_en: "piece · ~1,6 kg", kind: "steak", bms: 10, bone: true },
+    { id: "wrib", name: "Wagyu ribeye", g: 900, unit: "τεμ. · ~900 g", unit_en: "piece · ~900 g", kind: "steak", bms: 9 },
+    { id: "rib", name: "Ribeye dry aged", g: 450, unit: "τεμ. · ~450 g", unit_en: "piece · ~450 g", kind: "steak", bms: 5 },
+    { id: "tbone", name: "T-bone", g: 800, unit: "τεμ. · ~800 g", unit_en: "piece · ~800 g", kind: "steak", bms: 3, tbone: true },
+    { id: "tart", name: "Φιλέτο tartare", g: 250, unit: "μερίδα · 250 g", name_en: "Fillet tartare", unit_en: "portion · 250 g", kind: "steak", bms: 2 },
+    { id: "pican", name: "Πικάνια", g: 400, unit: "τεμ. · ~400 g", name_en: "Picanha", unit_en: "piece · ~400 g", kind: "picanha", bms: 4 },
+    { id: "chops", name: "Αρνίσια παϊδάκια", g: 400, unit: "μερίδα · 400 g", name_en: "Lamb chops", unit_en: "portion · 400 g", kind: "chops" },
+    { id: "belly", name: "Χοιρινή πανσέτα", g: 350, unit: "μερίδα · 350 g", name_en: "Pork belly", unit_en: "portion · 350 g", kind: "belly" },
+    { id: "sausage", name: "Λουκάνικο χωριάτικο", g: 300, unit: "μερίδα · 300 g", name_en: "Village sausage", unit_en: "portion · 300 g", kind: "sausage" }
   ];
   const MAX = 6, fmtG = g => g >= 1000 ? (g / 1000).toFixed(1).replace(".", ",") + " kg" : g + " g";
 
@@ -886,7 +923,7 @@ function showCut(id) {
   }
 
   // cards
-  $("#pkGrid").innerHTML = MEATS.map(m => `<div class="pk" data-id="${m.id}"><canvas width="220" height="140"></canvas><b>${m.name}</b><small>${m.unit}</small><div class="pk-q"><button type="button" data-d="-1" aria-label="Λιγότερο">−</button><output>0</output><button type="button" data-d="1" aria-label="Περισσότερο">+</button></div></div>`).join("");
+  $("#pkGrid").innerHTML = MEATS.map(m => `<div class="pk" data-id="${m.id}"><canvas width="220" height="140"></canvas><b>${tr(m, "name")}</b><small>${tr(m, "unit")}</small><div class="pk-q"><button type="button" data-d="-1" aria-label="Λιγότερο">−</button><output>0</output><button type="button" data-d="1" aria-label="Περισσότερο">+</button></div></div>`).join("");
   $$(".pk").forEach((el, i) => drawMeat(el.querySelector("canvas").getContext("2d"), MEATS[i], 110, 74, 92, 21 + i * 17));
   $("#pkGrid").addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
@@ -938,13 +975,31 @@ function showCut(id) {
     const chosen = MEATS.filter(m => qty.get(m.id)), grams = chosen.reduce((s, m) => s + m.g * qty.get(m.id), 0), kg = grams / 1000;
     $("#pkKg").textContent = fmtG(grams);
     const feeds = Math.round(grams / 400);
-    $("#pkFor").textContent = grams ? `αρκεί για ~${Math.max(1, feeds)} άτ. · είστε ${partySize}` : "Η ζυγαριά σας";
+    $("#pkFor").textContent = grams ? L(`αρκεί για ~${Math.max(1, feeds)} άτ. · είστε ${partySize}`, `feeds ~${Math.max(1, feeds)} · you are ${partySize}`) : L("Η ζυγαριά σας", "Your scale");
     $("#scaleNeedle").style.transform = `rotate(${-90 + Math.min(kg / 6, 1) * 180}deg)`;
     $("#scaleArc").setAttribute("stroke-dasharray", `${Math.min(kg / 6, 1) * 100} 100`);
-    $("#preorder").innerHTML = chosen.length ? `🥩 Θα σας περιμένει: <b>${chosen.map(m => `${m.name} ×${qty.get(m.id)}`).join(", ")}</b> · σύνολο ${fmtG(grams)}` : "";
+    $("#preorder").innerHTML = chosen.length ? `🥩 ${L("Θα σας περιμένει", "Waiting for you")}: <b>${chosen.map(m => `${tr(m, "name")} ×${qty.get(m.id)}`).join(", ")}</b> · ${L("σύνολο", "total")} ${fmtG(grams)}` : "";
     if (!animating) requestAnimationFrame(tick);
   };
   renderPre();
+  langHooks.push(() => { $$(".pk").forEach((el, i) => { el.querySelector("b").textContent = tr(MEATS[i], "name"); el.querySelector("small").textContent = tr(MEATS[i], "unit"); }); renderPre(); });
+})();
+
+/* ---------- language switch ---------- */
+(() => {
+  const nodes = $$("[data-en]");
+  nodes.forEach(el => el.dataset.el = el.innerHTML);
+  function setLang(l) {
+    LANG = l; html.lang = l;
+    nodes.forEach(el => el.innerHTML = l === "en" ? el.dataset.en : el.dataset.el);
+    $$("#lang button").forEach(b => b.classList.toggle("on", b.dataset.l === l));
+    langHooks.forEach(f => f());
+    try { localStorage.setItem("ar-lang", l); } catch (e) {}
+  }
+  $("#lang").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setLang(b.dataset.l); });
+  let start = "el";
+  try { start = new URLSearchParams(location.search).get("lang") || localStorage.getItem("ar-lang") || "el"; } catch (e) {}
+  if (start === "en") setLang("en");
 })();
 
 </script>
