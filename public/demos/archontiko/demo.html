@@ -307,13 +307,19 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
 .pk canvas{width:100%;height:auto;aspect-ratio:220/140;filter:drop-shadow(0 6px 6px rgba(0,0,0,.5))}
 .pk b{font:400 15px/1.15 var(--display);margin-top:6px;min-height:2.3em;display:flex;align-items:center}
 .pk small{font:500 10px/1.3 var(--sans);letter-spacing:.06em;color:var(--muted)}
-.pk-q{display:flex;align-items:center;gap:8px;margin-top:8px}
+.pk-q{display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;gap:6px 14px;margin-top:8px;width:100%}
+.pk-q label{grid-column:1/-1;grid-row:1;justify-self:center}
 .pk-q button{width:30px;height:30px;box-shadow:inset 0 0 0 1px var(--line);font-size:16px;line-height:1;border-radius:50%;transition:background .2s}
 .pk-q button:hover{background:rgba(255,255,255,.06)}
-.pk-q output{font:300 22px/1 var(--display);min-width:20px}
-.pk.on .pk-q output{color:var(--accent2)}
+.pk-q label{display:flex;align-items:baseline;gap:2px;border-bottom:1px solid var(--line);padding:0 2px 2px;cursor:text}
+.pk-q input{width:58px;background:none;border:0;color:inherit;font:300 20px/1 var(--display);text-align:right;padding:0;-moz-appearance:textfield;appearance:textfield}
+.pk-q input::-webkit-outer-spin-button,.pk-q input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.pk-q input:focus{outline:none}
+.pk-q label:focus-within{border-color:var(--accent)}
+.pk-q span{font:500 11px/1 var(--sans);color:var(--muted)}
+.pk.on .pk-q input{color:var(--accent2)}
 .pk.bump{transform:scale(1.04)}
-@media(max-width:560px){.pk-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.pk{padding:8px 4px}.pk b{font-size:13px}.pk small{font-size:9px}.pk-q{gap:4px}.pk-q button{width:26px;height:26px}.pk-q output{font-size:18px}.pk-stage{grid-template-columns:1fr}.pk-scale{flex-direction:row;justify-content:space-between}.pk-scale svg{width:120px}}
+@media(max-width:560px){.pk-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.pk{padding:8px 4px}.pk b{font-size:13px}.pk small{font-size:9px}.pk-q{gap:5px 10px}.pk-q button{width:26px;height:26px}.pk-q input{width:46px;font-size:16px}.pk-stage{grid-template-columns:1fr}.pk-scale{flex-direction:row;justify-content:space-between}.pk-scale svg{width:120px}}
 
 footer{padding:50px var(--pad) 36px;border-top:1px solid var(--line);font-size:.88em;color:var(--muted)}
 footer .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
@@ -479,7 +485,7 @@ footer a{text-decoration:underline}
       <p class="lead" data-en="Pick a date and we will tell you which Archontiko we meet at. If you like, reserve your cuts now too: they will be waiting for you.">Διαλέξτε ημερομηνία και θα σας πούμε σε ποιο Αρχοντικό θα βρεθούμε. Αν θέλετε, κρατήστε από τώρα και τις κοπές σας: θα σας περιμένουν έτοιμες.</p>
     </div>
       <div class="picker">
-        <div class="pk-head"><span class="label" data-en="Pre-order your meat">Προπαραγγελία κρέατος</span><small data-en="optional · sent with your booking">προαιρετικά · στέλνεται μαζί με την κράτηση</small></div>
+        <div class="pk-head"><span class="label" data-en="Pre-order your meat">Προπαραγγελία κρέατος</span><small data-en="optional · any amount, in grams · sent with your booking">προαιρετικά · όση ποσότητα θέλετε, σε γραμμάρια · στέλνεται μαζί με την κράτηση</small></div>
         <div class="pk-stage">
           <div class="pk-board"><canvas id="boardCv" width="900" height="440"></canvas><span class="pk-empty" id="pkEmpty" data-en="Pick your cuts and they will land here, on the wood">Διαλέξτε κοπές και θα έρθουν εδώ, στο ξύλο</span></div>
           <div class="pk-scale"><svg viewBox="0 0 200 116" id="scaleSvg" aria-hidden="true"></svg><div><b id="pkKg">0 g</b><br><small id="pkFor">Η ζυγαριά σας</small></div></div>
@@ -686,10 +692,11 @@ const CUTS = [
 const tr = (o, k) => (LANG === "en" && o[k + "_en"]) || o[k];
 // Pre-ordered cuts and how many of each. The fridge and the Tomahawk button add one; the picker sets any number.
 const qty = new Map();
-const pre = { has: id => (qty.get(id) || 0) > 0, add: id => { if (!pre.has(id)) qty.set(id, 1); }, delete: id => qty.delete(id) };
+let preDefault = () => 500;
+const pre = { has: id => (qty.get(id) || 0) > 0, add: id => { if (!pre.has(id)) qty.set(id, preDefault(id)); }, delete: id => qty.delete(id) };
 let partySize = 2;
 let renderPreImpl = () => {};
-const renderPre = () => renderPreImpl();
+const renderPre = (f) => renderPreImpl(f);
 (() => {
   const inside = $("#inside");
   inside.innerHTML = [0, 1, 2].map(r => `<div class="shelf">${CUTS.slice(r * 2, r * 2 + 2).map(c => `<div class="cut" data-id="${c.id}"><span class="tag">${tr(c, "name")}</span><canvas width="300" height="170"></canvas></div>`).join("")}</div>`).join("");
@@ -877,18 +884,18 @@ function showCut(id) {
 /* ---------- meat pre-order: cuts, quantities, the board and the scale ---------- */
 (() => {
   const MEATS = [
-    { id: "toma", name: "Tomahawk", g: 2000, unit: "τεμ. · ~2 kg", unit_en: "piece · ~2 kg", kind: "steak", bms: 4, bone: true },
-    { id: "wtoma", name: "Wagyu Tomahawk", g: 1600, unit: "τεμ. · ~1,6 kg", unit_en: "piece · ~1,6 kg", kind: "steak", bms: 10, bone: true },
-    { id: "wrib", name: "Wagyu ribeye", g: 900, unit: "τεμ. · ~900 g", unit_en: "piece · ~900 g", kind: "steak", bms: 9 },
-    { id: "rib", name: "Ribeye dry aged", g: 450, unit: "τεμ. · ~450 g", unit_en: "piece · ~450 g", kind: "steak", bms: 5 },
-    { id: "tbone", name: "T-bone", g: 800, unit: "τεμ. · ~800 g", unit_en: "piece · ~800 g", kind: "steak", bms: 3, tbone: true },
-    { id: "tart", name: "Φιλέτο tartare", g: 250, unit: "μερίδα · 250 g", name_en: "Fillet tartare", unit_en: "portion · 250 g", kind: "steak", bms: 2 },
-    { id: "pican", name: "Πικάνια", g: 400, unit: "τεμ. · ~400 g", name_en: "Picanha", unit_en: "piece · ~400 g", kind: "picanha", bms: 4 },
-    { id: "chops", name: "Αρνίσια παϊδάκια", g: 400, unit: "μερίδα · 400 g", name_en: "Lamb chops", unit_en: "portion · 400 g", kind: "chops" },
-    { id: "belly", name: "Χοιρινή πανσέτα", g: 350, unit: "μερίδα · 350 g", name_en: "Pork belly", unit_en: "portion · 350 g", kind: "belly" },
-    { id: "sausage", name: "Λουκάνικο χωριάτικο", g: 300, unit: "μερίδα · 300 g", name_en: "Village sausage", unit_en: "portion · 300 g", kind: "sausage" }
+    { id: "toma", name: "Tomahawk", g: 2000, unit: "1 τεμ. ≈ 2 kg", unit_en: "1 piece ≈ 2 kg", kind: "steak", bms: 4, bone: true },
+    { id: "wtoma", name: "Wagyu Tomahawk", g: 1600, unit: "1 τεμ. ≈ 1,6 kg", unit_en: "1 piece ≈ 1,6 kg", kind: "steak", bms: 10, bone: true },
+    { id: "wrib", name: "Wagyu ribeye", g: 900, unit: "1 τεμ. ≈ 900 g", unit_en: "1 piece ≈ 900 g", kind: "steak", bms: 9 },
+    { id: "rib", name: "Ribeye dry aged", g: 450, unit: "1 τεμ. ≈ 450 g", unit_en: "1 piece ≈ 450 g", kind: "steak", bms: 5 },
+    { id: "tbone", name: "T-bone", g: 800, unit: "1 τεμ. ≈ 800 g", unit_en: "1 piece ≈ 800 g", kind: "steak", bms: 3, tbone: true },
+    { id: "tart", name: "Φιλέτο tartare", g: 250, unit: "1 μερίδα ≈ 250 g", name_en: "Fillet tartare", unit_en: "1 portion ≈ 250 g", kind: "steak", bms: 2 },
+    { id: "pican", name: "Πικάνια", g: 400, unit: "1 τεμ. ≈ 400 g", name_en: "Picanha", unit_en: "1 piece ≈ 400 g", kind: "picanha", bms: 4 },
+    { id: "chops", name: "Αρνίσια παϊδάκια", g: 400, unit: "1 μερίδα ≈ 400 g", name_en: "Lamb chops", unit_en: "1 portion ≈ 400 g", kind: "chops" },
+    { id: "belly", name: "Χοιρινή πανσέτα", g: 350, unit: "1 μερίδα ≈ 350 g", name_en: "Pork belly", unit_en: "1 portion ≈ 350 g", kind: "belly" },
+    { id: "sausage", name: "Λουκάνικο χωριάτικο", g: 300, unit: "1 μερίδα ≈ 300 g", name_en: "Village sausage", unit_en: "1 portion ≈ 300 g", kind: "sausage" }
   ];
-  const MAX = 6, fmtG = g => g >= 1000 ? (g / 1000).toFixed(1).replace(".", ",") + " kg" : g + " g";
+  const MAX = 10000, STEP = 100, fmtG = g => g >= 1000 ? String(+(g / 1000).toFixed(2)).replace(".", ",") + " kg" : g + " g";
 
   // one drawing per kind of meat, sized by s around (cx, cy)
   function drawMeat(ctx, m, cx, cy, s, seed) {
@@ -923,15 +930,26 @@ function showCut(id) {
   }
 
   // cards
-  $("#pkGrid").innerHTML = MEATS.map(m => `<div class="pk" data-id="${m.id}"><canvas width="220" height="140"></canvas><b>${tr(m, "name")}</b><small>${tr(m, "unit")}</small><div class="pk-q"><button type="button" data-d="-1" aria-label="Λιγότερο">−</button><output>0</output><button type="button" data-d="1" aria-label="Περισσότερο">+</button></div></div>`).join("");
+  $("#pkGrid").innerHTML = MEATS.map(m => `<div class="pk" data-id="${m.id}"><canvas width="220" height="140"></canvas><b>${tr(m, "name")}</b><small>${tr(m, "unit")}</small><div class="pk-q"><button type="button" data-d="-1" aria-label="−100 g">−</button><label><input type="number" inputmode="numeric" min="0" max="${MAX}" step="50" placeholder="0" aria-label="${tr(m, "name")} (g)"><span>g</span></label><button type="button" data-d="1" aria-label="+100 g">+</button></div></div>`).join("");
   $$(".pk").forEach((el, i) => drawMeat(el.querySelector("canvas").getContext("2d"), MEATS[i], 110, 74, 92, 21 + i * 17));
   $("#pkGrid").addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
-    const card = b.closest(".pk"), id = card.dataset.id, n = Math.max(0, Math.min(MAX, (qty.get(id) || 0) + +b.dataset.d));
+    const card = b.closest(".pk"), id = card.dataset.id, cur = qty.get(id) || 0;
+    // − / + move in 100 g steps, snapping to the step first
+    const n = Math.max(0, Math.min(MAX, +b.dataset.d > 0 ? Math.floor(cur / STEP) * STEP + STEP : Math.ceil(cur / STEP) * STEP - STEP));
     n ? qty.set(id, n) : qty.delete(id);
     card.classList.add("bump"); setTimeout(() => card.classList.remove("bump"), 180);
+    renderPre(true);
+  });
+  // any amount can be typed straight into the grams field
+  $("#pkGrid").addEventListener("input", e => {
+    const inp = e.target.closest("input"); if (!inp) return;
+    const id = inp.closest(".pk").dataset.id, n = Math.max(0, Math.min(MAX, Math.round(+inp.value || 0)));
+    n ? qty.set(id, n) : qty.delete(id);
     renderPre();
   });
+  $("#pkGrid").addEventListener("change", e => { if (e.target.closest("input")) renderPre(true); });
+  preDefault = id => (MEATS.find(m => m.id === id) || { g: 500 }).g;
 
   // the scale: a dial from 0 to 6 kg
   (() => {
@@ -947,7 +965,7 @@ function showCut(id) {
   let animating = false;
   function pieces() {
     const out = [];
-    MEATS.forEach(m => { const n = Math.min(4, qty.get(m.id) || 0); for (let k = 0; k < n; k++) out.push({ m, key: m.id + "#" + k }); });
+    MEATS.forEach(m => { const n = Math.min(4, Math.ceil((qty.get(m.id) || 0) / m.g)); for (let k = 0; k < n; k++) out.push({ m, key: m.id + "#" + k }); });
     return out.slice(0, 12);
   }
   function drawBoard(now) {
@@ -969,16 +987,16 @@ function showCut(id) {
   }
   function tick(now) { animating = drawBoard(now); if (animating) requestAnimationFrame(tick); }
 
-  renderPreImpl = () => {
-    $$(".pk").forEach(el => { const n = qty.get(el.dataset.id) || 0; el.classList.toggle("on", n > 0); el.querySelector("output").value = n; });
+  renderPreImpl = (force) => {
+    $$(".pk").forEach(el => { const n = qty.get(el.dataset.id) || 0, inp = el.querySelector("input"); el.classList.toggle("on", n > 0); if (force || inp !== document.activeElement) inp.value = n || ""; });
     $$(".cut").forEach(el => el.classList.toggle("pre", pre.has(el.dataset.id)));
-    const chosen = MEATS.filter(m => qty.get(m.id)), grams = chosen.reduce((s, m) => s + m.g * qty.get(m.id), 0), kg = grams / 1000;
+    const chosen = MEATS.filter(m => qty.get(m.id)), grams = chosen.reduce((s, m) => s + qty.get(m.id), 0), kg = grams / 1000;
     $("#pkKg").textContent = fmtG(grams);
     const feeds = Math.round(grams / 400);
     $("#pkFor").textContent = grams ? L(`αρκεί για ~${Math.max(1, feeds)} άτ. · είστε ${partySize}`, `feeds ~${Math.max(1, feeds)} · you are ${partySize}`) : L("Η ζυγαριά σας", "Your scale");
     $("#scaleNeedle").style.transform = `rotate(${-90 + Math.min(kg / 6, 1) * 180}deg)`;
     $("#scaleArc").setAttribute("stroke-dasharray", `${Math.min(kg / 6, 1) * 100} 100`);
-    $("#preorder").innerHTML = chosen.length ? `🥩 ${L("Θα σας περιμένει", "Waiting for you")}: <b>${chosen.map(m => `${tr(m, "name")} ×${qty.get(m.id)}`).join(", ")}</b> · ${L("σύνολο", "total")} ${fmtG(grams)}` : "";
+    $("#preorder").innerHTML = chosen.length ? `🥩 ${L("Θα σας περιμένει", "Waiting for you")}: <b>${chosen.map(m => `${tr(m, "name")} ${fmtG(qty.get(m.id))}`).join(", ")}</b> · ${L("σύνολο", "total")} ${fmtG(grams)}` : "";
     if (!animating) requestAnimationFrame(tick);
   };
   renderPre();
