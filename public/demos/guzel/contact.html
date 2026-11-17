@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Καταστήματα & επικοινωνία · Guzel</title>
+<meta name="description" content="Guzel Beauty Studio, Μητροπόλεως 105 (4ος όροφος), τηλ. 2310 520136, και Guzel Beauty & Wellness στη Θέρμη. Ωράριο, χάρτης, τρόποι πληρωμής.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("gz-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="guzel.css">
+<style>
+.store{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,5vw,70px);align-items:stretch;padding:clamp(60px,8vw,110px) 0;border-bottom:1px solid var(--line)}
+.store:nth-child(even) .map{order:-1}
+.store .num{font:300 italic 18px/1 var(--serif);color:var(--sky3)}
+.store h2{margin:14px 0 6px}
+.store .tag{display:inline-flex;align-items:center;gap:8px;margin:14px 0 6px;font:400 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.store .tag i{width:8px;height:8px;border-radius:50%;background:#9aa3ab}
+.store .tag.open i{background:#6fbf8e;box-shadow:0 0 0 4px rgba(111,191,142,.2)}
+.store .hours{margin-top:22px;border-top:1px solid var(--line)}
+.store .hours div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.store .hours div.today{font-weight:500}
+.store .hours div.today span:first-child::after{content:" · σήμερα";color:var(--sky3);font-weight:300}
+.store .hours div.closed span:last-child{color:var(--muted)}
+.store .lines{display:flex;flex-direction:column;gap:10px;margin:24px 0}
+.store .lines a{display:flex;gap:12px;align-items:center;font-size:16px}
+.store .lines i{width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;font-style:normal;flex:none}
+.store .offers{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.map{border-radius:var(--r);overflow:hidden;min-height:440px;background:var(--mist);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.9) contrast(.95) brightness(1.04) sepia(.08) hue-rotate(170deg)}
+@media(max-width:900px){.store{grid-template-columns:minmax(0,1fr)}.store:nth-child(even) .map{order:0}.map{min-height:320px}}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form .full{grid-column:1/-1}
+.form select{width:100%;padding:15px 16px;border-radius:14px;border:0;box-shadow:inset 0 0 0 1px var(--line);background:#fff;font-size:16px}
+.form-ok{font:400 italic 20px/1.3 var(--serif);color:var(--sky3);min-height:1.3em;margin-top:14px}
+@media(max-width:560px){.form{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="contact">
+
+<section class="phero" style="padding-bottom:40px">
+  <div class="silk" data-silk></div>
+  <div class="wrap">
+    <p class="crumbs"><a href="demo.html">Guzel</a> · Καταστήματα</p>
+    <h1 class="display">Δύο χώροι,<br><em>μία Guzel.</em></h1>
+    <p class="lead" style="margin-top:22px">Το Beauty Studio στην καρδιά της Θεσσαλονίκης και το Beauty &amp; Wellness με το pilates studio στη Θέρμη. Διαλέξτε όποιο σας βολεύει.</p>
+  </div>
+</section>
+
+<div class="wrap" id="stores"></div>
+
+<section class="sec" style="background:var(--ivory)">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow rv">Γράψτε μας</span>
+      <h2 class="h2 rv d1" style="margin:18px 0 20px">Έχετε <em>ερώτηση;</em></h2>
+      <p class="lead rv d2">Για προσφορές, πακέτα, εταιρικά δώρα ή οτιδήποτε άλλο. Θα σας απαντήσουμε την ίδια μέρα.</p>
+      <div class="pills rv d3" style="margin-top:26px"><span class="pill">Μετρητά & κάρτες</span><span class="pill">Μιλάμε αγγλικά</span><span class="pill">Κοντά σε στάσεις λεωφορείου</span></div>
+    </div>
+    <form class="form rv ph" id="cform" data-note="Τα μηνύματα πάνε στο email σας">
+      <label class="field"><span>Όνομα</span><input required autocomplete="name"></label>
+      <label class="field"><span>Τηλέφωνο</span><input type="tel" autocomplete="tel"></label>
+      <label class="field full"><span>Κατάστημα</span><select><option>Κέντρο · Μητροπόλεως 105</option><option>Θέρμη</option><option>Δεν έχει σημασία</option></select></label>
+      <label class="field full"><span>Μήνυμα</span><textarea rows="4" required></textarea></label>
+      <div class="full"><button class="btn btn-ink">Αποστολή</button><p class="form-ok" id="cok"></p></div>
+    </form>
+  </div>
+</section>
+
+<script src="data.js"></script>
+<script src="guzel.js"></script>
+<script>
+(() => {
+const $ = s => document.querySelector(s), ST = GZ_STORES;
+const DAYS = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"], today = (new Date().getDay() + 6) % 7;
+const fmt = m => `${String(m / 60 | 0).padStart(2, "0")}:${m % 60 ? "30" : "00"}`;
+const OFF = { c: ["Laser", "Πρόσωπο", "Hydrafacial", "Gold 24k", "Σώμα", "Νύχια", "Πεντικιούρ", "Lash & Brow"], t: ["Pilates Reformer", "Cadillac", "Laser", "AI δερμοανάλυση", "Πρόσωπο", "Νύχια", "Lash & Brow"] };
+$("#stores").innerHTML = ["c", "t"].map((k, i) => {
+  const st = ST[k], now = GZ_STORE_NOW(st);
+  return `<article class="store" id="${k === "c" ? "centre" : "thermi"}"><div><span class="num">0${i + 1}</span><span class="eyebrow" style="margin-left:12px">${st.area}</span><h2 class="h2">${st.name}</h2><span class="tag ${now.open ? "open" : ""}"><i></i>${now.txt}</span><p class="lead" style="margin-top:10px">${st.addr}, ${st.city}</p>
+  <div class="offers">${OFF[k].map(o => `<span class="pill">${o}</span>`).join("")}</div>
+  <div class="lines">${st.phone ? `<a href="tel:${st.tel}"><i>☏</i>${st.phone}</a>` : `<a class="ph" data-note="Το τηλέφωνο της Θέρμης" href="tel:+302310000000"><i>☏</i>2310 000 000</a>`}<a href="${st.ig}" target="_blank" rel="noopener"><i>◎</i>${st.igName}</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(st.map)}" target="_blank" rel="noopener"><i>↗</i>Οδηγίες στο Google Maps</a></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ink" data-book data-loc="${k}">Κράτηση εδώ</button><a class="btn btn-line" href="prices.html?loc=${k}">Τιμές καταστήματος</a></div>
+  <div class="hours">${DAYS.map((d, j) => { const o = st.open[(j + 1) % 7]; return `<div class="${j === today ? "today" : ""} ${o ? "" : "closed"}"><span>${d}</span><span>${o ? fmt(o[0]) + " – " + fmt(o[1]) : "Κλειστά"}</span></div>`; }).join("")}</div>
+  <p class="small" style="margin-top:16px">★★★★★ ${st.rating} από ${st.reviews} κριτικές στο Treatwell</p></div>
+  <div class="map rv"><iframe title="Χάρτης ${st.name}" loading="lazy" src="https://www.google.com/maps?q=${encodeURIComponent(st.map)}&output=embed"></iframe></div></article>`;
+}).join("");
+GuzelReveal(document);
+$("#cform").addEventListener("submit", e => { e.preventDefault(); $("#cok").textContent = "Ευχαριστούμε! Θα σας απαντήσουμε σύντομα. (demo: δεν στάλθηκε)"; });
+})();
+</script>
+</body>
+</html>

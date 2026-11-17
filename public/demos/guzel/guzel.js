@@ -1,40 +1,58 @@
-/* Guzel Beauty & Wellness · OpenSite demo · shared header, footer, clouds and booking */
+/* Guzel Beauty × Wellness · OpenSite demo · shared header, menu, footer, silk lines and booking (needs data.js first) */
 (() => {
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const html = document.documentElement, page = document.body.dataset.page || "home";
 const IG = "https://www.instagram.com/guzel.beauty.wellness/";
 const TW = "https://www.treatwell.gr/katasthma/guzel-beauty-x-wellness-therme/";
+const EUR = window.GZ_EUR, MIN = window.GZ_MIN, CAT = window.GZ_CATALOG, SVC = window.GZ_SVC, ST = window.GZ_STORES;
 
 /* ---------- the monogram (stand-in for their round "g" logo) ---------- */
-const mono = (cls = "mono") => `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="mg${Math.random().toString(36).slice(2, 6)}" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#d3e3ef"/><stop offset="1" stop-color="#8db2cf"/></radialGradient></defs><circle cx="50" cy="50" r="49" fill="#a9c6dd"/><circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,.55)" stroke-width=".8"/><text x="50" y="60" text-anchor="middle" font-family="Noto Serif Display, Georgia, serif" font-style="italic" font-weight="300" font-size="58" fill="#fff">g</text></svg>`;
+const mono = (cls = "mono") => `<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="#a9c6dd"/><circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,.55)" stroke-width=".8"/><text x="50" y="60" text-anchor="middle" font-family="Noto Serif Display, Georgia, serif" font-style="italic" font-weight="300" font-size="58" fill="#fff">g</text></svg>`;
 window.GuzelMono = mono;
 
-/* ---------- header, mobile menu, footer, drawer ---------- */
-const links = [["pilates.html", "Pilates", "pilates"], ["aesthetics.html", "Περιποιήσεις", "aesthetics"], ["demo.html#gift", "Δωροκάρτα", "gift"], ["demo.html#visit", "Επικοινωνία", "visit"]];
+/* ---------- navigation ---------- */
+const CARE = [["laser.html", "Laser αποτρίχωση", "laser", "3D Laser · γυναίκες & άνδρες"], ["face.html", "Θεραπείες προσώπου", "face", "Hydrafacial, RF, AI δερμοανάλυση"], ["nails.html", "Νύχια", "nails", "Μανικιούρ, gel, acrygel, πεντικιούρ"], ["brows-lashes.html", "Φρύδια & βλεφαρίδες", "brows", "Lash lift, 4D brow lift"]];
+const NAV = [["pilates.html", "Pilates", "pilates"], ["aesthetics.html", "Περιποιήσεις", "aesthetics", CARE], ["prices.html", "Τιμές", "prices"], ["shop.html", "The G Move", "shop"], ["gift.html", "Δωροκάρτες", "gift"], ["contact.html", "Καταστήματα", "contact"]];
+const isOn = (k, sub) => k === page || (sub && sub.some(s => s[2] === page));
 document.body.insertAdjacentHTML("afterbegin", `
 <header class="hdr" id="hdr"><div class="wrap">
-  <a class="brand" href="demo.html" aria-label="Guzel αρχική"><span class="ph" data-note="Το δικό σας λογότυπο (το στρογγυλό «g»)">${mono()}</span><span><b>GUZEL</b><small>beauty × wellness</small></span></a>
-  <nav class="nav">${links.map(([h, t, k]) => `<a href="${h}" class="${k === page ? "on" : ""}">${t}</a>`).join("")}</nav>
-  <div class="hdr-cta"><span class="open-pill" id="openPill"><i></i><span></span></span><button class="btn btn-ink" data-book>Κράτηση</button><button class="burger" id="burger" aria-label="Μενού"><span></span><span></span></button></div>
+  <a class="brand" href="demo.html" aria-label="Guzel αρχική"><span class="ph" data-note="Το δικό σας λογότυπο (το στρογγυλό «g»)">${mono()}</span><span><b>GUZEL</b><small>beauty studio · wellness</small></span></a>
+  <nav class="nav">${NAV.map(([h, t, k, sub]) => sub
+    ? `<div class="dd"><a href="${h}" class="${isOn(k, sub) ? "on" : ""}">${t} <i>▾</i></a><div class="dd-menu">${sub.map(([sh, st, sk, sd]) => `<a href="${sh}" class="${sk === page ? "cur" : ""}"><b>${st}</b><small>${sd}</small></a>`).join("")}<a href="${h}" class="all">Όλες οι περιποιήσεις →</a></div></div>`
+    : `<a href="${h}" class="${isOn(k) ? "on" : ""}">${t}</a>`).join("")}</nav>
+  <div class="hdr-cta"><button class="btn btn-ink" data-book>Κράτηση</button><button class="burger" id="burger" aria-label="Μενού"><span></span><span></span></button></div>
 </div></header>
-<div class="mmenu" id="mmenu">${links.map(([h, t]) => `<a href="${h}">${t.replace(/^(.)/, "<em>$1</em>")}</a>`).join("")}<button class="btn btn-ink" data-book>Κλείστε ραντεβού</button></div>`);
+<div class="mmenu" id="mmenu"><div class="mm-in">
+  <a href="demo.html" class="big">Αρχική</a>
+  <a href="pilates.html" class="big"><em>P</em>ilates</a>
+  <a href="aesthetics.html" class="big"><em>Π</em>εριποιήσεις</a>
+  <div class="mm-sub">${CARE.map(([h, t]) => `<a href="${h}">${t}</a>`).join("")}</div>
+  <a href="prices.html" class="big">Τιμοκατάλογος</a>
+  <a href="shop.html" class="big"><em>T</em>he G Move</a>
+  <a href="about.html" class="big">Η Guzel</a>
+  <a href="gift.html" class="big">Δωροκάρτες</a>
+  <a href="contact.html" class="big">Καταστήματα</a>
+  <button class="btn btn-ink" data-book>Κλείστε ραντεβού</button>
+</div></div>`);
 
+/* ---------- footer, booking drawer, notes toggle ---------- */
 document.body.insertAdjacentHTML("beforeend", `
-<footer class="foot" id="visit-foot"><div class="wrap">
+<section class="cta-band"><div class="silk" data-silk></div><div class="wrap"><span class="eyebrow">Guzel · Θέρμη</span><p class="h2" style="margin:16px 0 26px">Η ώρα σας,<br><em>με δύο κλικ.</em></p><div class="ctas"><button class="btn btn-ink" data-book>Κλείστε ραντεβού</button><a class="btn btn-line" href="prices.html">Δείτε τις τιμές</a></div></div></section>
+<footer class="foot"><div class="wrap">
   <div class="foot-grid">
-    <div><p class="h3">Pilates, φροντίδα προσώπου και σώματος, <em>στη Θέρμη.</em></p><div class="social"><a href="${IG}" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a><a href="${TW}" target="_blank" rel="noopener" aria-label="Treatwell" class="ph" data-note="Facebook / TikTok αν υπάρχουν"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></a></div></div>
-    <div><h4>Studio</h4><ul><li><a href="pilates.html">Reformer Pilates</a></li><li><a href="pilates.html#machines">Cadillac</a></li><li><a href="pilates.html#packages">Πακέτα</a></li><li><a href="pilates.html#schedule">Πρόγραμμα</a></li></ul></div>
-    <div><h4>Περιποιήσεις</h4><ul><li><a href="aesthetics.html#laser">Laser αποτρίχωση</a></li><li><a href="aesthetics.html#face">Πρόσωπο</a></li><li><a href="aesthetics.html#nails">Νύχια</a></li><li><a href="aesthetics.html#lashes">Φρύδια & βλεφαρίδες</a></li></ul></div>
-    <div><h4>Επισκεφθείτε μας</h4><p>Θερμοπυλών, Θέρμη<br>(Πανόραμα–Θέρμη)</p><p>Δευ–Παρ 09:00–21:00<br>Σάβ–Κυρ κλειστά</p><p><a class="ph" data-note="Το τηλέφωνό σας" href="tel:+302310000000">2310 000 000</a></p></div>
+    <div><p class="h3">Beauty studio στο κέντρο, wellness <em>στη Θέρμη.</em></p><p style="margin-top:14px">★★★★★ 4,9 · πάνω από 6.700 κριτικές στο Treatwell</p><div class="social"><a href="${ST.c.ig}" target="_blank" rel="noopener" aria-label="Instagram Guzel Beauty Studio"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a><a href="${ST.t.ig}" target="_blank" rel="noopener" aria-label="Instagram Guzel Wellness Θέρμη"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a><a href="https://www.instagram.com/the.g.move/" target="_blank" rel="noopener" aria-label="Instagram The G Move" style="font:400 italic 18px/1 var(--serif)">g</a></div></div>
+    <div><h4>Υπηρεσίες</h4><ul><li><a href="pilates.html">Pilates Reformer</a></li>${CARE.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join("")}<li><a href="prices.html">Τιμοκατάλογος</a></li></ul></div>
+    <div><h4>Κέντρο</h4><ul><li>${ST.c.name}</li><li>${ST.c.addr}</li><li>Δευ–Παρ 09–21 · Σάβ 09–17</li><li><a href="tel:${ST.c.tel}">${ST.c.phone}</a></li></ul></div>
+    <div><h4>Θέρμη</h4><ul><li>${ST.t.name}</li><li>${ST.t.addr}, ${ST.t.area}</li><li>Δευ–Παρ 09–21</li><li><a class="ph" data-note="Το τηλέφωνο της Θέρμης" href="tel:+302310000000">2310 000 000</a></li></ul><h4 style="margin-top:26px">Guzel</h4><ul><li><a href="about.html">Η Guzel</a></li><li><a href="shop.html">The G Move</a></li><li><a href="gift.html">Δωροκάρτες</a></li></ul></div>
   </div>
   <div class="big">Guzel</div>
-  <div class="foot-bottom"><span>© 2026 Guzel Beauty × Wellness · Θέρμη Θεσσαλονίκης</span><span>Demo από <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span></div>
+  <div class="foot-bottom"><span>© 2026 Guzel · Θεσσαλονίκη & Θέρμη</span><span>Demo από <a href="https://opensite.gr" target="_blank" rel="noopener">OpenSite</a></span></div>
 </div></footer>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-label="Κράτηση" aria-hidden="true">
-  <div class="dr-head"><div class="cloud" data-cloud="drawer"></div><button class="dr-close" id="drClose" aria-label="Κλείσιμο">×</button><span class="eyebrow">Κράτηση</span><p class="h3" id="drTitle" style="margin-top:10px">Τι θα θέλατε;</p><div class="dr-steps"><i class="on"></i><i></i><i></i><i></i></div></div>
+  <div class="dr-head"><div class="silk" data-silk="small"></div><button class="dr-close" id="drClose" aria-label="Κλείσιμο">×</button><span class="eyebrow">Κράτηση</span><p class="h3" id="drTitle" style="margin-top:10px">Τι θα θέλατε;</p><div class="dr-steps"><i class="on"></i><i></i><i></i><i></i></div></div>
   <div class="dr-body" id="drBody">
-    <div class="step on" data-s="0" id="stSvc"></div>
+    <div class="step on" data-s="0"><div class="loc-pick" id="locPick"></div><label class="field" style="margin-bottom:12px"><input id="svcQ" type="search" placeholder="Αναζήτηση, π.χ. lash, ημιμόνιμο, πόδια…" autocomplete="off"></label><div class="svc-cats" id="svcCats"></div><div id="stSvc"></div></div>
     <div class="step" data-s="1"><div class="days" id="days"></div><div class="times" id="times"></div><div class="who ph" id="who" data-note="Τα ονόματα της ομάδας σας από το Treatwell"></div></div>
     <div class="step" data-s="2"><div class="recap" id="recap"></div><label class="field"><span>Ονοματεπώνυμο</span><input id="bkName" autocomplete="name"></label><label class="field"><span>Κινητό</span><input id="bkPhone" type="tel" inputmode="tel" autocomplete="tel"></label><label class="field"><span>Σημείωση (προαιρετικά)</span><textarea id="bkNote" rows="2"></textarea></label><p class="small ph" data-note="Μπορεί να συνδεθεί με το Treatwell ή με δικό σας ημερολόγιο">Θα λάβετε επιβεβαίωση με SMS και υπενθύμιση μία μέρα πριν.</p></div>
     <div class="step" data-s="3"><div class="done-box">${mono()}<p class="h3">Σας περιμένουμε.</p><p id="doneTxt" class="small"></p><p class="small" style="margin-top:18px">Αυτό είναι demo: η κράτηση δεν στάλθηκε.</p></div></div>
@@ -42,101 +60,84 @@ document.body.insertAdjacentHTML("beforeend", `
   <div class="dr-foot"><div class="sum" id="drSum">Διαλέξτε υπηρεσία</div><div style="display:flex;gap:8px"><button class="btn btn-line" id="drBack" style="padding:14px 18px">←</button><button class="btn btn-ink" id="drNext">Συνέχεια</button></div></div>
 </aside>
 <button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>`);
+if (document.body.dataset.nocta === "1") $(".cta-band").remove();
 
 $("#mmenu").addEventListener("click", e => { if (e.target.closest("a,button")) html.classList.remove("menu-open"); });
 $("#burger").addEventListener("click", () => html.classList.toggle("menu-open"));
 $("#notesToggle").addEventListener("click", () => { const on = html.classList.toggle("notes"); try { localStorage.setItem("gz-notes", on ? "on" : "off"); } catch (e) {} });
-
-const hdr = $("#hdr"), solid = () => hdr.classList.toggle("solid", scrollY > 30 || document.body.dataset.solid === "1");
+const hdr = $("#hdr"), solid = () => hdr.classList.toggle("solid", scrollY > 30);
 addEventListener("scroll", solid, { passive: true }); solid();
 
 /* ---------- open now (Mon–Fri 09–21) ---------- */
-function openState(d = new Date()) {
+window.GuzelOpen = (d = new Date()) => {
   const wd = d.getDay(), m = d.getHours() * 60 + d.getMinutes(), weekday = wd >= 1 && wd <= 5;
-  if (weekday && m >= 540 && m < 1260) return { open: true, txt: "Ανοιχτά έως 21:00" };
-  if (weekday && m < 540) return { open: false, txt: "Ανοίγουμε 09:00" };
+  if (weekday && m >= 540 && m < 1260) return { open: true, txt: "Ανοιχτά τώρα · έως 21:00" };
+  if (weekday && m < 540) return { open: false, txt: "Ανοίγουμε σήμερα στις 09:00" };
   return { open: false, txt: wd === 5 || wd === 6 || wd === 0 ? "Ανοίγουμε Δευτέρα 09:00" : "Ανοίγουμε αύριο 09:00" };
-}
-window.GuzelOpen = openState;
-const os = openState(); $("#openPill").classList.toggle("is-open", os.open); $("#openPill span").textContent = os.txt;
+};
 
-/* ---------- clouds ---------- */
+/* ---------- silk lines: thin flowing strokes with the loop of the "g" ---------- */
 function rng(s) { return () => (s = (s * 16807) % 2147483647, (s - 1) / 2147483646); }
-function cloud(el, seed = 7) {
-  // billowing fabric ceiling: rows of soft "pillows", back rows smaller and bluer, front rows whiter
-  const H = el.dataset.h ? +el.dataset.h : 260, r = rng(seed), drawer = el.dataset.cloud === "drawer";
-  const W = Math.max(600, Math.round(H * ((el.clientWidth || 1200) * 1.16) / Math.max(1, el.clientHeight || H)));
-  const rows = drawer ? 3 : 5, tints = ["#c3d4e2", "#cddce8", "#d6e3ed", "#dee9f1", "#e6eef4"];
-  let defs = "", body = `<rect x="0" y="0" width="${W}" height="${H * .2}" fill="#cfdde9"/>`;
-  for (let i = 0; i < rows; i++) {
-    const k = i / Math.max(1, rows - 1), sh = tints[Math.round(k * (tints.length - 1))];
-    defs += `<radialGradient id="pg${seed}${i}" cx="50%" cy="28%" r="68%"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="${k > .5 ? "#fbfcfd" : "#f1f5f8"}"/><stop offset="1" stop-color="${sh}"/></radialGradient>`;
-    const cy = H * (.1 + k * (drawer ? .42 : .5)), scale = .7 + k * .55;
-    let puffs = "", x = -60 - r() * 60;
-    while (x < W + 80) {
-      const rx = (60 + r() * 60) * scale, yy = cy + (r() - .5) * H * .06, ry = Math.min(rx * (.5 + r() * .22), H * .95 - yy);
-      puffs += `<ellipse cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}"/>`;
-      x += rx * (1.25 + r() * .35);
-    }
-    const dur = 20 + r() * 18, dx = 14 + r() * 26;
-    body += `<g class="layer" fill="url(#pg${seed}${i})" style="--d:${dur.toFixed(1)}s;--x:${dx.toFixed(1)}px;--y:${(r() * 6).toFixed(1)}px;animation-delay:${(-r() * dur).toFixed(1)}s;filter:${k < .3 ? "blur(1.4px) " : ""}drop-shadow(0 ${4 + i * 3}px ${8 + i * 4}px rgba(95,135,168,${(.12 + k * .1).toFixed(2)}))">${puffs}</g>`;
+function silk(el, seed = 7) {
+  const small = el.dataset.silk === "small", W = 1200, H = small ? 260 : 600, r = rng(seed);
+  const lines = small ? 2 : 3;
+  let s = "";
+  for (let i = 0; i < lines; i++) {
+    const y0 = H * (.62 + r() * .3), amp = H * (.05 + r() * .07), loopAt = 700 + r() * 380, lr = small ? 12 : 16 + r() * 10;
+    // a long wave that ties one soft loop somewhere along the way
+    const d = `M-40 ${y0.toFixed(0)} C ${(loopAt * .35).toFixed(0)} ${(y0 - amp).toFixed(0)}, ${(loopAt * .7).toFixed(0)} ${(y0 + amp).toFixed(0)}, ${loopAt.toFixed(0)} ${y0.toFixed(0)}`
+      + ` c ${lr} ${-lr * .2}, ${lr * 1.1} ${-lr * 1.9}, 0 ${-lr * 2}`
+      + ` c ${-lr * 1.1} 0, ${-lr * .9} ${lr * 1.6}, ${lr * .2} ${lr * 2}`
+      + ` C ${(loopAt + 260).toFixed(0)} ${(y0 + amp * .8).toFixed(0)}, ${(loopAt + 480).toFixed(0)} ${(y0 - amp).toFixed(0)}, ${W + 60} ${(y0 + (r() - .5) * amp).toFixed(0)}`;
+    const col = ["#8db2cf", "#c8ab86", "#bcd4e6"][i % 3], w = [1, .8, 1.6][i % 3];
+    s += `<path class="ln" d="${d}" stroke="${col}" stroke-width="${w}" fill="none" stroke-linecap="round" pathLength="1" style="--dl:${(i * .35).toFixed(2)}s;--dur:${(26 + r() * 14).toFixed(1)}s;opacity:${(.35 + r() * .25).toFixed(2)}"/>`;
   }
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMax slice"><defs>${defs}</defs>${body}</svg>`;
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">${s}</svg>`;
 }
-window.GuzelCloud = cloud;
-$$("[data-cloud]").forEach((el, i) => cloud(el, 11 + i * 23));
+window.GuzelSilk = silk;
+$$("[data-silk]").forEach((el, i) => silk(el, 13 + i * 29));
 
 /* ---------- reveal on scroll ---------- */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .14, rootMargin: "0px 0px -6% 0px" });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -6% 0px" });
 window.GuzelReveal = root => $$(".rv:not(.in)", root).forEach(el => io.observe(el));
 window.GuzelReveal(document);
 
-/* ---------- services for booking ---------- */
-const SERVICES = [
-  ["Pilates", [
-    ["trial", "Δοκιμαστικό μάθημα Pilates", "60′ · Reformer", "Δωρεάν"],
-    ["reformer", "Reformer Pilates", "60′ · έως 4 άτομα", "15 €"],
-    ["cadillac", "Cadillac Pilates", "60′ · έως 3 άτομα", "15 €"]]],
-  ["Laser", [
-    ["laser-w", "Full Body Laser · Γυναίκες", "πακέτο 5 συνεδριών · 45′", "250 €"],
-    ["laser-m", "Full Body Laser · Άνδρες", "πακέτο 5 συνεδριών · 60′", "350 €"],
-    ["laser-zone", "Laser ανά περιοχή", "15–40′", "από 15 €"]]],
-  ["Πρόσωπο", [
-    ["deep", "Βαθύς καθαρισμός προσώπου", "75′", "45 €"],
-    ["hydra", "Ενυδάτωση & λάμψη", "60′", "40 €"]]],
-  ["Νύχια", [
-    ["gel", "Μανικιούρ ημιμόνιμο", "60′", "20 €"],
-    ["pedi", "Πεντικιούρ ημιμόνιμο", "60′", "25 €"],
-    ["fill", "Συντήρηση νυχιών", "75′", "30 €"],
-    ["art", "Nail art", "+15′", "από 5 €"]]],
-  ["Φρύδια & βλεφαρίδες", [
-    ["lash", "Lash lift", "50′", "30 €"],
-    ["brow", "Brow lift", "45′", "28 €"],
-    ["shape", "Σχηματισμός φρυδιών", "20′", "10 €"]]]
-];
-const SVC = {}; SERVICES.forEach(([g, list]) => list.forEach(([id, name, meta, price]) => SVC[id] = { id, name, meta, price, group: g }));
-window.GuzelServices = SVC;
-const TEAM = { Pilates: ["Οποιοσδήποτε", "Σοφία"], Laser: ["Οποιοσδήποτε", "Μαρία"], "Πρόσωπο": ["Οποιοσδήποτε", "Μαρία"], "Νύχια": ["Οποιοσδήποτε", "Ιμέλντα", "Βάνα"], "Φρύδια & βλεφαρίδες": ["Οποιοσδήποτε", "Μαρία"] };
+/* ---------- reusable service list (rows with price and book arrow) ---------- */
+window.GuzelRows = (ids, opts = {}) => ids.map(id => { const s = SVC[id]; if (!s) return ""; return `<div class="mrow"><div><b>${s.name}${s.where !== "b" ? ` <i class="where">${GZ_WHERE(s)}</i>` : ""}</b><span>${GZ_MIN(s.min)}${s.note ? " · " + s.note : ""}${s.pc ? ` · κέντρο ${EUR(s.pc)}` : ""}</span></div><span class="price">${s.was ? `<s>${EUR(s.was)}</s> ` : ""}${EUR(s.price)}</span><button class="bk" data-book="${id}" aria-label="Κράτηση ${s.name}">→</button></div>`; }).join("");
+window.GuzelGroupRows = gid => window.GuzelRows(CAT.find(g => g.id === gid).items.map(i => i[0]));
 
-$("#stSvc").innerHTML = `<p class="small ph" data-note="Ενδεικτικές τιμές· οι πραγματικές από τον τιμοκατάλογό σας" style="margin-bottom:18px">Οι τιμές του Pilates και του laser είναι από τον τιμοκατάλογο του Treatwell.</p>` + SERVICES.map(([g, list]) => `<div class="svc-group"><h5>${g}</h5>${list.map(([id, n, m, p]) => `<button class="svc" data-id="${id}"><span><b>${n}</b><small>${m}</small></span><em>${p}</em></button>`).join("")}</div>`).join("");
-
-const B = { step: 0, svc: null, day: null, time: null, who: "Οποιοσδήποτε", note: "" };
+/* ---------- booking drawer ---------- */
+const TEAM = { pilates: ["Οποιοσδήποτε", "Σοφία"], face: ["Οποιοσδήποτε", "Μαρία"], "laser-w": ["Οποιοσδήποτε", "Μαρία"], "laser-m": ["Οποιοσδήποτε", "Μαρία"], wax: ["Οποιοσδήποτε", "Μαρία"], mani: ["Οποιοσδήποτε", "Ιμέλντα", "Βάνα"], art: ["Οποιοσδήποτε", "Ιμέλντα", "Βάνα"], pedi: ["Οποιοσδήποτε", "Ιμέλντα", "Βάνα"], lash: ["Οποιοσδήποτε", "Μαρία"] };
+let cat = "all";
+function renderSvcs() {
+  const q = $("#svcQ").value.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  $("#svcCats").innerHTML = [["all", "Όλα"], ...CAT.filter(g => g.items.some(i => GZ_AT(SVC[i[0]], B.loc))).map(g => [g.id, g.name])].map(([id, n]) => `<button class="chip ${cat === id ? "on" : ""}" data-c="${id}">${n}</button>`).join("");
+  const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  $("#locPick").innerHTML = Object.values(ST).map(st => `<button class="${B.loc === st.id ? "on" : ""}" data-l="${st.id}"><b>${st.short}</b><small>${st.addr}</small></button>`).join("");
+  const html = CAT.filter(g => cat === "all" || g.id === cat).map(g => {
+    const items = g.items.map(i => SVC[i[0]]).filter(s => GZ_AT(s, B.loc) && (!q || norm(s.name + " " + (s.note || "") + " " + g.name).includes(q)));
+    return items.length ? `<div class="svc-group"><h5>${g.name}</h5>${items.map(s => `<button class="svc ${B.svc && B.svc.id === s.id ? "on" : ""}" data-id="${s.id}"><span><b>${s.name}</b><small>${MIN(s.min)}${s.note ? " · " + s.note : ""}</small></span><em>${s.was ? `<s>${EUR(s.was)}</s>` : ""}${EUR(GZ_PRICE(s, B.loc))}</em></button>`).join("")}</div>` : "";
+  }).join("");
+  $("#stSvc").innerHTML = html || `<p class="small">Δεν βρέθηκε υπηρεσία. Δοκιμάστε άλλη λέξη.</p>`;
+}
+const B = { step: 0, loc: document.body.dataset.loc || "c", svc: null, day: null, time: null, who: "Οποιοσδήποτε", note: "" };
 const DOW = ["Κυρ", "Δευ", "Τρί", "Τετ", "Πέμ", "Παρ", "Σάβ"], MON = ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαΐ", "Ιουν", "Ιουλ", "Αυγ", "Σεπ", "Οκτ", "Νοε", "Δεκ"];
-const days = []; { const d = new Date(); d.setHours(12, 0, 0, 0); while (days.length < 10) { if (d.getDay() >= 1 && d.getDay() <= 5) days.push(new Date(d)); d.setDate(d.getDate() + 1); } }
+const allDays = []; { const d = new Date(); d.setHours(12, 0, 0, 0); while (allDays.length < 12) { if (d.getDay() >= 1) allDays.push(new Date(d)); d.setDate(d.getDate() + 1); } }
+const days = allDays.filter(d => d.getDay() <= 5).slice(0, 10);
+const storeDays = () => allDays.filter(d => ST[B.loc].open[d.getDay()]).slice(0, 10);
 const key = d => d.toISOString().slice(0, 10);
 const fmtDay = d => `${["Κυριακή", "Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο"][d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}`;
 window.GuzelDays = days; window.GuzelFmtDay = fmtDay;
-
 function renderDays() {
-  $("#days").innerHTML = days.map(d => `<button class="day ${B.day && key(B.day) === key(d) ? "on" : ""}" data-k="${key(d)}"><small>${DOW[d.getDay()]}</small><b>${d.getDate()}</b><small>${MON[d.getMonth()]}</small></button>`).join("");
+  $("#days").innerHTML = storeDays().map(d => `<button class="day ${B.day && key(B.day) === key(d) ? "on" : ""}" data-k="${key(d)}"><small>${DOW[d.getDay()]}</small><b>${d.getDate()}</b><small>${MON[d.getMonth()]}</small></button>`).join("");
   renderTimes();
 }
 function renderTimes() {
   if (!B.day) { $("#times").innerHTML = `<p class="small" style="grid-column:1/-1">Διαλέξτε ημέρα για να δείτε τις ελεύθερες ώρες.</p>`; $("#who").innerHTML = ""; return; }
   const r = rng(+key(B.day).replace(/-/g, "") % 99991 + (B.svc ? B.svc.id.length * 31 : 0)), now = new Date(), today = key(B.day) === key(now);
-  const slots = []; for (let m = 9 * 60; m <= 20 * 60; m += 30) slots.push(m);
+  const close = ST[B.loc].open[B.day.getDay()][1], last = close - Math.max(30, B.svc ? B.svc.min : 60), slots = []; for (let m = 9 * 60; m <= last; m += 30) slots.push(m);
   $("#times").innerHTML = slots.map(m => { const t = `${String(m / 60 | 0).padStart(2, "0")}:${m % 60 ? "30" : "00"}`, past = today && m <= now.getHours() * 60 + now.getMinutes(), busy = r() < .34; return `<button class="time ${B.time === t ? "on" : ""}" data-t="${t}" ${past || busy ? "disabled" : ""}>${t}</button>`; }).join("");
-  const team = TEAM[B.svc ? B.svc.group : "Pilates"];
+  const team = TEAM[B.svc ? B.svc.gid : "pilates"] || ["Οποιοσδήποτε"];
   $("#who").innerHTML = `<p class="small" style="width:100%">Με ποιον;</p>` + team.map(n => `<button class="chip ${B.who === n ? "on" : ""}" data-w="${n}">${n}</button>`).join("");
 }
 function go(s) {
@@ -144,9 +145,10 @@ function go(s) {
   $$("#drawer .step").forEach(el => el.classList.toggle("on", +el.dataset.s === s));
   $$(".dr-steps i").forEach((el, i) => el.classList.toggle("on", i <= s));
   $("#drTitle").textContent = ["Τι θα θέλατε;", "Πότε σας βολεύει;", "Τα στοιχεία σας", "Έγινε."][s];
+  if (s === 0) renderSvcs();
   if (s === 1) renderDays();
-  if (s === 2) $("#recap").innerHTML = `<b>${B.svc.name}</b>${fmtDay(B.day)} · ${B.time}${B.who !== "Οποιοσδήποτε" ? " · με " + B.who : ""}${B.note ? `<br><span class="small">${B.note}</span>` : ""}`;
-  if (s === 3) $("#doneTxt").innerHTML = `${$("#bkName").value.trim() ? $("#bkName").value.trim().split(" ")[0] + ", σ" : "Σ"}ας κρατήσαμε <b>${B.svc.name}</b><br>${fmtDay(B.day)} στις ${B.time}.`;
+  if (s === 2) $("#recap").innerHTML = `<b>${B.svc.name}</b>${ST[B.loc].name} · ${ST[B.loc].addr}<br>${fmtDay(B.day)} · ${B.time} · ${MIN(B.svc.min)}${B.who !== "Οποιοσδήποτε" ? " · με " + B.who : ""}`;
+  if (s === 3) $("#doneTxt").innerHTML = `${$("#bkName").value.trim() ? $("#bkName").value.trim().split(" ")[0] + ", σ" : "Σ"}ας κρατήσαμε <b>${B.svc.name}</b><br>${fmtDay(B.day)} στις ${B.time}<br>${ST[B.loc].name}, ${ST[B.loc].addr}.`;
   $("#drBack").style.visibility = s > 0 && s < 3 ? "visible" : "hidden";
   $("#drNext").textContent = s === 2 ? "Επιβεβαίωση" : s === 3 ? "Κλείσιμο" : "Συνέχεια";
   $("#drBody").scrollTop = 0; sync();
@@ -154,29 +156,31 @@ function go(s) {
 function sync() {
   const ok = [!!B.svc, !!(B.day && B.time), true, true][B.step];
   $("#drNext").disabled = !ok; $("#drNext").style.opacity = ok ? 1 : .35;
-  $("#drSum").innerHTML = B.svc ? `<b>${B.svc.name}</b>${B.svc.price}${B.day ? " · " + fmtDay(B.day) : ""}${B.time ? " · " + B.time : ""}` : "Διαλέξτε υπηρεσία";
+  $("#drSum").innerHTML = B.svc ? `<b>${B.svc.name}</b>${ST[B.loc].short} · ${EUR(GZ_PRICE(B.svc, B.loc))}${B.day ? " · " + fmtDay(B.day) : ""}${B.time ? " · " + B.time : ""}` : "Διαλέξτε υπηρεσία";
 }
-$("#stSvc").addEventListener("click", e => { const b = e.target.closest(".svc"); if (!b) return; B.svc = SVC[b.dataset.id]; $$(".svc").forEach(x => x.classList.toggle("on", x === b)); B.time = null; sync(); setTimeout(() => go(1), 260); });
-$("#days").addEventListener("click", e => { const b = e.target.closest(".day"); if (!b) return; B.day = days.find(d => key(d) === b.dataset.k); B.time = null; renderDays(); sync(); });
+$("#svcQ").addEventListener("input", renderSvcs);
+$("#svcCats").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; cat = b.dataset.c; renderSvcs(); });
+$("#stSvc").addEventListener("click", e => { const b = e.target.closest(".svc"); if (!b) return; B.svc = SVC[b.dataset.id]; $$(".svc").forEach(x => x.classList.toggle("on", x === b)); B.time = null; sync(); setTimeout(() => go(1), 240); });
+$("#locPick").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; B.loc = b.dataset.l; if (B.svc && !GZ_AT(B.svc, B.loc)) B.svc = null; cat = "all"; B.day = null; B.time = null; renderSvcs(); sync(); });
+$("#days").addEventListener("click", e => { const b = e.target.closest(".day"); if (!b) return; B.day = storeDays().find(d => key(d) === b.dataset.k); B.time = null; renderDays(); sync(); });
 $("#times").addEventListener("click", e => { const b = e.target.closest(".time"); if (!b || b.disabled) return; B.time = b.dataset.t; $$(".time").forEach(x => x.classList.toggle("on", x === b)); sync(); });
 $("#who").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; B.who = b.dataset.w; $$("#who .chip").forEach(x => x.classList.toggle("on", x === b)); });
 $("#drNext").addEventListener("click", () => B.step === 3 ? close() : go(B.step + 1));
 $("#drBack").addEventListener("click", () => go(Math.max(0, B.step - 1)));
-
 function open(opts = {}) {
   Object.assign(B, { svc: null, day: null, time: null, who: "Οποιοσδήποτε", note: "" });
   if (opts.svc && SVC[opts.svc]) B.svc = SVC[opts.svc];
-  if (opts.day) B.day = days.find(d => key(d) === opts.day) || null;
+  if (opts.loc) B.loc = opts.loc; else if (B.svc && B.svc.where !== "b") B.loc = B.svc.where;
+  cat = opts.cat || (B.svc ? B.svc.gid : "all"); $("#svcQ").value = "";
+  if (opts.day) B.day = allDays.find(d => key(d) === opts.day) || null;
   if (opts.time) B.time = opts.time;
-  if (opts.who) B.who = opts.who;
-  if (opts.note) { B.note = opts.note; $("#bkNote").value = opts.note; } else $("#bkNote").value = "";
-  $$(".svc").forEach(x => x.classList.toggle("on", B.svc && x.dataset.id === B.svc.id));
+  $("#bkNote").value = opts.note || "";
   html.classList.add("booking-open"); $("#drawer").setAttribute("aria-hidden", "false");
   go(B.svc && B.day && B.time ? 2 : B.svc ? 1 : 0);
 }
 function close() { html.classList.remove("booking-open"); $("#drawer").setAttribute("aria-hidden", "true"); }
 window.GuzelBook = open;
-document.addEventListener("click", e => { const b = e.target.closest("[data-book]"); if (!b) return; e.preventDefault(); open({ svc: b.dataset.book || null, note: b.dataset.note || "" }); });
+document.addEventListener("click", e => { const b = e.target.closest("[data-book]"); if (!b) return; e.preventDefault(); open({ svc: b.dataset.book || null, cat: b.dataset.cat || null, loc: b.dataset.loc || null, note: b.dataset.note || "" }); });
 $("#scrim").addEventListener("click", close); $("#drClose").addEventListener("click", close);
 addEventListener("keydown", e => { if (e.key === "Escape") { close(); html.classList.remove("menu-open"); } });
 })();

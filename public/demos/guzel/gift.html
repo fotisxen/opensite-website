@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Δωροκάρτες · Guzel</title>
+<meta name="description" content="Δωροκάρτες Guzel: διαλέξτε ποσό ή θεραπεία, γράψτε το μήνυμά σας και στείλτε την με email. Ισχύουν στο κέντρο και στη Θέρμη.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("gz-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="guzel.css">
+<style>
+.gift{background:var(--ink);color:#e8edf1}
+.gift .eyebrow{color:var(--sky)}
+.gift .lead{color:#b9c4ce}
+.gcard-wrap{perspective:1400px}
+.gcard{position:relative;aspect-ratio:1.6;border-radius:26px;padding:clamp(22px,3vw,38px);color:var(--ink);overflow:hidden;transition:transform .9s var(--ease);background:linear-gradient(135deg,#f6f9fb 0%,#dfeaf2 55%,#bcd4e6 100%);box-shadow:0 50px 80px -40px rgba(0,0,0,.7)}
+.gcard.dark{background:linear-gradient(135deg,#2b3a48,#1d2732);color:#f3f6f8}
+.gcard.sand{background:linear-gradient(135deg,#f6eee6,#e6d6c4);}
+.gcard::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at var(--mx,30%) var(--my,20%),rgba(255,255,255,.7),transparent 70%);mix-blend-mode:soft-light;pointer-events:none}
+.gcard .silk{opacity:.8}
+.gcard .top{position:relative;display:flex;justify-content:space-between;align-items:flex-start}
+.gcard .top .mono{width:52px;height:52px}
+.gcard .top span{font:400 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase}
+.gcard .val{position:absolute;left:clamp(22px,3vw,38px);bottom:clamp(22px,3vw,38px);right:clamp(22px,3vw,38px);display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.gcard .val b{font:300 clamp(40px,5.4vw,76px)/.85 var(--serif)}
+.gcard .val p{font:400 clamp(15px,1.5vw,19px)/1.3 var(--serif);font-style:italic;text-align:right;max-width:24ch}
+.gcard .val small{display:block;font:400 10px/1.4 var(--sans);font-style:normal;letter-spacing:.24em;text-transform:uppercase;opacity:.7;margin-top:6px}
+.gform .amts{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.gform .chip{background:transparent;color:#e8edf1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.gform .chip.on{background:var(--sky);color:var(--ink)}
+.gform .field span{color:#9eacb9}
+.gform .field input{background:rgba(255,255,255,.06);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.gform .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.styles{display:flex;gap:10px;margin:0 0 22px}
+.styles button{width:44px;height:30px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.styles button.on{outline:1.5px solid var(--sky);outline-offset:3px}
+.gok{margin-top:16px;font:400 20px/1.3 var(--serif);font-style:italic;color:var(--sky);min-height:1.3em}
+@media(max-width:600px){.gform .row{grid-template-columns:1fr}}
+.ideas .tcard .price{font-size:26px}
+</style>
+</head>
+<body data-page="gift">
+
+<section class="sec gift" style="padding-top:170px">
+  <div class="wrap split mid">
+    <div class="gcard-wrap rv"><div class="gcard" id="gcard"><div class="silk" data-silk="small"></div><div class="top"><span>Gift card</span><span class="ph" data-note="Το λογότυπό σας" id="gMono"></span></div><div class="val"><b id="gVal">100 €</b><p id="gMsg"><span id="gMsgT">Για σένα, με αγάπη.</span><small id="gTo">Για: Μαρία</small></p></div></div></div>
+    <div class="gform">
+      <p class="crumbs" style="color:#9eacb9"><a href="demo.html">Guzel</a> · Δωροκάρτες</p>
+      <h1 class="h2">Χαρίστε<br><em>μια μέρα Guzel.</em></h1>
+      <p class="lead" style="margin-top:16px">Διαλέξτε ποσό ή θεραπεία, γράψτε το μήνυμά σας και η κάρτα φτάνει με email, έτοιμη για εκτύπωση. Ισχύει και στα δύο καταστήματα.</p>
+      <div class="amts" id="gAmts"><button class="chip" data-v="50 €">50 €</button><button class="chip on" data-v="100 €">100 €</button><button class="chip" data-v="150 €">150 €</button><button class="chip" data-v="Lash & Brow lift">Lash &amp; Brow lift</button><button class="chip" data-v="8 μαθήματα Pilates">8 μαθήματα Pilates</button><button class="chip" data-v="Gold 24k">Gold 24k</button></div>
+      <div class="styles" id="gStyles"><button class="on" data-s="" style="background:linear-gradient(135deg,#f6f9fb,#bcd4e6)" aria-label="Γαλάζιο"></button><button data-s="sand" style="background:linear-gradient(135deg,#f6eee6,#e6d6c4)" aria-label="Άμμος"></button><button data-s="dark" style="background:linear-gradient(135deg,#2b3a48,#1d2732)" aria-label="Σκούρο"></button></div>
+      <div class="row"><label class="field"><span>Για</span><input id="gToIn" value="Μαρία" maxlength="22"></label><label class="field"><span>Μήνυμα</span><input id="gMsgIn" value="Για σένα, με αγάπη." maxlength="40"></label></div>
+      <button class="btn btn-sky ph" id="gBuy" data-note="Πληρωμή online με κάρτα (Viva / Stripe)">Αγορά δωροκάρτας</button>
+      <p class="gok" id="gOk"></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec ideas">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow rv">Ιδέες για δώρο</span><h2 class="h2 rv d1" style="margin-top:18px">Τα αγαπημένα<br><em>για να χαρίσετε.</em></h2></div></div>
+    <div class="grid3" id="ideas"></div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow rv">Πώς λειτουργεί</span><h2 class="h2 rv d1" style="margin-top:18px">Τρία βήματα</h2></div></div>
+    <div class="grid3">
+      <div class="card rv"><span class="eyebrow">01</span><h3 class="h3" style="margin:10px 0 8px">Σχεδιάζετε</h3><p class="small">Ποσό ή θεραπεία, χρώμα κάρτας, όνομα και μήνυμα.</p></div>
+      <div class="card rv d1"><span class="eyebrow">02</span><h3 class="h3" style="margin:10px 0 8px">Πληρώνετε online</h3><p class="small">Με κάρτα, και η δωροκάρτα έρχεται στο email σας σε PDF.</p></div>
+      <div class="card rv d2 ph" data-note="Η δική σας διάρκεια ισχύος"><span class="eyebrow">03</span><h3 class="h3" style="margin:10px 0 8px">Τη χαρίζετε</h3><p class="small">Ισχύει 12 μήνες, σε Κέντρο και Θέρμη, για όλες τις υπηρεσίες.</p></div>
+    </div>
+  </div>
+</section>
+
+<script src="data.js"></script>
+<script src="guzel.js"></script>
+<script>
+(() => {
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], S = GZ_SVC, EUR = GZ_EUR;
+$("#gMono").innerHTML = GuzelMono();
+const card = $("#gcard");
+const sync = () => { $("#gTo").textContent = "Για: " + ($("#gToIn").value.trim() || "…"); $("#gMsgT").textContent = $("#gMsgIn").value.trim() || " "; };
+$("#gToIn").addEventListener("input", sync); $("#gMsgIn").addEventListener("input", sync);
+const flip = () => card.animate([{ transform: "rotateY(0)" }, { transform: "rotateY(-14deg) scale(.98)" }, { transform: "rotateY(0)" }], { duration: 700, easing: "cubic-bezier(.2,.7,.1,1)" });
+function setVal(v) { $("#gVal").textContent = v; $("#gVal").style.fontSize = v.length > 6 ? "clamp(26px,3.2vw,44px)" : ""; flip(); }
+$("#gAmts").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; $$("#gAmts .chip").forEach(x => x.classList.toggle("on", x === b)); setVal(b.dataset.v); });
+$("#gStyles").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; $$("#gStyles button").forEach(x => x.classList.toggle("on", x === b)); card.className = "gcard " + b.dataset.s; flip(); });
+const w = card.parentElement;
+w.addEventListener("pointermove", e => { const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; card.style.transform = `rotateY(${(x - .5) * 14}deg) rotateX(${(.5 - y) * 10}deg)`; card.style.setProperty("--mx", x * 100 + "%"); card.style.setProperty("--my", y * 100 + "%"); });
+w.addEventListener("pointerleave", () => card.style.transform = "");
+$("#gBuy").addEventListener("click", () => $("#gOk").textContent = `Η δωροκάρτα για ${$("#gToIn").value.trim() || "τον αγαπημένο σας άνθρωπο"} είναι έτοιμη. (demo: δεν έγινε χρέωση)`);
+const IDEAS = [["lashbrow", "Για το βλέμμα"], ["glow", "Για λάμψη"], ["pk8", "Για να ξεκινήσει pilates"], ["gold", "Το απόλυτο pampering"], ["jelly-g", "Για χαλάρωση"], ["lw-pack", "Για όλο τον χρόνο"]];
+$("#ideas").innerHTML = IDEAS.map(([id, why], i) => `<div class="card tcard rv d${i % 3}"><span class="num">${why}</span><h3>${S[id].name}${S[id].where !== "b" ? ` <i class="where">${GZ_WHERE(S[id])}</i>` : ""}</h3><p>${S[id].note || GZ_MIN(S[id].min)}</p><div class="foot-row"><span class="price">${S[id].was ? `<s>${EUR(S[id].was)}</s> ` : ""}${EUR(S[id].price)}</span><button class="btn btn-line" style="padding:12px 18px" data-v="${S[id].name}">Ως δώρο</button></div></div>`).join("");
+GuzelReveal(document);
+$("#ideas").addEventListener("click", e => { const b = e.target.closest("button[data-v]"); if (!b) return; $$("#gAmts .chip").forEach(x => x.classList.remove("on")); setVal(b.dataset.v); scrollTo({ top: 0, behavior: "smooth" }); });
+})();
+</script>
+</body>
+</html>
