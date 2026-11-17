@@ -5,14 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { Field, inputClass, primaryButtonClass } from "@/components/admin/AdminUI";
+import { STAGES, channelLabel, statusLabel } from "@/lib/leadPipeline";
 import type { Lead } from "@/types/database";
-
-const statusLabel: Record<Lead["status"], string> = {
-  new: "New",
-  contacted: "Contacted",
-  qualified: "Qualified",
-  lost: "Lost",
-};
 
 export default function LeadForm({ mode, lead }: { mode: "create" | "edit"; lead?: Lead }) {
   const router = useRouter();
@@ -34,6 +28,13 @@ export default function LeadForm({ mode, lead }: { mode: "create" | "edit"; lead
       message: String(form.get("message") ?? "") || null,
       status: String(form.get("status") ?? "new"),
       notes: String(form.get("notes") ?? "") || null,
+      company: String(form.get("company") ?? "") || null,
+      website: String(form.get("website") ?? "") || null,
+      city: String(form.get("city") ?? "") || null,
+      channel: String(form.get("channel") ?? "") || null,
+      demo_url: String(form.get("demo_url") ?? "") || null,
+      value: form.get("value") ? Number(form.get("value")) : null,
+      next_followup_at: String(form.get("next_followup_at") ?? "") || null,
     };
 
     const { error: saveError } =
@@ -74,7 +75,7 @@ export default function LeadForm({ mode, lead }: { mode: "create" | "edit"; lead
 
     await supabase
       .from("leads")
-      .update({ converted_client_id: (client as { id: string }).id, status: "qualified" } as never)
+      .update({ converted_client_id: (client as { id: string }).id, status: "won" } as never)
       .eq("id", lead.id);
 
     router.push(`/admin/clients/edit?id=${(client as { id: string }).id}`);
@@ -105,12 +106,46 @@ export default function LeadForm({ mode, lead }: { mode: "create" | "edit"; lead
           </Field>
           <Field label="Status">
             <select name="status" defaultValue={lead?.status ?? "new"} className={inputClass}>
-              {Object.entries(statusLabel).map(([v, l]) => (
+              {[...STAGES, ...(lead?.status === "qualified" ? ["qualified" as const] : [])].map((v) => (
+                <option key={v} value={v}>
+                  {statusLabel[v]}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <Field label="Company">
+            <input name="company" defaultValue={lead?.company ?? ""} className={inputClass} />
+          </Field>
+          <Field label="Website / Instagram">
+            <input name="website" defaultValue={lead?.website ?? ""} className={inputClass} />
+          </Field>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <Field label="Channel">
+            <select name="channel" defaultValue={lead?.channel ?? ""} className={inputClass}>
+              <option value="">-</option>
+              {Object.entries(channelLabel).map(([v, l]) => (
                 <option key={v} value={v}>
                   {l}
                 </option>
               ))}
             </select>
+          </Field>
+          <Field label="City">
+            <input name="city" defaultValue={lead?.city ?? ""} className={inputClass} />
+          </Field>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          <Field label="Demo URL">
+            <input name="demo_url" defaultValue={lead?.demo_url ?? ""} className={inputClass} />
+          </Field>
+          <Field label="Value (€)">
+            <input name="value" type="number" step="0.01" defaultValue={lead?.value ?? ""} className={inputClass} />
+          </Field>
+          <Field label="Next follow-up">
+            <input name="next_followup_at" type="date" defaultValue={lead?.next_followup_at ?? ""} className={inputClass} />
           </Field>
         </div>
         <Field label="Message">

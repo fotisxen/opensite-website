@@ -16,7 +16,8 @@ export interface Client {
   created_at: string;
 }
 
-export type LeadStatus = "new" | "contacted" | "qualified" | "lost";
+// Pipeline order; "qualified" only survives on rows from before the CRM upgrade.
+export type LeadStatus = "new" | "contacted" | "replied" | "demo" | "proposal" | "won" | "lost" | "qualified";
 
 export interface Lead {
   id: string;
@@ -30,6 +31,28 @@ export interface Lead {
   converted_client_id: string | null;
   agent_id: string | null;
   created_at: string;
+  company: string | null;
+  website: string | null;
+  city: string | null;
+  sector: string | null;
+  channel: string | null;
+  demo_url: string | null;
+  value: number | null;
+  last_contact_at: string | null;
+  next_followup_at: string | null;
+  followups_sent: number;
+  external_key: string | null;
+}
+
+export type LeadActivityKind = "email" | "followup" | "dm" | "call" | "meeting" | "reply" | "proposal" | "note" | "bounce";
+
+export interface LeadActivity {
+  id: string;
+  lead_id: string;
+  kind: LeadActivityKind;
+  at: string;
+  note: string | null;
+  external_key: string | null;
 }
 
 export type ProjectService = "web_development" | "seo_strategy" | "ui_ux_design" | "crm" | "other";
@@ -81,6 +104,11 @@ export interface Database {
         Row: Lead;
         Insert: Partial<Lead> & Pick<Lead, "full_name">;
         Update: Partial<Lead>;
+      };
+      lead_activities: {
+        Row: LeadActivity;
+        Insert: Partial<LeadActivity> & Pick<LeadActivity, "lead_id" | "kind">;
+        Update: Partial<LeadActivity>;
       };
       projects: {
         Row: Project;

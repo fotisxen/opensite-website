@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import LeadForm from "@/components/admin/LeadForm";
+import LeadActivities from "@/components/admin/LeadActivities";
 import type { Lead } from "@/types/database";
 
 export default function EditLeadPage() {
@@ -39,6 +40,7 @@ function EditLeadForm() {
     <div>
       <h1 className="font-headline-lg text-headline-lg text-text-primary">Edit lead</h1>
       <LeadForm mode="edit" lead={lead} />
+      <LeadActivities leadId={lead.id} />
     </div>
   );
 }
