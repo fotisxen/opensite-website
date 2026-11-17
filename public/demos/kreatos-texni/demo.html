@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1a0f0d">
+<title>Κρέατος Τέχνη · κρεοπωλείο & ψητοπωλείο · Βόλος</title>
+<meta name="description" content="Κρέατος Τέχνη, Δημητριάδος 131 με Λώρη, Βόλος. Κρεοπωλείο και ψητοπωλείο: σούβλα, σχάρα, premium κοπές, delivery και take away. 24210 20340.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&family=Noto+Serif+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Κρέατος Τέχνη (@kreatostexni), Βόλος.
+  Menu & prices: from their own site (kreatostexni.gr, archived Sep 2025 — the live site currently returns Cloudflare 526).
+  Photos: their Instagram. Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{--bg:#1a0f0d;--bg2:#24140f;--card:#2c1a14;--ink:#f4ebe1;--muted:#b9a697;--ember:#d9692b;--wine:#5a1414;--cream:#efe4d6;--line:rgba(244,235,225,.12);
+  --f:"Commissioner",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:300 17px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.k{font:600 11px/1 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--ember)}
+h1,h2,h3{font-family:var(--s);font-weight:400;line-height:1.08}
+h2{font-size:clamp(34px,5vw,58px)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.fire{background:var(--ember);color:#1a0f0d}
+.btn.ghost{border:1px solid var(--line);background:rgba(255,255,255,.04)}
+/* top */
+.top{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;transition:background .3s}
+.top.solid{background:rgba(26,15,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font:600 20px/1 var(--s);letter-spacing:.02em}
+.logo small{display:block;font:500 9px/1.4 var(--f);letter-spacing:.32em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+.top nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.cartbtn{position:relative;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--ember);color:#1a0f0d;font-weight:700;font-size:14px}
+.cartbtn b{min-width:22px;height:22px;border-radius:11px;background:#1a0f0d;color:var(--ember);display:grid;place-items:center;font-size:12px}
+@media(max-width:860px){.top nav{display:none}}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 56px;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:url(img/k5.jpg) center/cover;filter:saturate(1.05) brightness(.62);transform:scale(1.06);animation:slow 18s ease-out forwards}
+@keyframes slow{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,15,13,.2),rgba(26,15,13,.35) 40%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{font-size:clamp(46px,9vw,112px);max-width:11ch}
+.hero h1 em{color:var(--ember)}
+.hero p.lead{max-width:540px;margin:18px 0 26px;color:var(--cream);font-size:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px}
+.live{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.45);border:1px solid var(--line);font-size:13px}
+.dot{width:9px;height:9px;border-radius:50%;background:#5bd16b;box-shadow:0 0 0 0 rgba(91,209,107,.6);animation:pulse 2s infinite}
+.dot.off{background:#d65a4a;animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(91,209,107,0)}100%{box-shadow:0 0 0 0 rgba(91,209,107,0)}}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.stats div{font-size:13px;color:var(--muted)}
+.stats b{display:block;font:400 30px/1 var(--s);color:var(--ink);margin-bottom:6px}
+/* two worlds */
+section{padding:96px 0}
+.worlds{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.world{position:relative;min-height:440px;border-radius:18px;overflow:hidden;display:flex;align-items:flex-end;padding:28px;cursor:pointer}
+.world img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.world:hover img{transform:scale(1.05)}
+.world::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,5,4,.9))}
+.world>div{position:relative;z-index:2}
+.world h3{font-size:34px;margin:8px 0}
+.world p{color:var(--cream);font-size:15px;max-width:380px}
+@media(max-width:760px){.worlds{grid-template-columns:1fr}.world{min-height:360px}}
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+.intro p{color:var(--muted);font-size:18px}
+.intro .tri{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.intro .tri span{padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--cream)}
+@media(max-width:860px){.intro{grid-template-columns:1fr;gap:20px}}
+/* menu / order */
+#order{background:var(--bg2)}
+.ohead{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.mode{display:flex;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:999px;padding:4px}
+.mode button{padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted)}
+.mode button.on{background:var(--cream);color:#1a0f0d}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:30px 0 22px;padding-bottom:6px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;padding:10px 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--muted)}
+.tabs button.on{border-color:var(--ember);color:var(--ink);background:rgba(217,105,43,.12)}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:760px){.items{grid-template-columns:1fr}}
+.item{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.item .t{flex:1;min-width:0}
+.item h4{font:600 15px/1.3 var(--f);letter-spacing:.02em}
+.item p{font-size:13px;color:var(--muted);margin-top:3px}
+.item .opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.item .opts button{padding:6px 10px;border-radius:8px;border:1px solid var(--line);font-size:12px;color:var(--cream)}
+.item .opts button:hover{border-color:var(--ember)}
+.item .pr{font-weight:700;color:var(--ember);white-space:nowrap}
+.add{flex:none;width:38px;height:38px;border-radius:50%;background:var(--ember);color:#1a0f0d;font-size:22px;line-height:1;display:grid;place-items:center}
+.kg{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted)}
+.kg input{width:120px;accent-color:var(--ember)}
+.sides{margin-top:18px;font-size:14px;color:var(--muted)}
+/* calculator */
+.calc{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0}
+.step{display:flex;align-items:center;gap:12px}
+.step button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);font-size:18px}
+.step b{min-width:30px;text-align:center;font:400 26px/1 var(--s)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.seg button.on{background:var(--cream);color:#1a0f0d;border-color:var(--cream)}
+.plan{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.plan li{list-style:none;display:flex;justify-content:space-between;padding:7px 0;font-size:15px;border-bottom:1px dashed var(--line)}
+.plan .tot{display:flex;justify-content:space-between;margin-top:14px;font:400 26px/1 var(--s)}
+.plan .tot span{color:var(--ember)}
+.meat{position:relative;aspect-ratio:1;max-width:420px;margin-inline:auto}
+.meat svg{width:100%;height:100%}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:10px;margin-top:36px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:12px;cursor:zoom-in}
+.gal img:nth-child(1){grid-row:span 2;grid-column:span 2}
+.gal img:nth-child(4){grid-row:span 2}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.92);display:none;place-items:center;padding:20px}
+.lb.on{display:grid}
+.lb img{max-height:88vh;border-radius:10px}
+/* reviews */
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:760px){.rev{grid-template-columns:1fr}}
+.rev div{padding:24px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.rev b{display:block;font:400 44px/1 var(--s);color:var(--ember)}
+.rev span{font-size:14px;color:var(--muted)}
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+.hours li{list-style:none;display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+.map{border-radius:18px;overflow:hidden;min-height:340px;border:1px solid var(--line)}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.4) invert(.9) hue-rotate(180deg)}
+footer{padding:40px 0 120px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* cart drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(440px,100%);background:#120a08;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.shade{position:fixed;inset:0;z-index:79;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s}
+.shade.on{opacity:1;pointer-events:auto}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dl{flex:1;overflow:auto;padding:10px 20px}
+.ci{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.ci small{display:block;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line)}
+.df{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
+.df .seg button{flex:1}
+.df input,.df select{width:100%;padding:12px;border-radius:10px;background:var(--card);border:1px solid var(--line)}
+.total{display:flex;justify-content:space-between;font:400 24px/1 var(--s)}
+.sent{display:none;padding:14px;border-radius:12px;background:rgba(91,209,107,.12);border:1px solid rgba(91,209,107,.4);font-size:14px}
+.sent.show{display:block}
+.empty{color:var(--muted);font-size:14px;padding:30px 0;text-align:center}
+.toast{position:fixed;left:50%;bottom:90px;z-index:85;transform:translate(-50%,20px);opacity:0;background:var(--cream);color:#1a0f0d;padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;transition:.3s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:8px}
+.mbar a,.mbar button{flex:1;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.mbar .ghost{background:#2c1a14}
+@media(max-width:760px){.mbar{display:flex}}
+/* notes */
+.notes-toggle{position:fixed;left:16px;bottom:16px;z-index:70;padding:9px 14px;border-radius:999px;background:#fff;color:#111;font:600 12px/1 system-ui,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+@media(max-width:760px){.notes-toggle{bottom:80px}}
+.notes .ph{outline:1.5px dashed var(--ember);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:#b8461a;padding:4px 8px;border-radius:5px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+  if(q.has("clean")||localStorage.getItem("kt-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+<header class="top" id="top">
+  <a href="#" class="logo">Κρέατος Τέχνη<small>Κρεοπωλείο · Ψητοπωλείο · Βόλος</small></a>
+  <nav><a href="#about">Το μαγαζί</a><a href="#order">Μενού & παραγγελία</a><a href="#calc">Για την παρέα</a><a href="#gallery">Φωτογραφίες</a><a href="#contact">Επικοινωνία</a></nav>
+  <button class="cartbtn" id="openCart" type="button">Καλάθι <b id="cartN">0</b></button>
+</header>
+
+<section class="hero">
+  <div class="bg" role="img" aria-label="Tomahawk στο τηγάνι, Κρέατος Τέχνη"></div>
+  <div class="wrap">
+    <div class="live"><span class="dot" id="liveDot"></span><span id="liveTxt">Ανοιχτά τώρα</span></div>
+    <h1>Γνωρίζουμε την τέχνη του <em>κρέατος</em>.</h1>
+    <p class="lead">Κρεοπωλείο και ψητοπωλείο κάτω από την ίδια στέγη. Διαλέγεις το κρέας στον πάγκο και το τρως ψημένο στο τραπέζι, ή σου το φέρνουμε σπίτι.</p>
+    <div class="ctas">
+      <a class="btn fire" href="#order">Παραγγελία online →</a>
+      <a class="btn ghost" href="tel:+302421020340">☎ 24210 20340</a>
+    </div>
+    <div class="stats">
+      <div><b>4,4★</b>3.377 κριτικές Google</div>
+      <div><b>98%</b>προτείνουν στο Facebook</div>
+      <div><b>15–20 €</b>ανά άτομο</div>
+      <div><b>Λώρη & Δημητριάδος</b>κέντρο Βόλου</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="intro reveal">
+      <div>
+        <div class="k">Η φιλοσοφία μας</div>
+        <h2 style="margin-top:14px">Καλή τιμή, ποσότητα και ποιότητα.</h2>
+      </div>
+      <div>
+        <p>Στον πάγκο του κρεοπωλείου θα βρείτε κάθε μέρα black angus Αργεντινής, μπριζόλες Tomahawk και ντόπια κρέατα: χοιρινό, αρνί, κατσίκι και πρόβειο. Στην κουζίνα τα ψήνουμε στη σούβλα, στη σχάρα και στον ξυλόφουρνο, και το ψήσιμο γίνεται μπροστά σας.</p>
+        <div class="tri"><span>Ψήσιμο σε κοινή θέα</span><span>Ξυλόφουρνος</span><span>Delivery & take away</span><span>Τραπεζάκια έξω</span></div>
+      </div>
+    </div>
+    <div class="worlds">
+      <a class="world reveal" href="#order" data-mode="butcher">
+        <img src="img/k9.jpg" alt="Παϊδάκια και κοπές στον πάγκο" loading="lazy">
+        <div><div class="k">Από τις 8 το πρωί</div><h3>Το κρεοπωλείο</h3><p>Νωπά κρέατα στο κιλό, κομμένα όπως τα θέλετε. Παραγγείλτε online και περάστε να τα πάρετε έτοιμα.</p></div>
+      </a>
+      <a class="world reveal" href="#order" data-mode="grill">
+        <img src="img/k6.jpg" alt="Ψητή μπριζόλα με κρασί" loading="lazy">
+        <div><div class="k">Κουζίνα 11:00 – 00:30</div><h3>Το ψητοπωλείο</h3><p>Κοντοσούβλι, κοκορέτσι γάλακτος, παϊδάκια, premium μπριζόλες. Στο τραπέζι ή στην πόρτα σας.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <div class="ohead">
+      <div><div class="k">Μενού με τιμές</div><h2 style="margin-top:14px">Παραγγείλτε online.</h2></div>
+      <div class="mode" id="mode"><button type="button" class="on" data-m="grill">Ψητοπωλείο</button><button type="button" data-m="butcher">Κρεοπωλείο</button></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="items" id="items"></div>
+    <p class="sides" id="sides">Συνοδευτικά: αγριόρυζο 3,50 € · ρύζι με λαχανικά και κάρυ 3,50 € · πατάτα ψητή με σως 4,00 € · πατάτες φούρνου 4,00 € · πουρές πατάτας 5,00 € · λαχανικά φούρνου 5,00 €</p>
+  </div>
+</section>
+
+<section id="calc">
+  <div class="wrap calc">
+    <div class="reveal">
+      <div class="k">Για την παρέα</div>
+      <h2 style="margin-top:14px">Πόσο κρέας να πάρουμε;</h2>
+      <p style="color:var(--muted);margin-top:14px">Πείτε μας πόσοι είστε και τι όρεξη έχετε, και σας προτείνουμε τραπέζι ή παραγγελία. Με ένα κλικ πάει στο καλάθι.</p>
+      <div class="meat"><svg viewBox="0 0 200 200" id="meatSvg" aria-hidden="true"></svg></div>
+    </div>
+    <div class="panel reveal">
+      <div class="row"><span>Ενήλικες</span><div class="step"><button type="button" data-d="-1" data-t="a">−</button><b id="cA">4</b><button type="button" data-d="1" data-t="a">+</button></div></div>
+      <div class="row"><span>Παιδιά</span><div class="step"><button type="button" data-d="-1" data-t="c">−</button><b id="cC">0</b><button type="button" data-d="1" data-t="c">+</button></div></div>
+      <div class="row"><span>Όρεξη</span><div class="seg" id="appetite"><button type="button" data-v=".8">Ελαφριά</button><button type="button" class="on" data-v="1">Κανονική</button><button type="button" data-v="1.3">Πεινάμε!</button></div></div>
+      <div class="row"><span>Στυλ</span><div class="seg" id="style"><button type="button" class="on" data-v="mix">Ποικιλία</button><button type="button" data-v="souvla">Σούβλα</button><button type="button" data-v="premium">Premium</button></div></div>
+      <div class="plan"><ul id="plan"></ul><div class="tot"><em style="font-style:normal">Περίπου</em><span id="planTot">0 €</span></div></div>
+      <button class="btn fire" style="width:100%;justify-content:center;margin-top:18px" id="planAdd" type="button">Βάλ' τα στο καλάθι</button>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="k">Από το Instagram μας</div>
+    <h2 style="margin-top:14px">Πέτρα, φωτιά, μαχαίρι.</h2>
+    <div class="gal" id="gal">
+      <img src="img/k1.jpg" alt="Ο πέτρινος χώρος" loading="lazy">
+      <img src="img/k3.jpg" alt="Tomahawk με δεντρολίβανο" loading="lazy">
+      <img src="img/k10.jpg" alt="Κοπή στο ξύλο" loading="lazy">
+      <img src="img/k2.jpg" alt="Ο κρεοπώλης μας" loading="lazy">
+      <img src="img/k7.jpg" alt="Τραπέζια στον χώρο" loading="lazy">
+      <img src="img/k4.jpg" alt="Μπαχαρικά και κρέας" loading="lazy">
+      <img src="img/k11.jpg" alt="Στον πάγκο" loading="lazy">
+      <img src="img/k8.jpg" alt="Προετοιμασία" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="k">Τι λένε για εμάς</div>
+    <div class="rev">
+      <div><b>4,4★</b><span>3.377 κριτικές στο Google</span></div>
+      <div><b>98%</b><span>προτείνουν στο Facebook (92 κριτικές)</span></div>
+      <div class="ph" data-note="Εδώ μπαίνουν 3–4 πραγματικές κριτικές που θα διαλέξει το μαγαζί"><b>“</b><span>Οι αγαπημένες σας κριτικές, με όνομα και αστέρια, ενημερώνονται αυτόματα από το Google.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--bg2)">
+  <div class="wrap contact">
+    <div>
+      <div class="k">Επικοινωνία</div>
+      <h2 style="margin:14px 0 20px">Δημητριάδος 131 με Λώρη</h2>
+      <ul class="hours">
+        <li><span>Κρεοπωλείο</span><b class="ph" data-note="Ώρα κλεισίματος κρεοπωλείου: να επιβεβαιωθεί">08:00 – 21:00</b></li>
+        <li><span>Κουζίνα</span><b>11:00 – 00:30</b></li>
+        <li><span>Delivery & take away</span><b>24210 20340</b></li>
+        <li><span>Email</span><b>info@kreatostexni.gr</b></li>
+      </ul>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn fire" href="tel:+302421020340">☎ Κλήση</a>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=%CE%94%CE%B7%CE%BC%CE%B7%CF%84%CF%81%CE%B9%CE%AC%CE%B4%CE%BF%CF%82+131+%CE%92%CF%8C%CE%BB%CE%BF%CF%82" target="_blank" rel="noopener">Οδηγίες</a>
+        <a class="btn ghost" href="https://www.instagram.com/kreatostexni/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn ghost" href="https://www.facebook.com/kreatostexni/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="map"><iframe title="Χάρτης" loading="lazy" src="https://www.google.com/maps?q=%CE%94%CE%B7%CE%BC%CE%B7%CF%84%CF%81%CE%B9%CE%AC%CE%B4%CE%BF%CF%82+131+%CE%92%CF%8C%CE%BB%CE%BF%CF%82&output=embed"></iframe></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© Κρέατος Τέχνη · Δημητριάδος 131, Βόλος 382 21</span><span>Demo από <a href="https://opensite.gr" style="color:var(--ember)">OpenSite</a></span></div></footer>
+
+<div class="mbar"><a class="btn ghost" href="tel:+302421020340">☎ Κλήση</a><button class="btn fire" type="button" id="mCart">Καλάθι · <span id="mTot">0 €</span></button></div>
+
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer" aria-label="Καλάθι">
+  <div class="dh"><b style="font:400 24px var(--s)">Η παραγγελία σας</b><button type="button" id="closeCart" style="font-size:26px">×</button></div>
+  <div class="dl" id="lines"></div>
+  <div class="df">
+    <div class="seg" id="how"><button type="button" class="on" data-v="delivery">Delivery</button><button type="button" data-v="pickup">Παραλαβή</button><button type="button" data-v="table">Κράτηση τραπεζιού</button></div>
+    <input id="addr" placeholder="Διεύθυνση (π.χ. Ιάσονος 40)">
+    <select id="when"></select>
+    <input id="phone" placeholder="Κινητό" inputmode="tel">
+    <div class="total"><span>Σύνολο</span><b id="tot">0,00 €</b></div>
+    <button class="btn fire" style="justify-content:center" id="send" type="button">Αποστολή παραγγελίας</button>
+    <div class="sent ph" id="sent" data-note="Η παραγγελία φτάνει στο κατάστημα (email / tablet) και ο πελάτης παίρνει SMS"></div>
+  </div>
+</aside>
+<div class="lb" id="lb"><img alt=""></div>
+<div class="toast" id="toast"></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const eur=n=>n.toFixed(2).replace(".",",")+" €";
+// Menu (prices from kreatostexni.gr)
+const GRILL={
+ "Με τη σούβλα":[
+  ["Κοντοσούβλι χοιρινό","",[["Μερίδα",10.8],["Μισή",9],["Ολόκληρη",18]]],
+  ["Κοντοσούβλι κοτόπουλο","χωρίς κόκκαλο, φιλέτο-μπούτι",[["Μερίδα",10.8],["Μισή",9],["Ολόκληρη",18]]],
+  ["Κοντοσούβλι πρόβειο","",[["Μερίδα",11.4],["Μισή",10],["Ολόκληρη",20]]],
+  ["Κοντοσούβλι αρνί","",[["Μερίδα",12.5],["Μισή",11],["Ολόκληρη",22]]],
+  ["Κοκορέτσι γάλακτος","",[["Μερίδα",11.5],["Ολόκληρο",32]]]],
+ "Σχάρας":[
+  ["Μπριζόλα χοιρινή","",9.8],["Μπριζολοπανσέτα χοιρινή","",15],["Ψαρονέφρι","",12.5],
+  ["Παϊδάκι πρόβειο","",[["Μερίδα",12.9],["Κιλό (2kg άψητο)",35]]],
+  ["Παϊδάκι αρνίσιο","",[["Μερίδα",14.8],["Κιλό (1,5kg άψητο)",42]]],
+  ["Μπιφτέκι μοσχαρίσιο","γεμιστό με φέτα",10],["Φιλέτο κοτόπουλο","",9.9],["Συκώτι μοσχίδας","",9.8]],
+ "Premium":[
+  ["Tomahawk μοσχαρίσια","τιμή κιλού",{kg:49}],["Rib eye μοσχίδας","",29],["Φιλέτο μοσχίδας","",29],
+  ["Porterhouse","μοσχίδα 500–600 gr",28],["T-bone steak","μοσχίδα 500–600 gr",24],
+  ["Σπαλομπριζόλα μοσχαρίσια γάλακτος","",19],["New York strip steak","",19],
+  ["Μπριζόλα μοσχαρίσια γάλακτος","",16],["Μοσχαρίσια κόντρα μπριζόλα","",15]],
+ "Ορεκτικά":[
+  ["Φέτα με μέλι","σε χωριάτικο φύλλο, με σως μελιού",6.3],["Φέτα ψητή","στον ξυλόφουρνο, μπούκοβο, καυτερή πιπεριά, γιαούρτι",6.7],
+  ["Μιλφέιγ μελιτζάνας","φέτα, πιπεριές, καπνιστό Μετσόβου",6.3],["Κεφτεδάκια της γιαγιάς","γεμιστά με σως",7.9],
+  ["Εναλλακτικός καγιανάς","3 αυγά μάτια, χωριάτικο λουκάνικο, πικάντικη ντομάτα, πατάτες",7.5],
+  ["Λουκάνικο κρεμαστό","",8.5],["Πατάτα Τζάκσον","καπνιστό μπέικον, παρμεζάνα, BBQ",6],
+  ["Μανιτάρια σωτέ","βαλσάμικο τρούφας, μυζήθρα με θυμάρι",6.5],
+  ["Πατάτες τηγανητές","χειροποίητες",4],["Πατάτες με κασέρι","χειροποίητες",6.5],["Φέτα","λάδι και ρίγανη",4.5]],
+ "Σαλάτες":[
+  ["Κρέατος Τέχνη","μαρούλι, ρόκα, σταφίδες, ξηροί καρποί, κατσικίσιο τυρί, dressing μούστου",9.5],
+  ["Caesar's","κοτόπουλο, παρμεζάνα, κρουτόν",9],["Χωριάτικη","με κάπαρη και παξιμάδι",8.9],
+  ["Ρόκα","ψητό μανούρι, λιαστή ντομάτα, παρμεζάνα",8.9],["Coleslaw","με ξινόμηλο και σως γιαουρτιού",8.5],["Εποχής","",6.8]],
+ "Αλοιφές":[
+  ["Τυροσαλάτα","με ψητές πιπεριές ξυλόφουρνου",5],["Γαλοτύρι","",6.5],["Μελιτζανοσαλάτα","καπνιστή, από τον ξυλόφουρνο",4],
+  ["Τζατζίκι","",4],["Ρώσικη","",4],["Σως άνηθου","",4],["Σως μουστάρδας","",4]],
+ "Ζυμαρικά":[["Πέννες με κοτόπουλο","κρέμα γάλακτος, μανιτάρια",9.8],["Πέννες με καπνιστό bacon","",8.9],["Πέννες με κόκκινη σάλτσα","βασιλικός",7.3]],
+ "Ποτά":[["Κρασί χύμα","",[["¼",3],["½",5],["1 λίτρο",10]]],["Μάμος","ποτήρι 300 ml",4.5],["Heineken / Amstel / Fix","500 ml",4],["Fischer","500 ml",5],["Τσίπουρο","25 ml",2],["Αναψυκτικό","250 ml",2.5],["Νερό","1 λίτρο",1],["Πίτα / ψωμί","",.6]]
+};
+const BUTCHER={
+ "Μοσχάρι":[["Black Angus Αργεντινής","ρίμπ άι, στρίπλοϊν",{kg:38,ph:1}],["Tomahawk","",{kg:49}],["Κιμάς μοσχαρίσιος","φρεσκοαλεσμένος",{kg:12.9,ph:1}],["Σπαλομπριζόλα γάλακτος","",{kg:18.5,ph:1}]],
+ "Χοιρινό":[["Μπριζόλα χοιρινή","ντόπια",{kg:8.9,ph:1}],["Πανσέτα","",{kg:9.5,ph:1}],["Λαιμός για κοντοσούβλι","μαριναρισμένος ή σκέτος",{kg:9.9,ph:1}]],
+ "Αρνί · κατσίκι · πρόβειο":[["Αρνί γάλακτος","ντόπιο",{kg:15.9,ph:1}],["Κατσίκι","ντόπιο",{kg:15.5,ph:1}],["Παϊδάκια πρόβεια","",{kg:16.9,ph:1}]],
+ "Έτοιμα για ψήσιμο":[["Μπιφτέκια γεμιστά με φέτα","",{kg:13.9,ph:1}],["Λουκάνικο χωριάτικο","",{kg:10.5,ph:1}],["Σουβλάκια χοιρινά","τεμάχιο",{pc:1.2,ph:1}]]
+};
+let mode="grill",cat=null;const cart=[];
+function renderTabs(){const M=mode==="grill"?GRILL:BUTCHER;cat=Object.keys(M)[0];
+ $("#tabs").innerHTML=Object.keys(M).map((c,i)=>`<button type="button" class="${i?"":"on"}" data-c="${c}">${c}</button>`).join("");
+ $("#sides").style.display=mode==="grill"?"":"none";renderItems();}
+function renderItems(){const M=mode==="grill"?GRILL:BUTCHER;
+ $("#items").innerHTML=M[cat].map(([n,d,p],i)=>{
+  let body,pr="";
+  if(Array.isArray(p)){body=`<div class="opts">${p.map(([l,v],j)=>`<button type="button" data-i="${i}" data-j="${j}">${l} · ${eur(v)}</button>`).join("")}</div>`;}
+  else if(typeof p==="object"&&p.kg){body=`<div class="kg"><input type="range" min="0.3" max="3" step="0.1" value="1" data-kg="${i}"><span id="kgv${i}">1,0 kg · ${eur(p.kg)}</span></div>`;pr=`${eur(p.kg)}/kg`;}
+  else if(typeof p==="object"&&p.pc){body=`<div class="kg">τεμάχιο</div>`;pr=eur(p.pc);}
+  else pr=eur(p);
+  const ph=typeof p==="object"&&p.ph?` ph" data-note="Τιμή κρεοπωλείου: ενδεικτική, θα μπει ο πραγματικός τιμοκατάλογος`:"";
+  return `<div class="item"><div class="t"><h4>${n}</h4>${d?`<p>${d}</p>`:""}${body||""}</div>${pr?`<span class="pr${ph}">${pr}</span>`:""}${Array.isArray(p)?"":`<button class="add" type="button" data-add="${i}" aria-label="Προσθήκη">+</button>`}</div>`;}).join("");}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;$$("#tabs button").forEach(x=>x.classList.toggle("on",x===b));cat=b.dataset.c;renderItems();});
+$("#mode").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;setMode(b.dataset.m);});
+function setMode(m){mode=m;$$("#mode button").forEach(x=>x.classList.toggle("on",x.dataset.m===m));renderTabs();}
+$$(".world").forEach(w=>w.addEventListener("click",()=>setMode(w.dataset.mode)));
+$("#items").addEventListener("input",e=>{const r=e.target.closest("[data-kg]");if(!r)return;const M=mode==="grill"?GRILL:BUTCHER;const p=M[cat][r.dataset.kg][2];$("#kgv"+r.dataset.kg).textContent=(+r.value).toFixed(1).replace(".",",")+" kg · "+eur(p.kg*r.value);});
+$("#items").addEventListener("click",e=>{const M=mode==="grill"?GRILL:BUTCHER;const o=e.target.closest("[data-j]"),a=e.target.closest("[data-add]");
+ if(o){const it=M[cat][o.dataset.i];const [l,v]=it[2][o.dataset.j];add(it[0]+" · "+l,v);}
+ if(a){const it=M[cat][a.dataset.add];const p=it[2];
+  if(typeof p==="object"&&p.kg){const kg=+$(`[data-kg="${a.dataset.add}"]`).value;add(`${it[0]} · ${kg.toFixed(1).replace(".",",")} kg`,p.kg*kg);}
+  else if(typeof p==="object"&&p.pc)add(it[0],p.pc);else add(it[0],p);}});
+function add(name,price,q=1){const f=cart.find(c=>c.name===name);f?f.q+=q:cart.push({name,price,q});toast("Προστέθηκε: "+name);renderCart();}
+function renderCart(){const n=cart.reduce((a,c)=>a+c.q,0),t=cart.reduce((a,c)=>a+c.q*c.price,0);
+ $("#cartN").textContent=n;$("#tot").textContent=eur(t);$("#mTot").textContent=eur(t);
+ $("#lines").innerHTML=cart.length?cart.map((c,i)=>`<div class="ci"><div>${c.name}<small>${eur(c.price)}</small></div><div class="qty"><button type="button" data-q="${i}" data-d="-1">−</button>${c.q}<button type="button" data-q="${i}" data-d="1">+</button></div></div>`).join(""):`<p class="empty">Το καλάθι είναι άδειο. Διαλέξτε από το μενού ή από τον υπολογιστή για την παρέα.</p>`;}
+$("#lines").addEventListener("click",e=>{const b=e.target.closest("[data-q]");if(!b)return;const c=cart[b.dataset.q];c.q+=+b.dataset.d;if(c.q<=0)cart.splice(b.dataset.q,1);renderCart();});
+const openC=()=>{$("#drawer").classList.add("on");$("#shade").classList.add("on");};const closeC=()=>{$("#drawer").classList.remove("on");$("#shade").classList.remove("on");};
+$("#openCart").onclick=openC;$("#mCart").onclick=openC;$("#closeCart").onclick=closeC;$("#shade").onclick=closeC;
+$("#how").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;$$("#how button").forEach(x=>x.classList.toggle("on",x===b));$("#addr").style.display=b.dataset.v==="delivery"?"":"none";buildWhen(b.dataset.v);});
+function buildWhen(how="delivery"){const now=new Date(),o=[`<option>${how==="table"?"Σήμερα, όσο πιο σύντομα":"Το συντομότερο (~40′)"}</option>`];let d=new Date(now);d.setMinutes(Math.ceil(d.getMinutes()/30)*30+60,0,0);for(let i=0;i<8;i++){o.push(`<option>Σήμερα ${d.toTimeString().slice(0,5)}</option>`);d=new Date(d.getTime()+30*60000);}$("#when").innerHTML=o.join("");}
+buildWhen();
+$("#send").onclick=()=>{if(!cart.length){toast("Προσθέστε κάτι στο καλάθι");return;}const how=$("#how .on").dataset.v;const s=$("#sent");s.innerHTML=`<b>Ευχαριστούμε!</b> Λάβαμε την παραγγελία σας (${eur(cart.reduce((a,c)=>a+c.q*c.price,0))}) για ${how==="delivery"?"delivery":how==="pickup"?"παραλαβή από το κατάστημα":"το τραπέζι σας"}, ${$("#when").value.toLowerCase()}. Θα σας στείλουμε SMS μόλις ξεκινήσει.`;s.classList.add("show");};
+function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("on"),1600);}
+// open now
+(function(){const d=new Date(),m=d.getHours()*60+d.getMinutes();const kitchen=m>=660||m<30,butcher=m>=480&&m<1260;
+ $("#liveDot").classList.toggle("off",!(kitchen||butcher));
+ $("#liveTxt").textContent=kitchen&&butcher?"Ανοιχτά τώρα · κρεοπωλείο & κουζίνα":kitchen?"Η κουζίνα είναι ανοιχτή ως τις 00:30":butcher?"Το κρεοπωλείο είναι ανοιχτό":"Κλειστά · η κουζίνα ανοίγει στις 11:00";})();
+// party calculator
+const calc={a:4,c:0,ap:1,st:"mix"};
+function plan(){const ppl=calc.a+calc.c*.5,g=ppl*350*calc.ap;let L=[];
+ if(calc.st==="souvla"){const whole=Math.floor(ppl/4),half=ppl%4>=2?1:0;if(whole)L.push(["Κοντοσούβλι χοιρινό · Ολόκληρη",18,whole]);if(half||!whole)L.push(["Κοντοσούβλι κοτόπουλο · Μισή",9,1]);L.push(["Κοκορέτσι γάλακτος · Μερίδα",11.5,Math.max(1,Math.round(ppl/4))]);}
+ else if(calc.st==="premium"){L.push(["Tomahawk μοσχαρίσια · "+(Math.max(1,Math.round(g*.55/100)/10)).toFixed(1).replace(".",",")+" kg",49*Math.max(1,Math.round(g*.55/100)/10),1]);L.push(["Rib eye μοσχίδας",29,Math.max(1,Math.round(ppl/3))]);}
+ else{L.push(["Παϊδάκι αρνίσιο · Κιλό (1,5kg άψητο)",42,Math.max(1,Math.round(g/1500))]);L.push(["Κοντοσούβλι χοιρινό · Μισή",9,Math.max(1,Math.round(ppl/3))]);L.push(["Μπιφτέκι μοσχαρίσιο",10,Math.max(1,Math.round(ppl/3))]);}
+ L.push(["Πατάτες τηγανιτές",4,Math.max(1,Math.ceil(ppl/2))],["Χωριάτικη",8.9,Math.max(1,Math.ceil(ppl/3))],["Τζατζίκι",4,1],["Πίτα / ψωμί",.6,Math.ceil(ppl)]);
+ calc.L=L;$("#plan").innerHTML=L.map(([n,p,q])=>`<li><span>${q}× ${n}</span><b>${eur(p*q)}</b></li>`).join("");
+ $("#planTot").textContent=eur(L.reduce((a,[,p,q])=>a+p*q,0));$("#cA").textContent=calc.a;$("#cC").textContent=calc.c;drawMeat(g);}
+function drawMeat(g){const r=Math.min(92,40+g/60);$("#meatSvg").innerHTML=`<defs><radialGradient id="mg" cx="45%" cy="40%"><stop offset="0" stop-color="#c2463a"/><stop offset=".7" stop-color="#8a1f1c"/><stop offset="1" stop-color="#5a1414"/></radialGradient></defs>
+ <circle cx="100" cy="104" r="${r+8}" fill="#2c1a14"/><ellipse cx="100" cy="100" rx="${r}" ry="${r*.82}" fill="url(#mg)" style="transition:all .4s"/>
+ <path d="M${100-r*.7} ${100-r*.2} q${r*.5} ${-r*.3} ${r*1.2} ${r*.1}" stroke="#f2d9c4" stroke-width="5" fill="none" opacity=".7"/>
+ <path d="M${100-r*.5} ${100+r*.3} q${r*.4} ${-r*.15} ${r*.9} ${r*.05}" stroke="#f2d9c4" stroke-width="3" fill="none" opacity=".5"/>
+ <text x="100" y="${104+r+30}" text-anchor="middle" fill="#efe4d6" font-family="Noto Serif Display,serif" font-size="18">≈ ${(g/1000).toFixed(1).replace(".",",")} kg κρέας</text>`;}
+$$(".step button").forEach(b=>b.onclick=()=>{const t=b.dataset.t;calc[t]=Math.max(t==="a"?1:0,Math.min(20,calc[t]+ +b.dataset.d));plan();});
+$("#appetite").onclick=e=>{const b=e.target.closest("button");if(!b)return;$$("#appetite button").forEach(x=>x.classList.toggle("on",x===b));calc.ap=+b.dataset.v;plan();};
+$("#style").onclick=e=>{const b=e.target.closest("button");if(!b)return;$$("#style button").forEach(x=>x.classList.toggle("on",x===b));calc.st=b.dataset.v;plan();};
+$("#planAdd").onclick=()=>{calc.L.forEach(([n,p,q])=>add(n,p,q));openC();};
+plan();renderTabs();renderCart();
+// gallery lightbox
+$("#gal").onclick=e=>{if(e.target.tagName!=="IMG")return;$("#lb img").src=e.target.src;$("#lb").classList.add("on");};$("#lb").onclick=()=>$("#lb").classList.remove("on");
+// header + reveal
+addEventListener("scroll",()=>$("#top").classList.toggle("solid",scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}}),{threshold:.15});$$(".reveal").forEach(el=>io.observe(el));
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("kt-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>
