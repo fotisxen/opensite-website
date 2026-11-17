@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { isAdminPath, isGreekFramePath } from "@/lib/routes";
+import { siteConfig } from "@/lib/site.config";
 import {
   captureAttribution,
   getConsent,
@@ -19,14 +20,18 @@ import {
 
 const COPY = {
   el: {
-    text: "Με τη συγκατάθεσή σας, η Google και η Meta βάζουν cookies για τη μέτρηση και την προβολή των διαφημίσεών μας.",
+    text: siteConfig.tracking.clarityId
+      ? "Με τη συγκατάθεσή σας, η Google, η Meta και η Microsoft βάζουν cookies για τη μέτρηση των διαφημίσεών μας και για το πώς χρησιμοποιείται η σελίδα."
+      : "Με τη συγκατάθεσή σας, η Google και η Meta βάζουν cookies για τη μέτρηση και την προβολή των διαφημίσεών μας.",
     accept: "Αποδοχή",
     decline: "Απόρριψη",
     policy: "Λεπτομέρειες",
     href: "/el/politiki-aporritou/#cookies",
   },
   en: {
-    text: "With your consent, Google and Meta set cookies to measure and show our ads.",
+    text: siteConfig.tracking.clarityId
+      ? "With your consent, Google, Meta and Microsoft set cookies to measure our ads and how this page is used."
+      : "With your consent, Google and Meta set cookies to measure and show our ads.",
     accept: "Accept",
     decline: "Decline",
     policy: "Details",

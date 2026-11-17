@@ -170,6 +170,7 @@ export function ContactPage() {
                 </div>
               ) : (
                 <form
+                  data-clarity-mask="true"
                   className="relative z-10 space-y-6"
                   onSubmit={handleSubmit}
                   noValidate

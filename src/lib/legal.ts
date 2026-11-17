@@ -231,9 +231,22 @@ function privacyEl(): LegalDoc {
         blocks: [
           {
             t: "p",
-            text: "Αν δεν πατήσετε «Αποδοχή», το site δεν βάζει cookies διαφήμισης ή μέτρησης και δεν φορτώνει κώδικα της Google ή της Meta. Το μόνο που αποθηκεύεται στον browser σας είναι η επιλογή σας στο banner και η ημερομηνία της, για να μη σας ρωτάμε σε κάθε σελίδα. Σας ξαναρωτάμε μετά από 180 ημέρες, είτε δεχτήκατε είτε αρνηθήκατε.",
+            text: `Αν δεν πατήσετε «Αποδοχή», το site δεν βάζει cookies διαφήμισης ή μέτρησης και δεν φορτώνει κώδικα της Google ή της Meta. Το μόνο που αποθηκεύεται στον browser σας είναι η επιλογή σας στο banner και η ημερομηνία της, για να μη σας ρωτάμε σε κάθε σελίδα. Σας ξαναρωτάμε μετά από 180 ημέρες, είτε δεχτήκατε είτε αρνηθήκατε.`,
           },
-          { t: "p", text: "Αν πατήσετε «Αποδοχή», φορτώνουν δύο εργαλεία:" },
+          ...(siteConfig.tracking.clarityId
+            ? ([
+                {
+                  t: "p",
+                  text: "Μία εξαίρεση: το Microsoft Clarity τρέχει από την πρώτη στιγμή, χωρίς cookies. Καταγράφει ανώνυμα πού κινείται ο δείκτης σας, πόσο κατεβαίνετε τη σελίδα και πού πατάτε, ώστε να βλέπουμε πού δυσκολεύεται ο κόσμος. Δεν βάζει cookies, δεν σας αναγνωρίζει από επίσκεψη σε επίσκεψη, και τα πεδία των φορμών είναι καλυμμένα: ό,τι πληκτρολογείτε δεν καταγράφεται ποτέ.",
+                },
+              ] as Block[])
+            : []),
+          {
+            t: "p",
+            text: siteConfig.tracking.clarityId
+              ? "Αν πατήσετε «Αποδοχή», φορτώνουν τρία εργαλεία:"
+              : "Αν πατήσετε «Αποδοχή», φορτώνουν δύο εργαλεία:",
+          },
           {
             t: "table",
             head: ["Εργαλείο", "Εταιρεία", "Τι κάνει", "Cookies", "Διάρκεια"],
@@ -252,6 +265,17 @@ function privacyEl(): LegalDoc {
                 "`_fbp`, `_fbc`",
                 "Έως 90 ημέρες",
               ],
+              ...(siteConfig.tracking.clarityId
+                ? [
+                    [
+                      "Microsoft Clarity",
+                      "Microsoft Ireland Operations Limited",
+                      "Καταγράφει ανώνυμα πώς κινείστε στη σελίδα (θερμικοί χάρτες και αναπαραγωγή συνεδρίας), για να βλέπουμε πού δυσκολεύεστε. Δεν καταγράφει όσα γράφετε στις φόρμες",
+                      "`_clck`, `_clsk`",
+                      "Έως 12 μήνες",
+                    ],
+                  ]
+                : []),
             ],
           },
           {
@@ -465,9 +489,22 @@ function privacyEn(): LegalDoc {
         blocks: [
           {
             t: "p",
-            text: "Unless you press \"Accept\", the site sets no advertising or measurement cookies and loads no Google or Meta code. The only thing stored in your browser is your banner choice and its date, so we do not ask on every page. We ask again after 180 days, whether you accepted or declined.",
+            text: `Unless you press "Accept", the site sets no advertising or measurement cookies and loads no Google or Meta code. The only thing stored in your browser is your banner choice and its date, so we do not ask on every page. We ask again after 180 days, whether you accepted or declined.`,
           },
-          { t: "p", text: "If you press \"Accept\", two tools load:" },
+          ...(siteConfig.tracking.clarityId
+            ? ([
+                {
+                  t: "p",
+                  text: "One exception: Microsoft Clarity runs from the first moment, without cookies. It records anonymously where your pointer moves, how far you scroll and what you click, so we can see where visitors struggle. It sets no cookies, does not recognise you from one visit to the next, and form fields are masked: what you type is never recorded.",
+                },
+              ] as Block[])
+            : []),
+          {
+            t: "p",
+            text: siteConfig.tracking.clarityId
+              ? `If you press "Accept", three tools load:`
+              : `If you press "Accept", two tools load:`,
+          },
           {
             t: "table",
             head: ["Tool", "Company", "What it does", "Cookies", "Duration"],
@@ -486,6 +523,17 @@ function privacyEn(): LegalDoc {
                 "`_fbp`, `_fbc`",
                 "Up to 90 days",
               ],
+              ...(siteConfig.tracking.clarityId
+                ? [
+                    [
+                      "Microsoft Clarity",
+                      "Microsoft Ireland Operations Limited",
+                      "Records anonymously how you move through the page (heatmaps and session replay), so we can see where visitors struggle. It does not record what you type into forms",
+                      "`_clck`, `_clsk`",
+                      "Up to 12 months",
+                    ],
+                  ]
+                : []),
             ],
           },
           {

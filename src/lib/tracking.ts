@@ -15,6 +15,7 @@ declare global {
     dataLayer: unknown[];
     gtag: (...args: unknown[]) => void;
     fbq: (...args: unknown[]) => void;
+    clarity?: ((...args: unknown[]) => void) & { q?: unknown[] };
     _fbq?: unknown;
   }
 }
@@ -27,7 +28,9 @@ const CONSENT_VERSION_KEY = "os_consent_v";
 const CONSENT_MAX_AGE_DAYS = 180;
 // Bump this when the banner text or what "Accept" covers changes, so a choice
 // made under the old wording is asked again.
-const CONSENT_VERSION = 2;
+// Enabling Clarity changes what "Accept" covers, so every visitor is asked
+// again under the new banner wording.
+const CONSENT_VERSION = siteConfig.tracking.clarityId ? 3 : 2;
 
 export type Consent = "granted" | "denied";
 
@@ -64,7 +67,13 @@ export function setConsent(value: Consent) {
 
 // Cookies the two tools set: _fbp, _fbc and everything starting with _gcl.
 function isTrackingCookie(name: string) {
-  return name === "_fbp" || name === "_fbc" || name.startsWith("_gcl");
+  return (
+    name === "_fbp" ||
+    name === "_fbc" ||
+    name === "_clck" ||
+    name === "_clsk" ||
+    name.startsWith("_gcl")
+  );
 }
 
 /** Σβήνει όσα αφήνουν η Google και η Meta στο localStorage. */
@@ -188,12 +197,42 @@ function initGoogle() {
 /** Consent Mode "advanced": the Google tag runs, cookieless, before any choice. */
 export function initCookieless() {
   if (siteConfig.tracking.consentMode === "advanced") initGoogle();
+  // Clarity always starts, cookieless, whatever the visitor chooses later.
+  initClarity(getConsent() === "granted");
+}
+
+// Microsoft Clarity: heatmaps and anonymous session replay, used to see where
+// visitors give up on a page. It runs from the first visit in cookieless mode
+// — clarity("consent", false) means no _clck/_clsk and no cross-visit id — and
+// only switches cookies on if the visitor presses "Accept". Form fields are
+// masked by Clarity itself and by data-clarity-mask in the markup, so nothing
+// anyone types is recorded.
+function initClarity(consent: boolean) {
+  const { clarityId } = siteConfig.tracking;
+  if (!clarityId || typeof window === "undefined") return;
+  if (!window.clarity) {
+    const c = function (...args: unknown[]) {
+      (c.q = c.q || []).push(args);
+    } as ((...args: unknown[]) => void) & { q?: unknown[] };
+    window.clarity = c;
+    // Queued before the script arrives, so no hit is ever sent with cookies
+    // the visitor has not agreed to.
+    c("consent", consent);
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.clarity.ms/tag/${clarityId}`;
+    document.head.appendChild(script);
+    return;
+  }
+  window.clarity("consent", consent);
 }
 
 export function loadTags() {
   if (loaded || typeof window === "undefined") return;
   loaded = true;
   const { googleAdsId, metaPixelId } = siteConfig.tracking;
+
+  initClarity(true);
 
   if (googleAdsId) {
     initGoogle();

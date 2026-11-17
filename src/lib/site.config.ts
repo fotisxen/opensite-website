@@ -32,6 +32,10 @@ export interface SiteConfig {
     callLabel: string | null;
     chatLabel: string | null;
     metaPixelId: string | null;
+    // Microsoft Clarity project id (heatmaps and anonymous session replay).
+    // null keeps Clarity off entirely. Setting it changes what the cookie
+    // banner and the privacy policy say, and re-asks every visitor.
+    clarityId: string | null;
     // Google Consent Mode v2. "basic": the Google tag loads only after
     // "Accept". "advanced": it loads on every visit with all consent denied,
     // so declined visits still send cookieless pings that Google Ads uses to
@@ -94,6 +98,7 @@ export const siteConfig: SiteConfig = {
     callLabel: "TZsuCNnjgJodEJ_B7dlE",
     chatLabel: "0-lrCNzjgJodEJ_B7dlE",
     metaPixelId: "2111724882722505",
+    clarityId: "zeztobbie1",
     consentMode: "basic",
   },
   testimonial: {

@@ -348,6 +348,7 @@ export default function BookACallPage() {
                 Your details
               </h2>
               <form
+                data-clarity-mask="true"
                 onSubmit={handleSubmit}
                 className="space-y-5"
                 id="book-form"

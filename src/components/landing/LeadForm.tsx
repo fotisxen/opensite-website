@@ -146,6 +146,7 @@ export default function LeadForm({
 
   return (
     <form
+      data-clarity-mask="true"
       id={LEAD_FORM_ID}
       onSubmit={handleSubmit}
       noValidate
