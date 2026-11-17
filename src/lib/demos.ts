@@ -10,6 +10,12 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "xaroupi", name: "Χαρούπι", kind: "Κρητικό εστιατόριο · μενού chef, πλατώ τυριών, κάβα ανά ποικιλία, κράτηση (Δόξης 4)", created: "2026-11-17" },
+  { slug: "logia", name: "Δικά μας.. Λόγια", kind: "Νεοταβέρνα · χειρόγραφο μενού με «λόγια» πιάτων, κράτηση (Φιλίππου 13)", created: "2026-11-17", instagram: "https://www.instagram.com/logia_dikamas/" },
+  { slug: "jiang-nan", name: "Jiang Nan", kind: "Κινέζικο εστιατόριο · μενού με τιμές, φίλτρα καυτερά/vegan, τραπέζι για παρέα, online παραγγελία (Β. Όλγας)", created: "2026-11-17", instagram: "https://www.instagram.com/jiang_nan_chinese_restaurant/" },
+  { slug: "cena", name: "Cena", kind: "Ιταλικό · Cena Express παραγγελία, mousse bar, date-night κράτηση (Λαδάδικα)", created: "2026-11-17", instagram: "https://www.instagram.com/cena.skg/" },
+  { slug: "raki", name: "Ρακί Ουζερί / Μεζεδοπωλείον", kind: "Μεζεδοπωλείο · στρώσε το τραπέζι, ζωντανή μουσική, κράτηση (Βασ. Γεωργίου)", created: "2026-11-17", instagram: "https://www.instagram.com/raki_mezedopoleion/" },
+  { slug: "odos-delfon", name: "Οδός Δελφών", kind: "Wine bar restaurant & brunch · μενού ανά ώρα της ημέρας, κράτηση (Δελφών 16)", created: "2026-11-17", instagram: "https://www.instagram.com/odos_delfon/" },
   { slug: "kreatos-texni", name: "Κρέατος Τέχνη", kind: "Κρεοπωλείο & ψητοπωλείο · online παραγγελία, σούβλα, κοπές στο κιλό, υπολογιστής για την παρέα (Βόλος)", created: "2026-11-17", instagram: "https://www.instagram.com/kreatostexni/" },
   { slug: "guzel", name: "Guzel Beauty Studio & Wellness", kind: "Luxury site 12 σελίδων · 2 καταστήματα, pilates, 100+ υπηρεσίες, κρατήσεις, activewear shop (Θεσσαλονίκη & Θέρμη)", created: "2026-11-17", instagram: "https://www.instagram.com/guzel.beauty.wellness/" },
   { slug: "ics-crm", name: "ICS Workspace · CRM", kind: "CRM · clients, cases & tasks between 6 offices", created: "2026-11-13" },

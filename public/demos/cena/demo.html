@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14231c">
+<title>Cena · more than a fancy Italian eatery · Λαδάδικα, Θεσσαλονίκη</title>
+<meta name="description" content="Cena, ιταλικό εστιατόριο στα Λαδάδικα (Ρογκότη 4). Πίτσα στον ξυλόφουρνο, χειροποίητα ζυμαρικά, Cena Express delivery. 2310 267533.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Serif+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Cena (@cena.skg, 41K followers). Menu & prices from their e-food page "Cena express" (Nov 2026); photos from their Instagram.
+  Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{--bg:#f4ede1;--green:#14231c;--green2:#1f3a2c;--red:#b5302a;--ink:#1a1a17;--muted:#6f6a5e;--cream:#fbf6ec;--line:rgba(26,26,23,.14);
+  --f:"Manrope",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.k{font:700 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+h1,h2,h3{font-family:var(--s);font-weight:400;line-height:1.02}
+h2{font-size:clamp(36px,5.4vw,64px)}
+h2 i{color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.red{background:var(--red);color:#fff}
+.btn.cream{background:var(--cream);color:var(--green)}
+.btn.line{border:1.5px solid currentColor}
+/* stripe */
+.stripe{height:6px;background:linear-gradient(90deg,#1f6b3a 33%,#fbf6ec 33% 66%,#b5302a 66%)}
+header{position:sticky;top:0;z-index:40;background:var(--green);color:var(--cream)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font:700 30px/1 var(--s);letter-spacing:.18em}
+header nav{display:flex;gap:22px;font-size:14px;opacity:.85}
+@media(max-width:880px){header nav{display:none}}
+.cartbtn{display:flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:14px}
+.cartbtn b{min-width:22px;height:22px;border-radius:11px;background:#fff;color:var(--red);display:grid;place-items:center;font-size:12px}
+.hero{background:var(--green);color:var(--cream);padding:40px 0 80px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(52px,8.5vw,118px)}
+.hero h1 i{color:#f0b9a4}
+.hero p{max-width:480px;margin:20px 0 28px;opacity:.85;font-size:18px}
+.hero .ctas{display:flex;gap:10px;flex-wrap:wrap}
+.stack{position:relative;height:560px}
+.stack img{position:absolute;border-radius:14px;object-fit:cover;box-shadow:0 20px 50px rgba(0,0,0,.4);transition:transform .6s}
+.stack img:nth-child(1){width:62%;height:78%;left:0;top:6%;transform:rotate(-4deg)}
+.stack img:nth-child(2){width:52%;height:62%;right:0;top:0;transform:rotate(5deg)}
+.stack img:nth-child(3){width:46%;height:46%;right:8%;bottom:0;transform:rotate(-2deg)}
+.stack:hover img:nth-child(1){transform:rotate(-7deg) translateX(-10px)}
+.stack:hover img:nth-child(2){transform:rotate(8deg) translateX(10px)}
+@media(max-width:880px){.stack{height:400px}}
+.ticker{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;font:700 14px/1 var(--f);letter-spacing:.2em;text-transform:uppercase}
+.ticker div{display:inline-block;padding:14px 0;animation:tick 30s linear infinite}
+@keyframes tick{to{transform:translateX(-50%)}}
+section{padding:96px 0}
+/* fire */
+.fire{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:860px){.fire{grid-template-columns:1fr}}
+.fire p{color:var(--muted);margin-top:16px}
+.oven{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5}
+.oven img{width:100%;height:100%;object-fit:cover}
+.oven .temp{position:absolute;left:16px;bottom:16px;right:16px;background:rgba(20,35,28,.85);color:var(--cream);padding:16px;border-radius:14px;backdrop-filter:blur(6px)}
+.oven .bar{height:8px;border-radius:4px;background:rgba(255,255,255,.15);margin-top:10px;overflow:hidden}
+.oven .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f2c14e,#e2552b);transition:width 2.5s cubic-bezier(.2,.8,.2,1)}
+/* menu */
+#menu{background:var(--cream)}
+.mhead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:26px 0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);font-weight:700;font-size:14px}
+.tabs button.on{background:var(--green);color:var(--cream);border-color:var(--green)}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+@media(max-width:800px){.items{grid-template-columns:1fr}}
+.it{display:grid;grid-template-columns:1fr auto auto;gap:4px 14px;align-items:center;padding:18px 0;border-bottom:1px dashed var(--line)}
+.it h4{font:400 22px/1.2 var(--s)}
+.it p{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.it .pr{font-weight:800}
+.it .size{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:12px}
+.it .size button{padding:5px 9px}
+.it .size button.on{background:var(--green);color:var(--cream)}
+.add{width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;font-size:20px}
+.offer{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.offer div{flex:none;padding:12px 16px;border-radius:12px;background:var(--green);color:var(--cream);font-size:14px}
+.offer b{color:#f0b9a4}
+.offer s{opacity:.6;margin-left:4px}
+/* mousse */
+.mousse{background:var(--green2);color:var(--cream)}
+.mousse .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:860px){.mousse .wrap{grid-template-columns:1fr}}
+.mousse .k{color:#f0b9a4}
+.mousse h2 i{color:#f0b9a4}
+.opts{margin-top:20px;display:grid;gap:14px}
+.opts .g b{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{padding:8px 13px;border-radius:999px;border:1px solid rgba(251,246,236,.3);font-size:13px}
+.chips button.on{background:var(--cream);color:var(--green)}
+.cup{position:relative;width:min(300px,80%);margin-inline:auto}
+.cup svg{width:100%;height:auto}
+.cup .price{text-align:center;font:400 34px var(--s);margin-top:8px}
+/* date night */
+.date{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.date{grid-template-columns:1fr}}
+.date img{border-radius:20px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.form{display:grid;gap:12px;margin-top:20px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form input,.form select{width:100%;padding:13px;border-radius:12px;border:1.5px solid var(--line);background:var(--cream)}
+.ok{display:none;padding:14px;border-radius:12px;background:#e6efe6;border:1px solid #9fc29f;font-size:14px}
+.ok.show{display:block}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+.gal img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px}
+@media(max-width:700px){.gal{grid-template-columns:1fr 1fr}}
+.visit{background:var(--green);color:var(--cream)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:860px){.visit .wrap{grid-template-columns:1fr}}
+.visit li{list-style:none;display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(251,246,236,.15)}
+.map{border-radius:18px;overflow:hidden;min-height:320px}
+.map iframe{width:100%;height:100%;min-height:320px;border:0}
+footer{background:var(--green);color:rgba(251,246,236,.6);font-size:13px;padding:24px 0 100px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(420px,100%);background:var(--cream);transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column;box-shadow:-20px 0 40px rgba(0,0,0,.2)}
+.drawer.on{transform:none}
+.shade{position:fixed;inset:0;z-index:79;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.3s}
+.shade.on{opacity:1;pointer-events:auto}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--green);color:var(--cream)}
+.dl{flex:1;overflow:auto;padding:8px 20px}
+.ci{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.ci small{display:block;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line)}
+.df{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
+.df input{width:100%;padding:12px;border-radius:10px;border:1.5px solid var(--line);background:#fff}
+.free{font-size:13px;color:var(--muted)}
+.free i{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
+.free i b{display:block;height:100%;background:var(--red);transition:width .4s}
+.sent{display:none;padding:14px;border-radius:12px;background:#e6efe6;border:1px solid #9fc29f;font-size:14px}
+.sent.show{display:block}
+.toast{position:fixed;left:50%;bottom:90px;z-index:85;transform:translate(-50%,20px);opacity:0;background:var(--green);color:var(--cream);padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px;transition:.3s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:8px}
+.mbar>*{flex:1;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+@media(max-width:760px){.mbar{display:flex}}
+.notes-toggle{position:fixed;left:16px;bottom:16px;z-index:70;padding:9px 14px;border-radius:999px;background:var(--ink);color:#fff;font:600 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:80px}}
+.notes .ph{outline:1.5px dashed var(--red);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--red);padding:4px 8px;border-radius:5px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+  if(q.has("clean")||localStorage.getItem("ce-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+<div class="stripe"></div>
+<header><div class="wrap">
+  <a class="logo" href="#">CENA</a>
+  <nav><a href="#fire">Ξυλόφουρνος</a><a href="#menu">Μενού</a><a href="#mousse">Mousse bar</a><a href="#date">Κράτηση</a><a href="#visit">Λαδάδικα</a></nav>
+  <button class="cartbtn" id="openCart" type="button">Cena Express <b id="cartN">0</b></button>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="k" style="color:#f0b9a4">Ρογκότη 4 · Λαδάδικα</div>
+      <h1 style="margin-top:16px">More than a fancy <i>Italian</i> eatery.</h1>
+      <p>Πίτσα στον ξυλόφουρνο, φρέσκα ζυμαρικά που ανοίγουμε μπροστά σας, ανοιχτή κουζίνα. Για ραντεβού στο τραπέζι, για takeaway, ή με το Cena Express στην πόρτα σας.</p>
+      <div class="ctas"><a class="btn red" href="#menu">Παράγγειλε online</a><a class="btn cream" href="#date">Κλείσε τραπέζι</a></div>
+    </div>
+    <div class="stack"><img src="img/pasta1.jpg" alt="Φρέσκα ζυμαρικά στο Cena"><img src="img/pizza1.jpg" alt="Πίτσα Peperonita"><img src="img/oven.jpg" alt="Ο ξυλόφουρνος του Cena"></div>
+  </div>
+</section>
+<div class="ticker"><div>Wood fire · Fresh pasta · Cena Express · Italian date nights · Λαδάδικα · Wood fire · Fresh pasta · Cena Express · Italian date nights · Λαδάδικα · </div></div>
+
+<section id="fire">
+  <div class="wrap fire">
+    <div class="oven" id="oven"><img src="img/pizza2.jpg" alt="Πίτσα πριν μπει στον φούρνο" loading="lazy">
+      <div class="temp"><b id="tempTxt">Ο φούρνος ανάβει…</b><div class="bar"><i id="tempBar"></i></div><small style="opacity:.7" class="ph" data-note="Ενδεικτικά: θερμοκρασία και χρόνος ψησίματος από την κουζίνα">90 δευτερόλεπτα στους 450°C</small></div></div>
+    <div>
+      <div class="k">Wood fire</div>
+      <h2 style="margin-top:14px">38 εκατοστά, <i>San Marzano</i>, Fior di latte.</h2>
+      <p>Κάθε πίτσα ξεκινά με σάλτσα από ντομάτες San Marzano, ιταλικό τυρί και mozzarella «Fior di latte», και τελειώνει στον ξυλόφουρνο. Από την κλασική Margherita μέχρι την Tartuffata με κρέμα τρούφας.</p>
+      <p>Δίπλα, τα ζυμαρικά: strozzapreti, penne και ό,τι ανοίγει σήμερα η κουζίνα, για Carbonara με guanciale ή Cacio e Pepe με πεκορίνο.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="mhead"><div><div class="k">Μενού · τιμές e-food</div><h2 style="margin-top:14px">Τι <i>τρώμε</i> απόψε;</h2></div></div>
+    <div class="offer" style="margin-top:24px">
+      <div>🔥 Bolognese strozzapreti <b>8,00 €</b><s>10,53 €</s></div><div>🔥 Margherita <b>9,00 €</b><s>10,98 €</s></div><div>🔥 Peperonita <b>10,00 €</b><s>12,50 €</s></div><div>🔥 Penne pomodoro <b>7,00 €</b><s>8,97 €</s></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="items" id="items"></div>
+  </div>
+</section>
+
+<section class="mousse" id="mousse">
+  <div class="wrap">
+    <div>
+      <div class="k">Mousse bar</div>
+      <h2 style="margin-top:14px">Φτιάξε τη <i>δική σου</i> mousse.</h2>
+      <p style="opacity:.8;margin-top:14px">Βάση, γεύσεις, topping. Η τιμή ξεκινά από 3,80 € και αλλάζει με κάθε επιλογή.</p>
+      <div class="opts">
+        <div class="g"><b>Βάση</b><div class="chips" data-g="base"><button class="on" data-p="0">Souffler brownie</button><button data-p="0">Φεγεντίνη</button><button data-p="0">Μπισκότο κανέλας</button></div></div>
+        <div class="g"><b>Mousse (έως 2)</b><div class="chips" data-g="mousse" data-max="2"><button class="on" data-p="0" data-c="#c99a6b">Milk praline</button><button data-p="0" data-c="#f3ead8">White chocolate</button><button data-p=".6" data-c="#5a3424">Bitter</button><button data-p=".6" data-c="#e9a6a6">Φράουλα</button></div></div>
+        <div class="g"><b>Topping</b><div class="chips" data-g="top" data-max="3"><button data-p=".5">Πραλίνα Lotus</button><button data-p=".5">Καραμελωμένο αμύγδαλο</button><button data-p=".4">Φουντούκι</button><button data-p=".4">Μπισκότο κανέλας</button></div></div>
+      </div>
+    </div>
+    <div class="cup"><svg viewBox="0 0 200 220" id="cupSvg" aria-label="Η mousse σας"></svg><div class="price" id="mPrice">3,80 €</div><button class="btn red" type="button" id="mAdd" style="width:100%;justify-content:center;margin-top:10px">Στο καλάθι</button></div>
+  </div>
+</section>
+
+<section id="date">
+  <div class="wrap date">
+    <div>
+      <div class="k">Italian date nights</div>
+      <h2 style="margin-top:14px">Ένα τραπέζι για δύο, <i>με φρέσκα ζυμαρικά.</i></h2>
+      <p style="color:var(--muted);margin-top:14px">Κλείστε τραπέζι σε 20 δευτερόλεπτα. Πείτε μας αν είναι γενέθλια ή επέτειος και θα το φροντίσουμε.</p>
+      <div class="form">
+        <div class="two"><input type="date" id="dDate"><select id="dTime"></select></div>
+        <div class="two"><select id="dPpl"></select><select><option>Χωρίς περίσταση</option><option>Ραντεβού 💕</option><option>Γενέθλια 🎂</option><option>Επέτειος</option><option>Επαγγελματικό</option></select></div>
+        <input placeholder="Όνομα"><input placeholder="Κινητό" inputmode="tel">
+        <button class="btn red" type="button" id="dSend" style="justify-content:center">Κράτηση</button>
+        <div class="ok ph" id="dOk" data-note="Ωράριο και διαθεσιμότητα από το μαγαζί, επιβεβαίωση με SMS"></div>
+      </div>
+    </div>
+    <img src="img/pasta3.jpg" alt="Ζυμαρικά Cena" loading="lazy">
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="k">@cena.skg · 41K followers</div>
+    <div class="gal"><img src="img/venue.jpg" alt="Ο χώρος" loading="lazy"><img src="img/pastamaker.jpg" alt="Ζυμαρικά στο χέρι" loading="lazy"><img src="img/vitrina.jpg" alt="Η βιτρίνα" loading="lazy"><img src="img/steak.jpg" alt="Πιάτο" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div>
+      <div class="k" style="color:#f0b9a4">Ελάτε από τα Λαδάδικα</div>
+      <h2 style="margin:14px 0 18px">Ρογκότη 4</h2>
+      <ul>
+        <li><span>Τηλέφωνο</span><a href="tel:+302310267533"><b>2310 26 75 33</b></a></li>
+        <li><span>Dine in</span><b class="ph" data-note="Ωράριο σάλας: να το δώσει το μαγαζί">Καθημερινά 13:00 – 00:00</b></li>
+        <li><span>Cena Express</span><b>Delivery, ελάχιστη 8 €, δωρεάν μεταφορικά</b></li>
+        <li><span>Κριτικές</span><b>4,3★ Tripadvisor · 4,4★ e-food</b></li>
+      </ul>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><a class="btn red" href="tel:+302310267533">☎ Κλήση</a><a class="btn line" href="https://www.instagram.com/cena.skg/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="map"><iframe title="Χάρτης" loading="lazy" src="https://www.google.com/maps?q=%CE%A1%CE%BF%CE%B3%CE%BA%CF%8C%CF%84%CE%B7+4+%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7&output=embed"></iframe></div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© Cena · Λαδάδικα, Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:#f0b9a4">OpenSite</a></span></div></footer>
+
+<div class="mbar"><a class="btn cream" href="tel:+302310267533" style="background:#fff">☎ Κλήση</a><button class="btn red" type="button" id="mCart">Καλάθι · <span id="mTot">0,00 €</span></button></div>
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer"><div class="dh"><b style="font:700 22px var(--s);letter-spacing:.1em">CENA EXPRESS</b><button type="button" id="closeCart" style="font-size:26px">×</button></div>
+  <div class="dl" id="lines"></div>
+  <div class="df">
+    <div class="free" id="free"></div>
+    <input placeholder="Διεύθυνση"><input placeholder="Κινητό" inputmode="tel">
+    <div style="display:flex;justify-content:space-between;font:400 24px var(--s)"><span>Σύνολο</span><b id="tot">0,00 €</b></div>
+    <button class="btn red" style="justify-content:center" id="send" type="button">Αποστολή · ~30′</button>
+    <div class="sent ph" id="sent" data-note="Απευθείας στην κουζίνα, χωρίς προμήθεια πλατφόρμας"></div>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const eur=n=>n.toFixed(2).replace(".",",")+" €";
+// e-food prices ("Από" for pizzas = smaller size; 38cm is +ph)
+const M={
+ "Πίτσες":[["Margherita","San Marzano, ιταλικό τυρί, mozzarella Fior di latte",11,1],["Buffolina","Fior di latte, burrata, λάδι βασιλικού",12,1],["Antonella","prosciutto Parma, ρόκα, κρέμα παρμεζάνας, ντοματίνια",13,1],["Isabella","prosciutto cotto, μανιτάρια, κρέμα παρμεζάνας",12,1],["Cena","κοτόπουλο, τραγανό μπέικον, κρέμα γάλακτος, smoked paprika",12.5,1],["Tartuffata","κρέμα tartuffata, αρωματικά μανιτάρια, μυρωδικά",13,1],["Peperonita","πεπερόνι, λάδι chili",12.5,1],["Veggi","vegan · κολοκύθι, ρόκα, καλαμπόκι, μανιτάρια, πιπεριές",10,1]],
+ "Ζυμαρικά":[["Carbonara · strozzapreti","χειροποίητο, guanciale, κρόκος αυγού, πεκορίνο",11],["Cacio e Pepe · strozzapreti","μαύρο πιπέρι, πεκορίνο",12],["Bolognese · strozzapreti","γνήσια ιταλική συνταγή",10.5],["Peppe Recipe · strozzapreti","κρέμα παρμεζάνας, μανιτάρια, κοτόπουλο, θυμάρι, λάδι τρούφας",10.5],["Monte Shrimp · penne","κόκκινη σάλτσα, κρέμα, φρέσκες γαρίδες",11],["Penne pomodoro","σάλτσα Νάπολι, παρμεζάνα, λάδι βασιλικού",9]],
+ "Ορεκτικά & σαλάτες":[["All'olio bread","σκορδόψωμο ξυλόφουρνου, ελαιόλαδο, flakes παρμεζάνας",5],["Foccacini","με σάλτσα κόκκινης πιπεριάς",4],["Croquettes","2 τεμ., guanciale, prosciutto cotto, μπεσαμέλ, κρέμα πάπρικας, black mayo",7.5],["Cena bites","τραγανές μπουκιές με ιταλικά τυριά και μαρμελάδα μήλου",7.5],["Caesar's","iceberg, κοτόπουλο πανέ, παρμεζάνα, ψητό καλαμπόκι",9],["Smash burger by Jokerman","potato roll, μοσχαρίσιος κιμάς, cheddar, Cena sauce, chips",10.5]],
+ "Γλυκά":[["Tiramisu","γνήσια ιταλική συνταγή",7],["Iconic namelaka","κρύο σουφλέ σε σοκολάτα γάλακτος, βανίλια Μαδαγασκάρης",6.5],["Iconic Tiramisu","κρύο σουφλέ σε λευκή σοκολάτα, monte espresso",6.5],["Souffler bougatsa","κρέμα λευκής σοκολάτας, τραγανό φύλλο, κρέμα patisserie",6],["Souffler milk praline","ζεστό σουφλέ, πραλίνα φουντουκιού",5]],
+ "Ποτά":[["Peroni Nastro Azzurro","330 ml",5],["Three Cents pink grapefruit","250 ml",5],["Coca-Cola zero","330 ml",1.9]]
+};
+let tab="Πίτσες";const cart=[];
+$("#tabs").innerHTML=Object.keys(M).map((t,i)=>`<button type="button" class="${i?"":"on"}" data-t="${t}">${t}</button>`).join("");
+function items(){$("#items").innerHTML=M[tab].map(([n,d,p,sz],i)=>`<div class="it"><h4>${n}</h4>${sz?`<div class="size" data-i="${i}"><button type="button" class="on" data-s="0">Κανονική</button><button type="button" data-s="1" class="${i?"":"ph"}" ${i?"":'data-note="Τιμή 38cm: +2 € ενδεικτικά"'}>38cm</button></div>`:"<span></span>"}<span class="pr" id="pr${i}">${eur(p)}</span><p>${d}</p><button class="add" type="button" data-i="${i}" style="grid-column:3;grid-row:1">+</button></div>`).join("");}
+$("#tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;$$("#tabs button").forEach(x=>x.classList.toggle("on",x===b));tab=b.dataset.t;items();};
+$("#items").onclick=e=>{const s=e.target.closest(".size button");if(s){const box=s.parentNode;box.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===s));const p=M[tab][box.dataset.i][2]+(+s.dataset.s?2:0);$("#pr"+box.dataset.i).textContent=eur(p);return;}
+ const a=e.target.closest(".add");if(!a)return;const it=M[tab][a.dataset.i];const big=it[3]&&a.parentNode.querySelector(".size .on")?.dataset.s==="1";add(it[0]+(big?" · 38cm":""),it[2]+(big?2:0));};
+function add(n,p){const f=cart.find(c=>c.n===n);f?f.q++:cart.push({n,p,q:1});toast("Προστέθηκε: "+n);cartR();}
+function cartR(){const t=cart.reduce((a,c)=>a+c.p*c.q,0);$("#cartN").textContent=cart.reduce((a,c)=>a+c.q,0);$("#tot").textContent=eur(t);$("#mTot").textContent=eur(t);
+ $("#lines").innerHTML=cart.length?cart.map((c,i)=>`<div class="ci"><div>${c.n}<small>${eur(c.p)}</small></div><div class="qty"><button type="button" data-i="${i}" data-d="-1">−</button>${c.q}<button type="button" data-i="${i}" data-d="1">+</button></div></div>`).join(""):'<p style="color:var(--muted);text-align:center;padding:30px 0;font-size:14px">Το καλάθι είναι άδειο.</p>';
+ $("#free").innerHTML=t>=8?"✓ Ελάχιστη παραγγελία 8 € · δωρεάν μεταφορικά":`Ακόμα ${eur(8-t)} για την ελάχιστη παραγγελία<i><b style="width:${Math.min(100,t/8*100)}%"></b></i>`;}
+$("#lines").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;const c=cart[b.dataset.i];c.q+=+b.dataset.d;if(c.q<=0)cart.splice(b.dataset.i,1);cartR();};
+const oc=()=>{$("#drawer").classList.add("on");$("#shade").classList.add("on");},cc=()=>{$("#drawer").classList.remove("on");$("#shade").classList.remove("on");};
+$("#openCart").onclick=oc;$("#mCart").onclick=oc;$("#closeCart").onclick=cc;$("#shade").onclick=cc;
+$("#send").onclick=()=>{const t=cart.reduce((a,c)=>a+c.p*c.q,0);if(t<8)return toast("Ελάχιστη παραγγελία 8 €");const s=$("#sent");s.innerHTML=`<b>Grazie!</b> Η παραγγελία σας (${eur(t)}) πήγε στην κουζίνα. Παράδοση σε ~30′.`;s.classList.add("show");};
+function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("on"),1500);}
+// oven
+new IntersectionObserver((es,o)=>es.forEach(x=>{if(!x.isIntersecting)return;o.disconnect();$("#tempBar").style.width="100%";let t=20;const iv=setInterval(()=>{t+=18;$("#tempTxt").textContent=`Ξυλόφουρνος · ${Math.min(t,450)}°C`;if(t>=450){clearInterval(iv);$("#tempTxt").textContent="Ξυλόφουρνος · 450°C · έτοιμος 🔥";}},90);}),{threshold:.4}).observe($("#oven"));
+// mousse builder
+function mousse(){let p=3.8;const sel={};$$(".chips").forEach(g=>{sel[g.dataset.g]=[...g.querySelectorAll(".on")];sel[g.dataset.g].forEach(b=>p+=+b.dataset.p);});
+ const cols=sel.mousse.map(b=>b.dataset.c);if(!cols.length)cols.push("#c99a6b");const tops=sel.top.length;
+ const layers=cols.map((c,i)=>`<path d="M${38+i*4} ${150-i*48} L${162-i*4} ${150-i*48} L${158-i*6} ${102-i*48} Q100 ${92-i*48} ${42+i*6} ${102-i*48}Z" fill="${c}"/>`).join("");
+ $("#cupSvg").innerHTML=`<path d="M30 60 L170 60 L155 200 Q100 212 45 200 Z" fill="rgba(251,246,236,.12)" stroke="rgba(251,246,236,.6)" stroke-width="2"/>
+  <path d="M40 160 L160 160 L154 196 Q100 206 46 196Z" fill="#3a2418"/>${layers}
+  ${Array.from({length:tops*6},(_,i)=>`<circle cx="${60+(i*37)%84}" cy="${(cols.length>1?52:100)-(i%3)*4}" r="${2.5+i%3}" fill="${["#e9c27a","#a8673a","#f6e2b8"][i%3]}"/>`).join("")}`;
+ $("#mPrice").textContent=eur(p);mousse.p=p;mousse.nm="Mousse: "+sel.mousse.map(b=>b.textContent).join(" + ")+(tops?" με "+sel.top.map(b=>b.textContent.toLowerCase()).join(", "):"");}
+$$("#mousse .chips").forEach(g=>g.onclick=e=>{const b=e.target.closest("button");if(!b)return;const max=+(g.dataset.max||1);if(max===1){g.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));}else{if(b.classList.contains("on"))b.classList.remove("on");else if(g.querySelectorAll(".on").length<max)b.classList.add("on");else toast("Έως "+max);}mousse();});
+$("#mAdd").onclick=()=>add(mousse.nm,mousse.p);
+// date night
+$("#dDate").valueAsDate=new Date();
+$("#dTime").innerHTML=["19:30","20:00","20:30","21:00","21:30","22:00","22:30"].map(t=>`<option>${t}</option>`).join("");$("#dTime").selectedIndex=3;
+$("#dPpl").innerHTML=[1,2,3,4,5,6,7,8].map(n=>`<option>${n} ${n>1?"άτομα":"άτομο"}</option>`).join("");$("#dPpl").selectedIndex=1;
+$("#dSend").onclick=()=>{const o=$("#dOk");o.innerHTML=`<b>Ci vediamo!</b> Τραπέζι για ${$("#dPpl").value}, ${new Date($("#dDate").value).toLocaleDateString("el-GR",{weekday:"long",day:"numeric",month:"long"})} στις ${$("#dTime").value}.`;o.classList.add("show");};
+items();cartR();mousse();
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("ce-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>

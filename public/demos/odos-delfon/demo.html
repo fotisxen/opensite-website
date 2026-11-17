@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f1e9df">
+<title>Οδός Δελφών · wine bar restaurant · brunch · Δελφών 16, Θεσσαλονίκη</title>
+<meta name="description" content="Οδός Δελφών, Δελφών 16, Θεσσαλονίκη. Από το πρωινό καφέ και το brunch ως το βραδινό κρασί. 8:30–1:30. Κρατήσεις 2310 843194.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo for Οδός Δελφών (facebook.com/odosdelfon, @odos_delfon). Info and dish descriptions from their Facebook/Instagram posts (Jul–Sep 2026);
+  photos from their Facebook. Everything marked .ph is placeholder (toggle "Σημειώσεις", hide with ?clean).
+-->
+<style>
+:root{--bg:#f1e9df;--bg2:#e7dccd;--ink:#2a1f1a;--muted:#7a6a5d;--gold:#a8823f;--wine:#6d1f2a;--line:rgba(42,31,26,.14);--sky:#f1e9df;
+  --f:"Manrope",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--f);-webkit-font-smoothing:antialiased;transition:background 1s,color 1s}
+body.night{--bg:#1b1416;--bg2:#251b1e;--ink:#f2e8dc;--muted:#b5a596;--line:rgba(242,232,220,.14)}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.k{font:600 11px/1 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+h1,h2{font-family:var(--s);font-weight:300;line-height:1.05}
+h2{font-size:clamp(34px,5vw,58px)}
+h1 i,h2 i{color:var(--wine)}
+body.night h1 i,body.night h2 i{color:#e3a9b2}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.wine{background:var(--wine);color:#fff}
+.btn.line{border:1px solid var(--line)}
+header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background 1s}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+.logo{font:italic 400 30px/1 var(--s)}
+header nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+@media(max-width:880px){header nav{display:none}}
+.hero{padding:60px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(46px,7vw,96px)}
+.hero p{color:var(--muted);font-size:18px;margin:18px 0 26px;max-width:500px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.frame{position:relative;padding:18px;border-radius:220px 220px 18px 18px;background:linear-gradient(135deg,#c9a45c,#8a6a2f 40%,#e2c98d 60%,#8a6a2f);box-shadow:0 30px 60px rgba(42,31,26,.25)}
+.frame img{border-radius:202px 202px 6px 6px;aspect-ratio:4/5;object-fit:cover;width:100%;transition:opacity .6s}
+.frame::before{content:"";position:absolute;inset:8px;border-radius:212px 212px 12px 12px;border:1px solid rgba(255,255,255,.4);pointer-events:none}
+/* day slider */
+.day{background:var(--bg2);transition:background 1s}
+.dial{margin-top:28px;position:relative}
+.dial input{width:100%;accent-color:var(--wine)}
+.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
+.moment{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;margin-top:34px}
+@media(max-width:860px){.moment{grid-template-columns:1fr}}
+.moment .pic{border-radius:20px;overflow:hidden;aspect-ratio:4/5}
+.moment .pic img{width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.moment h3{font:300 44px/1.05 var(--s)}
+.moment .time{font:600 13px var(--f);letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.mlist{margin-top:18px}
+.mlist li{list-style:none;display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.mlist b{font:400 20px/1.25 var(--s)}
+.mlist small{grid-column:1;color:var(--muted);font-size:14px}
+.mlist .pr{color:var(--gold);font-weight:600}
+.sky{position:relative;height:80px;margin-top:10px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#9fd0f0,#f6e6c8);transition:background 1s}
+.sky .sun{position:absolute;width:34px;height:34px;border-radius:50%;background:#f5c04a;box-shadow:0 0 30px #f5c04a;transition:left 1s,top 1s,background 1s,box-shadow 1s}
+/* decor */
+.decor{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.decor{grid-template-columns:1fr}}
+.decor p{color:var(--muted);margin-top:14px;font-size:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.stats div{padding:16px;border-radius:14px;border:1px solid var(--line)}
+.stats b{display:block;font:300 34px/1 var(--s);color:var(--wine)}
+body.night .stats b{color:#e3a9b2}
+.stats span{font-size:13px;color:var(--muted)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+.gal img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px}
+@media(max-width:700px){.gal{grid-template-columns:1fr 1fr}}
+section{padding:90px 0}
+.book{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:860px){.book{grid-template-columns:1fr}}
+.form{display:grid;gap:10px;padding:24px;border-radius:20px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg2) 60%,transparent)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form input,.form select{width:100%;padding:13px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px}
+.seg button.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.ok{display:none;padding:14px;border-radius:12px;background:rgba(168,130,63,.14);border:1px solid rgba(168,130,63,.45);font-size:14px}
+.ok.show{display:block}
+.info li{list-style:none;display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.map{margin-top:18px;border-radius:16px;overflow:hidden;height:260px}
+.map iframe{width:100%;height:100%;border:0}
+footer{padding:30px 0 100px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:8px}
+.mbar>*{flex:1;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.mbar .line{background:var(--bg)}
+@media(max-width:760px){.mbar{display:flex}}
+.notes-toggle{position:fixed;left:16px;bottom:16px;z-index:70;padding:9px 14px;border-radius:999px;background:#2a1f1a;color:#fff;font:600 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:80px}}
+.notes .ph{outline:1.5px dashed #b0412f;outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:#b0412f;padding:4px 8px;border-radius:5px;max-width:260px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+  if(q.has("clean")||localStorage.getItem("od-notes")==="off") h.classList.remove("notes");
+  if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Οδός Δελφών</a>
+  <nav><a href="#day">Από το πρωί ως αργά</a><a href="#place">Ο χώρος</a><a href="#photos">Φωτογραφίες</a><a href="#book">Κράτηση</a></nav>
+  <a class="btn wine" href="#book" style="padding:10px 18px;font-size:14px">Κράτηση</a>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="k">Δελφών 16 · Θεσσαλονίκη</div>
+      <h1 style="margin-top:16px">Ένα στολίδι <i>στην Οδό Δελφών.</i></h1>
+      <p>Wine bar restaurant, brunch και καφές. Από τις 8:30 το πρωί ως αργά τη νύχτα, στην πιο φιλόξενη ατμόσφαιρα της πόλης.</p>
+      <div class="ctas"><a class="btn wine" href="#book">Κλείστε τραπέζι</a><a class="btn line" href="#day">Τι τρώμε τώρα;</a><a class="btn line" href="tel:+302310843194">☎ 2310 843194</a></div>
+    </div>
+    <div class="frame"><img src="img/atmosfaira.jpg" alt="Η ατμόσφαιρα στην Οδό Δελφών"></div>
+  </div>
+</section>
+
+<section class="day" id="day">
+  <div class="wrap">
+    <div class="k">Από το πρωί ως αργά</div>
+    <h2 style="margin-top:14px">Τι ώρα <i>έρχεστε;</i></h2>
+    <div class="sky" id="sky"><div class="sun" id="sun"></div></div>
+    <div class="dial"><input type="range" min="8.5" max="25.5" step=".25" id="hour" aria-label="Ώρα"><div class="ticks"><span>08:30</span><span>12:00</span><span>16:00</span><span>20:00</span><span>01:30</span></div></div>
+    <div class="moment">
+      <div class="pic"><img id="mImg" src="img/brunch.jpg" alt=""></div>
+      <div>
+        <div class="time" id="mTime">10:00 · Brunch</div>
+        <h3 id="mTitle">Δεν ξέρεις τι να πρωτοδιαλέξεις!</h3>
+        <ul class="mlist" id="mList"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="place">
+  <div class="wrap decor">
+    <div>
+      <div class="k">Ο χώρος</div>
+      <h2 style="margin-top:14px">Barock, <i>με μοντέρνα διάθεση.</i></h2>
+      <p>Ένα μαγαζί διαφορετικό: χρυσές κορνίζες, λάμπες, βιβλία και τούβλο. Μας καλωσορίζει από το πρωί για καφεδάκι και brunch, το μεσημέρι για φαγητό, και το βράδυ για κρασί με την παρέα.</p>
+      <div class="stats">
+        <div><b>4,6★</b><span>534 κριτικές Tripadvisor</span></div>
+        <div><b>96%</b><span>προτείνουν στο Facebook</span></div>
+        <div><b>17 ώρες</b><span>ανοιχτά κάθε μέρα</span></div>
+      </div>
+    </div>
+    <div class="frame" style="border-radius:18px;padding:14px"><img src="img/trapezi.jpg" alt="Τραπέζι στην Οδό Δελφών" style="border-radius:8px" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="photos" style="padding-top:0">
+  <div class="wrap">
+    <div class="k">Από τη σελίδα μας</div>
+    <div class="gal"><img src="img/mpifteki.jpg" alt="Μπιφτέκι γεμιστό με φέτα" loading="lazy"><img src="img/achladi.jpg" alt="Αχλάδι ποσέ σε κόκκινο κρασί" loading="lazy"><img src="img/psaronefri.jpg" alt="Ψαρονέφρι με σως dijon" loading="lazy"><img src="img/kotopoulo.jpg" alt="Φιλέτο κοτόπουλο" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="day" id="book">
+  <div class="wrap book">
+    <div>
+      <div class="k">Κράτηση</div>
+      <h2 style="margin:14px 0 18px">Δελφών 16</h2>
+      <ul class="info">
+        <li><span>Ωράριο</span><b>Κάθε μέρα 08:30 – 01:30</b></li>
+        <li><span>Τηλέφωνο</span><a href="tel:+302310843194"><b>2310 843194</b></a></li>
+        <li><span>Email</span><b>odosdelfon@gmail.com</b></li>
+        <li><span>Επίσης</span><b>Take away</b></li>
+      </ul>
+      <div class="map"><iframe title="Χάρτης" loading="lazy" src="https://www.google.com/maps?q=%CE%94%CE%B5%CE%BB%CF%86%CF%8E%CE%BD+16+%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7&output=embed"></iframe></div>
+    </div>
+    <div class="form">
+      <div class="seg" id="occ"><button type="button" class="on">Brunch</button><button type="button">Φαγητό</button><button type="button">Κρασί</button><button type="button">Γενέθλια / εκδήλωση</button></div>
+      <div class="two"><input type="date" id="bDate"><select id="bTime"></select></div>
+      <select id="bPpl"></select>
+      <input placeholder="Όνομα"><input placeholder="Κινητό" inputmode="tel">
+      <button class="btn wine" type="button" id="bSend" style="justify-content:center">Κράτηση</button>
+      <div class="ok ph" id="bOk" data-note="Οι κρατήσεις φτάνουν στο μαγαζί με email/SMS"></div>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© Οδός Δελφών · Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--gold)">OpenSite</a></span></div></footer>
+<div class="mbar"><a class="btn line" href="tel:+302310843194">☎ Κλήση</a><a class="btn wine" href="#book">Κράτηση</a></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// moments of the day (dishes from their posts; prices placeholder)
+const MOM=[
+ {from:8.5,to:12,label:"Brunch",img:"brunch",title:"Δεν ξέρεις τι να πρωτοδιαλέξεις!",items:[["Scrambled eggs","",""],["Toasted croissant","",""],["Pancake μπουγάτσα","",""],["Καφές & φρέσκος χυμός","",""]]},
+ {from:12,to:17.5,label:"Μεσημέρι",img:"trapezi",title:"Φρέσκα υλικά και μοναδικές υφές.",items:[["Μπιφτέκι γεμιστό με φέτα","σάλτσα bacon, χειροποίητα τσιπς πατάτας",""],["Φιλέτο κοτόπουλο","βελούδινος πουρές, baby καρότα, μυρωδικά",""],["Σαλάτα εποχής","",""]]},
+ {from:17.5,to:21.5,label:"Βράδυ",img:"psaronefri",title:"Η τέλεια ισορροπία γεύσεων.",items:[["Ψαρονέφρι","πουρές πατάτας, σως dijon, πολύχρωμες πιπεριές",""],["Μπιφτέκι γεμιστό με φέτα","σάλτσα bacon, χειροποίητα τσιπς",""],["Αχλάδι ποσέ","σε σάλτσα κόκκινου κρασιού, κρέμα μασκαρπόνε",""]]},
+ {from:21.5,to:25.6,label:"Wine bar",img:"achladi",title:"Ένα ποτήρι ακόμα, στην πιο φιλόξενη γωνιά.",items:[["Κρασί στο ποτήρι","λευκό, ροζέ, κόκκινο",""],["Ποικιλία τυριών & αλλαντικών","",""],["Αχλάδι ποσέ σε κόκκινο κρασί","με κρέμα μασκαρπόνε",""]]}];
+function fmt(h){const hh=Math.floor(h)%24,mm=Math.round((h%1)*60);return String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");}
+let cur=null;
+function setHour(h){const m=MOM.find(x=>h>=x.from&&h<x.to)||MOM[3];
+ $("#mTime").textContent=fmt(h)+" · "+m.label;
+ if(m!==cur){cur=m;const im=$("#mImg");im.style.opacity=0;setTimeout(()=>{im.src="img/"+m.img+".jpg";im.alt=m.title;im.style.opacity=1;},250);
+  $("#mTitle").textContent=m.title;$("#mList").innerHTML=m.items.map(([n,d],i)=>`<li><b>${n}</b><span class="pr ${i?"":"ph"}" ${i?"":'data-note="Τιμές: θα μπουν από τον κατάλογο του μαγαζιού"'}>— €</span>${d?`<small>${d}</small>`:""}</li>`).join("");}
+ const night=h>=19.5;document.body.classList.toggle("night",night);
+ const p=(h-8.5)/17;const sky=night?"linear-gradient(180deg,#1a1630,#4a2a3a)":h>17?"linear-gradient(180deg,#f2a66b,#f6d3a8)":"linear-gradient(180deg,#9fd0f0,#f6e6c8)";
+ $("#sky").style.background=sky;const s=$("#sun");s.style.left=`calc(${p*100}% - ${p*34}px)`;s.style.top=(10+Math.pow((p-.45)*2,2)*30)+"px";
+ s.style.background=night?"#f0ead6":"#f5c04a";s.style.boxShadow=night?"0 0 24px #f0ead6":"0 0 30px #f5c04a";}
+const now=new Date();let h=now.getHours()+now.getMinutes()/60;if(h<2)h+=24;if(h<8.5)h=10;if(h>25.5)h=25.5;
+$("#hour").value=h;setHour(h);$("#hour").oninput=e=>setHour(+e.target.value);
+// booking
+$("#bDate").valueAsDate=new Date();
+const T={Brunch:["09:00","10:00","11:00","12:00"],"Φαγητό":["13:00","14:00","15:00","20:00","21:00"],"Κρασί":["20:00","21:00","22:00","23:00"],"Γενέθλια / εκδήλωση":["19:00","20:00","21:00"]};
+function times(k){$("#bTime").innerHTML=T[k].map(t=>`<option>${t}</option>`).join("");}times("Brunch");
+$("#occ").onclick=e=>{const b=e.target.closest("button");if(!b)return;$$("#occ button").forEach(x=>x.classList.toggle("on",x===b));times(b.textContent);};
+$("#bPpl").innerHTML=Array.from({length:12},(_,i)=>`<option>${i+1} ${i?"άτομα":"άτομο"}</option>`).join("");$("#bPpl").selectedIndex=1;
+$("#bSend").onclick=()=>{const o=$("#bOk");o.innerHTML=`<b>Σας περιμένουμε!</b> ${$("#occ .on").textContent} για ${$("#bPpl").value}, ${new Date($("#bDate").value).toLocaleDateString("el-GR",{weekday:"long",day:"numeric",month:"long"})} στις ${$("#bTime").value}.`;o.classList.add("show");};
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("od-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>
