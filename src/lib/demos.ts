@@ -10,7 +10,7 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
-  { slug: "guzel", name: "Guzel Beauty Studio { slug: "guzel", name: "Guzel Beauty × Wellness", kind: "Luxury site 3 σελίδων · Pilates & aesthetics, κρατήσεις (Θέρμη)" Wellness", kind: "Luxury site 12 σελίδων · 2 καταστήματα, pilates, 100+ υπηρεσίες, κρατήσεις, activewear shop (Θεσσαλονίκη { slug: "guzel", name: "Guzel Beauty × Wellness", kind: "Luxury site 3 σελίδων · Pilates & aesthetics, κρατήσεις (Θέρμη)" Θέρμη)", created: "2026-11-17", instagram: "https://www.instagram.com/guzel.beauty.wellness/" },
+  { slug: "guzel", name: "Guzel Beauty Studio & Wellness", kind: "Luxury site 12 σελίδων · 2 καταστήματα, pilates, 100+ υπηρεσίες, κρατήσεις, activewear shop (Θεσσαλονίκη & Θέρμη)", created: "2026-11-17", instagram: "https://www.instagram.com/guzel.beauty.wellness/" },
   { slug: "ics-crm", name: "ICS Workspace · CRM", kind: "CRM · clients, cases & tasks between 6 offices", created: "2026-11-13" },
   { slug: "athena-suites", name: "Athena Suites", kind: "8 suites · απευθείας κρατήσεις + οδηγός επισκέπτη (Κουκάκι, Αθήνα)", created: "2026-11-12" },
   { slug: "kings-court", name: "King's Court", kind: "Personal training studio · δοκιμαστική κράτηση (Θεσσαλονίκη)", created: "2026-11-12", instagram: "https://www.instagram.com/ki.ng.s_court/" },
