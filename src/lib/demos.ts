@@ -10,6 +10,13 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "lioras-barber", name: "Lioras Barbershop", kind: "Κουρείο · πλήρης τιμοκατάλογος, υπολογιστής συνδρομής κουρέματος, ραντεβού (Παπάφη 1)", created: "2026-11-18", instagram: "https://www.instagram.com/lioras.barber/" },
+  { slug: "koureio-geitonias", name: "Το Κουρείο της Γειτονιάς", kind: "Κουρείο · ζωντανή σειρά αναμονής, μπες στη σειρά από το κινητό, ραντεβού (Βαλαγιάννη 8)", created: "2026-11-18", instagram: "https://www.instagram.com/savvas.elef/" },
+  { slug: "sipsas-barber", name: "Sipsas Barber Shop", kind: "Κουρείο · τελετουργικό ξυρίσματος, επιλογή καρέκλας, ραντεβού (Βασ. Όλγας 74)", created: "2026-11-18", instagram: "https://www.instagram.com/sipsasbarbershop/" },
+  { slug: "dante-barber", name: "Dante Barber Services", kind: "Κουρείο · 2 καταστήματα με εναλλαγή σε χάρτη/ωράριο/ραντεβού (25ης Μαρτίου & Κλεάνθους)", created: "2026-11-18", instagram: "https://www.instagram.com/dante.barbershop/" },
+  { slug: "kingz-barber", name: "KING'Z Barber Shop", kind: "Κουρείο · ψηφιακή κάρτα πιστότητας King'z Club, ραντεβού, ζωντανό ωράριο (Θεσσαλονίκη)", created: "2026-11-18", instagram: "https://www.instagram.com/kingz_barber_shop/" },
+  { slug: "stam-scissors", name: "Stam Scissors by Zacharias", kind: "Κουρείο · slider «πριν & μετά», καλάθι υπηρεσιών, ραντεβού (Βελισσαρίου 62)", created: "2026-11-18", instagram: "https://www.instagram.com/stamscissors/" },
+  { slug: "albi-barber", name: "Albi Barber Shop", kind: "Κουρείο · διαδραστικός επιλογέας κουρέματος (fade/γενειάδα), ραντεβού σε 3 βήματα (Θεσσαλονίκη)", created: "2026-11-18", instagram: "https://www.instagram.com/albibarber21/" },
   { slug: "xaroupi", name: "Χαρούπι", kind: "Κρητικό εστιατόριο · μενού chef, πλατώ τυριών, κάβα ανά ποικιλία, κράτηση (Δόξης 4)", created: "2026-11-17" },
   { slug: "logia", name: "Δικά μας.. Λόγια", kind: "Νεοταβέρνα · χειρόγραφο μενού με «λόγια» πιάτων, κράτηση (Φιλίππου 13)", created: "2026-11-17", instagram: "https://www.instagram.com/logia_dikamas/" },
   { slug: "jiang-nan", name: "Jiang Nan", kind: "Κινέζικο εστιατόριο · μενού με τιμές, φίλτρα καυτερά/vegan, τραπέζι για παρέα, online παραγγελία (Β. Όλγας)", created: "2026-11-17", instagram: "https://www.instagram.com/jiang_nan_chinese_restaurant/" },

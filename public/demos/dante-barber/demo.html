@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#16161a">
+<title>Dante Barber Services · Δύο καταστήματα στη Θεσσαλονίκη · Ραντεβού</title>
+<meta name="description" content="Dante Barber Services — 25ης Μαρτίου 28 &amp; Κλεάνθους 42, Θεσσαλονίκη. Διάλεξε κατάστημα και κλείσε ραντεβού online. 4,9/5 από 60 κριτικές.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo για Dante Barber Services (@dante.barbershop).
+  Αληθινά: δύο καταστήματα — 25ης Μαρτίου 28 (τηλ. 6944316981) και Κλεάνθους 42 (τηλ. 6946477447) · Δευτέρα–Παρασκευή 10:00–21:00 ·
+  4,9/5 από 60 κριτικές στο Facebook · φωτογραφίες από τα posts (Νοέ 2026).
+  Ώρα Σαββάτου, τιμές και ονόματα barbers = placeholder. Ό,τι είναι .ph είναι placeholder — «Σημειώσεις» ή ?clean.
+-->
+<style>
+:root{--bg:#16161a;--bg2:#1d1d22;--card:#23232a;--ink:#f2f0ec;--muted:#95918a;--sand:#d9b589;--sand2:#f0d7b5;--line:rgba(242,240,236,.12);
+  --f:"DM Sans",system-ui,sans-serif;--s:"DM Serif Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.7 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1150px,100% - 32px);margin-inline:auto}
+.k{font:600 11px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+h1,h2,h3{font-family:var(--s);font-weight:400;line-height:1.06}
+h2{font-size:clamp(34px,5.2vw,60px)}h3{font-size:clamp(21px,2.6vw,29px)}
+em{font-style:italic;color:var(--sand)}
+section{padding:92px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:10px;font-weight:600;font-size:15px;transition:transform .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn.s{background:var(--sand);color:#1d1407}
+.btn.o{border:1px solid var(--line);background:rgba(255,255,255,.05)}
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s;border-bottom:1px solid transparent}
+header.solid{background:rgba(22,22,26,.94);backdrop-filter:blur(12px);border-color:var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo b{font:400 25px/1 var(--s);display:block;letter-spacing:.02em}
+.logo small{display:block;font:600 8px/1.4 var(--f);letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+header nav{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+header nav a:hover{color:var(--sand)}
+@media(max-width:1020px){header nav{display:none}}
+/* store switch */
+.switch{display:inline-flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);gap:4px}
+.switch button{padding:8px 15px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted);transition:.2s;white-space:nowrap}
+.switch button[aria-pressed=true]{background:var(--sand);color:#1d1407}
+@media(max-width:620px){.switch button{padding:8px 11px;font-size:12.5px}}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:url(img/p1.jpg) center 28%/cover;filter:brightness(.4) saturate(.9)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(22,22,26,.92) 10%,rgba(22,22,26,.5) 58%,rgba(22,22,26,.85)),linear-gradient(180deg,transparent 60%,var(--bg))}
+.hero .wrap{position:relative;z-index:2;padding:120px 0 60px}
+.hero h1{font-size:clamp(44px,8.6vw,108px);max-width:12ch}
+.hero p{max-width:470px;margin:18px 0 28px;font-size:18px;color:#d5d0c8}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.status{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:7px 14px;border-radius:999px;background:rgba(217,181,137,.13);border:1px solid rgba(217,181,137,.42);font-size:13px;font-weight:600}
+.status i{width:8px;height:8px;border-radius:50%;background:#5cc184;animation:bl 1.6s infinite}
+.status.shut i{background:var(--sand);animation:none}
+@keyframes bl{50%{opacity:.25}}
+.hstats{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.hstats b{display:block;font:400 30px/1 var(--s);color:var(--sand2)}
+.hstats span{font-size:13px;color:var(--muted)}
+/* stores */
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+@media(max-width:880px){.stores{grid-template-columns:1fr}}
+.store{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;transition:.25s;position:relative;overflow:hidden}
+.store.active{border-color:var(--sand);box-shadow:0 0 0 1px var(--sand) inset}
+.store .tag{position:absolute;top:18px;right:18px;font:600 10px/1 var(--f);letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--sand);color:#1d1407;opacity:0;transition:.25s}
+.store.active .tag{opacity:1}
+.store h3{font-size:25px}
+.store .addr{color:var(--muted);margin-top:6px;font-size:15px}
+.store ul{list-style:none;margin:18px 0;display:grid;gap:5px;font-size:14px;color:var(--muted)}
+.store ul li{display:flex;justify-content:space-between}
+.store ul li b{color:var(--ink);font-weight:500}
+.store .acts{display:flex;gap:8px;flex-wrap:wrap}
+.store .acts a,.store .acts button{padding:10px 16px;border-radius:9px;border:1px solid var(--line);font-size:13.5px;font-weight:600}
+.store .acts .pick{background:var(--sand);border-color:var(--sand);color:#1d1407}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:14px;margin-top:36px}
+.svc article{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.2s}
+.svc article:hover{transform:translateY(-3px);border-color:rgba(217,181,137,.5)}
+.svc h4{font:400 21px/1.15 var(--s)}
+.svc p{color:var(--muted);font-size:14px;margin:8px 0 16px;min-height:42px}
+.svc .row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:13px}
+.svc .v{font:400 25px/1 var(--s);color:var(--sand2)}
+.svc .m{font-size:12.5px;color:var(--muted)}
+/* booking */
+.bk{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;margin-top:30px}
+@media(max-width:940px){.bk{grid-template-columns:1fr}}
+h4.lb{font:600 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 15px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px;transition:.15s}
+.chip[aria-pressed=true]{background:var(--sand);border-color:var(--sand);color:#1d1407;font-weight:600}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;align-self:start;position:sticky;top:90px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;margin:16px 0;font-size:14.5px}
+.sum dt{color:var(--muted)}.sum dd{text-align:right;font-weight:600}
+.sum .tot{border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline}
+.sum .tot b{font:400 30px/1 var(--s);color:var(--sand2)}
+.sum input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);margin-bottom:9px}
+.sum .btn{width:100%;margin-top:6px}
+.ok{margin-top:12px;padding:12px 14px;border-radius:10px;background:rgba(92,193,132,.13);border:1px solid rgba(92,193,132,.4);font-size:14px;display:none}
+.ok.show{display:block}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:34px}
+.gal button{overflow:hidden;aspect-ratio:1;border-radius:14px;background:var(--card)}
+.gal button:first-child{grid-column:span 2;grid-row:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal button:hover img{transform:scale(1.07)}
+@media(max-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(12,12,14,.96);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:min(840px,94vw);max-height:86vh;border-radius:14px;object-fit:contain}
+.lb button{position:absolute;top:18px;right:20px;font-size:30px;color:#fff}
+.lb .nav{top:50%;transform:translateY(-50%);font-size:40px}.lb .pv{left:16px;right:auto}
+/* info */
+.map{margin-top:28px;border-radius:20px;overflow:hidden;border:1px solid var(--line);height:340px}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) invert(.9) hue-rotate(180deg) contrast(.9)}
+footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mob{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(22,22,26,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.mob .btn{flex:1;padding:13px}
+@media(max-width:760px){.mob{display:flex}footer{padding-bottom:110px}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.notes-toggle{position:fixed;left:14px;bottom:14px;z-index:80;padding:9px 14px;border-radius:999px;background:#fff;color:#111;font:700 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:84px}}
+.notes .ph{outline:1.5px dashed var(--sand);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#1d1407;background:var(--sand);padding:4px 8px;border-radius:5px;max-width:250px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+ if(q.has("clean")||localStorage.getItem("dn-notes")==="off") h.classList.remove("notes");
+ if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+
+<header id="hd"><div class="wrap">
+  <a class="logo" href="#top"><b>Dante</b><small>Barber Services</small></a>
+  <nav><a href="#stores">Καταστήματα</a><a href="#svc">Υπηρεσίες</a><a href="#book">Ραντεβού</a><a href="#work">Δουλειές</a></nav>
+  <div class="switch" id="sw1"></div>
+</div></header>
+
+<section class="hero" id="top">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="status" id="st"><i></i><span>—</span></div>
+    <h1>Dante <em>Barber Services</em></h1>
+    <p>Δύο καταστήματα στη Θεσσαλονίκη. Διάλεξε το κοντινότερο και κλείσε ώρα — το site ξέρει ποιο διάλεξες και σου δείχνει μόνο τα δικά του διαθέσιμα.</p>
+    <div class="ctas"><a class="btn s" href="#book">Κλείσε ραντεβού</a><a class="btn o" href="#stores" id="heroStore">—</a></div>
+    <div class="hstats">
+      <div><b>4,9</b><span>από 60 κριτικές</span></div>
+      <div><b>2</b><span>καταστήματα</span></div>
+      <div><b>10–21</b><span>Δευτέρα έως Παρασκευή</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="stores"><div class="wrap">
+  <p class="k">Δύο διευθύνσεις</p>
+  <h2>Διάλεξε <em>κατάστημα</em></h2>
+  <div class="stores" id="storeCards"></div>
+  <div class="map" id="mapBox"></div>
+</div></section>
+
+<section id="svc" class="rv" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <p class="k">Τιμοκατάλογος</p>
+  <h2>Υπηρεσίες</h2>
+  <div class="svc">
+    <article><h4>Κούρεμα</h4><p>Μηχανή &amp; ψαλίδι, φινίρισμα με ξυράφι.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">14 €</span><span class="m">30′</span></div></article>
+    <article><h4>Κούρεμα &amp; γενειάδα</h4><p>Σχηματισμός με ξυράφι και λάδι.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">20 €</span><span class="m">50′</span></div></article>
+    <article><h4>Fade</h4><p>Low, mid ή skin — όπως το θέλεις.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">16 €</span><span class="m">40′</span></div></article>
+    <article><h4>Μακρύ μαλλί / styling</h4><p>Κούρεμα με ψαλίδι και φορμάρισμα.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">18 €</span><span class="m">45′</span></div></article>
+    <article><h4>Γενειάδα</h4><p>Γρήγορο φρεσκάρισμα.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">8 €</span><span class="m">20′</span></div></article>
+    <article><h4>Παιδικό</h4><p>Έως 12 ετών.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">11 €</span><span class="m">25′</span></div></article>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap">
+  <p class="k">Online</p>
+  <h2>Κλείσε <em>ραντεβού</em></h2>
+  <div style="margin-top:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <span style="color:var(--muted);font-size:14.5px">Κατάστημα:</span>
+    <div class="switch" id="sw2"></div>
+  </div>
+  <div class="bk">
+    <div>
+      <h4 class="lb">Υπηρεσία</h4>
+      <div class="chips" id="svcChips">
+        <button class="chip" type="button" data-p="14" data-m="30" aria-pressed="true">Κούρεμα</button>
+        <button class="chip" type="button" data-p="20" data-m="50">Κούρεμα &amp; γενειάδα</button>
+        <button class="chip" type="button" data-p="16" data-m="40">Fade</button>
+        <button class="chip" type="button" data-p="18" data-m="45">Styling</button>
+        <button class="chip" type="button" data-p="11" data-m="25">Παιδικό</button>
+      </div>
+      <h4 class="lb">Μέρα</h4><div class="chips" id="dayChips"></div>
+      <h4 class="lb">Ώρα</h4><div class="slots" id="slots"></div>
+      <p style="margin-top:14px;font-size:13px;color:var(--muted)">Οι ώρες αλλάζουν ανάλογα με το κατάστημα που διάλεξες.</p>
+    </div>
+    <aside class="sum">
+      <h3>Το ραντεβού σου</h3>
+      <dl><dt>Κατάστημα</dt><dd id="rStore">—</dd><dt>Υπηρεσία</dt><dd id="rSvc">Κούρεμα</dd><dt>Μέρα</dt><dd id="rDay">—</dd><dt>Ώρα</dt><dd id="rTime">—</dd><dt>Διάρκεια</dt><dd id="rMin">30′</dd></dl>
+      <div class="tot"><span>Σύνολο</span><b class="ph" data-note="Δικές σου τιμές" id="rTot">14 €</b></div>
+      <div style="margin-top:16px">
+        <input id="nm" placeholder="Όνομα" autocomplete="name">
+        <input id="tel" placeholder="Κινητό" inputmode="tel" autocomplete="tel">
+        <button class="btn s" type="button" id="send">Επιβεβαίωση</button>
+        <div class="ok" id="okBox"></div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="work" class="rv" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <p class="k">Gallery</p>
+  <h2>Η <em>δουλειά</em> μας</h2>
+  <div class="gal" id="gal">
+    <button type="button"><img src="img/p1.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p2.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p4.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p5.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p6.jpg" alt="Κούρεμα" loading="lazy"></button>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Dante Barber Services · 25ης Μαρτίου 28 &amp; Κλεάνθους 42, Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--sand)">OpenSite</a></span></div></footer>
+
+<div class="mob"><a class="btn o" href="tel:+306944316981" id="mobTel">Κλήση</a><a class="btn s" href="#book">Ραντεβού</a></div>
+<div class="lb" id="lb"><button type="button" id="lbX">×</button><button type="button" class="nav pv" id="lbP">‹</button><img id="lbI" alt=""><button type="button" class="nav" id="lbN" style="right:16px">›</button></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#yr").textContent=new Date().getFullYear();
+addEventListener("scroll",()=>$("#hd").classList.toggle("solid",scrollY>40),{passive:true});
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.12});
+$$(".rv").forEach(e=>io.observe(e));
+
+/* ---- τα δύο καταστήματα ---- */
+const WEEK=[["Δευτέρα",[10,21]],["Τρίτη",[10,21]],["Τετάρτη",[10,21]],["Πέμπτη",[10,21]],["Παρασκευή",[10,21]],["Σάββατο",[10,16]],["Κυριακή",null]];
+const STORES=[
+ {id:0,name:"25ης Μαρτίου",addr:"25ης Μαρτίου 28, Θεσσαλονίκη",tel:"6944316981",q:"25is%20Martiou%2028%2C%20Thessaloniki",hours:WEEK,off:0},
+ {id:1,name:"Κλεάνθους",addr:"Κλεάνθους 42, Θεσσαλονίκη",tel:"6946477447",q:"Kleanthous%2042%2C%20Thessaloniki",hours:WEEK,off:3}
+];
+let S=0;
+const dow=()=>(new Date().getDay()+6)%7,nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+
+function switches(){
+  const html=STORES.map(s=>`<button type="button" data-s="${s.id}" aria-pressed="${s.id===S}">${s.name}</button>`).join("");
+  ["#sw1","#sw2"].forEach(sel=>{const el=$(sel);el.innerHTML=html;
+    [...el.children].forEach(b=>b.onclick=()=>{S=+b.dataset.s;render();});});
+}
+function cards(){
+  $("#storeCards").innerHTML=STORES.map(s=>{
+    const h=s.hours;
+    return `<article class="store ${s.id===S?"active":""}"><span class="tag">Επιλεγμένο</span>
+      <h3>${s.name}</h3><p class="addr">${s.addr}</p>
+      <ul>
+        <li><span>Δευτέρα – Παρασκευή</span><b>10:00 – 21:00</b></li>
+        <li class="${s.id===S?"":""}"><span>Σάββατο</span><b class="ph" data-note="Η ώρα κλεισίματος δεν φαίνεται ολόκληρη στο Instagram">10:00 – 16:00</b></li>
+        <li><span>Κυριακή</span><b>κλειστά</b></li>
+        <li><span>Τηλέφωνο</span><b>${s.tel}</b></li>
+      </ul>
+      <div class="acts">
+        <button class="pick" type="button" data-pick="${s.id}">${s.id===S?"Επιλεγμένο":"Διάλεξε αυτό"}</button>
+        <a href="tel:+30${s.tel}">Κλήση</a>
+        <a href="https://maps.google.com/?q=${s.q}" target="_blank" rel="noopener">Οδηγίες</a>
+      </div></article>`;}).join("");
+  $$("#storeCards [data-pick]").forEach(b=>b.onclick=()=>{S=+b.dataset.pick;render();
+    document.getElementById("stores").scrollIntoView({behavior:"smooth",block:"start"});});
+}
+function status(){
+  const b=$("#st"),t=b.querySelector("span"),h=STORES[S].hours[dow()][1];b.classList.remove("shut");
+  if(h&&nowH()>=h[0]&&nowH()<h[1])t.textContent=STORES[S].name+" · ανοιχτά μέχρι "+h[1]+":00";
+  else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(STORES[S].hours[i][1])break;}
+   t.textContent=STORES[S].name+" · κλειστά, ανοίγουμε "+STORES[S].hours[i][0]+" "+STORES[S].hours[i][1][0]+":00";}
+}
+function render(){
+  switches();cards();status();
+  $("#mapBox").innerHTML=`<iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${STORES[S].q}&z=16&output=embed"></iframe>`;
+  $("#heroStore").textContent="Κατάστημα: "+STORES[S].name;
+  $("#mobTel").href="tel:+30"+STORES[S].tel;
+  $("#rStore").textContent=STORES[S].name;
+  time=null;buildDays();
+}
+
+/* ---- booking ---- */
+let svc={n:"Κούρεμα",p:14,m:30},day=null,time=null,DAYS=[];
+function buildDays(){
+  DAYS=[];const n=new Date();
+  for(let i=0;i<8;i++){const d=new Date(n.getTime()+i*864e5),idx=(d.getDay()+6)%7;
+   DAYS.push({label:i===0?"Σήμερα":i===1?"Αύριο":["Δευ","Τρί","Τετ","Πέμ","Παρ","Σάβ","Κυρ"][idx]+" "+d.getDate()+"/"+(d.getMonth()+1),closed:!STORES[S].hours[idx][1],idx});}
+  $("#dayChips").innerHTML=DAYS.map((x,i)=>`<button class="chip" type="button" data-i="${i}" ${x.closed?"disabled":""}>${x.label}</button>`).join("");
+  $$("#dayChips .chip").forEach(b=>b.onclick=()=>{if(b.disabled)return;
+    $$("#dayChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));day=+b.dataset.i;time=null;slots();paint();});
+  day=null;$("#slots").innerHTML="";
+  $("#dayChips .chip:not([disabled])")?.click();
+}
+function slots(){
+  const h=STORES[S].hours[DAYS[day].idx][1];if(!h){$("#slots").innerHTML="";return;}
+  const o=[],off=STORES[S].off;
+  for(let t=h[0];t<h[1];t+=0.5){if(day===0&&t<nowH()+1)continue;const hh=Math.floor(t),mm=t%1?"30":"00";
+   if(((hh*3+(mm==="30"?2:0)+off)%7)===0)continue;o.push(hh+":"+mm);}
+  $("#slots").innerHTML=o.length?o.map(t=>`<button class="chip" type="button">${t}</button>`).join(""):'<p style="color:var(--muted);font-size:14px">Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.</p>';
+  $$("#slots .chip").forEach(x=>x.onclick=()=>{$$("#slots .chip").forEach(y=>y.setAttribute("aria-pressed",y===x));time=x.textContent;paint();});
+}
+function paint(){$("#rSvc").textContent=svc.n;$("#rMin").textContent=svc.m+"′";$("#rTot").textContent=svc.p+" €";
+ $("#rStore").textContent=STORES[S].name;$("#rDay").textContent=day===null?"—":DAYS[day].label;$("#rTime").textContent=time||"—";}
+$$("#svcChips .chip").forEach(b=>b.onclick=()=>{$$("#svcChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));svc={n:b.textContent,p:+b.dataset.p,m:+b.dataset.m};paint();});
+$("#send").onclick=()=>{const b=$("#okBox");
+ if(!time){b.textContent="Διάλεξε μέρα και ώρα.";b.classList.add("show");return;}
+ if(!$("#nm").value.trim()||!$("#tel").value.trim()){b.textContent="Συμπλήρωσε όνομα και κινητό.";b.classList.add("show");return;}
+ b.innerHTML="✓ Κλείστηκε: <b>"+svc.n+"</b>, "+DAYS[day].label+" στις "+time+" — "+STORES[S].name+".<br><span style='color:var(--muted);font-size:12.5px'>(demo — δεν στέλνεται τίποτα)</span>";b.classList.add("show");};
+
+render();paint();
+
+/* lightbox */
+const imgs=$$("#gal img").map(i=>i.src);let li=0;
+function show(i){li=(i+imgs.length)%imgs.length;$("#lbI").src=imgs[li];$("#lb").classList.add("on");}
+$$("#gal button").forEach((b,i)=>b.onclick=()=>show(i));
+$("#lbX").onclick=()=>$("#lb").classList.remove("on");
+$("#lbN").onclick=e=>{e.stopPropagation();show(li+1);};
+$("#lbP").onclick=e=>{e.stopPropagation();show(li-1);};
+$("#lb").onclick=e=>{if(e.target.id==="lb")$("#lb").classList.remove("on");};
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;
+ if(e.key==="Escape")$("#lb").classList.remove("on");if(e.key==="ArrowRight")show(li+1);if(e.key==="ArrowLeft")show(li-1);});
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("dn-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>

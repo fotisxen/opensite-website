@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14110f">
+<title>Το Κουρείο της Γειτονιάς · Βαλαγιάννη 8, Θεσσαλονίκη · Σειρά &amp; ραντεβού</title>
+<meta name="description" content="Το Κουρείο της Γειτονιάς (Neighbors Barber), Βαλαγιάννη 8, Θεσσαλονίκη. Δες πόση ώρα έχει αναμονή, μπες στη σειρά ή κλείσε ραντεβού. 2310 819251.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo για Το Κουρείο της Γειτονιάς / NEIGHBORS BARBER (@savvas.elef).
+  Αληθινά: Βαλαγιάννη 8, Θεσσαλονίκη 546 39 · τηλ. 2310 819251 · τιμές Treatwell (Κούρεμα αντρικό 12 €, Κούρεμα-λούσιμο-γενειάδα 14 €) · φωτογραφίες από τα posts (Νοέ 2026).
+  Ωράριο, υπόλοιπες τιμές και η «σειρά» είναι demo δεδομένα. Ό,τι είναι .ph είναι placeholder — πάτα «Σημειώσεις» ή άνοιξε με ?clean.
+-->
+<style>
+:root{--bg:#14110f;--bg2:#1c1816;--card:#241f1c;--ink:#f7f1ea;--muted:#a69c92;--acc:#ff4d7d;--acc2:#f0b429;--ok:#43c47a;--line:rgba(247,241,234,.13);
+  --f:"Figtree",system-ui,sans-serif;--s:"Bitter",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.65 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+.k{font:700 11px/1 var(--f);letter-spacing:.28em;text-transform:uppercase;color:var(--acc)}
+h1,h2,h3{font-family:var(--s);font-weight:700;line-height:1.05}
+h2{font-size:clamp(34px,5.2vw,60px)}h3{font-size:clamp(21px,2.6vw,28px)}
+em{font-style:normal;color:var(--acc)}
+section{padding:90px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:12px;font-weight:700;font-size:15px;transition:transform .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--acc);color:#1a0710}
+.btn.y{background:var(--acc2);color:#2a1d00}
+.btn.g{border:1px solid var(--line);background:rgba(255,255,255,.05)}
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s;border-bottom:1px solid transparent}
+header.solid{background:rgba(20,17,15,.94);backdrop-filter:blur(12px);border-color:var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo b{font:700 20px/1.05 var(--s);display:block}
+.logo small{display:block;font:700 8.5px/1.3 var(--f);letter-spacing:.26em;color:var(--muted);text-transform:uppercase}
+header nav{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+header nav a:hover{color:var(--ink)}
+@media(max-width:940px){header nav{display:none}}
+/* hero */
+.hero{position:relative;padding:132px 0 70px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 520px at 78% 18%,rgba(255,77,125,.2),transparent 62%),radial-gradient(700px 460px at 8% 80%,rgba(240,180,41,.13),transparent 60%)}
+.hero .grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center}
+@media(max-width:940px){.hero .grid{grid-template-columns:1fr;gap:30px}}
+.hero h1{font-size:clamp(40px,6.6vw,74px)}
+.hero p{margin:16px 0 26px;font-size:18px;color:var(--muted);max-width:480px}
+.hero .shot{border-radius:20px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 60px rgba(0,0,0,.5);transform:rotate(1.4deg)}
+.hero .shot img{width:100%;height:100%;object-fit:cover}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.status{display:inline-flex;align-items:center;gap:9px;margin-bottom:16px;padding:7px 14px;border-radius:999px;background:rgba(67,196,122,.14);border:1px solid rgba(67,196,122,.42);font-size:13px;font-weight:700}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:bl 1.5s infinite}
+.status.shut{background:rgba(255,77,125,.12);border-color:rgba(255,77,125,.4)}
+.status.shut i{background:var(--acc);animation:none}
+@keyframes bl{50%{opacity:.25}}
+/* queue */
+.queue{background:var(--bg2);border-block:1px solid var(--line)}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:36px}
+@media(max-width:940px){.qgrid{grid-template-columns:1fr;gap:28px}}
+.chairs{display:grid;gap:12px}
+.chair{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.chair .av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:700 16px/1 var(--f);background:rgba(255,77,125,.18);color:var(--acc);flex:none}
+.chair .av.free{background:rgba(67,196,122,.16);color:var(--ok)}
+.chair b{display:block;font-size:15.5px}
+.chair span{font-size:13.5px;color:var(--muted)}
+.chair .t{margin-left:auto;text-align:right}
+.chair .t b{font:700 20px/1 var(--s);color:var(--acc2)}
+.chair .t span{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
+.qlist{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.qlist li{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.qlist li:last-child{border:0}
+.qlist li .n{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.07);font-weight:700;font-size:13px;flex:none}
+.qlist li.me{color:var(--acc2);font-weight:700}
+.qlist li.me .n{background:var(--acc2);color:#2a1d00}
+.qbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.qbig{display:flex;align-items:baseline;gap:10px}
+.qbig b{font:700 72px/1 var(--s);color:var(--acc2)}
+.qbig span{font-size:15px;color:var(--muted)}
+.qbox input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);margin-bottom:9px}
+.qbox .btn{width:100%}
+.qmsg{margin-top:12px;padding:13px 15px;border-radius:12px;background:rgba(240,180,41,.13);border:1px solid rgba(240,180,41,.4);font-size:14.5px;display:none}
+.qmsg.show{display:block}
+/* prices */
+.pr{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:38px}
+.pr article{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;transition:transform .2s,border-color .2s}
+.pr article:hover{transform:translateY(-3px);border-color:rgba(255,77,125,.5)}
+.pr article.real::before{content:"από τον τιμοκατάλογό σας";position:absolute;top:-10px;left:18px;background:var(--ok);color:#06240f;font:700 9.5px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:999px}
+.pr h4{font:700 20px/1.15 var(--s)}
+.pr p{color:var(--muted);font-size:14.5px;margin:7px 0 16px}
+.pr .row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:13px}
+.pr .v{font:700 28px/1 var(--s);color:var(--acc2)}
+.pr .m{font-size:12.5px;color:var(--muted)}
+/* booking */
+.bk{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;margin-top:36px}
+@media(max-width:940px){.bk{grid-template-columns:1fr}}
+h4.lb{font:700 11px/1 var(--f);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 15px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px;transition:.15s}
+.chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#1a0710;font-weight:700}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;align-self:start;position:sticky;top:88px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;margin:16px 0;font-size:14.5px}
+.sum dt{color:var(--muted)}.sum dd{text-align:right;font-weight:600}
+.sum .tot{border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline}
+.sum .tot b{font:700 32px/1 var(--s);color:var(--acc2)}
+.sum input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);margin-bottom:9px}
+.sum .btn{width:100%;margin-top:6px}
+.ok{margin-top:12px;padding:12px 14px;border-radius:10px;background:rgba(67,196,122,.14);border:1px solid rgba(67,196,122,.4);font-size:14px;display:none}
+.ok.show{display:block}
+/* gallery, info */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px}
+.gal button{border-radius:14px;overflow:hidden;aspect-ratio:1;background:var(--card)}
+.gal button:first-child{grid-column:span 2;grid-row:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal button:hover img{transform:scale(1.07)}
+@media(max-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(10,8,7,.95);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:min(840px,94vw);max-height:86vh;border-radius:14px;object-fit:contain}
+.lb button{position:absolute;top:18px;right:20px;font-size:30px;color:#fff}
+.lb .nav{top:50%;transform:translateY(-50%);font-size:40px}.lb .pv{left:16px;right:auto}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:34px}
+.info div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.info h5{font:700 11px/1 var(--f);letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.info ul{list-style:none;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
+.info li{display:flex;justify-content:space-between}
+.info li b{color:var(--ink);font-weight:600}
+.info li.now b{color:var(--ok)}
+.info a.big{display:block;font:700 21px/1.25 var(--s)}
+.map{margin-top:30px;border-radius:18px;overflow:hidden;border:1px solid var(--line);height:320px}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
+footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mob{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(20,17,15,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.mob .btn{flex:1;padding:13px}
+@media(max-width:760px){.mob{display:flex}footer{padding-bottom:110px}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.notes-toggle{position:fixed;left:14px;bottom:14px;z-index:80;padding:9px 14px;border-radius:999px;background:#fff;color:#111;font:700 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:84px}}
+.notes .ph{outline:1.5px dashed var(--acc);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#1a0710;background:var(--acc);padding:4px 8px;border-radius:5px;max-width:250px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+ if(q.has("clean")||localStorage.getItem("kg-notes")==="off") h.classList.remove("notes");
+ if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+
+<header id="hd"><div class="wrap">
+  <a class="logo" href="#top"><b>Το Κουρείο<br>της Γειτονιάς</b><small>Neighbors Barber</small></a>
+  <nav><a href="#queue">Η σειρά τώρα</a><a href="#prices">Τιμές</a><a href="#book">Ραντεβού</a><a href="#work">Δουλειές</a><a href="#info">Πού είμαστε</a></nav>
+  <a class="btn p" href="#queue">Μπες στη σειρά</a>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap"><div class="grid">
+  <div>
+    <div class="status" id="st"><i></i><span>—</span></div>
+    <h1>Το κουρείο <em>της γειτονιάς</em> σου — τώρα και στο κινητό σου</h1>
+    <p>Βαλαγιάννη 8, Θεσσαλονίκη. Δες πόσοι περιμένουν πριν κατέβεις, μπες στη σειρά από το σπίτι ή κλείσε κανονικό ραντεβού.</p>
+    <div class="ctas"><a class="btn p" href="#queue">Δες τη σειρά τώρα</a><a class="btn g" href="#book">Κλείσε ραντεβού</a></div>
+  </div>
+  <div class="shot"><img src="img/p1.jpg" alt="Το Κουρείο της Γειτονιάς"></div>
+</div></div></section>
+
+<section class="queue" id="queue"><div class="wrap">
+  <p class="k">Ζωντανά</p>
+  <h2>Πόση ώρα <em>αναμονή</em>;</h2>
+  <p style="color:var(--muted);max-width:620px;margin-top:12px">Το πιο συχνό τηλεφώνημα που δέχεσαι είναι «έχει κόσμο;». Αυτό το κομμάτι το απαντάει μόνο του.</p>
+  <div class="qgrid">
+    <div>
+      <div class="chairs">
+        <div class="chair"><div class="av">Σ</div><div><b>Καρέκλα 1 · Σάββας</b><span id="c1s">—</span></div><div class="t"><b id="c1t">—</b><span>λεπτά</span></div></div>
+        <div class="chair ph" data-note="Αν δουλεύει και δεύτερος, εμφανίζεται εδώ"><div class="av free">2</div><div><b>Καρέκλα 2</b><span id="c2s">—</span></div><div class="t"><b id="c2t">—</b><span>λεπτά</span></div></div>
+      </div>
+      <ul class="qlist" id="qlist"></ul>
+    </div>
+    <div class="qbox">
+      <p class="k">Εκτιμώμενη αναμονή</p>
+      <div class="qbig"><b id="waitN">—</b><span>λεπτά</span></div>
+      <p style="color:var(--muted);font-size:14px;margin-top:6px" id="waitT">—</p>
+      <div style="margin-top:20px">
+        <input id="qn" placeholder="Το όνομά σου" autocomplete="name">
+        <input id="qp" placeholder="Κινητό (για ειδοποίηση)" inputmode="tel" autocomplete="tel">
+        <button class="btn y" type="button" id="qjoin">Μπες στη σειρά</button>
+        <div class="qmsg" id="qmsg"></div>
+        <p class="ph" data-note="Στο κανονικό site: SMS/Viber «είσαι ο επόμενος» 10 λεπτά πριν" style="margin-top:12px;font-size:12.5px;color:var(--muted)">Θα σου στείλουμε μήνυμα όταν πλησιάζει η σειρά σου.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="prices" class="rv"><div class="wrap">
+  <p class="k">Τιμοκατάλογος</p>
+  <h2>Καθαρές <em>τιμές</em></h2>
+  <div class="pr">
+    <article class="real"><h4>Κούρεμα αντρικό</h4><p>Μηχανή &amp; ψαλίδι, φινίρισμα στον σβέρκο.</p><div class="row"><span class="v">12 €</span><span class="m">15–30′</span></div></article>
+    <article class="real"><h4>Κούρεμα, λούσιμο &amp; γενειάδα</h4><p>Το πλήρες πακέτο της γειτονιάς.</p><div class="row"><span class="v">14 €</span><span class="m">30′</span></div></article>
+    <article><h4>Γενειάδα</h4><p>Σχηματισμός με ξυράφι.</p><div class="row"><span class="v ph" data-note="Βάλε τη δική σου τιμή">7 €</span><span class="m">20′</span></div></article>
+    <article><h4>Παιδικό (έως 12)</h4><p>Γρήγορα, χωρίς κλάματα.</p><div class="row"><span class="v ph" data-note="Βάλε τη δική σου τιμή">10 €</span><span class="m">20′</span></div></article>
+    <article><h4>Skin fade</h4><p>Μηδέν στα πλάγια, καθαρό σβήσιμο.</p><div class="row"><span class="v ph" data-note="Βάλε τη δική σου τιμή">14 €</span><span class="m">35′</span></div></article>
+    <article><h4>Κερί μύτη / αυτιά</h4><p>Σε 5 λεπτά, χωρίς δράμα.</p><div class="row"><span class="v ph" data-note="Βάλε τη δική σου τιμή">3 €</span><span class="m">5′</span></div></article>
+  </div>
+  <p style="margin-top:20px;font-size:14px;color:var(--muted)">Οι δύο πρώτες τιμές είναι οι πραγματικές σας από το Treatwell. Οι υπόλοιπες μπαίνουν σε ένα λεπτό.</p>
+</div></section>
+
+<section class="rv" id="book" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <p class="k">Ή κλείσε κανονικά</p>
+  <h2>Ραντεβού σε <em>τρία κλικ</em></h2>
+  <div class="bk">
+    <div>
+      <h4 class="lb">Υπηρεσία</h4>
+      <div class="chips" id="svcChips">
+        <button class="chip" type="button" data-p="12" data-m="30" aria-pressed="true">Κούρεμα αντρικό</button>
+        <button class="chip" type="button" data-p="14" data-m="30">Κούρεμα + λούσιμο + γενειάδα</button>
+        <button class="chip" type="button" data-p="7" data-m="20">Γενειάδα</button>
+        <button class="chip" type="button" data-p="10" data-m="20">Παιδικό</button>
+        <button class="chip" type="button" data-p="14" data-m="35">Skin fade</button>
+      </div>
+      <h4 class="lb">Μέρα</h4><div class="chips" id="dayChips"></div>
+      <h4 class="lb">Ώρα</h4><div class="slots" id="slots"></div>
+    </div>
+    <aside class="sum">
+      <h3>Το ραντεβού σου</h3>
+      <dl><dt>Υπηρεσία</dt><dd id="rSvc">Κούρεμα αντρικό</dd><dt>Μέρα</dt><dd id="rDay">—</dd><dt>Ώρα</dt><dd id="rTime">—</dd><dt>Διάρκεια</dt><dd id="rMin">30′</dd></dl>
+      <div class="tot"><span>Σύνολο</span><b id="rTot">12 €</b></div>
+      <div style="margin-top:16px">
+        <input id="nm" placeholder="Όνομα" autocomplete="name">
+        <input id="tel" placeholder="Κινητό" inputmode="tel" autocomplete="tel">
+        <button class="btn p" type="button" id="send">Επιβεβαίωση</button>
+        <div class="ok" id="okBox"></div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="work" class="rv"><div class="wrap">
+  <p class="k">Στο μαγαζί</p>
+  <h2>Δουλειές &amp; <em>κέφι</em></h2>
+  <div class="gal" id="gal">
+    <button type="button"><img src="img/p1.jpg" alt="Στο κουρείο" loading="lazy"></button>
+    <button type="button"><img src="img/p2.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p4.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p5.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p6.jpg" alt="Κούρεμα" loading="lazy"></button>
+  </div>
+</div></section>
+
+<section id="info" class="rv" style="padding-top:0"><div class="wrap">
+  <h2>Πού &amp; <em>πότε</em></h2>
+  <div class="info">
+    <div><h5>Ωράριο</h5><ul id="hours"></ul><p class="ph" data-note="Βάλε το σωστό ωράριο" style="font-size:12.5px;color:var(--muted);margin-top:10px">ενδεικτικό</p></div>
+    <div><h5>Διεύθυνση</h5><a class="big" href="https://maps.google.com/?q=Valagianni+8+Thessaloniki" target="_blank" rel="noopener">Βαλαγιάννη 8<br>546 39 Θεσσαλονίκη</a><p style="font-size:14px;color:var(--muted);margin-top:8px">Αγία Τριάδα</p></div>
+    <div><h5>Επικοινωνία</h5><a class="big" href="tel:+302310819251">2310 819251</a><a class="big" href="https://www.instagram.com/savvas.elef/" target="_blank" rel="noopener" style="margin-top:8px">@savvas.elef</a><p style="font-size:13.5px;color:var(--muted);margin-top:8px">2.500+ ακόλουθοι στο Instagram</p></div>
+  </div>
+  <div class="map"><iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=40.6147466,22.9610938&z=17&output=embed"></iframe></div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Το Κουρείο της Γειτονιάς · Βαλαγιάννη 8, Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--acc)">OpenSite</a></span></div></footer>
+
+<div class="mob"><a class="btn g" href="tel:+302310819251">Κλήση</a><a class="btn y" href="#queue">Σειρά</a><a class="btn p" href="#book">Ραντεβού</a></div>
+<div class="lb" id="lb"><button type="button" id="lbX">×</button><button type="button" class="nav pv" id="lbP">‹</button><img id="lbI" alt=""><button type="button" class="nav" id="lbN" style="right:16px">›</button></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#yr").textContent=new Date().getFullYear();
+addEventListener("scroll",()=>$("#hd").classList.toggle("solid",scrollY>40),{passive:true});
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.12});
+$$(".rv").forEach(e=>io.observe(e));
+
+const HOURS=[["Δευτέρα",null],["Τρίτη",[9,20]],["Τετάρτη",[9,15]],["Πέμπτη",[9,20]],["Παρασκευή",[9,20]],["Σάββατο",[9,15]],["Κυριακή",null]];
+const dow=()=>(new Date().getDay()+6)%7;
+$("#hours").innerHTML=HOURS.map(([d,h],i)=>`<li class="${i===dow()?'now':''}"><span>${d}</span><b>${h?h[0]+":00 – "+h[1]+":00":"κλειστά"}</b></li>`).join("");
+const nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+const isOpen=()=>{const h=HOURS[dow()][1];return !!h&&nowH()>=h[0]&&nowH()<h[1];};
+(function(){const b=$("#st"),t=b.querySelector("span"),h=HOURS[dow()][1];
+ if(isOpen())t.textContent="Ανοιχτά τώρα · μέχρι "+h[1]+":00";
+ else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(HOURS[i][1])break;}
+  t.textContent="Κλειστά · ανοίγουμε "+HOURS[i][0]+" "+HOURS[i][1][0]+":00";}})();
+
+/* ---- live queue (demo) ---- */
+const NAMES=["Γιώργος Π.","Νίκος Τ.","Αλέξης","Μιχάλης Κ.","Στέλιος","Βαγγέλης"];
+let q=[],inChair=null,chairLeft=0,mine=null;
+function seed(){
+  if(!isOpen()){q=[];inChair=null;chairLeft=0;return;}
+  const base=(new Date().getHours()*7+new Date().getDate())%4; // 0-3 άτομα
+  inChair=NAMES[0];chairLeft=6+((new Date().getMinutes())%18);
+  q=NAMES.slice(1,1+base);
+}
+function render(){
+  if(!isOpen()){
+    $("#c1s").textContent="κλειστά";$("#c1t").textContent="–";
+    $("#c2s").textContent="κλειστά";$("#c2t").textContent="–";
+    $("#qlist").innerHTML='<li style="color:var(--muted)">Το μαγαζί είναι κλειστό — κλείσε ραντεβού για αύριο.</li>';
+    $("#waitN").textContent="–";$("#waitT").textContent="Ανοίγουμε σύντομα.";
+    return;
+  }
+  $("#c1s").textContent="στην καρέκλα: "+inChair; $("#c1t").textContent=chairLeft;
+  $("#c2s").textContent="ελεύθερη"; $("#c2t").textContent="0";
+  $("#qlist").innerHTML=q.length
+    ? q.map((n,i)=>`<li class="${n===mine?'me':''}"><span class="n">${i+1}</span><span>${n}</span><span style="margin-left:auto;color:var(--muted);font-size:13px">~${chairLeft+i*22} λεπτά</span></li>`).join("")
+    : '<li style="color:var(--muted)">Κανείς δεν περιμένει — έλα τώρα!</li>';
+  const w=q.length?chairLeft+q.length*22:chairLeft;
+  $("#waitN").textContent=w;
+  const t=new Date(Date.now()+w*6e4);
+  $("#waitT").textContent=q.length?("Αν έρθεις τώρα, σειρά περίπου στις "+t.getHours()+":"+String(t.getMinutes()).padStart(2,"0")):"Η καρέκλα 2 είναι ελεύθερη αυτή τη στιγμή.";
+}
+seed();render();
+setInterval(()=>{if(!isOpen())return;chairLeft=Math.max(1,chairLeft-1);render();},20000);
+$("#qjoin").onclick=()=>{
+  const m=$("#qmsg");
+  if(!isOpen()){m.textContent="Είμαστε κλειστά — κλείσε καλύτερα ραντεβού πιο κάτω.";m.classList.add("show");return;}
+  if(mine){m.textContent="Είσαι ήδη στη σειρά.";m.classList.add("show");return;}
+  if(!$("#qn").value.trim()||!$("#qp").value.trim()){m.textContent="Γράψε όνομα και κινητό για να σε ειδοποιήσουμε.";m.classList.add("show");return;}
+  mine=$("#qn").value.trim();q.push(mine);render();
+  m.innerHTML="✓ Μπήκες στη σειρά, θέση <b>"+q.length+"</b>. Θα σου στείλουμε μήνυμα 10 λεπτά πριν.<br><span style='color:var(--muted);font-size:12.5px'>(demo — δεν στέλνεται τίποτα)</span>";
+  m.classList.add("show");
+};
+
+/* ---- booking ---- */
+let svc={n:"Κούρεμα αντρικό",p:12,m:30},day=null,time=null;
+const DAYS=(()=>{const o=[],n=new Date();for(let i=0;i<8;i++){const d=new Date(n.getTime()+i*864e5),idx=(d.getDay()+6)%7;
+ o.push({label:i===0?"Σήμερα":i===1?"Αύριο":["Δευ","Τρί","Τετ","Πέμ","Παρ","Σάβ","Κυρ"][idx]+" "+d.getDate()+"/"+(d.getMonth()+1),closed:!HOURS[idx][1],idx});}return o;})();
+$("#dayChips").innerHTML=DAYS.map((x,i)=>`<button class="chip" type="button" data-i="${i}" ${x.closed?"disabled":""}>${x.label}</button>`).join("");
+function slotsFor(i){const h=HOURS[DAYS[i].idx][1];if(!h)return[];const o=[];
+ for(let t=h[0];t<h[1];t+=0.5){if(i===0&&t<nowH()+1)continue;const hh=Math.floor(t),mm=t%1?"30":"00";
+  if(((hh*5+(mm==="30"?3:0))%8)===0)continue;o.push(hh+":"+mm);}return o;}
+function paint(){$("#rSvc").textContent=svc.n;$("#rMin").textContent=svc.m+"′";$("#rTot").textContent=svc.p+" €";
+ $("#rDay").textContent=day===null?"—":DAYS[day].label;$("#rTime").textContent=time||"—";}
+$$("#svcChips .chip").forEach(b=>b.onclick=()=>{$$("#svcChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));svc={n:b.textContent,p:+b.dataset.p,m:+b.dataset.m};paint();});
+$$("#dayChips .chip").forEach(b=>b.onclick=()=>{if(b.disabled)return;
+ $$("#dayChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));day=+b.dataset.i;time=null;
+ const s=slotsFor(day);
+ $("#slots").innerHTML=s.length?s.map(t=>`<button class="chip" type="button">${t}</button>`).join(""):'<p style="color:var(--muted);font-size:14px">Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.</p>';
+ $$("#slots .chip").forEach(x=>x.onclick=()=>{$$("#slots .chip").forEach(y=>y.setAttribute("aria-pressed",y===x));time=x.textContent;paint();});paint();});
+$("#dayChips .chip:not([disabled])")?.click();
+$("#send").onclick=()=>{const b=$("#okBox");
+ if(!time){b.textContent="Διάλεξε μέρα και ώρα.";b.classList.add("show");return;}
+ if(!$("#nm").value.trim()||!$("#tel").value.trim()){b.textContent="Συμπλήρωσε όνομα και κινητό.";b.classList.add("show");return;}
+ b.innerHTML="✓ Κλείστηκε: <b>"+svc.n+"</b>, "+DAYS[day].label+" στις "+time+".<br><span style='color:var(--muted);font-size:12.5px'>(demo — δεν στέλνεται τίποτα)</span>";b.classList.add("show");};
+paint();
+
+/* lightbox */
+const imgs=$$("#gal img").map(i=>i.src);let li=0;
+function show(i){li=(i+imgs.length)%imgs.length;$("#lbI").src=imgs[li];$("#lb").classList.add("on");}
+$$("#gal button").forEach((b,i)=>b.onclick=()=>show(i));
+$("#lbX").onclick=()=>$("#lb").classList.remove("on");
+$("#lbN").onclick=e=>{e.stopPropagation();show(li+1);};
+$("#lbP").onclick=e=>{e.stopPropagation();show(li-1);};
+$("#lb").onclick=e=>{if(e.target.id==="lb")$("#lb").classList.remove("on");};
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;
+ if(e.key==="Escape")$("#lb").classList.remove("on");if(e.key==="ArrowRight")show(li+1);if(e.key==="ArrowLeft")show(li-1);});
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("kg-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>

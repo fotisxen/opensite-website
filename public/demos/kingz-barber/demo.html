@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0c">
+<title>KING'Z Barber Shop · Κουρείο Θεσσαλονίκη · Ραντεβού &amp; King'z Club</title>
+<meta name="description" content="KING'Z Barber Shop, Θεσσαλονίκη. Haircuts, shaves &amp; more. Κλείσε ραντεβού online και μάζεψε σφραγίδες στο King'z Club. 2314 062980.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo για KING'Z Barber Shop (@kingz_barber_shop).
+  Αληθινά: τηλ. 2314 062980, ωράριο Δευ κλειστά / Τρί–Παρ 10:00–21:00 / Σάβ 10:00–16:00 / Κυρ κλειστά (από την αφίσα τους στο Instagram), φωτογραφίες από τα posts (Νοέ 2026).
+  Διεύθυνση και τιμές δεν υπάρχουν πουθενά δημόσια → placeholder. Ό,τι είναι .ph είναι placeholder — «Σημειώσεις» ή ?clean.
+-->
+<style>
+:root{--bg:#0b0b0c;--bg2:#121214;--card:#18181b;--ink:#f4f2ee;--muted:#999288;--gold:#c9a227;--gold2:#e8cf7a;--line:rgba(244,242,238,.12);
+  --f:"Mulish",system-ui,sans-serif;--s:"Cinzel",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.68 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1140px,100% - 32px);margin-inline:auto}
+.k{font:700 11px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--s);font-weight:600;line-height:1.1;letter-spacing:.02em}
+h2{font-size:clamp(30px,4.6vw,52px)}h3{font-size:clamp(19px,2.4vw,26px)}
+em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:92px 0}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:4px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn.g{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1400}
+.btn.o{border:1px solid rgba(201,162,39,.55);color:var(--gold2)}
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s;border-bottom:1px solid transparent}
+header.solid{background:rgba(11,11,12,.94);backdrop-filter:blur(12px);border-color:var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo b{font:600 19px/1 var(--s);letter-spacing:.14em;display:block}
+.logo small{display:block;font:700 8px/1.4 var(--f);letter-spacing:.34em;color:var(--muted);text-transform:uppercase}
+header nav{display:flex;gap:24px;font-size:13.5px;color:var(--muted);letter-spacing:.04em}
+header nav a:hover{color:var(--gold2)}
+@media(max-width:960px){header nav{display:none}}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;overflow:hidden;text-align:center}
+.hero .bg{position:absolute;inset:0;background:url(img/p2.jpg) center 30%/cover;filter:brightness(.34) grayscale(.45)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 45%,transparent,rgba(11,11,12,.85) 78%),linear-gradient(180deg,rgba(11,11,12,.75),transparent 30%,var(--bg) 97%)}
+.hero .wrap{position:relative;z-index:2;padding:110px 0 70px}
+.crown{width:64px;margin:0 auto 20px;display:block}
+.hero h1{font-size:clamp(38px,7.6vw,96px);letter-spacing:.07em}
+.hero .sub{font:700 11px/1 var(--f);letter-spacing:.46em;text-transform:uppercase;color:var(--gold);margin-top:14px}
+.hero p{max-width:520px;margin:22px auto 28px;font-size:17.5px;color:#cfc9bf}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.status{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:7px 15px;border-radius:999px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.4);font-size:12.5px;font-weight:700;letter-spacing:.06em}
+.status i{width:7px;height:7px;border-radius:50%;background:#55c47f;animation:bl 1.6s infinite}
+.status.shut i{background:var(--gold);animation:none}
+@keyframes bl{50%{opacity:.25}}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin-top:40px;background:var(--line);border:1px solid var(--line)}
+.svc article{background:var(--bg);padding:28px 24px;transition:background .25s}
+.svc article:hover{background:var(--card)}
+.svc h4{font:600 17px/1.2 var(--s);letter-spacing:.06em;text-transform:uppercase}
+.svc p{color:var(--muted);font-size:14px;margin:9px 0 18px;min-height:40px}
+.svc .row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px}
+.svc .v{font:600 24px/1 var(--s);color:var(--gold2)}
+.svc .m{font-size:12px;color:var(--muted);letter-spacing:.1em}
+/* club */
+.club{background:var(--bg2);border-block:1px solid var(--line)}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;margin-top:34px}
+@media(max-width:940px){.cgrid{grid-template-columns:1fr;gap:30px}}
+.cardx{background:linear-gradient(145deg,#1d1a12,#101012);border:1px solid rgba(201,162,39,.4);border-radius:18px;padding:28px;box-shadow:0 22px 50px rgba(0,0,0,.55);position:relative;overflow:hidden}
+.cardx::before{content:"";position:absolute;top:-40%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(201,162,39,.2),transparent 70%)}
+.cardx h3{letter-spacing:.14em;text-transform:uppercase;font-size:20px}
+.cardx .own{font-size:13px;color:var(--muted);margin-top:4px}
+.stamps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:24px 0 18px;position:relative}
+.stamps button{aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(201,162,39,.45);display:grid;place-items:center;font-size:19px;color:rgba(201,162,39,.4);transition:.2s}
+.stamps button.on{background:linear-gradient(135deg,var(--gold),var(--gold2));border-style:solid;border-color:var(--gold2);color:#1a1400}
+.stamps button.free{border-color:var(--gold2);color:var(--gold2);font:600 11px/1.1 var(--f);text-align:center;letter-spacing:.06em}
+.cbar{height:7px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.cbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .4s}
+.cmsg{margin-top:14px;font-size:14px;color:var(--gold2);min-height:22px}
+.cbtns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.cbtns button{padding:10px 16px;border-radius:4px;border:1px solid var(--line);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+/* booking */
+.bk{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;margin-top:34px}
+@media(max-width:940px){.bk{grid-template-columns:1fr}}
+h4.lb{font:700 10.5px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 15px;border-radius:4px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px;transition:.15s}
+.chip[aria-pressed=true]{background:linear-gradient(135deg,var(--gold),var(--gold2));border-color:var(--gold2);color:#1a1400;font-weight:700}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;align-self:start;position:sticky;top:90px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;margin:16px 0;font-size:14.5px}
+.sum dt{color:var(--muted)}.sum dd{text-align:right;font-weight:600}
+.sum .tot{border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline}
+.sum .tot b{font:600 30px/1 var(--s);color:var(--gold2)}
+.sum input{width:100%;padding:12px 14px;border-radius:6px;border:1px solid var(--line);background:rgba(255,255,255,.04);margin-bottom:9px}
+.sum .btn{width:100%;margin-top:6px}
+.ok{margin-top:12px;padding:12px 14px;border-radius:8px;background:rgba(201,162,39,.13);border:1px solid rgba(201,162,39,.4);font-size:14px;display:none}
+.ok.show{display:block}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:36px}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gal button{overflow:hidden;aspect-ratio:3/4;background:var(--card);border:1px solid var(--line)}
+.gal img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4);transition:transform .5s,filter .35s}
+.gal button:hover img{transform:scale(1.06);filter:none}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(8,8,9,.96);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:min(840px,94vw);max-height:86vh;object-fit:contain}
+.lb button{position:absolute;top:18px;right:20px;font-size:30px;color:#fff}
+.lb .nav{top:50%;transform:translateY(-50%);font-size:40px}.lb .pv{left:16px;right:auto}
+/* info */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:34px}
+.info div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
+.info h5{font:700 10.5px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.info ul{list-style:none;display:grid;gap:7px;font-size:14.5px;color:var(--muted)}
+.info li{display:flex;justify-content:space-between}
+.info li b{color:var(--ink);font-weight:600}
+.info li.now b{color:var(--gold2)}
+.info a.big{display:block;font:600 20px/1.3 var(--s);letter-spacing:.04em}
+footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;letter-spacing:.04em}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mob{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(11,11,12,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.mob .btn{flex:1;padding:13px}
+@media(max-width:760px){.mob{display:flex}footer{padding-bottom:110px}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.notes-toggle{position:fixed;left:14px;bottom:14px;z-index:80;padding:9px 14px;border-radius:999px;background:#fff;color:#111;font:700 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:84px}}
+.notes .ph{outline:1.5px dashed var(--gold);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#1a1400;background:var(--gold2);padding:4px 8px;border-radius:5px;max-width:250px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+ if(q.has("clean")||localStorage.getItem("kz-notes")==="off") h.classList.remove("notes");
+ if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+
+<header id="hd"><div class="wrap">
+  <a class="logo" href="#top"><b>KING'Z</b><small>Barber Shop</small></a>
+  <nav><a href="#svc">Υπηρεσίες</a><a href="#club">King'z Club</a><a href="#book">Ραντεβού</a><a href="#work">Δουλειές</a><a href="#info">Ωράριο</a></nav>
+  <a class="btn g" href="#book">Ραντεβού</a>
+</div></header>
+
+<section class="hero" id="top">
+  <div class="bg"></div>
+  <div class="wrap">
+    <svg class="crown" viewBox="0 0 64 44" fill="none" aria-hidden="true">
+      <path d="M4 38h56l-4-26-13 11L32 6 21 23 8 12z" fill="url(#cg)"/><rect x="4" y="38" width="56" height="4.5" rx="1.6" fill="url(#cg)"/>
+      <defs><linearGradient id="cg" x1="0" y1="0" x2="64" y2="44"><stop stop-color="#c9a227"/><stop offset="1" stop-color="#e8cf7a"/></linearGradient></defs>
+    </svg>
+    <div class="status" id="st"><i></i><span>—</span></div>
+    <h1>KING'Z</h1>
+    <div class="sub">Barber Shop · Thessaloniki</div>
+    <p>«A King'z hair deserves nothing but the best.» Haircuts, shaves &amp; more — και από σήμερα, ραντεβού χωρίς να στείλεις μήνυμα και να περιμένεις απάντηση.</p>
+    <div class="ctas"><a class="btn g" href="#book">Κλείσε ραντεβού</a><a class="btn o" href="#club">King'z Club</a></div>
+  </div>
+</section>
+
+<section id="svc"><div class="wrap">
+  <p class="k">Υπηρεσίες</p>
+  <h2>Haircuts, shaves &amp; <em>more</em></h2>
+  <div class="svc">
+    <article><h4>Haircut</h4><p>Κλασικό ή μοντέρνο, με φινίρισμα στο ξυράφι.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">14 €</span><span class="m">30′</span></div></article>
+    <article><h4>Haircut &amp; Beard</h4><p>Κούρεμα και πλήρης σχηματισμός γενειάδας.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">20 €</span><span class="m">50′</span></div></article>
+    <article><h4>Royal Shave</h4><p>Ζεστή πετσέτα, πινέλο, ξυράφι, after shave.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">15 €</span><span class="m">35′</span></div></article>
+    <article><h4>Skin Fade</h4><p>Μηδέν στα πλάγια και καθαρή γραμμή.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">16 €</span><span class="m">40′</span></div></article>
+    <article><h4>Kid's Cut</h4><p>Για τους μικρούς πρίγκιπες, έως 12 ετών.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">11 €</span><span class="m">25′</span></div></article>
+    <article><h4>Beard Trim</h4><p>Γρήγορο φρεσκάρισμα και λάδι.</p><div class="row"><span class="v ph" data-note="Βάλε τις τιμές σου">8 €</span><span class="m">20′</span></div></article>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="club" id="club"><div class="wrap">
+  <p class="k">Πιστότητα</p>
+  <h2>King'z <em>Club</em></h2>
+  <div class="cgrid">
+    <div class="cardx">
+      <h3>King'z Club</h3>
+      <div class="own" id="owner">Η κάρτα σου</div>
+      <div class="stamps" id="stamps"></div>
+      <div class="cbar"><i id="bar" style="width:0%"></i></div>
+      <div class="cmsg" id="cmsg">Πάτα μια σφραγίδα για να δεις πώς δουλεύει.</div>
+      <div class="cbtns">
+        <button type="button" id="reset">Μηδενισμός</button>
+        <button type="button" id="demo5">Γέμισέ την</button>
+      </div>
+    </div>
+    <div>
+      <h3>Το 6ο κούρεμα δώρο</h3>
+      <p style="color:var(--muted);margin-top:12px">Οι χάρτινες κάρτες χάνονται, ξεχνιούνται, βρέχονται. Η ψηφιακή μένει στο κινητό του πελάτη και σου λέει ποιος δεν έχει έρθει εδώ και δύο μήνες.</p>
+      <ul style="list-style:none;margin-top:18px;display:grid;gap:10px;color:var(--muted);font-size:15px">
+        <li>✦ &nbsp;Σφραγίδα με ένα σκανάρισμα στο ταμείο</li>
+        <li>✦ &nbsp;Αυτόματη υπενθύμιση «πάει καιρός» στους παλιούς</li>
+        <li class="ph" data-note="Προαιρετικό — μπορεί να γίνει όποτε θελήσεις">✦ &nbsp;Σύνδεση με Apple / Google Wallet</li>
+      </ul>
+      <a class="btn g" style="margin-top:22px" href="#book">Κλείσε το πρώτο σου</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap">
+  <p class="k">Online 24/7</p>
+  <h2>Κλείσε <em>ραντεβού</em></h2>
+  <p style="color:var(--muted);max-width:620px;margin-top:12px">Σήμερα τα ραντεβού έρχονται με μήνυμα στη σελίδα. Αυτό σημαίνει ότι κάποιος πρέπει να απαντήσει — και όποιος δεν πάρει απάντηση σε 10 λεπτά, πάει αλλού.</p>
+  <div class="bk">
+    <div>
+      <h4 class="lb">Υπηρεσία</h4>
+      <div class="chips" id="svcChips">
+        <button class="chip" type="button" data-p="14" data-m="30" aria-pressed="true">Haircut</button>
+        <button class="chip" type="button" data-p="20" data-m="50">Haircut &amp; Beard</button>
+        <button class="chip" type="button" data-p="15" data-m="35">Royal Shave</button>
+        <button class="chip" type="button" data-p="16" data-m="40">Skin Fade</button>
+        <button class="chip" type="button" data-p="11" data-m="25">Kid's Cut</button>
+      </div>
+      <h4 class="lb">Μέρα</h4><div class="chips" id="dayChips"></div>
+      <h4 class="lb">Ώρα</h4><div class="slots" id="slots"></div>
+    </div>
+    <aside class="sum">
+      <h3>Σύνοψη</h3>
+      <dl><dt>Υπηρεσία</dt><dd id="rSvc">Haircut</dd><dt>Μέρα</dt><dd id="rDay">—</dd><dt>Ώρα</dt><dd id="rTime">—</dd><dt>Διάρκεια</dt><dd id="rMin">30′</dd></dl>
+      <div class="tot"><span>Σύνολο</span><b class="ph" data-note="Δικές σου τιμές" id="rTot">14 €</b></div>
+      <div style="margin-top:16px">
+        <input id="nm" placeholder="Όνομα" autocomplete="name">
+        <input id="tel" placeholder="Κινητό" inputmode="tel" autocomplete="tel">
+        <button class="btn g" type="button" id="send">Επιβεβαίωση</button>
+        <div class="ok" id="okBox"></div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="work" class="rv" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <p class="k">Gallery</p>
+  <h2>Η <em>δουλειά</em> μας</h2>
+  <div class="gal" id="gal">
+    <button type="button"><img src="img/p2.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p5.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p6.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p4.jpg" alt="Στο κουρείο" loading="lazy"></button>
+    <button type="button"><img src="img/p2.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p5.jpg" alt="Κούρεμα" loading="lazy"></button>
+  </div>
+</div></section>
+
+<section id="info" class="rv"><div class="wrap">
+  <p class="k">Πρακτικά</p>
+  <h2>Ωράριο &amp; <em>επικοινωνία</em></h2>
+  <div class="info">
+    <div><h5>Ωράριο</h5><ul id="hours"></ul></div>
+    <div><h5>Τηλέφωνο</h5><a class="big" href="tel:+302314062980">2314 062980</a>
+      <h5 style="margin-top:22px">Instagram</h5><a class="big" href="https://www.instagram.com/kingz_barber_shop/" target="_blank" rel="noopener">@kingz_barber_shop</a></div>
+    <div><h5>Διεύθυνση</h5>
+      <p class="ph" data-note="Βάλε τη διεύθυνση — δεν υπάρχει σε Instagram ούτε Facebook" style="color:var(--muted)">Θεσσαλονίκη</p>
+      <div class="ph" data-note="Εδώ μπαίνει ο χάρτης μόλις έχουμε διεύθυνση" style="margin-top:14px;height:120px;border-radius:8px;background:repeating-linear-gradient(45deg,#17171a,#17171a 10px,#1d1d21 10px,#1d1d21 20px);display:grid;place-items:center;color:var(--muted);font-size:13px">Χάρτης</div>
+    </div>
+  </div>
+  <div style="margin-top:26px;padding:24px;border:1px solid rgba(201,162,39,.35);border-radius:12px;background:rgba(201,162,39,.06)">
+    <h3 style="font-size:20px">Το ωράριο, μία φορά — παντού</h3>
+    <p style="color:var(--muted);margin-top:10px;max-width:640px">Το νέο ωράριο το ανεβάσατε ως φωτογραφία στο Instagram. Σε δύο μέρες έχει χαθεί στο feed. Εδώ αλλάζεις μία γραμμή και ενημερώνεται και το site και το Google — και ο κόσμος βλέπει «ανοιχτά τώρα» χωρίς να ρωτήσει.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> KING'Z Barber Shop · Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--gold2)">OpenSite</a></span></div></footer>
+
+<div class="mob"><a class="btn o" href="tel:+302314062980">Κλήση</a><a class="btn g" href="#book">Ραντεβού</a></div>
+<div class="lb" id="lb"><button type="button" id="lbX">×</button><button type="button" class="nav pv" id="lbP">‹</button><img id="lbI" alt=""><button type="button" class="nav" id="lbN" style="right:16px">›</button></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#yr").textContent=new Date().getFullYear();
+addEventListener("scroll",()=>$("#hd").classList.toggle("solid",scrollY>40),{passive:true});
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.12});
+$$(".rv").forEach(e=>io.observe(e));
+
+/* πραγματικό ωράριο από την αφίσα τους */
+const HOURS=[["Δευτέρα",null],["Τρίτη",[10,21]],["Τετάρτη",[10,21]],["Πέμπτη",[10,21]],["Παρασκευή",[10,21]],["Σάββατο",[10,16]],["Κυριακή",null]];
+const dow=()=>(new Date().getDay()+6)%7, nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+$("#hours").innerHTML=HOURS.map(([d,h],i)=>`<li class="${i===dow()?'now':''}"><span>${d}</span><b>${h?h[0]+":00 – "+h[1]+":00":"κλειστά"}</b></li>`).join("");
+(function(){const b=$("#st"),t=b.querySelector("span"),h=HOURS[dow()][1];
+ if(h&&nowH()>=h[0]&&nowH()<h[1])t.textContent="Ανοιχτά τώρα · μέχρι "+h[1]+":00";
+ else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(HOURS[i][1])break;}
+  t.textContent="Κλειστά · ανοίγουμε "+HOURS[i][0]+" "+HOURS[i][1][0]+":00";}})();
+
+/* ---- King'z Club card ---- */
+const TOTAL=6;let st=0;
+try{st=+(localStorage.getItem("kz-stamps")||0)||0;}catch(e){}
+function card(){
+  let h="";
+  for(let i=0;i<TOTAL;i++){
+    const last=i===TOTAL-1;
+    h+=`<button type="button" data-i="${i}" class="${i<st?"on":""} ${last&&st<TOTAL?"free":""}">${i<st?"★":(last?"ΔΩΡΟ":"")}</button>`;
+  }
+  $("#stamps").innerHTML=h;
+  $("#bar").style.width=Math.min(100,st/TOTAL*100)+"%";
+  $("#cmsg").textContent = st>=TOTAL ? "🎉 Το επόμενο κούρεμα είναι δωρεάν — δείξε την κάρτα στο ταμείο."
+    : st===0 ? "Πάτα μια σφραγίδα για να δεις πώς δουλεύει."
+    : "Σου λείπουν "+(TOTAL-st)+" κουρέματα για το δωρεάν.";
+  $("#owner").textContent = st? "Σφραγίδες: "+st+"/"+TOTAL : "Η κάρτα σου";
+  $$("#stamps button").forEach(b=>b.onclick=()=>{st=(+b.dataset.i)+1===st?+b.dataset.i:(+b.dataset.i)+1;save();});
+}
+function save(){try{localStorage.setItem("kz-stamps",st);}catch(e){}card();}
+$("#reset").onclick=()=>{st=0;save();};
+$("#demo5").onclick=()=>{st=TOTAL;save();};
+card();
+
+/* ---- booking ---- */
+let svc={n:"Haircut",p:14,m:30},day=null,time=null;
+const DAYS=(()=>{const o=[],n=new Date();for(let i=0;i<8;i++){const d=new Date(n.getTime()+i*864e5),idx=(d.getDay()+6)%7;
+ o.push({label:i===0?"Σήμερα":i===1?"Αύριο":["Δευ","Τρί","Τετ","Πέμ","Παρ","Σάβ","Κυρ"][idx]+" "+d.getDate()+"/"+(d.getMonth()+1),closed:!HOURS[idx][1],idx});}return o;})();
+$("#dayChips").innerHTML=DAYS.map((x,i)=>`<button class="chip" type="button" data-i="${i}" ${x.closed?"disabled":""}>${x.label}</button>`).join("");
+function slotsFor(i){const h=HOURS[DAYS[i].idx][1];if(!h)return[];const o=[];
+ for(let t=h[0];t<h[1];t+=0.5){if(i===0&&t<nowH()+1)continue;const hh=Math.floor(t),mm=t%1?"30":"00";
+  if(((hh*4+(mm==="30"?1:0))%7)===0)continue;o.push(hh+":"+mm);}return o;}
+function paint(){$("#rSvc").textContent=svc.n;$("#rMin").textContent=svc.m+"′";$("#rTot").textContent=svc.p+" €";
+ $("#rDay").textContent=day===null?"—":DAYS[day].label;$("#rTime").textContent=time||"—";}
+$$("#svcChips .chip").forEach(b=>b.onclick=()=>{$$("#svcChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));svc={n:b.textContent,p:+b.dataset.p,m:+b.dataset.m};paint();});
+$$("#dayChips .chip").forEach(b=>b.onclick=()=>{if(b.disabled)return;
+ $$("#dayChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));day=+b.dataset.i;time=null;
+ const s=slotsFor(day);
+ $("#slots").innerHTML=s.length?s.map(t=>`<button class="chip" type="button">${t}</button>`).join(""):'<p style="color:var(--muted);font-size:14px">Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.</p>';
+ $$("#slots .chip").forEach(x=>x.onclick=()=>{$$("#slots .chip").forEach(y=>y.setAttribute("aria-pressed",y===x));time=x.textContent;paint();});paint();});
+$("#dayChips .chip:not([disabled])")?.click();
+$("#send").onclick=()=>{const b=$("#okBox");
+ if(!time){b.textContent="Διάλεξε μέρα και ώρα.";b.classList.add("show");return;}
+ if(!$("#nm").value.trim()||!$("#tel").value.trim()){b.textContent="Συμπλήρωσε όνομα και κινητό.";b.classList.add("show");return;}
+ b.innerHTML="✓ Κλείστηκε: <b>"+svc.n+"</b>, "+DAYS[day].label+" στις "+time+". +1 σφραγίδα στο King'z Club.<br><span style='color:var(--muted);font-size:12.5px'>(demo — δεν στέλνεται τίποτα)</span>";
+ b.classList.add("show"); if(st<TOTAL){st++;save();}};
+paint();
+
+/* lightbox */
+const imgs=$$("#gal img").map(i=>i.src);let li=0;
+function show(i){li=(i+imgs.length)%imgs.length;$("#lbI").src=imgs[li];$("#lb").classList.add("on");}
+$$("#gal button").forEach((b,i)=>b.onclick=()=>show(i));
+$("#lbX").onclick=()=>$("#lb").classList.remove("on");
+$("#lbN").onclick=e=>{e.stopPropagation();show(li+1);};
+$("#lbP").onclick=e=>{e.stopPropagation();show(li-1);};
+$("#lb").onclick=e=>{if(e.target.id==="lb")$("#lb").classList.remove("on");};
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;
+ if(e.key==="Escape")$("#lb").classList.remove("on");if(e.key==="ArrowRight")show(li+1);if(e.key==="ArrowLeft")show(li-1);});
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("kz-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>

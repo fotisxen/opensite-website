@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<title>Lioras Barbershop · Παπάφη 1, Θεσσαλονίκη · Ραντεβού &amp; συνδρομές</title>
+<meta name="description" content="Lioras Barbershop, Παπάφη 1, Θεσσαλονίκη. Κούρεμα από 7 € με εβδομαδιαία συνδρομή. Κλείσε ραντεβού online. 2310 823333.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo για Lioras Barbershop (@lioras.barber).
+  Αληθινά (από ebarber.gr + Instagram): Παπάφη 1, Θεσσαλονίκη 546 38 · τηλ. 2310 823333 · 5,0 από 7 αξιολογήσεις · barber Σταμάτης Λ. ·
+  ωράριο Τρί–Παρ 10:30–20:00, Σάβ 10:00–14:30, Κυρ & Δευ κλειστά · ΟΛΟΣ ο τιμοκατάλογος είναι ο πραγματικός τους.
+  Ό,τι είναι .ph είναι placeholder — πάτα «Σημειώσεις» ή άνοιξε με ?clean.
+-->
+<style>
+:root{--bg:#0a0a0a;--bg2:#101010;--card:#161616;--ink:#f5f3ee;--muted:#948f85;--gold:#d4a62a;--gold2:#f0d27a;--line:rgba(245,243,238,.12);
+  --f:"Rubik",system-ui,sans-serif;--s:"Oswald",Impact,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.68 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1150px,100% - 32px);margin-inline:auto}
+.k{font:600 11px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--s);font-weight:600;line-height:1.02;text-transform:uppercase;letter-spacing:.015em}
+h2{font-size:clamp(34px,5.4vw,62px)}h3{font-size:clamp(21px,2.6vw,29px)}
+em{font-style:normal;color:var(--gold)}
+section{padding:92px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:6px;font-weight:600;font-size:15px;transition:transform .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn.g{background:var(--gold);color:#140e00}
+.btn.o{border:1px solid rgba(212,166,42,.5);color:var(--gold2)}
+.btn.d{border:1px solid var(--line);background:rgba(255,255,255,.05)}
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s;border-bottom:1px solid transparent}
+header.solid{background:rgba(10,10,10,.94);backdrop-filter:blur(12px);border-color:var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo b{font:600 23px/1 var(--s);letter-spacing:.1em;display:block}
+.logo small{display:block;font:500 8px/1.4 var(--f);letter-spacing:.32em;color:var(--muted);text-transform:uppercase}
+header nav{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+header nav a:hover{color:var(--gold2)}
+@media(max-width:980px){header nav{display:none}}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:url(img/p1.jpg) center/cover;filter:brightness(.5)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.6),rgba(10,10,10,.1) 36%,var(--bg) 96%)}
+.hero .wrap{position:relative;z-index:2;padding:130px 0 60px}
+.hero h1{font-size:clamp(50px,11vw,146px)}
+.hero p{max-width:470px;margin:14px 0 26px;font-size:18px;color:#d8d3c9}
+.status{display:inline-flex;align-items:center;gap:9px;margin-bottom:16px;padding:7px 14px;border-radius:999px;background:rgba(212,166,42,.12);border:1px solid rgba(212,166,42,.42);font-size:13px;font-weight:500}
+.status i{width:8px;height:8px;border-radius:50%;background:#56c07f;animation:bl 1.6s infinite}
+.status.shut i{background:var(--gold);animation:none}
+@keyframes bl{50%{opacity:.25}}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.stars{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:14px;color:#d8d3c9}
+.stars b{font:600 26px/1 var(--s);color:var(--gold2)}
+/* subscription */
+.sub{background:linear-gradient(160deg,#17130a,#0d0d0d);border-block:1px solid var(--line)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:34px}
+@media(max-width:940px){.sgrid{grid-template-columns:1fr;gap:28px}}
+.plans{display:grid;gap:12px}
+.plan{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:.2s;text-align:left;width:100%}
+.plan[aria-pressed=true]{border-color:var(--gold);background:rgba(212,166,42,.1)}
+.plan .p{font:600 30px/1 var(--s);color:var(--gold2);min-width:66px}
+.plan b{display:block;font-size:15.5px;font-weight:600}
+.plan span{font-size:13.5px;color:var(--muted)}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+.calc .big{font:600 68px/1 var(--s);color:var(--gold2)}
+.calc label{display:block;font:500 11px/1 var(--f);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:18px 0 9px}
+.calc input[type=range]{width:100%;accent-color:var(--gold)}
+.calc .rows{margin-top:18px;display:grid;gap:9px;font-size:14.5px}
+.calc .rows div{display:flex;justify-content:space-between;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.calc .rows div:last-child{border:0;font-weight:600}
+.save{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(86,192,127,.12);border:1px solid rgba(86,192,127,.4);font-size:15px}
+/* price list */
+.menu{max-width:800px;margin:36px auto 0}
+.cat{font:500 11px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin:30px 0 10px}
+.item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.item .nm{font-weight:500}
+.item .ds{display:block;font-size:13px;color:var(--muted)}
+.item .dot{flex:1;border-bottom:1px dotted rgba(245,243,238,.22);transform:translateY(-3px)}
+.item .mn{font-size:12.5px;color:var(--muted);width:40px;text-align:right}
+.item .pr{font:600 21px/1 var(--s);color:var(--gold2);white-space:nowrap;width:62px;text-align:right}
+.item .add{padding:7px 12px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;font-weight:500;transition:.15s}
+.item .add[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#140e00;font-weight:700}
+.basket{position:sticky;bottom:14px;margin-top:24px;background:var(--gold);color:#140e00;border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.basket b{font:600 26px/1 var(--s)}
+.basket small{display:block;opacity:.75;font-size:12.5px}
+.basket .btn{background:#140e00;color:var(--gold2)}
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:34px}
+.revs div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.revs .s{color:var(--gold2);letter-spacing:.14em;font-size:14px}
+.revs p{margin:10px 0 12px;font-size:15px}
+.revs small{color:var(--muted);font-size:13px}
+/* booking */
+.bk{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;margin-top:34px}
+@media(max-width:940px){.bk{grid-template-columns:1fr}}
+h4.lb{font:500 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 15px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px;transition:.15s}
+.chip[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#140e00;font-weight:600}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;align-self:start;position:sticky;top:88px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;margin:16px 0;font-size:14.5px}
+.sum dt{color:var(--muted)}.sum dd{text-align:right;font-weight:500}
+.sum .tot{border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline}
+.sum .tot b{font:600 32px/1 var(--s);color:var(--gold2)}
+.sum input{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);margin-bottom:9px}
+.sum .btn{width:100%;margin-top:6px}
+.ok{margin-top:12px;padding:12px 14px;border-radius:10px;background:rgba(212,166,42,.14);border:1px solid rgba(212,166,42,.4);font-size:14px;display:none}
+.ok.show{display:block}
+.barber{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:14px;max-width:360px}
+.barber .av{width:44px;height:44px;border-radius:50%;background:rgba(212,166,42,.2);color:var(--gold2);display:grid;place-items:center;font:600 18px/1 var(--s)}
+.barber b{display:block;font-size:15px}.barber span{font-size:13px;color:var(--muted)}
+/* gallery + info */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:34px}
+.gal button{overflow:hidden;aspect-ratio:1;border-radius:10px;background:var(--card)}
+.gal button:first-child{grid-column:span 2;grid-row:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal button:hover img{transform:scale(1.07)}
+@media(max-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(7,7,7,.96);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:min(840px,94vw);max-height:86vh;border-radius:12px;object-fit:contain}
+.lb button{position:absolute;top:18px;right:20px;font-size:30px;color:#fff}
+.lb .nav{top:50%;transform:translateY(-50%);font-size:40px}.lb .pv{left:16px;right:auto}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:32px}
+.info div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.info h5{font:500 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.info ul{list-style:none;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
+.info li{display:flex;justify-content:space-between}
+.info li b{color:var(--ink);font-weight:500}
+.info li.now b{color:var(--gold2)}
+.info a.big{display:block;font:600 21px/1.25 var(--s);letter-spacing:.03em}
+.map{margin-top:30px;border-radius:16px;overflow:hidden;border:1px solid var(--line);height:320px}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) invert(.92) hue-rotate(180deg) contrast(.9)}
+footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mob{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(10,10,10,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.mob .btn{flex:1;padding:13px}
+@media(max-width:760px){.mob{display:flex}footer{padding-bottom:110px}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.notes-toggle{position:fixed;left:14px;bottom:14px;z-index:80;padding:9px 14px;border-radius:999px;background:#fff;color:#111;font:700 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:84px}}
+.notes .ph{outline:1.5px dashed var(--gold);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;color:#140e00;background:var(--gold2);padding:4px 8px;border-radius:5px;max-width:250px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+ if(q.has("clean")||localStorage.getItem("lb-notes")==="off") h.classList.remove("notes");
+ if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+
+<header id="hd"><div class="wrap">
+  <a class="logo" href="#top"><b>LIORAS</b><small>Barbershop · Haircuts &amp; Shaves</small></a>
+  <nav><a href="#sub">Συνδρομές</a><a href="#prices">Τιμοκατάλογος</a><a href="#book">Ραντεβού</a><a href="#work">Δουλειές</a><a href="#info">Πού είμαστε</a></nav>
+  <a class="btn g" href="#book">Ραντεβού</a>
+</div></header>
+
+<section class="hero" id="top">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="status" id="st"><i></i><span>—</span></div>
+    <h1>LIORAS<br>BARBERSHOP</h1>
+    <p>Παπάφη 1, Θεσσαλονίκη. Haircuts &amp; shaves — και κούρεμα από 7 € αν κουρεύεσαι κάθε εβδομάδα.</p>
+    <div class="ctas"><a class="btn g" href="#book">Κλείσε ραντεβού</a><a class="btn o" href="#sub">Δες τις συνδρομές</a></div>
+    <div class="stars"><b>5,0</b><span>★★★★★</span><span>από 7 αξιολογήσεις</span></div>
+  </div>
+</section>
+
+<section class="sub" id="sub"><div class="wrap">
+  <p class="k">Το μεγάλο σου ατού</p>
+  <h2>Κουρέψου <em>συχνά</em>, πλήρωσε λιγότερο</h2>
+  <p style="color:var(--muted);max-width:640px;margin-top:12px">Είναι η πιο έξυπνη προσφορά που έχουμε δει σε κουρείο — και δεν τη βλέπει κανείς, γιατί είναι θαμμένη σε μια πλατφόρμα κρατήσεων. Εδώ είναι η πρώτη οθόνη.</p>
+  <div class="sgrid">
+    <div class="plans" id="plans">
+      <button class="plan" type="button" data-pl="12" data-ev="4"><span class="p">12 €</span><span><b>Μία φορά</b><span>Κούρεμα / hairstyle, κανονική τιμή</span></span></button>
+      <button class="plan" type="button" data-pl="10" data-ev="2" aria-pressed="true"><span class="p">10 €</span><span><b>Κάθε δύο εβδομάδες</b><span>Σταθερό ραντεβού, πάντα φρέσκος</span></span></button>
+      <button class="plan" type="button" data-pl="7" data-ev="1"><span class="p">7 €</span><span><b>Κάθε εβδομάδα</b><span>Η καλύτερη τιμή — 15 λεπτά κάθε Σάββατο</span></span></button>
+    </div>
+    <div class="calc">
+      <p class="k">Τι πληρώνεις τον χρόνο</p>
+      <div class="big" id="yr1">—</div>
+      <label>Πόσο συχνά κουρεύεσαι σήμερα; <b id="freqL" style="color:var(--gold2)">κάθε 4 εβδομάδες</b></label>
+      <input type="range" id="freq" min="1" max="8" step="1" value="2">
+      <div class="rows">
+        <div><span>Κουρέματα τον χρόνο</span><span id="cnt">—</span></div>
+        <div><span>Με την κανονική τιμή (12 €)</span><span id="normal">—</span></div>
+        <div><span>Με το πλάνο που διάλεξες</span><span id="planc">—</span></div>
+      </div>
+      <div class="save" id="save">—</div>
+      <a class="btn g" style="margin-top:18px;width:100%" href="#book">Κλείσε σταθερό ραντεβού</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="prices"><div class="wrap">
+  <p class="k">Ο πραγματικός σας τιμοκατάλογος</p>
+  <h2 style="text-align:center">Τιμοκατάλογος</h2>
+  <div class="menu">
+    <p class="cat">Κούρεμα</p>
+    <div class="item"><span><span class="nm">Κούρεμα / hairstyle</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr">12 €</span><button class="add" type="button" data-p="12" data-m="30" data-n="Κούρεμα">+</button></div>
+    <div class="item"><span><span class="nm">Κούρεμα &amp; λούσιμο</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr">14 €</span><button class="add" type="button" data-p="14" data-m="30" data-n="Κούρεμα & λούσιμο">+</button></div>
+    <div class="item"><span><span class="nm">Κούρεμα &amp; μούσι</span><span class="ds">με σχηματισμό</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr">15 €</span><button class="add" type="button" data-p="15" data-m="30" data-n="Κούρεμα & μούσι">+</button></div>
+    <div class="item"><span><span class="nm">Κούρεμα &amp; Black Mask</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr">17 €</span><button class="add" type="button" data-p="17" data-m="30" data-n="Κούρεμα & Black Mask">+</button></div>
+    <div class="item"><span><span class="nm">Κούρεμα, μούσι &amp; Black Mask</span><span class="ds">το πλήρες</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr">22 €</span><button class="add" type="button" data-p="22" data-m="30" data-n="Κούρεμα, μούσι & Black Mask">+</button></div>
+    <p class="cat">Φοιτητές &amp; μαθητές</p>
+    <div class="item"><span><span class="nm">Φοιτητικό κούρεμα</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr">10 €</span><button class="add" type="button" data-p="10" data-m="30" data-n="Φοιτητικό">+</button></div>
+    <div class="item"><span><span class="nm">Μαθητικό κούρεμα</span></span><span class="dot"></span><span class="mn">15′</span><span class="pr">10 €</span><button class="add" type="button" data-p="10" data-m="15" data-n="Μαθητικό">+</button></div>
+    <p class="cat">Συνδρομές</p>
+    <div class="item"><span><span class="nm">Κούρεμα εβδομαδιαίο</span><span class="ds">κουρεύεσαι κάθε εβδομάδα</span></span><span class="dot"></span><span class="mn">15′</span><span class="pr">7 €</span><button class="add" type="button" data-p="7" data-m="15" data-n="Εβδομαδιαίο">+</button></div>
+    <div class="item"><span><span class="nm">Κούρεμα ανά δύο εβδομάδες</span></span><span class="dot"></span><span class="mn">15′</span><span class="pr">10 €</span><button class="add" type="button" data-p="10" data-m="15" data-n="Ανά 2 εβδομάδες">+</button></div>
+    <p class="cat">Γενειάδα, πρόσωπο &amp; έξτρα</p>
+    <div class="item"><span><span class="nm">Περιποίηση γενειάδας</span></span><span class="dot"></span><span class="mn">15′</span><span class="pr">5 €</span><button class="add" type="button" data-p="5" data-m="15" data-n="Γενειάδα">+</button></div>
+    <div class="item"><span><span class="nm">Black Mask</span><span class="ds">μάσκα άνθρακα, 25 λεπτά αναμονή στο κατάστημα</span></span><span class="dot"></span><span class="mn">5′</span><span class="pr">5 €</span><button class="add" type="button" data-p="5" data-m="5" data-n="Black Mask">+</button></div>
+    <div class="item"><span><span class="nm">Λούσιμο</span></span><span class="dot"></span><span class="mn">5′</span><span class="pr">2 €</span><button class="add" type="button" data-p="2" data-m="5" data-n="Λούσιμο">+</button></div>
+    <div class="item"><span><span class="nm">Κερί μύτη</span></span><span class="dot"></span><span class="mn">5′</span><span class="pr">2,5 €</span><button class="add" type="button" data-p="2.5" data-m="5" data-n="Κερί μύτη">+</button></div>
+    <div class="item"><span><span class="nm">Κερί αυτιά</span></span><span class="dot"></span><span class="mn">5′</span><span class="pr">2,5 €</span><button class="add" type="button" data-p="2.5" data-m="5" data-n="Κερί αυτιά">+</button></div>
+    <div class="basket"><div><span id="bTxt">Διάλεξε τι θες</span><small id="bMin">—</small></div><div style="display:flex;align-items:center;gap:16px"><b id="bTot">0 €</b><a class="btn" href="#book" id="bGo">Ραντεβού</a></div></div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <p class="k">Τι λένε</p>
+  <h2>5,0 στα <em>5</em></h2>
+  <div class="revs">
+    <div><div class="s">★★★★★</div><p>«Ευγενικός, ωραίος χώρος, πολλές γνώσεις στο επάγγελμα.»</p><small>Κωνσταντίνος Χ. · Οκτ 2025</small></div>
+    <div><div class="s">★★★★★</div><p>Christos A. βαθμολόγησε με 5 στα 5.</p><small>Οκτ 2025</small></div>
+    <div><div class="s">★★★★★</div><p>Χρήστος Β. βαθμολόγησε με 5 στα 5.</p><small>Οκτ 2025</small></div>
+    <div class="ph" data-note="Το site ζητάει αυτόματα κριτική μετά το ραντεβού — έτσι μαζεύονται δεκάδες"><div class="s">★★★★★</div><p>Η επόμενη κριτική σου.</p><small>Αυτόματο αίτημα μετά το κούρεμα</small></div>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap">
+  <p class="k">Online</p>
+  <h2>Κλείσε <em>ραντεβού</em></h2>
+  <div class="bk">
+    <div>
+      <h4 class="lb">Υπηρεσία</h4>
+      <div class="chips" id="svcChips">
+        <button class="chip" type="button" data-p="12" data-m="30" aria-pressed="true">Κούρεμα</button>
+        <button class="chip" type="button" data-p="14" data-m="30">Κούρεμα &amp; λούσιμο</button>
+        <button class="chip" type="button" data-p="15" data-m="30">Κούρεμα &amp; μούσι</button>
+        <button class="chip" type="button" data-p="22" data-m="30">Κούρεμα, μούσι &amp; mask</button>
+        <button class="chip" type="button" data-p="10" data-m="30">Φοιτητικό</button>
+        <button class="chip" type="button" data-p="7" data-m="15">Εβδομαδιαίο 7 €</button>
+      </div>
+      <h4 class="lb">Barber</h4>
+      <div class="barber"><div class="av">ΣΛ</div><div><b>Σταμάτης Λ.</b><span>★ 5,0 · 3 αξιολογήσεις</span></div></div>
+      <h4 class="lb">Μέρα</h4><div class="chips" id="dayChips"></div>
+      <h4 class="lb">Ώρα</h4><div class="slots" id="slots"></div>
+    </div>
+    <aside class="sum">
+      <h3>Σύνοψη</h3>
+      <dl><dt>Υπηρεσία</dt><dd id="rSvc">Κούρεμα</dd><dt>Barber</dt><dd>Σταμάτης Λ.</dd><dt>Μέρα</dt><dd id="rDay">—</dd><dt>Ώρα</dt><dd id="rTime">—</dd><dt>Διάρκεια</dt><dd id="rMin">30′</dd></dl>
+      <div class="tot"><span>Σύνολο</span><b id="rTot">12 €</b></div>
+      <div style="margin-top:16px">
+        <input id="nm" placeholder="Όνομα" autocomplete="name">
+        <input id="tel" placeholder="Κινητό" inputmode="tel" autocomplete="tel">
+        <button class="btn g" type="button" id="send">Επιβεβαίωση</button>
+        <div class="ok" id="okBox"></div>
+        <p class="ph" data-note="Αυτόματο SMS/Viber υπενθύμισης — μειώνει τα no-show" style="margin-top:12px;font-size:12.5px;color:var(--muted)">Υπενθύμιση μία ώρα πριν.</p>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="work" class="rv"><div class="wrap">
+  <p class="k">Gallery</p>
+  <h2>Δουλειές</h2>
+  <div class="gal" id="gal">
+    <button type="button"><img src="img/p2.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p4.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p5.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p6.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p1.jpg" alt="Lioras Barbershop" loading="lazy"></button>
+  </div>
+</div></section>
+
+<section id="info" class="rv" style="padding-top:0"><div class="wrap">
+  <h2>Πού &amp; <em>πότε</em></h2>
+  <div class="info">
+    <div><h5>Ωράριο</h5><ul id="hours"></ul></div>
+    <div><h5>Διεύθυνση</h5><a class="big" href="https://maps.google.com/?q=Papafi+1+Thessaloniki" target="_blank" rel="noopener">Παπάφη 1<br>546 38 Θεσσαλονίκη</a></div>
+    <div><h5>Επικοινωνία</h5><a class="big" href="tel:+302310823333">2310 823333</a><a class="big" href="https://www.instagram.com/lioras.barber/" target="_blank" rel="noopener" style="margin-top:8px">@lioras.barber</a></div>
+  </div>
+  <div class="map"><iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Papafi%201%2C%20Thessaloniki%20546%2038&output=embed"></iframe></div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Lioras Barbershop · Παπάφη 1, Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--gold2)">OpenSite</a></span></div></footer>
+
+<div class="mob"><a class="btn d" href="tel:+302310823333">Κλήση</a><a class="btn g" href="#book">Ραντεβού</a></div>
+<div class="lb" id="lb"><button type="button" id="lbX">×</button><button type="button" class="nav pv" id="lbP">‹</button><img id="lbI" alt=""><button type="button" class="nav" id="lbN" style="right:16px">›</button></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#yr").textContent=new Date().getFullYear();
+addEventListener("scroll",()=>$("#hd").classList.toggle("solid",scrollY>40),{passive:true});
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.12});
+$$(".rv").forEach(e=>io.observe(e));
+
+/* πραγματικό ωράριο ebarber */
+const HOURS=[["Δευτέρα",null],["Τρίτη",[10.5,20]],["Τετάρτη",[10.5,20]],["Πέμπτη",[10.5,20]],["Παρασκευή",[10.5,20]],["Σάββατο",[10,14.5]],["Κυριακή",null]];
+const fm=t=>Math.floor(t)+":"+(t%1?"30":"00");
+const dow=()=>(new Date().getDay()+6)%7,nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+$("#hours").innerHTML=HOURS.map(([d,h],i)=>`<li class="${i===dow()?'now':''}"><span>${d}</span><b>${h?fm(h[0])+" – "+fm(h[1]):"κλειστά"}</b></li>`).join("");
+(function(){const b=$("#st"),t=b.querySelector("span"),h=HOURS[dow()][1];
+ if(h&&nowH()>=h[0]&&nowH()<h[1])t.textContent="Ανοιχτά τώρα · μέχρι "+fm(h[1]);
+ else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(HOURS[i][1])break;}
+  t.textContent="Κλειστά · ανοίγουμε "+HOURS[i][0]+" "+fm(HOURS[i][1][0]);}})();
+
+/* ---- subscription calculator ---- */
+let plan={p:10,ev:2};
+function calc(){
+  const f=+$("#freq").value;
+  $("#freqL").textContent="κάθε "+f+(f===1?" εβδομάδα":" εβδομάδες");
+  const n=Math.round(52/f);
+  const normal=n*12;
+  const ev=plan.ev, planN=Math.round(52/Math.max(ev,f)*1); // πόσα κουρέματα με το πλάνο
+  const cnt=Math.round(52/f), cost=cnt*plan.p;
+  $("#cnt").textContent=cnt+" κουρέματα";
+  $("#normal").textContent=normal+" €";
+  $("#planc").textContent=cost+" €";
+  $("#yr1").textContent=cost+" €";
+  const diff=normal-cost;
+  $("#save").innerHTML = diff>0
+    ? "Γλιτώνεις <b>"+diff+" €</b> τον χρόνο — και έχεις σταθερή ώρα κάθε φορά."
+    : "Με αυτή τη συχνότητα η κανονική τιμή σε συμφέρει· διάλεξε άλλο πλάνο για να δεις τη διαφορά.";
+}
+$$("#plans .plan").forEach(b=>b.onclick=()=>{$$("#plans .plan").forEach(x=>x.setAttribute("aria-pressed",x===b));
+ plan={p:+b.dataset.pl,ev:+b.dataset.ev};
+ if(plan.ev<4)$("#freq").value=plan.ev;calc();});
+$("#freq").oninput=calc;calc();
+
+/* ---- basket ---- */
+const sel=new Map();
+$$(".item .add").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.n;
+  if(sel.has(k)){sel.delete(k);b.setAttribute("aria-pressed","false");b.textContent="+";}
+  else{sel.set(k,{p:+b.dataset.p,m:+b.dataset.m});b.setAttribute("aria-pressed","true");b.textContent="✓";}
+  let p=0,m=0;sel.forEach(v=>{p+=v.p;m+=v.m;});
+  $("#bTot").textContent=(Math.round(p*10)/10).toString().replace(".",",")+" €";
+  $("#bTxt").textContent=sel.size?[...sel.keys()].join(" + "):"Διάλεξε τι θες";
+  $("#bMin").textContent=sel.size?("≈ "+m+" λεπτά"):"—";
+});
+
+/* ---- booking ---- */
+let svc={n:"Κούρεμα",p:12,m:30},day=null,time=null;
+const DAYS=(()=>{const o=[],n=new Date();for(let i=0;i<8;i++){const d=new Date(n.getTime()+i*864e5),idx=(d.getDay()+6)%7;
+ o.push({label:i===0?"Σήμερα":i===1?"Αύριο":["Δευ","Τρί","Τετ","Πέμ","Παρ","Σάβ","Κυρ"][idx]+" "+d.getDate()+"/"+(d.getMonth()+1),closed:!HOURS[idx][1],idx});}return o;})();
+$("#dayChips").innerHTML=DAYS.map((x,i)=>`<button class="chip" type="button" data-i="${i}" ${x.closed?"disabled":""}>${x.label}</button>`).join("");
+function slotsFor(i){const h=HOURS[DAYS[i].idx][1];if(!h)return[];const o=[];
+ for(let t=h[0];t<h[1];t+=0.5){if(i===0&&t<nowH()+1)continue;
+  const hh=Math.floor(t),mm=t%1?"30":"00";if(((hh*3+(mm==="30"?1:0))%7)===0)continue;o.push(hh+":"+mm);}return o;}
+function paint(){$("#rSvc").textContent=svc.n;$("#rMin").textContent=svc.m+"′";
+ $("#rTot").textContent=(Math.round(svc.p*10)/10).toString().replace(".",",")+" €";
+ $("#rDay").textContent=day===null?"—":DAYS[day].label;$("#rTime").textContent=time||"—";}
+$$("#svcChips .chip").forEach(b=>b.onclick=()=>{$$("#svcChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));svc={n:b.textContent,p:+b.dataset.p,m:+b.dataset.m};paint();});
+$$("#dayChips .chip").forEach(b=>b.onclick=()=>{if(b.disabled)return;
+ $$("#dayChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));day=+b.dataset.i;time=null;
+ const s=slotsFor(day);
+ $("#slots").innerHTML=s.length?s.map(t=>`<button class="chip" type="button">${t}</button>`).join(""):'<p style="color:var(--muted);font-size:14px">Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.</p>';
+ $$("#slots .chip").forEach(x=>x.onclick=()=>{$$("#slots .chip").forEach(y=>y.setAttribute("aria-pressed",y===x));time=x.textContent;paint();});paint();});
+$("#dayChips .chip:not([disabled])")?.click();
+$("#bGo").onclick=()=>{if(!sel.size)return;let p=0,m=0;sel.forEach(v=>{p+=v.p;m+=v.m;});
+ svc={n:[...sel.keys()].join(" + "),p,m};$$("#svcChips .chip").forEach(x=>x.setAttribute("aria-pressed","false"));paint();};
+$("#send").onclick=()=>{const b=$("#okBox");
+ if(!time){b.textContent="Διάλεξε μέρα και ώρα.";b.classList.add("show");return;}
+ if(!$("#nm").value.trim()||!$("#tel").value.trim()){b.textContent="Συμπλήρωσε όνομα και κινητό.";b.classList.add("show");return;}
+ b.innerHTML="✓ Κλείστηκε: <b>"+svc.n+"</b>, "+DAYS[day].label+" στις "+time+" με τον Σταμάτη.<br><span style='color:var(--muted);font-size:12.5px'>(demo — δεν στέλνεται τίποτα)</span>";b.classList.add("show");};
+paint();
+
+/* lightbox */
+const imgs=$$("#gal img").map(i=>i.src);let li=0;
+function show(i){li=(i+imgs.length)%imgs.length;$("#lbI").src=imgs[li];$("#lb").classList.add("on");}
+$$("#gal button").forEach((b,i)=>b.onclick=()=>show(i));
+$("#lbX").onclick=()=>$("#lb").classList.remove("on");
+$("#lbN").onclick=e=>{e.stopPropagation();show(li+1);};
+$("#lbP").onclick=e=>{e.stopPropagation();show(li-1);};
+$("#lb").onclick=e=>{if(e.target.id==="lb")$("#lb").classList.remove("on");};
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;
+ if(e.key==="Escape")$("#lb").classList.remove("on");if(e.key==="ArrowRight")show(li+1);if(e.key==="ArrowLeft")show(li-1);});
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("lb-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>

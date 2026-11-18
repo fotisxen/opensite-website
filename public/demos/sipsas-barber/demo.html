@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f3eee4">
+<title>Sipsas Barber Shop · Βασ. Όλγας 74, Θεσσαλονίκη · Κούρεμα &amp; ξύρισμα</title>
+<meta name="description" content="Sipsas Barber Shop, Λεωφ. Βασιλίσσης Όλγας 74, Θεσσαλονίκη. Κλασικό κούρεμα, fades και παραδοσιακό ξύρισμα με ξυράφι. Ραντεβού: 2315 007682.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@500;600;700&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!--
+  OpenSite demo για Sipsas Barbershop (@sipsasbarbershop).
+  Αληθινά: Λεωφ. Βασιλίσσης Όλγας 74, 546 43 Θεσσαλονίκη · τηλ. 2315 007682 · 4,9/5 από 51 κριτικές στο Facebook · TikTok @sipsas_barbershop ·
+  highlights «Fades cuts», «Barbershop», «Tailor's» · φωτογραφίες από τα posts (Νοέ 2026).
+  Τιμές και ωράριο = placeholder. Ό,τι είναι .ph είναι placeholder — «Σημειώσεις» ή ?clean.
+-->
+<style>
+:root{--bg:#f3eee4;--bg2:#e7dfd0;--card:#fffdf8;--ink:#201c16;--muted:#6d6457;--brass:#9a6b22;--brass2:#c08c33;--green:#1f3b30;--line:rgba(32,28,22,.15);
+  --f:"Karla",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.7 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1130px,100% - 32px);margin-inline:auto}
+.k{font:700 11px/1 var(--f);letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+h1,h2,h3{font-family:var(--s);font-weight:600;line-height:1.08}
+h2{font-size:clamp(32px,4.8vw,56px)}h3{font-size:clamp(20px,2.5vw,27px)}
+em{font-style:italic;color:var(--brass)}
+section{padding:92px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;transition:transform .18s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.b{background:var(--green);color:#f4efe3}
+.btn.o{border:1px solid var(--line);background:var(--card)}
+.btn.br{background:linear-gradient(135deg,var(--brass),var(--brass2));color:#1c1200}
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+header.solid{background:rgba(243,238,228,.95);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo b{font:600 24px/1 var(--s);letter-spacing:.04em;display:block}
+.logo small{display:block;font:700 8px/1.4 var(--f);letter-spacing:.34em;color:var(--muted);text-transform:uppercase}
+header nav{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+header nav a:hover{color:var(--brass)}
+@media(max-width:980px){header nav{display:none}}
+/* hero */
+.hero{padding:132px 0 76px;position:relative}
+.hero .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:940px){.hero .grid{grid-template-columns:1fr;gap:32px}}
+.hero h1{font-size:clamp(40px,6.8vw,80px)}
+.hero p{margin:18px 0 28px;font-size:18px;color:var(--muted);max-width:460px}
+.frame{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5;border:10px solid var(--card);box-shadow:0 26px 60px rgba(32,28,22,.25)}
+.frame img{width:100%;height:100%;object-fit:cover}
+.status{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:7px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13px;font-weight:600}
+.status i{width:8px;height:8px;border-radius:50%;background:#2f8f58}
+.status.shut i{background:var(--brass)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+/* barber pole */
+.pole{position:absolute;left:-54px;top:50%;transform:translateY(-50%);width:34px;height:150px;border-radius:17px;overflow:hidden;border:3px solid #cfc6b4;background:#fff;box-shadow:0 8px 22px rgba(32,28,22,.25)}
+.pole i{position:absolute;inset:-60% 0;background:repeating-linear-gradient(45deg,#c62828 0 14px,#fff 14px 28px,#1b4f9c 28px 42px,#fff 42px 56px);animation:sp 3.4s linear infinite}
+@keyframes sp{to{transform:translateY(33.33%)}}
+@media(max-width:1180px){.pole{display:none}}
+/* ritual */
+.rit{background:var(--green);color:#f1ece0}
+.rit .k{color:var(--brass2)}.rit h2{color:#fff}.rit em{color:var(--brass2)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:36px}
+@media(max-width:880px){.steps{grid-template-columns:repeat(2,1fr)}}
+.steps button{text-align:left;padding:20px 18px;border-radius:6px;border:1px solid rgba(241,236,224,.2);background:rgba(255,255,255,.05);transition:.22s}
+.steps button[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:#1c1200}
+.steps .no{font:600 28px/1 var(--s);opacity:.55}
+.steps b{display:block;margin-top:8px;font-size:15px}
+.ritbody{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+@media(max-width:880px){.ritbody{grid-template-columns:1fr}}
+.ritbody .txt p{color:rgba(241,236,224,.75);margin-top:10px}
+.ritbody .pic{border-radius:6px;overflow:hidden;aspect-ratio:16/11}
+.ritbody .pic img{width:100%;height:100%;object-fit:cover}
+/* services */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:38px}
+@media(max-width:880px){.cols{grid-template-columns:1fr;gap:20px}}
+.cat{font:700 11px/1 var(--f);letter-spacing:.26em;text-transform:uppercase;color:var(--brass);margin:0 0 12px}
+.item{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.item .nm{font-weight:600}
+.item .ds{display:block;font-size:13.5px;color:var(--muted);font-weight:400}
+.item .dot{flex:1;border-bottom:1px dotted rgba(32,28,22,.3);transform:translateY(-4px)}
+.item .pr{font:600 20px/1 var(--s);white-space:nowrap}
+.item .mn{font-size:12.5px;color:var(--muted);width:40px;text-align:right}
+/* booking */
+.bk{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;margin-top:34px}
+@media(max-width:940px){.bk{grid-template-columns:1fr}}
+h4.lb{font:700 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 15px;border-radius:3px;border:1px solid var(--line);background:var(--card);font-size:14px;transition:.15s}
+.chip[aria-pressed=true]{background:var(--green);border-color:var(--green);color:#f1ece0;font-weight:700}
+.chip:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
+.seats{display:flex;gap:12px}
+.seat{flex:1;padding:16px;border-radius:6px;border:1px solid var(--line);background:var(--card);text-align:center;transition:.2s}
+.seat[aria-pressed=true]{border-color:var(--brass);background:rgba(192,140,51,.12)}
+.seat svg{width:42px;height:42px;margin:0 auto 8px;display:block}
+.seat b{display:block;font-size:14.5px}
+.seat span{font-size:12.5px;color:var(--muted)}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px;align-self:start;position:sticky;top:92px;box-shadow:0 16px 40px rgba(32,28,22,.1)}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;margin:16px 0;font-size:14.5px}
+.sum dt{color:var(--muted)}.sum dd{text-align:right;font-weight:600}
+.sum .tot{border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline}
+.sum .tot b{font:600 30px/1 var(--s);color:var(--brass)}
+.sum input{width:100%;padding:12px 14px;border-radius:3px;border:1px solid var(--line);background:#fff;margin-bottom:9px}
+.sum .btn{width:100%;margin-top:6px}
+.ok{margin-top:12px;padding:12px 14px;border-radius:4px;background:rgba(47,143,88,.12);border:1px solid rgba(47,143,88,.4);font-size:14px;display:none}
+.ok.show{display:block}
+/* gallery + info */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gal button{overflow:hidden;aspect-ratio:1;border:7px solid var(--card);box-shadow:0 10px 24px rgba(32,28,22,.12)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal button:hover img{transform:scale(1.07)}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(24,21,16,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:min(840px,94vw);max-height:86vh;object-fit:contain;border:8px solid #fffdf8}
+.lb button{position:absolute;top:18px;right:20px;font-size:30px;color:#fff}
+.lb .nav{top:50%;transform:translateY(-50%);font-size:40px}.lb .pv{left:16px;right:auto}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:32px}
+.info div{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px}
+.info h5{font:700 11px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.info ul{list-style:none;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
+.info li{display:flex;justify-content:space-between}
+.info li b{color:var(--ink);font-weight:600}
+.info li.now b{color:var(--brass)}
+.info a.big{display:block;font:600 21px/1.3 var(--s)}
+.map{margin-top:30px;border-radius:6px;overflow:hidden;border:8px solid var(--card);height:330px;box-shadow:0 16px 40px rgba(32,28,22,.12)}
+.map iframe{width:100%;height:100%;border:0}
+.rate{display:flex;align-items:center;gap:14px;margin-top:26px;padding:18px 22px;border-radius:6px;background:var(--card);border:1px solid var(--line);flex-wrap:wrap}
+.rate b{font:600 38px/1 var(--s);color:var(--brass)}
+footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mob{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(243,238,228,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.mob .btn{flex:1;padding:13px}
+@media(max-width:760px){.mob{display:flex}footer{padding-bottom:110px}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.notes-toggle{position:fixed;left:14px;bottom:14px;z-index:80;padding:9px 14px;border-radius:999px;background:var(--green);color:#fff;font:700 12px/1 system-ui,sans-serif}
+@media(max-width:760px){.notes-toggle{bottom:84px}}
+.notes .ph{outline:1.5px dashed var(--brass);outline-offset:4px;position:relative}
+.notes .ph::after{content:"✎ " attr(data-note);position:absolute;left:0;top:calc(100% + 8px);z-index:30;font:600 11px/1.35 system-ui,sans-serif;letter-spacing:0;text-transform:none;font-style:normal;color:#fff;background:var(--brass);padding:4px 8px;border-radius:4px;max-width:250px;width:max-content;white-space:normal;text-align:left}
+.clean .notes-toggle{display:none}
+</style>
+<script>(function(){try{var q=new URLSearchParams(location.search),h=document.documentElement;
+ if(q.has("clean")||localStorage.getItem("sp-notes")==="off") h.classList.remove("notes");
+ if(q.has("clean")) h.classList.add("clean");}catch(e){}})();</script>
+</head>
+<body>
+
+<header id="hd"><div class="wrap">
+  <a class="logo" href="#top"><b>Sipsas</b><small>Barber Shop · Thessaloniki</small></a>
+  <nav><a href="#rit">Το ξύρισμα</a><a href="#svc">Τιμοκατάλογος</a><a href="#book">Ραντεβού</a><a href="#work">Δουλειές</a><a href="#info">Πού είμαστε</a></nav>
+  <a class="btn b" href="#book">Ραντεβού</a>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap"><div class="grid">
+  <div style="position:relative">
+    <div class="pole"><i></i></div>
+    <div class="status" id="st"><i></i><span>—</span></div>
+    <h1>Κουρείο της <em>παλιάς σχολής</em>, στη Βασ. Όλγας</h1>
+    <p>Λεωφόρος Βασιλίσσης Όλγας 74. Κούρεμα με ψαλίδι, fades, και παραδοσιακό ξύρισμα με ζεστή πετσέτα και ξυράφι — όπως πρέπει.</p>
+    <div class="ctas"><a class="btn b" href="#book">Κλείσε ραντεβού</a><a class="btn o" href="#rit">Δες το τελετουργικό</a></div>
+  </div>
+  <div class="frame"><img src="img/p1.jpg" alt="Η βιτρίνα του Sipsas Barber Shop"></div>
+</div></div></section>
+
+<section class="rit" id="rit"><div class="wrap">
+  <p class="k">Πέντε βήματα</p>
+  <h2>Το <em>τελετουργικό</em> του ξυρίσματος</h2>
+  <div class="steps" id="steps">
+    <button type="button" data-i="0" aria-pressed="true"><span class="no">01</span><b>Ζεστή πετσέτα</b></button>
+    <button type="button" data-i="1"><span class="no">02</span><b>Προ-ξυριστικό λάδι</b></button>
+    <button type="button" data-i="2"><span class="no">03</span><b>Πινέλο &amp; σαπούνι</b></button>
+    <button type="button" data-i="3"><span class="no">04</span><b>Ξυράφι</b></button>
+    <button type="button" data-i="4"><span class="no">05</span><b>Κρύα πετσέτα &amp; βάλσαμο</b></button>
+  </div>
+  <div class="ritbody">
+    <div class="txt"><h3 id="rT">Ζεστή πετσέτα</h3><p id="rD">Δύο λεπτά με ατμό ανοίγουν τους πόρους και μαλακώνουν την τρίχα. Από εδώ ξεκινάει κάθε σωστό ξύρισμα.</p>
+      <p style="margin-top:16px"><a class="btn br" href="#book">Κλείσε ξύρισμα</a></p></div>
+    <div class="pic"><img id="rImg" src="img/p2.jpg" alt="Στο κουρείο"></div>
+  </div>
+</div></section>
+
+<section id="svc"><div class="wrap">
+  <p class="k">Τιμοκατάλογος</p>
+  <h2>Υπηρεσίες</h2>
+  <div class="cols">
+    <div>
+      <p class="cat">Μαλλιά</p>
+      <div class="item"><span><span class="nm">Ανδρικό κούρεμα</span><span class="ds">Μηχανή &amp; ψαλίδι</span></span><span class="dot"></span><span class="mn">30′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">14 €</span></div>
+      <div class="item"><span><span class="nm">Fade / skin fade</span><span class="ds">Το highlight σας στο Instagram</span></span><span class="dot"></span><span class="mn">40′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">16 €</span></div>
+      <div class="item"><span><span class="nm">Κούρεμα με ψαλίδι</span><span class="ds">Κλασική γραμμή</span></span><span class="dot"></span><span class="mn">45′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">18 €</span></div>
+      <div class="item"><span><span class="nm">Παιδικό (έως 12)</span></span><span class="dot"></span><span class="mn">25′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">11 €</span></div>
+    </div>
+    <div>
+      <p class="cat">Πρόσωπο</p>
+      <div class="item"><span><span class="nm">Παραδοσιακό ξύρισμα</span><span class="ds">Πετσέτα, πινέλο, ξυράφι</span></span><span class="dot"></span><span class="mn">35′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">15 €</span></div>
+      <div class="item"><span><span class="nm">Σχηματισμός γενειάδας</span></span><span class="dot"></span><span class="mn">20′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">8 €</span></div>
+      <div class="item"><span><span class="nm">Κούρεμα &amp; γενειάδα</span><span class="ds">Το πλήρες πακέτο</span></span><span class="dot"></span><span class="mn">55′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">20 €</span></div>
+      <div class="item"><span><span class="nm">Κερί μύτη / αυτιά</span></span><span class="dot"></span><span class="mn">5′</span><span class="pr ph" data-note="Βάλε τις τιμές σου">3 €</span></div>
+    </div>
+  </div>
+  <div class="rate"><b>4,9</b><div><div style="color:var(--brass)">★★★★★</div><span style="font-size:14px;color:var(--muted)">51 κριτικές στο Facebook — αλλά καμία στο Google, εκεί που ψάχνει ο κόσμος.</span></div></div>
+</div></section>
+
+<section class="rv" id="book" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap">
+  <p class="k">Χωρίς τηλέφωνο</p>
+  <h2>Κλείσε <em>ραντεβού</em></h2>
+  <div class="bk">
+    <div>
+      <h4 class="lb">Υπηρεσία</h4>
+      <div class="chips" id="svcChips">
+        <button class="chip" type="button" data-p="14" data-m="30" aria-pressed="true">Κούρεμα</button>
+        <button class="chip" type="button" data-p="16" data-m="40">Fade</button>
+        <button class="chip" type="button" data-p="15" data-m="35">Παραδοσιακό ξύρισμα</button>
+        <button class="chip" type="button" data-p="20" data-m="55">Κούρεμα &amp; γενειάδα</button>
+        <button class="chip" type="button" data-p="11" data-m="25">Παιδικό</button>
+      </div>
+      <h4 class="lb">Καρέκλα</h4>
+      <div class="seats" id="seats">
+        <button class="seat" type="button" data-s="Καρέκλα 1" aria-pressed="true">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="20" width="28" height="16" rx="4" fill="#9a6b22"/><rect x="12" y="8" width="24" height="14" rx="5" fill="#1f3b30"/><rect x="20" y="36" width="8" height="7" fill="#9a6b22"/><rect x="13" y="42" width="22" height="4" rx="2" fill="#1f3b30"/></svg>
+          <b>Καρέκλα 1</b><span>Κώστας</span></button>
+        <button class="seat ph" type="button" data-s="Καρέκλα 2" data-note="Αν δουλεύει δεύτερος barber, μπαίνει εδώ">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="20" width="28" height="16" rx="4" fill="#c08c33"/><rect x="12" y="8" width="24" height="14" rx="5" fill="#2c5244"/><rect x="20" y="36" width="8" height="7" fill="#c08c33"/><rect x="13" y="42" width="22" height="4" rx="2" fill="#2c5244"/></svg>
+          <b>Καρέκλα 2</b><span>Όποιος είναι ελεύθερος</span></button>
+      </div>
+      <h4 class="lb">Μέρα</h4><div class="chips" id="dayChips"></div>
+      <h4 class="lb">Ώρα</h4><div class="slots" id="slots"></div>
+    </div>
+    <aside class="sum">
+      <h3>Σύνοψη</h3>
+      <dl><dt>Υπηρεσία</dt><dd id="rSvc">Κούρεμα</dd><dt>Καρέκλα</dt><dd id="rSeat">Καρέκλα 1</dd><dt>Μέρα</dt><dd id="rDay">—</dd><dt>Ώρα</dt><dd id="rTime">—</dd><dt>Διάρκεια</dt><dd id="rMin">30′</dd></dl>
+      <div class="tot"><span>Σύνολο</span><b class="ph" data-note="Δικές σου τιμές" id="rTot">14 €</b></div>
+      <div style="margin-top:16px">
+        <input id="nm" placeholder="Όνομα" autocomplete="name">
+        <input id="tel" placeholder="Κινητό" inputmode="tel" autocomplete="tel">
+        <button class="btn b" type="button" id="send">Επιβεβαίωση</button>
+        <div class="ok" id="okBox"></div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="work" class="rv"><div class="wrap">
+  <p class="k">Fades cuts</p>
+  <h2>Η <em>δουλειά</em> μας</h2>
+  <div class="gal" id="gal">
+    <button type="button"><img src="img/p2.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p4.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p5.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p6.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p1.jpg" alt="Η βιτρίνα" loading="lazy"></button>
+    <button type="button"><img src="img/p3.jpg" alt="Κούρεμα" loading="lazy"></button>
+    <button type="button"><img src="img/p4.jpg" alt="Κούρεμα" loading="lazy"></button>
+  </div>
+</div></section>
+
+<section id="info" class="rv" style="padding-top:0"><div class="wrap">
+  <h2>Πού &amp; <em>πότε</em></h2>
+  <div class="info">
+    <div><h5>Ωράριο</h5><ul id="hours"></ul><p class="ph" data-note="Βάλε το σωστό ωράριο" style="font-size:12.5px;color:var(--muted);margin-top:10px">ενδεικτικό</p></div>
+    <div><h5>Διεύθυνση</h5><a class="big" href="https://maps.google.com/?q=Leoforos+Vasilissis+Olgas+74+Thessaloniki" target="_blank" rel="noopener">Λεωφ. Βασ. Όλγας 74<br>546 43 Θεσσαλονίκη</a></div>
+    <div><h5>Επικοινωνία</h5><a class="big" href="tel:+302315007682">2315 007682</a>
+      <a class="big" href="https://www.instagram.com/sipsasbarbershop/" target="_blank" rel="noopener" style="margin-top:8px">@sipsasbarbershop</a>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:6px">TikTok: @sipsas_barbershop</p></div>
+  </div>
+  <div class="map"><iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=40.6087597,22.9533057&z=17&output=embed"></iframe></div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Sipsas Barber Shop · Λεωφ. Βασ. Όλγας 74, Θεσσαλονίκη</span><span>Demo από <a href="https://opensite.gr" style="color:var(--brass)">OpenSite</a></span></div></footer>
+
+<div class="mob"><a class="btn o" href="tel:+302315007682">Κλήση</a><a class="btn b" href="#book">Ραντεβού</a></div>
+<div class="lb" id="lb"><button type="button" id="lbX">×</button><button type="button" class="nav pv" id="lbP">‹</button><img id="lbI" alt=""><button type="button" class="nav" id="lbN" style="right:16px">›</button></div>
+<button class="notes-toggle" id="notesToggle" type="button">Σημειώσεις</button>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#yr").textContent=new Date().getFullYear();
+addEventListener("scroll",()=>$("#hd").classList.toggle("solid",scrollY>40),{passive:true});
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.12});
+$$(".rv").forEach(e=>io.observe(e));
+
+const HOURS=[["Δευτέρα",null],["Τρίτη",[9,20]],["Τετάρτη",[9,15]],["Πέμπτη",[9,20]],["Παρασκευή",[9,20]],["Σάββατο",[9,15]],["Κυριακή",null]];
+const dow=()=>(new Date().getDay()+6)%7,nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+$("#hours").innerHTML=HOURS.map(([d,h],i)=>`<li class="${i===dow()?'now':''}"><span>${d}</span><b>${h?h[0]+":00 – "+h[1]+":00":"κλειστά"}</b></li>`).join("");
+(function(){const b=$("#st"),t=b.querySelector("span"),h=HOURS[dow()][1];
+ if(h&&nowH()>=h[0]&&nowH()<h[1])t.textContent="Ανοιχτά τώρα · μέχρι "+h[1]+":00";
+ else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(HOURS[i][1])break;}
+  t.textContent="Κλειστά · ανοίγουμε "+HOURS[i][0]+" "+HOURS[i][1][0]+":00";}})();
+
+/* ritual */
+const RIT=[
+ ["Ζεστή πετσέτα","Δύο λεπτά με ατμό ανοίγουν τους πόρους και μαλακώνουν την τρίχα. Από εδώ ξεκινάει κάθε σωστό ξύρισμα.","img/p2.jpg"],
+ ["Προ-ξυριστικό λάδι","Λεπτό στρώμα λαδιού ώστε το ξυράφι να γλιστράει και να μην ερεθίζεται το δέρμα.","img/p3.jpg"],
+ ["Πινέλο &amp; σαπούνι","Αφρός δουλεμένος με πινέλο — σηκώνει την τρίχα όρθια, κάτι που το σπρέι δεν κάνει ποτέ.","img/p4.jpg"],
+ ["Ξυράφι","Δύο περάσματα: με τη φορά και κόντρα. Εδώ φαίνεται το χέρι του barber.","img/p5.jpg"],
+ ["Κρύα πετσέτα &amp; βάλσαμο","Κλείνουν οι πόροι, ηρεμεί το δέρμα, και φεύγεις με πρόσωπο που δεν τσούζει.","img/p6.jpg"]];
+$$("#steps button").forEach(b=>b.onclick=()=>{
+  $$("#steps button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const r=RIT[+b.dataset.i];$("#rT").innerHTML=r[0];$("#rD").innerHTML=r[1];$("#rImg").src=r[2];});
+
+/* booking */
+let svc={n:"Κούρεμα",p:14,m:30},seat="Καρέκλα 1",day=null,time=null;
+const DAYS=(()=>{const o=[],n=new Date();for(let i=0;i<8;i++){const d=new Date(n.getTime()+i*864e5),idx=(d.getDay()+6)%7;
+ o.push({label:i===0?"Σήμερα":i===1?"Αύριο":["Δευ","Τρί","Τετ","Πέμ","Παρ","Σάβ","Κυρ"][idx]+" "+d.getDate()+"/"+(d.getMonth()+1),closed:!HOURS[idx][1],idx});}return o;})();
+$("#dayChips").innerHTML=DAYS.map((x,i)=>`<button class="chip" type="button" data-i="${i}" ${x.closed?"disabled":""}>${x.label}</button>`).join("");
+function slotsFor(i){const h=HOURS[DAYS[i].idx][1];if(!h)return[];const o=[],off=seat==="Καρέκλα 2"?1:0;
+ for(let t=h[0];t<h[1];t+=0.5){if(i===0&&t<nowH()+1)continue;const hh=Math.floor(t),mm=t%1?"30":"00";
+  if(((hh*3+(mm==="30"?2:0)+off)%7)===0)continue;o.push(hh+":"+mm);}return o;}
+function paint(){$("#rSvc").textContent=svc.n;$("#rMin").textContent=svc.m+"′";$("#rTot").textContent=svc.p+" €";
+ $("#rSeat").textContent=seat;$("#rDay").textContent=day===null?"—":DAYS[day].label;$("#rTime").textContent=time||"—";}
+function refreshSlots(){if(day===null)return;const s=slotsFor(day);
+ $("#slots").innerHTML=s.length?s.map(t=>`<button class="chip" type="button">${t}</button>`).join(""):'<p style="color:var(--muted);font-size:14px">Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.</p>';
+ $$("#slots .chip").forEach(x=>x.onclick=()=>{$$("#slots .chip").forEach(y=>y.setAttribute("aria-pressed",y===x));time=x.textContent;paint();});}
+$$("#svcChips .chip").forEach(b=>b.onclick=()=>{$$("#svcChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));svc={n:b.textContent,p:+b.dataset.p,m:+b.dataset.m};paint();});
+$$("#seats .seat").forEach(b=>b.onclick=()=>{$$("#seats .seat").forEach(x=>x.setAttribute("aria-pressed",x===b));seat=b.dataset.s;time=null;refreshSlots();paint();});
+$$("#dayChips .chip").forEach(b=>b.onclick=()=>{if(b.disabled)return;
+ $$("#dayChips .chip").forEach(x=>x.setAttribute("aria-pressed",x===b));day=+b.dataset.i;time=null;refreshSlots();paint();});
+$("#dayChips .chip:not([disabled])")?.click();
+$("#send").onclick=()=>{const b=$("#okBox");
+ if(!time){b.textContent="Διάλεξε μέρα και ώρα.";b.classList.add("show");return;}
+ if(!$("#nm").value.trim()||!$("#tel").value.trim()){b.textContent="Συμπλήρωσε όνομα και κινητό.";b.classList.add("show");return;}
+ b.innerHTML="✓ Κλείστηκε: <b>"+svc.n+"</b>, "+DAYS[day].label+" στις "+time+", "+seat+".<br><span style='color:var(--muted);font-size:12.5px'>(demo — δεν στέλνεται τίποτα)</span>";b.classList.add("show");};
+paint();
+
+/* lightbox */
+const imgs=$$("#gal img").map(i=>i.src);let li=0;
+function show(i){li=(i+imgs.length)%imgs.length;$("#lbI").src=imgs[li];$("#lb").classList.add("on");}
+$$("#gal button").forEach((b,i)=>b.onclick=()=>show(i));
+$("#lbX").onclick=()=>$("#lb").classList.remove("on");
+$("#lbN").onclick=e=>{e.stopPropagation();show(li+1);};
+$("#lbP").onclick=e=>{e.stopPropagation();show(li-1);};
+$("#lb").onclick=e=>{if(e.target.id==="lb")$("#lb").classList.remove("on");};
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("on"))return;
+ if(e.key==="Escape")$("#lb").classList.remove("on");if(e.key==="ArrowRight")show(li+1);if(e.key==="ArrowLeft")show(li-1);});
+$("#notesToggle").onclick=()=>{const on=document.documentElement.classList.toggle("notes");try{localStorage.setItem("sp-notes",on?"on":"off");}catch(e){}};
+</script>
+</body>
+</html>
