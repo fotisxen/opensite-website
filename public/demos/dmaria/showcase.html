@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Showcase · DM style boutique</title>
+<meta name="description" content="Ολοκληρωμένα σύνολα από τη DM style boutique: σακάκια, φορέματα και καθημερινά looks με όλα τα κομμάτια σε ένα καλάθι.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Commissioner:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("dm-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="dmaria.css">
+<style>
+.look{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(24px,4vw,50px);align-items:center;padding:clamp(28px,4vw,52px) 0;border-bottom:1px solid var(--line)}
+.look:last-child{border-bottom:0}
+@media(max-width:900px){.look{grid-template-columns:1fr}}
+.look.rev > .pic{order:2}
+@media(max-width:900px){.look.rev > .pic{order:0}}
+.look .pic{border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -46px rgba(36,27,22,.5)}
+.look .pic img{width:100%;height:100%;object-fit:cover}
+.look h2{font-size:clamp(28px,4vw,46px)}
+.look .desc{color:var(--ink2);margin-top:12px;font-size:16px}
+.items{display:grid;gap:10px;margin-top:22px}
+.item{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:14px;padding:12px 14px;box-shadow:0 1px 0 var(--line)}
+.item img{width:56px;height:70px;object-fit:cover;border-radius:9px;flex:none}
+.item b{display:block;font-size:15px}
+.item span{font-size:13px;color:var(--ink2)}
+.item .p{margin-left:auto;font-weight:600;white-space:nowrap}
+.lookfoot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px}
+.lookfoot b{font:400 30px/1 var(--serif);color:var(--gold)}
+</style>
+</head>
+<body data-page="showcase">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Showcase</span>
+  <h1>Ολοκληρωμένα <em>σύνολα</em></h1>
+  <p class="lead">Τρία looks, με όλα τα κομμάτια τους. Πάρε ό,τι σου αρέσει — ή ολόκληρο το σύνολο με ένα κουμπί.</p>
+</div></header>
+
+<section style="padding-top:10px"><div class="wrap" id="looks"></div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap">
+  <div class="split">
+    <div>
+      <span class="eyebrow">Γιατί μετράει</span>
+      <h2 style="margin:10px 0 14px">Το σύνολο πουλάει <em>καλύτερα</em> από το κομμάτι</h2>
+      <p class="lead">Όποια βλέπει μόνο το σακάκι, αγοράζει το σακάκι. Όποια βλέπει το σύνολο, παίρνει δύο κομμάτια — γιατί δεν χρειάζεται να φανταστεί τίποτα.</p>
+      <a class="btn btn-ink" href="shop.html" style="margin-top:22px">Δες όλη τη συλλογή</a>
+    </div>
+    <div class="frame" style="aspect-ratio:4/3"><img src="img/p8.jpg" alt="DM style boutique"></div>
+  </div>
+</div></section>
+
+<script src="dmaria.js"></script>
+<script>
+const LOOKS = [
+  {t:"Το σακάκι", img:"img/p4.jpg", d:"Δομημένο σακάκι με παντελόνι τσάκισης και πλεκτό ζιβάγκο. Πάει στο γραφείο το πρωί και στο τραπέζι το βράδυ.", ids:["d1","d7","d6"]},
+  {t:"Το φόρεμα", img:"img/p2.jpg", d:"Ένα φόρεμα που δεν θέλει τίποτα άλλο — μόνο ένα σακάκι όταν κρυώνει.", ids:["d4","d2"]},
+  {t:"Καθημερινό", img:"img/p6.jpg", d:"Σατέν τοπ με wide leg παντελόνι. Άνετο χωρίς να μοιάζει πρόχειρο.", ids:["d5","d8"]}
+];
+document.getElementById("looks").innerHTML = LOOKS.map((l,i)=>{
+  const items = l.ids.map(id=>SHOP_P.find(p=>p.id===id));
+  const tot = items.reduce((s,p)=>s+p.pr,0);
+  return `<div class="look ${i%2?"rev":""}">
+    <div class="pic"><img src="${l.img}" alt="${l.t}"></div>
+    <div>
+      <span class="eyebrow">Look ${String(i+1).padStart(2,"0")}</span>
+      <h2>${l.t}</h2>
+      <p class="desc">${l.d}</p>
+      <div class="items">${items.map(p=>`
+        <div class="item"><img src="${p.img}" alt=""><span><b>${p.nm}</b><span>${p.br}</span></span><span class="p">${SHOP_money(p.pr)}</span></div>`).join("")}</div>
+      <div class="lookfoot">
+        <div><span class="small">Σύνολο look</span><br><b>${SHOP_money(tot)}</b></div>
+        <button class="btn btn-ink" data-look="${i}">Όλο το look στο καλάθι</button>
+      </div>
+      <div class="okbox" id="ok${i}"></div>
+    </div>
+  </div>`;
+}).join("");
+document.querySelectorAll("[data-look]").forEach(b=>b.onclick=()=>{
+  const l = LOOKS[+b.dataset.look];
+  l.ids.forEach(id=>{ const p = SHOP_P.find(x=>x.id===id); ShopAdd(p, p.sz.find(s=>!p.out.includes(s)) || p.sz[0]); });
+  const o = document.getElementById("ok"+b.dataset.look);
+  o.innerHTML = "✓ Μπήκαν " + l.ids.length + " κομμάτια στο καλάθι.";
+  o.classList.add("on");
+});
+</script>
+</body>
+</html>

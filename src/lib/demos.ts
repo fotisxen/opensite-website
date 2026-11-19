@@ -10,6 +10,11 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "mikrouli", name: "Το μικρούλι", kind: "E-shop 5 σελίδων · ρούχα & τσάντες σε ένα site, προσφορά 2+1 με καλάθι (Αμπελόκηποι Θεσσαλονίκης)", created: "2026-11-19", instagram: "https://www.instagram.com/to_mikrouli_clothes/" },
+  { slug: "svoures", name: "Σβούρες", kind: "E-shop 5 σελίδων · παιδικά 0–16, φίλτρο ανά ηλικία, οδηγός νουμέρων (Πεύκα Θεσσαλονίκης)", created: "2026-11-19", instagram: "https://www.instagram.com/svoures_paidika_rouxa/" },
+  { slug: "glam", name: "GLAM Πάτρα", kind: "E-shop 5 σελίδων · 2 καταστήματα με εναλλαγή, ανδρικά & γυναικεία (Κορίνθου & Καρατζά)", created: "2026-11-19", instagram: "https://www.instagram.com/glam_patra/" },
+  { slug: "tammy", name: "Tammy's jewelry", kind: "E-shop 5 σελίδων · κοσμήματα, «φτιάξε το σετ σου», δωροσυσκευασία (Νέα Ιωνία)", created: "2026-11-19", instagram: "https://www.instagram.com/tammy_fashion_accessories/" },
+  { slug: "dmaria", name: "DM style boutique", kind: "E-shop 5 σελίδων · showcase looks, σακάκια, αποστολές BOX NOW (Μαρούσι)", created: "2026-11-19", instagram: "https://www.instagram.com/dmaria.style/" },
   { slug: "dental-laser", name: "Dental Laser Clinic", kind: "Οδοντιατρείο 5 σελίδων · πριν/μετά περιστατικά, υπηρεσίες, online ραντεβού (Τριανδρία)", created: "2026-11-19" },
   { slug: "civilthes", name: "CivilThes", kind: "Τεχνικό γραφείο 5 σελίδων · οδηγός «τι χρειάζομαι», ηλεκτρονική ταυτότητα κτιρίου, έργα, προσφορά (Θεσσαλονίκη)", created: "2026-11-19" },
   { slug: "fysiognosis", name: "FysioGnosis", kind: "Φυσικοθεραπευτήριο 5 σελίδων · χάρτης σώματος «πού πονάει», τεχνικές, ομάδα, ραντεβού (Κ. Καραμανλή 84)", created: "2026-11-19" },

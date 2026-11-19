@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Οδηγός νουμέρων · Σβούρες παιδικά ρούχα</title>
+<meta name="description" content="Βρες το νούμερο του παιδιού σου: ηλικία, ύψος και αντιστοίχιση μεγεθών από τις Σβούρες, Πεύκα Θεσσαλονίκης.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("sv-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="svoures.css">
+<style>
+.calcbox{background:var(--card);border-radius:var(--r);padding:clamp(24px,4vw,38px);box-shadow:0 1px 0 var(--line)}
+.res{margin-top:20px;padding:22px;border-radius:16px;background:var(--paper2);text-align:center}
+.res b{display:block;font:700 52px/1 var(--serif);color:var(--gold)}
+.res span{font-size:14px;color:var(--ink2)}
+.tbl{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.tbl th,.tbl td{padding:13px 15px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line)}
+.tbl th{font:700 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);background:var(--paper2)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr.hit td{background:rgba(217,140,98,.14);font-weight:700}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+@media(max-width:820px){.tips{grid-template-columns:1fr}}
+.tips div{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:0 1px 0 var(--line)}
+.tips h3{font-size:18px;margin-bottom:7px}
+.tips p{font-size:14px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="sizes">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Οδηγός νουμέρων</span>
+  <h1>Ποιο <em>νούμερο</em> να πάρω;</h1>
+  <p class="lead">Η πιο συχνή ερώτηση κάθε γονιού — και ο πιο συχνός λόγος που επιστρέφει ένα ρούχο. Εδώ απαντιέται σε δέκα δευτερόλεπτα.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div class="calcbox">
+      <h2 style="font-size:24px;margin-bottom:4px">Βρες το νούμερο</h2>
+      <p class="small" style="margin-bottom:16px">Το ύψος είναι πιο αξιόπιστο από την ηλικία.</p>
+      <label class="field"><span>Ηλικία</span>
+        <select id="age"></select></label>
+      <label class="field"><span>Ύψος παιδιού (cm)</span><input id="h" type="number" inputmode="numeric" value="104"></label>
+      <button class="btn btn-ink" id="go" style="width:100%">Δες το νούμερο</button>
+      <div class="res" id="res"><b>—</b><span>Συμπλήρωσε και πάτα το κουμπί</span></div>
+      <p class="small ph" data-note="Βάλε τον πίνακα των δικών σου brands — αυτός είναι τυπικός" style="margin-top:14px">Ενδεικτικές αντιστοιχίες.</p>
+    </div>
+    <div>
+      <h2 style="font-size:24px;margin-bottom:16px">Πίνακας μεγεθών</h2>
+      <table class="tbl" id="tbl">
+        <thead><tr><th>Ηλικία</th><th>Ύψος</th><th>Νούμερο</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <h2 style="font-size:24px;margin:30px 0 14px">Casual ενηλίκων</h2>
+      <table class="tbl">
+        <thead><tr><th>Μέγεθος</th><th>Αντιστοιχία</th></tr></thead>
+        <tbody>
+          <tr><td><b>S</b></td><td>36–38</td></tr>
+          <tr><td><b>M</b></td><td>40–42</td></tr>
+          <tr><td><b>L</b></td><td>44–46</td></tr>
+          <tr><td><b>XL</b></td><td>48–50</td></tr>
+          <tr><td><b>2XL</b></td><td>52–54</td></tr>
+          <tr><td><b>3XL</b></td><td>56–58</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap">
+  <span class="eyebrow">Μικρά μυστικά</span>
+  <h2 style="margin-top:10px">Τρεις <em>συμβουλές</em></h2>
+  <div class="tips">
+    <div><h3>Πάρε ένα μεγαλύτερο</h3><p>Τα βαμβακερά μπαίνουν λίγο στο πρώτο πλύσιμο και το παιδί μεγαλώνει γρήγορα.</p></div>
+    <div><h3>Μέτρα, μην μαντεύεις</h3><p>Δύο παιδιά τεσσάρων ετών μπορεί να διαφέρουν 10 εκατοστά.</p></div>
+    <div><h3>Αν δεν είσαι σίγουρη</h3><p>Στείλε μας το ύψος και σου λέμε ακριβώς — και αν δεν κάνει, το αλλάζουμε.</p></div>
+  </div>
+</div></section>
+
+<section class="rv"><div class="wrap" style="text-align:center">
+  <h2>Βρήκες το <em>νούμερο</em>;</h2>
+  <p class="lead" style="margin:14px auto 24px">Δες τι υπάρχει σε αυτό το μέγεθος.</p>
+  <a class="btn btn-ink" href="shop.html">Στο κατάστημα</a>
+</div></section>
+
+<script src="svoures.js"></script>
+<script>
+const T = [
+  {a:"3 μηνών", h:[56,62], n:"62"}, {a:"6 μηνών", h:[63,68], n:"68"},
+  {a:"12 μηνών", h:[69,80], n:"80"}, {a:"18–24 μηνών", h:[81,92], n:"92"},
+  {a:"2 ετών", h:[93,98], n:"2"}, {a:"4 ετών", h:[99,110], n:"4"},
+  {a:"6 ετών", h:[111,122], n:"6"}, {a:"8 ετών", h:[123,134], n:"8"},
+  {a:"10 ετών", h:[135,146], n:"10"}, {a:"12 ετών", h:[147,158], n:"12"},
+  {a:"14 ετών", h:[159,166], n:"14"}, {a:"16 ετών", h:[167,176], n:"16"}
+];
+document.querySelector("#tbl tbody").innerHTML = T.map(r=>
+  `<tr data-n="${r.n}"><td>${r.a}</td><td>${r.h[0]}–${r.h[1]} cm</td><td><b>${r.n}</b></td></tr>`).join("");
+document.getElementById("age").innerHTML = T.map((r,i)=>`<option value="${i}" ${i===5?"selected":""}>${r.a}</option>`).join("");
+document.getElementById("age").onchange = e => { document.getElementById("h").value = T[+e.target.value].h[0] + 4; };
+document.getElementById("go").onclick = () => {
+  const h = +document.getElementById("h").value;
+  let best = T.find(r => h >= r.h[0] && h <= r.h[1]);
+  const res = document.getElementById("res");
+  if(!best){
+    best = h < T[0].h[0] ? T[0] : T[T.length-1];
+    res.innerHTML = "<b>"+best.n+"</b><span>Εκτός πίνακα — στείλε μας μήνυμα και σε βοηθάμε.</span>";
+  } else {
+    res.innerHTML = "<b>"+best.n+"</b><span>Αντιστοιχεί σε "+best.a+" · "+best.h[0]+"–"+best.h[1]+" cm</span>";
+  }
+  document.querySelectorAll("#tbl tbody tr").forEach(tr=>tr.classList.toggle("hit", tr.dataset.n===best.n));
+};
+document.getElementById("go").click();
+</script>
+</body>
+</html>

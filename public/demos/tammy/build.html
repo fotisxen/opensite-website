@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Φτιάξε το σετ σου · Tammy's jewelry</title>
+<meta name="description" content="Συνδύασε κολιέ, σκουλαρίκια, βραχιόλι και δαχτυλίδι και δες την τιμή του σετ. Tammy's jewelry, Νέα Ιωνία.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("tm-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="tammy.css">
+<style>
+.builder{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(22px,3.5vw,42px);align-items:start}
+@media(max-width:940px){.builder{grid-template-columns:1fr}}
+.slot{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line);margin-bottom:14px}
+.slot .sh{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.slot .sh b{font:500 20px/1 var(--serif)}
+.slot .sh span{margin-left:auto;font-size:13px;color:var(--ink2)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+.opt{border-radius:12px;border:2px solid transparent;background:var(--paper);padding:8px;transition:.18s;text-align:center}
+.opt[aria-pressed=true]{border-color:var(--gold);background:rgba(168,112,122,.08)}
+.opt img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;margin-bottom:7px}
+.opt b{display:block;font-size:12.5px;line-height:1.25}
+.opt span{font-size:12px;color:var(--ink2)}
+.opt.none{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;color:var(--ink2);font-size:13px}
+.look{position:sticky;top:94px;background:var(--ink);color:#f3e9e8;border-radius:var(--r);padding:clamp(24px,3.5vw,34px)}
+.look .stack{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+.look .stack div{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1;background:rgba(255,255,255,.08);display:grid;place-items:center;font-size:12px;color:#b19ea0;text-align:center;padding:8px}
+.look .stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.look .rows{display:grid;gap:8px;margin:14px 0;font-size:14px}
+.look .rows div{display:flex;justify-content:space-between;gap:12px;padding-bottom:7px;border-bottom:1px dashed rgba(255,255,255,.18)}
+.look .disc{color:var(--gold2);font-weight:700}
+.look .tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.22);padding-top:14px}
+.look .tot b{font:600 34px/1 var(--serif);color:var(--gold2)}
+.look .hint{font-size:13px;color:#bda9a8;margin-top:10px}
+.look .btn{width:100%;margin-top:14px;background:var(--gold);color:#fff}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+@media(max-width:760px){.tiers{grid-template-columns:1fr}}
+.tiers div{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:0 1px 0 var(--line);text-align:center}
+.tiers b{display:block;font:600 30px/1 var(--serif);color:var(--gold)}
+.tiers span{font-size:14px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="build">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Φτιάξε το σετ σου</span>
+  <h1>Συνδύασε και δες το <em>μαζί</em></h1>
+  <p class="lead">Διάλεξε ένα από κάθε κατηγορία — ή όσα θέλεις. Όσο περισσότερα, τόσο μεγαλύτερη η έκπτωση.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="builder">
+    <div id="slots"></div>
+    <aside class="look">
+      <span class="eyebrow" style="color:var(--gold2)">Το σετ σου</span>
+      <div class="stack" id="stack"></div>
+      <div class="rows" id="rows"></div>
+      <div class="tot"><span>Σύνολο</span><b id="tot">0 €</b></div>
+      <p class="hint" id="hint">Διάλεξε τουλάχιστον δύο κομμάτια για έκπτωση.</p>
+      <button class="btn" id="addAll">Όλο το σετ στο καλάθι</button>
+      <div class="okbox" id="ok" style="background:rgba(211,162,168,.22);border-color:rgba(211,162,168,.45);color:#fff"></div>
+    </aside>
+  </div>
+
+  <div class="tiers ph" data-note="Βάλε τα δικά σου ποσοστά — αυτά είναι υπόδειγμα">
+    <div><b>−5%</b><span>για 2 κομμάτια</span></div>
+    <div><b>−10%</b><span>για 3 κομμάτια</span></div>
+    <div><b>−15%</b><span>για 4 κομμάτια</span></div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap">
+  <div class="split">
+    <div>
+      <span class="eyebrow">Γιατί δουλεύει</span>
+      <h2 style="margin:10px 0 14px">Η μέση παραγγελία <em>μεγαλώνει</em> μόνη της</h2>
+      <p class="lead">Όποιος μπαίνει για ένα κολιέ, βγαίνει με κολιέ και σκουλαρίκια — αρκεί να τα δει μαζί. Αυτό στο Instagram δεν γίνεται· εδώ γίνεται σε δέκα δευτερόλεπτα.</p>
+    </div>
+    <div class="frame" style="aspect-ratio:4/3"><img src="img/p4.jpg" alt="Κοσμήματα Tammy's"></div>
+  </div>
+</div></section>
+
+<script src="tammy.js"></script>
+<script>
+const CATS = ["Κολιέ","Σκουλαρίκια","Βραχιόλια","Δαχτυλίδια"];
+const sel = {};   // cat -> {p, sz}
+document.getElementById("slots").innerHTML = CATS.map(c=>{
+  const list = SHOP_P.filter(p=>p.cat===c);
+  return `<div class="slot">
+    <div class="sh"><b>${c}</b><span>${list.length} επιλογές</span></div>
+    <div class="opts" data-cat="${c}">
+      <button class="opt none" type="button" data-id="" aria-pressed="true">χωρίς</button>
+      ${list.map(p=>`<button class="opt" type="button" data-id="${p.id}">
+        <img src="${p.img}" alt=""><b>${p.nm}</b><span>${SHOP_money(p.pr)}</span></button>`).join("")}
+    </div></div>`;
+}).join("");
+
+function discount(n){ return n>=4 ? .15 : n===3 ? .10 : n===2 ? .05 : 0; }
+function paint(){
+  const items = CATS.map(c=>sel[c]).filter(Boolean);
+  document.getElementById("stack").innerHTML = CATS.map(c=>{
+    const s = sel[c];
+    return `<div>${s ? `<img src="${s.p.img}" alt="${s.p.nm}">` : c}</div>`;
+  }).join("");
+  const sub = items.reduce((s,i)=>s+i.p.pr,0);
+  const d = discount(items.length);
+  const rows = document.getElementById("rows");
+  rows.innerHTML = items.length
+    ? items.map(i=>`<div><span>${i.p.nm}</span><span>${SHOP_money(i.p.pr)}</span></div>`).join("")
+      + (d ? `<div class="disc"><span>Έκπτωση σετ (${Math.round(d*100)}%)</span><span>−${SHOP_money(sub*d)}</span></div>` : "")
+    : '<div><span>Δεν έχεις διαλέξει τίποτα</span><span>—</span></div>';
+  document.getElementById("tot").textContent = SHOP_money(sub*(1-d));
+  const left = items.length < 4 ? (items.length < 2 ? 2-items.length : 1) : 0;
+  document.getElementById("hint").textContent = items.length === 0
+    ? "Διάλεξε τουλάχιστον δύο κομμάτια για έκπτωση."
+    : (left ? "Ακόμα " + left + " κομμάτι" + (left===1?"":"α") + " για μεγαλύτερη έκπτωση" : "Έχεις τη μέγιστη έκπτωση σετ.");
+}
+document.querySelectorAll(".opts").forEach(box=>{
+  const cat = box.dataset.cat;
+  box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    box.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b));
+    const id = b.dataset.id;
+    if(!id) delete sel[cat];
+    else { const p = SHOP_P.find(x=>x.id===id); sel[cat] = {p, sz:p.sz[0]}; }
+    paint();
+  });
+});
+paint();
+document.getElementById("addAll").onclick = () => {
+  const items = CATS.map(c=>sel[c]).filter(Boolean);
+  const o = document.getElementById("ok");
+  if(!items.length){ o.textContent = "Διάλεξε πρώτα κάποια κομμάτια."; o.classList.add("on"); return; }
+  items.forEach(i => ShopAdd(i.p, i.sz));
+  o.innerHTML = "✓ Μπήκαν " + items.length + " κομμάτια στο καλάθι.<br><span class='small' style='color:#bda9a8'>Η έκπτωση σετ υπολογίζεται στο ταμείο.</span>";
+  o.classList.add("on");
+};
+</script>
+</body>
+</html>

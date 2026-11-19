@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Επικοινωνία · DM style boutique, Δήμητρος 6 Μαρούσι</title>
+<meta name="description" content="DM style boutique: Δήμητρος 6, Μαρούσι 151 24. Ωράριο, χάρτης, τηλέφωνο 210 8065420 και αποστολές με BOX NOW.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Commissioner:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("dm-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="dmaria.css">
+<style>
+.hours{list-style:none;display:grid;gap:9px;font-size:15px}
+.hours li{display:flex;justify-content:space-between;gap:14px;padding-bottom:9px;border-bottom:1px dashed var(--line)}
+.hours li.now{color:var(--gold)}
+.statusbadge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13.5px;font-weight:700;margin-bottom:18px}
+.statusbadge i{width:8px;height:8px;border-radius:50%;background:#2f8f58}
+.statusbadge.shut i{background:var(--gold)}
+.mapbox{border-radius:var(--r);overflow:hidden;height:380px;box-shadow:0 1px 0 var(--line)}
+.mapbox iframe{width:100%;height:100%;border:0}
+.cc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:22px}
+.cc a{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line);display:block;transition:transform .2s}
+.cc a:hover{transform:translateY(-3px)}
+.cc b{display:block;font:600 19px/1.25 var(--sans);margin-bottom:4px}
+.cc span{font-size:13px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="contact">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Επικοινωνία</span>
+  <h1>Δήμητρος 6, <em>Μαρούσι</em></h1>
+  <p class="lead">151 24. Ελάτε από το κατάστημα ή παραγγείλτε με αποστολή σε όλη την Ελλάδα.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div>
+      <div class="statusbadge" id="st"><i></i><span>—</span></div>
+      <h2 style="font-size:26px;margin-bottom:14px">Ωράριο</h2>
+      <ul class="hours ph" id="hours" data-note="Βάλε το πραγματικό σου ωράριο"></ul>
+      <div class="cc">
+        <a href="tel:+302108065420"><b>210 8065420</b><span>κατάστημα</span></a>
+        <a href="https://www.instagram.com/dmaria.style/" target="_blank" rel="noopener"><b>Instagram</b><span>@dmaria.style</span></a>
+        <a href="https://maps.google.com/?q=Dimitros+6+Marousi" target="_blank" rel="noopener"><b>Οδηγίες</b><span>Δήμητρος 6, Μαρούσι</span></a>
+        <a href="#" class="ph" data-note="Βάλε το email σου"><b>Email</b><span>info@dmstyle.gr</span></a>
+      </div>
+    </div>
+    <div>
+      <div class="mapbox" style="margin-bottom:22px">
+        <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Dimitros%206%2C%20Marousi%20151%2024&z=17&output=embed"></iframe>
+      </div>
+      <div class="card">
+        <h2 style="font-size:24px;margin-bottom:14px">Στείλε μήνυμα</h2>
+        <label class="field"><span>Όνομα</span><input id="n" autocomplete="name"></label>
+        <label class="field"><span>Κινητό ή email</span><input id="e"></label>
+        <label class="field"><span>Θέμα</span>
+          <select id="s"><option>Ερώτηση για προϊόν</option><option>Διαθεσιμότητα νουμέρου</option><option>Παραγγελία &amp; BOX NOW</option><option>Αλλαγή ή επιστροφή</option><option>Άλλο</option></select></label>
+        <label class="field"><span>Μήνυμα</span><textarea id="m" rows="4"></textarea></label>
+        <button class="btn btn-ink" id="go" style="width:100%">Αποστολή</button>
+        <div class="okbox" id="ok"></div>
+        <p class="small" style="margin-top:12px">Απαντάμε συνήθως μέσα στην ίδια μέρα.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<script src="dmaria.js"></script>
+<script>
+const HOURS = [["Δευτέρα",[10,15]],["Τρίτη",[10,14],[17.5,21]],["Τετάρτη",[10,15]],["Πέμπτη",[10,14],[17.5,21]],["Παρασκευή",[10,14],[17.5,21]],["Σάββατο",[10,16]],["Κυριακή",null]];
+const fm = t => Math.floor(t) + ":" + (t%1 ? "30" : "00");
+const dow = () => (new Date().getDay()+6)%7, nowH = () => { const n=new Date(); return n.getHours()+n.getMinutes()/60; };
+const ranges = i => HOURS[i].slice(1).filter(Boolean);
+document.getElementById("hours").innerHTML = HOURS.map((r,i)=>{
+  const rs = ranges(i);
+  return `<li class="${i===dow()?'now':''}"><span>${r[0]}</span><b>${rs.length ? rs.map(x=>fm(x[0])+"–"+fm(x[1])).join(" & ") : "κλειστά"}</b></li>`;
+}).join("");
+(function(){
+  const b = document.getElementById("st"), t = b.querySelector("span");
+  const cur = ranges(dow()).find(([a,z]) => nowH()>=a && nowH()<z);
+  if(cur) t.textContent = "Ανοιχτά τώρα · μέχρι " + fm(cur[1]);
+  else { b.classList.add("shut");
+    let i = dow(), d = 0; while(d < 7){ i=(i+1)%7; d++; if(ranges(i).length) break; }
+    t.textContent = "Κλειστά · ανοίγουμε " + HOURS[i][0] + " " + fm(ranges(i)[0][0]); }
+})();
+document.getElementById("go").onclick = () => { const o = document.getElementById("ok");
+  if(!document.getElementById("n").value.trim() || !document.getElementById("e").value.trim()){
+    o.textContent = "Συμπλήρωσε όνομα και τρόπο επικοινωνίας."; o.classList.add("on"); return; }
+  o.innerHTML = "✓ Το μήνυμα στάλθηκε. Θα σου απαντήσουμε σύντομα.<br><span class='small'>(demo — δεν στέλνεται τίποτα)</span>";
+  o.classList.add("on"); };
+</script>
+</body>
+</html>

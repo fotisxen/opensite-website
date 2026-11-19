@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Τσάντες · Το μικρούλι bags</title>
+<meta name="description" content="Τσάντες από Το μικρούλι — ώμου, χιαστί και καθημερινές. Στο ίδιο καλάθι με τα ρούχα.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("mk-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="mikrouli.css">
+<style>
+.match{background:var(--card);border-radius:var(--r);padding:clamp(24px,4vw,40px);box-shadow:0 1px 0 var(--line);margin-top:32px}
+.pair{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;margin-top:22px}
+@media(max-width:760px){.pair{grid-template-columns:1fr;gap:14px}}
+.pair .side{text-align:center}
+.pair .side img{width:100%;max-width:230px;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);margin:0 auto 12px}
+.pair .side b{display:block;font-size:15px}
+.pair .side span{font-size:13px;color:var(--ink2)}
+.pair .plus{font:800 44px/1 var(--serif);color:var(--gold);text-align:center}
+.pair .sel{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.pair .sel button{padding:7px 12px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;background:var(--paper)}
+.pair .sel button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.matchfoot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.matchfoot b{font:800 30px/1 var(--serif);color:var(--gold)}
+</style>
+</head>
+<body data-page="bags">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">@to_mikrouli_bags</span>
+  <h1>Οι <em>τσάντες</em></h1>
+  <p class="lead">Ο δεύτερος λογαριασμός σας, στο ίδιο κατάστημα και στο ίδιο καλάθι με τα ρούχα.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <div class="grid" id="grid"></div>
+  <p class="small ph" data-note="Τα προϊόντα και οι τιμές είναι ενδεικτικά" style="margin-top:22px">Δείγμα από τις τσάντες.</p>
+
+  <div class="match">
+    <span class="eyebrow">Πάνε μαζί</span>
+    <h2 style="margin-top:8px;font-size:clamp(24px,3.4vw,36px)">Ρούχο + <em>τσάντα</em></h2>
+    <p class="lead" style="margin-top:8px">Όποια αγοράζει μπλούζα δεν βλέπει ποτέ την τσάντα που της πάει, γιατί είναι σε άλλο προφίλ. Εδώ είναι δίπλα-δίπλα — και μετράνε και για το 2+1.</p>
+    <div class="pair">
+      <div class="side">
+        <img id="imgA" src="" alt="">
+        <b id="nmA">—</b><span id="prA">—</span>
+        <div class="sel" id="selA"></div>
+      </div>
+      <div class="plus">+</div>
+      <div class="side">
+        <img id="imgB" src="" alt="">
+        <b id="nmB">—</b><span id="prB">—</span>
+        <div class="sel" id="selB"></div>
+      </div>
+    </div>
+    <div class="matchfoot">
+      <div><span class="small">Σύνολο για τα δύο</span><br><b id="pairTot">—</b></div>
+      <button class="btn btn-ink" id="pairAdd">Και τα δύο στο καλάθι</button>
+    </div>
+    <div class="okbox" id="pairOk"></div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap" style="text-align:center">
+  <h2>Ισχύει και εδώ το <em>2+1</em></h2>
+  <p class="lead" style="margin:14px auto 24px">Ρούχα και τσάντες μετράνε μαζί στην προσφορά.</p>
+  <a class="btn btn-ink" href="offers.html">Δες πώς δουλεύει</a>
+</div></section>
+
+<script src="mikrouli.js"></script>
+<script>
+const P = SHOP_P;
+const bags = P.filter(p=>p.cat==="Τσάντες");
+const clothes = P.filter(p=>p.cat!=="Τσάντες");
+const g = document.getElementById("grid");
+g.innerHTML = bags.map(ShopCard).join("");
+ShopBind(g);
+
+let A = clothes[0], B = bags[0], szA = A.sz[0], szB = B.sz[0];
+function side(which){
+  const p = which==="A" ? A : B, list = which==="A" ? clothes : bags;
+  document.getElementById("img"+which).src = p.img;
+  document.getElementById("nm"+which).textContent = p.nm;
+  document.getElementById("pr"+which).textContent = SHOP_money(p.pr);
+  const sel = document.getElementById("sel"+which);
+  sel.innerHTML = list.map(x=>`<button type="button" data-id="${x.id}" ${x.id===p.id?'aria-pressed="true"':""}>${x.nm.split(" ")[0]}</button>`).join("");
+  sel.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const np = list.find(x=>x.id===b.dataset.id);
+    if(which==="A"){ A=np; szA=np.sz[0]; } else { B=np; szB=np.sz[0]; }
+    side(which); tot(); });
+}
+function tot(){ document.getElementById("pairTot").textContent = SHOP_money(A.pr + B.pr); }
+side("A"); side("B"); tot();
+document.getElementById("pairAdd").onclick = () => {
+  ShopAdd(A, szA); ShopAdd(B, szB);
+  const o = document.getElementById("pairOk");
+  o.innerHTML = "✓ Μπήκαν και τα δύο στο καλάθι.";
+  o.classList.add("on");
+};
+</script>
+</body>
+</html>
