@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Επικοινωνία &amp; προσφορά · CivilTHES, Ευαγόρα 6 Θεσσαλονίκη</title>
+<meta name="description" content="Τεχνικό γραφείο CivilTHES, Ευαγόρα 6, 544 53 Θεσσαλονίκη. 2310 619 505, 6980 127 727, info@civilthes.com.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("cv-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="civilthes.css">
+<style>
+em,i.g{font-style:normal;font-weight:500}
+.mapbox{border-radius:var(--r);overflow:hidden;height:400px;box-shadow:0 1px 0 var(--line)}
+.mapbox iframe{width:100%;height:100%;border:0}
+.cc{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:24px}
+.cc a{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line);display:block;transition:transform .2s}
+.cc a:hover{transform:translateY(-3px)}
+.cc b{display:block;font:500 19px/1.25 var(--sans);margin-bottom:4px}
+.cc span{font-size:13px;color:var(--ink2)}
+.up{border:1.5px dashed var(--line);border-radius:var(--r);padding:24px;text-align:center;color:var(--ink2);font-size:14px;background:var(--paper)}
+</style>
+</head>
+<body data-page="contact">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Επικοινωνία</span>
+  <h1>Ζητήστε <em>προσφορά</em></h1>
+  <p class="lead">Πείτε μας τι θέλετε να κάνετε. Απαντάμε με το τι χρειάζεται, πόσο περίπου κοστίζει και πόσο θα πάρει — χωρίς δέσμευση.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div class="card">
+      <h2 style="font-size:26px;margin-bottom:16px">Φόρμα αιτήματος</h2>
+      <label class="field"><span>Τι χρειάζεστε</span><select id="t"></select></label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <label class="field"><span>Ονοματεπώνυμο</span><input id="n" autocomplete="name"></label>
+        <label class="field"><span>Κινητό</span><input id="p" inputmode="tel" autocomplete="tel"></label>
+      </div>
+      <label class="field"><span>Email</span><input id="e" type="email" autocomplete="email"></label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <label class="field"><span>Περιοχή ακινήτου</span><input id="a" placeholder="π.χ. Τούμπα"></label>
+        <label class="field"><span>Τετραγωνικά (περίπου)</span><input id="sq" type="number" inputmode="numeric" placeholder="85"></label>
+      </div>
+      <label class="field"><span>Λίγα λόγια</span><textarea id="m" rows="4" placeholder="π.χ. πουλάω διαμέρισμα, ο συμβολαιογράφος ζητάει ταυτότητα κτιρίου"></textarea></label>
+      <div class="up ph" data-note="Μπορεί να δέχεται αρχεία: σχέδια, άδεια, φωτογραφίες">📎 Ανεβάστε σχέδια ή φωτογραφίες (προαιρετικά)</div>
+      <button class="btn btn-ink" id="go" style="width:100%;margin-top:16px">Αποστολή αιτήματος</button>
+      <div class="okbox" id="ok"></div>
+      <p class="small" style="margin-top:12px">Τα στοιχεία σας χρησιμοποιούνται μόνο για να σας απαντήσουμε.</p>
+    </div>
+    <div>
+      <div class="mapbox" style="margin-bottom:22px">
+        <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Evagora%206%2C%20Thessaloniki%20544%2053&z=16&output=embed"></iframe>
+      </div>
+      <h2 style="font-size:26px;margin-bottom:6px">Το γραφείο</h2>
+      <p class="lead">Ευαγόρα 6, 544 53 Θεσσαλονίκη</p>
+      <div class="cc">
+        <a href="tel:+302310619505"><b>2310 619 505</b><span>γραφείο</span></a>
+        <a href="tel:+306980127727"><b>6980 127 727</b><span>κινητό</span></a>
+        <a href="mailto:info@civilthes.com"><b>info@civilthes.com</b><span>email</span></a>
+        <a class="ph" data-note="Βάλτε το ωράριο του γραφείου" href="#"><b>Δευ–Παρ 09:00–17:00</b><span>ωράριο</span></a>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+        <a class="btn btn-ink" href="https://maps.google.com/?q=Evagora+6+Thessaloniki" target="_blank" rel="noopener">Οδηγίες</a>
+        <a class="btn btn-line" href="ktirio.html">Ταυτότητα κτιρίου</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<script src="civilthes.js"></script>
+<script>
+document.getElementById("t").innerHTML = SVC_TOPICS.map(t=>`<option>${t}</option>`).join("");
+document.getElementById("go").onclick=()=>{const o=document.getElementById("ok");
+ if(!document.getElementById("n").value.trim()||!document.getElementById("p").value.trim()){
+   o.textContent="Συμπληρώστε ονοματεπώνυμο και κινητό."; o.classList.add("on"); return; }
+ o.innerHTML="✓ Το αίτημα στάλθηκε. Θα επικοινωνήσουμε μαζί σας την ίδια ή την επόμενη εργάσιμη.<br><span class='small'>(demo — δεν στέλνεται τίποτα)</span>";
+ o.classList.add("on");};
+</script>
+</body>
+</html>

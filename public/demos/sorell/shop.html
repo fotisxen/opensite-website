@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Κατάστημα · Sorell Boutique Θεσσαλονίκη</title>
+<meta name="description" content="Η συλλογή της Sorell Boutique — φορέματα, τοπ, παντελόνια και αξεσουάρ. Παραγγελία χωρίς DM, αποστολή σε όλο τον κόσμο.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("sr-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="sorell.css">
+<style>
+
+.shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.sortbar{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--ink2)}
+.sortbar select{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.count{font-size:14px;color:var(--ink2);margin:0 0 18px}</style>
+</head>
+<body data-page="shop">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Κατάστημα</span>
+  <h1>Η <em>συλλογή</em></h1>
+  <p class="lead">Διάλεξε, βάλε στο καλάθι, ολοκλήρωσε. Χωρίς να στείλεις μήνυμα και χωρίς να περιμένεις απάντηση.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <div class="shop-head">
+    <div class="filters" id="cats" style="margin:0"></div>
+    <div class="sortbar"><label for="sort">Ταξινόμηση</label>
+      <select id="sort">
+        <option value="new">Νεότερα πρώτα</option>
+        <option value="lo">Τιμή: χαμηλή → υψηλή</option>
+        <option value="hi">Τιμή: υψηλή → χαμηλή</option>
+      </select>
+    </div>
+  </div>
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+  <p class="small ph" data-note="Τα προϊόντα, οι τιμές και τα μεγέθη είναι ενδεικτικά — μπαίνουν τα δικά σου" style="margin-top:26px">Δείγμα καταλόγου.</p>
+</div></section>
+
+<script src="sorell.js"></script>
+<script>
+const P = SHOP_P;
+const cats = ["Όλα", ...new Set(P.map(p=>p.cat))];
+const q = new URLSearchParams(location.search);
+let cur = cats.includes(q.get("c")) ? q.get("c") : "Όλα";
+document.getElementById("cats").innerHTML = cats.map(c=>`<button type="button" data-c="${c}" ${c===cur?'aria-pressed="true"':""}>${c}</button>`).join("");
+function render(){
+  let list = P.filter(p => cur==="Όλα" || p.cat===cur);
+  const s = document.getElementById("sort").value;
+  if(s==="lo") list = [...list].sort((a,b)=>a.pr-b.pr);
+  if(s==="hi") list = [...list].sort((a,b)=>b.pr-a.pr);
+  const g = document.getElementById("grid");
+  g.innerHTML = list.map(ShopCard).join("");
+  ShopBind(g);
+  document.getElementById("count").textContent = list.length + (list.length===1?" κομμάτι":" κομμάτια");
+}
+document.querySelectorAll("#cats button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#cats button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  cur = b.dataset.c; render(); });
+document.getElementById("sort").onchange = render;
+render();
+</script>
+</body>
+</html>

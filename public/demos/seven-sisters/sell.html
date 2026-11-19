@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Φέρε τα ρούχα σου · Seven Sisters Athens</title>
+<meta name="description" content="Φέρε στο Seven Sisters τα ρούχα που δεν φοράς: ανταλλαγή, πίστωση ή upcycling. Παπανικολή 6, Αθήνα.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("ss-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="seven-sisters.css">
+<style>
+em,i.g{font-style:normal}
+h1,h2,h3,.h1,.h2,.h3{text-transform:uppercase;letter-spacing:.005em}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+@media(max-width:860px){.opts{grid-template-columns:1fr}}
+.opt{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:0 1px 0 var(--line);border:2px solid transparent;cursor:pointer;text-align:left;width:100%;transition:.2s}
+.opt[aria-pressed=true]{border-color:var(--gold);background:rgba(192,68,44,.06)}
+.opt h3{font-size:20px;margin-bottom:8px}
+.opt p{color:var(--ink2);font-size:14.5px}
+.opt .pct{display:block;font:600 34px/1 var(--serif);color:var(--gold);margin-bottom:10px}
+.est{background:var(--ink);color:#e9e3d6;border-radius:var(--r);padding:clamp(26px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-top:26px}
+@media(max-width:860px){.est{grid-template-columns:1fr}}
+.est h2{color:#fff}
+.est .big{font:600 62px/1 var(--serif);color:var(--gold)}
+.est .field span{color:rgba(255,255,255,.6)}
+.est .field input,.est .field select,.est .field textarea{background:rgba(0,0,0,.25);border-color:rgba(255,255,255,.16);color:#fff}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:28px}
+@media(max-width:760px){.rules{grid-template-columns:1fr}}
+.rules ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.rules li{padding-left:26px;position:relative;color:var(--ink2)}
+.rules li::before{position:absolute;left:0;top:0}
+.rules .yes li::before{content:"✓";color:#2f8f58;font-weight:700}
+.rules .no li::before{content:"✕";color:var(--gold);font-weight:700}
+</style>
+</head>
+<body data-page="sell">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Φέρε τα ρούχα σου</span>
+  <h1>Η ντουλάπα σου, <em>δεύτερη ζωή</em></h1>
+  <p class="lead">Έχεις ρούχα που δεν φοράς δύο χρόνια; Φέρ' τα στην Παπανικολή 6. Διαλέγουμε μαζί τι κρατάμε, και παίρνεις πίσω είτε χρήματα, είτε πίστωση, είτε ένα κομμάτι από το ράφι.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <span class="eyebrow">Διάλεξε τι θέλεις</span>
+  <h2 style="margin-top:10px">Τρεις <em>τρόποι</em></h2>
+  <div class="opts" id="opts">
+    <button class="opt" type="button" data-k="cash" data-r="0.25" aria-pressed="true"><span class="pct">25%</span><h3>Μετρητά</h3><p>Παίρνεις στο χέρι ποσοστό της τιμής που θα βγει στο ράφι.</p></button>
+    <button class="opt" type="button" data-k="credit" data-r="0.4"><span class="pct">40%</span><h3>Πίστωση στο μαγαζί</h3><p>Μεγαλύτερη αξία, για να διαλέξεις κάτι από εδώ.</p></button>
+    <button class="opt" type="button" data-k="rework" data-r="0.3"><span class="pct">30%</span><h3>Rework</h3><p>Το ξαναφτιάχνουμε για σένα — πληρώνεις μόνο τη διαφορά.</p></button>
+  </div>
+
+  <div class="est">
+    <div>
+      <span class="eyebrow" style="color:var(--gold)">Εκτίμηση</span>
+      <h2 style="margin:10px 0 12px">Πόσο <em style="color:var(--gold2)">περίπου</em>;</h2>
+      <div class="big" id="estV">—</div>
+      <p class="small" id="estT" style="color:#b8b1a3;margin-top:8px">Συμπλήρωσε δεξιά για μια πρόχειρη εκτίμηση.</p>
+      <p class="small ph" data-note="Βάλε τα δικά σου ποσοστά — είναι υπόδειγμα" style="color:#8e887c;margin-top:16px">Η τελική εκτίμηση γίνεται πάντα από κοντά.</p>
+    </div>
+    <div>
+      <label class="field"><span>Πόσα κομμάτια</span><input id="n" type="number" inputmode="numeric" min="1" value="8"></label>
+      <label class="field"><span>Κατάσταση</span>
+        <select id="cond"><option value="1.3">Σαν καινούρια, με ετικέτες</option><option value="1" selected>Φορεμένα, καλή κατάσταση</option><option value="0.6">Με φθορές — για rework</option></select></label>
+      <label class="field"><span>Τι είναι κυρίως</span>
+        <select id="kind"><option value="9">Μπλούζες &amp; τοπ</option><option value="14" selected>Παντελόνια &amp; φούστες</option><option value="24">Jackets &amp; πανωφόρια</option><option value="18">Τσάντες &amp; παπούτσια</option></select></label>
+      <button class="btn btn-gold" id="go" style="width:100%">Υπολόγισε</button>
+    </div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap">
+  <span class="eyebrow">Οι κανόνες</span>
+  <h2 style="margin-top:10px">Τι <em>παίρνουμε</em></h2>
+  <div class="rules">
+    <ul class="yes">
+      <li>Καθαρά και πλυμένα</li>
+      <li>Vintage, denim, δέρμα, workwear, sportswear</li>
+      <li>Κομμάτια με χαρακτήρα — ακόμα και με μικρές φθορές</li>
+      <li>Τσάντες, ζώνες, καπέλα, αξεσουάρ</li>
+    </ul>
+    <ul class="no">
+      <li>Fast fashion σε κακή κατάσταση</li>
+      <li>Εσώρουχα και μαγιό</li>
+      <li>Ρούχα με έντονες μυρωδιές ή μούχλα</li>
+      <li>Απομιμήσεις επώνυμων</li>
+    </ul>
+  </div>
+  <p class="small ph" data-note="Προσαρμόσ' το στους δικούς σου κανόνες" style="margin-top:18px">Ενδεικτική λίστα.</p>
+</div></section>
+
+<section class="rv"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Κλείσε ραντεβού</span>
+      <h2 style="margin:10px 0 14px">Έλα <em>χωρίς</em> ουρά</h2>
+      <p class="lead">Για πάνω από πέντε κομμάτια, πες μας πότε θα περάσεις ώστε να έχουμε χρόνο να τα δούμε ένα-ένα μαζί σου.</p>
+    </div>
+    <div class="card">
+      <label class="field"><span>Όνομα</span><input id="sn" autocomplete="name"></label>
+      <label class="field"><span>Κινητό</span><input id="sp" inputmode="tel" autocomplete="tel"></label>
+      <label class="field"><span>Πότε σε βολεύει</span><input id="sd" type="date"></label>
+      <label class="field"><span>Τι φέρνεις</span><textarea id="sm" rows="3" placeholder="π.χ. 10 κομμάτια, κυρίως denim και δύο δερμάτινα"></textarea></label>
+      <button class="btn btn-ink" id="sgo" style="width:100%">Στείλε αίτημα</button>
+      <div class="okbox" id="sok"></div>
+    </div>
+  </div>
+</div></section>
+
+<script src="seven-sisters.js"></script>
+<script>
+let rate = 0.25, label = "μετρητά";
+document.querySelectorAll("#opts .opt").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#opts .opt").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  rate = +b.dataset.r; label = b.querySelector("h3").textContent.toLowerCase(); calc(); });
+function calc(){
+  const n = Math.max(0, +document.getElementById("n").value||0);
+  const cond = +document.getElementById("cond").value;
+  const base = +document.getElementById("kind").value;
+  const shelf = n * base * cond;
+  const you = Math.round(shelf * rate);
+  document.getElementById("estV").textContent = you + " €";
+  document.getElementById("estT").innerHTML = n + " κομμάτια · εκτιμώμενη αξία ραφιού " + Math.round(shelf) + " € · παίρνεις <b>" + label + "</b>";
+}
+["n","cond","kind"].forEach(id=>document.getElementById(id).addEventListener("input",calc));
+document.getElementById("go").onclick = calc;
+calc();
+document.getElementById("sgo").onclick=()=>{const o=document.getElementById("sok");
+ if(!document.getElementById("sn").value.trim()||!document.getElementById("sp").value.trim()){o.textContent="Συμπλήρωσε όνομα και κινητό.";o.classList.add("on");return;}
+ o.innerHTML="✓ Το αίτημα στάλθηκε. Θα σου πούμε πότε να περάσεις.<br><span class='small'>(demo — δεν στέλνεται τίποτα)</span>";o.classList.add("on");};
+</script>
+</body>
+</html>

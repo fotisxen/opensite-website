@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Επικοινωνία · aRt home Λάρισα</title>
+<meta name="description" content="aRt home, Λάρισα: ωράριο, χάρτης, τηλέφωνο 2413 016913 και φόρμα επικοινωνίας.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("ah-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="art-home.css">
+<style>
+.hours{list-style:none;display:grid;gap:9px;font-size:15px}
+.hours li{display:flex;justify-content:space-between;padding-bottom:9px;border-bottom:1px dashed var(--line)}
+.hours li.now{color:var(--gold)}
+.statusbadge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13.5px;font-weight:600;margin-bottom:18px}
+.statusbadge i{width:8px;height:8px;border-radius:50%;background:#2f8f58}
+.statusbadge.shut i{background:var(--red)}
+.mapbox{border-radius:var(--r);overflow:hidden;height:380px;box-shadow:0 1px 0 var(--line)}
+.mapbox iframe{width:100%;height:100%;border:0}
+.chans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:26px}
+.chans a{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line);display:block;transition:transform .2s}
+.chans a:hover{transform:translateY(-3px)}
+.chans b{display:block;font:500 20px/1.2 var(--serif);margin-bottom:5px}
+.chans span{font-size:13.5px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="contact">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Επικοινωνία</span>
+  <h1>Στη <em>Λάρισα</em></h1>
+  <p class="lead">Πέρασε από το μαγαζί, πάρε τηλέφωνο ή στείλε μας μήνυμα από εδώ.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div>
+      <div class="statusbadge" id="st"><i></i><span>—</span></div>
+      <h2 style="font-size:28px;margin-bottom:14px">Ωράριο</h2>
+      <ul class="hours ph" id="hours" data-note="Βάλε το πραγματικό σου ωράριο"></ul>
+      <div class="chans">
+        <a href="tel:+302413016913"><b>2413 016913</b><span>τηλέφωνο καταστήματος</span></a>
+        <a href="https://www.instagram.com/art_home_larissa/" target="_blank" rel="noopener"><b>Instagram</b><span>@art_home_larissa</span></a>
+        <a class="ph" data-note="Βάλε τη διεύθυνση του καταστήματος" href="#"><b>Διεύθυνση</b><span>Λάρισα</span></a>
+        <a class="ph" data-note="Βάλε το email σου" href="#"><b>Email</b><span>info@arthome.gr</span></a>
+      </div>
+    </div>
+    <div>
+      <div class="mapbox" style="margin-bottom:22px">
+        <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Larissa%2C%20Greece&z=13&output=embed"></iframe>
+      </div>
+      <div class="card">
+        <h2 style="font-size:24px;margin-bottom:14px">Στείλε μήνυμα</h2>
+        <label class="field"><span>Όνομα</span><input id="n" autocomplete="name"></label>
+        <label class="field"><span>Κινητό ή email</span><input id="e"></label>
+        <label class="field"><span>Θέμα</span>
+          <select id="s"><option>Ερώτηση για προϊόν</option><option>Δώρο — θέλω πρόταση</option><option>Παραγγελία &amp; αποστολή</option><option>Χονδρική</option><option>Άλλο</option></select></label>
+        <label class="field"><span>Μήνυμα</span><textarea id="m" rows="4"></textarea></label>
+        <button class="btn btn-ink" id="go" style="width:100%">Αποστολή</button>
+        <div class="okbox" id="ok"></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<script src="art-home.js"></script>
+<script>
+const HOURS=[["Δευτέρα",[9,15]],["Τρίτη",[9,14]],["Τετάρτη",[9,15]],["Πέμπτη",[9,14]],["Παρασκευή",[9,14]],["Σάββατο",[9,15]],["Κυριακή",null]];
+const dow=()=>(new Date().getDay()+6)%7,nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+document.getElementById("hours").innerHTML=HOURS.map(([d,h],i)=>`<li class="${i===dow()?'now':''}"><span>${d}</span><b>${h?h[0]+":00 – "+h[1]+":00":"κλειστά"}</b></li>`).join("");
+(function(){const b=document.getElementById("st"),t=b.querySelector("span"),h=HOURS[dow()][1];
+ if(h&&nowH()>=h[0]&&nowH()<h[1]) t.textContent="Ανοιχτά τώρα · μέχρι "+h[1]+":00";
+ else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(HOURS[i][1])break;}
+  t.textContent="Κλειστά · ανοίγουμε "+HOURS[i][0]+" "+HOURS[i][1][0]+":00";}})();
+document.getElementById("go").onclick=()=>{const o=document.getElementById("ok");
+ if(!document.getElementById("n").value.trim()||!document.getElementById("e").value.trim()){o.textContent="Συμπλήρωσε όνομα και τρόπο επικοινωνίας.";o.classList.add("on");return;}
+ o.innerHTML="✓ Το μήνυμα στάλθηκε. Θα σου απαντήσουμε σύντομα.<br><span class='small'>(demo — δεν στέλνεται τίποτα)</span>";o.classList.add("on");};
+</script>
+</body>
+</html>

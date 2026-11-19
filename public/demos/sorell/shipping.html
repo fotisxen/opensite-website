@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Αποστολές &amp; επιστροφές · Sorell Boutique</title>
+<meta name="description" content="Worldwide shipping από τη Sorell Boutique: υπολογισμός μεταφορικών, χρόνοι παράδοσης και πολιτική επιστροφών.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("sr-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="sorell.css">
+<style>
+.calcbox{background:var(--card);border-radius:var(--r);padding:clamp(24px,4vw,36px);box-shadow:0 1px 0 var(--line)}
+.out{margin-top:20px;display:grid;gap:12px}
+.out div{display:flex;justify-content:space-between;align-items:baseline;padding:15px 18px;border-radius:12px;background:var(--paper2);font-size:15px}
+.out div b{font:500 24px/1 var(--serif)}
+.out div.free{background:rgba(43,127,163,.14)}
+.faq{display:grid;gap:10px;margin-top:28px}
+.faq details{background:var(--card);border-radius:12px;padding:18px 22px;box-shadow:0 1px 0 var(--line)}
+.faq summary{cursor:pointer;font-weight:600;font-size:15.5px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;color:var(--gold);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:12px;color:var(--ink2);font-size:14.5px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+@media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}}
+.steps div{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line)}
+.steps b.n{display:block;font:500 34px/1 var(--serif);color:var(--gold2);margin-bottom:10px}
+.steps h3{font-size:17px;margin-bottom:6px}
+.steps p{font-size:13.5px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="shipping">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Worldwide shipping</span>
+  <h1>Πού και <em>πότε</em> φτάνει</h1>
+  <p class="lead">Στέλνουμε σε όλο τον κόσμο. Διάλεξε προορισμό και δες ακριβώς τι θα πληρώσεις και πότε θα το έχεις.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div class="calcbox">
+      <h2 style="font-size:26px;margin-bottom:16px">Υπολογισμός μεταφορικών</h2>
+      <label class="field"><span>Προορισμός</span>
+        <select id="zone">
+          <option value="pick">Θεσσαλονίκη · παραλαβή από το κατάστημα</option>
+          <option value="gr" selected>Ελλάδα</option>
+          <option value="cy">Κύπρος</option>
+          <option value="eu">Ευρώπη</option>
+          <option value="ww">Υπόλοιπος κόσμος</option>
+        </select></label>
+      <label class="field"><span>Αξία παραγγελίας (€)</span><input id="val" type="number" inputmode="numeric" value="60"></label>
+      <label class="field"><span>Τρόπος πληρωμής</span>
+        <select id="pay"><option value="card">Κάρτα</option><option value="cod">Αντικαταβολή (μόνο Ελλάδα)</option></select></label>
+      <div class="out ph" id="out" data-note="Βάλε τα πραγματικά σου κόστη, όρια δωρεάν αποστολής και χρόνους"></div>
+    </div>
+    <div>
+      <span class="eyebrow">Πώς δουλεύει</span>
+      <h2 style="margin:10px 0 0">Από την παραγγελία στην <em>πόρτα</em></h2>
+      <div class="steps">
+        <div><b class="n">1</b><h3>Παραγγελία</h3><p>Ολοκληρώνεις online, χωρίς μήνυμα.</p></div>
+        <div><b class="n">2</b><h3>Πακετάρισμα</h3><p>Αυθημερόν για παραγγελίες μέχρι τις 14:00.</p></div>
+        <div><b class="n">3</b><h3>Αποστολή</h3><p>Λαμβάνεις κωδικό παρακολούθησης.</p></div>
+        <div><b class="n">4</b><h3>Παράδοση</h3><p>Και αν δεν σου κάνει, το γυρνάς πίσω.</p></div>
+      </div>
+      <h2 style="font-size:26px;margin:36px 0 0">Συχνές <em>ερωτήσεις</em></h2>
+      <div class="faq">
+        <details open><summary>Πόσο κοστίζει η επιστροφή;</summary><p class="ph" data-note="Γράψε τη δική σου πολιτική επιστροφών">Εντός Ελλάδας η πρώτη αλλαγή μεγέθους είναι δωρεάν. Για επιστροφή χρημάτων τα μεταφορικά τα αναλαμβάνει ο πελάτης.</p></details>
+        <details><summary>Σε πόσες μέρες μπορώ να επιστρέψω;</summary><p class="ph" data-note="Το νόμιμο ελάχιστο είναι 14 ημέρες — βάλε το δικό σου">Σε 14 ημερολογιακές ημέρες από την παραλαβή, με τα ρούχα αφόρετα και με τις ετικέτες τους.</p></details>
+        <details><summary>Στέλνετε εκτός Ευρώπης;</summary><p>Ναι, στέλνουμε σε όλο τον κόσμο. Οι τυχόν δασμοί της χώρας προορισμού βαρύνουν τον παραλήπτη.</p></details>
+        <details><summary>Μπορώ να παραλάβω από το κατάστημα;</summary><p>Φυσικά. Διάλεξε «παραλαβή από το κατάστημα» και πέρνα από τη Λεωφ. Στρατού 35 όποτε σε βολεύει.</p></details>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap" style="text-align:center">
+  <h2>Έτοιμη να <em>παραγγείλεις</em>;</h2>
+  <p class="lead" style="margin:14px auto 24px">Όλα τα κομμάτια, με διαθέσιμα νούμερα και τελική τιμή στην οθόνη.</p>
+  <a class="btn btn-ink" href="shop.html">Στο κατάστημα</a>
+</div></section>
+
+<script src="sorell.js"></script>
+<script>
+const Z = {
+  pick:{n:"Παραλαβή από το κατάστημα", c:0, d:"όποτε σε βολεύει", free:0},
+  gr:{n:"Ελλάδα", c:3.5, d:"1–3 εργάσιμες", free:60},
+  cy:{n:"Κύπρος", c:9, d:"3–5 εργάσιμες", free:120},
+  eu:{n:"Ευρώπη", c:14, d:"4–7 εργάσιμες", free:150},
+  ww:{n:"Υπόλοιπος κόσμος", c:26, d:"7–12 εργάσιμες", free:250}
+};
+function calc(){
+  const z = Z[document.getElementById("zone").value];
+  const v = Math.max(0, +document.getElementById("val").value || 0);
+  const cod = document.getElementById("pay").value === "cod";
+  const zk = document.getElementById("zone").value;
+  const free = z.free && v >= z.free;
+  let ship = free ? 0 : z.c;
+  let codFee = (cod && zk === "gr") ? 2 : 0;
+  const warn = cod && zk !== "gr" ? "<div style='background:rgba(194,86,47,.12)'><span>Η αντικαταβολή ισχύει μόνο για Ελλάδα</span><b>—</b></div>" : "";
+  document.getElementById("out").innerHTML = `
+    <div><span>${z.n} · ${z.d}</span><b>${ship===0?"Δωρεάν":ship.toFixed(2).replace(".",",")+" €"}</b></div>
+    ${codFee?`<div><span>Αντικαταβολή</span><b>${codFee.toFixed(2).replace(".",",")} €</b></div>`:""}
+    ${warn}
+    ${z.free&&!free?`<div><span>Δωρεάν αποστολή από ${z.free} € — σου λείπουν</span><b>${(z.free-v).toFixed(2).replace(".",",")} €</b></div>`:""}
+    <div class="${free?"free":""}"><span><b style="font:inherit;font-weight:600">Σύνολο</b></span><b>${(v+ship+codFee).toFixed(2).replace(".",",")} €</b></div>`;
+}
+["zone","val","pay"].forEach(id=>document.getElementById(id).addEventListener("input",calc));
+calc();
+</script>
+</body>
+</html>

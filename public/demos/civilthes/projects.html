@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Έργα · CivilTHES Θεσσαλονίκη</title>
+<meta name="description" content="Ανακαινίσεις κατοικιών και καταστημάτων, νεόδμητες οικοδομές και επιβλέψεις από το τεχνικό γραφείο CivilTHES στη Θεσσαλονίκη.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("cv-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="civilthes.css">
+<style>
+em,i.g{font-style:normal;font-weight:500}
+.filters button{border-radius:8px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pgrid{grid-template-columns:1fr}}
+.pc{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 0 var(--line);transition:transform .25s}
+.pc:hover{transform:translateY(-4px)}
+.pc .im{aspect-ratio:4/3;overflow:hidden;background:var(--paper2)}
+.pc .im img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.pc:hover .im img{transform:scale(1.06)}
+.pc .b{padding:20px}
+.pc .cat{font:600 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.pc h3{font-size:19px;margin:8px 0 6px}
+.pc p{font-size:14px;color:var(--ink2)}
+.pc .meta{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="projects">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Έργα</span>
+  <h1>Από το <em>εργοτάξιο</em></h1>
+  <p class="lead">Ανακαινίσεις, νέες οικοδομές και αδειοδοτήσεις. Πατήστε σε μια φωτογραφία για να τη δείτε μεγάλη.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="filters" id="f"></div>
+  <div class="pgrid" id="grid"></div>
+  <p class="small ph" data-note="Οι τίτλοι και τα στοιχεία των έργων είναι ενδεικτικά — βάλτε τα πραγματικά" style="margin-top:24px">Οι φωτογραφίες είναι από το site σας.</p>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap">
+  <div class="split">
+    <div>
+      <span class="eyebrow">Πώς δουλεύουμε</span>
+      <h2 style="margin:10px 0 14px">Πρώτα το <em>σχέδιο</em>, μετά το σφυρί</h2>
+      <p class="lead">Σε κάθε ανακαίνιση ξεκινάμε από τη μελέτη: αποτύπωση, εναλλακτικές διαρρυθμίσεις, επιλογή υλικών και προϋπολογισμός. Έτσι ξέρετε τι θα πληρώσετε πριν ξεκινήσει το έργο — και όχι στο τέλος.</p>
+      <button class="btn btn-ink" data-cta data-topic="Ανακαίνιση" style="margin-top:22px">Ζητήστε προσφορά</button>
+    </div>
+    <div class="frame" style="aspect-ratio:4/3"><img src="img/p7.jpg" alt="Έργο της CivilTHES"></div>
+  </div>
+</div></section>
+
+<script src="civilthes.js"></script>
+<script>
+const PR = [
+ {c:"Ανακαίνιση", t:"Ανακαίνιση κατοικίας στο κέντρο", d:"Ριζική ανακαίνιση κουζίνας, μπάνιου και εσωτερικών, με νέο εξοπλισμό επίπλων και συσκευών.", img:"img/p1.jpg", m:["Θεσσαλονίκη","Άδεια μικρής κλίμακας"]},
+ {c:"Ανακαίνιση", t:"Διαμέρισμα με νέα διαρρύθμιση", d:"Άνοιγμα χώρου, νέα κουζίνα και αλλαγή δαπέδων.", img:"img/p2.jpg", m:["Θεσσαλονίκη","Μελέτη & επίβλεψη"]},
+ {c:"Κατάστημα", t:"Ανακαίνιση εμπορικού καταστήματος", d:"Σχεδιασμός χώρου με ιδιαίτερη αισθητική και γρήγορο χρονοδιάγραμμα.", img:"img/p3.jpg", m:["Θεσσαλονίκη","Άδεια λειτουργίας"]},
+ {c:"Οικοδομή", t:"Ανέγερση νεόδμητης οικοδομής", d:"Από την εκσκαφή μέχρι την παράδοση, με αναλυτική επίβλεψη ανά εργασία.", img:"img/p4.jpg", m:["Θεσσαλονίκη","Οικοδομική άδεια"]},
+ {c:"Οικοδομή", t:"Σκελετός και τοιχοποιίες", d:"Στάδιο φέροντος οργανισμού με έλεγχο ποιότητας σε κάθε φάση.", img:"img/p5.jpg", m:["Επίβλεψη"]},
+ {c:"Ανακαίνιση", t:"Μπάνιο εξ ολοκλήρου", d:"Νέα υδραυλική εγκατάσταση, πλακάκια και είδη υγιεινής.", img:"img/p6.jpg", m:["Μελέτη & κατασκευή"]},
+ {c:"Κατάστημα", t:"Διαμόρφωση χώρου εστίασης", d:"Λειτουργική διάταξη και πιστοποιητικό πυρασφάλειας.", img:"img/p7.jpg", m:["Άδεια λειτουργίας"]},
+ {c:"Ανακαίνιση", t:"Ενεργειακή αναβάθμιση κατοικίας", d:"Κουφώματα, μόνωση και νέο σύστημα θέρμανσης.", img:"img/p8.jpg", m:["ΠΕΑ πριν & μετά"]},
+ {c:"Οικοδομή", t:"Επίβλεψη πολυκατοικίας", d:"Συντονισμός συνεργείων και πιστοποιήσεις εργασιών.", img:"img/p9.jpg", m:["Επίβλεψη"]},
+ {c:"Ανακαίνιση", t:"Κουζίνα με νέα διάταξη", d:"Μελέτη εργονομίας και επιλογή υλικών.", img:"img/p10.jpg", m:["Μελέτη"]},
+ {c:"Κατάστημα", t:"Βιτρίνα και πρόσοψη", d:"Νέα όψη με έγκριση εργασιών μικρής κλίμακας.", img:"img/p11.jpg", m:["Άδεια μικρής κλίμακας"]},
+ {c:"Οικοδομή", t:"Τοπογραφική αποτύπωση οικοπέδου", d:"Τοπογραφικό και διάγραμμα κάλυψης για φάκελο αδείας.", img:"img/p12.jpg", m:["Τοπογραφικό"]}
+];
+const cats = ["Όλα", ...new Set(PR.map(p=>p.c))];
+let cur = "Όλα";
+document.getElementById("f").innerHTML = cats.map(c=>`<button type="button" data-c="${c}" ${c===cur?'aria-pressed="true"':""}>${c}</button>`).join("");
+function render(){
+  const list = PR.filter(p=>cur==="Όλα"||p.c===cur);
+  document.getElementById("grid").innerHTML = list.map(p=>`
+    <article class="pc"><div class="im"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>
+      <div class="b"><span class="cat">${p.c}</span><h3>${p.t}</h3><p>${p.d}</p>
+        <div class="meta">${p.m.map(m=>`<span>${m}</span>`).join("")}</div></div></article>`).join("");
+  SvcLightbox(".pc img");
+}
+document.querySelectorAll("#f button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#f button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  cur=b.dataset.c; render(); });
+render();
+</script>
+</body>
+</html>

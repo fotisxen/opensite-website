@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Περιστατικά · Dental Laser Clinic Θεσσαλονίκη</title>
+<meta name="description" content="Πριν και μετά από πραγματικά περιστατικά του Dental Laser Clinic: αισθητική αποκατάσταση, ζιρκόνιο, προσθετική, laser.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("dl-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="dental-laser.css">
+<style>
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+@media(max-width:860px){.cases{grid-template-columns:1fr}}
+.case{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.ba{position:relative;aspect-ratio:3/2;overflow:hidden;cursor:ew-resize;user-select:none;touch-action:none;background:#111}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--x,50%))}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;background:#fff}
+.ba .knob{position:absolute;top:50%;left:var(--x,50%);transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;font:700 14px/1 var(--sans);color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.ba .tag{position:absolute;top:12px;padding:5px 10px;border-radius:999px;font:700 9.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;background:rgba(19,33,42,.7);color:#fff}
+.ba .tag.l{left:12px}.ba .tag.r{right:12px;background:var(--gold)}
+.case .b{padding:22px}
+.case .cat{font:600 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.case h3{font-size:20px;margin:8px 0 6px}
+.case p{font-size:14.5px;color:var(--ink2)}
+.case .meta{display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
+.note{background:rgba(13,125,140,.09);border:1px solid rgba(13,125,140,.28);border-radius:var(--r);padding:24px;margin-top:26px}
+</style>
+</head>
+<body data-page="portfolio">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Περιστατικά</span>
+  <h1>Πριν &amp; <em>μετά</em></h1>
+  <p class="lead">Πραγματικά περιστατικά της κλινικής. Σύρετε τη μπάρα σε κάθε φωτογραφία για να δείτε το αποτέλεσμα.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="cases" id="cases"></div>
+  <div class="note ph" data-note="Προσαρμόστε το κείμενο στη δική σας πρακτική και στις απαιτήσεις δεοντολογίας">
+    <h3 style="font-size:19px;margin-bottom:8px">Μια σημείωση</h3>
+    <p style="font-size:15px;color:var(--ink2)">Κάθε στόμα είναι διαφορετικό. Οι φωτογραφίες δείχνουν τι έγινε σε συγκεκριμένα περιστατικά και δεν αποτελούν υπόσχεση αποτελέσματος. Το τι μπορεί να γίνει στη δική σας περίπτωση κρίνεται μετά από κλινική εξέταση.</p>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--ink);color:#d6e3e7"><div class="wrap" style="text-align:center">
+  <h2 style="color:#fff">Θέλετε να δείτε τι μπορεί να γίνει στο <em style="color:var(--gold2)">δικό σας</em>;</h2>
+  <p class="lead" style="margin:14px auto 24px;color:#9db4bc">Κλείστε μια πρώτη εξέταση με ψηφιακό αποτύπωμα.</p>
+  <button class="btn btn-gold" data-cta data-topic="Αισθητική οδοντιατρική">Κλείστε ραντεβού</button>
+</div></section>
+
+<script src="dental-laser.js"></script>
+<script>
+const C = [
+ {cat:"Αισθητική οδοντιατρική", t:"Αποκατάσταση πρόσθιων δοντιών", d:"Διόρθωση σχήματος και χρώματος στην αισθητική ζώνη.", b:"img/b1.jpg", a:"img/a1.jpg", m:["2 συνεδρίες","Ψηφιακό αποτύπωμα"]},
+ {cat:"Αισθητική οδοντιατρική", t:"Ολική αισθητική αλλαγή", d:"Συνολικός επανασχεδιασμός του χαμόγελου.", b:"img/b2.jpg", a:"img/a2.jpg", m:["3 συνεδρίες","Όψεις"]},
+ {cat:"Προσθετική", t:"Προσθετική αποκατάσταση", d:"Αντικατάσταση παλαιών αποκαταστάσεων με νέες, σωστής εφαρμογής.", b:"img/b3.jpg", a:"img/a3.jpg", m:["Προσθετική","CAD/CAM"]},
+ {cat:"Ζιρκόνιο", t:"CAD/CAM ζιρκόνιο", d:"Στεφάνες ζιρκονίου σχεδιασμένες ψηφιακά.", b:"img/b4.jpg", a:"img/a4.jpg", m:["Ζιρκόνιο","3Shape TRIOS"]}
+];
+document.getElementById("cases").innerHTML = C.map((c,i)=>`
+  <article class="case">
+    <div class="ba" id="ba${i}">
+      <img src="${c.b}" alt="Πριν"><img class="after" src="${c.a}" alt="Μετά">
+      <div class="bar"></div><div class="knob">⇆</div>
+      <span class="tag l">Πριν</span><span class="tag r">Μετά</span>
+    </div>
+    <div class="b"><span class="cat">${c.cat}</span><h3>${c.t}</h3><p>${c.d}</p>
+      <div class="meta ph" data-note="Βάλτε τα δικά σας στοιχεία ανά περιστατικό">${c.m.map(m=>`<span>${m}</span>`).join("")}</div></div>
+  </article>`).join("");
+C.forEach((c,i)=>{
+  const s = document.getElementById("ba"+i); let drag=false;
+  const set=e=>{const r=s.getBoundingClientRect();const x=Math.min(Math.max(((e.clientX-r.left)/r.width)*100,2),98);s.style.setProperty("--x",x+"%");};
+  s.addEventListener("pointerdown",e=>{drag=true;s.setPointerCapture(e.pointerId);set(e);});
+  s.addEventListener("pointermove",e=>{if(drag)set(e);});
+  s.addEventListener("pointerup",()=>drag=false);
+  s.addEventListener("pointercancel",()=>drag=false);
+  s.style.setProperty("--x","50%");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Υπηρεσίες · CivilTHES τεχνικό γραφείο Θεσσαλονίκη</title>
+<meta name="description" content="Οικοδομικές άδειες, άδειες μικρής κλίμακας, τακτοποιήσεις αυθαιρέτων, ενεργειακά πιστοποιητικά, τοπογραφικά, ανακαινίσεις και επίβλεψη από την CivilTHES.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("cv-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="civilthes.css">
+<style>
+em,i.g{font-style:normal;font-weight:500}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 28px}
+.tabs button{padding:10px 18px;border-radius:8px;border:1px solid var(--line);background:var(--card);font-size:13.5px;transition:.15s}
+.tabs button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.slist{display:grid;gap:12px}
+.sitem{background:var(--card);border-radius:var(--r);box-shadow:0 1px 0 var(--line);overflow:hidden}
+.sitem summary{cursor:pointer;list-style:none;padding:22px 24px;display:flex;align-items:center;gap:16px}
+.sitem summary::-webkit-details-marker{display:none}
+.sitem summary b{font:500 19px/1.25 var(--sans);flex:1}
+.sitem summary .cat{font:600 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--gold);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.sitem summary::after{content:"+";font-size:22px;color:var(--gold);line-height:1}
+.sitem[open] summary::after{content:"–"}
+.sitem .in{padding:0 24px 24px;display:grid;gap:16px}
+.sitem p{color:var(--ink2);font-size:15px}
+.sitem .need{display:grid;gap:8px}
+.sitem .need div{display:flex;gap:10px;font-size:14px;background:var(--paper);border-radius:8px;padding:11px 14px}
+.sitem .need i{font-style:normal;color:var(--gold);font-weight:700}
+.sitem .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:13.5px;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px}
+.sitem .meta b{display:block;font:500 18px/1 var(--serif);color:var(--ink)}
+</style>
+</head>
+<body data-page="services">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Υπηρεσίες</span>
+  <h1>Τι <em>αναλαμβάνουμε</em></h1>
+  <p class="lead">Κάθε υπηρεσία με τα δικαιολογητικά της και τον χρόνο της. Πατήστε πάνω σε ό,τι σας αφορά.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="slist" id="list"></div>
+  <p class="small ph" data-note="Οι χρόνοι και τα δικαιολογητικά είναι ενδεικτικά — βάλτε τα δικά σας" style="margin-top:22px">Ενδεικτικά στοιχεία.</p>
+</div></section>
+
+<section class="rv" style="background:var(--ink);color:#dde4ea"><div class="wrap" style="text-align:center">
+  <h2 style="color:#fff">Δεν είστε σίγουροι τι <em style="color:var(--gold2)">χρειάζεστε</em>;</h2>
+  <p class="lead" style="margin:14px auto 24px;color:#9fb0bd">Πείτε μας τι θέλετε να κάνετε και το βρίσκουμε εμείς.</p>
+  <button class="btn btn-gold" data-cta>Ζητήστε προσφορά</button>
+</div></section>
+
+<script src="civilthes.js"></script>
+<script>
+const S = [
+ {c:"Χαρτιά", t:"Ηλεκτρονική ταυτότητα κτιρίου", topic:"Ηλεκτρονική ταυτότητα κτιρίου",
+  p:"Υποχρεωτική για κάθε μεταβίβαση ακινήτου. Καταγράφει την πραγματική κατάσταση του ακινήτου και «κλειδώνει» κάθε εκκρεμότητα με τα αυθαίρετα.",
+  n:["Τίτλοι ιδιοκτησίας","Στελέχη και σχέδια οικοδομικής άδειας","Βεβαιώσεις τακτοποιήσεων (αν υπάρχουν)","Αυτοψία μηχανικού"], time:"10–15 ημέρες"},
+ {c:"Χαρτιά", t:"Βεβαίωση μηχανικού", topic:"Ηλεκτρονική ταυτότητα κτιρίου",
+  p:"Το πρώτο έγγραφο που ζητάει ο συμβολαιογράφος. Βεβαιώνει ότι δεν υπάρχουν αυθαίρετες κατασκευές ή αλλαγές χρήσης.",
+  n:["Τίτλοι ιδιοκτησίας","Κάτοψη ακινήτου","Αυτοψία"], time:"2–5 ημέρες"},
+ {c:"Χαρτιά", t:"Ενεργειακό πιστοποιητικό (ΠΕΑ)", topic:"Ενεργειακό πιστοποιητικό",
+  p:"Απαραίτητο για πώληση, μακροχρόνια μίσθωση και για ένταξη σε προγράμματα επιδότησης.",
+  n:["Τίτλοι ή Ε9","Κάτοψη","Στοιχεία θέρμανσης και κουφωμάτων","Επιθεώρηση"], time:"3–7 ημέρες"},
+ {c:"Χαρτιά", t:"Τοπογραφικά διαγράμματα", topic:"Τοπογραφικό",
+  p:"Τοπογραφικά, διαγράμματα κάλυψης και κάθε τοπογραφική εργασία για φάκελο οικοδομικής άδειας ή συμβόλαιο.",
+  n:["Τίτλοι ιδιοκτησίας","Προηγούμενα τοπογραφικά (αν υπάρχουν)","Μέτρηση με GPS στο οικόπεδο"], time:"5–10 ημέρες"},
+ {c:"Άδειες", t:"Οικοδομική άδεια", topic:"Οικοδομική άδεια",
+  p:"Για ανέγερση νέας οικοδομής ή προσθήκη. Συντονίζουμε όλες τις μελέτες: αρχιτεκτονική, στατική, Η/Μ, ενεργειακή.",
+  n:["Τοπογραφικό διάγραμμα","Τίτλοι ιδιοκτησίας","Αρχιτεκτονική μελέτη","Στατική και Η/Μ μελέτη","Μελέτη ενεργειακής απόδοσης"], time:"ανάλογα με το έργο"},
+ {c:"Άδειες", t:"Άδεια μικρής κλίμακας", topic:"Άδεια μικρής κλίμακας",
+  p:"Για εσωτερικές διαρρυθμίσεις, αλλαγές σε κουζίνα και μπάνιο, μικρές εργασίες στον ακάλυπτο.",
+  n:["Τίτλοι ιδιοκτησίας","Κάτοψη υφιστάμενης και νέας κατάστασης","Τεχνική έκθεση","Αμοιβές και παράβολα"], time:"7–10 ημέρες"},
+ {c:"Άδειες", t:"Άδεια λειτουργίας καταστήματος", topic:"Άδεια λειτουργίας καταστήματος",
+  p:"Αναλαμβάνουμε όλη τη διαδικασία γνωστοποίησης και τα συνοδευτικά δικαιολογητικά.",
+  n:["Μισθωτήριο ή τίτλοι","Κατόψεις χώρου","Πιστοποιητικό πυρασφάλειας","Υγειονομικοί όροι (όπου απαιτείται)"], time:"ανάλογα με τη δραστηριότητα"},
+ {c:"Τακτοποιήσεις", t:"Τακτοποίηση αυθαιρέτων", topic:"Τακτοποίηση αυθαιρέτου",
+  p:"Υπαγωγή στον Ν. 4495/17. Υπολογίζουμε πρόστιμο και δόσεις πριν αποφασίσετε.",
+  n:["Τίτλοι ιδιοκτησίας","Στελέχη και σχέδια αδείας","Φωτογραφίες και αυτοψία","Ε9 / φύλλο υπολογισμού αξίας"], time:"15–25 ημέρες"},
+ {c:"Κατασκευή", t:"Αρχιτεκτονική μελέτη ανακαίνισης", topic:"Ανακαίνιση",
+  p:"Η σωστή μελέτη είναι αυτή που κρατάει το κόστος χαμηλά: μελετάμε όλες τις εκδοχές πριν σπάσει ο πρώτος τοίχος.",
+  n:["Αποτύπωση υφιστάμενου","Προτάσεις διαρρύθμισης","Επιλογή υλικών","Προμέτρηση και προϋπολογισμός"], time:"2–4 εβδομάδες"},
+ {c:"Κατασκευή", t:"Ανακαίνιση κατοικίας", topic:"Ανακαίνιση",
+  p:"Ριζική ανακαίνιση κουζίνας, μπάνιου και εσωτερικών χώρων, με νέο εξοπλισμό επίπλων και συσκευών.",
+  n:["Μελέτη και προϋπολογισμός","Άδεια μικρής κλίμακας","Συντονισμός συνεργείων","Επίβλεψη και παράδοση"], time:"ανάλογα με το έργο"},
+ {c:"Κατασκευή", t:"Ανακαίνιση εμπορικού καταστήματος", topic:"Ανακαίνιση",
+  p:"Σχεδιασμός χώρων με ιδιαίτερη αισθητική — και με το μάτι στον χρόνο που το μαγαζί θα μείνει κλειστό.",
+  n:["Μελέτη και φωτορεαλιστικά","Αδειοδότηση","Χρονοδιάγραμμα εργασιών","Επίβλεψη"], time:"ανάλογα με το έργο"},
+ {c:"Κατασκευή", t:"Ενεργειακή αναβάθμιση", topic:"Ενεργειακό πιστοποιητικό",
+  p:"Κουφώματα, μόνωση, θέρμανση. Χώροι που σας προσφέρουν οικονομία και είναι φιλικοί προς το περιβάλλον.",
+  n:["Ενεργειακή επιθεώρηση","ΠΕΑ πριν και μετά","Φάκελος επιδότησης","Επίβλεψη εργασιών"], time:"ανάλογα με το πρόγραμμα"},
+ {c:"Κατασκευή", t:"Κατασκευή νεόδμητης οικοδομής", topic:"Οικοδομική άδεια",
+  p:"Ανέγερση από το σκάψιμο μέχρι το κλειδί, με αναλυτικό χρονοδιάγραμμα ανά εργασία.",
+  n:["Οικοδομική άδεια","Χρονοδιάγραμμα","Συμβόλαια συνεργείων","Επίβλεψη και πιστοποιήσεις"], time:"ανάλογα με το έργο"},
+ {c:"Κατασκευή", t:"Φωτορεαλιστικά σχέδια", topic:"Ανακαίνιση",
+  p:"Δείτε τον χώρο σας πριν ξεκινήσει το έργο — και αλλάξτε γνώμη στο σχέδιο, όχι στο εργοτάξιο.",
+  n:["Κατόψεις","Επιλογή υλικών και χρωμάτων","3D αποδόσεις ανά χώρο"], time:"1–2 εβδομάδες"},
+ {c:"Κατασκευή", t:"Επίβλεψη έργου", topic:"Ανακαίνιση",
+  p:"Επιτήρηση των εργασιών σε κατοικία, διαμέρισμα ή κατάστημα, με αναφορά προόδου.",
+  n:["Χρονοδιάγραμμα","Έλεγχοι ποιότητας","Πιστοποιήσεις εργασιών","Τελική παραλαβή"], time:"όσο διαρκεί το έργο"}
+];
+const cats = ["Όλα", ...new Set(S.map(s=>s.c))];
+let cur = "Όλα";
+document.getElementById("tabs").innerHTML = cats.map(c=>`<button type="button" data-c="${c}" ${c===cur?'aria-pressed="true"':""}>${c}</button>`).join("");
+function render(){
+  const list = S.filter(s=>cur==="Όλα"||s.c===cur);
+  document.getElementById("list").innerHTML = list.map((s,i)=>`
+    <details class="sitem" ${i===0?"open":""}>
+      <summary><span class="cat">${s.c}</span><b>${s.t}</b></summary>
+      <div class="in">
+        <p>${s.p}</p>
+        <div class="need">${s.n.map(n=>`<div><i>•</i><span>${n}</span></div>`).join("")}</div>
+        <div class="meta"><div><b>${s.time}</b><span>συνήθης χρόνος</span></div>
+          <div style="margin-left:auto"><button class="btn btn-ink" data-cta data-topic="${s.topic}" style="padding:11px 18px;font-size:13.5px">Ζητήστε προσφορά</button></div></div>
+      </div>
+    </details>`).join("");
+  SvcBindCta(document.getElementById("list"));
+}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#tabs button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  cur=b.dataset.c; render(); });
+render();
+</script>
+</body>
+</html>

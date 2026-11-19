@@ -10,6 +10,14 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "dental-laser", name: "Dental Laser Clinic", kind: "Οδοντιατρείο 5 σελίδων · πριν/μετά περιστατικά, υπηρεσίες, online ραντεβού (Τριανδρία)", created: "2026-11-19" },
+  { slug: "civilthes", name: "CivilThes", kind: "Τεχνικό γραφείο 5 σελίδων · οδηγός «τι χρειάζομαι», ηλεκτρονική ταυτότητα κτιρίου, έργα, προσφορά (Θεσσαλονίκη)", created: "2026-11-19" },
+  { slug: "fysiognosis", name: "FysioGnosis", kind: "Φυσικοθεραπευτήριο 5 σελίδων · χάρτης σώματος «πού πονάει», τεχνικές, ομάδα, ραντεβού (Κ. Καραμανλή 84)", created: "2026-11-19" },
+  { slug: "vicolo", name: "Vicolo Boutique", kind: "E-shop 5 σελίδων · ιταλική γυναικεία μόδα, lookbook ανά σεζόν, κράτηση κομματιού (Προξένου Κορομηλά 31)", created: "2026-11-19", instagram: "https://www.instagram.com/vicolo.boutique/" },
+  { slug: "seven-sisters", name: "Seven Sisters", kind: "E-shop 5 σελίδων · vintage & upcycled, μοναδικά κομμάτια 1-of-1, φέρε τα ρούχα σου (Παπανικολή 6, Αθήνα)", created: "2026-11-19", instagram: "https://www.instagram.com/sevensistersath/" },
+  { slug: "sorell", name: "Sorell Boutique", kind: "E-shop 5 σελίδων · παραγγελίες χωρίς DM, worldwide shipping, οδηγός μεγεθών (Λεωφ. Στρατού 35)", created: "2026-11-19", instagram: "https://www.instagram.com/sorell_boutique/" },
+  { slug: "art-home", name: "aRt home", kind: "E-shop 5 σελίδων · διακόσμηση & δώρα, εποχές, βρες το δώρο, δωροκάρτα (Λάρισα)", created: "2026-11-19", instagram: "https://www.instagram.com/art_home_larissa/" },
+  { slug: "lolita", name: "Lolita Boutique Athens", kind: "E-shop 5 σελίδων · νέες αφίξεις, κράτηση για δοκιμή, λίστα επιθυμιών (Φωκίωνος Νέγρη)", created: "2026-11-19", instagram: "https://www.instagram.com/lolita_boutique_athens/" },
   { slug: "lioras-barber", name: "Lioras Barbershop", kind: "Κουρείο · πλήρης τιμοκατάλογος, υπολογιστής συνδρομής κουρέματος, ραντεβού (Παπάφη 1)", created: "2026-11-18", instagram: "https://www.instagram.com/lioras.barber/" },
   { slug: "koureio-geitonias", name: "Το Κουρείο της Γειτονιάς", kind: "Κουρείο · ζωντανή σειρά αναμονής, μπες στη σειρά από το κινητό, ραντεβού (Βαλαγιάννη 8)", created: "2026-11-18", instagram: "https://www.instagram.com/savvas.elef/" },
   { slug: "sipsas-barber", name: "Sipsas Barber Shop", kind: "Κουρείο · τελετουργικό ξυρίσματος, επιλογή καρέκλας, ραντεβού (Βασ. Όλγας 74)", created: "2026-11-18", instagram: "https://www.instagram.com/sipsasbarbershop/" },

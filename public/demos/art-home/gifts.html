@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Βρες το δώρο · aRt home Λάρισα</title>
+<meta name="description" content="Τρεις ερωτήσεις και βρίσκεις δώρο: aRt home, διακόσμηση σπιτιού και είδη δώρων στη Λάρισα. Δωροκάρτα και περιτύλιγμα δώρου.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("ah-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="art-home.css">
+<style>
+.quiz{background:var(--card);border-radius:var(--r);padding:clamp(26px,4vw,44px);box-shadow:0 1px 0 var(--line)}
+.qrow{margin-bottom:24px}
+.qrow p.q{font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ink2);margin-bottom:11px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-size:14px;transition:.15s}
+.opts button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:600}
+.budget{display:flex;align-items:center;gap:14px}
+.budget input{flex:1;accent-color:var(--gold)}
+.budget b{font:500 26px/1 var(--serif);color:var(--gold);min-width:80px;text-align:right}
+.gcard{position:relative;border-radius:var(--r);overflow:hidden;background:linear-gradient(135deg,#2a241c,#4a3d2c);color:#f3e9d6;padding:clamp(26px,4vw,40px);min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+.gcard::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(216,189,132,.35),transparent 70%)}
+.gcard b.v{position:relative;z-index:2;font:500 54px/1 var(--serif);color:var(--gold2)}
+.gcard .nm{position:relative;z-index:2;font-size:14px;opacity:.8}
+.gcard .brand{position:relative;z-index:2;font:500 20px/1 var(--serif);letter-spacing:.1em}
+.gsel{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.gsel button{padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:14px}
+.gsel button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.wrapopt{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+@media(max-width:760px){.wrapopt{grid-template-columns:1fr}}
+.wrapopt div{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:0 1px 0 var(--line)}
+.wrapopt h3{font-size:19px;margin-bottom:7px}
+.wrapopt p{font-size:14px;color:var(--ink2)}
+</style>
+</head>
+<body data-page="gifts">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Βρες το δώρο</span>
+  <h1>Τρεις ερωτήσεις, <em>ένα δώρο</em></h1>
+  <p class="lead">Το «τι να της πάρω;» είναι ο λόγος που μπαίνει ο μισός κόσμος στο μαγαζί. Εδώ απαντιέται πριν καν φτάσει.</p>
+</div></header>
+
+<section style="padding-top:26px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div class="quiz">
+      <div class="qrow">
+        <p class="q">Για ποιον</p>
+        <div class="opts" id="who">
+          <button type="button" data-k="Διακοσμητικά" aria-pressed="true">Για το σπίτι της/του</button>
+          <button type="button" data-k="Κεριά">Για κάποια που αγαπά τα αρώματα</button>
+          <button type="button" data-k="Φωτιστικά">Για νέο σπίτι</button>
+          <button type="button" data-k="Δώρα">Δεν ξέρω καθόλου</button>
+        </div>
+      </div>
+      <div class="qrow">
+        <p class="q">Περίσταση</p>
+        <div class="opts" id="occ">
+          <button type="button" data-k="Γενέθλια" aria-pressed="true">Γενέθλια</button>
+          <button type="button" data-k="Νέο σπίτι">Νέο σπίτι</button>
+          <button type="button" data-k="Χριστούγεννα">Χριστούγεννα</button>
+          <button type="button" data-k="Ευχαριστώ">Ένα ευχαριστώ</button>
+        </div>
+      </div>
+      <div class="qrow">
+        <p class="q">Προϋπολογισμός</p>
+        <div class="budget"><input id="bud" type="range" min="10" max="60" step="5" value="30"><b id="budV">30 €</b></div>
+      </div>
+      <button class="btn btn-ink" id="go" style="width:100%">Δείξε μου προτάσεις</button>
+    </div>
+    <div>
+      <h2 style="font-size:28px;margin-bottom:6px">Προτάσεις</h2>
+      <p class="small" id="hint" style="margin-bottom:18px">Απάντησε αριστερά και πάτα το κουμπί.</p>
+      <div class="grid" id="res" style="grid-template-columns:repeat(auto-fill,minmax(190px,1fr))"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="rv" style="background:var(--paper2)"><div class="wrap">
+  <div class="split" style="align-items:center">
+    <div>
+      <span class="eyebrow">Δωροκάρτα</span>
+      <h2 style="margin:10px 0 14px">Όταν δεν <em>ξέρεις</em> τι να πάρεις</h2>
+      <p class="lead">Η δωροκάρτα είναι το πιο ασφαλές δώρο — και για εσάς η καλύτερη πώληση: εξαργυρώνεται σχεδόν πάντα με παραπάνω από την αξία της.</p>
+      <div class="gsel" id="gsel">
+        <button type="button" data-v="20" aria-pressed="true">20 €</button>
+        <button type="button" data-v="30">30 €</button>
+        <button type="button" data-v="50">50 €</button>
+        <button type="button" data-v="100">100 €</button>
+      </div>
+      <label class="field" style="margin-top:16px"><span>Για ποιον</span><input id="gname" placeholder="π.χ. Μαρία"></label>
+      <button class="btn btn-ink" id="ggo">Αγορά δωροκάρτας</button>
+      <div class="okbox" id="gok"></div>
+    </div>
+    <div class="gcard">
+      <span class="brand">aRt home</span>
+      <div><b class="v" id="gv">20 €</b><p class="nm" id="gn">Δωροκάρτα</p></div>
+      <p class="nm ph" data-note="Στέλνεται με email ή τυπώνεται στο κατάστημα">Ισχύει 12 μήνες · Λάρισα</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="rv"><div class="wrap">
+  <span class="eyebrow">Και μετά</span>
+  <h2 style="margin-top:10px">Το <em>τυλίγουμε</em> εμείς</h2>
+  <div class="wrapopt">
+    <div><h3>Περιτύλιγμα δώρου</h3><p>Δωρεάν, σε χαρτί και κορδέλα της εποχής.</p></div>
+    <div><h3>Κάρτα με μήνυμα</h3><p>Γράφεις τι θες και μπαίνει μέσα, γραμμένη στο χέρι.</p></div>
+    <div class="ph" data-note="Αν κάνετε παραδόσεις στη Λάρισα"><h3>Παράδοση στη Λάρισα</h3><p>Αυθημερόν, για να φτάσει στην ώρα του.</p></div>
+  </div>
+</div></section>
+
+<script src="art-home.js"></script>
+<script>
+let who = "Διακοσμητικά", occ = "Γενέθλια";
+document.querySelectorAll("#who button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#who button").forEach(x=>x.setAttribute("aria-pressed", x===b)); who = b.dataset.k; });
+document.querySelectorAll("#occ button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#occ button").forEach(x=>x.setAttribute("aria-pressed", x===b)); occ = b.dataset.k; });
+const bud = document.getElementById("bud");
+bud.oninput = () => document.getElementById("budV").textContent = bud.value + " €";
+document.getElementById("go").onclick = () => {
+  const max = +bud.value;
+  let list = SHOP_P.filter(p => p.cat === who && p.pr <= max);
+  if(list.length < 2) list = SHOP_P.filter(p => p.pr <= max);
+  if(!list.length) list = [...SHOP_P].sort((a,b)=>a.pr-b.pr).slice(0,3);
+  list = list.slice(0,4);
+  const g = document.getElementById("res");
+  g.innerHTML = list.map(ShopCard).join(""); ShopBind(g);
+  document.getElementById("hint").textContent = list.length + " προτάσεις για «" + occ.toLowerCase() + "» μέχρι " + max + " €.";
+};
+document.getElementById("go").click();
+
+document.querySelectorAll("#gsel button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#gsel button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  document.getElementById("gv").textContent = b.dataset.v + " €"; });
+document.getElementById("gname").addEventListener("input", e => {
+  document.getElementById("gn").textContent = e.target.value.trim() ? "Για " + e.target.value.trim() : "Δωροκάρτα"; });
+document.getElementById("ggo").onclick = () => { const o = document.getElementById("gok");
+  o.innerHTML = "✓ Η δωροκάρτα " + document.getElementById("gv").textContent + " μπήκε στο καλάθι.<br><span class='small'>(demo — δεν στέλνεται τίποτα)</span>";
+  o.classList.add("on"); };
+</script>
+</body>
+</html>

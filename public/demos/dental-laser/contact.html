@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ραντεβού &amp; επικοινωνία · Dental Laser, Γυμναστηρίου 15 Τριανδρία</title>
+<meta name="description" content="Dental Laser Clinic: Γυμναστηρίου 15, Τριανδρία 553 37 Θεσσαλονίκη. 2310 948658, info@dentallaser.gr. Ωράριο και online ραντεβού.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("dl-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="dental-laser.css">
+<style>
+.mapbox{border-radius:var(--r);overflow:hidden;height:400px;box-shadow:0 1px 0 var(--line)}
+.mapbox iframe{width:100%;height:100%;border:0}
+.cc{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:22px}
+.cc a{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line);display:block;transition:transform .2s}
+.cc a:hover{transform:translateY(-3px)}
+.cc b{display:block;font:600 19px/1.25 var(--sans);margin-bottom:4px}
+.cc span{font-size:13px;color:var(--ink2)}
+.hours{list-style:none;display:grid;gap:9px;font-size:15px;margin-top:14px}
+.hours li{display:flex;justify-content:space-between;gap:14px;padding-bottom:9px;border-bottom:1px dashed var(--line)}
+.hours li.now{color:var(--gold)}
+.statusbadge{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;background:var(--paper2);font-size:13.5px;font-weight:600}
+.statusbadge i{width:8px;height:8px;border-radius:50%;background:#2f8f58}
+.statusbadge.shut i{background:var(--red)}
+.daychips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.daychips button{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13.5px}
+.daychips button[aria-pressed=true]{background:var(--gold);color:#fff;border-color:var(--gold)}
+.daychips button:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.slotgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px}
+.slotgrid button{padding:11px 8px;border-radius:9px;border:1px solid var(--line);background:var(--card);font-size:13.5px}
+.slotgrid button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+</style>
+</head>
+<body data-page="contact">
+
+<header class="phead"><div class="wrap">
+  <span class="eyebrow">Ραντεβού</span>
+  <h1>Γυμναστηρίου 15, <em>Τριανδρία</em></h1>
+  <p class="lead">553 37 Θεσσαλονίκη. Κλείστε ώρα online ή τηλεφωνήστε μας στο 2310 948658.</p>
+</div></header>
+
+<section style="padding-top:24px"><div class="wrap">
+  <div class="split" style="align-items:start">
+    <div class="card">
+      <h2 style="font-size:26px;margin-bottom:14px">Κλείστε ώρα</h2>
+      <label class="field"><span>Λόγος επίσκεψης</span><select id="t"></select></label>
+      <label class="field"><span>Μέρα</span></label>
+      <div class="daychips" id="days"></div>
+      <label class="field"><span>Ώρα</span></label>
+      <div class="slotgrid" id="slots"></div>
+      <div style="margin-top:18px">
+        <label class="field"><span>Ονοματεπώνυμο</span><input id="n" autocomplete="name"></label>
+        <label class="field"><span>Κινητό</span><input id="p" inputmode="tel" autocomplete="tel"></label>
+        <label class="field"><span>Πρώτη φορά στην κλινική;</span>
+          <select id="f"><option>Ναι, πρώτη φορά</option><option>Όχι, είμαι ήδη ασθενής</option></select></label>
+        <button class="btn btn-ink" id="go" style="width:100%">Επιβεβαίωση</button>
+        <div class="okbox" id="ok"></div>
+        <p class="small ph" data-note="Μπορεί να συνδεθεί με το Google Calendar που ήδη χρησιμοποιείτε" style="margin-top:12px">Θα λάβετε επιβεβαίωση και υπενθύμιση μία μέρα πριν.</p>
+      </div>
+    </div>
+    <div>
+      <div class="mapbox" style="margin-bottom:22px">
+        <iframe title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Gymnastiriou%2015%2C%20Triandria%2C%20Thessaloniki&z=17&output=embed"></iframe>
+      </div>
+      <div class="statusbadge" id="st"><i></i><span>—</span></div>
+      <h2 style="font-size:26px;margin:14px 0 0">Ωράριο</h2>
+      <ul class="hours" id="hours"></ul>
+      <h2 style="font-size:26px;margin:28px 0 0">Επικοινωνία</h2>
+      <div class="cc">
+        <a href="tel:+302310948658"><b>2310 948658</b><span>κλινική</span></a>
+        <a href="mailto:info@dentallaser.gr"><b>info@dentallaser.gr</b><span>email</span></a>
+        <a href="https://maps.google.com/?q=Gymnastiriou+15+Triandria+Thessaloniki" target="_blank" rel="noopener"><b>Οδηγίες</b><span>Γυμναστηρίου 15, Τριανδρία</span></a>
+        <a href="https://www.facebook.com/dentallaser.gr" target="_blank" rel="noopener"><b>Facebook</b><span>dentallaser.gr</span></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<script src="dental-laser.js"></script>
+<script>
+document.getElementById("t").innerHTML = SVC_TOPICS.map(t=>`<option>${t}</option>`).join("");
+const HOURS=[["Δευτέρα","08:30–13:00 & 17:00–21:00",[[8.5,13],[17,21]]],["Τρίτη","08:30–13:00 & 17:00–21:00",[[8.5,13],[17,21]]],
+ ["Τετάρτη","08:30–13:00 & 17:00–21:00",[[8.5,13],[17,21]]],["Πέμπτη","08:30–13:00 & 17:00–21:00",[[8.5,13],[17,21]]],
+ ["Παρασκευή","08:30–13:00",[[8.5,13]]],["Σάββατο","κλειστά",null],["Κυριακή","κλειστά",null]];
+const dow=()=>(new Date().getDay()+6)%7,nowH=()=>{const n=new Date();return n.getHours()+n.getMinutes()/60;};
+document.getElementById("hours").innerHTML=HOURS.map(([d,s],i)=>`<li class="${i===dow()?'now':''}"><span>${d}</span><b>${s}</b></li>`).join("");
+(function(){const b=document.getElementById("st"),t=b.querySelector("span"),r=HOURS[dow()][2];
+ const cur=r&&r.find(([a,z])=>nowH()>=a&&nowH()<z);
+ if(cur) t.textContent="Ανοιχτά τώρα · μέχρι "+cur[1]+":00";
+ else{b.classList.add("shut");let i=dow(),d=0;while(d<7){i=(i+1)%7;d++;if(HOURS[i][2])break;}
+  t.textContent="Κλειστά · ανοίγουμε "+HOURS[i][0]+" 08:30";}})();
+const DAYS=(()=>{const o=[],n=new Date();for(let i=0;i<8;i++){const d=new Date(n.getTime()+i*864e5),idx=(d.getDay()+6)%7;
+ o.push({label:i===0?"Σήμερα":i===1?"Αύριο":["Δευ","Τρί","Τετ","Πέμ","Παρ","Σάβ","Κυρ"][idx]+" "+d.getDate()+"/"+(d.getMonth()+1),closed:!HOURS[idx][2],idx});}return o;})();
+let day=null,time=null;
+document.getElementById("days").innerHTML=DAYS.map((x,i)=>`<button type="button" data-i="${i}" ${x.closed?"disabled":""}>${x.label}</button>`).join("");
+function slots(){const rs=HOURS[DAYS[day].idx][2],o=[];
+ rs.forEach(([a,z])=>{ for(let t=a;t<z;t+=0.5){ if(day===0&&t<nowH()+2) continue;
+   const hh=Math.floor(t),mm=t%1?"30":"00"; if(((hh*3+(mm==="30"?2:0))%5)===0) continue; o.push(hh+":"+mm); } });
+ const g=document.getElementById("slots");
+ g.innerHTML=o.length?o.map(t=>`<button type="button">${t}</button>`).join(""):'<p class="small">Δεν υπάρχουν ελεύθερες ώρες αυτή τη μέρα.</p>';
+ g.querySelectorAll("button").forEach(b=>b.onclick=()=>{g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));time=b.textContent;});}
+document.querySelectorAll("#days button").forEach(b=>b.onclick=()=>{if(b.disabled)return;
+ document.querySelectorAll("#days button").forEach(x=>x.setAttribute("aria-pressed",x===b));day=+b.dataset.i;time=null;slots();});
+document.querySelector("#days button:not([disabled])")?.click();
+document.getElementById("go").onclick=()=>{const o=document.getElementById("ok");
+ if(!time){o.textContent="Διαλέξτε ώρα.";o.classList.add("on");return;}
+ if(!document.getElementById("n").value.trim()||!document.getElementById("p").value.trim()){o.textContent="Συμπληρώστε ονοματεπώνυμο και κινητό.";o.classList.add("on");return;}
+ o.innerHTML="✓ Κλείστηκε: "+DAYS[day].label+" στις "+time+" — "+document.getElementById("t").value+".<br><span class='small'>(demo — δεν στέλνεται τίποτα)</span>";
+ o.classList.add("on");};
+</script>
+</body>
+</html>
