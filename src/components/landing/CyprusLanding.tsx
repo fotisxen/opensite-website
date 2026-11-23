@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HeroGlow from "@/components/greek/HeroGlow";
 import { getCaseStudy } from "@/lib/case-studies";
 import { BASE_URL, googleReviews, testimonial } from "@/lib/landing";
-import { phoneHref, siteConfig, viberHref, whatsappHref } from "@/lib/site.config";
+import { phoneHref, siteConfig, viberHref, whatsappEnquiryHref, whatsappHref } from "@/lib/site.config";
 import LeadForm from "./LeadForm";
 import EnglishLandingFrame from "./EnglishLandingFrame";
 import Reveal from "./Reveal";
@@ -286,11 +286,14 @@ export default function CyprusLanding() {
             >
               Get my free sample
             </a>
+            {/* WhatsApp rather than the Greek number: see EnglishLandingFrame. */}
             <a
-              href={phoneHref}
+              href={whatsappEnquiryHref("en")}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-surface-border bg-surface-container-high px-6 font-label-md text-label-md text-text-primary"
             >
-              Call {PHONE_INTL}
+              Message us on WhatsApp
             </a>
           </div>
         </Reveal>

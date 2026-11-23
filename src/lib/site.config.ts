@@ -126,3 +126,14 @@ export const siteConfig: SiteConfig = {
 export const phoneHref = `tel:${siteConfig.phone.e164}`;
 export const viberHref = `viber://chat?number=${encodeURIComponent(siteConfig.phone.e164)}`;
 export const whatsappHref = `https://wa.me/${siteConfig.phone.e164.replace("+", "")}`;
+
+// WhatsApp with the first line already written, so the visitor only has to
+// press send. Used by the ad landing pages, where every extra step costs.
+const WHATSAPP_ENQUIRY = {
+  el: "Γεια σας, ενδιαφέρομαι για ιστοσελίδα.",
+  en: "Hello, I am interested in a website for my business.",
+} as const;
+
+export function whatsappEnquiryHref(lang: "el" | "en" = "el") {
+  return `${whatsappHref}?text=${encodeURIComponent(WHATSAPP_ENQUIRY[lang])}`;
+}
