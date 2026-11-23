@@ -23,6 +23,9 @@ const COPY = {
     text: siteConfig.tracking.clarityId
       ? "Με τη συγκατάθεσή σας, η Google, η Meta και η Microsoft βάζουν cookies για τη μέτρηση των διαφημίσεών μας και για το πώς χρησιμοποιείται η σελίδα."
       : "Με τη συγκατάθεσή σας, η Google και η Meta βάζουν cookies για τη μέτρηση και την προβολή των διαφημίσεών μας.",
+    // Short form for phones: the full sentence took three lines and the banner
+    // then covered the form's own button. Same meaning, same link.
+    textShort: "Cookies για τη μέτρηση των διαφημίσεών μας.",
     accept: "Αποδοχή",
     decline: "Απόρριψη",
     policy: "Λεπτομέρειες",
@@ -32,6 +35,7 @@ const COPY = {
     text: siteConfig.tracking.clarityId
       ? "With your consent, Google, Meta and Microsoft set cookies to measure our ads and how this page is used."
       : "With your consent, Google and Meta set cookies to measure and show our ads.",
+    textShort: "Cookies to measure our ads.",
     accept: "Accept",
     decline: "Decline",
     policy: "Details",
@@ -106,11 +110,14 @@ export default function TrackingProvider() {
       ref={bannerRef}
       role="dialog"
       aria-label="Cookies"
-      className="fixed inset-x-0 bottom-0 z-[10000] border-t border-surface-border bg-surface-container-lowest/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md"
+      className="fixed inset-x-0 bottom-0 z-[10000] border-t border-surface-border bg-surface-container-lowest/95 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur-md sm:py-3 sm:pb-[max(0.75rem,env(safe-area-inset-bottom))]"
     >
-      <div className="mx-auto flex max-w-container-max flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-container-max flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <p className="font-body-sm text-body-sm text-text-secondary">
-          {copy.text}{" "}
+          {/* Phones get the short line, so the banner stays about one button
+              tall and never sits over the lead form's own button. */}
+          <span className="sm:hidden">{copy.textShort}</span>
+          <span className="hidden sm:inline">{copy.text}</span>{" "}
           <Link href={copy.href} className="whitespace-nowrap text-primary underline">
             {copy.policy}
           </Link>

@@ -152,9 +152,11 @@ export default function CyprusLanding() {
             <h1 className="font-display-lg text-[28px] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
               Web design for businesses in Cyprus
             </h1>
+            {/* Short on purpose: the free-sample promise is the form's own
+                headline, and on a phone the longer version pushed the form's
+                button under the cookie banner. */}
             <p className="mt-3 font-body-lg text-base text-text-secondary lg:text-lg">
-              Fast, clean websites and e-shops that work properly on mobile and on Google. See a free sample of your new homepage before
-              you decide anything.
+              Fast websites and e-shops that work properly on mobile and on Google.
             </p>
             <p className="mt-3 font-label-md text-label-md text-text-primary">
               <span aria-hidden="true" className="text-amber-400">★</span> {googleReviews.rating.replace(",", ".")}/5 · {googleReviews.count} Google

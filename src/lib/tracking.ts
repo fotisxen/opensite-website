@@ -207,9 +207,17 @@ export function initCookieless() {
 // only switches cookies on if the visitor presses "Accept". Form fields are
 // masked by Clarity itself and by data-clarity-mask in the markup, so nothing
 // anyone types is recorded.
+// Dev sessions are not visitors. Until 23 November 2026 the local dev server
+// was recorded too, so localhost pages showed up among the top pages and
+// skewed the session count and the browser/device split.
+function isLocalHost() {
+  const h = typeof window === "undefined" ? "" : window.location.hostname;
+  return h === "localhost" || h === "127.0.0.1" || h === "[::1]" || h.endsWith(".localhost");
+}
+
 function initClarity(consent: boolean) {
   const { clarityId } = siteConfig.tracking;
-  if (!clarityId || typeof window === "undefined") return;
+  if (!clarityId || typeof window === "undefined" || isLocalHost()) return;
   if (!window.clarity) {
     const c = function (...args: unknown[]) {
       (c.q = c.q || []).push(args);

@@ -174,8 +174,11 @@ landings.webGreece = {
   h1: "Κατασκευή ιστοσελίδων για επιχειρήσεις",
   // The ad keyword [κατασκευή ιστοσελίδων] appears whole in the title, the H1
   // and this first paragraph (Quality Score: landing page experience).
+  // Kept short on purpose: on a phone the old four-line version pushed the
+  // form's button under the cookie banner (Clarity, 23/11: 69% of visitors
+  // never scrolled past the first fifth of the page).
   subtitle:
-    "Αναλαμβάνουμε την κατασκευή ιστοσελίδων για επιχειρήσεις σε όλη την Ελλάδα: γρήγορο, καθαρό site που δουλεύει σωστά σε κινητό και Google.",
+    "Κατασκευή ιστοσελίδων για επιχειρήσεις σε όλη την Ελλάδα. Γρήγορο site για κινητό και Google.",
 };
 landings.eshopGreece = {
   ...landings.eshop,
