@@ -17,6 +17,7 @@ import ContactButtons, { AltContactLine } from "./ContactButtons";
 import FocusFormButton from "./FocusFormButton";
 import LandingStickyBar from "./LandingStickyBar";
 import LeadForm from "./LeadForm";
+import ProofStrip from "./ProofStrip";
 import HeroGlow from "@/components/greek/HeroGlow";
 import Reveal from "./Reveal";
 import Testimonials, { ReviewsLine } from "./Testimonials";
@@ -107,6 +108,7 @@ export default function LandingPage({ pageKey }: { pageKey: LandingKey }) {
             </h1>
             <p className="mt-3 font-body-lg text-base text-text-secondary lg:text-lg">{subtitleWithFacts(c)}</p>
             <ReviewsLine />
+            <ProofStrip />
           </div>
 
           <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">

@@ -25,7 +25,7 @@ const COPY = {
       : "Με τη συγκατάθεσή σας, η Google και η Meta βάζουν cookies για τη μέτρηση και την προβολή των διαφημίσεών μας.",
     // Short form for phones: the full sentence took three lines and the banner
     // then covered the form's own button. Same meaning, same link.
-    textShort: "Cookies για τη μέτρηση των διαφημίσεών μας.",
+    textShort: "Cookies για τις διαφημίσεις μας.",
     accept: "Αποδοχή",
     decline: "Απόρριψη",
     policy: "Λεπτομέρειες",

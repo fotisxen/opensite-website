@@ -310,6 +310,17 @@ type WorkCard = {
   hideLink?: boolean;
 };
 
+// Real, live clients, named on their own case-study pages. Shown as one line
+// under the rating on the ad landing pages: on a phone the visitor decides
+// inside the first screen, and until 23 November 2026 the only proof there was
+// a star rating in small type.
+export const proofClients = [
+  "The Platterie Box",
+  "Adonis Sail Yachts",
+  "DF Real Estate",
+  "OneMenoo",
+] as const;
+
 // What the Google Business Profile shows. Quotes are word for word, only with
 // the missing spaces after punctuation added. Update by hand.
 export const googleReviews = {

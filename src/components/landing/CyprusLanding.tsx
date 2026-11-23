@@ -4,6 +4,7 @@ import { getCaseStudy } from "@/lib/case-studies";
 import { BASE_URL, googleReviews, testimonial } from "@/lib/landing";
 import { phoneHref, siteConfig, viberHref, whatsappEnquiryHref, whatsappHref } from "@/lib/site.config";
 import LeadForm from "./LeadForm";
+import ProofStrip from "./ProofStrip";
 import EnglishLandingFrame from "./EnglishLandingFrame";
 import Reveal from "./Reveal";
 import WorkShot from "./WorkShot";
@@ -162,6 +163,7 @@ export default function CyprusLanding() {
               <span aria-hidden="true" className="text-amber-400">★</span> {googleReviews.rating.replace(",", ".")}/5 · {googleReviews.count} Google
               reviews
             </p>
+            <ProofStrip lang="en" />
           </div>
 
           <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
