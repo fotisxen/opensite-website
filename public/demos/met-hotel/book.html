@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d0d0e">
+<title>Κράτηση · Καλύτερη τιμή απευθείας · The Met Hotel Θεσσαλονίκη</title>
+<meta name="description" content="Κλείστε δωμάτιο στο The Met Hotel απευθείας, με την καλύτερη διαθέσιμη τιμή και δωρεάν ακύρωση στις ευέλικτες τιμές.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")||localStorage.getItem("met-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="met.css">
+<style>
+.bk-top{background:var(--ink);color:#fff;padding:130px 0 40px}
+.bk-top .bbar{margin-top:30px;max-width:none}
+.steps{display:flex;gap:28px;margin-top:34px;font:600 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#7d776e;flex-wrap:wrap}
+.steps span.on{color:var(--gold2)}
+.bk{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start;padding:50px 0 120px}
+.opt{display:grid;grid-template-columns:240px 1fr;gap:26px;background:#fff;border:1px solid var(--line);margin-bottom:20px}
+.opt .frame{height:100%;min-height:200px}
+.opt .in{padding:24px 24px 22px 0}
+.opt h3{font:300 26px/1.15 var(--serif)}
+.opt .facts{font-size:13px;color:var(--mute);margin-top:6px}
+.rate{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line);margin-top:14px}
+.rate+.rate{margin-top:0}
+.rate b{font-weight:600;font-size:14.5px;display:block}
+.rate small{font-size:12.5px;color:var(--mute)}
+.rate .pr{text-align:right}
+.rate .pr strong{display:block;font:300 24px/1 var(--serif)}
+.rate .pr small{display:block;margin-top:4px}
+.rate button{padding:12px 18px;border:1px solid var(--ink);font:600 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;transition:.2s;white-space:nowrap}
+.rate button.on,.rate button:hover{background:var(--ink);color:#fff}
+.tag{display:inline-block;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#2f7a4a;background:#e5f2e9;padding:5px 8px;border-radius:3px;margin-left:6px;vertical-align:middle}
+.sum{position:sticky;top:96px;background:#fff;border:1px solid var(--line);padding:28px}
+.sum h3{font:300 26px/1.1 var(--serif);margin-bottom:16px}
+.sum .l{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid var(--paper2)}
+.sum .l span:last-child{text-align:right}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}
+.sum .tot b{font:300 34px/1 var(--serif)}
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 20px}
+.ex{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:14px}
+.ex input{margin-top:4px;accent-color:var(--gold)}
+.ex small{display:block;color:var(--mute);font-size:12.5px}
+.vs{display:flex;gap:10px;align-items:center;font-size:13px;color:#2f7a4a;margin-top:14px;padding:12px;background:#eef6f0}
+.hidden{display:none}
+@media (max-width:980px){.bk{grid-template-columns:1fr}.sum{position:static}}
+@media (max-width:640px){.opt{grid-template-columns:1fr;gap:0}.opt .frame{min-height:0;aspect-ratio:16/9}.opt .in{padding:20px}.extras{grid-template-columns:1fr}.rate{flex-wrap:wrap}.rate .pr{text-align:left}}
+</style>
+</head>
+<body data-page="book">
+
+<section class="bk-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="demo.html">The Met</a> · Κράτηση</p>
+    <h1 class="h2">Κλείστε απευθείας, <em>με την καλύτερη τιμή.</em></h1>
+    <form class="bbar" id="bf" autocomplete="off">
+      <label><span>Άφιξη</span><input type="date" name="in" id="dIn"></label>
+      <label><span>Αναχώρηση</span><input type="date" name="out" id="dOut"></label>
+      <label><span>Επισκέπτες</span><select name="g" id="dG"><option value="1">1 ενήλικας</option><option value="2" selected>2 ενήλικες</option><option value="3">3 ενήλικες</option><option value="4">2 ενήλικες + 2 παιδιά</option></select></label>
+      <button class="btn btn-gold" type="submit">Ενημέρωση</button>
+    </form>
+    <div class="steps"><span class="on" id="s1">1 · Δωμάτιο</span><span id="s2">2 · Extras</span><span id="s3">3 · Στοιχεία</span></div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap bk">
+    <div>
+      <div id="p1">
+        <p class="small ph" data-note="Διαθεσιμότητα & τιμές ζωντανά από το SynXis σας, χωρίς να φεύγει ο πελάτης σε άλλο site" style="margin-bottom:22px" id="nightsTxt"></p>
+        <div id="opts"></div>
+      </div>
+      <div id="p2" class="hidden">
+        <h2 class="h3">Κάντε τη διαμονή σας <em style="color:var(--gold)">ακόμα καλύτερη</em></h2>
+        <div class="extras" id="ex"></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-line" id="b2back">Πίσω</button><button class="btn btn-ink" id="b2next">Συνέχεια</button></div>
+      </div>
+      <div id="p3" class="hidden">
+        <h2 class="h3" style="margin-bottom:22px">Στοιχεία κράτησης</h2>
+        <div class="row2"><label class="field"><span>Όνομα</span><input id="fN" autocomplete="given-name"></label><label class="field"><span>Επώνυμο</span><input id="fS" autocomplete="family-name"></label></div>
+        <div class="row2"><label class="field"><span>Email</span><input id="fE" type="email" autocomplete="email"></label><label class="field"><span>Κινητό</span><input id="fT" inputmode="tel" autocomplete="tel"></label></div>
+        <label class="field"><span>Ώρα άφιξης</span><select><option>Δεν ξέρω ακόμα</option><option>12:00 – 15:00 (early check-in αν υπάρχει διαθεσιμότητα)</option><option>15:00 – 18:00</option><option>18:00 – 22:00</option><option>Μετά τις 22:00</option></select></label>
+        <label class="field"><span>Ειδικά αιτήματα</span><textarea rows="3" placeholder="π.χ. ψηλός όροφος, κατοικίδιο, επέτειος"></textarea></label>
+        <label class="field" style="display:flex;gap:10px;align-items:center"><input type="checkbox" style="width:auto"> <span style="margin:0;letter-spacing:.04em;text-transform:none;font-size:13.5px;font-weight:500">Είμαι μέλος Marriott Bonvoy</span></label>
+        <p class="small ph" data-note="Πληρωμή με κάρτα μέσω της τράπεζάς σας / του SynXis" style="margin:6px 0 22px">Η κάρτα σας χρησιμοποιείται μόνο ως εγγύηση. Πληρώνετε στο ξενοδοχείο, εκτός αν επιλέξατε προπληρωμή.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-line" id="b3back">Πίσω</button><button class="btn btn-gold" id="b3go">Ολοκλήρωση κράτησης</button></div>
+        <div class="okbox" id="bOk"></div>
+      </div>
+    </div>
+    <aside class="sum">
+      <h3>Η κράτησή σας</h3>
+      <div id="sumL"></div>
+      <div class="tot"><span class="small">Σύνολο</span><b id="sumT">—</b></div>
+      <div class="vs ph" data-note="Ενδεικτική σύγκριση με τιμή OTA">✓ <span id="vsT">Φθηνότερα απ’ ό,τι στις πλατφόρμες κρατήσεων</span></div>
+      <ul class="ilist" style="margin-top:20px;font-size:13px">
+        <li><b>Δωρεάν ακύρωση</b><span>στην ευέλικτη τιμή</span></li>
+        <li><b>Βοήθεια</b><span><a href="tel:+302310017082">2310 017 082</a></span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<script>
+const R = [
+ ["superior","Superior Room","Θέα αυλή · έως 2",100,"superior"],
+ ["superior-plus","Superior Plus","Θέα πόλη · έως 2",138,"superiortwin"],
+ ["port","Superior Port View","25 m² · θέα λιμάνι · έως 2",158,"port"],
+ ["deluxe","Deluxe Room","Θέα πόλη · έως 2",178,"deluxe"],
+ ["executive","Executive Room","29 m² · τελευταίοι όροφοι · έως 2",198,"exec"],
+ ["suites","Business Suite","33 m² · θέα λιμάνι · έως 3",218,"business"],
+ ["esuite","Executive Suite","44 m² · 6ος όροφος · έως 3",550,"esuite"],
+ ["metsuite","The Met Suite","110 m² · πανοραμική θέα · έως 3",2000,"metsuite"]
+];
+const EX = [["br","Πρωινό στο Avenue 48","25 € / άτομο / βράδυ",25,"pp"],["pk","Parking με valet","20 € / βράδυ",20,"n"],["spa","Μασάζ στο M’SPA","70 € / άτομο",70,"p"],["late","Late check-out 15:00","40 €",40,"o"],["tr","Transfer από το αεροδρόμιο","45 €",45,"o"],["fl","Λουλούδια & σαμπάνια","65 €",65,"o"]];
+const q = new URLSearchParams(location.search), $ = s => document.querySelector(s);
+const iso = d => d.toISOString().slice(0,10), fmt = n => Math.round(n).toLocaleString("el-GR") + " €";
+const t0 = new Date(); t0.setDate(t0.getDate()+7);
+$("#dIn").value = q.get("in") || iso(t0); { const t = new Date($("#dIn").value); t.setDate(t.getDate()+2); $("#dOut").value = q.get("out") || iso(t); }
+$("#dG").value = q.get("g") || "2";
+let sel = null, extras = new Set();
+const nights = () => Math.max(1, Math.round((new Date($("#dOut").value) - new Date($("#dIn").value)) / 864e5) || 1);
+const stay = base => { let s = 0; const d = new Date($("#dIn").value); for(let i=0;i<nights();i++){ const w = d.getDay(); s += base * (w===5||w===6 ? 1.15 : 1); d.setDate(d.getDate()+1); } return s; };
+const guests = () => Math.min(+$("#dG").value, 2) ;
+function renderOpts(){
+  $("#nightsTxt").textContent = `${nights()} ${nights()===1?"βράδυ":"βράδια"} · ${$("#dG").selectedOptions[0].text} · τιμές για όλη τη διαμονή, με ΦΠΑ`;
+  $("#opts").innerHTML = R.map(r => { const flex = stay(r[3]), adv = flex*0.88;
+    return `<article class="opt" id="o-${r[0]}"><div class="frame"><img src="img/${r[4]}.jpg" alt="${r[1]}" loading="lazy"></div><div class="in">
+      <h3>${r[1]}</h3><p class="facts">${r[2]}</p>
+      <div class="rate"><div><b>Ευέλικτη τιμή</b><small>Δωρεάν ακύρωση έως 48 ώρες πριν</small></div><div class="pr"><strong>${fmt(flex)}</strong><small>${fmt(flex/nights())} / βράδυ</small></div><button data-r="${r[0]}" data-k="flex">Επιλογή</button></div>
+      <div class="rate"><div><b>Advance purchase <span class="tag">−12%</span></b><small>Προπληρωμή, χωρίς ακύρωση</small></div><div class="pr"><strong>${fmt(adv)}</strong><small>${fmt(adv/nights())} / βράδυ</small></div><button data-r="${r[0]}" data-k="adv">Επιλογή</button></div>
+    </div></article>`; }).join("");
+  document.querySelectorAll(".rate button").forEach(b => b.onclick = () => { const r = R.find(x => x[0]===b.dataset.r);
+    sel = {r, k:b.dataset.k}; document.querySelectorAll(".rate button").forEach(x => x.classList.toggle("on", x===b)); summary(); go(2); });
+}
+function summary(){
+  const L = [["Άφιξη", new Date($("#dIn").value).toLocaleDateString("el-GR",{weekday:"short",day:"numeric",month:"short"})],["Αναχώρηση", new Date($("#dOut").value).toLocaleDateString("el-GR",{weekday:"short",day:"numeric",month:"short"})],["Επισκέπτες",$("#dG").selectedOptions[0].text]];
+  let tot = 0;
+  if(sel){ const v = stay(sel.r[3]) * (sel.k==="adv" ? .88 : 1); tot += v; L.push([`${sel.r[1]} · ${sel.k==="adv"?"Advance":"Ευέλικτη"}`, fmt(v)]); }
+  EX.forEach(e => { if(!extras.has(e[0])) return; const v = e[4]==="pp" ? e[3]*guests()*nights() : e[4]==="n" ? e[3]*nights() : e[4]==="p" ? e[3]*guests() : e[3]; tot += v; L.push([e[1], fmt(v)]); });
+  $("#sumL").innerHTML = L.map(l => `<div class="l"><span>${l[0]}</span><span>${l[1]}</span></div>`).join("");
+  $("#sumT").textContent = tot ? fmt(tot) : "—";
+  $("#vsT").textContent = sel ? `Εξοικονομείτε περίπου ${fmt(stay(sel.r[3])*0.15)} σε σχέση με τις πλατφόρμες κρατήσεων` : "Καλύτερη τιμή απευθείας, εγγυημένα";
+}
+function go(n){ ["p1","p2","p3"].forEach((p,i) => $("#"+p).classList.toggle("hidden", i!==n-1)); ["s1","s2","s3"].forEach((s,i) => $("#"+s).classList.toggle("on", i<n)); scrollTo({top: document.querySelector(".bk").offsetTop - 90, behavior:"smooth"}); }
+$("#ex").innerHTML = EX.map(e => `<label class="ex"><input type="checkbox" value="${e[0]}"><span><b>${e[1]}</b><small>${e[2]}</small></span></label>`).join("");
+document.querySelectorAll("#ex input").forEach(c => c.onchange = () => { c.checked ? extras.add(c.value) : extras.delete(c.value); summary(); });
+$("#b2back").onclick = () => go(1); $("#b2next").onclick = () => go(3); $("#b3back").onclick = () => go(2);
+$("#b3go").onclick = () => { const o = $("#bOk");
+  if(!$("#fN").value.trim() || !$("#fE").value.trim()){ o.textContent = "Συμπληρώστε τουλάχιστον όνομα και email."; o.classList.add("on"); return; }
+  o.innerHTML = `✓ Η κράτησή σας επιβεβαιώθηκε. Αριθμός κράτησης <b>MET-${Math.floor(100000+Math.random()*899999)}</b>. Θα λάβετε email επιβεβαίωσης.<br><span class="small">(demo · δεν γίνεται πραγματική κράτηση)</span>`; o.classList.add("on"); };
+$("#dIn").onchange = () => { if($("#dOut").value <= $("#dIn").value){ const t = new Date($("#dIn").value); t.setDate(t.getDate()+1); $("#dOut").value = iso(t); } };
+$("#bf").onsubmit = e => { e.preventDefault(); sel = null; renderOpts(); summary(); go(1); };
+renderOpts(); summary();
+const pre = q.get("room"); if(pre){ const el = document.getElementById("o-"+pre); if(el){ el.style.outline = "1.5px solid var(--gold)"; setTimeout(() => el.scrollIntoView({behavior:"smooth", block:"center"}), 300); } }
+if(q.get("rate") === "adv") setTimeout(() => document.querySelectorAll('.rate button[data-k="adv"]')[0]?.scrollIntoView({block:"center"}), 300);
+</script>
+<script src="met.js"></script>
+</body>
+</html>

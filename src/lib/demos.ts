@@ -10,6 +10,7 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "met-hotel", name: "The Met Hotel", kind: "Ξενοδοχείο 5★ 7 σελίδων · δωμάτια με σύγκριση, κράτηση σε 3 βήματα με extras, Sky Bar/Long Bar/Chan, M’SPA, αίθουσες με φίλτρο χωρητικότητας (Θεσσαλονίκη)", created: "2026-11-23", instagram: "https://www.instagram.com/themethotel/" },
   { slug: "mikrouli", name: "Το μικρούλι", kind: "E-shop 5 σελίδων · ρούχα & τσάντες σε ένα site, προσφορά 2+1 με καλάθι (Αμπελόκηποι Θεσσαλονίκης)", created: "2026-11-19", instagram: "https://www.instagram.com/to_mikrouli_clothes/" },
   { slug: "svoures", name: "Σβούρες", kind: "E-shop 5 σελίδων · παιδικά 0–16, φίλτρο ανά ηλικία, οδηγός νουμέρων (Πεύκα Θεσσαλονίκης)", created: "2026-11-19", instagram: "https://www.instagram.com/svoures_paidika_rouxa/" },
   { slug: "glam", name: "GLAM Πάτρα", kind: "E-shop 5 σελίδων · 2 καταστήματα με εναλλαγή, ανδρικά & γυναικεία (Κορίνθου & Καρατζά)", created: "2026-11-19", instagram: "https://www.instagram.com/glam_patra/" },
