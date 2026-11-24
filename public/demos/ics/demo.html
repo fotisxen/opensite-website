@@ -202,6 +202,15 @@ html:not(.notes) .ph{outline:none}
 .paid{font:600 12px/1 var(--f);padding:6px 9px;border-radius:999px;background:#e9f2c2;color:#4c5800}
 .plogin{max-width:420px;margin:30px auto;display:grid;gap:12px}
 .plogin .hint{font-size:13px;color:var(--muted);padding:10px 12px;border-radius:10px;background:#f1f2ea}
+.nowbox{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;margin-top:18px;padding:20px 22px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 2px var(--lime)}
+.nb-step{width:64px;height:64px;border-radius:16px;background:var(--lime);display:grid;place-items:center;font:600 28px/1 var(--f);color:#10140a}
+.nb-step small{font-size:13px;margin-top:-18px}
+.nb-k{font:600 11.5px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.nowbox b{display:block;font:600 24px/1.2 var(--f);letter-spacing:-.02em;margin-top:6px}
+.nowbox p{color:#3a423d;margin-top:4px;font-size:16px}
+.nowbox small{display:block;color:var(--muted);margin-top:6px;font-size:14px}
+.nowbox small b{display:inline;font-size:14px;letter-spacing:0;color:var(--ink)}
+.sample{margin-top:10px;font:600 13px/1.2 var(--f);color:#2459a8;text-decoration:underline;text-underline-offset:3px}
 .live{display:inline-flex;align-items:center;gap:6px;font:600 11.5px/1 var(--f);color:#4c5800;background:#e9f2c2;padding:5px 8px;border-radius:999px}
 .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#7ca000;animation:bl 1.6s infinite}
 @keyframes bl{50%{opacity:.3}}
@@ -268,7 +277,7 @@ footer a:hover{color:#fff}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-<script src="../ics-crm/store.js"></script>
+<script src="../ics-crm/store.js?v=3"></script>
 <script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")){h.classList.remove("notes");h.classList.add("clean")}}catch(e){}})();</script>
 </head>
 <body>
@@ -553,19 +562,27 @@ function renderPortal(flash){const w=$('#pwin');
  else{const ty=TYPES[k.type],cons=U[k.own];
   const head=`<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start"><div><h3>${k.id} · ${esc(k.t)}</h3><div class="sub">${T('Your consultant','Ο σύμβουλός σας','Votre conseillère')}: ${cons.n} · ${offN(cons.off)}</div></div><span class="live">${T('Live','Ζωντανά','En direct')}</span></div>`;
   const track=`<div class="track ${flash==='stage'?'flash':''}" style="--n:${ty.steps.length}">${ty.steps.map((s,i)=>`<div class="${i<k.st?'done':i===k.st?'now':''}">${tr(s)}</div>`).join('')}</div>`;
-  const docsBox=`<div class="box ${flash==='docs'?'flash':''}"><h4>${T('Documents','Έγγραφα','Documents')}</h4>${k.docs.map((d,i)=>{const need=d.client&&d.s==='req';return `<div class="doc"><i class="${d.s==='req'?'wait':'ok'}">${d.s==='req'?'!':'✓'}</i><span>${esc(d.n.replace(/\.pdf$/i,''))}</span>${need?`<button class="btn s" data-up="${i}">${T('Upload','Ανέβασμα','Téléverser')}</button>`:`<small>${tr(DOCST[d.s])}</small>`}</div>`}).join('')}<input type="file" id="pFile" hidden></div>`;
+  const nxt=ty.steps[k.st+1],need=k.docs.filter(d=>d.client&&d.s==='req').length;
+  const nowBox=`<div class="nowbox ${flash==='stage'?'flash':''}"><div class="nb-step">${k.st+1}<small>/${ty.steps.length}</small></div><div><span class="nb-k">${T('Where your case is now','Πού βρίσκεται τώρα η υπόθεσή σας','Où en est votre dossier')}</span><b>${tr(ty.steps[k.st])}</b><p>${ty.tips?tr(ty.tips[k.st]):''}</p>${nxt?`<small>${T('Next step','Επόμενο βήμα','Étape suivante')}: <b>${tr(nxt)}</b></small>`:''}${need?`<button class="btn lime s" data-pt="docs" style="margin-top:10px">${T(`We need ${need} document${need>1?'s':''} from you →`,`Χρειαζόμαστε ${need} έγγραφ${need>1?'α':'ο'} από εσάς →`,`Il nous faut ${need} document${need>1?'s':''} →`)}</button>`:''}</div></div>`;
+  const docsBox=`<div class="box ${flash==='docs'?'flash':''}"><h4>${T('Documents','Έγγραφα','Documents')}</h4>${k.docs.map((d,i)=>{const need=d.client&&d.s==='req';return `<div class="doc"><i class="${d.s==='req'?'wait':'ok'}">${d.s==='req'?'!':'✓'}</i><span>${esc(d.n.replace(/\.pdf$/i,''))}</span>${need?`<button class="btn s" data-up="${i}">${T('Upload','Ανέβασμα','Téléverser')}</button>`:`<small>${tr(DOCST[d.s])}</small>`}</div>`}).join('')}<input type="file" id="pFile" hidden accept=".pdf,image/*">${reqDocs.length?`<button class="sample" id="pSample">📄 ${T('Demo: upload a sample PDF','Demo: ανέβασμα δείγματος PDF','Démo : téléverser un exemple PDF')}</button>`:''}</div>`;
   const msgsBox=`<div class="box ${flash==='msgs'?'flash':''}"><h4>${T('Messages','Μηνύματα','Messages')}</h4><div id="pMs">${k.portal.msgs.map(m=>`<div class="msg ${m[0]==='client'?'me':''}"><span class="av">${m[0]==='client'?c.n.split(' ').map(w=>w[0]).join(''):U[m[0]].n.split(' ').map(w=>w[0]).join('').slice(0,2)}</span><span><small>${m[0]==='client'?T('You','Εσείς','Vous'):U[m[0]].n} · ${new Date(m[1]).toLocaleString(loc(),{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</small><div class="bb">${esc(m[2])}</div></span></div>`).join('')||`<div class="muted">—</div>`}</div><form class="msend" id="pmf"><input id="pmIn" placeholder="${T('Write to your consultant…','Γράψτε στον σύμβουλό σας…','Écrivez à votre conseillère…')}"><button class="btn s">${T('Send','Αποστολή','Envoyer')}</button></form></div>`;
   const payBox=`<div class="box ${flash==='pay'?'flash':''}"><h4>${T('Invoices','Τιμολόγια','Factures')}</h4>${S.invoices.filter(i=>i.c===k.id).map(i=>`<div class="inv"><span>${esc(i.desc)}<br><small class="muted">${i.id}</small></span><span style="text-align:right"><b>${money(i.amt,i.cur)}</b><br>${i.st==='paid'?`<span class="paid">${T('Paid','Πληρώθηκε','Payée')}</span>`:`<button class="btn lime s" data-pay="${i.id}" style="margin-top:4px">${T('Pay now','Πληρωμή','Payer')}</button>`}</span></div>`).join('')||`<div class="muted">—</div>`}</div>`;
   const ap=S.appts.filter(a=>a.em===c.em[0]&&a.ts>Date.now()-3600e3).sort((a,b)=>a.ts-b.ts);
   const apBox=`<div class="box"><h4>${T('Appointments','Ραντεβού','Rendez-vous')}</h4>${ap.map(a=>`<div class="inv"><span>${a.mode==='video'?'🎥':'🏢'} <b>${esc(a.topic)}</b><br><small class="muted">${U[a.u].n} · ${offN(a.off)}</small></span><span style="text-align:right;font-size:13.5px">${ICS.fmtDT(a.ts,OFF[a.off].tz,loc())} ${offN(a.off)}<br><b>${ICS.fmtT(a.ts,myTZ)} ${T('your time','η ώρα σας','votre heure')}</b></span></div>`).join('')||`<div class="muted">${T('None booked.','Κανένα.','Aucun.')}</div>`}<a class="btn line s" href="#book" style="margin-top:10px">+ ${T('Book','Κράτηση','Réserver')}</a></div>`;
-  main=head+track+({case:`<div class="pcols">${docsBox}${msgsBox}</div>`,docs:docsBox,msgs:msgsBox,pay:payBox,appts:apBox})[P.tab]}
+  main=head+nowBox+track+({case:`<div class="pcols">${docsBox}${msgsBox}</div>`,docs:docsBox,msgs:msgsBox,pay:payBox,appts:apBox})[P.tab]}
  w.innerHTML=`<aside class="pside"><div class="who"><span class="av">${c.n.split(' ').map(x=>x[0]).join('')}</span><span><b>${esc(c.n)}</b><small>${esc(c.addr)}</small></span></div>${nav.map(([v,l,n])=>`<button class="${P.tab===v?'on':''}" data-pt="${v}">${l}<em>${n}</em></button>`).join('')}${cs.length>1?`<select id="pCase" style="margin-top:10px;padding:8px;border-radius:8px;background:#1e2823;color:#fff;border:0">${cs.map((x,i)=>`<option value="${i}" ${i===P.ci?'selected':''}>${x.id}</option>`).join('')}</select>`:''}<button data-out="1" style="margin-top:auto;color:#8a938d">${T('Sign out','Έξοδος','Déconnexion')}</button></aside><div class="pmain">${main}</div>`;
  $$('[data-pt]').forEach(b=>b.onclick=()=>{P.tab=b.dataset.pt;renderPortal()});
  if($('#pCase'))$('#pCase').onchange=e=>{P.ci=+e.target.value;renderPortal()};
  $('[data-out]').onclick=()=>{P.in=false;try{sessionStorage.removeItem('ics-portal')}catch(e){}renderPortal()};
  if(!k)return;
  let upIdx=-1;$$('[data-up]').forEach(b=>b.onclick=()=>{upIdx=+b.dataset.up;$('#pFile').click()});
- if($('#pFile'))$('#pFile').onchange=e=>{const f=e.target.files[0];if(!f)return;S=ICS.load();const kk=S.cases.find(x=>x.id===k.id),d=kk.docs[upIdx];d.s='rec';d.by='client';d.d=Date.now();d.n=d.n+' · '+f.name;d.fresh=true;kk.log.unshift(['client',Date.now(),'Uploaded '+f.name+' from the portal']);ICS.lead(S,'upload',{name:c.n,email:c.em[0],case:kk.id,text:d.n},[kk.own]);ICS.save(S);renderPortal('docs');toast(T('Uploaded. Your consultant has been notified.','Ανέβηκε. Ο σύμβουλός σας ενημερώθηκε.','Téléversé. Votre conseillère a été avisée.'))};
+ const upload=async f=>{if(upIdx<0)upIdx=k.docs.findIndex(d=>d.client&&d.s==='req');if(upIdx<0)return;toast(T('Uploading and reading your document…','Ανέβασμα και ανάγνωση του εγγράφου…','Téléversement et lecture du document…'));
+  let r=null;try{r=await ICS.readDoc(f)}catch(e){}
+  S=ICS.load();const kk=S.cases.find(x=>x.id===k.id),d=kk.docs[upIdx];d.s='rec';d.by='client';d.d=Date.now();d.n=d.n+' · '+f.name;d.fresh=true;if(r&&Object.keys(r.fields).length){d.extract=r.fields;d.title=r.title}
+  kk.log.unshift(['client',Date.now(),'Uploaded '+f.name+' from the portal']);ICS.lead(S,'upload',{name:c.n,email:c.em[0],case:kk.id,text:d.n+(d.extract?` · ${Object.keys(d.extract).length} fields read`:'')},[kk.own]);ICS.save(S);upIdx=-1;renderPortal('docs');
+  toast(T('Uploaded. Your consultant has been notified.','Ανέβηκε. Ο σύμβουλός σας ενημερώθηκε.','Téléversé. Votre conseillère a été avisée.'))};
+ if($('#pFile'))$('#pFile').onchange=e=>{const f=e.target.files[0];if(f)upload(f)};
+ if($('#pSample'))$('#pSample').onclick=async()=>{const b=await (await fetch('../ics-crm/samples/family-status-certificate.pdf')).blob();upIdx=-1;upload(new File([b],'family-status-certificate.pdf',{type:'application/pdf'}))};
  if($('#pmf'))$('#pmf').onsubmit=e=>{e.preventDefault();const v=$('#pmIn').value.trim();if(!v)return;S=ICS.load();const kk=S.cases.find(x=>x.id===k.id);kk.portal.msgs.push(['client',Date.now(),v]);ICS.lead(S,'message',{name:c.n,email:c.em[0],case:kk.id,text:v},[kk.own]);ICS.save(S);renderPortal('msgs')};
  $$('[data-pay]').forEach(b=>b.onclick=()=>{const i=S.invoices.find(x=>x.id===b.dataset.pay);payModal(i.amt,i.cur,i.desc,()=>{S=ICS.load();const ii=S.invoices.find(x=>x.id===i.id);ii.st='paid';ii.paidAt=Date.now();ii.fresh=true;ICS.lead(S,'payment',{name:c.n,email:c.em[0],case:i.c,what:i.desc,amt:money(i.amt,i.cur)},[k.own]);ICS.save(S);renderPortal('pay')})})}
 

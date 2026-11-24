@@ -44,6 +44,81 @@
     bank: { n: ["AFM & banking", "ΑΦΜ & τράπεζα", "AFM et banque"], c: "", steps: [["Documents", "Έγγραφα", "Documents"], ["AFM", "ΑΦΜ", "AFM"], ["Bank account", "Λογαριασμός", "Compte bancaire"], ["Done", "Ολοκληρώθηκε", "Terminé"]] },
     imm: { n: ["Immigration", "Μετανάστευση", "Immigration"], c: "red", steps: [["Eligibility", "Καταλληλότητα", "Admissibilité"], ["Application", "Αίτηση", "Demande"], ["Decision", "Απόφαση", "Décision"], ["Arrival", "Άφιξη", "Arrivée"]] },
   };
+  /* what each stage means, in the client's words (shown in the portal) */
+  const TIPS = {
+    inh: [["We have talked and your case is open.", "Μιλήσαμε και η υπόθεσή σας ξεκίνησε.", "Nous avons discuté et votre dossier est ouvert."], ["You sign a power of attorney so we can act for you in Greece.", "Υπογράφετε πληρεξούσιο ώστε να ενεργούμε για εσάς στην Ελλάδα.", "Vous signez une procuration pour que nous agissions pour vous en Grèce."], ["We officially translate the documents (will, certificates).", "Μεταφράζουμε επίσημα τα έγγραφα (διαθήκη, πιστοποιητικά).", "Nous traduisons officiellement les documents (testament, certificats)."], ["The notary in Greece prepares the acceptance of inheritance.", "Ο συμβολαιογράφος στην Ελλάδα συντάσσει την αποδοχή κληρονομιάς.", "Le notaire en Grèce prépare l’acceptation de la succession."], ["The inheritance tax return is filed.", "Υποβάλλεται η δήλωση φόρου κληρονομιάς.", "La déclaration d’impôt sur la succession est déposée."], ["Registration at the land registry. Done!", "Μεταγραφή στο κτηματολόγιο. Τέλος!", "Enregistrement au cadastre. Terminé !"]],
+    tax: [["We collect your documents.", "Συγκεντρώνουμε τα έγγραφά σας.", "Nous rassemblons vos documents."], ["Our accountants prepare the declaration.", "Οι λογιστές μας ετοιμάζουν τη δήλωση.", "Nos comptables préparent la déclaration."], ["A second accountant checks it.", "Δεύτερος λογιστής την ελέγχει.", "Un second comptable la vérifie."], ["Filed. You receive the tax notice.", "Υποβλήθηκε. Λαμβάνετε το εκκαθαριστικό.", "Déposée. Vous recevez l’avis d’imposition."]],
+    re: [["We visit and value the property.", "Επισκεπτόμαστε και εκτιμούμε το ακίνητο.", "Nous visitons et évaluons le bien."], ["We check the titles and permits.", "Ελέγχουμε τίτλους και άδειες.", "Nous vérifions les titres et permis."], ["We look for a buyer or tenant.", "Ψάχνουμε αγοραστή ή ενοικιαστή.", "Nous cherchons un acheteur ou un locataire."], ["The contract is prepared and signed.", "Το συμβόλαιο ετοιμάζεται και υπογράφεται.", "Le contrat est préparé et signé."], ["Completed.", "Ολοκληρώθηκε.", "Terminé."]],
+    tr: [["We received your documents.", "Λάβαμε τα έγγραφά σας.", "Nous avons reçu vos documents."], ["Your translator is working on them.", "Ο μεταφραστής σας τα μεταφράζει.", "Votre traducteur y travaille."], ["The translation is certified.", "Η μετάφραση πιστοποιείται.", "La traduction est certifiée."], ["Ready: PDF and by courier.", "Έτοιμη: σε PDF και με courier.", "Prête : en PDF et par messagerie."]],
+    bank: [["We collect your documents.", "Συγκεντρώνουμε τα έγγραφά σας.", "Nous rassemblons vos documents."], ["We apply for your Greek AFM.", "Κάνουμε αίτηση για ΑΦΜ.", "Nous demandons votre AFM grec."], ["We open the bank account for you.", "Ανοίγουμε τον τραπεζικό λογαριασμό.", "Nous ouvrons le compte bancaire."], ["Done.", "Ολοκληρώθηκε.", "Terminé."]],
+    imm: [["We check that you qualify.", "Ελέγχουμε αν πληροίτε τις προϋποθέσεις.", "Nous vérifions votre admissibilité."], ["Your application is submitted.", "Η αίτησή σας υποβλήθηκε.", "Votre demande est déposée."], ["We wait for the decision.", "Περιμένουμε την απόφαση.", "Nous attendons la décision."], ["Welcome! We help with your first steps.", "Καλώς ήρθατε! Σας βοηθάμε στα πρώτα βήματα.", "Bienvenue ! Nous vous aidons à vos débuts."]],
+  };
+  Object.keys(TIPS).forEach(k => { if (TYPES[k]) TYPES[k].tips = TIPS[k]; });
+
+  /* ---------- reading documents (PDF text layer) ---------- */
+  const FIELDS = {
+    nameGr: ["Full name (Greek)", "Ονοματεπώνυμο (ελληνικά)", "Nom complet (grec)"],
+    father: ["Father’s name", "Πατρώνυμο", "Prénom du père"],
+    mother: ["Mother’s name", "Μητρώνυμο", "Prénom de la mère"],
+    dob: ["Date of birth", "Ημερομηνία γέννησης", "Date de naissance"],
+    pob: ["Place of birth", "Τόπος γέννησης", "Lieu de naissance"],
+    afm: ["Greek AFM (tax no.)", "ΑΦΜ", "AFM grec"],
+    amka: ["AMKA", "ΑΜΚΑ", "AMKA"],
+    idno: ["ID / passport no.", "ΑΔΤ / Αρ. διαβατηρίου", "No d’identité / passeport"],
+    addr: ["Address", "Διεύθυνση", "Adresse"],
+    ph: ["Phone", "Τηλέφωνο", "Téléphone"],
+    em: ["Email", "Email", "Courriel"],
+  };
+  let pdfjs = null;
+  function loadPdfJs() {
+    if (pdfjs) return pdfjs;
+    pdfjs = new Promise((ok, no) => {
+      const s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+      s.onload = () => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"; ok(window.pdfjsLib); };
+      s.onerror = () => { pdfjs = null; no(new Error("pdf.js did not load")); };
+      document.head.appendChild(s);
+    });
+    return pdfjs;
+  }
+  /* turns a PDF into lines of text, top to bottom */
+  async function pdfLines(buf) {
+    const lib = await loadPdfJs(), doc = await lib.getDocument({ data: buf }).promise, out = [];
+    for (let p = 1; p <= Math.min(doc.numPages, 5); p++) {
+      const tc = await (await doc.getPage(p)).getTextContent(), rows = {};
+      tc.items.forEach(it => { const y = Math.round(it.transform[5] / 3); (rows[y] = rows[y] || []).push([it.transform[4], it.str]); });
+      Object.keys(rows).map(Number).sort((a, b) => b - a).forEach(y => out.push(rows[y].sort((a, b) => a[0] - b[0]).map(x => x[1]).join(" ").replace(/\s+/g, " ").trim()));
+    }
+    return out.filter(Boolean);
+  }
+  function parseFields(lines) {
+    const f = {}, g = (re, k, fn) => { if (f[k]) return; for (const l of lines) { const m = l.match(re); if (m) { f[k] = fn ? fn(m) : m[m.length - 1].trim(); return; } } };
+    let sur = "", giv = "";
+    for (const l of lines) { const a = l.match(/^(?:Επώνυμο|Surname)\s*[:：]\s*(.+)$/i); if (a && !sur) sur = a[1].trim(); const b = l.match(/^(?:Όνομα|Given names?)\s*[:：]\s*(.+)$/i); if (b && !giv) giv = b[1].trim(); }
+    if (sur || giv) f.nameGr = `${giv} ${sur}`.trim();
+    g(/^Πατρώνυμο\s*:\s*(.+)$/, "father");
+    g(/^Μητρώνυμο\s*:\s*(.+)$/, "mother");
+    g(/(?:Ημερομηνία γέννησης|Ημ\.? γέννησης|Date of birth)\s*:\s*(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})/i, "dob", m => `${m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`);
+    g(/^(?:Τόπος γέννησης|Place of birth)\s*:\s*(.+)$/i, "pob");
+    g(/Α\.?\s?Φ\.?\s?Μ\.?\s*:\s*(\d{9})\b/, "afm", m => m[1].replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3"));
+    g(/Α\.?\s?Μ\.?\s?Κ\.?\s?Α\.?\s*:\s*(\d{11})\b/, "amka");
+    g(/(?:Α\.?\s?Δ\.?\s?Τ\.?|Διαβατηρίου|Passport No\.?)[^:]*:\s*([A-ZΑ-Ω]{1,2}\s?\d{6,7})/i, "idno");
+    g(/^(?:Διεύθυνση κατοικίας|Διεύθυνση|Address)\s*:\s*(.+)$/i, "addr");
+    g(/^(?:Τηλέφωνο|Phone)\s*:\s*(\+?[\d\s]{8,})$/i, "ph");
+    g(/([\w.+-]+@[\w-]+\.[\w.]+)/, "em");
+    return f;
+  }
+  /* file: a File/Blob, or a URL string. Returns {kind, fields, title, lines} */
+  async function readDoc(file) {
+    let buf, name = typeof file === "string" ? file.split("/").pop() : file.name || "document";
+    const isPdf = /\.pdf$/i.test(name) || file.type === "application/pdf";
+    if (!isPdf) return { kind: /\.(jpe?g|png|heic|webp)$/i.test(name) ? "image" : "other", fields: {}, title: name, lines: [] };
+    buf = typeof file === "string" ? await (await fetch(file)).arrayBuffer() : await file.arrayBuffer();
+    const lines = await pdfLines(new Uint8Array(buf));
+    const title = lines.find(l => /^(ΠΙΣΤΟΠΟΙΗΤΙΚΟ|ΒΕΒΑΙΩΣΗ|ΛΗΞΙΑΡΧΙΚΗ|ΑΠΟΣΠΑΣΜΑ|ΔΙΑΘΗΚΗ|CERTIFICATE|PASSPORT)/i.test(l)) || name;
+    return { kind: lines.length ? "pdf" : "scan", fields: parseFields(lines), title, lines };
+  }
+
   const DOCST = { req: ["Requested", "Ζητήθηκε", "Demandé", "amber"], rec: ["Received", "Παραλήφθηκε", "Reçu", "blue"], trn: ["Translated", "Μεταφράστηκε", "Traduit", "lime"], cert: ["Certified", "Πιστοποιήθηκε", "Certifié", "green"] };
   const KINDS = { doc: ["Document request", "Αίτημα εγγράφου", "Demande de document"], upd: ["Update needed", "Χρειάζεται ενημέρωση", "Mise à jour requise"], act: ["Action", "Ενέργεια", "Action"], call: ["Call client", "Κλήση πελάτη", "Appeler le client"] };
   const ROLES = [["Heir", "Κληρονόμος", "Héritier"], ["Co-heir", "Συγκληρονόμος", "Cohéritier"], ["Seller", "Πωλητής", "Vendeur"], ["Buyer", "Αγοραστής", "Acheteur"], ["Owner", "Ιδιοκτήτης", "Propriétaire"], ["Applicant", "Αιτών", "Demandeur"], ["Spouse", "Σύζυγος", "Conjoint"], ["Attorney-in-fact", "Πληρεξούσιος", "Mandataire"]];
@@ -52,7 +127,7 @@
     return {
       v: 2, me: "mm",
       clients: [
-        { id: "c1", n: "Eleni Papas", ph: ["+1 416 555 0142"], em: ["eleni.papas@example.com"], addr: "Scarborough, ON", afm: "148 223 901", amka: "", dob: "1961-04-12", off: "Toronto", lang: "EN/ΕΛ", note: "Prefers calls after 4pm Toronto time.", src: "Referral" },
+        { id: "c1", n: "Eleni Papas", ph: ["+1 416 555 0142"], em: ["eleni.papas@example.com"], addr: "Scarborough, ON", afm: "148 223 901", amka: "", dob: "1961-04-12", off: "Toronto", lang: "EN/ΕΛ", note: "Prefers calls after 4pm Toronto time.", src: "Referral", nameGr: "", father: "", mother: "", idno: "", pob: "" },
         { id: "c2", n: "Nikos Papas", ph: ["+1 647 555 0198"], em: ["n.papas@example.com"], addr: "Mississauga, ON", afm: "", amka: "", dob: "1958-09-30", off: "Toronto", lang: "ΕΛ", note: "Brother of Eleni. Co-heir.", src: "Referral" },
         { id: "c3", n: "Sophie Dimas", ph: ["+1 514 555 0110"], em: ["sdimas@example.com"], addr: "Laval, QC", afm: "", amka: "", dob: "1990-02-03", off: "Montreal", lang: "FR/EN", note: "", src: "Website" },
         { id: "c4", n: "Kostas Laskaris", ph: ["+30 694 555 0177", "+1 416 555 0133"], em: ["k.laskaris@example.com"], addr: "Toronto, ON · Kalamaria (GR)", afm: "077 412 556", amka: "", dob: "1972-11-21", off: "Toronto", lang: "ΕΛ", note: "Owns the Kalamaria apartment with his sister.", src: "AHEPA event" },
@@ -125,5 +200,5 @@
   const tzNow = tz => { const p = new Intl.DateTimeFormat("en-GB", { timeZone: tz, weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()); const g = k => p.find(x => x.type === k).value; const h = +g("hour"), m = +g("minute"); return { s: `${g("hour")}:${g("minute")}`, open: !/Sat|Sun/.test(g("weekday")) && h * 60 + m >= 540 && h * 60 + m < 1020 }; };
   const fmtT = (ts, tz, loc) => new Date(ts).toLocaleTimeString(loc || "en-GB", { timeZone: tz, hour: "2-digit", minute: "2-digit" });
   const fmtDT = (ts, tz, loc) => new Date(ts).toLocaleString(loc || "en-GB", { timeZone: tz, weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
-  window.ICS = { KEY, OFF, U, TYPES, DOCST, KINDS, ROLES, day, ago, at, load, save, reset, on, lead, tzNow, fmtT, fmtDT, SEED };
+  window.ICS = { KEY, OFF, U, TYPES, DOCST, KINDS, ROLES, FIELDS, day, ago, at, load, save, reset, on, lead, tzNow, fmtT, fmtDT, SEED, readDoc };
 })();

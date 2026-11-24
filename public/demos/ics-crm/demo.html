@@ -21,7 +21,7 @@
   --red:#c2410c;--amber:#b7791f;--green:#2f7d4f;--blue:#2459a8;--f:"Inter Tight",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{background:var(--bg);color:var(--ink);font:400 14.5px/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--f);-webkit-font-smoothing:antialiased;overflow:hidden}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
 button{background:none;border:0;cursor:pointer}
@@ -232,6 +232,46 @@ button{background:none;border:0;cursor:pointer}
 .tip a{text-decoration:underline;font-weight:600}
 html:not(.notes) .tip{display:none}
 
+/* simpler navigation, chat, document reading */
+.qa{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.qa button{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:14px 16px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-weight:600;text-align:left;line-height:1.3;transition:box-shadow .15s,transform .15s}
+.qa button:hover{box-shadow:inset 0 0 0 2px var(--lime);transform:translateY(-1px)}
+.qa span{width:34px;height:34px;border-radius:10px;background:var(--lime2);display:grid;place-items:center;font-size:16px}
+@media(max-width:1000px){.qa{grid-template-columns:repeat(2,1fr)}}
+.ctabs{display:flex;gap:4px;margin-bottom:14px;overflow-x:auto;border-bottom:1px solid var(--line)}
+.ctabs button{display:flex;align-items:center;gap:7px;padding:11px 14px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.ctabs button.on{color:var(--ink);border-color:var(--ink)}
+.ctabs em{font-style:normal;font-size:11.5px;font-weight:700;background:#eeede7;color:#47524b;border-radius:999px;padding:2px 7px}
+.ctabs button.on em{background:var(--lime);color:#10140a}
+.hint{text-align:left;background:var(--lime2);font-size:14.5px}
+.linkb{color:var(--blue);font-weight:600;font-size:13.5px;text-decoration:underline;text-underline-offset:3px;margin-top:4px;display:inline-block}
+.drop small{color:var(--muted)}
+.docfill{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:14px;border:1.5px dashed #c6cbc4;cursor:pointer;transition:.2s}
+.docfill:hover,.docfill.ov{border-color:var(--lime);background:var(--lime2)}
+.docfill.busy{opacity:.7}
+.docfill.ok{border-style:solid;border-color:var(--lime);background:var(--lime2)}
+.docfill b{display:block}
+.docfill small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.fm input.auto{background:var(--lime2);box-shadow:inset 0 0 0 1.5px var(--lime)}
+.xt td,.xt th{padding:9px 10px;font-size:14px}
+.ptnow{margin-top:12px;padding:12px 14px;border-radius:12px;background:#1e2823;display:grid;gap:2px}
+.ptnow small{color:#9aa69f;font-size:12px}
+.ptnow b{color:#fff;font-size:15px}
+.ptnow span{color:#cfd6d1;font-size:13.5px}
+.pt .btn.l{background:#1e2823;color:#fff;box-shadow:none}
+#chat{display:flex;flex-direction:column;gap:12px;background:#f7f7f2}
+.cmsg{display:flex;gap:8px;align-items:flex-end;max-width:85%}
+.cmsg.me{align-self:flex-end;flex-direction:row-reverse}
+.cmsg .bub2{background:#fff;border-radius:16px 16px 16px 4px;padding:10px 13px;box-shadow:0 1px 0 var(--line);font-size:14.5px;line-height:1.45}
+.cmsg.me .bub2{background:var(--ink);color:#fff;border-radius:16px 16px 4px 16px}
+.cmsg small{display:block;color:var(--muted);font-size:11.5px;margin:4px 4px 0}
+.cmsg.me small{text-align:right}
+.seen{align-self:flex-end;font-size:11.5px;color:var(--green);font-weight:600}
+.quick{display:flex;gap:6px;flex-wrap:wrap;padding:10px 20px 0;border-top:1px solid var(--line)}
+.quick button{padding:7px 11px;border-radius:999px;background:#f1f2ea;font-size:13px;font-weight:600}
+.quick button:hover{background:var(--lime2)}
+.drawer .dft{border-top:0}
+
 /* login */
 .login{position:fixed;inset:0;z-index:95;background:radial-gradient(circle at 20% 10%,#2b3a14,#0f1512 60%);display:grid;place-items:center;padding:16px}
 .login .card{width:min(400px,100%);padding:28px}
@@ -255,7 +295,7 @@ html:not(.notes) .tip{display:none}
   .new span{display:none}
 }
 </style>
-<script src="store.js"></script>
+<script src="store.js?v=3"></script>
 </head>
 <body>
 <div class="app">
@@ -300,7 +340,10 @@ const tr=a=>Array.isArray(a)?(a[LI[L]]??a[0]):a;
 const loc=()=>L==='el'?'el-GR':L==='fr'?'fr-CA':'en-CA';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let S=ICS.load();
-const save=()=>ICS.save(S);
+/* each browser window keeps its own signed-in user, so two windows = two colleagues */
+let ME=S.me||'mm';try{ME=sessionStorage.getItem('ics-me')||ME}catch(e){}S.me=ME;
+const setMe=id=>{ME=S.me=id;try{sessionStorage.setItem('ics-me',id)}catch(e){}};
+const save=()=>{S.me=ME;ICS.save(S)};
 const C=id=>S.clients.find(c=>c.id===id),K=id=>S.cases.find(c=>c.id===id);
 const offN=o=>L==='el'?OFF[o].el:L==='fr'?OFF[o].fr:o;
 const tName=k=>tr(TYPES[k].n);
@@ -332,7 +375,8 @@ const NAV=[['home','◐',['My day','Η μέρα μου','Ma journée']],['inbox'
 function chrome(){
  const mine=S.tasks.filter(t=>t.to===S.me&&!t.done).length,unread=S.inbox.filter(x=>!x.read).length;
  const cnt={tasks:mine||'',inbox:unread||''};
- $('#nav').innerHTML=NAV.map(([v,ic,lab])=>`<button class="nv ${R.v===v||(R.v==='case'&&v==='cases')||(R.v==='client'&&v==='clients')?'on':''}" data-v="${v}"><span class="ic">${ic}</span><span>${tr(lab)}</span><em>${cnt[v]||''}</em></button>`).join('');
+ const GR=[[['Every day','Καθημερινά','Au quotidien'],['home','tasks','inbox']],[['Records','Αρχείο','Dossiers'],['cases','clients']],[['Office','Γραφείο','Bureau'],['calendar','invoices','reports','settings']]];
+ $('#nav').innerHTML=GR.map(([g,vs])=>`<div class="sh">${tr(g)}</div>`+vs.map(v=>{const [,ic,lab]=NAV.find(n=>n[0]===v);return `<button class="nv ${R.v===v||(R.v==='case'&&v==='cases')||(R.v==='client'&&v==='clients')?'on':''}" data-v="${v}"><span class="ic">${ic}</span><span>${tr(lab)}</span><em>${cnt[v]||''}</em></button>`}).join('')).join('');
  $$('#nav .nv').forEach(b=>b.onclick=()=>go(b.dataset.v));
  $('#offH').textContent=T('Offices · now','Γραφεία · τώρα','Bureaux · maintenant');
  $('#offs').innerHTML=Object.keys(OFF).map(o=>{const t=ICS.tzNow(OFF[o].tz);return `<div class="${t.open?'op':'cl'}"><b>${offN(o)}</b><i>${t.s}</i></div>`}).join('');
@@ -352,9 +396,10 @@ const VIEWS={home:vHome,inbox:vInbox,tasks:vTasks,cases:vCases,case:vCase,client
 function render(){chrome();(VIEWS[R.v]||vHome)()}
 
 /* ---------- task rows ---------- */
-const taskRow=(t,showCase=true)=>{const [dt,dc]=dueTxt(t),k=K(t.c);
+const isUnread=t=>t.cm.length>((t.seen||{})[ME]||0)&&t.cm[t.cm.length-1]?.[0]!==ME;
+const taskRow=(t,showCase=true)=>{const [dt,dc]=dueTxt(t),k=K(t.c),un=isUnread(t);
  return `<div class="tr ${t.done?'done':''} ${t.fresh?'fresh':''}" data-task="${t.id}"><button class="ck ${t.done?'on':''}" data-tg="${t.id}" aria-label="done">${t.done?'✓':''}</button>
- <div><b>${esc(t.t)}</b><div class="meta"><span class="pill ${t.k==='doc'?'amber':t.k==='upd'?'blue':t.k==='call'?'lime':''}">${tr(KINDS[t.k])}</span>${av(t.from,20)} → ${av(t.to,20)} <span>${offN(U[t.from].off)} → ${offN(U[t.to].off)}</span>${showCase&&k?`<span>· ${k.id}</span>`:''}${t.cm.length?`<span>· 💬 ${t.cm.length}</span>`:''}</div></div>
+ <div><b>${esc(t.t)}</b><div class="meta">${un?`<span class="pill red">● ${T('new message','νέο μήνυμα','nouveau message')}</span>`:''}<span class="pill ${t.k==='doc'?'amber':t.k==='upd'?'blue':t.k==='call'?'lime':''}">${tr(KINDS[t.k])}</span>${av(t.from,20)} → ${av(t.to,20)} <span>${offN(U[t.from].off)} → ${offN(U[t.to].off)}</span>${showCase&&k?`<span>· ${k.id}</span>`:''}${t.cm.length?`<span>· 💬 ${t.cm.length}</span>`:''}</div></div>
  <span class="due ${dc}">${dt}</span></div>`};
 function bindTasks(root){
  root.querySelectorAll('[data-tg]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleTask(+b.dataset.tg)});
@@ -372,12 +417,14 @@ function vHome(){const me=U[S.me],mine=S.tasks.filter(t=>t.to===S.me&&!t.done).s
  const appts=S.appts.filter(a=>a.u===S.me&&a.ts>Date.now()-3600e3).sort((a,b)=>a.ts-b.ts).slice(0,3);
  const h=+ICS.tzNow(OFF[me.off].tz).s.slice(0,2);
  $('#view').innerHTML=`<div class="h1"><div><h1>${h<12?T('Good morning','Καλημέρα','Bonjour'):h<18?T('Good afternoon','Καλησπέρα','Bon après-midi'):T('Good evening','Καλησπέρα','Bonsoir')}, ${me.n.split(' ')[0]}</h1><p>${offN(me.off)} · ${ICS.tzNow(OFF[me.off].tz).s} · ${tr(me.r)}</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn l" id="digest">✉ ${T('Daily email digest','Ημερήσια σύνοψη email','Résumé quotidien')}</button><button class="btn g" id="qTask">+ ${T('Task','Εργασία','Tâche')}</button></div></div>
+ <div class="qa"><button data-qa="task"><span>✓</span>${T('Ask a colleague','Ζητήστε κάτι από συνάδελφο','Demander à un collègue')}</button><button data-qa="client"><span>☺</span>${T('New client','Νέος πελάτης','Nouveau client')}</button><button data-qa="doc"><span>📄</span>${T('New client from a document','Νέος πελάτης από έγγραφο','Client depuis un document')}</button><button data-qa="case"><span>▣</span>${T('New case','Νέα υπόθεση','Nouveau dossier')}</button><button data-qa="find"><span>⌕</span>${T('Find anything','Αναζήτηση','Rechercher')}</button></div>
  <div class="kp"><div class="card"><b>${mine.length}</b><small>${T('tasks for me','εργασίες για μένα','tâches pour moi')}</small></div><div class="card"><b style="color:${late?'var(--red)':''}">${late}</b><small>${T('overdue','εκπρόθεσμες','en retard')}</small></div><div class="card"><b>${sent.length}</b><small>${T('waiting on colleagues','περιμένω από συναδέλφους','en attente des collègues')}</small></div><div class="card"><b>${waiting.length}</b><small>${T('documents requested','έγγραφα σε αναμονή','documents demandés')}</small></div></div>
  <div class="dg"><div class="card box"><h3>${T('For me','Για μένα','Pour moi')}<button class="btn l s" data-go="tasks">${T('All tasks','Όλες','Toutes')}</button></h3>${mine.map(t=>taskRow(t)).join('')||`<div class="empty">${T('Nothing for you right now.','Τίποτα για εσάς αυτή τη στιγμή.','Rien pour vous pour l’instant.')}</div>`}</div>
  <div class="stack"><div class="card box"><h3>${T('My appointments','Τα ραντεβού μου','Mes rendez-vous')}<button class="btn l s" data-go="calendar">${T('Calendar','Ημερολόγιο','Agenda')}</button></h3>${appts.map(apRow).join('')||`<div class="muted">${T('No upcoming appointments.','Κανένα ραντεβού.','Aucun rendez-vous.')}</div>`}</div>
  <div class="card box"><h3>${T('Waiting on others','Περιμένω από άλλους','En attente des autres')}</h3>${sent.map(t=>taskRow(t)).join('')||`<div class="muted">—</div>`}</div>
  <div class="card box"><h3>${T('My cases','Οι υποθέσεις μου','Mes dossiers')}</h3>${myCases.map(c=>`<button class="chip" data-case="${c.id}" style="margin-top:6px"><span><b>${c.id} · ${esc(c.t)}</b><small>${tName(c.type)} · ${tr(TYPES[c.type].steps[c.st])}</small></span></button>`).join('')||`<div class="muted">—</div>`}</div></div></div>`;
- bindTasks($('#view'));bindCommon();$('#qTask').onclick=()=>newTask();$('#digest').onclick=digest}
+ bindTasks($('#view'));bindCommon();$('#qTask').onclick=()=>newTask();$('#digest').onclick=digest;
+ $$('[data-qa]').forEach(b=>b.onclick=()=>({task:()=>newTask(),client:()=>newClient(),doc:()=>{newClient();setTimeout(()=>$('#dff')?.click(),80)},case:()=>newCase(),find:openPal})[b.dataset.qa]())}
 const apRow=a=>{const o=OFF[a.off];return `<div class="ap"><div class="tm">${ICS.fmtT(a.ts,o.tz)}<small>${offN(a.off)}</small></div><div><b>${esc(a.who)}</b><div class="meta">${a.mode==='video'?'🎥 '+T('Video call','Βιντεοκλήση','Appel vidéo'):'🏢 '+T('At the office','Στο γραφείο','Au bureau')} · ${esc(a.topic)}${a.c?` · ${a.c}`:''}</div><div class="meta">${new Date(a.ts).toLocaleDateString(loc(),{weekday:'short',day:'numeric',month:'short'})} · Toronto ${ICS.fmtT(a.ts,'America/Toronto')} · ${T('Athens','Αθήνα','Athènes')} ${ICS.fmtT(a.ts,'Europe/Athens')}</div></div>${av(a.u,26)}</div>`};
 function bindCommon(){$$('#view [data-case]').forEach(r=>r.onclick=()=>go('case',r.dataset.case));$$('#view [data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));$$('#view [data-cl]').forEach(r=>{if(!r.onclick)r.onclick=()=>go('client',r.dataset.cl)})}
 
@@ -413,43 +460,57 @@ function vCases(){const vis=S.cases.filter(canSee),list=vis.filter(c=>(!CF.o||c.
  $('#cq').oninput=e=>{CF.q=e.target.value;const p=e.target.selectionStart;vCases();$('#cq').focus();$('#cq').setSelectionRange(p,p)};$('#co').onchange=e=>{CF.o=e.target.value;vCases()};$('#ct').onchange=e=>{CF.t=e.target.value;vCases()};
  bindCommon();$('#qCase').onclick=()=>newCase()}
 
+let CT='overview',CTid=null;
 function vCase(){const c=K(R.id);if(!c)return go('cases');
  if(!canSee(c)){$('#view').innerHTML=`<button class="back" data-go="cases">← ${T('Cases','Υποθέσεις','Dossiers')}</button><div class="card empty">🔒 ${T('You don’t have access to this case.','Δεν έχετε πρόσβαση σε αυτή την υπόθεση.','Vous n’avez pas accès à ce dossier.')} <br><small>${tr(PERMS[perm()])}</small></div>`;bindCommon();return}
+ if(CTid!==c.id){CT=R.tab||'overview';CTid=c.id}
  const ty=TYPES[c.type],tasks=S.tasks.filter(t=>t.c===c.id).sort((a,b)=>a.done-b.done||a.due.localeCompare(b.due)),inv=S.invoices.filter(i=>i.c===c.id);
+ const openT=tasks.filter(t=>!t.done),reqD=c.docs.filter(d=>d.s==='req'),dueI=inv.filter(i=>i.st!=='paid'),newRead=c.docs.filter(d=>d.extract&&Object.keys(d.extract).length&&!d.applied).length;
+ const unreadT=openT.filter(isUnread).length,clientMsgs=c.portal.msgs.filter(m=>m[0]==='client').length;
+ const TABS=[['overview','◐',T('Overview','Επισκόπηση','Aperçu'),''],['docs','📄',T('Documents','Έγγραφα','Documents'),reqD.length?`${reqD.length} ⏳`:c.docs.length],['tasks','✓',T('Tasks','Εργασίες','Tâches'),unreadT?`● ${openT.length}`:openT.length||''],['portal','👤',T('Client portal','Πύλη πελάτη','Portail client'),clientMsgs||''],['inv','$',T('Invoices','Τιμολόγια','Factures'),dueI.length?`${dueI.length} ⏳`:''],['log','🕘',T('History','Ιστορικό','Historique'),'']];
+ const docRow=(d,i)=>`<div class="doc ${d.fresh?'fresh':''}"><span class="ic ${/\.pdf$/i.test(d.n)?'pdf':''}">${/\.pdf$/i.test(d.n)?'PDF':'—'}</span><div><b style="font-weight:600">${esc(d.n)}</b><div class="muted" style="font-size:12.5px">${d.by==='client'?T('uploaded by the client','ανέβηκε από τον πελάτη','téléversé par le client'):U[d.by]?.n.split(' ')[0]} · ${rel(d.d)}${d.client&&d.s==='req'?` · <span class="pill lime">${T('asked from client','ζητήθηκε από πελάτη','demandé au client')}</span>`:''}</div>${d.extract&&Object.keys(d.extract).length?`<button class="linkb" data-ex="${i}">🔎 ${Object.keys(d.extract).length} ${T('fields read · copy to card','στοιχεία διαβάστηκαν · πέρασμα στην καρτέλα','champs lus · copier')}</button>`:''}</div><select data-ds="${i}" aria-label="status">${Object.entries(DOCST).map(([k,v])=>`<option value="${k}" ${d.s===k?'selected':''}>${tr(v)}</option>`).join('')}</select><span class="pill ${DOCST[d.s][3]}">${d.s==='req'?'⏳':'✓'}</span></div>`;
+ const docsBox=`<div class="card box"><h3>${T('Documents','Έγγραφα','Documents')}<button class="btn l s" id="addDoc">+ ${T('Request a document','Αίτημα εγγράφου','Demander un document')}</button></h3>${c.docs.map(docRow).join('')||`<div class="muted">—</div>`}
+  <div class="drop" id="drop"><b>${T('Drop PDFs here or click to upload','Σύρετε PDF εδώ ή πατήστε για ανέβασμα','Déposez des PDF ici ou cliquez')}</b><br><small>${T('Each PDF is read automatically: names, AFM, AMKA, ID numbers, dates.','Κάθε PDF διαβάζεται αυτόματα: ονόματα, ΑΦΜ, ΑΜΚΑ, ΑΔΤ, ημερομηνίες.','Chaque PDF est lu automatiquement : noms, AFM, AMKA, pièces d’identité, dates.')}</small></div><input type="file" id="file" multiple hidden accept=".pdf,image/*,.doc,.docx">
+  <button class="linkb" id="sampleDoc" style="margin-top:8px">📄 ${T('Try it: upload a sample family status certificate','Δοκιμή: ανεβάστε δείγμα πιστοποιητικού οικογενειακής κατάστασης','Essai : téléversez un exemple de certificat')}</button></div>`;
+ const tasksBox=`<div class="card box"><h3>${T('Tasks','Εργασίες','Tâches')} <span class="muted" style="font-weight:500">${openT.length} ${T('open','ανοιχτές','ouvertes')}</span><button class="btn g s" data-addtask="1">+ ${T('Task','Εργασία','Tâche')}</button></h3>${tasks.map(t=>taskRow(t,false)).join('')||`<div class="empty">${T('No tasks yet.','Καμία εργασία.','Aucune tâche.')}</div>`}</div>`;
+ const clientsBox=`<div class="card box"><h3>${T('Clients on this case','Πελάτες της υπόθεσης','Clients du dossier')}<button class="btn l s" id="plug">+ ${T('Add','Προσθήκη','Ajouter')}</button></h3><div style="display:grid;gap:8px">${c.cl.map(([id,r],i)=>{const p=C(id);return p?`<div class="chip" data-cl="${id}">${cav(p.n)}<span><b>${esc(p.n)}</b><small>${roleN(r)} · ${esc(p.ph[0]||'')}</small></span><button class="x muted" data-rm="${i}" title="${T('Remove','Αφαίρεση','Retirer')}">×</button></div>`:''}).join('')}</div></div>`;
+ const invBox=`<div class="card box"><h3>${T('Invoices','Τιμολόγια','Factures')}<button class="btn l s" id="addInv">+ ${T('Invoice','Τιμολόγιο','Facture')}</button></h3>${inv.map(i=>`<div class="tr ${i.fresh?'fresh':''}" style="grid-template-columns:1fr auto;cursor:default"><div><b>${esc(i.desc)}</b><div class="meta">${i.id} · ${rel(i.at)}</div></div><div style="text-align:right"><b>${money(i.amt,i.cur)}</b><br><span class="pill ${i.st==='paid'?'green':'amber'}">${i.st==='paid'?T('Paid online','Πληρώθηκε online','Payée en ligne'):T('Due','Ανεξόφλητο','À payer')}</span></div></div>`).join('')||`<div class="muted">—</div>`}</div>`;
+ const tip=ty.tips?tr(ty.tips[c.st]):'';
+ const portalBox=`<div class="pt"><h3 style="display:flex;justify-content:space-between;align-items:center;font:600 16px/1.2 var(--f);margin-bottom:6px">${T('Client portal','Πύλη πελάτη','Portail client')}<span style="display:flex;gap:10px;align-items:center;font-size:13px;font-weight:500">${c.portal.on?T('on','ενεργή','activé'):T('off','ανενεργή','désactivé')}<button class="sw ${c.portal.on?'on':''}" id="ptOn" aria-label="portal"></button></span></h3>
+  <div class="muted" style="font-size:13px">${c.portal.on?T('The client sees what is below: stage, documents to upload, invoices and these messages.','Ο πελάτης βλέπει ό,τι υπάρχει εδώ: στάδιο, έγγραφα για ανέβασμα, τιμολόγια και αυτά τα μηνύματα.','Le client voit : étape, documents à téléverser, factures et ces messages.'):T('Portal is off for this case.','Η πύλη είναι κλειστή για αυτή την υπόθεση.','Le portail est désactivé pour ce dossier.')}</div>
+  ${c.portal.on?`<div class="ptnow"><small>${T('The client sees now','Ο πελάτης βλέπει τώρα','Le client voit maintenant')}</small><b>${c.st+1}/${ty.steps.length} · ${tr(ty.steps[c.st])}</b><span>“${esc(tip)}”</span></div>
+  <div id="ptMsgs">${c.portal.msgs.map(m=>`<div class="cm ${m[0]==='client'?'':'mine'}">${m[0]==='client'?cav(cName(c)):av(m[0],28)}<div><small>${m[0]==='client'?esc(cName(c)):U[m[0]].n.split(' ')[0]} · ${rel(m[1])}</small><div class="bub">${esc(m[2])}</div></div></div>`).join('')||`<div class="muted" style="margin-top:10px">${T('No messages yet.','Κανένα μήνυμα.','Aucun message.')}</div>`}</div>
+  <div style="display:flex;gap:6px;margin-top:10px"><input id="ptIn" placeholder="${T('Message to the client…','Μήνυμα στον πελάτη…','Message au client…')}" style="flex:1;min-width:0;padding:10px 12px;border-radius:9px;border:0;background:#1e2823;color:#fff"><button class="btn g s" id="ptGo">${T('Send','Αποστολή','Envoyer')}</button></div>
+  <a class="btn l s" href="../ics/demo.html#portal" target="_blank" style="margin-top:12px">👁 ${T('See the portal as the client sees it','Δείτε την πύλη όπως τη βλέπει ο πελάτης','Voir le portail comme le client')}</a>`:''}</div>`;
+ const logBox=`<div class="card box"><h3>${T('Internal history','Εσωτερικό ιστορικό','Historique interne')}<span class="pill">🔒 ${T('staff only','μόνο ομάδα','équipe seulement')}</span></h3><textarea class="note" id="noteIn" placeholder="${T('Write an update for the team…','Γράψτε μια ενημέρωση για την ομάδα…','Écrivez une note pour l’équipe…')}"></textarea><div style="display:flex;justify-content:flex-end;margin:8px 0 12px"><button class="btn s" id="noteGo">${T('Post','Δημοσίευση','Publier')}</button></div>
+  <div class="act">${c.log.map(l=>`<div>${l[0]==='client'?cav(cName(c)):av(l[0],28)}<span><b>${l[0]==='client'?esc(cName(c)):U[l[0]]?.n}</b> <small>· ${rel(l[1])}</small><br>${esc(l[2])}</span></div>`).join('')}</div></div>`;
+ const todo=[...openT.slice(0,4).map(t=>taskRow(t,false)),...reqD.map(d=>`<div class="tr" style="grid-template-columns:22px 1fr auto;cursor:default"><span>⏳</span><div><b>${esc(d.n)}</b><div class="meta">${d.client?T('waiting for the client','αναμονή από πελάτη','en attente du client'):T('waiting for a colleague','αναμονή από συνάδελφο','en attente d’un collègue')}</div></div><span></span></div>`),...dueI.map(i=>`<div class="tr" style="grid-template-columns:22px 1fr auto;cursor:default"><span>$</span><div><b>${esc(i.desc)}</b><div class="meta">${T('invoice not paid yet','τιμολόγιο ανεξόφλητο','facture impayée')}</div></div><b>${money(i.amt,i.cur)}</b></div>`)].join('');
+ const overview=`<div class="cols"><div class="stack"><div class="card box"><h3>${T('What is pending','Τι εκκρεμεί','En attente')}</h3>${todo||`<div class="empty">✓ ${T('Nothing pending.','Τίποτα σε εκκρεμότητα.','Rien en attente.')}</div>`}</div>${newRead?`<button class="card box hint" data-tab="docs">🔎 <b>${newRead} ${T('documents were read automatically','έγγραφα διαβάστηκαν αυτόματα','documents lus automatiquement')}</b> · ${T('copy their details to the client card','περάστε τα στοιχεία στην καρτέλα','copiez les détails dans la fiche')} →</button>`:''}</div>
+  <div class="stack">${clientsBox}<div class="card box"><h3>${T('Case information','Στοιχεία υπόθεσης','Informations')}</h3><textarea class="note" id="info">${esc(c.info)}</textarea></div>
+  <div class="card box"><h3>${T('Properties','Ακίνητα','Propriétés')}<button class="btn l s" id="addProp">+</button></h3>${c.props.map(p=>`<div class="prop"><b>🏠 ${esc(p.a)}</b><div class="muted">${esc(p.k)}</div><div>${T('Shares','Ποσοστά','Parts')}: ${esc(p.sh)}</div></div>`).join('')||`<div class="muted">${T('No properties on this case.','Κανένα ακίνητο.','Aucune propriété.')}</div>`}</div></div></div>`;
+ const body={overview,docs:docsBox,tasks:tasksBox,portal:portalBox,inv:invBox,log:logBox}[CT];
  $('#view').innerHTML=`<button class="back" data-go="cases">← ${T('Cases','Υποθέσεις','Dossiers')}</button>
- <div class="dh"><div><h1>${c.id} · ${esc(c.t)}</h1><div class="sub">${typeP(c.type)}<span class="pill">${offN(c.off)}</span><span class="who" style="font-size:13px">${av(c.own,22)} ${U[c.own].n}</span></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn l" id="addInv">+ ${T('Invoice','Τιμολόγιο','Facture')}</button><button class="btn l" id="addDoc">+ ${T('Request document','Αίτημα εγγράφου','Demander un document')}</button><button class="btn g" id="addTask">+ ${T('Task','Εργασία','Tâche')}</button></div></div>
- <div class="card box" style="margin-bottom:14px"><div class="steps">${ty.steps.map((s,i)=>`<button data-st="${i}" class="${i<c.st?'done':i===c.st?'cur':''}">${tr(s)}</button>`).join('')}</div><div class="muted" style="font-size:12px;margin-top:4px">${T('Click a step to move the case. The client sees the new step in their portal.','Πατήστε ένα βήμα για να προχωρήσει η υπόθεση. Ο πελάτης το βλέπει στην πύλη του.','Cliquez sur une étape pour faire avancer le dossier. Le client la voit dans son portail.')}</div></div>
- <div class="cols"><div class="stack">
-  <div class="card box"><h3>${T('Tasks','Εργασίες','Tâches')} <span class="muted" style="font-weight:500">${tasks.filter(t=>!t.done).length} ${T('open','ανοιχτές','ouvertes')}</span></h3>${tasks.map(t=>taskRow(t,false)).join('')||`<div class="empty">${T('No tasks yet.','Καμία εργασία.','Aucune tâche.')}</div>`}</div>
-  <div class="card box"><h3>${T('Documents','Έγγραφα','Documents')}</h3>${c.docs.map((d,i)=>`<div class="doc ${d.fresh?'fresh':''}"><span class="ic ${/\.pdf$/i.test(d.n)?'pdf':''}">${/\.pdf$/i.test(d.n)?'PDF':'—'}</span><div><b style="font-weight:600">${esc(d.n)}</b><div class="muted" style="font-size:12.5px">${d.by==='client'?T('uploaded by the client','ανέβηκε από τον πελάτη','téléversé par le client'):U[d.by].n.split(' ')[0]} · ${rel(d.d)}${d.client?` · <span class="pill lime">${T('asked from client','ζητήθηκε από πελάτη','demandé au client')}</span>`:''}</div></div><select data-ds="${i}">${Object.entries(DOCST).map(([k,v])=>`<option value="${k}" ${d.s===k?'selected':''}>${tr(v)}</option>`).join('')}</select><span class="pill ${DOCST[d.s][3]}">${d.s==='req'?'⏳':'✓'}</span></div>`).join('')}
-   <div class="drop" id="drop">${T('Drop files here or click to upload','Σύρετε αρχεία εδώ ή πατήστε για ανέβασμα','Déposez des fichiers ici ou cliquez')}</div><input type="file" id="file" multiple hidden></div>
-  <div class="card box"><h3>${T('Internal activity','Εσωτερικό ιστορικό','Activité interne')}<span class="pill">🔒 ${T('staff only','μόνο ομάδα','équipe seulement')}</span></h3><textarea class="note" id="noteIn" placeholder="${T('Write an update for the team…','Γράψτε μια ενημέρωση για την ομάδα…','Écrivez une note pour l’équipe…')}"></textarea><div style="display:flex;justify-content:flex-end;margin:8px 0 12px"><button class="btn s" id="noteGo">${T('Post','Δημοσίευση','Publier')}</button></div>
-   <div class="act">${c.log.map(l=>`<div>${l[0]==='client'?cav(cName(c)):av(l[0],28)}<span><b>${l[0]==='client'?esc(cName(c)):U[l[0]].n}</b> <small>· ${rel(l[1])}</small><br>${esc(l[2])}</span></div>`).join('')}</div></div>
- </div><div class="stack">
-  <div class="pt"><h3 style="display:flex;justify-content:space-between;align-items:center;font:600 15px/1.2 var(--f);margin-bottom:6px">${T('Client portal','Πύλη πελάτη','Portail client')}<button class="sw ${c.portal.on?'on':''}" id="ptOn" aria-label="portal"></button></h3><div class="muted" style="font-size:12.5px">${c.portal.on?T('The client sees the stage, requested documents, invoices and these messages.','Ο πελάτης βλέπει το στάδιο, τα έγγραφα που λείπουν, τα τιμολόγια και αυτά τα μηνύματα.','Le client voit l’étape, les documents demandés, les factures et ces messages.'):T('Portal is off for this case.','Η πύλη είναι κλειστή για αυτή την υπόθεση.','Le portail est désactivé pour ce dossier.')}</div>
-   ${c.portal.on?`<div id="ptMsgs">${c.portal.msgs.map(m=>`<div class="cm ${m[0]==='client'?'':'mine'}">${m[0]==='client'?cav(cName(c)):av(m[0],28)}<div><small>${m[0]==='client'?esc(cName(c)):U[m[0]].n.split(' ')[0]} · ${rel(m[1])}</small><div class="bub">${esc(m[2])}</div></div></div>`).join('')||`<div class="muted" style="margin-top:10px">${T('No messages yet.','Κανένα μήνυμα.','Aucun message.')}</div>`}</div>
-   <div style="display:flex;gap:6px;margin-top:10px"><input id="ptIn" placeholder="${T('Message to the client…','Μήνυμα στον πελάτη…','Message au client…')}" style="flex:1;min-width:0;padding:9px 11px;border-radius:9px;border:0;background:#1e2823;color:#fff"><button class="btn g s" id="ptGo">${T('Send','Αποστολή','Envoyer')}</button></div>`:''}</div>
-  <div class="card box"><h3>${T('Clients on this case','Πελάτες της υπόθεσης','Clients du dossier')}<button class="btn l s" id="plug">+ ${T('Add','Προσθήκη','Ajouter')}</button></h3><div style="display:grid;gap:8px">${c.cl.map(([id,r],i)=>{const p=C(id);return `<div class="chip" data-cl="${id}">${cav(p.n)}<span><b>${esc(p.n)}</b><small>${roleN(r)} · ${esc(p.ph[0]||'')}</small></span><button class="x muted" data-rm="${i}" title="${T('Remove','Αφαίρεση','Retirer')}">×</button></div>`}).join('')}</div></div>
-  <div class="card box"><h3>${T('Invoices','Τιμολόγια','Factures')}</h3>${inv.map(i=>`<div class="tr ${i.fresh?'fresh':''}" style="grid-template-columns:1fr auto;cursor:default"><div><b>${esc(i.desc)}</b><div class="meta">${i.id} · ${rel(i.at)}</div></div><div style="text-align:right"><b>${money(i.amt,i.cur)}</b><br><span class="pill ${i.st==='paid'?'green':'amber'}">${i.st==='paid'?T('Paid online','Πληρώθηκε online','Payée en ligne'):T('Due','Ανεξόφλητο','À payer')}</span></div></div>`).join('')||`<div class="muted">—</div>`}</div>
-  <div class="card box"><h3>${T('Case information','Στοιχεία υπόθεσης','Informations')}</h3><textarea class="note" id="info">${esc(c.info)}</textarea></div>
-  <div class="card box"><h3>${T('Properties','Ακίνητα','Propriétés')}<button class="btn l s" id="addProp">+</button></h3>${c.props.map(p=>`<div class="prop"><b>🏠 ${esc(p.a)}</b><div class="muted">${esc(p.k)}</div><div>${T('Shares','Ποσοστά','Parts')}: ${esc(p.sh)}</div></div>`).join('')||`<div class="muted">${T('No properties on this case.','Κανένα ακίνητο.','Aucune propriété.')}</div>`}</div>
- </div></div>`;
- c.docs.forEach(d=>d.fresh=false);(S.invoices||[]).forEach(i=>i.fresh=false);
+ <div class="dh"><div><h1>${c.id} · ${esc(c.t)}</h1><div class="sub">${typeP(c.type)}<span class="pill">${offN(c.off)}</span><span class="who" style="font-size:13px">${av(c.own,22)} ${U[c.own].n}</span></div></div><button class="btn g" data-addtask="1">+ ${T('Task for a colleague','Εργασία σε συνάδελφο','Tâche pour un collègue')}</button></div>
+ <div class="card box" style="margin-bottom:12px"><div class="steps">${ty.steps.map((s,i)=>`<button data-st="${i}" class="${i<c.st?'done':i===c.st?'cur':''}">${tr(s)}</button>`).join('')}</div><div class="muted" style="font-size:12.5px;margin-top:6px">${T('Click a step to move the case. The client sees the new step in the portal.','Πατήστε ένα βήμα για να προχωρήσει η υπόθεση. Ο πελάτης το βλέπει στην πύλη του.','Cliquez sur une étape pour faire avancer le dossier. Le client la voit dans son portail.')}</div></div>
+ <div class="ctabs">${TABS.map(([k,ic,l,n])=>`<button class="${CT===k?'on':''}" data-tab="${k}"><span>${ic}</span>${l}${n!==''?`<em>${n}</em>`:''}</button>`).join('')}</div>
+ ${body}`;
+ c.docs.forEach(d=>d.fresh=false);inv.forEach(i=>i.fresh=false);
  bindCommon();bindTasks($('#view'));
- $$('[data-st]').forEach(b=>b.onclick=()=>{c.st=+b.dataset.st;const s=tr(ty.steps[c.st]);c.log.unshift([S.me,Date.now(),'Moved to '+ty.steps[c.st][0]]);audit(`${c.id} · stage → ${ty.steps[c.st][0]}`);save();vCase();toast(T(`Stage: ${s}. The client sees it in the portal.`,`Στάδιο: ${s}. Ο πελάτης το βλέπει στην πύλη.`,`Étape : ${s}. Le client la voit dans le portail.`))});
- $('#addTask').onclick=()=>newTask(c.id);$('#addInv').onclick=()=>newInvoice(c.id);
- $$('[data-ds]').forEach(s=>s.onchange=()=>{const d=c.docs[s.dataset.ds];d.s=s.value;c.log.unshift([S.me,Date.now(),`${d.n}: ${DOCST[d.s][0]}`]);audit(`${c.id} · document “${d.n}” → ${DOCST[d.s][0]}`);save();vCase()});
- const addFiles=fs=>{[...fs].forEach(f=>{c.docs.push({n:f.name,s:'rec',by:S.me,d:Date.now()});c.log.unshift([S.me,Date.now(),'Uploaded '+f.name]);audit(`${c.id} · uploaded ${f.name}`)});save();vCase();toast(T('Uploaded to the case','Ανέβηκε στην υπόθεση','Ajouté au dossier'))};
- const dr=$('#drop');dr.onclick=()=>$('#file').click();$('#file').onchange=e=>addFiles(e.target.files);
- dr.ondragover=e=>{e.preventDefault();dr.classList.add('ov')};dr.ondragleave=()=>dr.classList.remove('ov');dr.ondrop=e=>{e.preventDefault();addFiles(e.dataTransfer.files)};
- $('#addDoc').onclick=()=>reqDoc(c);
- $('#noteGo').onclick=()=>{const v=$('#noteIn').value.trim();if(!v)return;c.log.unshift([S.me,Date.now(),v]);save();vCase();toast(T('Posted for the team','Δημοσιεύτηκε για την ομάδα','Publié pour l’équipe'))};
- $('#info').onchange=e=>{c.info=e.target.value;audit(`${c.id} · case information edited`);save();toast(T('Saved','Αποθηκεύτηκε','Enregistré'))};
+ $$('[data-tab]').forEach(b=>b.onclick=()=>{CT=b.dataset.tab;vCase()});
+ $$('[data-st]').forEach(b=>b.onclick=()=>{c.st=+b.dataset.st;const s=tr(ty.steps[c.st]);c.log.unshift([ME,Date.now(),'Moved to '+ty.steps[c.st][0]]);audit(`${c.id} · stage → ${ty.steps[c.st][0]}`);save();vCase();toast(T(`Stage: ${s}. The client sees it in the portal.`,`Στάδιο: ${s}. Ο πελάτης το βλέπει στην πύλη.`,`Étape : ${s}. Le client la voit dans le portail.`))});
+ $$('[data-addtask]').forEach(b=>b.onclick=()=>newTask(c.id));
+ const on=(id,fn)=>{const e=$('#'+id);if(e)e.onclick=fn};
+ on('addInv',()=>newInvoice(c.id));on('addDoc',()=>reqDoc(c));on('plug',()=>plugClient(c));on('addProp',()=>addProp(c));
+ $$('[data-ds]').forEach(s=>s.onchange=()=>{const d=c.docs[s.dataset.ds];d.s=s.value;c.log.unshift([ME,Date.now(),`${d.n}: ${DOCST[d.s][0]}`]);audit(`${c.id} · document “${d.n}” → ${DOCST[d.s][0]}`);save();vCase()});
+ $$('[data-ex]').forEach(b=>b.onclick=()=>extractModal(c,+b.dataset.ex));
+ const addFiles=fs=>{[...fs].forEach(f=>{c.docs.push({n:f.name,s:'rec',by:ME,d:Date.now(),fresh:true});c.log.unshift([ME,Date.now(),'Uploaded '+f.name]);audit(`${c.id} · uploaded ${f.name}`)});save();vCase();const f0=[...fs].find(f=>/\.pdf$/i.test(f.name));if(f0)readInto(c,c.docs.findIndex(d=>d.n===f0.name),f0);else toast(T('Uploaded to the case','Ανέβηκε στην υπόθεση','Ajouté au dossier'))};
+ const dr=$('#drop');if(dr){dr.onclick=()=>$('#file').click();$('#file').onchange=e=>addFiles(e.target.files);dr.ondragover=e=>{e.preventDefault();dr.classList.add('ov')};dr.ondragleave=()=>dr.classList.remove('ov');dr.ondrop=e=>{e.preventDefault();dr.classList.remove('ov');addFiles(e.dataTransfer.files)}}
+ on('sampleDoc',async()=>addFiles([await sampleFile(SAMPLE_FAM)]));
+ on('noteGo',()=>{const v=$('#noteIn').value.trim();if(!v)return;c.log.unshift([ME,Date.now(),v]);save();vCase();toast(T('Posted for the team','Δημοσιεύτηκε για την ομάδα','Publié pour l’équipe'))});
+ if($('#info'))$('#info').onchange=e=>{c.info=e.target.value;audit(`${c.id} · case information edited`);save();toast(T('Saved','Αποθηκεύτηκε','Enregistré'))};
  $$('[data-cl]').forEach(ch=>ch.onclick=e=>{if(e.target.dataset.rm!==undefined){e.stopPropagation();c.cl.splice(+e.target.dataset.rm,1);save();vCase();return}go('client',ch.dataset.cl)});
- $('#plug').onclick=()=>plugClient(c);$('#addProp').onclick=()=>addProp(c);
- $('#ptOn').onclick=()=>{c.portal.on=!c.portal.on;audit(`${c.id} · client portal ${c.portal.on?'on':'off'}`);save();vCase()};
- if($('#ptGo')){const send=()=>{const v=$('#ptIn').value.trim();if(!v)return;c.portal.msgs.push([S.me,Date.now(),v]);audit(`${c.id} · message sent to client`);save();vCase();toast(T('Sent. The client gets an email and sees it in the portal.','Στάλθηκε. Ο πελάτης παίρνει email και το βλέπει στην πύλη.','Envoyé. Le client reçoit un courriel et le voit dans le portail.'))};$('#ptGo').onclick=send;$('#ptIn').onkeydown=e=>{if(e.key==='Enter')send()}}}
-
+ on('ptOn',()=>{c.portal.on=!c.portal.on;audit(`${c.id} · client portal ${c.portal.on?'on':'off'}`);save();vCase()});
+ if($('#ptGo')){const send=()=>{const v=$('#ptIn').value.trim();if(!v)return;c.portal.msgs.push([ME,Date.now(),v]);audit(`${c.id} · message sent to client`);save();vCase();toast(T('Sent. The client gets an email and sees it in the portal.','Στάλθηκε. Ο πελάτης παίρνει email και το βλέπει στην πύλη.','Envoyé. Le client reçoit un courriel et le voit dans le portail.'))};$('#ptGo').onclick=send;$('#ptIn').onkeydown=e=>{if(e.key==='Enter')send()}}}
 let QF='';
 function vClients(){const list=S.clients.filter(c=>!QF||(c.n+c.ph.join()+c.em.join()+c.afm).toLowerCase().includes(QF.toLowerCase()));
  $('#view').innerHTML=`<div class="h1"><div><h1>${T('Clients','Πελάτες','Clients')}</h1><p>${S.clients.length} ${T('client cards','καρτέλες πελατών','fiches clients')}</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn l" id="imp">⬆ ${T('Import','Εισαγωγή','Importer')}</button><button class="btn l" id="exp">⬇ ${T('Export CSV','Εξαγωγή CSV','Exporter CSV')}</button><button class="btn g" id="qCl">+ ${T('Client','Πελάτης','Client')}</button></div></div>
@@ -466,7 +527,7 @@ function vClient(){const c=C(R.id);if(!c)return go('clients');const cs=S.cases.f
  <div class="dh"><div class="who"><span class="av" style="background:#5b6b16;width:52px;height:52px;font-size:17px">${ini(c.n)}</span><div><h1>${esc(c.n)}</h1><div class="sub"><span class="pill">${offN(c.off)}</span><span class="pill">${esc(c.lang)}</span><span class="pill">${esc(c.src||'')}</span></div></div></div>
  <div style="display:flex;gap:8px;flex-wrap:wrap">${c.ph[0]?`<a class="btn l" href="tel:${c.ph[0].replace(/\s/g,'')}">📞 ${T('Call','Κλήση','Appeler')}</a>`:''}${c.em[0]?`<a class="btn l" href="mailto:${c.em[0]}">✉ Email</a>`:''}<button class="btn g" id="nc">+ ${T('New case','Νέα υπόθεση','Nouveau dossier')}</button></div></div>
  <div class="cols"><div class="card box"><h3>${T('Client card','Καρτέλα πελάτη','Fiche client')}<span class="muted" style="font-weight:500;font-size:12.5px">${T('click any field to edit','πατήστε για αλλαγή','cliquez pour modifier')}</span></h3>
-  <dl class="kv">${F('n',T('Full name','Ονοματεπώνυμο','Nom complet'),c.n)}${c.ph.map((p,i)=>F('ph.'+i,T('Phone','Τηλέφωνο','Téléphone')+(c.ph.length>1?' '+(i+1):''),p)).join('')}${(c.em.length?c.em:['']).map((p,i)=>F('em.'+i,'Email',p)).join('')}${F('addr',T('Address','Διεύθυνση','Adresse'),c.addr)}${F('afm',T('Greek AFM','ΑΦΜ','AFM grec'),c.afm)}${F('amka',T('AMKA','ΑΜΚΑ','AMKA'),c.amka||'')}${F('dob',T('Date of birth','Ημ. γέννησης','Date de naissance'),c.dob)}${F('lang',T('Language','Γλώσσα','Langue'),c.lang)}</dl>
+  <dl class="kv">${F('n',T('Full name','Ονοματεπώνυμο','Nom complet'),c.n)}${c.ph.map((p,i)=>F('ph.'+i,T('Phone','Τηλέφωνο','Téléphone')+(c.ph.length>1?' '+(i+1):''),p)).join('')}${(c.em.length?c.em:['']).map((p,i)=>F('em.'+i,'Email',p)).join('')}${F('nameGr',tr(ICS.FIELDS.nameGr),c.nameGr||'')}${F('addr',T('Address','Διεύθυνση','Adresse'),c.addr)}${F('afm',T('Greek AFM','ΑΦΜ','AFM grec'),c.afm)}${F('amka',T('AMKA','ΑΜΚΑ','AMKA'),c.amka||'')}${F('idno',tr(ICS.FIELDS.idno),c.idno||'')}${F('dob',T('Date of birth','Ημ. γέννησης','Date de naissance'),c.dob)}${F('pob',tr(ICS.FIELDS.pob),c.pob||'')}${F('father',tr(ICS.FIELDS.father),c.father||'')}${F('mother',tr(ICS.FIELDS.mother),c.mother||'')}${F('lang',T('Language','Γλώσσα','Langue'),c.lang)}</dl>
   <div style="margin-top:14px"><div class="muted" style="font-size:12.5px;font-weight:600;margin-bottom:6px">${T('Notes','Σημειώσεις','Notes')}</div><textarea class="note" data-f="note">${esc(c.note)}</textarea></div></div>
  <div class="stack"><div class="card box"><h3>${T('Cases','Υποθέσεις','Dossiers')}</h3><div style="display:grid;gap:8px">${cs.map(k=>`<button class="chip" data-case="${k.id}"><span><b>${k.id} · ${esc(k.t)}</b><small>${roleN(k.cl.find(x=>x[0]===c.id)[1])} · ${tr(TYPES[k.type].steps[k.st])}</small></span>${typeP(k.type)}</button>`).join('')||`<div class="muted">${T('Not on any case yet.','Σε καμία υπόθεση.','Aucun dossier.')}</div>`}</div></div>
  <div class="card box"><h3>${T('Invoices','Τιμολόγια','Factures')}</h3>${S.invoices.filter(i=>cs.some(k=>k.id===i.c)).map(i=>`<div class="tr" style="grid-template-columns:1fr auto;cursor:default"><div><b>${esc(i.desc)}</b><div class="meta">${i.id} · ${i.c}</div></div><div style="text-align:right"><b>${money(i.amt,i.cur)}</b><br><span class="pill ${i.st==='paid'?'green':'amber'}">${i.st==='paid'?T('Paid','Πληρώθηκε','Payée'):T('Due','Ανεξόφλητο','À payer')}</span></div></div>`).join('')||`<div class="muted">—</div>`}</div></div></div>`;
@@ -500,7 +561,7 @@ function vRep(){const vis=S.cases.filter(canSee);const bars=(rows)=>{const m=Mat
  <div class="card box"><h3>${T('Documents by status','Έγγραφα ανά κατάσταση','Documents par statut')}</h3>${bars(docs)}</div><div class="card box"><h3>${T('Where clients come from','Από πού έρχονται οι πελάτες','Provenance des clients')}</h3>${bars(Object.entries(src))}</div></div>`}
 
 let ST='users';
-function vSet(){if(perm()!=='admin'){$('#view').innerHTML=`<div class="h1"><div><h1>${T('Settings','Ρυθμίσεις','Paramètres')}</h1></div></div><div class="card empty">🔒 ${T('Only administrators can change settings.','Μόνο οι διαχειριστές αλλάζουν ρυθμίσεις.','Seuls les administrateurs peuvent modifier les paramètres.')}<br><br><button class="btn l" id="asAdmin">${T('Switch to Efthymia Tseliou (Director)','Αλλαγή σε Efthymia Tseliou (Διευθύντρια)','Passer à Efthymia Tseliou (Directrice)')}</button></div>`;$('#asAdmin').onclick=()=>{S.me='et';save();render()};return}
+function vSet(){if(perm()!=='admin'){$('#view').innerHTML=`<div class="h1"><div><h1>${T('Settings','Ρυθμίσεις','Paramètres')}</h1></div></div><div class="card empty">🔒 ${T('Only administrators can change settings.','Μόνο οι διαχειριστές αλλάζουν ρυθμίσεις.','Seuls les administrateurs peuvent modifier les paramètres.')}<br><br><button class="btn l" id="asAdmin">${T('Switch to Efthymia Tseliou (Director)','Αλλαγή σε Efthymia Tseliou (Διευθύντρια)','Passer à Efthymia Tseliou (Directrice)')}</button></div>`;$('#asAdmin').onclick=()=>{setMe('et');save();render()};return}
  const tabs=[['users',['Users & permissions','Χρήστες & δικαιώματα','Utilisateurs et droits']],['audit',['Audit log','Ιστορικό ενεργειών','Journal d’audit']],['data',['Import & export','Εισαγωγή & εξαγωγή','Import et export']],['security',['Security & data','Ασφάλεια & δεδομένα','Sécurité et données']]];
  let body='';
  if(ST==='users')body=`<div class="card scroll"><table class="tbl perm"><thead><tr><th>${T('User','Χρήστης','Utilisateur')}</th><th class="hm">${T('Office','Γραφείο','Bureau')}</th><th>${T('Can see','Βλέπει','Peut voir')}</th><th class="hm">2FA</th></tr></thead><tbody>${Object.entries(U).map(([id,u])=>`<tr><td><div class="who">${av(id)}<span><b>${u.n}</b><small>${tr(u.r)}</small></span></div></td><td class="hm">${offN(u.off)}</td><td><select data-pm="${id}">${Object.keys(PERMS).map(p=>`<option value="${p}" ${u.perm===p?'selected':''}>${tr(PERMS[p])}</option>`).join('')}</select></td><td class="hm"><span class="pill green">✓ ${T('on','ενεργό','actif')}</span></td></tr>`).join('')}</tbody></table></div><p class="muted" style="margin-top:10px;font-size:13px">${T('Try it: set Stavroula to “Tax & banking only”, switch to her (top right) and open Cases.','Δοκιμάστε: βάλτε τη Σταυρούλα «Μόνο φορολογικά & τράπεζες», αλλάξτε χρήστη σε εκείνη (πάνω δεξιά) και ανοίξτε τις Υποθέσεις.','Essayez : mettez Stavroula sur « Fiscalité et banque seulement », passez à elle (en haut à droite) et ouvrez Dossiers.')}</p>`;
@@ -539,26 +600,76 @@ function newTask(caseId){let kind='doc';const to=S.me==='mk'?'mm':'mk';
   audit(`${t.c} · task “${t.t}” created for ${U[t.to].n}`);save();closeAll();render();
   toast(T(`Sent to ${U[t.to].n} (${offN(U[t.to].off)}). They get an email too.`,`Στάλθηκε στον/στην ${U[t.to].n} (${offN(U[t.to].off)}). Παίρνει και email.`,`Envoyé à ${U[t.to].n} (${offN(U[t.to].off)}). Un courriel suit.`));setTimeout(()=>{t.fresh=false},2500)}}
 
-function openTask(id){const t=S.tasks.find(x=>x.id===id);if(!t)return;const k=K(t.c),[dt,dc]=dueTxt(t);
- $('#drawer').innerHTML=`<div class="dhd"><div style="display:flex;justify-content:space-between;gap:10px"><span class="pill ${t.k==='doc'?'amber':''}">${tr(KINDS[t.k])}</span><button onclick="closeAll()" style="font-size:20px">×</button></div><h2 style="font:600 19px/1.25 var(--f);margin-top:10px">${esc(t.t)}</h2>
- <dl class="kv" style="margin-top:12px;grid-template-columns:90px 1fr"><dt>${T('From','Από','De')}</dt><dd class="who">${av(t.from,22)} ${U[t.from].n} · ${offN(U[t.from].off)}</dd><dt>${T('For','Προς','Pour')}</dt><dd class="who">${av(t.to,22)} ${U[t.to].n} · ${offN(U[t.to].off)}</dd><dt>${T('Due','Προθεσμία','Échéance')}</dt><dd class="due ${dc}">${dt}</dd><dt>${T('Case','Υπόθεση','Dossier')}</dt><dd><a href="#" id="toCase" style="color:var(--blue)">${k.id} · ${esc(k.t)}</a></dd></dl></div>
- <div class="dbd"><div class="muted" style="font-size:12.5px;font-weight:600">${T('Conversation','Συζήτηση','Discussion')}</div>${t.cm.map(m=>`<div class="cm">${av(m[0],28)}<div><small><b style="color:var(--ink)">${U[m[0]].n.split(' ')[0]}</b> · ${offN(U[m[0]].off)} · ${rel(m[1])}</small><div class="bub">${esc(m[2])}</div></div></div>`).join('')||`<div class="muted" style="margin-top:10px">${T('No messages yet.','Κανένα μήνυμα.','Aucun message.')}</div>`}</div>
- <div class="dft"><input id="cmIn" placeholder="${T('Reply…','Απάντηση…','Répondre…')}"><button class="btn s" id="cmGo">${T('Send','Αποστολή','Envoyer')}</button><button class="btn g s" id="tDone">${t.done?T('Reopen','Άνοιγμα','Rouvrir'):T('Mark done','Ολοκλήρωση','Terminer')}</button></div>`;
+let openTaskId=null;
+const QUICK=[['I’ll send it today','Το στέλνω σήμερα','Je l’envoie aujourd’hui'],['I have it, uploading tomorrow','Το έχω, το ανεβάζω αύριο','Je l’ai, je le téléverse demain'],['I need a clarification','Χρειάζομαι μια διευκρίνιση','J’ai besoin d’une précision'],['Done ✓','Έγινε ✓','C’est fait ✓']];
+function openTask(id,keep){const t=S.tasks.find(x=>x.id===id);if(!t)return;openTaskId=id;const k=K(t.c),[dt,dc]=dueTxt(t),other=ME===t.to?t.from:t.to;
+ t.seen=t.seen||{};const had=t.seen[ME];t.seen[ME]=t.cm.length;if(had!==t.cm.length)save();
+ const myTz=OFF[U[ME].off].tz,last=t.cm[t.cm.length-1],seenByOther=last&&last[0]===ME&&(t.seen[other]||0)>=t.cm.length;
+ const msgs=t.cm.map(m=>{const mine=m[0]===ME;return `<div class="cmsg ${mine?'me':''}">${mine?'':av(m[0],30)}<div><div class="bub2">${esc(m[2])}</div><small>${mine?T('You','Εσείς','Vous'):U[m[0]].n.split(' ')[0]+' · '+offN(U[m[0]].off)} · ${ICS.fmtT(m[1],myTz)}</small></div></div>`}).join('');
+ const ot=ICS.tzNow(OFF[U[other].off].tz);
+ $('#drawer').innerHTML=`<div class="dhd"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span class="pill ${t.k==='doc'?'amber':''}">${tr(KINDS[t.k])}</span><button onclick="closeAll()" style="font-size:22px" aria-label="close">×</button></div>
+ <h2 style="font:600 20px/1.25 var(--f);margin-top:10px">${esc(t.t)}</h2>
+ <div class="who" style="margin-top:12px">${av(other,36)}<span><b>${U[other].n}</b><small>${tr(U[other].r)} · ${offN(U[other].off)} · ${T('their time','ώρα τους','leur heure')} ${ot.s} ${ot.open?'· 🟢 '+T('at work','στο γραφείο','au bureau'):'· 🌙 '+T('after hours','εκτός ωραρίου','hors heures')}</small></span></div>
+ <div class="meta" style="margin-top:10px"><span class="due ${dc}">⏱ ${dt}</span>·<a href="#" id="toCase" style="color:var(--blue)">${k.id} · ${esc(k.t)}</a></div></div>
+ <div class="dbd" id="chat">${msgs||`<div class="empty">💬 ${T('Start the conversation. Everything about this task stays here, not in email.','Ξεκινήστε τη συζήτηση. Ό,τι αφορά αυτή την εργασία μένει εδώ, όχι στα email.','Commencez la discussion. Tout reste ici, pas dans les courriels.')}</div>`}${seenByOther?`<div class="seen">✓✓ ${T('Seen by','Το είδε ο/η','Vu par')} ${U[other].n.split(' ')[0]}</div>`:''}</div>
+ <div class="quick">${QUICK.map((q,i)=>`<button data-q="${i}">${tr(q)}</button>`).join('')}</div>
+ <div class="dft"><button class="btn l s" id="cmAtt" title="${T('Attach a file','Επισύναψη αρχείου','Joindre un fichier')}">📎</button><input type="file" id="cmFile" hidden><input id="cmIn" placeholder="${T('Write a message…','Γράψτε μήνυμα…','Écrire un message…')}" autocomplete="off"><button class="btn s" id="cmGo">${T('Send','Αποστολή','Envoyer')}</button></div>
+ <div class="dft" style="border-top:0;padding-top:0"><button class="btn ${t.done?'l':'g'}" id="tDone" style="flex:1;justify-content:center">${t.done?T('Reopen task','Άνοιγμα ξανά','Rouvrir'):T('✓ Mark task as done','✓ Ολοκλήρωση εργασίας','✓ Terminer la tâche')}</button></div>`;
  $('#drawer').classList.add('on');$('#ov').classList.add('on');
+ const ch=$('#chat');ch.scrollTop=ch.scrollHeight;
+ if(keep){$('#cmIn').value=keep.v;if(keep.f)$('#cmIn').focus()}else setTimeout(()=>$('#cmIn')?.focus(),250);
  $('#toCase').onclick=e=>{e.preventDefault();closeAll();go('case',k.id)};
- const send=()=>{const v=$('#cmIn').value.trim();if(!v)return;t.cm.push([S.me,Date.now(),v]);const other=S.me===t.to?t.from:t.to;notify(other,[`${U[S.me].n} replied on “${t.t}”`,`Ο/Η ${U[S.me].n} απάντησε στο «${t.t}»`,`${U[S.me].n} a répondu à « ${t.t} »`],['task',t.id]);save();openTask(id);chrome()};
- $('#cmGo').onclick=send;$('#cmIn').onkeydown=e=>{if(e.key==='Enter')send()};
+ const send=v=>{v=(v??$('#cmIn').value).trim();if(!v)return;t.cm.push([ME,Date.now(),v]);t.seen[ME]=t.cm.length;notify(other,[`${U[ME].n} · “${t.t}”: ${v.slice(0,60)}`,`${U[ME].n} · «${t.t}»: ${v.slice(0,60)}`,`${U[ME].n} · « ${t.t} » : ${v.slice(0,60)}`],['task',t.id]);save();openTask(id);chrome()};
+ $('#cmGo').onclick=()=>send();$('#cmIn').onkeydown=e=>{if(e.key==='Enter')send()};
+ $$('#drawer [data-q]').forEach(b=>b.onclick=()=>send(tr(QUICK[+b.dataset.q])));
+ $('#cmAtt').onclick=()=>$('#cmFile').click();
+ $('#cmFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const d={n:f.name,s:'rec',by:ME,d:Date.now(),fresh:true};k.docs.push(d);k.log.unshift([ME,Date.now(),'Attached '+f.name+' in task “'+t.t+'”']);audit(`${k.id} · ${f.name} attached in a task`);send('📎 '+f.name+' '+T('(added to the case documents)','(μπήκε στα έγγραφα της υπόθεσης)','(ajouté aux documents du dossier)'));readInto(k,k.docs.length-1,f)};
  $('#tDone').onclick=()=>{closeAll();toggleTask(t.id)}}
-
-function newClient(after){openM(`<h2>${T('New client','Νέος πελάτης','Nouveau client')}${X}</h2><form class="fm" id="cf">
- <label>${T('Full name','Ονοματεπώνυμο','Nom complet')}<input name="n" required></label>
+const SAMPLE_TAX='samples/taxisnet-registry.pdf',SAMPLE_FAM='samples/family-status-certificate.pdf';
+const sampleFile=async url=>{const b=await (await fetch(url)).blob();return new File([b],url.split('/').pop(),{type:'application/pdf'})};
+const titleGr=s=>String(s||'').toLowerCase().replace(/(^|\s)(\S)/g,(m,a,b)=>a+b.toUpperCase());
+function newClient(after){
+ openM(`<h2>${T('New client','Νέος πελάτης','Nouveau client')}${X}</h2>
+ <div class="docfill" id="dfz"><span style="font-size:26px">📄</span><div><b>${T('Fill in from a document','Συμπλήρωση από έγγραφο','Remplir à partir d’un document')}</b><small>${T('Drop an ID, a tax registry (AADE) or a certificate as PDF. We read it and fill in the card.','Σύρετε ταυτότητα, βεβαίωση ΑΑΔΕ ή πιστοποιητικό σε PDF. Το διαβάζουμε και συμπληρώνουμε την καρτέλα.','Déposez une pièce d’identité, une attestation AADE ou un certificat en PDF. Nous le lisons et remplissons la fiche.')}</small><button type="button" class="linkb" id="dfs">${T('Try with a sample document','Δοκιμή με δείγμα εγγράφου','Essayer avec un exemple')}</button></div><input type="file" id="dff" hidden accept=".pdf,image/*"></div>
+ <form class="fm" id="cf" style="margin-top:12px">
+ <div class="r2"><label>${T('Full name','Ονοματεπώνυμο','Nom complet')}<input name="n" required></label><label>${tr(ICS.FIELDS.nameGr)}<input name="nameGr"></label></div>
  <div class="r2"><label>${T('Phone','Τηλέφωνο','Téléphone')}<input name="ph" type="tel"></label><label>Email<input name="em" type="email"></label></div>
- <div class="r2"><label>${T('Address','Διεύθυνση','Adresse')}<input name="addr"></label><label>${T('Greek AFM','ΑΦΜ','AFM grec')}<input name="afm"></label></div>
- <div class="r2"><label>${T('Office','Γραφείο','Bureau')}<select name="off">${Object.keys(OFF).map(o=>`<option value="${o}" ${o===U[S.me].off?'selected':''}>${offN(o)}</option>`).join('')}</select></label><label>${T('Language','Γλώσσα','Langue')}<select name="lang"><option>EN</option><option>ΕΛ</option><option>FR</option><option>EN/ΕΛ</option><option>FR/EN</option></select></label></div>
+ <div class="r2"><label>${T('Address','Διεύθυνση','Adresse')}<input name="addr"></label><label>${T('Date of birth','Ημ. γέννησης','Date de naissance')}<input name="dob" type="date"></label></div>
+ <div class="r2"><label>${tr(ICS.FIELDS.afm)}<input name="afm"></label><label>${tr(ICS.FIELDS.amka)}<input name="amka"></label></div>
+ <div class="r2"><label>${tr(ICS.FIELDS.idno)}<input name="idno"></label><label>${tr(ICS.FIELDS.father)}<input name="father"></label></div>
+ <input type="hidden" name="mother"><input type="hidden" name="pob">
+ <div class="r2"><label>${T('Office','Γραφείο','Bureau')}<select name="off">${Object.keys(OFF).map(o=>`<option value="${o}" ${o===U[ME].off?'selected':''}>${offN(o)}</option>`).join('')}</select></label><label>${T('Language','Γλώσσα','Langue')}<select name="lang"><option>EN</option><option>ΕΛ</option><option>FR</option><option>EN/ΕΛ</option><option>FR/EN</option></select></label></div>
  <div class="acts">${cancelBtn()}<button class="btn g">${T('Save client','Αποθήκευση','Enregistrer')}</button></div></form>`);
+ const fill=async file=>{const z=$('#dfz');z.classList.add('busy');z.querySelector('b').textContent=T('Reading the document…','Διαβάζω το έγγραφο…','Lecture du document…');
+  try{const r=await ICS.readDoc(file),f=r.fields,form=$('#cf');let n=0;
+   const set=(k,v)=>{if(!v||!form[k])return;form[k].value=v;form[k].classList.add('auto');n++};
+   set('nameGr',f.nameGr);if(f.nameGr&&!form.n.value)set('n',titleGr(f.nameGr));set('ph',f.ph);set('em',f.em);set('addr',f.addr);set('dob',f.dob);set('afm',f.afm);set('amka',f.amka);set('idno',f.idno);set('father',f.father);if(f.mother)form.mother.value=f.mother;if(f.pob)form.pob.value=f.pob;
+   z.classList.remove('busy');z.classList.add('ok');z.querySelector('b').textContent=n?`✓ ${T(`${n} fields filled in from`,`Συμπληρώθηκαν ${n} πεδία από`,`${n} champs remplis depuis`)} “${r.title}”`:(r.kind==='image'||r.kind==='scan'?T('This is a scan. In the live system it is read by OCR.','Είναι σαρωμένο. Στο κανονικό σύστημα διαβάζεται με OCR.','Document numérisé : lu par OCR dans le système réel.'):T('No fields found in this document.','Δεν βρέθηκαν στοιχεία.','Aucun champ trouvé.'));
+  }catch(e){z.classList.remove('busy');z.querySelector('b').textContent=T('Could not read this file.','Δεν ήταν δυνατή η ανάγνωση.','Lecture impossible.')}};
+ const z=$('#dfz');z.onclick=e=>{if(e.target.id!=='dfs')$('#dff').click()};$('#dff').onchange=e=>e.target.files[0]&&fill(e.target.files[0]);
+ z.ondragover=e=>{e.preventDefault();z.classList.add('ov')};z.ondragleave=()=>z.classList.remove('ov');z.ondrop=e=>{e.preventDefault();z.classList.remove('ov');e.dataTransfer.files[0]&&fill(e.dataTransfer.files[0])};
+ $('#dfs').onclick=async e=>{e.stopPropagation();fill(await sampleFile(SAMPLE_TAX))};
  $('#cf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),em=f.get('em');const dup=em&&S.clients.find(c=>c.em.includes(em));if(dup){toast(T(`${dup.n} already has this email · opened the existing card`,`Το email υπάρχει ήδη (${dup.n}) · άνοιξε η υπάρχουσα καρτέλα`,`Ce courriel existe déjà (${dup.n})`));closeAll();go('client',dup.id);return}
-  const c={id:'c'+Date.now(),n:f.get('n'),ph:f.get('ph')?[f.get('ph')]:[],em:em?[em]:[],addr:f.get('addr'),afm:f.get('afm'),amka:'',dob:'',off:f.get('off'),lang:f.get('lang'),note:'',src:'Phone / walk-in'};S.clients.push(c);audit(`Client ${c.n} created`);save();closeAll();if(after)after(c);else go('client',c.id);toast(T('Client saved','Ο πελάτης αποθηκεύτηκε','Client enregistré'))}}
+  const c={id:'c'+Date.now(),n:f.get('n'),nameGr:f.get('nameGr'),ph:f.get('ph')?[f.get('ph')]:[],em:em?[em]:[],addr:f.get('addr'),afm:f.get('afm'),amka:f.get('amka'),idno:f.get('idno'),father:f.get('father'),mother:f.get('mother'),pob:f.get('pob'),dob:f.get('dob'),off:f.get('off'),lang:f.get('lang'),note:'',src:'Phone / walk-in',fresh:true};S.clients.push(c);audit(`Client ${c.n} created`);save();closeAll();if(after)after(c);else go('client',c.id);toast(T('Client saved','Ο πελάτης αποθηκεύτηκε','Client enregistré'))}}
 
+/* read a PDF that was added to a case and offer the fields for the client card */
+async function readInto(k,idx,file,silent){const d=k.docs[idx];if(!d)return;if(!/\.pdf$/i.test(d.n)&&file?.type!=='application/pdf')return;
+ toast('🔎 '+T('Reading the document…','Διαβάζω το έγγραφο…','Lecture du document…'));
+ try{const r=await ICS.readDoc(file);d.extract=r.fields;d.title=r.title;save();const n=Object.keys(r.fields).length;
+  if(R.v==='case'&&R.id===k.id)vCase();
+  if(n&&!silent)extractModal(k,idx);else if(!n)toast(T('No fields found in this document.','Δεν βρέθηκαν στοιχεία στο έγγραφο.','Aucun champ trouvé.'))}catch(e){toast(T('Could not read this file.','Δεν ήταν δυνατή η ανάγνωση.','Lecture impossible.'))}}
+function extractModal(k,idx){const d=k.docs[idx],f=d.extract||{},keys=Object.keys(f);if(!keys.length)return;
+ const cands=k.cl.map(x=>C(x[0])).filter(Boolean);let cid=(cands.find(c=>f.em&&c.em.includes(f.em))||cands[0]||{}).id;
+ const cur=(c,key)=>key==='ph'?(c.ph||[]).join(', '):key==='em'?(c.em||[]).join(', '):(c[key]||'');
+ const draw=()=>{const c=C(cid);$('#xrows').innerHTML=keys.map(key=>{const now=c?cur(c,key):'',same=String(now).replace(/\s/g,'').toLowerCase().includes(String(f[key]).replace(/\s/g,'').toLowerCase());return `<tr><td><input type="checkbox" data-x="${key}" ${same?'':'checked'}></td><td>${tr(ICS.FIELDS[key])}</td><td><b>${esc(f[key])}</b></td><td class="muted">${esc(now)||'—'}${same?' ✓':''}</td></tr>`}).join('')};
+ openM(`<h2>🔎 ${T('Found in the document','Βρέθηκαν στο έγγραφο','Trouvé dans le document')}${X}</h2>
+ <p class="muted" style="margin-bottom:12px">“${esc(d.title||d.n)}” · ${keys.length} ${T('fields. Tick what to copy to the client card: nobody needs to retype it.','πεδία. Επιλέξτε τι θα περάσει στην καρτέλα του πελάτη: κανείς δεν χρειάζεται να το ξαναγράψει.','champs. Cochez ce qu’il faut copier dans la fiche client.')}</p>
+ <div class="fm"><label>${T('Client card','Καρτέλα πελάτη','Fiche client')}<select id="xc">${cands.map(c=>`<option value="${c.id}" ${c.id===cid?'selected':''}>${esc(c.n)}</option>`).join('')}</select></label></div>
+ <div class="scroll" style="margin-top:10px"><table class="tbl xt"><thead><tr><th></th><th>${T('Field','Πεδίο','Champ')}</th><th>${T('In the document','Στο έγγραφο','Dans le document')}</th><th>${T('On the card now','Τώρα στην καρτέλα','Sur la fiche')}</th></tr></thead><tbody id="xrows"></tbody></table></div>
+ <div class="fm"><div class="acts">${cancelBtn()}<button class="btn g" id="xgo">${T('Update client card','Ενημέρωση καρτέλας','Mettre à jour la fiche')}</button></div></div>`);
+ draw();$('#xc').onchange=e=>{cid=e.target.value;draw()};
+ $('#xgo').onclick=()=>{const c=C(cid);let n=0;$$('[data-x]:checked').forEach(b=>{const key=b.dataset.x,v=f[key];if(key==='ph'||key==='em'){if(!c[key].includes(v))c[key].push(v)}else c[key]=v;n++});
+  d.applied=true;k.log.unshift([ME,Date.now(),`${n} fields copied from “${d.n}” to ${c.n}`]);audit(`Client ${c.n} · ${n} fields filled from document ${d.n}`);save();closeAll();render();toast(T(`${c.n}: ${n} fields updated from the document`,`${c.n}: ενημερώθηκαν ${n} πεδία από το έγγραφο`,`${c.n} : ${n} champs mis à jour`))}}
 function newCase(clientId){let type='inh';
  openM(`<h2>${T('New case','Νέα υπόθεση','Nouveau dossier')}${X}</h2><form class="fm" id="kf">
  <label>${T('Type','Τύπος','Type')}<div class="seg" id="tseg">${Object.keys(TYPES).map(k=>`<button type="button" data-ty="${k}" class="${k===type?'on':''}">${tName(k)}</button>`).join('')}</div></label>
@@ -667,18 +778,23 @@ function login(){let skip=qs.has('nologin');try{skip=skip||sessionStorage.getIte
 /* ---------- live sync with the website ---------- */
 const applyPerms=()=>{Object.entries(S.perms||{}).forEach(([id,p])=>{if(U[id])U[id].perm=p})};
 applyPerms();
-ICS.on(ns=>{const before=S;S=ns;applyPerms();
+ICS.on(ns=>{const before=S;S=ns;S.me=ME;applyPerms();
  const newIn=S.inbox.filter(x=>!before.inbox.some(y=>y.id===x.id));newIn.forEach(x=>x.fresh=true);
  render();
+ if($('#drawer').classList.contains('on')&&openTaskId){const i=$('#cmIn');openTask(openTaskId,{v:i?.value||'',f:document.activeElement===i})}
+ const newMsg=S.tasks.find(t=>{const o=before.tasks.find(x=>x.id===t.id);return t.cm.length>(o?o.cm.length:0)&&t.cm[t.cm.length-1][0]!==ME&&(t.to===ME||t.from===ME)});
+ const newTask=S.tasks.find(t=>!before.tasks.some(x=>x.id===t.id)&&t.to===ME);
+ if(newTask&&!newIn.length){toast('● '+T(`New task from ${U[newTask.from].n}: “${newTask.t}” →`,`Νέα εργασία από ${U[newTask.from].n}: «${newTask.t}» →`,`Nouvelle tâche de ${U[newTask.from].n} : « ${newTask.t} » →`),true,()=>openTask(newTask.id));return}
+ if(newMsg&&!(openTaskId===newMsg.id&&$('#drawer').classList.contains('on'))&&!newIn.length){toast('💬 '+U[newMsg.cm[newMsg.cm.length-1][0]].n.split(' ')[0]+': '+newMsg.cm[newMsg.cm.length-1][2].slice(0,70)+' →',true,()=>openTask(newMsg.id));return}
  if(newIn.length){const x=newIn[0],k={quote:['New quote request from the website','Νέο αίτημα προσφοράς από το site','Nouvelle soumission du site'],booking:['New booking from the website','Νέο ραντεβού από το site','Nouveau rendez-vous du site'],newsletter:['New newsletter sign-up','Νέα εγγραφή στο newsletter','Nouvelle inscription à l’infolettre'],upload:['A client uploaded a document','Πελάτης ανέβασε έγγραφο','Un client a téléversé un document'],message:['New message from a client','Νέο μήνυμα από πελάτη','Nouveau message d’un client'],payment:['Payment received online','Πληρωμή online','Paiement reçu en ligne']}[x.kind];
   toast('● '+tr(k)+(x.d.name?' · '+x.d.name:'')+' →',true,()=>go(x.kind==='upload'||x.kind==='message'||x.kind==='payment'?'case':'inbox',x.d.case))}});
 
 /* ---------- chrome events ---------- */
 function setLang(l){L=l;try{localStorage.setItem('ics-lang',l)}catch(e){}render()}
 $('#lang').onclick=e=>{const b=e.target.closest('button');if(b)setLang(b.dataset.l)};
-$('#meSel').onchange=e=>{S.me=e.target.value;save();go('home');toast(T('You are now ','Είστε τώρα ','Vous êtes maintenant ')+U[S.me].n+' · '+offN(U[S.me].off))};
+$('#meSel').onchange=e=>{setMe(e.target.value);save();go('home');toast(T('You are now ','Είστε τώρα ','Vous êtes maintenant ')+U[S.me].n+' · '+offN(U[S.me].off))};
 $('#burger').onclick=()=>$('#side').classList.toggle('on');
-$('#reset').onclick=()=>{if(!confirm(T('Reset all demo data?','Επαναφορά όλων των δεδομένων;','Réinitialiser toutes les données ?')))return;S=ICS.reset();Object.keys(U).forEach(id=>U[id].perm={am:'admin',et:'admin',md:'office',sr:'acct',gt:'office'}[id]||'all');go('home');toast(T('Demo data reset','Τα δεδομένα επανήλθαν','Données réinitialisées'))};
+$('#reset').onclick=()=>{if(!confirm(T('Reset all demo data?','Επαναφορά όλων των δεδομένων;','Réinitialiser toutes les données ?')))return;S=ICS.reset();S.me=ME;Object.keys(U).forEach(id=>U[id].perm={am:'admin',et:'admin',md:'office',sr:'acct',gt:'office'}[id]||'all');go('home');toast(T('Demo data reset','Τα δεδομένα επανήλθαν','Données réinitialisées'))};
 $('#tipX').onclick=()=>$('#tip').remove();
 setInterval(()=>{if(!document.hidden)chrome()},30000);
 render();login();
