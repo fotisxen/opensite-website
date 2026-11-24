@@ -10,6 +10,7 @@ export type Demo = {
 };
 
 export const DEMOS: Demo[] = [
+  { slug: "cbmi", name: "CBMI Construction", kind: "Εταιρικό site 7 σελίδων · δίγλωσσο EL/EN με πραγματική εναλλαγή γλώσσας, έργα με φίλτρα χώρας/τύπου/περιόδου, απανθρακοποίηση, νέα, φόρμα ανά τμήμα (Sinoma/CNBM, γραφείο Χαλανδρίου)", created: "2026-11-24" },
   { slug: "livingroom", name: "LivingRoom", kind: "E-shop 5 σελίδων · φορέματα & γούνες, φίλτρο ανά περίσταση, καλάθι-drawer, ταμείο (Αιάντειο Σαλαμίνας)", created: "2026-11-24", instagram: "https://www.instagram.com/livingroom_fashionroom/" },
   { slug: "style-glyfada", name: "Style Boutique Γλυφάδα", kind: "E-shop 5 σελίδων · Fall 2026 με πραγματικές τιμές, αποστολές Ελλάδα & Κύπρο, ταμείο (EUROCENTER Mall)", created: "2026-11-24", instagram: "https://www.instagram.com/styleboutiqueglyfada/" },
   { slug: "evee", name: "Eveebrand", kind: "E-shop 5 σελίδων · φίλτρο «everyday mood», Lumina & Midnight set, ταμείο χωρίς DM (online brand)", created: "2026-11-24", instagram: "https://www.instagram.com/eveebrand_/" },

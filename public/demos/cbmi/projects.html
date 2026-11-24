@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="el" class="notes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d1216">
+<title>Έργα · CBMI Construction</title>
+<meta name="description" content="Έργα EPC, αναβαθμίσεων και απανθρακοποίησης της CBMI σε Γαλλία, Βέλγιο, Τσεχία, Βουλγαρία, Κύπρο, Αλβανία, Ουγγαρία, Αζερμπαϊτζάν, Ισπανία και Ιταλία.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);var l=q.get("lang")||localStorage.getItem("cbmi-lang")||"el";h.dataset.lang=l==="en"?"en":"el";h.setAttribute("lang",h.dataset.lang);if(q.has("clean")||localStorage.getItem("cbmi-notes")==="off")h.classList.remove("notes");if(q.has("clean"))h.classList.add("clean");}catch(e){}})();</script>
+<link rel="stylesheet" href="cbmi.css">
+<style>
+.fgroup select{padding:10px 13px;border:1px solid var(--line);background:#fff;border-radius:var(--r);font-size:14px;min-width:200px}
+</style>
+</head>
+<body data-page="projects"
+  data-tel="Έργα · CBMI Construction" data-ten="Projects · CBMI Construction"
+  data-del="Έργα EPC, αναβαθμίσεων και απανθρακοποίησης της CBMI στην Ευρώπη και διεθνώς."
+  data-den="CBMI's EPC, upgrade and decarbonisation projects in Europe and worldwide.">
+
+<section class="hero phero">
+  <div class="art" id="heroArt"></div>
+  <div class="wrap">
+    <p class="crumbs"><a href="demo.html" data-en="Home">Αρχική</a> / <span data-en="Projects">Έργα</span></p>
+    <h1 class="h1" data-en="Projects you can <em>go and visit</em>">Έργα που <em>μπορείτε να επισκεφθείτε</em></h1>
+    <p class="lead" style="margin-top:22px" data-en="Filter by country, type of work and period. Every line below was engineered, supplied and built by our teams.">Φιλτράρετε ανά χώρα, τύπο έργου και περίοδο. Κάθε γραμμή παρακάτω μελετήθηκε, εξοπλίστηκε και κατασκευάστηκε από τις ομάδες μας.</p>
+  </div>
+</section>
+
+<section class="sec paper">
+  <div class="wrap">
+    <div class="filters">
+      <div class="fgroup">
+        <span data-en="Country">Χώρα</span>
+        <select id="fCountry" aria-label="Χώρα" data-enlabel="Country"></select>
+      </div>
+      <div class="fgroup">
+        <span data-en="Type of work">Τύπος έργου</span>
+        <div class="chips">
+          <button class="chip" data-f="type" data-v="all" aria-pressed="true" data-en="All">Όλα</button>
+          <button class="chip" data-f="type" data-v="epc" aria-pressed="false" data-en="New line EPC">EPC νέας γραμμής</button>
+          <button class="chip" data-f="type" data-v="decarb" aria-pressed="false" data-en="Decarbonisation">Απανθρακοποίηση</button>
+          <button class="chip" data-f="type" data-v="upgrade" aria-pressed="false" data-en="Upgrade">Αναβάθμιση</button>
+          <button class="chip" data-f="type" data-v="grind" aria-pressed="false" data-en="Grinding">Άλεση</button>
+        </div>
+      </div>
+      <div class="fgroup">
+        <span data-en="Period">Περίοδος</span>
+        <div class="chips">
+          <button class="chip" data-f="era" data-v="all" aria-pressed="true" data-en="All">Όλες</button>
+          <button class="chip" data-f="era" data-v="a" aria-pressed="false">2000–2010</button>
+          <button class="chip" data-f="era" data-v="b" aria-pressed="false">2011–2019</button>
+          <button class="chip" data-f="era" data-v="c" aria-pressed="false" data-en="2020–today">2020–σήμερα</button>
+        </div>
+      </div>
+      <p class="fcount" id="fCount"></p>
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+  </div>
+</section>
+
+<section class="sec stone">
+  <div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow" data-en="Studies &amp; technical upgrades">Μελέτες &amp; τεχνικές αναβαθμίσεις</p>
+      <h2 class="h2" data-en="Work that starts before the contract">Δουλειά που ξεκινά πριν από τη σύμβαση</h2>
+    </div>
+    <p class="small ph" style="max-width:400px" data-note="Οι τοποθεσίες αυτών των μελετών δεν επιβεβαιώθηκαν από δημόσια πηγή — συμπληρώστε τις εσείς" data-en="Feasibility studies, FEED packages and retrofits contracted with long-standing clients.">Μελέτες σκοπιμότητας, πακέτα FEED και αναβαθμίσεις που έχουν ανατεθεί από πελάτες μακράς συνεργασίας.</p></div>
+    <div class="cards-4" id="studies"></div>
+  </div>
+</section>
+
+<section class="sec-s ink">
+  <div class="wrap"><div class="stats">
+    <div><b>238</b><span data-en="Cement plant projects completed">Ολοκληρωμένα έργα εργοστασίων τσιμέντου</span></div>
+    <div><b>34</b><span data-en="In Europe">Στην Ευρώπη</span></div>
+    <div><b>6.000 t/d</b><span data-en="Largest European line delivered (Cyprus)">Μεγαλύτερη ευρωπαϊκή γραμμή που παραδώσαμε (Κύπρος)</span></div>
+    <div><b>95%</b><span data-en="Highest alternative fuel substitution rate (Go4Zero)">Μέγιστο ποσοστό υποκατάστασης εναλλακτικών καυσίμων (Go4Zero)</span></div>
+    <div><b>2</b><span data-en="National awards for the Devnya project">Εθνικά βραβεία για το έργο Devnya</span></div>
+  </div></div>
+</section>
+
+<section class="sec-s dark">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap">
+    <h2 class="h3" data-en="Want references for a specific capacity or technology?">Θέλετε αναφορές για συγκεκριμένη δυναμικότητα ή τεχνολογία;</h2>
+    <a class="btn btn-acc" href="#" data-cta="info" data-en="Ask for references">Ζητήστε αναφορές</a>
+  </div>
+</section>
+
+<script src="cbmi.js"></script>
+</body>
+</html>
