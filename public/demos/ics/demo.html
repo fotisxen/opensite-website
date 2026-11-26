@@ -3,609 +3,155 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow"><!-- demo only: the live site is indexable -->
 <meta name="theme-color" content="#0f1512">
-<title>ICS · Integrated Consulting Services · Your affairs in Greece, handled</title>
-<meta name="description" content="Integrated Consulting Services: inheritance, Greek tax declarations, property, banking, pensions and certified translations in Greece, from Toronto, Montreal, New York, Athens, Thessaloniki and Nicosia. English, Ελληνικά, Français.">
+<title data-el="ICS · Οι υποθέσεις σας στην Ελλάδα · Τορόντο, Μόντρεαλ, Νέα Υόρκη, Αθήνα" data-fr="ICS · Vos affaires en Grèce · Toronto, Montréal, New York, Athènes">ICS · Your affairs in Greece, handled · Toronto, Montreal, New York, Athens</title>
+<meta name="description" content="Inheritance, Greek tax declarations, property, banking, pensions and certified translations in Greece, from six offices in Canada, the USA, Greece and Cyprus. Pay online, subscribe to annual plans and follow your case.">
+<link rel="canonical" href="https://www.icsgr.com/">
+<link rel="alternate" hreflang="en" href="https://www.icsgr.com/"><link rel="alternate" hreflang="el" href="https://www.icsgr.com/el/"><link rel="alternate" hreflang="fr" href="https://www.icsgr.com/fr/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="ICS · Integrated Consulting Services"><meta property="og:title" content="ICS · Your affairs in Greece, handled · Toronto, Montreal, New York, Athens"><meta property="og:description" content="Inheritance, Greek tax declarations, property, banking, pensions and certified translations in Greece, from six offices in Canada, the USA, Greece and Cyprus. Pay online, subscribe to annual plans and follow your case."><meta property="og:url" content="https://www.icsgr.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Noto+Serif+Display:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
-<!--
-  OpenSite redesign demo for Integrated Consulting Services (icsgr.com). EN / ΕΛ / FR.
-  Offices, services, accreditations, team, testimonials and news headlines come from icsgr.com (Nov 2026).
-  Connected to the CRM demo (/demos/ics-crm/) through store.js: quotes, bookings, portal uploads, messages
-  and payments made here appear in the CRM at once, and stage changes / messages from the CRM show in the portal.
-  Payments are simulated (no card is charged). Everything marked .ph is placeholder (toggle "Notes", hide with ?clean).
--->
-<style>
-:root{--bg:#f6f5f0;--card:#fff;--ink:#0f1512;--muted:#66706a;--lime:#9eaf00;--lime2:#c3d42a;--deep:#0f1512;--line:rgba(15,21,18,.1);
-  --f:"Inter Tight",system-ui,sans-serif;--s:"Noto Serif Display",Georgia,serif}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-html,body{overflow-x:clip}
-body{background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--f);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit;color:inherit}
-button{background:none;border:0;cursor:pointer}
-.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
-.k{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.k::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--lime)}
-h2{font:500 clamp(36px,5vw,66px)/1.03 var(--f);letter-spacing:-.035em;margin-top:14px}
-h2 em{font:italic 300 1.02em var(--s);letter-spacing:-.01em}
-.lead{color:var(--muted);max-width:640px;margin-top:16px;font-size:18px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 14.5px/1 var(--f);padding:15px 22px;border-radius:12px;background:var(--ink);color:#fff;white-space:nowrap;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,21,18,.18)}
-.btn.lime{background:var(--lime);color:#10140a}
-.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px var(--line)}
-.btn.s{padding:10px 14px;font-size:13.5px}
-.card{background:var(--card);border-radius:20px;box-shadow:0 1px 0 var(--line),0 20px 50px -30px rgba(15,21,18,.25)}
-section{padding:clamp(76px,9vw,120px) 0}
-.ph{outline:1.5px dashed #c05a00;outline-offset:3px}
-html:not(.notes) .ph{outline:none}
-.notes-t{position:fixed;left:12px;bottom:14px;z-index:60;font:600 11px/1 var(--f);padding:10px 13px;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.15);color:#c05a00}
-.clean .notes-t{display:none}
-.fld{display:grid;gap:6px;font:600 12px/1.2 var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.fld input,.fld select,.fld textarea{font:400 15.5px/1.3 var(--f);letter-spacing:0;text-transform:none;color:var(--ink);padding:13px 14px;border-radius:12px;border:0;background:#fff;box-shadow:inset 0 0 0 1px var(--line);min-width:0}
-.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.opts{display:flex;flex-wrap:wrap;gap:6px}
-.opts button{padding:10px 13px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);font:500 14px/1.2 var(--f);background:#fff}
-.opts button.on{background:var(--ink);color:#fff;box-shadow:none}
-
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(246,245,240,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;font:700 22px/1 var(--f);letter-spacing:-.02em}
-.logo i{width:30px;height:24px;border-radius:6px 6px 6px 0;background:var(--lime);display:grid;place-items:center;font-style:normal;color:#fff;font-size:13px;letter-spacing:1px}
-.logo small{font:500 11px/1.2 var(--f);color:var(--muted);max-width:110px}
-.nav-l{display:flex;gap:22px;font:500 14.5px/1 var(--f);color:#3a423d}
-.nav-l a:hover{color:var(--ink)}
-.nav-r{display:flex;align-items:center;gap:8px}
-.lang{display:flex;background:#e9e8e1;border-radius:10px;padding:3px}
-.lang button{font:600 12px/1 var(--f);padding:8px 9px;border-radius:8px;color:var(--muted)}
-.lang button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-
-/* hero */
-.hero{padding:clamp(40px,6vw,76px) 0 40px}
-.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,4vw,60px);align-items:center}
-.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 12px 7px 8px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:500 13px/1.2 var(--f);color:#3a423d}
-.pill b{background:var(--lime);color:#10140a;padding:4px 8px;border-radius:999px;font-size:11px}
-.hero h1{font:500 clamp(46px,6.2vw,90px)/.98 var(--f);letter-spacing:-.045em;margin-top:22px}
-.hero h1 em{font:italic 300 1.02em var(--s);letter-spacing:-.015em;color:var(--lime)}
-.hero .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
-.trust{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap}
-.trust div{font:500 13px/1.3 var(--f);color:var(--muted)}
-.trust b{display:block;font:600 30px/1 var(--f);letter-spacing:-.03em;color:var(--ink);margin-bottom:6px}
-.mapcard{position:relative;padding:18px;overflow:hidden;background:var(--deep);color:#e8ece6}
-#routes{width:100%;aspect-ratio:16/11;display:block}
-.clocks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.clock{padding:12px;border-radius:12px;background:rgba(255,255,255,.05);cursor:pointer;transition:background .2s;text-align:left}
-.clock:hover,.clock.on{background:rgba(158,175,0,.18)}
-.clock b{display:block;font:600 14px/1.2 var(--f)}
-.clock span{font:400 22px/1.2 var(--f);letter-spacing:-.02em}
-.clock small{display:flex;align-items:center;gap:6px;font-size:11.5px;color:#a9b3ac}
-.clock small i{width:6px;height:6px;border-radius:50%;background:#6b736e}
-.clock small i.on{background:#b9d630}
-.acc{padding:28px 0;border-block:1px solid var(--line);overflow:hidden;white-space:nowrap}
-.acc div{display:inline-flex;gap:56px;animation:mq 38s linear infinite;font:600 15px/1 var(--f);color:#8a938d}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* finder */
-.f-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,50px);margin-top:40px;align-items:start}
-.needs{display:grid;gap:8px}
-.need{display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);text-align:left;transition:.2s}
-.need:hover{box-shadow:inset 0 0 0 1px var(--ink)}
-.need.on{background:var(--ink);color:#fff;box-shadow:none}
-.need .ic{width:40px;height:40px;border-radius:10px;background:#eef1dc;display:grid;place-items:center;font-size:19px;flex:0 0 40px}
-.need.on .ic{background:var(--lime)}
-.need b{font:600 15.5px/1.3 var(--f);display:block}
-.need small{font-size:13px;color:var(--muted)}
-.need.on small{color:#b7c0ba}
-.plan{padding:clamp(22px,3vw,36px);position:sticky;top:88px}
-.plan h3{font:500 30px/1.1 var(--f);letter-spacing:-.03em;margin-top:12px}
-.plan .meta{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 22px}
-.plan .meta span{font:500 12.5px/1 var(--f);padding:8px 10px;border-radius:8px;background:#f1f2ea}
-.steps{list-style:none;counter-reset:s;display:grid;gap:4px}
-.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);animation:rise .45s both}
-.steps li::before{content:counter(s);width:28px;height:28px;border-radius:8px;background:var(--ink);color:#fff;display:grid;place-items:center;font:600 13px/1 var(--f)}
-.steps b{font-weight:600}
-.steps small{display:block;color:var(--muted);font-size:14px}
-.docs{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px}
-.docs span{font-size:13px;padding:7px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
-.plan .cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
-@keyframes rise{from{opacity:0;transform:translateY(8px)}}
-
-/* quote */
-.quote{background:var(--deep);color:#eef2ec}
-.quote .lead,.quote .k{color:#a9b3ac}
-.q-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,50px);margin-top:40px;align-items:stretch}
-.qform{display:grid;gap:18px;padding:clamp(22px,3vw,34px);border-radius:20px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.qform .lb{font:600 12px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;color:#a9b3ac;display:block;margin-bottom:10px}
-.qform .opts button{background:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);color:#eef2ec}
-.qform .opts button.on{background:var(--lime);color:#10140a;box-shadow:none}
-.qform input[type=range]{width:100%;accent-color:var(--lime2)}
-.qform .r2 input{padding:12px 14px;border-radius:10px;border:0;background:rgba(255,255,255,.08);color:#fff;min-width:0}
-.qform .r2 input::placeholder{color:#8a938d}
-.drop{border:1.5px dashed rgba(255,255,255,.25);border-radius:14px;padding:20px;text-align:center;color:#a9b3ac;transition:.2s;cursor:pointer}
-.drop.over{border-color:var(--lime2);background:rgba(158,175,0,.1);color:#fff}
-.drop b{color:#fff}
-.files{display:grid;gap:6px;margin-top:10px}
-.files div{display:flex;justify-content:space-between;font-size:13.5px;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,.06)}
-.qres{padding:clamp(22px,3vw,34px);border-radius:20px;background:var(--lime);color:#10140a;display:flex;flex-direction:column}
-.qres .k{color:#2d3600}.qres .k::before{background:#10140a}
-.qres .price{font:500 clamp(52px,6vw,80px)/1 var(--f);letter-spacing:-.05em;margin:14px 0 6px}
-.qres ul{list-style:none;margin:16px 0 auto;display:grid;gap:8px;font-size:15px}
-.qres li::before{content:"✓  "}
-.qres .acts{display:grid;gap:8px;margin-top:22px}
-.qres .btn.line{box-shadow:inset 0 0 0 1px rgba(16,20,10,.35)}
-
-/* booking */
-.b-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,50px);margin-top:40px;align-items:start}
-.bk{padding:clamp(20px,3vw,30px);display:grid;gap:16px}
-.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.days button{padding:9px 2px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);font-size:12px;line-height:1.2;color:var(--muted);background:#fff}
-.days button b{display:block;font:600 20px/1.1 var(--f);color:var(--ink)}
-.days button.on{background:var(--ink);color:#b7c0ba;box-shadow:none}.days button.on b{color:#fff}
-.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.slots button{padding:9px 4px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);font:500 14px/1.2 var(--f);background:#fff}
-.slots button small{display:block;font-size:11px;color:var(--muted)}
-.slots button.on{background:var(--lime);box-shadow:none}
-.slots button:disabled{opacity:.35;cursor:default;text-decoration:line-through}
-.tzline{font-size:13.5px;color:var(--muted);padding:10px 12px;border-radius:10px;background:#f1f2ea}
-.why{display:grid;gap:14px}
-.why div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
-.why i{width:44px;height:44px;border-radius:12px;background:#eef1dc;display:grid;place-items:center;font-style:normal;font-size:20px}
-.why b{display:block}
-.why span{color:var(--muted);font-size:15px}
-.done{text-align:center;padding:26px 10px}
-.done .t{width:62px;height:62px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-size:28px;margin:0 auto 14px}
-
-/* portal */
-.portal{background:#eeede6}
-.pwin{margin-top:30px;display:grid;grid-template-columns:240px 1fr;min-height:600px;overflow:hidden}
-.pside{background:#0f1512;color:#cfd6d1;padding:20px 14px;display:flex;flex-direction:column;gap:4px}
-.pside .who{display:flex;align-items:center;gap:10px;padding:6px 8px 18px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:10px}
-.av{width:34px;height:34px;border-radius:10px;background:var(--lime);color:#10140a;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
-.pside .who b{display:block;color:#fff;font-size:14px}
-.pside .who small{font-size:12px;color:#8a938d}
-.pside button{padding:10px;border-radius:9px;font-size:14px;display:flex;justify-content:space-between;text-align:left;color:#cfd6d1}
-.pside button.on{background:rgba(255,255,255,.08);color:#fff}
-.pside em{font-style:normal;font-size:11px;background:var(--lime);color:#10140a;border-radius:999px;padding:2px 7px}
-.pside em:empty{display:none}
-.pmain{padding:clamp(18px,2.4vw,30px);background:#fbfbf8;min-width:0}
-.pmain h3{font:600 22px/1.2 var(--f);letter-spacing:-.02em}
-.pmain .sub{color:var(--muted);font-size:14px;margin-top:4px}
-.track{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:6px;margin:22px 0}
-.track div{position:relative;padding-top:16px;font-size:12.5px;color:var(--muted);line-height:1.3}
-.track div::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;border-radius:3px;background:#e6e7df}
-.track div.done::before{background:var(--lime)}
-.track div.now::before{background:linear-gradient(90deg,var(--lime) 50%,#e6e7df 50%)}
-.track div.done,.track div.now{color:var(--ink)}
-.pcols{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
-.box{background:#fff;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line);padding:16px}
-.box h4{font:600 12.5px/1 var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.doc{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
-.doc:last-child{border:0}
-.doc i{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:12px;flex:0 0 22px}
-.doc i.ok{background:#e9f2c2;color:#4c5800}
-.doc i.wait{background:#fde8d5;color:#a24c0b}
-.doc span{flex:1}
-.doc small{color:var(--muted)}
-.msg{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:8px 0;font-size:14px}
-.msg .av{width:30px;height:30px;border-radius:9px;font-size:11px;background:#e6e7df;color:var(--ink)}
-.msg.me .av{background:var(--lime)}
-.msg .bb{background:#f1f2ea;border-radius:4px 12px 12px 12px;padding:8px 11px}
-.msg small{color:var(--muted);display:block;font-size:12px}
-.msend{display:flex;gap:6px;margin-top:10px}
-.msend input{flex:1;min-width:0;padding:10px 12px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1px var(--line)}
-.inv{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
-.inv:last-child{border:0}
-.paid{font:600 12px/1 var(--f);padding:6px 9px;border-radius:999px;background:#e9f2c2;color:#4c5800}
-.plogin{max-width:420px;margin:30px auto;display:grid;gap:12px}
-.plogin .hint{font-size:13px;color:var(--muted);padding:10px 12px;border-radius:10px;background:#f1f2ea}
-.nowbox{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;margin-top:18px;padding:20px 22px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 2px var(--lime)}
-.nb-step{width:64px;height:64px;border-radius:16px;background:var(--lime);display:grid;place-items:center;font:600 28px/1 var(--f);color:#10140a}
-.nb-step small{font-size:13px;margin-top:-18px}
-.nb-k{font:600 11.5px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.nowbox b{display:block;font:600 24px/1.2 var(--f);letter-spacing:-.02em;margin-top:6px}
-.nowbox p{color:#3a423d;margin-top:4px;font-size:16px}
-.nowbox small{display:block;color:var(--muted);margin-top:6px;font-size:14px}
-.nowbox small b{display:inline;font-size:14px;letter-spacing:0;color:var(--ink)}
-.sample{margin-top:10px;font:600 13px/1.2 var(--f);color:#2459a8;text-decoration:underline;text-underline-offset:3px}
-.live{display:inline-flex;align-items:center;gap:6px;font:600 11.5px/1 var(--f);color:#4c5800;background:#e9f2c2;padding:5px 8px;border-radius:999px}
-.live::before{content:"";width:7px;height:7px;border-radius:50%;background:#7ca000;animation:bl 1.6s infinite}
-@keyframes bl{50%{opacity:.3}}
-.flash{animation:fl 1.8s}
-@keyframes fl{0%{box-shadow:inset 0 0 0 2px var(--lime)}}
-
-/* news, voices, offices */
-.n-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
-.nw{padding:22px;display:flex;flex-direction:column;gap:10px}
-.nw small{font:600 12px/1 var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
-.nw b{font:500 20px/1.25 var(--f);letter-spacing:-.01em}
-.nl{margin-top:16px;padding:22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.nl b{flex:1;min-width:220px;font:500 21px/1.25 var(--f)}
-.nl input{flex:1;min-width:200px;padding:13px 14px;border-radius:12px;border:0;box-shadow:inset 0 0 0 1px var(--line)}
-.voices{background:#eeede6}
-.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.vq{padding:24px}
-.vq p{font:italic 300 19px/1.45 var(--s)}
-.vq b{display:block;margin-top:16px;font-size:14px}
-.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
-.team span{padding:9px 12px;border-radius:999px;background:#fff;font-size:13.5px;box-shadow:inset 0 0 0 1px var(--line)}
-.team span b{font-weight:600}
-.o-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
-.off{padding:22px}
-.off h3{font:600 20px/1.2 var(--f);display:flex;justify-content:space-between;align-items:center;gap:8px}
-.off h3 small{font:500 12px/1 var(--f);color:var(--muted);white-space:nowrap}
-.off p{color:var(--muted);font-size:14.5px;margin-top:8px}
-.off a{display:block;font-size:14.5px;margin-top:4px}
-footer{background:var(--deep);color:#a9b3ac;padding:50px 0 90px;font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-footer b{color:#fff}
-footer a:hover{color:#fff}
-
-/* pay modal */
-.ov{position:fixed;inset:0;background:rgba(15,21,18,.45);z-index:80;display:none;place-items:center;padding:16px}
-.ov.on{display:grid}
-.pay{width:min(420px,100%);padding:24px;display:grid;gap:12px}
-.pay .amt{font:600 34px/1 var(--f);letter-spacing:-.03em}
-.pay .card-in{display:grid;grid-template-columns:1fr 90px 70px;gap:8px}
-.pay input{padding:12px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1px var(--line);min-width:0;font-size:15px}
-.pay .sec{font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center}
-.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,160%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;z-index:99;transition:transform .3s;max-width:calc(100% - 32px);font-size:14px}
-.toast.on{transform:translate(-50%,0)}
-.staff{position:fixed;right:14px;bottom:14px;z-index:60;font:600 12.5px/1 var(--f);padding:11px 14px;border-radius:999px;background:var(--lime);color:#10140a;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-
-@media (max-width:1000px){
-  .nav-l{display:none}
-  .hero-grid,.f-grid,.q-grid,.b-grid{grid-template-columns:1fr}
-  .plan{position:static}
-  .pwin{grid-template-columns:1fr}
-  .pside{flex-direction:row;overflow-x:auto;gap:6px;padding:10px}
-  .pside .who{display:none}
-  .pside button{white-space:nowrap}
-  .pcols{grid-template-columns:1fr}
-  .v-grid,.o-grid,.n-grid{grid-template-columns:1fr 1fr}
-}
-@media (max-width:620px){
-  .clocks{grid-template-columns:1fr 1fr}
-  .v-grid,.o-grid,.n-grid,.r2{grid-template-columns:1fr}
-  .slots{grid-template-columns:repeat(3,1fr)}
-  .logo small{display:none}
-  .nav .btn{display:none}
-  .track{grid-template-columns:repeat(3,1fr)}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
-<script src="../ics-crm/store.js?v=3"></script>
-<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")){h.classList.remove("notes");h.classList.add("clean")}}catch(e){}})();</script>
+<link rel="stylesheet" href="site.css?v=4">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Integrated Consulting Services (ICS)","url":"https://www.icsgr.com","telephone":"+1-866-496-4539","email":"info@icsgr.com","foundingDate":"2007","areaServed":["CA","US","GR","CY"],"availableLanguage":["en","el","fr"],"address":{"@type":"PostalAddress","streetAddress":"1315 Lawrence Avenue East, Unit 203","addressLocality":"Toronto","addressRegion":"ON","postalCode":"M3A 3R3","addressCountry":"CA"},"department":[{"@type":"ProfessionalService","name":"ICS Montreal","telephone":"+1-514-270-7337","address":{"@type":"PostalAddress","streetAddress":"800 Boul. Chomedey, Tour C, Suite 120","addressLocality":"Laval","addressCountry":"CA"}},{"@type":"ProfessionalService","name":"ICS New York","telephone":"+1-718-360-1657","address":{"@type":"PostalAddress","streetAddress":"32-75 Steinway Street, Suite 207","addressLocality":"Astoria, NY","addressCountry":"US"}},{"@type":"ProfessionalService","name":"ICS Athens","telephone":"+30-210-3230205","address":{"@type":"PostalAddress","streetAddress":"233 Leof. Syggrou","addressLocality":"Nea Smyrni","addressCountry":"GR"}},{"@type":"ProfessionalService","name":"ICS Thessaloniki","telephone":"+30-2310-704043","address":{"@type":"PostalAddress","streetAddress":"3 P. Vlachakou Street","addressLocality":"Thessaloniki","addressCountry":"GR"}},{"@type":"ProfessionalService","name":"ICS Nicosia","telephone":"+357-22262268","address":{"@type":"PostalAddress","streetAddress":"24 Grigoriou Xenopoulou Str.","addressLocality":"Nicosia","addressCountry":"CY"}}]}</script>
+<!-- OpenSite redesign demo for Integrated Consulting Services (icsgr.com). Content from icsgr.com (Nov 2026).
+     Generated by scripts/demos/ics-site/build.cjs. Connected to the CRM demo through ../ics-crm/store.js.
+     Payments are simulated. Prices marked .ph are placeholders for ICS to set. -->
+<script src="../ics-crm/store.js?v=4"></script>
+<script>(function(){var h=document.documentElement;try{var q=new URLSearchParams(location.search);if(q.has("clean")){h.classList.remove("notes");h.classList.add("clean");sessionStorage.setItem("ics-clean","1")}else if(sessionStorage.getItem("ics-clean")){h.classList.remove("notes");h.classList.add("clean")}}catch(e){}})();</script>
 </head>
 <body>
-
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top"><i>•••</i>ICS<small>Integrated Consulting Services</small></a>
-    <nav class="nav-l"><a href="#finder" data-el="Υπηρεσίες" data-fr="Services">Services</a><a href="#quote" data-el="Μετάφραση" data-fr="Traduction">Translation</a><a href="#book" data-el="Ραντεβού" data-fr="Rendez-vous">Book</a><a href="#portal" data-el="Πύλη πελατών" data-fr="Portail client">Client portal</a><a href="#news" data-el="Νέα" data-fr="Actualités">News</a><a href="#offices" data-el="Γραφεία" data-fr="Bureaux">Offices</a></nav>
+    <a class="logo" href="demo.html" aria-label="ICS home"><i>•••</i>ICS<small>Integrated Consulting Services</small></a>
+    <nav class="nav-l" aria-label="Main">
+      <span class="dd"><a href="services.html" class=""><span data-el="Υπηρεσίες" data-fr="Services">Services</span></a><span class="card ddm"><a href="inheritance.html"><i>🏛</i><span><b data-el="Κληρονομιές" data-fr="Successions">Inheritance &amp; estates</b><small data-el="Αποδοχή ή αποποίηση κληρονομιάς στην Ελλάδα" data-fr="Accepter ou renoncer à une succession en Grèce">Accept or renounce an inheritance in Greece</small></span></a><a href="greek-taxes.html"><i>🧾</i><span><b data-el="Φορολογικά &amp; ΑΦΜ" data-fr="Impôts grecs &amp; AFM">Greek taxes &amp; AFM</b><small data-el="Φορολογικές δηλώσεις (Ε1" data-fr="Déclarations (E1">Tax declarations (E1</small></span></a><a href="real-estate.html"><i>🏡</i><span><b data-el="Ακίνητα στην Ελλάδα" data-fr="Immobilier en Grèce">Property in Greece</b><small data-el="Αγορά" data-fr="Achat">Buy</small></span></a><a href="banking-pensions.html"><i>🏦</i><span><b data-el="Τράπεζες, συντάξεις &amp; ασφάλειες" data-fr="Banque, pensions &amp; assurances">Banking, pensions &amp; insurance</b><small data-el="Άνοιγμα ή επανενεργοποίηση λογαριασμού" data-fr="Ouvrir ou réactiver un compte grec">Open or reactivate a Greek bank account</small></span></a><a href="legal-corporate.html"><i>⚖</i><span><b data-el="Νομικά &amp; εταιρικά" data-fr="Juridique &amp; entreprises">Legal &amp; corporate</b><small data-el="Αναγνώριση αλλοδαπών αποφάσεων" data-fr="Reconnaissance de jugements étrangers">Recognition of foreign court decisions</small></span></a><a href="translation.html"><i>📄</i><span><b data-el="Μετάφραση &amp; διερμηνεία" data-fr="Traduction &amp; interprétation">Translation &amp; interpretation</b><small data-el="Επίσημες μεταφράσεις ελληνικά ⇄ αγγλικά ⇄ γαλλικά" data-fr="Traductions certifiées grec ⇄ anglais ⇄ français">Certified translations Greek ⇄ English ⇄ French</small></span></a><a href="business.html"><i>📈</i><span><b data-el="Επιχειρήσεις: localization, PR &amp; εμπόριο" data-fr="Entreprises : localisation, RP &amp; commerce">Business: localization, PR &amp; trade</b><small data-el="Προσεγγίστε τα 19 εκατομμύρια Έλληνες σε Ελλάδα" data-fr="Rejoignez les 19 millions de Grecs en Grèce">Reach the 19 million Greeks in Greece</small></span></a><a href="immigration.html"><i>✈</i><span><b data-el="Μετανάστευση στον Καναδά" data-fr="Immigration au Canada">Immigration to Canada</b><small data-el="Άδειες εργασίας για 18–35" data-fr="Permis de travail 18–35 ans">Work permits for ages 18–35</small></span></a></span></span>
+      <a href="pricing.html" class=""><span data-el="Τιμές &amp; συνδρομές" data-fr="Tarifs &amp; abonnements">Prices &amp; plans</span></a><a href="about.html" class=""><span data-el="Η εταιρεία" data-fr="À propos">About</span></a><a href="news.html" class=""><span data-el="Νέα" data-fr="Actualités">News</span></a><a href="contact.html" class=""><span data-el="Επικοινωνία" data-fr="Contact">Contact</span></a>
+    </nav>
     <div class="nav-r">
-      <div class="lang" id="lang"><button class="on" data-l="en">EN</button><button data-l="el">ΕΛ</button><button data-l="fr">FR</button></div>
-      <a class="btn lime s" href="#book" data-el="Κλείστε ραντεβού" data-fr="Prendre rendez-vous">Book a consultation</a>
+      <div class="lang"><button class="on" data-l="en">EN</button><button data-l="el">ΕΛ</button><button data-l="fr">FR</button></div>
+      <a class="btn line s" href="portal.html"><span data-el="Η υπόθεσή μου" data-fr="Mon dossier">My case</span></a>
+      <a class="btn lime s" href="book.html"><span data-el="Κλείστε ραντεβού" data-fr="Prendre rendez-vous">Book a consultation</span></a>
+      <button class="burger" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>
+<nav class="mnav" aria-label="Mobile">
+  <a href="services.html"><span data-el="Υπηρεσίες" data-fr="Services">Services</span></a><a class="sub" href="inheritance.html">🏛 <span data-el="Κληρονομιές" data-fr="Successions">Inheritance &amp; estates</span></a><a class="sub" href="greek-taxes.html">🧾 <span data-el="Φορολογικά &amp; ΑΦΜ" data-fr="Impôts grecs &amp; AFM">Greek taxes &amp; AFM</span></a><a class="sub" href="real-estate.html">🏡 <span data-el="Ακίνητα στην Ελλάδα" data-fr="Immobilier en Grèce">Property in Greece</span></a><a class="sub" href="banking-pensions.html">🏦 <span data-el="Τράπεζες, συντάξεις &amp; ασφάλειες" data-fr="Banque, pensions &amp; assurances">Banking, pensions &amp; insurance</span></a><a class="sub" href="legal-corporate.html">⚖ <span data-el="Νομικά &amp; εταιρικά" data-fr="Juridique &amp; entreprises">Legal &amp; corporate</span></a><a class="sub" href="translation.html">📄 <span data-el="Μετάφραση &amp; διερμηνεία" data-fr="Traduction &amp; interprétation">Translation &amp; interpretation</span></a><a class="sub" href="business.html">📈 <span data-el="Επιχειρήσεις: localization, PR &amp; εμπόριο" data-fr="Entreprises : localisation, RP &amp; commerce">Business: localization, PR &amp; trade</span></a><a class="sub" href="immigration.html">✈ <span data-el="Μετανάστευση στον Καναδά" data-fr="Immigration au Canada">Immigration to Canada</span></a>
+  <a href="pricing.html"><span data-el="Τιμές &amp; συνδρομές" data-fr="Tarifs &amp; abonnements">Prices &amp; plans</span></a><a href="about.html"><span data-el="Η εταιρεία" data-fr="À propos">About</span></a><a href="news.html"><span data-el="Νέα" data-fr="Actualités">News</span></a><a href="contact.html"><span data-el="Επικοινωνία" data-fr="Contact">Contact</span></a><a href="quote.html"><span data-el="Ζητήστε προσφορά" data-fr="Demander une soumission">Get a quote</span></a>
+  <a class="btn lime" href="book.html"><span data-el="Κλείστε ραντεβού" data-fr="Prendre rendez-vous">Book a consultation</span></a><a class="btn" href="portal.html"><span data-el="Η υπόθεσή μου" data-fr="Mon dossier">My case</span></a>
+</nav>
+<main>
 
-<section class="hero" id="top" style="padding-top:clamp(40px,6vw,76px)">
+
+<section class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill"><b data-el="ΑΠΟ ΤΟ 2007" data-fr="DEPUIS 2007">SINCE 2007</b><span data-el="Ελληνικές υπηρεσίες σε Βόρεια Αμερική & Ευρώπη" data-fr="Services en langue grecque · Amérique du Nord et Europe">Greek language consulting · North America & Europe</span></span>
+      <span class="pill"><b data-el="ΑΠΟ ΤΟ 2007" data-fr="DEPUIS 2007">SINCE 2007</b><span data-el="Ελληνικές υπηρεσίες σε Βόρεια Αμερική &amp; Ευρώπη" data-fr="Services en langue grecque · Amérique du Nord et Europe">Greek language consulting · North America &amp; Europe</span></span>
       <h1><span data-el="Οι υποθέσεις σας στην Ελλάδα," data-fr="Vos affaires en Grèce,">Your affairs in Greece,</span> <em data-el="τακτοποιημένες." data-fr="réglées.">handled.</em></h1>
       <p class="lead" data-el="Κληρονομιές, φορολογικές δηλώσεις, ακίνητα, τράπεζες, συντάξεις και επίσημες μεταφράσεις, από όπου κι αν βρίσκεστε. Μία ομάδα, έξι γραφεία, και μια σελίδα όπου βλέπετε πού βρίσκεται η υπόθεσή σας." data-fr="Successions, déclarations fiscales grecques, immobilier, banque, pensions et traductions certifiées, où que vous soyez. Une équipe, six bureaux, et une page où vous suivez votre dossier.">Inheritance, Greek tax declarations, property, banking, pensions and certified translations, wherever you live. One team, six offices, and a page where you can follow your case.</p>
-      <div class="cta"><a class="btn" href="#finder" data-el="Τι χρειάζεστε;" data-fr="De quoi avez-vous besoin ?">What do you need done?</a><a class="btn line" href="#portal" data-el="Η υπόθεσή μου" data-fr="Mon dossier">Track my case</a></div>
-      <div class="trust"><div><b id="yrs">19</b><span data-el="χρόνια" data-fr="ans">years</span></div><div><b>6</b><span data-el="γραφεία, 3 χώρες" data-fr="bureaux, 3 pays">offices, 3 countries</span></div><div><b>3</b><span data-el="γλώσσες εξυπηρέτησης" data-fr="langues de service">languages</span></div></div>
+      <div class="cta"><a class="btn " href="services.html"><span data-el="Τι χρειάζεστε;" data-fr="De quoi avez-vous besoin ?">What do you need done?</span></a><a class="btn line" href="portal.html"><span data-el="Η υπόθεσή μου" data-fr="Mon dossier">Track my case</span></a></div>
+      <div class="trust"><div><b class="yrs">19</b><span data-el="χρόνια" data-fr="ans">years</span></div><div><b>6</b><span data-el="γραφεία, 3 χώρες" data-fr="bureaux, 3 pays">offices, 3 countries</span></div><div><b>3</b><span data-el="γλώσσες εξυπηρέτησης" data-fr="langues de service">languages</span></div></div>
     </div>
     <div class="card mapcard"><canvas id="routes" aria-label="Map of ICS offices"></canvas><div class="clocks" id="clocks"></div></div>
   </div>
 </section>
-
 <div class="acc" aria-label="Accreditations"><div id="acc"></div></div>
 
-<section id="finder">
+<section class="sec-s">
+  <div class="wrap">
+    <span class="k" data-el="Online, από το σπίτι" data-fr="En ligne">Do it online</span>
+    <h2><span data-el="Τρία πράγματα που κάνετε" data-fr="Three things you can do">Three things you can do</span><br><em data-el="αμέσως." data-fr="right now.">right now.</em></h2>
+    <div class="acts3">
+      <div class="act a1"><h3 data-el="Δείτε τιμή" data-fr="Obtenir un prix">Get a price</h3><p data-el="Άμεση τιμή για επίσημη μετάφραση ή δωρεάν προσφορά για κάθε άλλη υπηρεσία σε μία εργάσιμη." data-fr="Prix immédiat pour une traduction certifiée, ou soumission gratuite pour tout autre service en un jour ouvrable.">Instant price for a certified translation, or a free quote for any other service within one business day.</p><a class="btn lime" href="quote.html"><span data-el="Ζητήστε προσφορά →" data-fr="Soumission →">Get a quote →</span></a></div>
+      <div class="act a2"><h3 data-el="Πληρώστε ή γραφτείτε" data-fr="Payer ou s’abonner">Pay or subscribe</h3><p data-el="Αγοράστε υπηρεσίες με σταθερή τιμή, όπως ΑΦΜ ή κωδικούς Taxisnet, πληρώστε τιμολόγιο ή διαλέξτε ετήσια συνδρομή." data-fr="Achetez des services à prix fixe comme un AFM, payez une facture ou choisissez un abonnement annuel.">Buy fixed-price services like an AFM or Taxisnet codes, pay an invoice, or choose an annual plan.</p><a class="btn " href="pricing.html"><span data-el="Τιμές &amp; συνδρομές →" data-fr="Tarifs →">Prices &amp; plans →</span></a></div>
+      <div class="act a3"><h3 data-el="Δείτε την υπόθεσή σας" data-fr="Suivre votre dossier">Track your case</h3><p data-el="Δείτε σε ποιο στάδιο είναι η υπόθεση, ανεβάστε έγγραφα, μιλήστε με τον σύμβουλό σας. Χωρίς κωδικό." data-fr="Voyez l’étape de votre dossier, téléversez des documents, écrivez à votre conseillère. Sans mot de passe.">See which stage your case is at, upload documents, message your consultant. No password needed.</p><a class="btn line" href="portal.html"><span data-el="Πύλη πελατών →" data-fr="Portail client →">Client portal →</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="finder" class="sec-alt">
   <div class="wrap">
     <span class="k" data-el="Υπηρεσίες" data-fr="Services">Services</span>
-    <h2><span data-el="Πείτε μας τι χρειάζεστε." data-fr="Dites-nous ce dont vous avez besoin.">Tell us what you need.</span><br><em data-el="Σας δείχνουμε τα βήματα." data-fr="Nous vous montrons les étapes.">We'll show you the steps.</em></h2>
+    <h2><span data-el="Πείτε μας τι χρειάζεστε." data-fr="Dites-nous ce dont vous avez besoin.">Tell us what you need.</span><br><em data-el="Σας δείχνουμε τα βήματα." data-fr="Nous vous montrons les étapes.">We’ll show you the steps.</em></h2>
     <div class="f-grid"><div class="needs" id="needs"></div><div class="card plan" id="plan"></div></div>
   </div>
 </section>
 
-<section class="quote" id="quote">
+<section class="sec-s">
   <div class="wrap">
-    <span class="k" data-el="Επίσημες μεταφράσεις" data-fr="Traductions certifiées">Certified translation</span>
-    <h2><span data-el="Προσφορά σε 30 δευτερόλεπτα," data-fr="Une soumission en 30 secondes,">A quote in 30 seconds,</span><br><em data-el="όχι με fax." data-fr="pas par télécopieur.">not by fax.</em></h2>
-    <div class="q-grid">
-      <div class="qform">
-        <div><span class="lb" data-el="Γλώσσες" data-fr="Langues">Languages</span><div class="opts" id="qLang"></div></div>
-        <div><span class="lb" data-el="Έγγραφο" data-fr="Document">Document</span><div class="opts" id="qDoc"></div></div>
-        <div><span class="lb"><span data-el="Σελίδες" data-fr="Pages">Pages</span> · <b id="qPgV" style="color:#fff">2</b></span><input type="range" id="qPg" min="1" max="30" value="2"></div>
-        <div><span class="lb" data-el="Παράδοση" data-fr="Livraison">Delivery</span><div class="opts" id="qSpd"></div></div>
-        <div><div class="drop" id="drop" tabindex="0"><b data-el="Σύρετε τα έγγραφα εδώ" data-fr="Déposez vos documents ici">Drop your documents here</b><br><span data-el="ή πατήστε για επιλογή · PDF, JPG, DOCX" data-fr="ou cliquez pour choisir · PDF, JPG, DOCX">or click to choose · PDF, JPG, DOCX</span></div><input type="file" id="file" multiple hidden><div class="files" id="files"></div></div>
-        <div class="r2"><input id="qName" placeholder="Full name" data-ph-el="Ονοματεπώνυμο" data-ph-fr="Nom complet"><input id="qEmail" type="email" placeholder="Email"></div>
-      </div>
-      <div class="qres">
-        <span class="k" data-el="Εκτίμηση" data-fr="Estimation">Estimate</span>
-        <div class="price" id="qP">0</div>
-        <div id="qD" style="font-weight:500"></div>
-        <ul><li data-el="Πιστοποιημένη για Ελλάδα, Καναδά, ΗΠΑ" data-fr="Certifiée pour la Grèce, le Canada et les États-Unis">Certified for Greece, Canada and the USA</li><li data-el="Μεταφραστής στη μητρική του γλώσσα + δεύτερος έλεγχος" data-fr="Traducteur de langue maternelle + seconde révision">Mother-tongue translator, second-specialist proofing</li><li data-el="Μόνο ο μεταφραστής και ο υπεύθυνος βλέπουν τα έγγραφα" data-fr="Seuls le traducteur et le chargé de projet voient vos documents">Only your translator and project manager see your files</li></ul>
-        <div class="acts"><button class="btn" id="qPay" data-el="Παραγγελία & πληρωμή online" data-fr="Commander et payer en ligne">Order & pay online</button><button class="btn line" id="qSend" data-el="Αποστολή αιτήματος, πληρωμή αργότερα" data-fr="Envoyer la demande, payer plus tard">Send request, pay later</button></div>
-        <small class="ph" style="margin-top:12px;font-size:12.5px" data-el="Ενδεικτική τιμή με βάση το CA$25–50 ανά σελίδα. Η τελική επιβεβαιώνεται μετά τον έλεγχο." data-fr="Prix indicatif basé sur 25–50 $ CA la page. Confirmé après vérification.">Indicative, based on CA$25–50 per page. Confirmed after we review your documents.</small>
-      </div>
-    </div>
+    <span class="k" data-el="Όλες οι υπηρεσίες" data-fr="Tous nos services">Everything we do</span>
+    <h2><span data-el="Μία εταιρεία για όλες" data-fr="One firm for all">One firm for all</span><br><em data-el="τις υποθέσεις σας στην Ελλάδα." data-fr="vos affaires en Grèce.">your affairs in Greece.</em></h2>
+    <div class="sgrid"><a class="card scard" href="inheritance.html"><span class="ic">🏛</span><h3 data-el="Κληρονομιές" data-fr="Successions">Inheritance &amp; estates</h3><p data-el="Αποδοχή ή αποποίηση κληρονομιάς στην Ελλάδα, αναγνώριση ξένης διαθήκης, διανομή και μεταβίβαση ακινήτων." data-fr="Accepter ou renoncer à une succession en Grèce, faire reconnaître un testament étranger, partager et transférer les biens.">Accept or renounce an inheritance in Greece, recognise a foreign will, divide and transfer property.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="greek-taxes.html"><span class="ic">🧾</span><h3 data-el="Φορολογικά &amp; ΑΦΜ" data-fr="Impôts grecs &amp; AFM">Greek taxes &amp; AFM</h3><p data-el="Φορολογικές δηλώσεις (Ε1, Ε9), ΕΝΦΙΑ, ΑΦΜ και κωδικοί Taxisnet, φορολογική εκπροσώπηση για Έλληνες του εξωτερικού." data-fr="Déclarations (E1, E9), ENFIA, AFM et codes Taxisnet, représentation fiscale pour les Grecs de l’étranger.">Tax declarations (E1, E9), ENFIA, AFM and Taxisnet codes, tax representation for Greeks abroad.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="real-estate.html"><span class="ic">🏡</span><h3 data-el="Ακίνητα στην Ελλάδα" data-fr="Immobilier en Grèce">Property in Greece</h3><p data-el="Αγορά, πώληση, ενοικίαση, διαχείριση ακινήτων για ιδιοκτήτες στο εξωτερικό, εκτιμήσεις και ανακαινίσεις." data-fr="Achat, vente, location, gestion pour propriétaires à l’étranger, évaluations et rénovations.">Buy, sell or rent, property management for owners abroad, valuations and renovations.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="banking-pensions.html"><span class="ic">🏦</span><h3 data-el="Τράπεζες, συντάξεις &amp; ασφάλειες" data-fr="Banque, pensions &amp; assurances">Banking, pensions &amp; insurance</h3><p data-el="Άνοιγμα ή επανενεργοποίηση λογαριασμού, ελληνική σύνταξη, ΑΜΚΑ, ασφάλεια κατοικίας και αυτοκινήτου." data-fr="Ouvrir ou réactiver un compte grec, pension grecque, AMKA, assurance habitation et auto.">Open or reactivate a Greek bank account, apply for a Greek pension, AMKA, home and car insurance.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="legal-corporate.html"><span class="ic">⚖</span><h3 data-el="Νομικά &amp; εταιρικά" data-fr="Juridique &amp; entreprises">Legal &amp; corporate</h3><p data-el="Αναγνώριση αλλοδαπών αποφάσεων, ίδρυση εταιρείας, Golden Visa, ληξιαρχικές πράξεις και γάμος στην Ελλάδα." data-fr="Reconnaissance de jugements étrangers, création d’entreprise, Golden Visa, état civil et mariage en Grèce.">Recognition of foreign court decisions, company set-up, Golden Visa, civil registration and marriage in Greece.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="translation.html"><span class="ic">📄</span><h3 data-el="Μετάφραση &amp; διερμηνεία" data-fr="Traduction &amp; interprétation">Translation &amp; interpretation</h3><p data-el="Επίσημες μεταφράσεις ελληνικά ⇄ αγγλικά ⇄ γαλλικά, αποδεκτές σε Καναδά, ΗΠΑ και Ελλάδα. Διερμηνείς για δικαστήρια και νοσοκομεία." data-fr="Traductions certifiées grec ⇄ anglais ⇄ français, acceptées au Canada, aux É.-U. et en Grèce. Interprètes pour tribunaux et hôpitaux.">Certified translations Greek ⇄ English ⇄ French, accepted in Canada, the USA and Greece. Interpreters for courts and hospitals.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="business.html"><span class="ic">📈</span><h3 data-el="Επιχειρήσεις: localization, PR &amp; εμπόριο" data-fr="Entreprises : localisation, RP &amp; commerce">Business: localization, PR &amp; trade</h3><p data-el="Προσεγγίστε τα 19 εκατομμύρια Έλληνες σε Ελλάδα, Κύπρο και εξωτερικό. Localization, δημόσιες σχέσεις και εμπόριο Καναδά–Ελλάδας." data-fr="Rejoignez les 19 millions de Grecs en Grèce, à Chypre et à l’étranger. Localisation, relations publiques et commerce Canada–Grèce.">Reach the 19 million Greeks in Greece, Cyprus and abroad. Localization, public relations and trade between Canada and Greece.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="immigration.html"><span class="ic">✈</span><h3 data-el="Μετανάστευση στον Καναδά" data-fr="Immigration au Canada">Immigration to Canada</h3><p data-el="Άδειες εργασίας για 18–35, άδειες σπουδών, χορηγία συζύγου και ιθαγένεια, με τους αδειοδοτημένους συνεργάτες μας." data-fr="Permis de travail 18–35 ans, permis d’études, parrainage et citoyenneté, avec nos partenaires autorisés.">Work permits for ages 18–35, study permits, sponsorship and citizenship, with our licensed partners.</p><span class="go"><span data-el="Περισσότερα →" data-fr="En savoir plus →">Learn more →</span></span></a><a class="card scard" href="quote.html" style="background:var(--deep);color:#eef2ec"><span class="ic" style="background:var(--lime)">✎</span><h3 data-el="Κάτι άλλο;" data-fr="Autre chose ?">Something else?</h3><p style="color:#a9b3ac" data-el="Πείτε μας με λίγα λόγια και πάρτε δωρεάν προσφορά σε μία εργάσιμη." data-fr="Expliquez-nous en quelques mots : soumission gratuite en un jour ouvrable.">Tell us in a few words and get a free quote within one business day.</p><span class="go" style="color:var(--lime2)"><span data-el="Ζητήστε προσφορά →" data-fr="Demander →">Request a quote →</span></span></a></div>
   </div>
 </section>
 
-<section id="book">
+<section class="sec-s sec-alt" id="plans-teaser">
   <div class="wrap">
-    <span class="k" data-el="Ραντεβού" data-fr="Rendez-vous">Book a consultation</span>
-    <h2><span data-el="Διαλέξτε ώρα." data-fr="Choisissez une heure.">Pick a time.</span> <em data-el="Στη δική σας ζώνη ώρας." data-fr="Dans votre fuseau horaire.">In your time zone.</em></h2>
-    <div class="b-grid">
-      <div class="why">
-        <div><i>🏢</i><span><b data-el="Στο γραφείο ή με βίντεο" data-fr="Au bureau ou par vidéo">At the office or by video</b><span data-el="Τορόντο, Λαβάλ, Νέα Υόρκη, Αθήνα, Θεσσαλονίκη, Λευκωσία." data-fr="Toronto, Laval, New York, Athènes, Thessalonique, Nicosie.">Toronto, Laval, New York, Athens, Thessaloniki, Nicosia.</span></span></div>
-        <div><i>🕘</i><span><b data-el="Η ώρα του γραφείου και η δική σας" data-fr="L’heure du bureau et la vôtre">The office’s time and yours</b><span data-el="Ραντεβού με την Αθήνα χωρίς να μετράτε ώρες διαφοράς." data-fr="Un rendez-vous avec Athènes sans calculer le décalage.">Meet the Athens team without counting time differences.</span></span></div>
-        <div><i>📧</i><span><b data-el="Επιβεβαίωση και υπενθύμιση" data-fr="Confirmation et rappel">Confirmation and reminder</b><span data-el="Με email και πρόσκληση για το ημερολόγιό σας." data-fr="Par courriel, avec invitation pour votre agenda.">By email, with a calendar invite.</span></span></div>
-      </div>
-      <div class="card bk" id="bk"></div>
-    </div>
+    <span class="k" data-el="Ετήσιες συνδρομές" data-fr="Abonnements annuels">Annual plans</span>
+    <h2><span data-el="Κάποια πράγματα επαναλαμβάνονται κάθε χρόνο." data-fr="Some things come back every year.">Some things come back every year.</span><br><em data-el="Αφήστε μας να τα θυμόμαστε εμείς." data-fr="Laissez-nous y penser pour vous.">Let us remember them for you.</em></h2>
+    <div class="cur" aria-label="Currency"><button data-c="CAD">CA$</button><button data-c="USD">US$</button><button data-c="EUR">€</button></div>
+    <div class="plans" id="plans"></div>
+    <p class="muted ph" style="margin-top:14px;font-size:13.5px"><span data-el="Ενδεικτικές τιμές για το demo. Τις τελικές τις ορίζει η ICS." data-fr="Prix indicatifs pour la démo. ICS fixe les prix définitifs.">Indicative prices for the demo. ICS sets the final prices.</span></p>
   </div>
 </section>
 
-<section class="portal" id="portal">
+<section class="sec-s">
   <div class="wrap">
-    <span class="k" data-el="Πύλη πελατών" data-fr="Portail client">Client portal</span>
-    <h2><span data-el="Η υπόθεσή σας," data-fr="Votre dossier,">Your case,</span> <em data-el="χωρίς τηλέφωνα." data-fr="sans appels.">without the phone calls.</em></h2>
-    <p class="lead" data-el="Βλέπετε σε ποιο στάδιο είναι η υπόθεση, ανεβάζετε τα έγγραφα που λείπουν, μιλάτε με τον σύμβουλό σας και πληρώνετε online. Ό,τι αλλάζει η ομάδα της ICS φαίνεται εδώ αμέσως." data-fr="Voyez à quelle étape en est votre dossier, téléversez les documents manquants, écrivez à votre conseiller et payez en ligne. Ce que l’équipe ICS met à jour apparaît ici tout de suite.">See which stage your case is at, upload missing documents, message your consultant and pay online. Whatever the ICS team updates shows up here straight away.</p>
-    <div class="card pwin" id="pwin"></div>
-  </div>
-</section>
-
-<section id="news">
-  <div class="wrap">
-    <span class="k" data-el="Νέα" data-fr="Actualités">News & insights</span>
-    <h2><span data-el="Τι αλλάζει στην Ελλάδα," data-fr="Ce qui change en Grèce,">What’s changing in Greece,</span> <em data-el="με απλά λόγια." data-fr="en termes simples.">in plain words.</em></h2>
-    <div class="n-grid">
-      <article class="card nw"><small>17 Nov 2026 · <span data-el="Φορολογικά" data-fr="Fiscalité">Tax</span></small><b>Greece introduces major property tax relief: E9 corrections for 2014–2026 without retroactive ENFIA</b></article>
-      <article class="card nw"><small>07 Nov 2026 · <span data-el="Ιθαγένεια" data-fr="Citoyenneté">Citizenship</span></small><b>Greece moves toward simplifying citizenship for third- and fourth-generation Greeks abroad</b></article>
-      <article class="card nw"><small>11 Dec 2025 · <span data-el="Κληρονομιές" data-fr="Successions">Estates</span></small><b>The new law on wills and estates: everything that changes</b></article>
-    </div>
-    <form class="card nl" id="nlf"><b data-el="Μια σύντομη ενημέρωση τον μήνα, σε 3 γλώσσες." data-fr="Un court bulletin par mois, en 3 langues.">A short update each month, in 3 languages.</b><input type="email" required id="nlE" placeholder="Email"><button class="btn lime" data-el="Εγγραφή" data-fr="S’abonner">Subscribe</button></form>
+    <span class="k" data-el="ICS Real Estate" data-fr="ICS Immobilier">ICS Real Estate</span>
+    <h2><span data-el="Αγοράζετε ή πουλάτε στην Ελλάδα;" data-fr="Acheter ou vendre en Grèce ?">Buying or selling in Greece?</span><br><em data-el="Δείτε τα ακίνητά μας." data-fr="Voyez nos propriétés.">See our properties.</em></h2>
+    <div class="card feat"><img src="https://propertiesforsaleingreece.com/wp-content/uploads/2026/11/IMG_20261019_140134-scaled.jpg" alt="Apartment for sale in Nea Smyrni, Athens" loading="lazy" onerror="this.style.display='none'"><div><span class="k" data-el="Προτεινόμενο · Πώληση" data-fr="En vedette · À vendre">Featured · For sale</span><h3 style="font:600 26px/1.15 var(--f);letter-spacing:-.02em" data-el="Διαμέρισμα προς πώληση στη Νέα Σμύρνη" data-fr="Appartement à vendre à Nea Smyrni, Athènes">Apartment for sale in Nea Smyrni, Athens</h3><div class="pr">€230,000</div><p class="muted" data-el="72 τ.μ. · 2 υπνοδωμάτια · 2ος όροφος · 1990 · δίπλα στο τραμ. Χωρίς μεσιτικά για τον αγοραστή." data-fr="72 m² · 2 chambres · 2e étage · 1990 · près du tramway. Sans frais de courtage pour l’acheteur.">72 m² · 2 bedrooms · 2nd floor · built 1990 · next to the tram. No brokerage fee for the buyer.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:auto"><a class="btn lime" href="../ics-properties/demo.html"><span data-el="Όλα τα ακίνητα ↗" data-fr="Toutes les propriétés ↗">See all properties ↗</span></a><a class="btn line" href="real-estate.html"><span data-el="Διαχείριση ακινήτων" data-fr="Gestion immobilière">Property management</span></a></div></div></div>
   </div>
 </section>
 
 <section class="voices">
   <div class="wrap">
     <span class="k" data-el="Τι λένε οι πελάτες" data-fr="Ce que disent nos clients">What clients say</span>
-    <h2><span data-el="Εμπιστοσύνη," data-fr="La confiance,">Trusted</span> <em data-el="σε δύο ηπείρους." data-fr="sur deux continents.">on two continents.</em></h2>
-    <div class="v-grid">
-      <div class="card vq"><p>“Honest and hard working. Made a very complicated process overseas dealing with property, wills and government much easier.”</p><b>Tom Maras</b></div>
-      <div class="card vq"><p>“Used the services upon my arrival in Canada. They were accurate, dependable & quick.”</p><b>George Lazaridis</b></div>
-      <div class="card vq"><p>“Highly highly recommend Anastasios and his team! One stop shop for all your legal & business affairs in Greece.”</p><b>Angelo Georgoussis</b></div>
-    </div>
-    <div class="team" id="team"></div>
+    <h2><span data-el="Εμπιστοσύνη," data-fr="Trusted">Trusted</span><br><em data-el="σε δύο ηπείρους." data-fr="sur deux continents.">on two continents.</em></h2>
+    <div class="v-grid"><div class="card vq"><p>“Honest and hard working. Made a very complicated process overseas dealing with property, wills and government much easier.”</p><b>Tom Maras</b></div><div class="card vq"><p>“Used the services upon my arrival in Canada. They were accurate, dependable &amp; quick. Would recommend without a doubt.”</p><b>George Lazaridis</b></div><div class="card vq"><p>“Highly highly recommend Anastasios and his team! One stop shop for all your legal &amp; business affairs in Greece.”</p><b>Angelo Georgoussis</b></div></div>
   </div>
 </section>
 
-<section id="offices">
+<section id="news">
+  <div class="wrap">
+    <span class="k" data-el="Νέα" data-fr="Actualités">News &amp; insights</span>
+    <h2><span data-el="Τι αλλάζει στην Ελλάδα," data-fr="Ce qui change en Grèce,">What’s changing in Greece,</span><br><em data-el="με απλά λόγια." data-fr="en termes simples.">in plain words.</em></h2>
+    <div class="n-grid"><article class="card nw" data-cat="tax"><small>17 Nov 2026 · <span data-el="Φορολογικά" data-fr="Fiscalité">Tax</span></small><b data-el="Μεγάλη φορολογική ελάφρυνση: διόρθωση Ε9 για 2014–2026 χωρίς αναδρομικό ΕΝΦΙΑ" data-fr="Allègement fiscal majeur : correction de l’E9 2014–2026 sans ENFIA rétroactif">Greece introduces major property tax relief: E9 corrections for 2014–2026 without retroactive ENFIA</b><p data-el="Οι ιδιοκτήτες, και οι Έλληνες του εξωτερικού, μπορούν να διορθώσουν λάθη στα ακίνητά τους χωρίς επιπλέον φόρο, τόκους ή πρόστιμα, όπου ισχύουν οι προϋποθέσεις." data-fr="Les propriétaires, y compris à l’étranger, peuvent corriger leurs données sans impôt, intérêts ni pénalités dans les cas admissibles.">Owners, including Greeks abroad, can fix inaccurate property records without extra tax, interest or penalties in qualifying cases.</p></article><article class="card nw" data-cat="news"><small>07 Nov 2026 · <span data-el="Ειδήσεις" data-fr="Nouvelles">News</span></small><b data-el="Προς απλοποίηση η ιθαγένεια για Έλληνες τρίτης και τέταρτης γενιάς στο εξωτερικό" data-fr="Vers une citoyenneté simplifiée pour les Grecs de 3e et 4e génération">Greece moves toward simplifying citizenship for third- and fourth-generation Greeks abroad</b><p data-el="Ο Πρωθυπουργός αναγνώρισε τα εμπόδια και προανήγγειλε αλλαγές για τη σύνδεση με την ομογένεια." data-fr="Le premier ministre a reconnu les obstacles et annoncé des réformes pour la diaspora.">The Prime Minister acknowledged the obstacles and signalled reforms to strengthen ties with the diaspora.</p></article><article class="card nw" data-cat="articles"><small>05 Aug 2026 · <span data-el="Κληρονομιές" data-fr="Successions">Estates</span></small><b data-el="Νέος κληρονομικός νόμος: τι αλλάζει σε διαθήκες, ακίνητα, συζύγους, συντρόφους και χρέη" data-fr="Nouvelle loi successorale : ce qui change pour les testaments, les biens, les conjoints et les dettes">New inheritance law: everything changing for wills, real estate, spouses, partners and debts</b><p data-el="Ο ν. 5303/2026 είναι η μεγαλύτερη αλλαγή του κληρονομικού δικαίου εδώ και δεκαετίες. Ισχύει για θανάτους από 16 Σεπτεμβρίου 2026." data-fr="La loi 5303/2026 est la plus vaste réforme du droit successoral grec depuis des décennies. Elle s’applique aux décès dès le 16 septembre 2026.">Law 5303/2026 is the widest reform of Greek inheritance law in decades. It applies to deaths from 16 September 2026.</p><a class="more" href="news-inheritance-law-2026.html"><span data-el="Διαβάστε το άρθρο →" data-fr="Lire l’article →">Read the article →</span></a></article></div>
+    <form class="card nl nlf"><b data-el="Μια σύντομη ενημέρωση τον μήνα, σε 3 γλώσσες." data-fr="Un court bulletin par mois, en 3 langues.">A short update each month, in 3 languages.</b><input type="email" required placeholder="Email" aria-label="Email"><button class="btn lime"><span data-el="Εγγραφή" data-fr="S’abonner">Subscribe</span></button></form>
+  </div>
+</section>
+
+<section class="sec-s"><div class="wrap">
+  <span class="k" data-el="Η ομάδα σας" data-fr="Votre équipe">Your team</span>
+  <h2><span data-el="Άνθρωποι," data-fr="Real people,">Real people,</span><br><em data-el="και στις δύο πλευρές του Ατλαντικού." data-fr="des deux côtés de l’Atlantique.">on both sides of the Atlantic.</em></h2>
+  <div class="tgrid pgrid5" style="margin-top:30px"><figure class="pf"><div class="pf-i"><img src="team/anastasios-moussas.webp" alt="Anastasios Moussas" loading="lazy" width="480" height="600"></div><figcaption><b>Anastasios Moussas</b><small data-el="Πρόεδρος · Τορόντο" data-fr="Président · Toronto">President · Toronto</small></figcaption></figure><figure class="pf"><div class="pf-i"><img src="team/efthymia-tseliou.webp" alt="Efthymia Tseliou" loading="lazy" width="480" height="600"></div><figcaption><b>Efthymia Tseliou</b><small data-el="Διευθύντρια · Τορόντο" data-fr="Directrice · Toronto">Director · Toronto</small></figcaption></figure><figure class="pf"><div class="pf-i"><img src="team/marianna-michalitsianou.webp" alt="Marianna Michalitsianou" loading="lazy" width="480" height="600"></div><figcaption><b>Marianna Michalitsianou</b><small data-el="Senior Consultant · Τορόντο" data-fr="Conseillère principale · Toronto">Senior Consultant · Toronto</small></figcaption></figure><figure class="pf"><div class="pf-i"><img src="team/maria-korda.webp" alt="Maria Korda" loading="lazy" width="480" height="600"></div><figcaption><b>Maria Korda</b><small data-el="Senior Consultant · Αθήνα" data-fr="Conseillère principale · Athènes">Senior Consultant · Athens</small></figcaption></figure><figure class="pf"><div class="pf-i"><img src="team/anastasia-gianniloi.webp" alt="Anastasia Gianniloi" loading="lazy" width="480" height="600"></div><figcaption><b>Anastasia Gianniloi</b><small data-el="Επικεφαλής δικηγόρος · Αθήνα" data-fr="Avocate gérante · Athènes">Managing Lawyer · Athens</small></figcaption></figure></div>
+  <a class="btn line" href="about.html#people" style="margin-top:22px"><span data-el="Γνωρίστε όλη την ομάδα →" data-fr="Rencontrer toute l’équipe →">Meet all 25 people →</span></a>
+</div></section>
+
+<section id="offices" class="sec-alt">
   <div class="wrap">
     <span class="k" data-el="Γραφεία" data-fr="Bureaux">Offices</span>
-    <h2><span data-el="Έξι γραφεία." data-fr="Six bureaux.">Six offices.</span> <em data-el="Μία ομάδα." data-fr="Une équipe.">One team.</em></h2>
+    <h2><span data-el="Έξι γραφεία." data-fr="Six offices.">Six offices.</span><br><em data-el="Μία ομάδα." data-fr="Une équipe.">One team.</em></h2>
     <div class="o-grid" id="oGrid"></div>
   </div>
 </section>
-
-<footer><div class="wrap"><span><b>Integrated Consulting Services</b> · © <span id="year"></span></span><span><a href="tel:+18664964539">1.866.496.4539</a> · <a href="mailto:info@icsgr.com">info@icsgr.com</a></span><span><a href="../ics-crm/demo.html" target="_blank" data-el="Είσοδος προσωπικού →" data-fr="Accès du personnel →">Staff sign-in →</a></span><span>redesign demo by <a href="https://opensite.gr" style="color:var(--lime2)">OpenSite</a></span></div></footer>
-
+</main>
+<footer class="big"><div class="wrap">
+  <div class="fgrid">
+    <div><a class="logo" href="demo.html" style="color:#fff"><i>•••</i>ICS</a><p><span data-el="Ο ηγέτης της Βόρειας Αμερικής στις ελληνόγλωσσες συμβουλευτικές υπηρεσίες, από το 2007." data-fr="Chef de file nord-américain des services-conseils en langue grecque, depuis 2007.">North America’s leader in Greek language consulting services, since 2007.</span></p>
+      <form class="nlf" style="display:flex;gap:6px;margin-top:16px"><input type="email" required placeholder="Email" aria-label="Email" style="flex:1;min-width:0;padding:11px 12px;border-radius:10px;border:0;background:rgba(255,255,255,.08);color:#fff"><button class="btn lime s"><span data-el="Εγγραφή" data-fr="S’abonner">Subscribe</span></button></form></div>
+    <div><h4><span data-el="Υπηρεσίες" data-fr="Services">Services</span></h4><a href="inheritance.html"><span data-el="Κληρονομιές" data-fr="Successions">Inheritance &amp; estates</span></a><a href="greek-taxes.html"><span data-el="Φορολογικά &amp; ΑΦΜ" data-fr="Impôts grecs &amp; AFM">Greek taxes &amp; AFM</span></a><a href="real-estate.html"><span data-el="Ακίνητα στην Ελλάδα" data-fr="Immobilier en Grèce">Property in Greece</span></a><a href="banking-pensions.html"><span data-el="Τράπεζες, συντάξεις &amp; ασφάλειες" data-fr="Banque, pensions &amp; assurances">Banking, pensions &amp; insurance</span></a><a href="legal-corporate.html"><span data-el="Νομικά &amp; εταιρικά" data-fr="Juridique &amp; entreprises">Legal &amp; corporate</span></a><a href="translation.html"><span data-el="Μετάφραση &amp; διερμηνεία" data-fr="Traduction &amp; interprétation">Translation &amp; interpretation</span></a><a href="business.html"><span data-el="Επιχειρήσεις: localization, PR &amp; εμπόριο" data-fr="Entreprises : localisation, RP &amp; commerce">Business: localization, PR &amp; trade</span></a><a href="immigration.html"><span data-el="Μετανάστευση στον Καναδά" data-fr="Immigration au Canada">Immigration to Canada</span></a></div>
+    <div><h4><span data-el="Πελάτες" data-fr="Clients">Clients</span></h4><a href="portal.html"><span data-el="Πύλη πελατών" data-fr="Portail client">Client portal</span></a><a href="pricing.html"><span data-el="Τιμές &amp; ετήσιες συνδρομές" data-fr="Tarifs et abonnements">Prices &amp; annual plans</span></a><a href="pricing.html#invoice"><span data-el="Πληρωμή τιμολογίου" data-fr="Payer une facture">Pay an invoice</span></a><a href="quote.html"><span data-el="Ζητήστε προσφορά" data-fr="Demander une soumission">Get a quote</span></a><a href="book.html"><span data-el="Κλείστε ραντεβού" data-fr="Prendre rendez-vous">Book a consultation</span></a></div>
+    <div><h4><span data-el="Εταιρεία" data-fr="Entreprise">Company</span></h4><a href="about.html"><span data-el="Η ICS" data-fr="À propos">About ICS</span></a><a href="about.html#people"><span data-el="Η ομάδα" data-fr="L’équipe">Our team</span></a><a href="about.html#careers"><span data-el="Καριέρα" data-fr="Carrières">Careers</span></a><a href="news.html"><span data-el="Νέα" data-fr="Actualités">News</span></a><a href="../ics-properties/demo.html">ICS Real Estate ↗</a></div>
+    <div><h4><span data-el="Γραφεία" data-fr="Bureaux">Offices</span></h4><a href="tel:+18664964539"><span data-el="Χωρίς χρέωση 1.866.496.4539" data-fr="Sans frais 1.866.496.4539">Toll-free 1.866.496.4539</span></a><a href="tel:+14163912286"><span data-el="Τορόντο" data-fr="Toronto">Toronto</span> · +1 416 391 2286</a><a href="tel:+15142707337"><span data-el="Μόντρεαλ" data-fr="Montréal">Montreal</span> · +1 514 270 7337</a><a href="tel:+17183601657"><span data-el="Νέα Υόρκη" data-fr="New York">New York</span> · +1 718 360 1657</a><a href="tel:+302103230205"><span data-el="Αθήνα" data-fr="Athènes">Athens</span> · +30 210 3230 205</a><a href="tel:+302310704043"><span data-el="Θεσσαλονίκη" data-fr="Thessalonique">Thessaloniki</span> · +30 2310 704 043</a><a href="tel:+35722262268"><span data-el="Λευκωσία" data-fr="Nicosie">Nicosia</span> · +357 22 26 22 68</a></div>
+  </div>
+  <div class="fbot"><span><b>Integrated Consulting Services</b> · © <span class="yr"></span></span><span><a href="#" onclick="return false"><span data-el="Πολιτική απορρήτου" data-fr="Confidentialité">Privacy policy</span></a> · <a href="#" onclick="return false"><span data-el="Όροι" data-fr="Conditions">Terms</span></a> · <a href="../ics-crm/demo.html" target="_blank"><span data-el="Είσοδος προσωπικού →" data-fr="Accès du personnel →">Staff sign-in →</span></a></span><span>redesign demo by <a href="https://opensite.gr" style="color:var(--lime2)">OpenSite</a></span></div>
+</div></footer>
 <div class="ov" id="ov"><div class="card pay" id="pay"></div></div>
 <a class="staff" href="../ics-crm/demo.html" target="_blank" id="staffBtn">↗ ICS Workspace (CRM)</a>
 <button class="notes-t" id="notesT">Notes</button>
 <div class="toast" id="toast"></div>
-
-<script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],html=document.documentElement;
-const {OFF,U,TYPES,DOCST}=ICS;
-let L='en';try{L=localStorage.getItem('ics-lang')||'en'}catch(e){}
-const T=(en,el,fr)=>L==='el'?el:L==='fr'?(fr??en):en;
-const tr=a=>Array.isArray(a)?(a[{en:0,el:1,fr:2}[L]]??a[0]):a;
-const loc=()=>L==='el'?'el-GR':L==='fr'?'fr-CA':'en-CA';
-const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const offN=o=>L==='el'?OFF[o].el:L==='fr'?OFF[o].fr:o;
-const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3600)};
-let S=ICS.load();
-$('#notesT').onclick=()=>html.classList.toggle('notes');
-$('#year').textContent=new Date().getFullYear();$('#yrs').textContent=new Date().getFullYear()-2007;
-const OFFS=Object.keys(OFF);
-const myTZ=Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-/* static text: [data-el] / [data-fr] keep their English text and swap */
-$$('[data-el]').forEach(e=>e.dataset.en=e.textContent);
-$$('[data-ph-el]').forEach(e=>e.dataset.phEn=e.placeholder);
-function setLang(l){L=l;html.lang=l;try{localStorage.setItem('ics-lang',l)}catch(e){}
- $$('[data-el]').forEach(e=>e.textContent=l==='el'?e.dataset.el:l==='fr'?(e.dataset.fr||e.dataset.en):e.dataset.en);
- $$('[data-ph-el]').forEach(e=>e.placeholder=l==='el'?e.dataset.phEl:l==='fr'?e.dataset.phFr:e.dataset.phEn);
- $$('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));renderAll()}
-$('#lang').onclick=e=>{const b=e.target.closest('button');if(b)setLang(b.dataset.l)};
-
-/* ---------- clocks + map ---------- */
-let selOff=myTZ==='America/New_York'?2:/^America\//.test(myTZ)?0:4;
-function renderClocks(){$('#clocks').innerHTML=OFFS.map((o,i)=>{const t=ICS.tzNow(OFF[o].tz);return `<button class="clock${i===selOff?' on':''}" data-i="${i}"><b>${offN(o)}</b><span>${t.s}</span><small><i class="${t.open?'on':''}"></i>${t.open?T('open','ανοιχτά','ouvert'):T('closed','κλειστά','fermé')}</small></button>`}).join('')}
-$('#clocks').onclick=e=>{const c=e.target.closest('.clock');if(c){selOff=+c.dataset.i;renderClocks();renderQuote()}};
-setInterval(renderClocks,30000);
-(function(){const c=$('#routes');let g,t=0,vis=true;new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(c);
- function fit(){const r=c.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);c.width=r.width*d;c.height=r.height*d;const x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);g={x,w:r.width,h:r.height}}
- fit();addEventListener('resize',fit);const pr=(lo,la)=>[((lo+90)/132)*g.w,((58-la)/30)*g.h];
- function frame(){requestAnimationFrame(frame);t+=.016;if(!vis)return;const {x,w,h}=g;x.clearRect(0,0,w,h);
-  for(let yy=8;yy<h;yy+=12)for(let xx=8;xx<w;xx+=12){x.fillStyle='rgba(255,255,255,.07)';x.fillRect(xx,yy,1.5,1.5)}
-  x.fillStyle='rgba(255,255,255,.35)';x.font='600 10px Inter Tight';x.fillText(T('NORTH AMERICA','ΒΟΡΕΙΑ ΑΜΕΡΙΚΗ','AMÉRIQUE DU NORD'),...pr(-86,54));x.fillText(T('GREECE · CYPRUS','ΕΛΛΑΔΑ · ΚΥΠΡΟΣ','GRÈCE · CHYPRE'),...pr(18,46));x.fillText(T('ATLANTIC','ΑΤΛΑΝΤΙΚΟΣ','ATLANTIQUE'),...pr(-45,44));
-  const a=pr(...OFF[OFFS[selOff]].ll);
-  OFFS.forEach((o,i)=>{if(i===selOff)return;const b=pr(...OFF[o].ll),mx=(a[0]+b[0])/2,my=Math.min(a[1],b[1])-Math.abs(a[0]-b[0])*.28-12;x.strokeStyle='rgba(195,212,42,.35)';x.lineWidth=1.2;x.beginPath();x.moveTo(...a);x.quadraticCurveTo(mx,my,...b);x.stroke();const k=((t*.35+i*.17)%1),u=1-k,px=u*u*a[0]+2*u*k*mx+k*k*b[0],py=u*u*a[1]+2*u*k*my+k*k*b[1];x.fillStyle='#c3d42a';x.beginPath();x.arc(px,py,2.6,0,7);x.fill()});
-  OFFS.forEach((o,i)=>{const p=pr(...OFF[o].ll),on=i===selOff;x.fillStyle=on?'#c3d42a':'#fff';x.beginPath();x.arc(p[0],p[1],on?5:3.5,0,7);x.fill();if(on){x.strokeStyle='rgba(195,212,42,.5)';x.beginPath();x.arc(p[0],p[1],9+Math.sin(t*3)*3,0,7);x.stroke()}x.fillStyle=on?'#fff':'rgba(255,255,255,.7)';x.font=`${on?600:500} 12px Inter Tight`;x.textAlign=o==='Athens'?'right':'left';x.fillText(offN(o),p[0]+(x.textAlign==='left'?10:-10),p[1]+(o==='Montreal'?-6:o==='New York'?14:4));x.textAlign='left'})}
- frame()})();
-$('#acc').innerHTML=(s=>s+s)(['ATIO · Ontario','OTTIAQ · Québec','CTTIC · Canada','ATA · USA','PEM-FIT · Greece','PEEMPIP · Ionian University','Translation Bureau · PSPC registered supplier','CAPIC'].map(a=>`<span>${a}</span>`).join(''));
-
-/* ---------- service finder (3 languages) ---------- */
-const NEEDS=[
- {ic:'🏛',type:'inh',t:['I inherited property in Greece','Κληρονόμησα ακίνητο στην Ελλάδα','J’ai hérité d’un bien en Grèce'],s:['Acceptance of inheritance, wills, estates','Αποδοχή κληρονομιάς, διαθήκες','Acceptation de succession, testaments'],
-  steps:[[['Free consultation','Δωρεάν πρώτη συζήτηση','Consultation gratuite'],['We review the family tree and the property.','Εξετάζουμε το οικογενειακό δέντρο και το ακίνητο.','Nous examinons l’arbre familial et le bien.']],[['Power of attorney','Πληρεξούσιο','Procuration'],['Signed at your nearest ICS office or consulate.','Υπογράφεται στο πλησιέστερο γραφείο ICS ή προξενείο.','Signée au bureau ICS ou au consulat le plus proche.']],[['Certified translations','Επίσημες μεταφράσεις','Traductions certifiées'],['Death certificate, will, family status.','Ληξιαρχική πράξη, διαθήκη, οικογενειακή κατάσταση.','Acte de décès, testament, état familial.']],[['Acceptance & tax','Αποδοχή & φόρος','Acceptation et impôt'],['Our lawyers and notaries in Greece file everything.','Οι δικηγόροι και συμβολαιογράφοι μας στην Ελλάδα κάνουν τις πράξεις.','Nos avocats et notaires en Grèce s’occupent de tout.']],[['Registration','Μεταγραφή','Enregistrement'],['Land registry / cadastre and E9 update.','Υποθηκοφυλακείο / κτηματολόγιο και ενημέρωση Ε9.','Cadastre et mise à jour du E9.']]],
-  docs:[['Death certificate','Ληξιαρχική πράξη θανάτου','Acte de décès'],['Will (if any)','Διαθήκη (αν υπάρχει)','Testament (le cas échéant)'],['Family status certificate','Πιστ. οικογενειακής κατάστασης','Certificat de situation familiale'],['Passport','Διαβατήριο','Passeport'],['Greek AFM','ΑΦΜ','AFM grec']],time:['3–6 months','3–6 μήνες','3 à 6 mois'],who:['Athens legal team','Νομική ομάδα Αθήνας','Équipe juridique d’Athènes']},
- {ic:'🧾',type:'tax',t:['File my Greek tax declaration','Φορολογική δήλωση στην Ελλάδα','Ma déclaration fiscale grecque'],s:['E1, E9, ENFIA, AFM, Taxisnet','Ε1, Ε9, ΕΝΦΙΑ, ΑΦΜ, Taxisnet','E1, E9, ENFIA, AFM, Taxisnet'],
-  steps:[[['Send your documents','Στείλτε τα έγγραφα','Envoyez vos documents'],['Upload them in the client portal.','Τα ανεβάζετε στην πύλη πελατών.','Téléversez-les dans le portail client.']],[['Taxisnet access','Κωδικοί Taxisnet','Accès Taxisnet'],['We set up or recover your codes.','Εκδίδουμε ή ανακτούμε τους κωδικούς σας.','Nous créons ou récupérons vos codes.']],[['Declaration','Υποβολή δήλωσης','Déclaration'],['Filed on time, with the early-filing discount.','Υποβάλλεται εγκαίρως, με την έκπτωση πρόωρης υποβολής.','Déposée à temps, avec le rabais de dépôt hâtif.']],[['Payment plan','Εξόφληση','Paiement'],['You see the amounts and pay online.','Βλέπετε τα ποσά και πληρώνετε online.','Vous voyez les montants et payez en ligne.']]],
-  docs:[['Previous year E1','Ε1 προηγούμενου έτους','E1 de l’an dernier'],['Foreign income statement','Βεβαίωση εισοδήματος εξωτερικού','Relevé de revenus étrangers'],['Property list (E9)','Ακίνητα (Ε9)','Liste des biens (E9)'],['Passport','Διαβατήριο','Passeport']],time:['2–3 weeks','2–3 εβδομάδες','2 à 3 semaines'],who:['Accounting team','Λογιστικό τμήμα','Équipe comptable']},
- {ic:'🏡',type:'re',t:['Buy, sell or rent property','Αγορά, πώληση ή ενοικίαση ακινήτου','Acheter, vendre ou louer un bien'],s:['Property management for owners abroad','Διαχείριση ακινήτων για ιδιοκτήτες στο εξωτερικό','Gestion immobilière pour propriétaires à l’étranger'],
-  steps:[[['Valuation','Εκτίμηση','Évaluation'],['Our real estate consultant visits the property.','Ο σύμβουλος ακινήτων μας επισκέπτεται το ακίνητο.','Notre conseillère visite le bien.']],[['Paperwork','Δικαιολογητικά','Documents'],['Engineer certificates, energy certificate, cadastre.','Βεβαιώσεις μηχανικού, ΠΕΑ, κτηματολόγιο.','Certificats d’ingénieur, énergie, cadastre.']],[['Listing & viewings','Αγγελία & επισκέψεις','Annonce et visites'],['Listed on our property portal.','Καταχώριση στην πλατφόρμα ακινήτων μας.','Publié sur notre portail immobilier.']],[['Contract','Συμβόλαιο','Contrat'],['Signed by power of attorney, no need to travel.','Υπογραφή με πληρεξούσιο, χωρίς ταξίδι.','Signé par procuration, sans voyager.']]],
-  docs:[['Title deed','Συμβόλαιο ιδιοκτησίας','Titre de propriété'],['E9','Ε9','E9'],['Cadastre extract','Απόσπασμα κτηματολογίου','Extrait du cadastre'],['Power of attorney','Πληρεξούσιο','Procuration']],time:['1–4 months','1–4 μήνες','1 à 4 mois'],who:['Real estate team','Τμήμα ακινήτων','Équipe immobilière']},
- {ic:'📄',type:'tr',t:['Certified translation','Επίσημη μετάφραση','Traduction certifiée'],s:['Greek ⇄ English ⇄ French','Ελληνικά ⇄ Αγγλικά ⇄ Γαλλικά','Grec ⇄ anglais ⇄ français'],
-  steps:[[['Instant quote','Άμεση προσφορά','Soumission immédiate'],['Choose the document and pages below.','Επιλέγετε έγγραφο και σελίδες παρακάτω.','Choisissez le document et les pages ci-dessous.']],[['Upload & pay','Αποστολή & πληρωμή','Envoi et paiement'],['Securely, online.','Με ασφάλεια, online.','En ligne, en toute sécurité.']],[['Translation & proofing','Μετάφραση & έλεγχος','Traduction et révision'],['Mother-tongue translator plus a second specialist.','Μεταφραστής στη μητρική του και δεύτερος έλεγχος.','Traducteur de langue maternelle et seconde révision.']],[['Certified delivery','Πιστοποιημένη παράδοση','Livraison certifiée'],['PDF and courier, accepted in Canada, the USA and Greece.','PDF και courier, αποδεκτό σε Καναδά, ΗΠΑ, Ελλάδα.','PDF et messagerie, accepté au Canada, aux É.-U. et en Grèce.']]],
-  docs:[['Scan of the document','Σκαναρισμένο έγγραφο','Copie numérisée du document']],time:['1–5 business days','1–5 εργάσιμες','1 à 5 jours ouvrables'],who:['Translation department','Μεταφραστικό τμήμα','Service de traduction']},
- {ic:'🏦',type:'bank',t:['Open a bank account or get an AFM','Τραπεζικός λογαριασμός ή ΑΦΜ','Ouvrir un compte ou obtenir un AFM'],s:['From abroad, with a power of attorney','Από το εξωτερικό, με πληρεξούσιο','De l’étranger, par procuration'],
-  steps:[[['Consultation','Συζήτηση','Consultation'],['Which bank and what you need it for.','Ποια τράπεζα και για ποιο σκοπό.','Quelle banque et pour quel usage.']],[['Power of attorney','Πληρεξούσιο','Procuration'],['Signed at an ICS office.','Υπογράφεται σε γραφείο ICS.','Signée dans un bureau ICS.']],[['AFM & account','ΑΦΜ & λογαριασμός','AFM et compte'],['We apply on your behalf in Greece.','Κάνουμε την αίτηση για εσάς στην Ελλάδα.','Nous faisons la demande pour vous en Grèce.']]],
-  docs:[['Passport','Διαβατήριο','Passeport'],['Proof of address','Αποδεικτικό διεύθυνσης','Preuve d’adresse'],['Proof of income','Αποδεικτικό εισοδήματος','Preuve de revenu']],time:['2–4 weeks','2–4 εβδομάδες','2 à 4 semaines'],who:['Athens office','Γραφείο Αθήνας','Bureau d’Athènes']},
- {ic:'👵',type:'inh',t:['Greek pension or AMKA','Ελληνική σύνταξη ή ΑΜΚΑ','Pension grecque ou AMKA'],s:['Apply, reactivate, collect from abroad','Αίτηση, επανενεργοποίηση, είσπραξη από το εξωτερικό','Demande, réactivation, perception de l’étranger'],
-  steps:[[['Eligibility check','Έλεγχος δικαιώματος','Vérification de l’admissibilité'],['Years of insurance in Greece and abroad.','Χρόνια ασφάλισης σε Ελλάδα και εξωτερικό.','Années d’assurance en Grèce et à l’étranger.']],[['AMKA & e-EFKA','ΑΜΚΑ & e-ΕΦΚΑ','AMKA et e-EFKA'],['We issue or recover your AMKA.','Εκδίδουμε ή ανακτούμε τον ΑΜΚΑ σας.','Nous obtenons ou récupérons votre AMKA.']],[['Application','Αίτηση','Demande'],['Filed and followed up for you.','Υποβάλλεται και την παρακολουθούμε για εσάς.','Déposée et suivie pour vous.']]],
-  docs:[['Passport','Διαβατήριο','Passeport'],['Insurance history','Ασφαλιστικό ιστορικό','Historique d’assurance']],time:['2–6 months','2–6 μήνες','2 à 6 mois'],who:['Athens office','Γραφείο Αθήνας','Bureau d’Athènes']},
- {ic:'✈',type:'imm',t:['Work or move to Canada','Δουλειά ή μετακόμιση στον Καναδά','Travailler ou s’installer au Canada'],s:['Work permits 18–35, immigration','Άδειες εργασίας 18–35, μετανάστευση','Permis de travail 18–35, immigration'],
-  steps:[[['Eligibility check','Έλεγχος καταλληλότητας','Vérification de l’admissibilité'],['Age, studies, profession.','Ηλικία, σπουδές, επάγγελμα.','Âge, études, profession.']],[['Application','Αίτηση','Demande'],['With our licensed immigration partners in Canada.','Με τους αδειοδοτημένους συνεργάτες μας στον Καναδά.','Avec nos partenaires en immigration autorisés.']],[['Arrival support','Υποστήριξη άφιξης','Accueil'],['Translations and first steps in Toronto or Montreal.','Μεταφράσεις και πρώτα βήματα σε Τορόντο ή Μόντρεαλ.','Traductions et premiers pas à Toronto ou Montréal.']]],
-  docs:[['Passport','Διαβατήριο','Passeport'],['Degrees','Πτυχία','Diplômes'],['CV','Βιογραφικό','CV']],time:['varies','ποικίλλει','variable'],who:['Toronto office','Γραφείο Τορόντο','Bureau de Toronto']}];
-let need=0;
-function renderNeeds(){$('#needs').innerHTML=NEEDS.map((n,i)=>`<button class="need${i===need?' on':''}" data-i="${i}"><span class="ic">${n.ic}</span><span><b>${tr(n.t)}</b><small>${tr(n.s)}</small></span></button>`).join('');
- const n=NEEDS[need];
- $('#plan').innerHTML=`<span class="k">${T('Your plan','Το πλάνο σας','Votre plan')}</span><h3>${tr(n.t)}</h3>
- <div class="meta"><span class="ph">⏱ ${tr(n.time)}</span><span>👤 ${tr(n.who)}</span><span>🌍 ${T('Done remotely','Από απόσταση','À distance')}</span></div>
- <ol class="steps">${n.steps.map((s,i)=>`<li style="animation-delay:${i*60}ms"><span><b>${tr(s[0])}</b><small>${tr(s[1])}</small></span></li>`).join('')}</ol>
- <div class="docs">${n.docs.map(d=>`<span>📎 ${tr(d)}</span>`).join('')}</div>
- <div class="cta"><button class="btn lime" id="planBook">${T('Book a consultation for this','Ραντεβού για αυτό','Prendre rendez-vous pour ceci')}</button>${n.type==='tr'?`<a class="btn line" href="#quote">${T('Get a quote now','Προσφορά τώρα','Soumission maintenant')}</a>`:''}</div>`;
- $('#planBook').onclick=()=>{B.topic=need;B.done=false;renderBook();$('#book').scrollIntoView({behavior:'smooth'})}}
-$('#needs').onclick=e=>{const b=e.target.closest('.need');if(b){need=+b.dataset.i;renderNeeds()}};
-
-/* ---------- translation quote ---------- */
-const Q={lang:0,doc:0,spd:0};
-const QL=[['Greek → English','Ελληνικά → Αγγλικά','Grec → anglais'],['English → Greek','Αγγλικά → Ελληνικά','Anglais → grec'],['Greek ⇄ French','Ελληνικά ⇄ Γαλλικά','Grec ⇄ français']];
-const QD=[[['Certificate','Πιστοποιητικό','Certificat'],35],[['Diploma / transcript','Πτυχίο / αναλυτική','Diplôme / relevé'],42],[['Will / court decision','Διαθήκη / απόφαση','Testament / jugement'],50],[['Power of attorney','Πληρεξούσιο','Procuration'],45],[['Business document','Εταιρικό έγγραφο','Document d’affaires'],48]];
-const QS=[[['Standard · 3 days','Κανονική · 3 ημέρες','Standard · 3 jours'],1],[['Express · 1 day','Express · 1 ημέρα','Express · 1 jour'],1.5],[['Same day','Αυθημερόν','Le jour même'],2]];
-const files=[];
-const qCur=()=>OFFS[selOff]==='New York'?'USD':OFFS[selOff]==='Athens'||OFFS[selOff]==='Thessaloniki'||OFFS[selOff]==='Nicosia'?'EUR':'CAD';
-const money=(a,c)=>new Intl.NumberFormat(loc(),{style:'currency',currency:c,maximumFractionDigits:0}).format(a);
-const qPrice=()=>{const pg=+$('#qPg').value;return Math.round(QD[Q.doc][1]*(1+(pg-1)*.8)*QS[Q.spd][1])};
-const qDesc=()=>{const pg=+$('#qPg').value;return `${tr(QL[Q.lang])} · ${tr(QD[Q.doc][0])} · ${pg} ${pg>1?T('pages','σελίδες','pages'):T('page','σελίδα','page')} · ${tr(QS[Q.spd][0])}`};
-function renderQuote(){const o=(id,arr,key,f)=>$(id).innerHTML=arr.map((a,i)=>`<button class="${Q[key]===i?'on':''}" data-k="${key}" data-i="${i}">${f(a)}</button>`).join('');
- o('#qLang',QL,'lang',a=>tr(a));o('#qDoc',QD,'doc',a=>tr(a[0]));o('#qSpd',QS,'spd',a=>tr(a[0]));
- $('#qPgV').textContent=$('#qPg').value;$('#qP').textContent=money(qPrice(),qCur());$('#qD').textContent=qDesc();
- $('#files').innerHTML=files.map(f=>`<div><span>📄 ${esc(f.name)}</span><span>${Math.max(1,Math.round(f.size/1024))} KB</span></div>`).join('')}
-document.querySelector('.qform').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b){Q[b.dataset.k]=+b.dataset.i;renderQuote()}});
-$('#qPg').oninput=renderQuote;
-const drop=$('#drop');drop.onclick=()=>$('#file').click();drop.onkeydown=e=>{if(e.key==='Enter')$('#file').click()};
-$('#file').onchange=e=>{files.push(...e.target.files);renderQuote()};
-['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
-['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over');if(ev==='drop'){files.push(...e.dataTransfer.files);renderQuote()}}));
-function sendQuote(paid){const name=$('#qName').value.trim(),email=$('#qEmail').value.trim();if(!name||!email){toast(T('Please add your name and email','Συμπληρώστε όνομα και email','Ajoutez votre nom et votre courriel'));(!name?$('#qName'):$('#qEmail')).focus();return false}
- S=ICS.load();ICS.lead(S,'quote',{name,email,off:OFFS[selOff],what:qDesc(),amt:money(qPrice(),qCur()),files:files.map(f=>f.name),paid},[ {Montreal:'md',Athens:'mk',Thessaloniki:'gt',Nicosia:'mk'}[OFFS[selOff]]||'mm']);ICS.save(S);return true}
-$('#qSend').onclick=()=>{if(sendQuote(false)){$('#qSend').textContent=T('✓ Request sent · we’ll email you within one business day','✓ Το αίτημα στάλθηκε · θα σας απαντήσουμε εντός μίας εργάσιμης','✓ Demande envoyée · réponse en un jour ouvrable')}};
-$('#qPay').onclick=()=>{const name=$('#qName').value.trim(),email=$('#qEmail').value.trim();if(!name||!email){sendQuote(false);return}payModal(qPrice(),qCur(),qDesc(),()=>{sendQuote(true);$('#qPay').textContent=T('✓ Paid · your translator has the files','✓ Πληρώθηκε · ο μεταφραστής έχει τα αρχεία','✓ Payé · votre traducteur a les fichiers')})};
-
-/* ---------- payment (simulated) ---------- */
-function payModal(amt,cur,desc,done){const ov=$('#ov');
- $('#pay').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><span class="k">${T('Secure payment','Ασφαλής πληρωμή','Paiement sécurisé')}</span><button id="pX" style="font-size:20px">×</button></div><div class="amt">${money(amt,cur)}</div><div class="muted" style="font-size:14px">${esc(desc)}</div>
- <label class="fld">${T('Card','Κάρτα','Carte')}<div class="card-in"><input value="4242 4242 4242 4242" inputmode="numeric"><input value="12 / 28"><input value="123"></div></label>
- <label class="fld">${T('Name on card','Όνομα κατόχου','Nom sur la carte')}<input value="${esc($('#qName')?.value||'Eleni Papas')}"></label>
- <button class="btn lime" id="pGo">${T('Pay','Πληρωμή','Payer')} ${money(amt,cur)}</button>
- <div class="sec">🔒 ${T('Processed by Stripe · Visa, Mastercard, Amex, Apple Pay, Google Pay · CAD, USD, EUR','Μέσω Stripe · Visa, Mastercard, Amex, Apple Pay, Google Pay · CAD, USD, EUR','Traité par Stripe · Visa, Mastercard, Amex, Apple Pay, Google Pay · CAD, USD, EUR')}</div>
- <div class="sec ph">${T('Demo: no card is charged.','Demo: καμία χρέωση.','Démo : aucune carte n’est débitée.')}</div>`;
- ov.classList.add('on');$('#pX').onclick=()=>ov.classList.remove('on');ov.onclick=e=>{if(e.target===ov)ov.classList.remove('on')};
- $('#pGo').onclick=()=>{$('#pGo').textContent=T('Processing…','Επεξεργασία…','Traitement…');setTimeout(()=>{$('#pay').innerHTML=`<div class="done"><div class="t">✓</div><h3 style="font:600 22px/1.2 var(--f)">${T('Payment received','Η πληρωμή ολοκληρώθηκε','Paiement reçu')}</h3><p class="muted" style="margin-top:8px">${money(amt,cur)} · ${T('a receipt is on its way to your email.','η απόδειξη έρχεται στο email σας.','un reçu est envoyé à votre courriel.')}</p><button class="btn" id="pOk" style="margin-top:16px">OK</button></div>`;$('#pOk').onclick=()=>ov.classList.remove('on');done()},900)}}
-
-/* ---------- booking ---------- */
-const CONS={Toronto:'mm',Montreal:'md','New York':'mm',Athens:'mk',Thessaloniki:'gt',Nicosia:'mk'};
-const B={topic:0,off:'Toronto',mode:'office',day:-1,slot:null,done:false};
-const bDays=()=>{const r=[];let n=1;while(r.length<5){const d=new Date();d.setDate(d.getDate()+n);if(d.getDay()%6)r.push(n);n++}return r};
-const taken=(n,h)=>((n*5+h*3)%7===0);
-function renderBook(){const el=$('#bk');
- if(B.done){const a=B.done,o=OFF[a.off];el.innerHTML=`<div class="done"><div class="t">✓</div><h3 style="font:600 24px/1.2 var(--f)">${T('You’re booked','Το ραντεβού κλείστηκε','Rendez-vous confirmé')}</h3><p class="muted" style="margin-top:8px">${ICS.fmtDT(a.ts,o.tz,loc())} ${offN(a.off)}<br>${T('Your time','Η ώρα σας','Votre heure')}: ${ICS.fmtDT(a.ts,myTZ,loc())}<br>${a.mode==='video'?T('Video call · link by email','Βιντεοκλήση · link στο email','Appel vidéo · lien par courriel'):o.addr}</p><div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap"><button class="btn" id="ics">📅 ${T('Add to calendar','Στο ημερολόγιο','Ajouter à l’agenda')}</button><button class="btn line" id="bAgain">${T('Book another','Νέο ραντεβού','Autre rendez-vous')}</button></div></div>`;
-  $('#bAgain').onclick=()=>{B.done=false;B.slot=null;renderBook()};
-  $('#ics').onclick=()=>{const f=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');const txt=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ICS//Booking//EN','BEGIN:VEVENT',`UID:${a.id}@icsgr.com`,`DTSTAMP:${f(Date.now())}`,`DTSTART:${f(a.ts)}`,`DTEND:${f(a.ts+1800e3)}`,`SUMMARY:ICS · ${a.topic}`,`LOCATION:${a.mode==='video'?'Video call':o.addr}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');const l=document.createElement('a');l.href=URL.createObjectURL(new Blob([txt],{type:'text/calendar'}));l.download='ics-appointment.ics';l.click()};return}
- const days=bDays(),o=OFF[B.off];
- el.innerHTML=`<label class="fld">${T('Topic','Θέμα','Sujet')}<select id="bT">${NEEDS.map((n,i)=>`<option value="${i}" ${i===B.topic?'selected':''}>${tr(n.t)}</option>`).join('')}</select></label>
- <div class="fld">${T('Office','Γραφείο','Bureau')}<div class="opts" id="bO">${OFFS.map(k=>`<button class="${k===B.off?'on':''}" data-o="${k}">${offN(k)}</button>`).join('')}</div></div>
- <div class="fld">${T('How','Πώς','Comment')}<div class="opts" id="bM"><button class="${B.mode==='office'?'on':''}" data-m="office">🏢 ${T('At the office','Στο γραφείο','Au bureau')}</button><button class="${B.mode==='video'?'on':''}" data-m="video">🎥 ${T('Video call','Βιντεοκλήση','Appel vidéo')}</button></div></div>
- <div class="fld">${T('Day','Ημέρα','Jour')}<div class="days" id="bD">${days.map(n=>{const d=new Date();d.setDate(d.getDate()+n);return `<button class="${B.day===n?'on':''}" data-d="${n}">${d.toLocaleDateString(loc(),{weekday:'short'})}<b>${d.getDate()}</b>${d.toLocaleDateString(loc(),{month:'short'})}</button>`}).join('')}</div></div>
- ${B.day>0?`<div class="fld">${T('Time','Ώρα','Heure')} · ${offN(B.off)}<div class="slots" id="bS">${[9,10,11,12,13,14,15,16].map(h=>{const ts=ICS.at(B.day,h,0,o.tz);return `<button ${taken(B.day,h)?'disabled':''} class="${B.slot===ts?'on':''}" data-s="${ts}">${String(h).padStart(2,'0')}:00<small>${T('you','εσείς','vous')} ${ICS.fmtT(ts,myTZ)}</small></button>`}).join('')}</div></div>`:''}
- ${B.slot?`<div class="tzline">🕘 ${ICS.fmtDT(B.slot,o.tz,loc())} ${offN(B.off)} · Toronto ${ICS.fmtT(B.slot,'America/Toronto')} · ${T('Athens','Αθήνα','Athènes')} ${ICS.fmtT(B.slot,'Europe/Athens')}</div>
- <div class="r2"><input id="bN" placeholder="${T('Full name','Ονοματεπώνυμο','Nom complet')}" style="padding:13px 14px;border-radius:12px;border:0;box-shadow:inset 0 0 0 1px var(--line)"><input id="bE" type="email" placeholder="Email" style="padding:13px 14px;border-radius:12px;border:0;box-shadow:inset 0 0 0 1px var(--line)"></div>
- <button class="btn lime" id="bGo">${T('Confirm appointment','Επιβεβαίωση ραντεβού','Confirmer le rendez-vous')}</button>`:''}`;
- $('#bT').onchange=e=>{B.topic=+e.target.value};
- $$('#bO button').forEach(b=>b.onclick=()=>{B.off=b.dataset.o;B.slot=null;renderBook()});
- $$('#bM button').forEach(b=>b.onclick=()=>{B.mode=b.dataset.m;renderBook()});
- $$('#bD button').forEach(b=>b.onclick=()=>{B.day=+b.dataset.d;B.slot=null;renderBook()});
- $$('#bS button').forEach(b=>b.onclick=()=>{B.slot=+b.dataset.s;renderBook()});
- if($('#bGo'))$('#bGo').onclick=()=>{const name=$('#bN').value.trim(),email=$('#bE').value.trim();if(!name||!email){toast(T('Please add your name and email','Συμπληρώστε όνομα και email','Ajoutez votre nom et votre courriel'));return}
-  S=ICS.load();const u=CONS[B.off],a={id:'A'+Date.now(),who:name,em:email,c:null,u,off:B.off,ts:B.slot,mode:B.mode,topic:tr(NEEDS[B.topic].t)};S.appts.push(a);
-  ICS.lead(S,'booking',{name,email,off:B.off,type:NEEDS[B.topic].type,topic:NEEDS[B.topic].t[0],when:`${ICS.fmtDT(a.ts,OFF[B.off].tz,'en-GB')} ${B.off} · ${B.mode==='video'?'video call':'at the office'} · ${NEEDS[B.topic].t[0]}`},[u]);ICS.save(S);B.done=a;renderBook()}}
-
-/* ---------- client portal (live from the CRM data) ---------- */
-let P={in:false,tab:'case',email:'eleni.papas@example.com',ci:0};try{P.in=sessionStorage.getItem('ics-portal')==='1'}catch(e){}
-const me=()=>S.clients.find(c=>c.em.includes(P.email))||S.clients[0];
-const myCases=()=>S.cases.filter(k=>k.portal?.on&&k.cl.some(x=>x[0]===me().id));
-function renderPortal(flash){const w=$('#pwin');
- if(!P.in){w.style.gridTemplateColumns='1fr';w.innerHTML=`<div class="pmain"><form class="plogin" id="pl"><h3>${T('Sign in to your case','Είσοδος στην υπόθεσή σας','Accéder à votre dossier')}</h3><p class="muted" style="font-size:14.5px">${T('No password to remember: we email you a one-time code.','Χωρίς κωδικό: σας στέλνουμε κωδικό μίας χρήσης στο email.','Aucun mot de passe : nous vous envoyons un code unique par courriel.')}</p>
-  <label class="fld">Email<input id="pE" type="email" value="${esc(P.email)}"></label><label class="fld">${T('Code from your email','Κωδικός από το email','Code reçu par courriel')}<input id="pC" value="482913" inputmode="numeric"></label><button class="btn lime">${T('Sign in','Είσοδος','Se connecter')}</button><div class="hint">${T('Demo: client Eleni Papas (inheritance in Kalamata). Code pre-filled.','Demo: πελάτισσα Eleni Papas (κληρονομιά στην Καλαμάτα). Ο κωδικός είναι συμπληρωμένος.','Démo : cliente Eleni Papas (succession à Kalamata). Code pré-rempli.')}</div></form></div>`;
-  $('#pl').onsubmit=e=>{e.preventDefault();P.email=$('#pE').value.trim()||P.email;P.in=true;try{sessionStorage.setItem('ics-portal','1')}catch(x){}w.style.gridTemplateColumns='';renderPortal()};return}
- w.style.gridTemplateColumns='';const c=me(),cs=myCases(),k=cs[P.ci]||cs[0];
- const reqDocs=k?k.docs.filter(d=>d.client&&d.s==='req'):[],dueInv=k?S.invoices.filter(i=>i.c===k.id&&i.st!=='paid'):[];
- const unreadMsg=k?k.portal.msgs.filter(m=>m[0]!=='client').length:0;
- const nav=[['case',T('My case','Η υπόθεσή μου','Mon dossier'),''],['docs',T('Documents','Έγγραφα','Documents'),reqDocs.length||''],['msgs',T('Messages','Μηνύματα','Messages'),''],['pay',T('Invoices','Τιμολόγια','Factures'),dueInv.length||''],['appts',T('Appointments','Ραντεβού','Rendez-vous'),'']];
- let main='';
- if(!k)main=`<div class="muted">${T('No active cases.','Καμία ενεργή υπόθεση.','Aucun dossier actif.')}</div>`;
- else{const ty=TYPES[k.type],cons=U[k.own];
-  const head=`<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start"><div><h3>${k.id} · ${esc(k.t)}</h3><div class="sub">${T('Your consultant','Ο σύμβουλός σας','Votre conseillère')}: ${cons.n} · ${offN(cons.off)}</div></div><span class="live">${T('Live','Ζωντανά','En direct')}</span></div>`;
-  const track=`<div class="track ${flash==='stage'?'flash':''}" style="--n:${ty.steps.length}">${ty.steps.map((s,i)=>`<div class="${i<k.st?'done':i===k.st?'now':''}">${tr(s)}</div>`).join('')}</div>`;
-  const nxt=ty.steps[k.st+1],need=k.docs.filter(d=>d.client&&d.s==='req').length;
-  const nowBox=`<div class="nowbox ${flash==='stage'?'flash':''}"><div class="nb-step">${k.st+1}<small>/${ty.steps.length}</small></div><div><span class="nb-k">${T('Where your case is now','Πού βρίσκεται τώρα η υπόθεσή σας','Où en est votre dossier')}</span><b>${tr(ty.steps[k.st])}</b><p>${ty.tips?tr(ty.tips[k.st]):''}</p>${nxt?`<small>${T('Next step','Επόμενο βήμα','Étape suivante')}: <b>${tr(nxt)}</b></small>`:''}${need?`<button class="btn lime s" data-pt="docs" style="margin-top:10px">${T(`We need ${need} document${need>1?'s':''} from you →`,`Χρειαζόμαστε ${need} έγγραφ${need>1?'α':'ο'} από εσάς →`,`Il nous faut ${need} document${need>1?'s':''} →`)}</button>`:''}</div></div>`;
-  const docsBox=`<div class="box ${flash==='docs'?'flash':''}"><h4>${T('Documents','Έγγραφα','Documents')}</h4>${k.docs.map((d,i)=>{const need=d.client&&d.s==='req';return `<div class="doc"><i class="${d.s==='req'?'wait':'ok'}">${d.s==='req'?'!':'✓'}</i><span>${esc(d.n.replace(/\.pdf$/i,''))}</span>${need?`<button class="btn s" data-up="${i}">${T('Upload','Ανέβασμα','Téléverser')}</button>`:`<small>${tr(DOCST[d.s])}</small>`}</div>`}).join('')}<input type="file" id="pFile" hidden accept=".pdf,image/*">${reqDocs.length?`<button class="sample" id="pSample">📄 ${T('Demo: upload a sample PDF','Demo: ανέβασμα δείγματος PDF','Démo : téléverser un exemple PDF')}</button>`:''}</div>`;
-  const msgsBox=`<div class="box ${flash==='msgs'?'flash':''}"><h4>${T('Messages','Μηνύματα','Messages')}</h4><div id="pMs">${k.portal.msgs.map(m=>`<div class="msg ${m[0]==='client'?'me':''}"><span class="av">${m[0]==='client'?c.n.split(' ').map(w=>w[0]).join(''):U[m[0]].n.split(' ').map(w=>w[0]).join('').slice(0,2)}</span><span><small>${m[0]==='client'?T('You','Εσείς','Vous'):U[m[0]].n} · ${new Date(m[1]).toLocaleString(loc(),{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</small><div class="bb">${esc(m[2])}</div></span></div>`).join('')||`<div class="muted">—</div>`}</div><form class="msend" id="pmf"><input id="pmIn" placeholder="${T('Write to your consultant…','Γράψτε στον σύμβουλό σας…','Écrivez à votre conseillère…')}"><button class="btn s">${T('Send','Αποστολή','Envoyer')}</button></form></div>`;
-  const payBox=`<div class="box ${flash==='pay'?'flash':''}"><h4>${T('Invoices','Τιμολόγια','Factures')}</h4>${S.invoices.filter(i=>i.c===k.id).map(i=>`<div class="inv"><span>${esc(i.desc)}<br><small class="muted">${i.id}</small></span><span style="text-align:right"><b>${money(i.amt,i.cur)}</b><br>${i.st==='paid'?`<span class="paid">${T('Paid','Πληρώθηκε','Payée')}</span>`:`<button class="btn lime s" data-pay="${i.id}" style="margin-top:4px">${T('Pay now','Πληρωμή','Payer')}</button>`}</span></div>`).join('')||`<div class="muted">—</div>`}</div>`;
-  const ap=S.appts.filter(a=>a.em===c.em[0]&&a.ts>Date.now()-3600e3).sort((a,b)=>a.ts-b.ts);
-  const apBox=`<div class="box"><h4>${T('Appointments','Ραντεβού','Rendez-vous')}</h4>${ap.map(a=>`<div class="inv"><span>${a.mode==='video'?'🎥':'🏢'} <b>${esc(a.topic)}</b><br><small class="muted">${U[a.u].n} · ${offN(a.off)}</small></span><span style="text-align:right;font-size:13.5px">${ICS.fmtDT(a.ts,OFF[a.off].tz,loc())} ${offN(a.off)}<br><b>${ICS.fmtT(a.ts,myTZ)} ${T('your time','η ώρα σας','votre heure')}</b></span></div>`).join('')||`<div class="muted">${T('None booked.','Κανένα.','Aucun.')}</div>`}<a class="btn line s" href="#book" style="margin-top:10px">+ ${T('Book','Κράτηση','Réserver')}</a></div>`;
-  main=head+nowBox+track+({case:`<div class="pcols">${docsBox}${msgsBox}</div>`,docs:docsBox,msgs:msgsBox,pay:payBox,appts:apBox})[P.tab]}
- w.innerHTML=`<aside class="pside"><div class="who"><span class="av">${c.n.split(' ').map(x=>x[0]).join('')}</span><span><b>${esc(c.n)}</b><small>${esc(c.addr)}</small></span></div>${nav.map(([v,l,n])=>`<button class="${P.tab===v?'on':''}" data-pt="${v}">${l}<em>${n}</em></button>`).join('')}${cs.length>1?`<select id="pCase" style="margin-top:10px;padding:8px;border-radius:8px;background:#1e2823;color:#fff;border:0">${cs.map((x,i)=>`<option value="${i}" ${i===P.ci?'selected':''}>${x.id}</option>`).join('')}</select>`:''}<button data-out="1" style="margin-top:auto;color:#8a938d">${T('Sign out','Έξοδος','Déconnexion')}</button></aside><div class="pmain">${main}</div>`;
- $$('[data-pt]').forEach(b=>b.onclick=()=>{P.tab=b.dataset.pt;renderPortal()});
- if($('#pCase'))$('#pCase').onchange=e=>{P.ci=+e.target.value;renderPortal()};
- $('[data-out]').onclick=()=>{P.in=false;try{sessionStorage.removeItem('ics-portal')}catch(e){}renderPortal()};
- if(!k)return;
- let upIdx=-1;$$('[data-up]').forEach(b=>b.onclick=()=>{upIdx=+b.dataset.up;$('#pFile').click()});
- const upload=async f=>{if(upIdx<0)upIdx=k.docs.findIndex(d=>d.client&&d.s==='req');if(upIdx<0)return;toast(T('Uploading and reading your document…','Ανέβασμα και ανάγνωση του εγγράφου…','Téléversement et lecture du document…'));
-  let r=null;try{r=await ICS.readDoc(f)}catch(e){}
-  S=ICS.load();const kk=S.cases.find(x=>x.id===k.id),d=kk.docs[upIdx];d.s='rec';d.by='client';d.d=Date.now();d.n=d.n+' · '+f.name;d.fresh=true;if(r&&Object.keys(r.fields).length){d.extract=r.fields;d.title=r.title}
-  kk.log.unshift(['client',Date.now(),'Uploaded '+f.name+' from the portal']);ICS.lead(S,'upload',{name:c.n,email:c.em[0],case:kk.id,text:d.n+(d.extract?` · ${Object.keys(d.extract).length} fields read`:'')},[kk.own]);ICS.save(S);upIdx=-1;renderPortal('docs');
-  toast(T('Uploaded. Your consultant has been notified.','Ανέβηκε. Ο σύμβουλός σας ενημερώθηκε.','Téléversé. Votre conseillère a été avisée.'))};
- if($('#pFile'))$('#pFile').onchange=e=>{const f=e.target.files[0];if(f)upload(f)};
- if($('#pSample'))$('#pSample').onclick=async()=>{const b=await (await fetch('../ics-crm/samples/family-status-certificate.pdf')).blob();upIdx=-1;upload(new File([b],'family-status-certificate.pdf',{type:'application/pdf'}))};
- if($('#pmf'))$('#pmf').onsubmit=e=>{e.preventDefault();const v=$('#pmIn').value.trim();if(!v)return;S=ICS.load();const kk=S.cases.find(x=>x.id===k.id);kk.portal.msgs.push(['client',Date.now(),v]);ICS.lead(S,'message',{name:c.n,email:c.em[0],case:kk.id,text:v},[kk.own]);ICS.save(S);renderPortal('msgs')};
- $$('[data-pay]').forEach(b=>b.onclick=()=>{const i=S.invoices.find(x=>x.id===b.dataset.pay);payModal(i.amt,i.cur,i.desc,()=>{S=ICS.load();const ii=S.invoices.find(x=>x.id===i.id);ii.st='paid';ii.paidAt=Date.now();ii.fresh=true;ICS.lead(S,'payment',{name:c.n,email:c.em[0],case:i.c,what:i.desc,amt:money(i.amt,i.cur)},[k.own]);ICS.save(S);renderPortal('pay')})})}
-
-/* updates from the CRM (other tab) */
-ICS.on(ns=>{const old=S;S=ns;if(!P.in){renderPortal();return}
- const k0=old.cases.find(x=>x.id===(myCases()[P.ci]||{}).id),k1=S.cases.find(x=>x.id===k0?.id);let fl='';
- if(k0&&k1){if(k1.st!==k0.st)fl='stage';else if(k1.portal.msgs.length>k0.portal.msgs.length)fl='msgs';else if(k1.docs.filter(d=>d.client&&d.s==='req').length>k0.docs.filter(d=>d.client&&d.s==='req').length)fl='docs'}
- renderPortal(fl);
- if(fl==='stage')toast(T('Your case moved to: ','Η υπόθεσή σας πέρασε στο: ','Votre dossier est passé à : ')+tr(TYPES[k1.type].steps[k1.st]));
- if(fl==='msgs')toast(T('New message from your consultant','Νέο μήνυμα από τον σύμβουλό σας','Nouveau message de votre conseillère'));
- if(fl==='docs')toast(T('Your consultant asked for a document','Ο σύμβουλός σας ζήτησε ένα έγγραφο','Votre conseillère demande un document'))});
-
-/* ---------- newsletter ---------- */
-$('#nlf').onsubmit=e=>{e.preventDefault();const em=$('#nlE').value.trim();S=ICS.load();if(!S.subs.includes(em))S.subs.push(em);ICS.lead(S,'newsletter',{email:em},['et']);ICS.save(S);e.target.reset();toast(T('Subscribed. Welcome email on its way.','Εγγραφήκατε. Έρχεται email καλωσορίσματος.','Abonné. Un courriel de bienvenue arrive.'))};
-
-/* ---------- team & offices ---------- */
-function renderTeam(){const tm=[['Anastasios Moussas',['President, Managing Director','Πρόεδρος','Président, directeur général']],['Efthymia Tseliou',['Director','Διευθύντρια','Directrice']],['Marianna Michalitsianou',['Senior Consultant · Toronto','Senior Consultant · Τορόντο','Conseillère principale · Toronto']],['Marie-Eve Duclos-Haskis',['Senior Consultant · Montreal','Senior Consultant · Μόντρεαλ','Conseillère principale · Montréal']],['Maria Korda',['Senior Consultant · Athens','Senior Consultant · Αθήνα','Conseillère principale · Athènes']],['Anastasia Gianniloi',['Managing Lawyer · Athens','Δικηγόρος · Αθήνα','Avocate gérante · Athènes']],['Eleonora Lekka',['Senior Real Estate Consultant','Σύμβουλος ακινήτων','Conseillère immobilière']],['Stavroula Rigopoulou',['Senior Accounting Consultant','Λογιστικό τμήμα','Conseillère comptable']],['Georgios Tachtsidis',['Senior Consultant · Thessaloniki','Senior Consultant · Θεσσαλονίκη','Conseiller principal · Thessalonique']]];
- $('#team').innerHTML=tm.map(([n,r])=>`<span><b>${n}</b> · ${tr(r)}</span>`).join('')+`<span>+ ${T('5 lawyers in Athens, notaries & consultants','5 δικηγόροι στην Αθήνα, συμβολαιογράφοι & σύμβουλοι','5 avocats à Athènes, notaires et conseillers')}</span>`;
- $('#oGrid').innerHTML=OFFS.map(o=>{const t=ICS.tzNow(OFF[o].tz),d=OFF[o];return `<div class="card off"><h3>${offN(o)}<small>${t.s} · ${t.open?T('open','ανοιχτά','ouvert'):T('closed','κλειστά','fermé')}</small></h3><p>${esc(d.addr)}</p><a href="tel:${d.tel.replace(/\s/g,'')}">${d.tel}</a><a href="mailto:${d.mail}">${d.mail}</a><a href="#book" data-bo="${o}" style="color:var(--lime);font-weight:600;margin-top:8px">${T('Book here →','Ραντεβού εδώ →','Réserver ici →')}</a></div>`}).join('');
- $$('[data-bo]').forEach(a=>a.onclick=()=>{B.off=a.dataset.bo;B.slot=null;B.done=false;renderBook()})}
-
-function renderAll(){renderClocks();renderNeeds();renderQuote();renderBook();renderPortal();renderTeam();$('#qName').placeholder=T('Full name','Ονοματεπώνυμο','Nom complet')}
-setLang(L);
-</script>
+<script src="site.js?v=4"></script>
 </body>
 </html>

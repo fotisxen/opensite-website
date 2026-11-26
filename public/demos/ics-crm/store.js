@@ -174,6 +174,9 @@
         { id: 1, kind: "quote", at: ago(2), read: false, d: { name: "George Andreou", email: "g.andreou@example.com", off: "Toronto", what: "Certified translation · Diploma / transcript · 3 pages · Express", amt: "CA$ 148", files: ["degree_scan.pdf"] } },
         { id: 2, kind: "newsletter", at: ago(9), read: true, d: { email: "christina.v@example.com" } },
       ],
+      orders: [
+        { id: "SUB-2031", kind: "plan", key: "taxcare", name: "Eleni Papas", email: "eleni.papas@example.com", what: "Greek Tax Care · annual plan", amt: 290, cur: "CAD", at: Date.now() - 300 * 864e5, renew: Date.now() + 65 * 864e5, auto: true },
+      ],
       subs: ["christina.v@example.com", "k.laskaris@example.com", "eleni.papas@example.com"],
       notif: [
         { to: "mm", at: ago(4), text: ["Maria Korda replied on “Send family status certificate”", "Η Maria Korda απάντησε στο «Send family status certificate»", "Maria Korda a répondu à « Send family status certificate »"], go: ["task", 1], read: false },
@@ -183,7 +186,7 @@
       nid: 9, rev: 1,
     };
   }
-  function load() { try { const j = localStorage.getItem(KEY); if (j) { const s = JSON.parse(j); if (s && s.v === 2) return s; } } catch (e) {} return SEED(); }
+  function load() { try { const j = localStorage.getItem(KEY); if (j) { const s = JSON.parse(j); if (s && s.v === 2) { if (!s.orders) s.orders = SEED().orders; return s; } } } catch (e) {} return SEED(); }
   function save(S) { S.rev = (S.rev || 0) + 1; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
   function reset() { const s = SEED(); save(s); return s; }
   /* fires when the OTHER page (another tab) changes the data */
@@ -192,7 +195,7 @@
   function lead(S, kind, d, notifyTo) {
     S.inbox = S.inbox || []; const id = (S.inbox.reduce((m, x) => Math.max(m, x.id), 0) || 0) + 1;
     S.inbox.unshift({ id, kind, at: Date.now(), read: false, d });
-    const L = { quote: ["New translation quote", "Νέα προσφορά μετάφρασης", "Nouvelle demande de traduction"], booking: ["New appointment booked", "Νέο ραντεβού", "Nouveau rendez-vous"], newsletter: ["Newsletter sign-up", "Εγγραφή στο newsletter", "Inscription à l'infolettre"], upload: ["Client uploaded a document", "Ο πελάτης ανέβασε έγγραφο", "Le client a téléversé un document"], message: ["New message from a client", "Νέο μήνυμα πελάτη", "Nouveau message d'un client"], payment: ["Payment received", "Πληρωμή ελήφθη", "Paiement reçu"] }[kind];
+    const L = { quote: ["New translation quote", "Νέα προσφορά μετάφρασης", "Nouvelle demande de traduction"], booking: ["New appointment booked", "Νέο ραντεβού", "Nouveau rendez-vous"], newsletter: ["Newsletter sign-up", "Εγγραφή στο newsletter", "Inscription à l'infolettre"], upload: ["Client uploaded a document", "Ο πελάτης ανέβασε έγγραφο", "Le client a téléversé un document"], message: ["New message from a client", "Νέο μήνυμα πελάτη", "Nouveau message d'un client"], payment: ["Payment received", "Πληρωμή ελήφθη", "Paiement reçu"], order: ["Online order", "Νέα παραγγελία online", "Commande en ligne"], subscription: ["New annual plan", "Νέα ετήσια συνδρομή", "Nouvel abonnement annuel"], request: ["New service request", "Νέο αίτημα υπηρεσίας", "Nouvelle demande de service"], contact: ["Message from the website", "Μήνυμα από το site", "Message du site"], property: ["Property enquiry", "Ενδιαφέρον για ακίνητο", "Demande immobilière"], valuation: ["Property valuation request", "Αίτημα εκτίμησης ακινήτου", "Demande d'évaluation"] }[kind] || [kind, kind, kind];
     (notifyTo || ["mm"]).forEach(u => S.notif.unshift({ to: u, at: Date.now(), text: L.map(x => `${x} · ${d.name || d.email || ""}`), go: ["inbox"], read: false }));
     return id;
   }
