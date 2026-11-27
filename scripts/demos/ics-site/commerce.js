@@ -6,6 +6,8 @@ const price=p=>p[CI[CUR]];
 
 /* fixed-price services bought online (placeholder prices: ICS sets the real ones) */
 const CAT={
+ session:{ic:'⭐',n:['Video session with Mr Moussas · 30 min','Συνεδρία με τον κ. Μουσσά · 30 λεπτά','Séance vidéo avec M. Moussas · 30 min'],d:['Personal advice from the President of ICS. Credited to your case if you go ahead.','Προσωπική συμβουλή από τον Πρόεδρο της ICS. Αφαιρείται από την αμοιβή αν προχωρήσετε.','Conseil personnel du président d’ICS. Déduit si vous poursuivez.'],p:[150,110,100],type:'inh'},
+ review:{ic:'📝',n:['Written case review · 48h','Γραπτός έλεγχος υπόθεσης · 48 ώρες','Analyse écrite du dossier · 48 h'],d:['Send your question and documents; a lawyer replies in writing within 48 hours.','Στείλτε την ερώτηση και τα έγγραφα· δικηγόρος απαντά γραπτώς σε 48 ώρες.','Envoyez votre question et vos documents ; un avocat répond par écrit en 48 h.'],p:[95,70,65],type:'inh'},
  consult:{ic:'🎥',n:['Video consultation · 30 min','Βιντεοκλήση με σύμβουλο · 30 λεπτά','Consultation vidéo · 30 min'],d:['With a consultant or lawyer. Credited to your case if you go ahead.','Με σύμβουλο ή δικηγόρο. Αφαιρείται από την αμοιβή αν προχωρήσετε.','Avec un conseiller ou un avocat. Déduite si vous poursuivez.'],p:[75,55,50],type:'inh'},
  afm:{ic:'🪪',n:['Greek tax number (AFM)','Έκδοση ΑΦΜ','Numéro fiscal grec (AFM)'],d:['Issued from abroad with a power of attorney.','Από το εξωτερικό, με πληρεξούσιο.','Depuis l’étranger, par procuration.'],p:[190,140,130],type:'tax'},
  taxis:{ic:'🔑',n:['Taxisnet codes · new or recovery','Κωδικοί Taxisnet · έκδοση ή ανάκτηση','Codes Taxisnet · nouveaux ou récupération'],d:['Access to the Greek tax portal, set up for you.','Πρόσβαση στην πλατφόρμα της ΑΑΔΕ, χωρίς ταλαιπωρία.','Accès au portail fiscal grec.'],p:[95,70,65],type:'tax'},
@@ -96,6 +98,7 @@ if($('#nf'))$('#nf').onclick=e=>{const b=e.target.closest('button');if(!b)return
 /* ---------- mobile menu ---------- */
 if($('.burger'))$('.burger').onclick=()=>{const m=$('.mnav');m.classList.toggle('on');$('.burger').textContent=m.classList.contains('on')?'✕':'☰'};
 
+window.ICSsite={checkout,fill:()=>{$$('[data-price]').forEach(e=>{const it=CAT[e.dataset.price]||PLANS[e.dataset.price];if(it)e.textContent=money(price(it.p),CUR)});$$('[data-cat-n]').forEach(e=>{const c=CAT[e.dataset.catN];if(c)e.textContent=tr(c.n)});$$('[data-plan-n]').forEach(e=>{const p=PLANS[e.dataset.planN];if(p)e.textContent=tr(p.n)})}};
 function renderAll(){renderClocks();renderNeeds();renderPrices();renderBook();renderPortal();renderTeam();renderReq();if($('#qName'))$('#qName').placeholder=T('Full name','Ονοματεπώνυμο','Nom complet')}
 {const q=new URLSearchParams(location.search).get('lang');if(q&&/^(en|el|fr)$/.test(q))L=q}
 setLang(L);
